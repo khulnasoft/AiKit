@@ -1,4 +1,4 @@
-USER_EMAIL="aikit.branch@lets-unify.ai"
+USER_EMAIL="aikit.branch@lets-khulnasoft.com"
 USER_NAME="aikit-branch"
 TARGET_BRANCH=$1
 CLONE_DIR=$(mktemp -d)

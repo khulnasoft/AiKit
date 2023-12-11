@@ -44,7 +44,7 @@ The contributor guide is split into the sections below, it's best to go from sta
    contributing/setting_up.rst
    contributing/the_basics.rst
    contributing/building_the_docs.rst
-   Deep Dive <https://unify.ai/docs/aikit/overview/deep_dive.html>
+   Deep Dive <https://khulnasoft.com/docs/aikit/overview/deep_dive.html>
    contributing/open_tasks.rst
    contributing/helpful_resources.rst
    contributing/error_handling.rst

@@ -186,7 +186,7 @@ Now, that the SSH key of the Runner has permissions to push and clone the Mappin
 
 .. code-block::
 
-    USER_EMAIL="aikit.branch@lets-unify.ai"
+    USER_EMAIL="aikit.branch@lets-khulnasoft.com"
     USER_NAME="aikit-branch"
     TARGET_BRANCH=$1
     GITHUB_SERVER="github.com"

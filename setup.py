@@ -111,16 +111,16 @@ setup(
     name="aikit",
     version=__version__,
     author="Unify",
-    author_email="hello@unify.ai",
+    author_email="hello@khulnasoft.com",
     description=(
         "The unified machine learning framework, enabling framework-agnostic "
         "functions, layers and libraries."
     ),
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://unify.ai/aikit",
+    url="https://khulnasoft.com/aikit",
     project_urls={
-        "Docs": "https://unify.ai/docs/aikit/",
+        "Docs": "https://khulnasoft.com/docs/aikit/",
         "Source": "https://github.com/khulnasoft/aikit",
     },
     include_package_data=True,

@@ -21,7 +21,7 @@ identifiers:
     value: 10.48550/arXiv.2102.02886
     description: 'arXiv preprint '
 repository-code: 'https://github.com/khulnasoft/aikit'
-url: 'https://unify.ai/'
+url: 'https://khulnasoft.com/'
 repository: 'https://github.com/khulnasoft/'
 abstract: 'We introduce Aikit, a templated Deep Learning (DL) framework which abstracts existing DL frameworks. Aikit unifies the core functions of these frameworks to exhibit consistent call signatures, syntax and input-output behaviour. New high-level framework-agnostic functions and classes, which are usable alongside framework-specific code, can then be implemented as compositions of the unified low-level Aikit functions. Aikit currently supports TensorFlow, PyTorch, MXNet, Jax and NumPy. We also release four pure-Aikit libraries for mechanics, 3D vision, robotics, and differentiable environments. Through our evaluations, we show that Aikit can significantly reduce lines of code with a runtime overhead of less than 1% in most cases. We welcome developers to join the Aikit community by writing their own functions, layers and libraries in Aikit, maximizing their audience and helping to accelerate DL research through inter-framework codebases.'
 license: Apache-2.0

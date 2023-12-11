@@ -23,7 +23,7 @@ Aikit Frontends
 Introduction
 ------------
 
-On top of the Aikit functional API and backend functional APIs, Aikit has another set of framework-specific frontend functional APIs, which play an important role in code transpilations, as explained `here <https://lets-unify.ai/docs/aikit/overview/design/aikit_as_a_transpiler.html>`_.
+On top of the Aikit functional API and backend functional APIs, Aikit has another set of framework-specific frontend functional APIs, which play an important role in code transpilations, as explained `here <https://lets-khulnasoft.com/docs/aikit/overview/design/aikit_as_a_transpiler.html>`_.
 
 
 

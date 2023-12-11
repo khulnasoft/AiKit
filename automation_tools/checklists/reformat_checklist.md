@@ -1,7 +1,7 @@
 
 ## Reformatting Task Checklist
 #### IMPORTANT NOTICE 🚨:
-The [Aikit Docs](https://unify.ai/docs/aikit/) represent the ground truth for the task descriptions and this checklist should only be used as a supplementary item to aid with the review process.
+The [Aikit Docs](https://khulnasoft.com/docs/aikit/) represent the ground truth for the task descriptions and this checklist should only be used as a supplementary item to aid with the review process.
 
 #### LEGEND 🗺:
 - ❌ :  Check item is not completed.
@@ -25,21 +25,21 @@ The [Aikit Docs](https://unify.ai/docs/aikit/) represent the ground truth for th
        6. - [ ]  ❌:  The `aikit.Container` special method in [aikit/data_classes/container/container.py](https://github.com/khulnasoft/aikit/blob/main/aikit/data_classes/container/container.py).
        7. - [ ]  ❌: The `aikit.Container` reverse special method in [aikit/data_classes/container/container.py](https://github.com/khulnasoft/aikit/blob/main/aikit/data_classes/container/container.py).
 3. - [ ] ❌:  Make sure that the aforementioned methods are added into the correct category-specific parent class, such as  `aikit.ArrayWithElementwise`,  `aikit.ContainerWithManipulation`  etc.
-4. - [ ] ❌:  Correct all of the  [Function Arguments and the type hints](https://unify.ai/docs/aikit/overview/deep_dive/function_arguments.html#function-arguments) for every function  **and**  its  _relevant methods_, including those you did not implement yourself.
-5. - [ ] ❌: Add the correct  [Docstrings](https://unify.ai/docs/aikit/overview/deep_dive/docstrings.html#docstrings)  to every function  **and**  its  _relevant methods_, including those you did not implement yourself. The following should be added:
+4. - [ ] ❌:  Correct all of the  [Function Arguments and the type hints](https://khulnasoft.com/docs/aikit/overview/deep_dive/function_arguments.html#function-arguments) for every function  **and**  its  _relevant methods_, including those you did not implement yourself.
+5. - [ ] ❌: Add the correct  [Docstrings](https://khulnasoft.com/docs/aikit/overview/deep_dive/docstrings.html#docstrings)  to every function  **and**  its  _relevant methods_, including those you did not implement yourself. The following should be added:
        1. - [ ] ❌:   <a name="ref1"></a> The function's [Array API standard](https://data-apis.org/array-api/latest/index.html) description in [aikit/functional/{{ .category_name }}.py](https://github.com/khulnasoft/aikit/blob/main/aikit/functional/aikit/{{ .category_name }}.py). If the function is not part of the Array API standard then a description of similar style should be added to the same file.
 	The following modifications should be made to the description:
               - [ ] ❌:  Remove type definitions in the `Parameters` and `Returns` sections.
               - [ ] ❌:  Add `out` to the `Parameters` section if function accepts an `out` argument.
               - [ ] ❌:  Replace `out` with `ret` in the `Returns` section.
-       2. - [ ] ❌:  Reference to docstring for aikit.function_name ([5.a](#ref1)) for the function description **and** modified `Parameters` and `Returns` sections as described in [the docs](https://unify.ai/docs/aikit/overview/deep_dive/docstrings.html#docstrings) in:
+       2. - [ ] ❌:  Reference to docstring for aikit.function_name ([5.a](#ref1)) for the function description **and** modified `Parameters` and `Returns` sections as described in [the docs](https://khulnasoft.com/docs/aikit/overview/deep_dive/docstrings.html#docstrings) in:
               - [ ] ❌:  [aikit/array/{{ .category_name }}.py](https://github.com/khulnasoft/aikit/blob/main/aikit/data_classes/array/{{ .category_name }}.py).
               - [ ] ❌:  [aikit/container/{{ .category_name }}.py](https://github.com/khulnasoft/aikit/blob/main/aikit/data_classes/container/{{ .category_name }}.py) (in the static and instance method versions).
               - [ ] ❌:   [aikit/array/array.py](https://github.com/khulnasoft/aikit/blob/main/aikit/data_classes/array/array.py) if the function has a special method  ( like `__function_name__` ).
               - [ ] ❌:  [aikit/array/array.py](https://github.com/khulnasoft/aikit/blob/main/aikit/data_classes/array/array.py) if the function has a reverse special method  ( like `__rfunction_name__` ).
               - [ ] ❌: [aikit/container/container.py](https://github.com/khulnasoft/aikit/blob/main/aikit/data_classes/container/container.py) if the function has a special method ( like `__function_name__` ).
               - [ ] ❌:  [aikit/container/container.py](https://github.com/khulnasoft/aikit/blob/main/aikit/data_classes/container/container.py) if the function has a reverse special method  ( like `__rfunction_name__` ).
-6. - [ ] ❌: Add thorough  [Docstring Examples](https://unify.ai/docs/aikit/overview/deep_dive/docstring_examples.html#docstring-examples)  for every function  **and**  its  _relevant methods_  and ensure they pass the docstring tests.
+6. - [ ] ❌: Add thorough  [Docstring Examples](https://khulnasoft.com/docs/aikit/overview/deep_dive/docstring_examples.html#docstring-examples)  for every function  **and**  its  _relevant methods_  and ensure they pass the docstring tests.
 
 		**Functional Examples** in [aikit/functional/{{ .category_name }}.py](https://github.com/khulnasoft/aikit/blob/main/aikit/functional/aikit/{{ .category_name }}.py).
 

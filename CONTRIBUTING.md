@@ -15,9 +15,9 @@ Please, follow the next process when you work on your subtask:
 
    Currently, there are three open tasks:
 
-   - [Function Reformatting](https://unify.ai/docs/aikit/overview/contributing/open_tasks.html#function-formatting)
-   - [Frontend APIs](https://unify.ai/docs/aikit/overview/contributing/open_tasks.html#frontend-apis)
-   - [Aikit Experimental API](https://unify.ai/docs/aikit/overview/contributing/open_tasks.html#aikit-experimental-api)
+   - [Function Reformatting](https://khulnasoft.com/docs/aikit/overview/contributing/open_tasks.html#function-formatting)
+   - [Frontend APIs](https://khulnasoft.com/docs/aikit/overview/contributing/open_tasks.html#frontend-apis)
+   - [Aikit Experimental API](https://khulnasoft.com/docs/aikit/overview/contributing/open_tasks.html#aikit-experimental-api)
 
 2. **Create Issue:**
 

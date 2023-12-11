@@ -51,6 +51,6 @@ jobs:
           source-directory: tests/
           destination-github-username: 'khulnasoft'
           destination-repository-name: 'Mapping'
-          user-email: aikit.branch@lets-unify.ai
+          user-email: aikit.branch@lets-khulnasoft.com
           commit-message: Update Mapping
           target-branch: master${{ matrix.branch }}

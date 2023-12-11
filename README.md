@@ -1,5 +1,5 @@
 > 🚀 We are granting pilot access to **Aikit\'s Tracer and Transpiler**
-> to some users, [join the waitlist](https://console.unify.ai/) if you
+> to some users, [join the waitlist](https://console.khulnasoft.com/) if you
 > want to test them out!
 
 <img class="only-dark" width="100%" src="https://raw.githubusercontent.com/khulnasoft/khulnasoft.github.io/main/img/externally_linked/logo_dark.png#gh-dark-mode-only"/>
@@ -9,23 +9,23 @@
 ------------------------------------------------------------------------
 
 <div style="display: block;" align="center">
-<a href="https://unify.ai/">
+<a href="https://khulnasoft.com/">
     <img class="dark-light" src="https://raw.githubusercontent.com/khulnasoft/khulnasoft.github.io/main/img/externally_linked/website_button.svg">
 </a>
 <img class="dark-light" width="5%" src="https://raw.githubusercontent.com/khulnasoft/khulnasoft.github.io/main/img/externally_linked/logos/supported/empty.png">
-<a href="https://unify.ai/docs/aikit">
+<a href="https://khulnasoft.com/docs/aikit">
     <img class="dark-light" src="https://raw.githubusercontent.com/khulnasoft/khulnasoft.github.io/main/img/externally_linked/docs_button.svg">
 </a>
 <img class="dark-light" width="5%" src="https://raw.githubusercontent.com/khulnasoft/khulnasoft.github.io/main/img/externally_linked/logos/supported/empty.png">
-<a href="https://unify.ai/demos">
+<a href="https://khulnasoft.com/demos">
     <img class="dark-light" src="https://raw.githubusercontent.com/khulnasoft/khulnasoft.github.io/main/img/externally_linked/examples_button.svg">
 </a>
 <img class="dark-light" width="5%" src="https://raw.githubusercontent.com/khulnasoft/khulnasoft.github.io/main/img/externally_linked/logos/supported/empty.png">
-<a href="https://unify.ai/docs/aikit/overview/design.html">
+<a href="https://khulnasoft.com/docs/aikit/overview/design.html">
     <img class="dark-light" src="https://raw.githubusercontent.com/khulnasoft/khulnasoft.github.io/main/img/externally_linked/design_button.svg">
 </a>
 <img class="dark-light" width="5%" src="https://raw.githubusercontent.com/khulnasoft/khulnasoft.github.io/main/img/externally_linked/logos/supported/empty.png">
-<a href="https://unify.ai/docs/aikit/overview/faq.html">
+<a href="https://khulnasoft.com/docs/aikit/overview/faq.html">
     <img class="dark-light" src="https://raw.githubusercontent.com/khulnasoft/khulnasoft.github.io/main/img/externally_linked/faq_button.svg">
 </a>
 </div>
@@ -100,18 +100,18 @@ enables you to:
 - 🔄 **Convert code into any framework**: Use and build on top of any model, library, or device by converting any code from one framework to another using `aikit.transpile`.
 - ⚒️ **Write framework-agnostic code**: Write your code once in aikit and then choose the most appropriate ML framework as the backend to leverage all the benefits and tools.
 
-[Join our growing community](https://discord.com/invite/sXyFF8tDtm) 🌍 to connect with people using Aikit. **Let\'s** [unify.ai](https://unify.ai) **together 🦾**
+[Join our growing community](https://discord.com/invite/sXyFF8tDtm) 🌍 to connect with people using Aikit. **Let\'s** [khulnasoft.com](https://khulnasoft.com) **together 🦾**
 
 ------------------------------------------------------------------------
 
 # Getting started
 
-The best way to get familiar with Aikit is to go through the [Demos](https://unify.ai/docs/aikit/demos/examples_and_demos.html), a good starting point is [Learn The Basics](https://unify.ai/docs/aikit/demos/learn_the_basics.html).
+The best way to get familiar with Aikit is to go through the [Demos](https://khulnasoft.com/docs/aikit/demos/examples_and_demos.html), a good starting point is [Learn The Basics](https://khulnasoft.com/docs/aikit/demos/learn_the_basics.html).
 
 The most important notebooks are:
 
-- [How to convert your code between frameworks?](https://unify.ai/docs/aikit/demos/learn_the_basics/04_transpile_code.html)
-- [How to write framework-agnostic code?](https://unify.ai/docs/aikit/demos/learn_the_basics/01_write_aikit_code.html)
+- [How to convert your code between frameworks?](https://khulnasoft.com/docs/aikit/demos/learn_the_basics/04_transpile_code.html)
+- [How to write framework-agnostic code?](https://khulnasoft.com/docs/aikit/demos/learn_the_basics/01_write_aikit_code.html)
 - Accelerate your development (WIP)
 - Autotune and optimize models (WIP)
 
@@ -177,7 +177,7 @@ python3 -m pip install --user -e .
 
 If you want to set up testing and various frameworks it\'s probably     best
 to check out the [Contributing - Setting
-Up](https://unify.ai/docs/aikit/overview/contributing/setting_up. html#setting-up)
+Up](https://khulnasoft.com/docs/aikit/overview/contributing/setting_up. html#setting-up)
 page, where OS-specific and IDE-specific instructions and video
 tutorials to do so are available!
 
@@ -237,21 +237,21 @@ After installing Aikit, you can start using it straight away, for example:
 
 # Documentation
 
-You can find Aikit's documentation on the [Docs page](https://unify.ai/docs/aikit/), which includes:
-- [Motivation](https://unify.ai/docs/aikit/overview/background.html): This contextualizes the problem Aikit is trying to solve by going over
-    - The current [ML Explosion](https://unify.ai/docs/aikit/overview/background/ml_explosion.html#ml-explosion).
-    - Explaining why it is important [to solve this problem](https://unify.ai/docs/aikit/overview/background/why_unify.html#why-unify).
-    - Explaining how we adhere to existing [standards](https://unify.ai/docs/aikit/overview/background/standardization.html#standardization) to make this happen.
-- [Related Work](https://unify.ai/docs/aikit/overview/related_work.html): Which paints a picture of the role Aikit plays in the ML stack, comparing it to other existing solutions in terms of functionalities and abstraction level.
-- [Design](https://unify.ai/docs/aikit/overview/design.html): A user-focused guide about the design decision behind the architecture and the main building blocks of Aikit.
-- [Deep Dive](https://unify.ai/docs/aikit/overview/deep_dive.html): Which delves deeper into the implementation details of Aikit and is oriented towards potential contributors to the code base.
+You can find Aikit's documentation on the [Docs page](https://khulnasoft.com/docs/aikit/), which includes:
+- [Motivation](https://khulnasoft.com/docs/aikit/overview/background.html): This contextualizes the problem Aikit is trying to solve by going over
+    - The current [ML Explosion](https://khulnasoft.com/docs/aikit/overview/background/ml_explosion.html#ml-explosion).
+    - Explaining why it is important [to solve this problem](https://khulnasoft.com/docs/aikit/overview/background/why_unify.html#why-unify).
+    - Explaining how we adhere to existing [standards](https://khulnasoft.com/docs/aikit/overview/background/standardization.html#standardization) to make this happen.
+- [Related Work](https://khulnasoft.com/docs/aikit/overview/related_work.html): Which paints a picture of the role Aikit plays in the ML stack, comparing it to other existing solutions in terms of functionalities and abstraction level.
+- [Design](https://khulnasoft.com/docs/aikit/overview/design.html): A user-focused guide about the design decision behind the architecture and the main building blocks of Aikit.
+- [Deep Dive](https://khulnasoft.com/docs/aikit/overview/deep_dive.html): Which delves deeper into the implementation details of Aikit and is oriented towards potential contributors to the code base.
 
 
 ------------------------------------------------------------------------
 
 # Examples
 
-The [Examples page](https://unify.ai/demos/) features a wide range of
+The [Examples page](https://khulnasoft.com/demos/) features a wide range of
 demos and tutorials showcasing the functionalities of Aikit along with
 multiple use cases, but feel free to check out some shorter
 framework-specific examples here ⬇️
@@ -305,7 +305,7 @@ import jax
 import torch
 
 # Get a pretrained haiku model
-# https://unify.ai/demos/scripts/deepmind_perceiver_io.py
+# https://khulnasoft.com/demos/scripts/deepmind_perceiver_io.py
 from deepmind_perceiver_io import key, perceiver_backbone
 
 # Transpile it into a torch.nn.Module with the corresponding parameters
@@ -532,7 +532,7 @@ import jax
 import tensorflow as tf
 
 # Get a pretrained haiku model
-# https://unify.ai/demos/scripts/deepmind_perceiver_io.py
+# https://khulnasoft.com/demos/scripts/deepmind_perceiver_io.py
 from deepmind_perceiver_io import key, perceiver_backbone
 
 # Transpile it into a tf.keras.Model with the corresponding parameters
@@ -1337,7 +1337,7 @@ train(images, classes, num_epochs, model, device, num_classes = num_classes, bat
 
 # Diving deeper
 
-Although the [Docs](https://unify.ai/docs/aikit/) are the best place to learn more, in the next section we will take a look at how Aikit works both as a transpiler and a framework in a bit more detail to get an idea of why and where to use it.
+Although the [Docs](https://khulnasoft.com/docs/aikit/) are the best place to learn more, in the next section we will take a look at how Aikit works both as a transpiler and a framework in a bit more detail to get an idea of why and where to use it.
 
 <details>
 <summary><b>Aikit as a transpiler</b></summary>
@@ -1402,7 +1402,7 @@ ret = lazy_graph(x1)
 
 If you want to learn more, you can find more information in the [Aikit as
 a transpiler section of the
-docs!](https://unify.ai/docs/aikit/overview/design/aikit_as_a_transpiler.html)
+docs!](https://khulnasoft.com/docs/aikit/overview/design/aikit_as_a_transpiler.html)
 
 ## When should I use Aikit as a transpiler?
 
@@ -1423,20 +1423,20 @@ project to all of the unique perks of a different framework.
 
 The Aikit framework is built on top of various essential components,
 mainly the [Backend
-Handler](https://unify.ai/docs/aikit/overview/design/building_blocks.html#backend-handler),
+Handler](https://khulnasoft.com/docs/aikit/overview/design/building_blocks.html#backend-handler),
 which manages what framework is being used behind the scenes and the
 [Backend Functional
-APIs](https://unify.ai/docs/aikit/overview/design/building_blocks.html#backend-functional-apis),
+APIs](https://khulnasoft.com/docs/aikit/overview/design/building_blocks.html#backend-functional-apis),
 which provide framework-specific implementations of the Aikit functions.
 Likewise, classes such as `aikit.Container` or `aikit.Array` are also
 available, facilitating the use of structured data and array-like
 objects (learn more about them
-[here!](https://unify.ai/docs/aikit/overview/design/aikit_as_a_framework.html)).
+[here!](https://khulnasoft.com/docs/aikit/overview/design/aikit_as_a_framework.html)).
 
 All of the functionalities in Aikit are exposed through the
 `Aikit functional API` and the `Aikit stateful API`. All functions in the
 [Functional
-API](https://unify.ai/docs/aikit/overview/design/building_blocks.html#aikit-functional-api)
+API](https://khulnasoft.com/docs/aikit/overview/design/building_blocks.html#aikit-functional-api)
 are **Framework Agnostic Functions**, which means that we can use them
 like this:
 
@@ -1462,7 +1462,7 @@ functions. They can accept tensors from any framework and return the
 correct result.
 
 The [Aikit Stateful
-API](https://unify.ai/docs/aikit/overview/design/aikit_as_a_framework/aikit_stateful_api.html),
+API](https://khulnasoft.com/docs/aikit/overview/design/aikit_as_a_framework/aikit_stateful_api.html),
 on the other hand, allows you to define trainable modules and layers,
 which you can use alone or as a part of any other framework code!
 
@@ -1550,7 +1550,7 @@ The model\'s output can be visualized as follows:
 
 As always, you can find more information about [Aikit as a framework in
 the
-docs!](https://unify.ai/docs/aikit/overview/design/aikit_as_a_framework.html)
+docs!](https://khulnasoft.com/docs/aikit/overview/design/aikit_as_a_framework.html)
 
 <h2> When should I use Aikit as a framework? </h2>
 
@@ -1574,7 +1574,7 @@ your contributions are definitely welcome and appreciated 🙌
 
 Check out all of our open tasks, and find out more info in our
 [Contributing
-guide](https://unify.ai/docs/aikit/overview/contributing.html) in the
+guide](https://khulnasoft.com/docs/aikit/overview/contributing.html) in the
 docs!
 
 Join our amazing community as a code contributor, and help accelerate

@@ -32,8 +32,8 @@ that your pre-commit check has some failures.
 
 Here are some relevant resources regarding tests and pre-commit:
 
-https://unify.ai/docs/aikit/overview/deep_dive/aikit_tests.html
-https://unify.ai/docs/aikit/overview/deep_dive/formatting.html#pre-commit
+https://khulnasoft.com/docs/aikit/overview/deep_dive/aikit_tests.html
+https://khulnasoft.com/docs/aikit/overview/deep_dive/formatting.html#pre-commit
 
 -->
 

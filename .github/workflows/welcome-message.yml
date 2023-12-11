@@ -27,7 +27,7 @@ jobs:
 
             In order to be considered for merging, the pull request description must refer to a
             specific issue number. This is described in our
-            [contributing guide](https://unify.ai/docs/aikit/overview/contributing/the_basics.html#todo-list-issues) and our PR template.
+            [contributing guide](https://khulnasoft.com/docs/aikit/overview/contributing/the_basics.html#todo-list-issues) and our PR template.
 
             This check is looking for a phrase similar to: "Fixes #XYZ" or "Resolves #XYZ" where XYZ is the issue
             number that this PR is meant to address.

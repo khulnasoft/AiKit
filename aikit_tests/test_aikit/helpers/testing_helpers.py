@@ -181,7 +181,7 @@ def _import_fn(fn_tree: str):
             " associated path.\nIf this function is a new feature you'd like to see,"
             " we'd love to hear from you! You can contribute to our project. For more"
             " details, please"
-            " visit:\nhttps://lets-unify.ai/aikit/contributing/open_tasks.html\n"
+            " visit:\nhttps://lets-khulnasoft.com/aikit/contributing/open_tasks.html\n"
         )
     return callable_fn, fn_name, module_to_import
 

@@ -60,7 +60,7 @@ Aikit's tracer and transpiler
 -----------------------------
 
 To use Aikit's tracer and transpiler, you'll need an **API key**. We are starting to
-grant pilot access to certain users, so you can `join the waitlist <https://console.unify.ai/>`_
+grant pilot access to certain users, so you can `join the waitlist <https://console.khulnasoft.com/>`_
 if you want to get one!
 
 Aikit Folder

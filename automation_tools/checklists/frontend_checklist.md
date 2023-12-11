@@ -1,7 +1,7 @@
 
 ## Frontend Task Checklist
 #### IMPORTANT NOTICE 🚨:
-The [Aikit Docs](https://unify.ai/docs/aikit/) represent the ground truth for the task descriptions and this checklist should only be used as a supplementary item to aid with the review process.
+The [Aikit Docs](https://khulnasoft.com/docs/aikit/) represent the ground truth for the task descriptions and this checklist should only be used as a supplementary item to aid with the review process.
 
 Please note that the contributor is not expected to understand everything in the checklist. It's mainly here for the reviewer to make sure everything has been done correctly 🙂
 
