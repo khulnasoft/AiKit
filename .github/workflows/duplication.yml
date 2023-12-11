@@ -1,0 +1,29 @@
+name: duplicate-test-check
+on:
+  pull_request:
+permissions:
+  actions: read
+jobs:
+   run-check:
+     if: contains(github.event.pull_request.labels.*.name, 'Exhaustive CI') || contains(github.event.pull_request.labels.*.name, 'Aikit API Experimental')
+     runs-on: ubuntu-latest
+     steps:
+       - name: Checkout Aikit 🛎
+         uses: actions/checkout@v2
+         with:
+           path: aikit
+           persist-credentials: false
+           submodules: "recursive"
+           fetch-depth: 100
+
+
+       - name: Check Duplicate Function
+         id: tests
+         run: |
+           cd aikit
+           docker run --rm -v "$(pwd)":/aikit -v "$(pwd)"/.hypothesis:/.hypothesis khulnasoft/aikit:latest python3 scripts/duplicate.py
+         continue-on-error: true
+
+       - name: Check on failures
+         if: steps.tests.outcome != 'success'
+         run: exit 1

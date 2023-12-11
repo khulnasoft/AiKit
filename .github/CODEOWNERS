@@ -1,0 +1,21 @@
+# Aikit Framework
+aikit/func_wrapper.py @VedPatwardhan
+**/gradients.py @VedPatwardhan
+aikit/utils/backend @VedPatwardhan @CatB1t
+aikit/utils/backend/ast_helpers.py @CatB1t
+
+# Aikit Testing
+aikit_tests/test_aikit/helpers/ @CatB1t
+
+# Docs builder
+docs/index.rst @KareemMAX
+docs/make_docs.sh @KareemMAX
+docs/partial_conf.py @KareemMAX
+docs/prebuild.sh @KareemMAX
+docs/overview/contributing/building_the_docs.rst @KareemMAX
+docs/overview/deep_dive/building_the_docs_pipeline.rst @KareemMAX
+docs/_templates @KareemMAX
+docs/demos @KareemMAX
+
+# README
+README.md @guillesanbri

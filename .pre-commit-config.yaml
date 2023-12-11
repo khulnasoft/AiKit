@@ -1,0 +1,44 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: check-yaml
+      - id: trailing-whitespace
+      - id: check-toml
+      - id: end-of-file-fixer
+  - repo: https://github.com/psf/black-pre-commit-mirror
+    rev: 23.11.0
+    hooks:
+      - id: black
+        language_version: python3
+        args:
+          - "--preview"
+        exclude: >
+          (?x)
+          (
+            aikit/functional/frontends/(?!.*(?:config\.py|__init__\.py)$).* |
+            aikit_tests/test_aikit/(?!.*(?:__init__\.py|conftest\.py|helpers/.*|test_frontends/config/.*$)).*
+          )
+  - repo: https://github.com/PyCQA/autoflake
+    rev: v2.2.1
+    hooks:
+      - id: autoflake
+  - repo: https://github.com/pycqa/flake8
+    rev: 6.1.0
+    hooks:
+      - id: flake8
+        exclude: ^.*__init__.py$
+  - repo: https://github.com/PyCQA/docformatter
+    rev: v1.7.5
+    hooks:
+      - id: docformatter
+  - repo: https://github.com/pycqa/pydocstyle
+    rev: 6.3.0
+    hooks:
+      - id: pydocstyle
+        # Exclude everything in frontends except __init__.py, and func_wrapper.py
+        exclude: 'aikit/functional/(frontends|backends)/(?!.*/func_wrapper\.py$).*(?!__init__\.py$)'
+  - repo: https://github.com/khulnasoft/lint-hook
+    rev: a72ffb17562d919311653d7f593cb537d1245c19
+    hooks:
+      - id: aikit-lint

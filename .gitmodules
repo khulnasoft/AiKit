@@ -1,0 +1,7 @@
+
+[submodule "aikit_tests/array_api_testing/test_array_api"]
+	path = aikit_tests/array_api_testing/test_array_api
+	url = https://github.com/data-apis/array-api-tests.git
+[submodule "docs/demos"]
+	path = docs/demos
+	url = https://github.com/khulnasoft/demos.git
