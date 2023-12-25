@@ -37,7 +37,7 @@ jobs:
 
       - name: Environment
         run: |
-          python utils/print_env.py
+          python diffusers/diffusers/utils/print_env.py
 
       - name: Fetch Pipeline Matrix
         id: fetch_pipeline_matrix
@@ -80,7 +80,7 @@ jobs:
           python -m pip install git+https://github.com/huggingface/accelerate.git
       - name: Environment
         run: |
-          python utils/print_env.py
+          python diffusers/diffusers/utils/print_env.py
       - name: Slow PyTorch CUDA checkpoint tests on Ubuntu
         env:
           HUGGING_FACE_HUB_TOKEN: ${{ secrets.HUGGING_FACE_HUB_TOKEN }}
@@ -130,7 +130,7 @@ jobs:
 
     - name: Environment
       run: |
-        python utils/print_env.py
+        python diffusers/diffusers/utils/print_env.py
 
     - name: Run slow PyTorch CUDA tests
       env:
@@ -180,7 +180,7 @@ jobs:
 
     - name: Environment
       run: |
-        python utils/print_env.py
+        python diffusers/diffusers/diffusers/utils/print_env.py
 
     - name: Run slow PEFT CUDA tests
       env:
@@ -229,12 +229,13 @@ jobs:
 
     - name: Environment
       run: |
-        python utils/print_env.py
+        python diffusers/diffusers/diffusers/utils/print_env.py
 
     - name: Run slow Flax TPU tests
       env:
         HUGGING_FACE_HUB_TOKEN: ${{ secrets.HUGGING_FACE_HUB_TOKEN }}
       run: |
+        cd diffusers \
         python -m pytest -n 0 \
           -s -v -k "Flax" \
           --make-reports=tests_flax_tpu \
@@ -276,7 +277,7 @@ jobs:
 
     - name: Environment
       run: |
-        python utils/print_env.py
+        python diffusers/diffusers/diffusers/utils/print_env.py
 
     - name: Run slow ONNXRuntime CUDA tests
       env:
@@ -323,7 +324,7 @@ jobs:
         python -m pip install -e .[quality,test,training]
     - name: Environment
       run: |
-        python utils/print_env.py
+        python diffusers/diffusers/utils/print_env.py
     - name: Run example tests on GPU
       env:
         HUGGING_FACE_HUB_TOKEN: ${{ secrets.HUGGING_FACE_HUB_TOKEN }}
@@ -363,7 +364,7 @@ jobs:
         python -m pip install -e .[quality,test,training]
     - name: Environment
       run: |
-        python utils/print_env.py
+        python diffusers/diffusers/utils/print_env.py
     - name: Run example tests on GPU
       env:
         HUGGING_FACE_HUB_TOKEN: ${{ secrets.HUGGING_FACE_HUB_TOKEN }}
@@ -405,7 +406,7 @@ jobs:
 
     - name: Environment
       run: |
-        python utils/print_env.py
+        python diffusers/diffusers/utils/print_env.py
 
     - name: Run example tests on GPU
       env:

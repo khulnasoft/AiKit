@@ -55,7 +55,7 @@ jobs:
 
     - name: Environment
       run: |
-        python utils/print_env.py
+        python diffusers/utils/print_env.py
 
     - name: Run fast PyTorch LoRA CPU tests with PEFT backend
       run: |

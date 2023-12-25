@@ -35,7 +35,7 @@ jobs:
           python -m pip install pandas
       - name: Environment
         run: |
-          python utils/print_env.py
+          python diffusers/utils/print_env.py
       - name: Diffusers Benchmarking
         env:
             HUGGING_FACE_HUB_TOKEN: ${{ secrets.DIFFUSERS_BOT_TOKEN }}
