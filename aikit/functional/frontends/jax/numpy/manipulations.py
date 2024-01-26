@@ -74,7 +74,7 @@ def blackman(M):
 @to_aikit_arrays_and_back
 def block(arr):
     # TODO: reimplement block
-    raise aikit.utils.exceptions.IvyNotImplementedError()
+    raise aikit.utils.exceptions.AikitNotImplementedError()
 
 
 @to_aikit_arrays_and_back

@@ -52,7 +52,7 @@ We make extensive use of `ToDo list issues <https://github.com/khulnasoft/aikit/
 
 We have a clear process for contributors to engage with such ToDo lists:
 
-a. Find a task to work on which (i) is not marked as completed with a tick (ii) does not have an issue created and (iii) is not mentioned in the comments. Currently, there are three open tasks: :ref:`overview/contributing/open_tasks:Fixing Failing Tests`, :ref:`overview/contributing/open_tasks:Function Formatting`, :ref:`overview/contributing/open_tasks:Frontend APIs` and :ref:`overview/contributing/open_tasks:Ivy Experimental API`.
+a. Find a task to work on which (i) is not marked as completed with a tick (ii) does not have an issue created and (iii) is not mentioned in the comments. Currently, there are three open tasks: :ref:`overview/contributing/open_tasks:Fixing Failing Tests`, :ref:`overview/contributing/open_tasks:Function Formatting`, :ref:`overview/contributing/open_tasks:Frontend APIs` and :ref:`overview/contributing/open_tasks:Aikit Experimental API`.
 
 b. Create a new issue with the title being just the name of the sub-task you would like to work on.
 
@@ -70,14 +70,14 @@ d. Start working on the task, and open a PR as soon as you have a full or partia
    :code:`Close #Issue_number`
 
    This is important, so that the merging of your PR will automatically close the associated issue. Make sure this is in the
-   description of the PR, otherwise it might not link correctly. If you have a partial solution, the Ivy team can help to guide you through the process of getting it working 🙂
+   description of the PR, otherwise it might not link correctly. If you have a partial solution, the Aikit team can help to guide you through the process of getting it working 🙂
    Also, remember to make the PR name well described and if there are some details that can support your changes add them to the description of the PR.
 
 e. Wait for us to review your PR.
    Once we have reviewed your PR we will either merge or request changes.
    Every time you respond to our requested changes you must re-request a review in order for us to re-engage with the PR.
 
-f. Once the PR is in good shape, we will merge into main, and then you become an Ivy contributor!
+f. Once the PR is in good shape, we will merge into main, and then you become an Aikit contributor!
 
 In order to keep our ToDo lists moving quickly, if your PR is not created within 7 days of creating the issue, then a warning message will appear on the issue.
 If another 7 days pass without any changes, the issue will be closed and the task will be made free for others in the community.
@@ -117,7 +117,7 @@ For questions, please reach out on `discord`_ in the `todo list issues thread`_!
 Managing Your Fork
 ------------------
 
-When contributing to Ivy, the first step is to create a fork of the repository.
+When contributing to Aikit, the first step is to create a fork of the repository.
 Then, it's best practice to create a separate branch for each new pull request (PR) you create.
 This can be done using:
 
@@ -158,7 +158,7 @@ For questions, please reach out on `discord`_ in the `fork management thread`_!
 Who To Ask
 ----------
 
-When raising issues on the Ivy repo, it can be useful to know who in the team wrote which piece of code.
+When raising issues on the Aikit repo, it can be useful to know who in the team wrote which piece of code.
 Armed with this information, you can then for example directly tag (using @) the member of the team who worked on a particular piece of code, which you are trying to understand, or you would like to ask questions about.
 
 Here we describe a workflow to help navigate this question of "who to ask".
@@ -195,7 +195,7 @@ Each time you click the highlighted icon, the previous revision information for 
     .. image:: https://raw.githubusercontent.com/khulnasoft/khulnasoft.github.io/main/img/externally_linked/contributing/the_basics/git_blame/git_blame_3.png?raw=true
        :width: 420
 
-Whenever starting a discussion or creating an issue, you are very welcome to tag members of the Ivy team using "@", selecting the person you think would be most suitable to interact with, based on the information gained from the above steps.
+Whenever starting a discussion or creating an issue, you are very welcome to tag members of the Aikit team using "@", selecting the person you think would be most suitable to interact with, based on the information gained from the above steps.
 
 Pull Requests
 -------------
@@ -214,7 +214,7 @@ Note that you cannot request a code review until you have already received at le
 Therefore, all new PRs will receive a code review, so please just wait and we will check out and review your newly created PR as soon as possible!
 Your PR will never be closed until we have provided at least a code review on it.
 
-After a new PR is made, for the tests to run, it needs an approval of someone from the ivy team for the workflows to start running.
+After a new PR is made, for the tests to run, it needs an approval of someone from the aikit team for the workflows to start running.
 Once approved, you can see the failing and passing checks for a commit relevant to your PR by clicking on the ❌ or ✔️ or 🟤 (each for: one or more tests are failing, all tests are passing, the check has just started, respectively) icon next to the commit hash.
 
     .. image:: https://github.com/khulnasoft/khulnasoft.github.io/blob/main/img/externally_linked/contributing/the_basics/pull_requests/PR_checks.png?raw=true
@@ -232,7 +232,7 @@ Note that this option might be unavailable depending on the level of access that
     .. image:: https://github.com/khulnasoft/khulnasoft.github.io/blob/main/img/externally_linked/contributing/the_basics/pull_requests/cancel_workflow.png?raw=true
        :width: 420
 
-Finally, all PRs must give write access to Ivy maintainers of the branch.
+Finally, all PRs must give write access to Aikit maintainers of the branch.
 This can be done by checking a tickbox in the lower right corner of the PR.
 This will enable us to quickly fix conflicts, merge with upstream, and get things moving much more quickly without us needing to request very simple fixes from yourself.
 
@@ -255,9 +255,9 @@ Small Commits Often
 
 Sometimes, you might want to try any make substantial improvements that span many files, with the intention of then creating one very large PR at the end in order to merge all of your changes.
 
-While this is generally an acceptable approach when working on software projects, we discourage this approach for contributions to Ivy.
+While this is generally an acceptable approach when working on software projects, we discourage this approach for contributions to Aikit.
 
-We adopt a philosophy where small, incremental, frequent commits are **much** more valuable to us and the entire Ivy developer community, than infrequent large commits.
+We adopt a philosophy where small, incremental, frequent commits are **much** more valuable to us and the entire Aikit developer community, than infrequent large commits.
 
 This is for a few reasons:
 
@@ -296,37 +296,37 @@ If a mistake is committed into the history, it's generally not too difficult to 
 
 For questions, please reach out on the on `discord`_ in the `commit frequency thread`_!
 
-Interactive Ivy Docker Container
+Interactive Aikit Docker Container
 --------------------------------
 
 The advantage of Docker interactive mode is that it allows us to execute commands at the time of running the container.
 It's quite a nifty tool which can be used to reassure that the functions are working as expected in an isolated environment.
 
-An interactive bash shell in ivy's docker container can be created by using the following command,
+An interactive bash shell in aikit's docker container can be created by using the following command,
 
 .. code-block:: none
 
     docker run --rm -it khulnasoft/aikit bash
 
 The project structure and file-system can be explored.
-This can be very useful when you want to test out the bash scripts in ivy, run the tests from the command line etc,.
+This can be very useful when you want to test out the bash scripts in aikit, run the tests from the command line etc,.
 In fact, if you only want to quickly test things in an interactive python shell run the following command,
 
 .. code-block:: none
 
     docker run --rm -it khulnasoft/aikit python3
 
-In both cases, the ivy version at the time when the container was built will be used.
-If you want to try out your local version of ivy, with all of the local changes you have made, you should add the following mount:
+In both cases, the aikit version at the time when the container was built will be used.
+If you want to try out your local version of aikit, with all of the local changes you have made, you should add the following mount:
 
 .. code-block:: none
 
-    docker run --rm -it -v /local_path_to_ivy/ivy/ivy:/ivy/ivy khulnasoft/aikit bash
+    docker run --rm -it -v /local_path_to_aikit/aikit/aikit:/aikit/aikit khulnasoft/aikit bash
 
-* This will overwrite the *ivy* subfolder inside the ivy repo in the container with the *ivy* subfolder inside your local ivy repo.
-* Ivy is installed system-wide inside the container via the command :code:`python3 setup.py develop --no-deps`
+* This will overwrite the *aikit* subfolder inside the aikit repo in the container with the *aikit* subfolder inside your local aikit repo.
+* Aikit is installed system-wide inside the container via the command :code:`python3 setup.py develop --no-deps`
 * The :code:`develop` command means that the system-wide installation will still depend on the original source files, rather than creating a fresh copy.
-* Therefore, ivy can be imported into an interactive python shell from any directory inside the container, and it will still use the latest updates made to the source code.
+* Therefore, aikit can be imported into an interactive python shell from any directory inside the container, and it will still use the latest updates made to the source code.
 
 Clearly, running a container in interactive mode can be a helpful tool in a developer’s arsenal.
 
@@ -337,7 +337,7 @@ With Docker
 ***********
 
 #. With PyCharm (With or without docker):
-    1. PyCharm enables users to run pytest using the green button present near every function declaration inside the :code:`ivy_tests` folder.
+    1. PyCharm enables users to run pytest using the green button present near every function declaration inside the :code:`aikit_tests` folder.
 
     .. image:: https://raw.githubusercontent.com/khulnasoft/khulnasoft.github.io/main/img/externally_linked/contributing/the_basics/pytest_with_pycharm/pytest_button_pycharm.png?raw=true
         :width: 420
@@ -350,41 +350,41 @@ With Docker
 
 
 #. Through the command line (With docker):
-    1. We need to replace the folder inside the container with the current local ivy directory to run tests on the current local code.
+    1. We need to replace the folder inside the container with the current local aikit directory to run tests on the current local code.
 
     .. code-block:: none
 
-        docker exec <container-name> rm -rf ivy
-        docker cp ivy <container-name>:/
+        docker exec <container-name> rm -rf aikit
+        docker cp aikit <container-name>:/
 
-    2. We need to then enter inside the docker container and change into the :code:`ivy` directory using the following command.
+    2. We need to then enter inside the docker container and change into the :code:`aikit` directory using the following command.
 
     .. code-block:: none
 
-        docker exec -it ivy_container bash
-        cd ivy
+        docker exec -it aikit_container bash
+        cd aikit
 
     3. Run the test using the pytest command.
 
-        1. Ivy Tests:
+        1. Aikit Tests:
 
             1. For a single function:
 
             .. code-block:: none
 
-                pytest ivy_tests/test_ivy/test_functional/test_core/test_image.py::test_random_crop --no-header --no-summary -q
+                pytest aikit_tests/test_aikit/test_functional/test_core/test_image.py::test_random_crop --no-header --no-summary -q
 
             2. For a single file:
 
             .. code-block:: none
 
-                pytest ivy_tests/test_ivy/test_functional/test_core/test_image.py --no-header --no-summary -q
+                pytest aikit_tests/test_aikit/test_functional/test_core/test_image.py --no-header --no-summary -q
 
             3. For all tests:
 
             .. code-block:: none
 
-                pytest ivy_tests/test_ivy/ --no-header --no-summary -q
+                pytest aikit_tests/test_aikit/ --no-header --no-summary -q
 
         2.  Array API Tests:
 
@@ -392,32 +392,32 @@ With Docker
 
             .. code-block:: none
 
-                pytest ivy_tests/array_api_testing/test_array_api/array_api_tests/test_creation_functions.py::test_arange --no-header --no-summary -q
+                pytest aikit_tests/array_api_testing/test_array_api/array_api_tests/test_creation_functions.py::test_arange --no-header --no-summary -q
 
             2. For a single file:
 
             .. code-block:: none
 
-                pytest ivy_tests/array_api_testing/test_array_api/array_api_tests/test_creation_functions.py --no-header --no-summary -q
+                pytest aikit_tests/array_api_testing/test_array_api/array_api_tests/test_creation_functions.py --no-header --no-summary -q
 
             3. For all tests:
 
             .. code-block:: none
 
-                pytest ivy_tests/array_api_testing/test_array_api/ --no-header --no-summary -q
+                pytest aikit_tests/array_api_testing/test_array_api/ --no-header --no-summary -q
 
         3. For the entire project:
 
         .. code-block:: none
 
-            pytest ivy_tests/ --no-header --no-summary -q
+            pytest aikit_tests/ --no-header --no-summary -q
 
 #. Through the command line (Without docker):
     1. We need to first enter inside the virtual environment.
 
     .. code-block:: none
 
-        ivy_dev\Scripts\activate.bat
+        aikit_dev\Scripts\activate.bat
 
     (on Windows)
 
@@ -425,31 +425,31 @@ With Docker
 
     .. code-block:: none
 
-        source ivy_dev/bin/activate
+        source aikit_dev/bin/activate
 
     (on Mac/Linux)
 
     2. Run the test using the pytest command.
 
-        1. Ivy Tests:
+        1. Aikit Tests:
 
             1. For a single function:
 
             .. code-block:: none
 
-                python -m pytest ivy_tests/test_ivy/test_functional/test_core/test_image.py::test_random_crop --no-header --no-summary -q
+                python -m pytest aikit_tests/test_aikit/test_functional/test_core/test_image.py::test_random_crop --no-header --no-summary -q
 
             2. For a single file:
 
             .. code-block:: none
 
-                python -m pytest ivy_tests/test_ivy/test_functional/test_core/test_image.py --no-header --no-summary -q
+                python -m pytest aikit_tests/test_aikit/test_functional/test_core/test_image.py --no-header --no-summary -q
 
             3. For all tests:
 
             .. code-block:: none
 
-                python -m pytest ivy_tests/test_ivy/ --no-header --no-summary -q
+                python -m pytest aikit_tests/test_aikit/ --no-header --no-summary -q
 
         2.  Array API Tests
 
@@ -457,25 +457,25 @@ With Docker
 
                 .. code-block:: none
 
-                    python -m pytest ivy_tests/array_api_testing/test_array_api/array_api_tests/test_creation_functions.py::test_arange --no-header --no-summary -q
+                    python -m pytest aikit_tests/array_api_testing/test_array_api/array_api_tests/test_creation_functions.py::test_arange --no-header --no-summary -q
 
             2. For a single file:
 
             .. code-block:: none
 
-                python -m pytest ivy_tests/array_api_testing/test_array_api/array_api_tests/test_creation_functions.py --no-header --no-summary -q
+                python -m pytest aikit_tests/array_api_testing/test_array_api/array_api_tests/test_creation_functions.py --no-header --no-summary -q
 
             3. For all tests:
 
             .. code-block:: none
 
-                python -m pytest ivy_tests/array_api_testing/test_array_api/ --no-header --no-summary -q
+                python -m pytest aikit_tests/array_api_testing/test_array_api/ --no-header --no-summary -q
 
         3. For the entire project
 
         .. code-block:: none
 
-            python -m pytest ivy_tests/ --no-header --no-summary -q
+            python -m pytest aikit_tests/ --no-header --no-summary -q
 
 #. Optional Flags: Various optional flags are available for running the tests such as :code:`device`, :code:`backend`, etc.
     1. :code:`device`:

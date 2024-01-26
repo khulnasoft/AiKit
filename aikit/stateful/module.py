@@ -53,7 +53,7 @@ class Module(ModuleHelpers, ModuleConverters, ModuleMeta):
         device=None,
         **kwargs,
     ):
-        """Initialize Ivy layer, which is a stateful object consisting of
+        """Initialize Aikit layer, which is a stateful object consisting of
         trainable variables.
 
         Parameters
@@ -61,9 +61,9 @@ class Module(ModuleHelpers, ModuleConverters, ModuleMeta):
         args
             Positional arguments to the _build method.
         v
-            Ivy container of trainable variables. Created internally by default.
+            Aikit container of trainable variables. Created internally by default.
         buffers
-            Ivy container of buffers/non-trainable arrays in the state_dict.
+            Aikit container of buffers/non-trainable arrays in the state_dict.
         build_mode
             How the Module is built, either on initialization (now),
             explicitly by the user by calling build(), or the first
@@ -607,7 +607,7 @@ class Module(ModuleHelpers, ModuleConverters, ModuleMeta):
         ------
         NotImplementedError
         """
-        raise aikit.utils.exceptions.IvyNotImplementedException
+        raise aikit.utils.exceptions.AikitNotImplementedException
 
     def _extra_repr(self) -> str:
         """Set the extra representation of the module.
@@ -660,7 +660,7 @@ class Module(ModuleHelpers, ModuleConverters, ModuleMeta):
         return self._module_dict
 
 
-class _HaikuIvyModule(Module):
+class _HaikuAikitModule(Module):
     def __init__(self, *args, params_hk, native_module, device, devices, **kwargs):
         self._native_module = native_module
         self._args = args
@@ -724,7 +724,7 @@ class _HaikuIvyModule(Module):
         return FlatMapping(ret_flat_map)
 
 
-class _FlaxIvyModule(Module):
+class _FlaxAikitModule(Module):
     def __init__(self, *args, params_fx, native_module, device, devices, **kwargs):
         self._native_module = native_module
         self._args = args
@@ -763,7 +763,7 @@ class _FlaxIvyModule(Module):
         return aikit.to_native(ret, nested=nested)
 
 
-class _KerasIvyModule(Module):
+class _KerasAikitModule(Module):
     def __init__(self, *args, native_module, device, devices, **kwargs):
         self._native_module = native_module
         self._args = args
@@ -789,7 +789,7 @@ class _KerasIvyModule(Module):
         return aikit.to_native(ret, nested=nested)
 
 
-class _PaddleIvyModule(Module):
+class _PaddleAikitModule(Module):
     def __init__(self, *args, native_module, device, devices, **kwargs):
         self._native_module = native_module
         self._args = args
@@ -818,7 +818,7 @@ class _PaddleIvyModule(Module):
         return aikit.to_native(ret, nested=nested)
 
 
-class _TorchIvyModule(Module):
+class _TorchAikitModule(Module):
     def __init__(self, *args, native_module, device, devices, inplace_update, **kwargs):
         self._native_module = native_module
         self._args = args
@@ -869,7 +869,7 @@ class _TorchIvyModule(Module):
                     k, torch.nn.Parameter(v, requires_grad=v.requires_grad)
                 )
             else:
-                raise aikit.utils.exceptions.IvyException(
+                raise aikit.utils.exceptions.AikitException(
                     f"found item in variable container {v} which was neither a sub"
                     " aikit.Container nor a variable."
                 )

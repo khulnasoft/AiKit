@@ -711,26 +711,26 @@ def fft(
     out: Optional[torch.Tensor] = None,
 ) -> torch.Tensor:
     if not isinstance(dim, int):
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Expecting <class 'int'> instead of {type(dim)}"
         )
     if n is None:
         n = x.shape[dim]
     if n < -len(x.shape):
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Invalid dim {dim}, expecting ranging"
             " from {-len(x.shape)} to {len(x.shape)-1}  "
         )
     if not isinstance(n, int):
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Expecting <class 'int'> instead of {type(n)}"
         )
     if n <= 1:
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Invalid data points {n}, expecting more than 1"
         )
     if norm not in {"backward", "ortho", "forward"}:
-        raise aikit.utils.exceptions.IvyError(f"Unrecognized normalization mode {norm}")
+        raise aikit.utils.exceptions.AikitError(f"Unrecognized normalization mode {norm}")
     if x.dtype in [torch.int64, torch.float64, torch.complex128]:
         out_dtype = torch.complex128
     else:
@@ -858,26 +858,26 @@ def ifft(
     out: Optional[torch.Tensor] = None,
 ) -> torch.Tensor:
     if not isinstance(dim, int):
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Expecting <class 'int'> instead of {type(dim)}"
         )
     if n is None:
         n = x.shape[dim]
     if n < -len(x.shape):
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Invalid dim {dim}, expecting ranging"
             " from {-len(x.shape)} to {len(x.shape)-1}  "
         )
     if not isinstance(n, int):
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Expecting <class 'int'> instead of {type(n)}"
         )
     if n <= 1:
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Invalid data points {n}, expecting more than 1"
         )
     if norm not in {"backward", "ortho", "forward"}:
-        raise aikit.utils.exceptions.IvyError(f"Unrecognized normalization mode {norm}")
+        raise aikit.utils.exceptions.AikitError(f"Unrecognized normalization mode {norm}")
     return torch.fft.ifft(x, n, dim, norm, out=out).resolve_conj()
 
 
@@ -992,26 +992,26 @@ def fft2(
     out: Optional[torch.Tensor] = None,
 ) -> torch.Tensor:
     if not all(isinstance(j, int) for j in dim):
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Expecting {dim} to be a sequence of integers <class integer>"
         )
     if s is None:
         s = (x.shape[dim[0]], x.shape[dim[1]])
     if all(j < -len(x.shape) for j in s):
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Invalid dim {dim}, expecting ranging"
             " from {-len(x.shape)} to {len(x.shape)-1}  "
         )
     if not all(isinstance(j, int) for j in s):
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Expecting {s} to be a sequence of integers <class integer>"
         )
     if all(j <= 1 for j in s):
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Invalid data points {s}, expecting s points larger than 1"
         )
     if norm not in {"backward", "ortho", "forward"}:
-        raise aikit.utils.exceptions.IvyError(f"Unrecognized normalization mode {norm}")
+        raise aikit.utils.exceptions.AikitError(f"Unrecognized normalization mode {norm}")
     return torch.tensor(
         torch.fft.fft2(x, s, dim, norm, out=out), dtype=torch.complex128
     )
@@ -1058,26 +1058,26 @@ def rfftn(
     out: Optional[torch.Tensor] = None,
 ) -> torch.Tensor:
     if not all(isinstance(j, int) for j in axes):
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Expecting {axes} to be a sequence of integers <class integer>"
         )
     if s is None:
         s = (x.shape[axes[0]], x.shape[axes[1]])
     if all(j < -len(x.shape) for j in s):
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Invalid axes {axes}, expecting ranging"
             f" from {-len(x.shape)} to {len(x.shape)-1}"
         )
     if not all(isinstance(j, int) for j in s):
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Expecting {s} to be a sequence of integers <class integer>"
         )
     if all(j <= 1 for j in s):
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Invalid data points {s}, expecting s points larger than 1"
         )
     if norm not in {"backward", "ortho", "forward"}:
-        raise aikit.utils.exceptions.IvyError(f"Unrecognized normalization mode {norm}")
+        raise aikit.utils.exceptions.AikitError(f"Unrecognized normalization mode {norm}")
     return torch.tensor(
         torch.fft.rfftn(x, s, axes, norm=norm, out=out), dtype=torch.complex128
     )
@@ -1106,35 +1106,35 @@ def stft(
     out: Optional[torch.Tensor] = None,
 ) -> torch.Tensor:
     if not isinstance(frame_length, int):
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Expecting <class 'int'> instead of {type(frame_length)}"
         )
 
     if frame_length < 1:
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Invalid data points {frame_length}, expecting frame_length larger than or"
             " equal to 1"
         )
 
     if not isinstance(frame_step, int):
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Expecting <class 'int'> instead of {type(frame_step)}"
         )
 
     if frame_step < 1:
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Invalid data points {frame_length}, expecting frame_length larger than or"
             " equal to 1"
         )
 
     if fft_length is not None:
         if not isinstance(fft_length, int):
-            raise aikit.utils.exceptions.IvyError(
+            raise aikit.utils.exceptions.AikitError(
                 f"Expecting <class 'int'> instead of {type(fft_length)}"
             )
 
         if fft_length < 1:
-            raise aikit.utils.exceptions.IvyError(
+            raise aikit.utils.exceptions.AikitError(
                 f"Invalid data points {frame_length}, expecting frame_length larger"
                 " than or equal to 1"
             )

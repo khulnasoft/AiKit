@@ -415,7 +415,7 @@ class SparseArray(aikit.Array):
                 values,
             )
 
-            raise aikit.utils.exceptions.IvyException(
+            raise aikit.utils.exceptions.AikitException(
                 "specify all coo components (coo_indices, values and "
                 " dense_shape), all csr components (crow_indices, "
                 "col_indices, values and dense_shape), all csc components "

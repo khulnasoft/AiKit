@@ -1,7 +1,7 @@
-"""Ivy wrapping functions for conversions.
+"""Aikit wrapping functions for conversions.
 
-Collection of Ivy functions for wrapping functions to accept and return
-ivy.Array instances.
+Collection of Aikit functions for wrapping functions to accept and return
+aikit.Array instances.
 """
 
 # global
@@ -9,7 +9,7 @@ import numpy as np
 from typing import Any, Union, Tuple, Dict, Iterable, Optional
 
 # local
-import ivy
+import aikit
 
 
 # Helpers #
@@ -30,19 +30,19 @@ ARRAY_TO_BACKEND = {
 
 
 def _array_to_new_backend(
-    x: Union[ivy.Array, ivy.NativeArray], native: bool = False
-) -> Union[ivy.Array, ivy.NativeArray]:
+    x: Union[aikit.Array, aikit.NativeArray], native: bool = False
+) -> Union[aikit.Array, aikit.NativeArray]:
     # Frontend instances
-    if hasattr(x, "_ivy_array"):
+    if hasattr(x, "_aikit_array"):
         return x
 
-    # ivy.Array instances
-    native_x = x.data if isinstance(x, ivy.Array) else x
+    # aikit.Array instances
+    native_x = x.data if isinstance(x, aikit.Array) else x
     native_x_type = type(native_x).__name__
 
     # Modify native_type here since @tf.function converts tf.EagerTensor into
     # tf.Tensor when running @tf.function enclosed function
-    if ivy.backend == "tensorflow":
+    if aikit.backend == "tensorflow":
         import tensorflow as tf
 
         native_x_type = (
@@ -63,25 +63,25 @@ def _array_to_new_backend(
 
     # If the current backend and the backend for the given array match,
     # simply return the array as is
-    if ivy.backend == native_x_backend:
+    if aikit.backend == native_x_backend:
         if native:
             return native_x
-        np_intermediary = ivy.to_numpy(native_x)
-        return ivy.array(np_intermediary)
+        np_intermediary = aikit.to_numpy(native_x)
+        return aikit.array(np_intermediary)
 
     # Otherwise, convert to the new backend
     else:
-        native_x_backend = ivy.with_backend(native_x_backend)
+        native_x_backend = aikit.with_backend(native_x_backend)
         # Handle native variable instances here
         if native_x_backend.gradients._is_variable(native_x):
             x_data = native_x_backend.gradients._variable_data(native_x)
             # x_data = _array_to_new_backend(x_data, native=True)
-            from ivy.functional.ivy.gradients import _variable
+            from aikit.functional.aikit.gradients import _variable
 
             return _variable(x_data).data if native else _variable(x_data)
 
         np_intermediary = native_x_backend.to_numpy(native_x)
-        ret = ivy.array(np_intermediary)
+        ret = aikit.array(np_intermediary)
         return ret.data if native else ret
 
 
@@ -91,8 +91,8 @@ def _to_new_backend(
     inplace: bool = False,
     to_ignore: tuple = (),
 ) -> Any:
-    if isinstance(x, ivy.Container):
-        to_ignore = ivy.default(to_ignore, ())
+    if isinstance(x, aikit.Container):
+        to_ignore = aikit.default(to_ignore, ())
         return x.cont_map(
             lambda x_, _: _to_new_backend(
                 x_, native=native, inplace=inplace, to_ignore=to_ignore
@@ -103,15 +103,15 @@ def _to_new_backend(
 
 
 def _to_native(x: Any, inplace: bool = False, to_ignore: tuple = ()) -> Any:
-    to_ignore = ivy.default(to_ignore, ())
+    to_ignore = aikit.default(to_ignore, ())
     if isinstance(x, to_ignore):
         return x
-    if isinstance(x, ivy.Array):
+    if isinstance(x, aikit.Array):
         return x.data
     # to prevent the graph from breaking for the time being
-    elif type(x) is ivy.Shape:
+    elif type(x) is aikit.Shape:
         return x.shape
-    elif isinstance(x, ivy.Container):
+    elif isinstance(x, aikit.Container):
         return x.cont_map(
             lambda x_, _: _to_native(x_, inplace=inplace, to_ignore=to_ignore),
             inplace=inplace,
@@ -119,15 +119,15 @@ def _to_native(x: Any, inplace: bool = False, to_ignore: tuple = ()) -> Any:
     return x
 
 
-def _to_ivy(x: Any) -> Any:
-    if isinstance(x, ivy.Array):
+def _to_aikit(x: Any) -> Any:
+    if isinstance(x, aikit.Array):
         return x
-    elif isinstance(x, ivy.NativeShape):
-        return ivy.Shape(x)
-    elif isinstance(x, ivy.Container):
-        return x.to_ivy()
-    if ivy.is_native_array(x) or isinstance(x, np.ndarray):
-        return ivy.Array(x)
+    elif isinstance(x, aikit.NativeShape):
+        return aikit.Shape(x)
+    elif isinstance(x, aikit.Container):
+        return x.to_aikit()
+    if aikit.is_native_array(x) or isinstance(x, np.ndarray):
+        return aikit.Array(x)
     return x
 
 
@@ -135,12 +135,12 @@ def _to_ivy(x: Any) -> Any:
 # --------#
 
 
-def to_ivy(
-    x: Union[ivy.Array, ivy.NativeArray, Iterable],
+def to_aikit(
+    x: Union[aikit.Array, aikit.NativeArray, Iterable],
     nested: bool = False,
     include_derived: Optional[Dict[str, bool]] = None,
-) -> Union[ivy.Array, ivy.NativeArray, Iterable]:
-    """Return the input array converted to an ivy.Array instance if it is a
+) -> Union[aikit.Array, aikit.NativeArray, Iterable]:
+    """Return the input array converted to an aikit.Array instance if it is a
     native array type, otherwise the input is returned unchanged. If nested is
     set, the check is applied to all nested leafs of tuples, lists and dicts
     contained within x.
@@ -152,7 +152,7 @@ def to_ivy(
     nested
         Whether to apply the conversion on arguments in a nested manner. If so, all
         dicts, lists and tuples will be traversed to their lowest leaves in search of
-        ivy.Array instances. Default is ``False``.
+        aikit.Array instances. Default is ``False``.
     include_derived
         Whether to also recursive for classes derived from tuple, list and dict. Default
         is False.
@@ -160,19 +160,19 @@ def to_ivy(
     Returns
     -------
     ret
-        the input in its native framework form in the case of ivy.Array or instances.
+        the input in its native framework form in the case of aikit.Array or instances.
     """
     if nested:
-        return ivy.nested_map(_to_ivy, x, include_derived, shallow=False)
-    return _to_ivy(x)
+        return aikit.nested_map(_to_aikit, x, include_derived, shallow=False)
+    return _to_aikit(x)
 
 
-def args_to_ivy(
+def args_to_aikit(
     *args: Iterable[Any],
     include_derived: Optional[Dict[str, bool]] = None,
     **kwargs: Dict[str, Any],
 ) -> Tuple[Iterable[Any], Dict[str, Any]]:
-    """Return args and keyword args in their ivy.Array or form for all nested
+    """Return args and keyword args in their aikit.Array or form for all nested
     instances, otherwise the arguments are returned unchanged.
 
     Parameters
@@ -188,23 +188,23 @@ def args_to_ivy(
     Returns
     -------
      ret
-        the same arguments, with any nested arrays converted to ivy.Array or
+        the same arguments, with any nested arrays converted to aikit.Array or
         instances.
     """
-    native_args = ivy.nested_map(_to_ivy, args, include_derived, shallow=False)
-    native_kwargs = ivy.nested_map(_to_ivy, kwargs, include_derived, shallow=False)
+    native_args = aikit.nested_map(_to_aikit, args, include_derived, shallow=False)
+    native_kwargs = aikit.nested_map(_to_aikit, kwargs, include_derived, shallow=False)
     return native_args, native_kwargs
 
 
 def to_native(
-    x: Union[ivy.Array, ivy.NativeArray, Iterable],
+    x: Union[aikit.Array, aikit.NativeArray, Iterable],
     nested: bool = False,
     include_derived: Optional[Dict[str, bool]] = None,
     cont_inplace: bool = False,
     to_ignore: Optional[Union[type, Tuple[type]]] = None,
-) -> Union[ivy.Array, ivy.NativeArray, Iterable]:
+) -> Union[aikit.Array, aikit.NativeArray, Iterable]:
     """Return the input item in its native backend framework form if it is an
-    ivy.Array instance, otherwise the input is returned unchanged. If nested is
+    aikit.Array instance, otherwise the input is returned unchanged. If nested is
     set, the check is applied to all nested leaves of tuples, lists and dicts
     contained within ``x``.
 
@@ -215,7 +215,7 @@ def to_native(
     nested
         Whether to apply the conversion on arguments in a nested manner. If so, all
         dicts, lists and tuples will be traversed to their lowest leaves in search of
-        ivy.Array instances. Default is ``False``.
+        aikit.Array instances. Default is ``False``.
     include_derived
         Whether to also recursive for classes derived from tuple, list and dict.
         Default is ``False``.
@@ -227,10 +227,10 @@ def to_native(
     Returns
     -------
      ret
-        the input in its native framework form in the case of ivy.Array instances.
+        the input in its native framework form in the case of aikit.Array instances.
     """
     if nested:
-        return ivy.nested_map(
+        return aikit.nested_map(
             lambda x: _to_native(x, inplace=cont_inplace, to_ignore=to_ignore),
             x,
             include_derived,
@@ -247,7 +247,7 @@ def args_to_native(
     **kwargs: Dict[str, Any],
 ) -> Tuple[Iterable[Any], Dict[str, Any]]:
     """Return args and keyword args in their native backend framework form for
-    all nested ivy.Array instances, otherwise the arguments are returned
+    all nested aikit.Array instances, otherwise the arguments are returned
     unchanged.
 
     Parameters
@@ -268,16 +268,16 @@ def args_to_native(
     Returns
     -------
      ret
-        the same arguments, with any nested ivy.Array or instances converted to their
+        the same arguments, with any nested aikit.Array or instances converted to their
         native form.
     """
-    native_args = ivy.nested_map(
+    native_args = aikit.nested_map(
         lambda x: _to_native(x, inplace=cont_inplace, to_ignore=to_ignore),
         args,
         include_derived,
         shallow=False,
     )
-    native_kwargs = ivy.nested_map(
+    native_kwargs = aikit.nested_map(
         lambda x: _to_native(x, inplace=cont_inplace, to_ignore=to_ignore),
         kwargs,
         include_derived,
@@ -287,15 +287,15 @@ def args_to_native(
 
 
 def to_new_backend(
-    x: Union[ivy.Array, ivy.NativeArray, Iterable],
+    x: Union[aikit.Array, aikit.NativeArray, Iterable],
     native: bool = True,
     nested: bool = False,
     include_derived: Optional[Dict[str, bool]] = None,
     cont_inplace: bool = False,
     to_ignore: Optional[Union[type, Tuple[type]]] = None,
-) -> Union[ivy.Array, ivy.NativeArray, Iterable]:
+) -> Union[aikit.Array, aikit.NativeArray, Iterable]:
     """Return the input array converted to new backend framework form if it is
-    an `ivy.Array`, `ivy.NativeArray` or NativeVariable instance. If nested is
+    an `aikit.Array`, `aikit.NativeArray` or NativeVariable instance. If nested is
     set, the check is applied to all nested leaves of tuples, lists and dicts
     contained within ``x``.
 
@@ -304,12 +304,12 @@ def to_new_backend(
     x
         The input to maybe convert.
     native
-        Whether to return the new array as a `ivy.NativeArray`, NativeVariable
-        or an `ivy.Array`. Default is ``True``.
+        Whether to return the new array as a `aikit.NativeArray`, NativeVariable
+        or an `aikit.Array`. Default is ``True``.
     nested
         Whether to apply the conversion on arguments in a nested manner. If so, all
         dicts, lists and tuples will be traversed to their lowest leaves in search of
-        ivy.Array instances. Default is ``False``.
+        aikit.Array instances. Default is ``False``.
     include_derived
         Whether to also recursive for classes derived from tuple, list and dict.
         Default is ``False``.
@@ -324,7 +324,7 @@ def to_new_backend(
         the input in the new backend framework form in the case of array instances.
     """
     if nested:
-        return ivy.nested_map(
+        return aikit.nested_map(
             lambda x: _to_new_backend(
                 x, native=native, inplace=cont_inplace, to_ignore=to_ignore
             ),
@@ -345,15 +345,15 @@ def args_to_new_backend(
     **kwargs: Dict[str, Any],
 ) -> Tuple[Iterable[Any], Dict[str, Any]]:
     """Return args and keyword args in the new current backend framework for
-    all nested ivy.Array, ivy.NativeArray or NativeVariable instances.
+    all nested aikit.Array, aikit.NativeArray or NativeVariable instances.
 
     Parameters
     ----------
     args
         The positional arguments to check
     native
-        Whether to return the new array as a ivy.NativeArray, NativeVariable
-        or an ivy.Array. Default is ``True``.
+        Whether to return the new array as a aikit.NativeArray, NativeVariable
+        or an aikit.Array. Default is ``True``.
     include_derived
         Whether to also recursive for classes derived from tuple, list and dict.
         Default is ``False``.
@@ -374,7 +374,7 @@ def args_to_new_backend(
         The same arguments, with any nested array instances converted
         to the new backend.
     """
-    new_args = ivy.nested_map(
+    new_args = aikit.nested_map(
         lambda x: _to_new_backend(
             x, native=native, inplace=cont_inplace, to_ignore=to_ignore
         ),
@@ -382,7 +382,7 @@ def args_to_new_backend(
         include_derived,
         shallow=shallow,
     )
-    new_kwargs = ivy.nested_map(
+    new_kwargs = aikit.nested_map(
         lambda x: _to_new_backend(
             x, native=native, inplace=cont_inplace, to_ignore=to_ignore
         ),

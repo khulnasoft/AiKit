@@ -33,7 +33,7 @@ def _get_reduction_func(reduction):
     elif reduction == "sum":
         ret = aikit.sum
     else:
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             f"{reduction} is not a valid value for reduction"
         )
     return ret
@@ -47,7 +47,7 @@ def _get_reduction_method(reduction, to_reduce):
     elif reduction == "sum":
         ret = aikit.sum(to_reduce)
     else:
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             f"{reduction} is not a valid value for reduction"
         )
     return ret
@@ -224,13 +224,13 @@ def gaussian_nll_loss(input, target, var, full=False, eps=1e-6, reduction="mean"
         elif input.shape[:-1] == var.shape[:-1] and var.shape[-1] == 1:
             pass
         else:
-            raise aikit.utils.exceptions.IvyError("var is of incorrect size")
+            raise aikit.utils.exceptions.AikitError("var is of incorrect size")
 
     if reduction is not None and reduction != "mean" and reduction != "sum":
-        raise aikit.utils.exceptions.IvyError(f"{reduction} is not valid")
+        raise aikit.utils.exceptions.AikitError(f"{reduction} is not valid")
 
     if aikit.any(var < 0):
-        raise aikit.utils.exceptions.IvyError("var has negative entry/entries")
+        raise aikit.utils.exceptions.AikitError("var has negative entry/entries")
 
     var = aikit.maximum(var, eps)
 

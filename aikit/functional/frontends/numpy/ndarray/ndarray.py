@@ -102,7 +102,7 @@ class ndarray:
         if np_frontend.can_cast(ret, dtype, casting=casting):
             ret.aikit_array = ret.aikit_array.astype(dtype)
         else:
-            raise aikit.utils.exceptions.IvyException(
+            raise aikit.utils.exceptions.AikitException(
                 f"Cannot cast array data from dtype('{ret.aikit_array.dtype}')"
                 f" to dtype('{dtype}') according to the rule '{casting}'"
             )

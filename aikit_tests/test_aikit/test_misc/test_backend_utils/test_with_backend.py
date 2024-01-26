@@ -23,7 +23,7 @@ def test_memory_id(name, traced_backends):
     for b in traced_backends:
         assert id(getattr(aikit, name)) != id(
             getattr(b, name)
-        ), f"Shared object {name} between global Ivy and backend {b.backend}"
+        ), f"Shared object {name} between global Aikit and backend {b.backend}"
 
     for comb in itertools.combinations(traced_backends, 2):
         assert id(getattr(comb[0], name)) != id(getattr(comb[1], name)), (

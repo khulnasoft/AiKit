@@ -7,28 +7,28 @@ import jax.numpy as jnp
 import importlib
 from typing import Union
 
-# make ivy.Container compatible with jax pytree traversal
+# make aikit.Container compatible with jax pytree traversal
 from jax.tree_util import register_pytree_node
 from jax.tree_util import tree_flatten, tree_unflatten
 
 # local
-import ivy
-from ivy.func_wrapper import _dtype_from_version
+import aikit
+from aikit.func_wrapper import _dtype_from_version
 
 backend_version = {"version": jax.__version__}
 
 try:
     register_pytree_node(
-        ivy.Container,
+        aikit.Container,
         lambda c: tree_flatten(c.cont_to_dict()),
-        lambda a, c: ivy.Container(tree_unflatten(a, c)),
+        lambda a, c: aikit.Container(tree_unflatten(a, c)),
     )
 except Exception as e:
     if "Duplicate custom PyTreeDef type registration" not in str(e):
         raise
 
 
-# make ivy.Array compatible with jax pytree traversal
+# make aikit.Array compatible with jax pytree traversal
 def _array_flatten(tree):
     return ((tree.data,), None)
 
@@ -36,23 +36,23 @@ def _array_flatten(tree):
 def _array_unflatten(aux_data, children):
     if type(*children) == object:
         return children
-    return ivy.Array(*children)
+    return aikit.Array(*children)
 
 
 try:
-    register_pytree_node(ivy.Array, _array_flatten, _array_unflatten)
+    register_pytree_node(aikit.Array, _array_flatten, _array_unflatten)
 except Exception as e:
     if "Duplicate custom PyTreeDef type registration" not in str(e):
         raise
 
 
 # noinspection PyUnresolvedReferences
-if not ivy.is_local():
+if not aikit.is_local():
     _module_in_memory = sys.modules[__name__]
 else:
-    _module_in_memory = sys.modules[ivy.import_module_path].import_cache[__name__]
+    _module_in_memory = sys.modules[aikit.import_module_path].import_cache[__name__]
 
-use = ivy.utils.backend.ContextManager(_module_in_memory)
+use = aikit.utils.backend.ContextManager(_module_in_memory)
 
 if version.parse(jax.__version__) >= version.parse("0.4.1"):
     JaxArray = jax.Array
@@ -103,62 +103,62 @@ native_bool = jnp.dtype("bool")
 # update these to add new dtypes
 valid_dtypes = {
     "0.4.23 and below": (
-        ivy.int8,
-        ivy.int16,
-        ivy.int32,
-        ivy.int64,
-        ivy.uint8,
-        ivy.uint16,
-        ivy.uint32,
-        ivy.uint64,
-        ivy.bfloat16,
-        ivy.float16,
-        ivy.float32,
-        ivy.float64,
-        ivy.complex64,
-        ivy.complex128,
-        ivy.bool,
+        aikit.int8,
+        aikit.int16,
+        aikit.int32,
+        aikit.int64,
+        aikit.uint8,
+        aikit.uint16,
+        aikit.uint32,
+        aikit.uint64,
+        aikit.bfloat16,
+        aikit.float16,
+        aikit.float32,
+        aikit.float64,
+        aikit.complex64,
+        aikit.complex128,
+        aikit.bool,
     )
 }
 valid_numeric_dtypes = {
     "0.4.23 and below": (
-        ivy.int8,
-        ivy.int16,
-        ivy.int32,
-        ivy.int64,
-        ivy.uint8,
-        ivy.uint16,
-        ivy.uint32,
-        ivy.uint64,
-        ivy.bfloat16,
-        ivy.float16,
-        ivy.float32,
-        ivy.float64,
-        ivy.complex64,
-        ivy.complex128,
+        aikit.int8,
+        aikit.int16,
+        aikit.int32,
+        aikit.int64,
+        aikit.uint8,
+        aikit.uint16,
+        aikit.uint32,
+        aikit.uint64,
+        aikit.bfloat16,
+        aikit.float16,
+        aikit.float32,
+        aikit.float64,
+        aikit.complex64,
+        aikit.complex128,
     )
 }
 
 valid_int_dtypes = {
     "0.4.23 and below": (
-        ivy.int8,
-        ivy.int16,
-        ivy.int32,
-        ivy.int64,
-        ivy.uint8,
-        ivy.uint16,
-        ivy.uint32,
-        ivy.uint64,
+        aikit.int8,
+        aikit.int16,
+        aikit.int32,
+        aikit.int64,
+        aikit.uint8,
+        aikit.uint16,
+        aikit.uint32,
+        aikit.uint64,
     )
 }
 
 valid_uint_dtypes = {
-    "0.4.23 and below": (ivy.uint8, ivy.uint16, ivy.uint32, ivy.uint64)
+    "0.4.23 and below": (aikit.uint8, aikit.uint16, aikit.uint32, aikit.uint64)
 }
 valid_float_dtypes = {
-    "0.4.23 and below": (ivy.bfloat16, ivy.float16, ivy.float32, ivy.float64)
+    "0.4.23 and below": (aikit.bfloat16, aikit.float16, aikit.float32, aikit.float64)
 }
-valid_complex_dtypes = {"0.4.23 and below": (ivy.complex64, ivy.complex128)}
+valid_complex_dtypes = {"0.4.23 and below": (aikit.complex64, aikit.complex128)}
 
 
 # leave these untouched
@@ -195,10 +195,10 @@ supports_gradients = True
 
 def closest_valid_dtype(type=None, /, as_native=False):
     if type is None:
-        type = ivy.default_dtype()
+        type = aikit.default_dtype()
     if isinstance(type, str) and type in invalid_dtypes:
-        return {"int64": ivy.int32, "uint64": ivy.uint32, "float64": ivy.float32}[type]
-    return ivy.as_ivy_dtype(type) if not as_native else ivy.as_native_dtype(type)
+        return {"int64": aikit.int32, "uint64": aikit.uint32, "float64": aikit.float32}[type]
+    return aikit.as_aikit_dtype(type) if not as_native else aikit.as_native_dtype(type)
 
 
 backend = "jax"

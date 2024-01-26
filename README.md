@@ -1,4 +1,4 @@
-> 🚀 We are granting access to **Ivy\'s Tracer and Transpiler**
+> 🚀 We are granting access to **Aikit\'s Tracer and Transpiler**
 > to all of our users, [sign up on our console](https://console.unify.ai/) if you
 > want to test them out!
 
@@ -93,20 +93,20 @@
 
 ------------------------------------------------------------------------
 
-Ivy is an open-source machine learning framework that
+Aikit is an open-source machine learning framework that
 enables you to:
 
 - 🔥 **Autotune your model**: Automatically find the optimal framework, compiler infrastructure and hardware for your specific use case using `aikit.autotune`.
 - 🔄 **Convert code into any framework**: Use and build on top of any model, library, or device by converting any code from one framework to another using `aikit.transpile`.
 - ⚒️ **Write framework-agnostic code**: Write your code once in aikit and then choose the most appropriate ML framework as the backend to leverage all the benefits and tools.
 
-[Join our growing community](https://discord.com/invite/sXyFF8tDtm) 🌍 to connect with people using Ivy. **Let\'s** [unify.ai](https://unify.ai) **together 🦾**
+[Join our growing community](https://discord.com/invite/sXyFF8tDtm) 🌍 to connect with people using Aikit. **Let\'s** [unify.ai](https://unify.ai) **together 🦾**
 
 ------------------------------------------------------------------------
 
 # Getting started
 
-The best way to get familiar with Ivy is to go through the [Demos](https://unify.ai/docs/aikit/demos/examples_and_demos.html), a good starting point is [Learn The Basics](https://unify.ai/docs/aikit/demos/learn_the_basics.html).
+The best way to get familiar with Aikit is to go through the [Demos](https://unify.ai/docs/aikit/demos/examples_and_demos.html), a good starting point is [Learn The Basics](https://unify.ai/docs/aikit/demos/learn_the_basics.html).
 
 The most important notebooks are:
 
@@ -119,12 +119,12 @@ The most important notebooks are:
 
 ## Installing aikit
 
-There are various ways to use Ivy, depending on your preferred
+There are various ways to use Aikit, depending on your preferred
 environment:
 
 ### Installing using pip
 
-The easiest way to set up Ivy is to install it using pip with the
+The easiest way to set up Aikit is to install it using pip with the
 following command:
 
 ``` bash
@@ -158,7 +158,7 @@ docker pull khulnasoft/aikit:latest-gpu
 <details>
 <summary>From Source</summary>
 
-You can also install Ivy from source if you want to take advantage of
+You can also install Aikit from source if you want to take advantage of
 the latest changes, but we can\'t ensure everything will work as
 expected. :sweat_smile:
 
@@ -185,9 +185,9 @@ tutorials to do so are available!
 
 ------------------------------------------------------------------------
 
-## Using Ivy
+## Using Aikit
 
-After installing Ivy, you can start using it straight away, for example:
+After installing Aikit, you can start using it straight away, for example:
 
   <details>
    <summary><b>Transpiling any code from one framework to another</b></summary>
@@ -237,14 +237,14 @@ After installing Ivy, you can start using it straight away, for example:
 
 # Documentation
 
-You can find Ivy's documentation on the [Docs page](https://unify.ai/docs/aikit/), which includes:
-- [Motivation](https://unify.ai/docs/aikit/overview/background.html): This contextualizes the problem Ivy is trying to solve by going over
+You can find Aikit's documentation on the [Docs page](https://unify.ai/docs/aikit/), which includes:
+- [Motivation](https://unify.ai/docs/aikit/overview/background.html): This contextualizes the problem Aikit is trying to solve by going over
     - The current [ML Explosion](https://unify.ai/docs/aikit/overview/background/ml_explosion.html#ml-explosion).
     - Explaining why it is important [to solve this problem](https://unify.ai/docs/aikit/overview/background/why_unify.html#why-unify).
     - Explaining how we adhere to existing [standards](https://unify.ai/docs/aikit/overview/background/standardization.html#standardization) to make this happen.
-- [Related Work](https://unify.ai/docs/aikit/overview/related_work.html): Which paints a picture of the role Ivy plays in the ML stack, comparing it to other existing solutions in terms of functionalities and abstraction level.
-- [Design](https://unify.ai/docs/aikit/overview/design.html): A user-focused guide about the design decision behind the architecture and the main building blocks of Ivy.
-- [Deep Dive](https://unify.ai/docs/aikit/overview/deep_dive.html): Which delves deeper into the implementation details of Ivy and is oriented towards potential contributors to the code base.
+- [Related Work](https://unify.ai/docs/aikit/overview/related_work.html): Which paints a picture of the role Aikit plays in the ML stack, comparing it to other existing solutions in terms of functionalities and abstraction level.
+- [Design](https://unify.ai/docs/aikit/overview/design.html): A user-focused guide about the design decision behind the architecture and the main building blocks of Aikit.
+- [Deep Dive](https://unify.ai/docs/aikit/overview/deep_dive.html): Which delves deeper into the implementation details of Aikit and is oriented towards potential contributors to the code base.
 
 
 ------------------------------------------------------------------------
@@ -252,13 +252,13 @@ You can find Ivy's documentation on the [Docs page](https://unify.ai/docs/aikit/
 # Examples
 
 The [Examples page](https://unify.ai/demos/) features a wide range of
-demos and tutorials showcasing the functionalities of Ivy along with
+demos and tutorials showcasing the functionalities of Aikit along with
 multiple use cases, but feel free to check out some shorter
 framework-specific examples here ⬇️
 
 <details>
 <summary><b>I'm using PyTorch&ensp;<img class="dark-light" src="https://raw.githubusercontent.com/khulnasoft/khulnasoft.github.io/main/img/externally_linked/logos/supported/torch_small_logo.png"></b></summary>
-   <blockquote>You can use Ivy to get PyTorch code from:
+   <blockquote>You can use Aikit to get PyTorch code from:
       <details>
          <summary>Any model</summary>
          <blockquote>
@@ -485,7 +485,7 @@ out = torch_loss(p, t)
 
 <details>
 <summary><b>I'm using TensorFlow&ensp;<img class="dark-light" src="https://raw.githubusercontent.com/khulnasoft/khulnasoft.github.io/main/img/externally_linked/logos/supported/tf_small_logo.png"></b></summary>
-<blockquote>You can use Ivy to get TensorFlow code from:
+<blockquote>You can use Aikit to get TensorFlow code from:
 <details>
 <summary>Any model</summary>
 <blockquote>
@@ -719,7 +719,7 @@ out = tf_loss(p, t)
 
 <details>
 <summary><b>I'm using Jax&ensp;<img class="dark-light" src="https://raw.githubusercontent.com/khulnasoft/khulnasoft.github.io/main/img/externally_linked/logos/supported/jax_small_logo.png"></b></summary>
-<blockquote>You can use Ivy to get JAX code from:
+<blockquote>You can use Aikit to get JAX code from:
 <details>
 <summary>Any model</summary>
 <blockquote>
@@ -970,7 +970,7 @@ out = jax_loss(p, t)
 
 <details>
 <summary><b>I'm using NumPy&ensp;<img class="dark-light" src="https://raw.githubusercontent.com/khulnasoft/khulnasoft.github.io/main/img/externally_linked/logos/supported/numpy_small_logo.png"></b></summary>
-<blockquote>You can use Ivy to get NumPy code from:
+<blockquote>You can use Aikit to get NumPy code from:
 <details>
 <summary>Any library</summary>
 <blockquote>
@@ -1125,9 +1125,9 @@ out = np_loss(p, t)
 
 <details>
 <summary>
-<b>I'm using Ivy&ensp;<img height="25px" width="25px" class="dark-light" src="https://raw.githubusercontent.com/khulnasoft/khulnasoft.github.io/main/img/logos/aikit_logo_only.svg"></b>
+<b>I'm using Aikit&ensp;<img height="25px" width="25px" class="dark-light" src="https://raw.githubusercontent.com/khulnasoft/khulnasoft.github.io/main/img/logos/aikit_logo_only.svg"></b>
 </summary>
-Or you can use Ivy as a framework, breaking yourself (and your code)
+Or you can use Aikit as a framework, breaking yourself (and your code)
 free from deciding which community to support, allowing anyone to run
 your code in their framework of choice!
 
@@ -1135,7 +1135,7 @@ your code in their framework of choice!
 import aikit
 
 # A simple image classification model
-class IvyNet(aikit.Module):
+class AikitNet(aikit.Module):
     def __init__(
         self,
         h_w=(32, 32),
@@ -1179,33 +1179,33 @@ class IvyNet(aikit.Module):
         return logits, probs
 ```
 
-After building your model in Ivy, you can set your favourite framework
+After building your model in Aikit, you can set your favourite framework
 as the backend to use its operations under the hood!
 
 ``` python
 aikit.set_backend("torch")
-model = IvyNet()
+model = AikitNet()
 x = torch.randn(1, 3, 32, 32)
 logits, probs = model(x)
 ```
 
 ``` python
 aikit.set_backend("tensorflow")
-model = IvyNet()
+model = AikitNet()
 x = tf.random.uniform(shape=(1, 3, 32, 32))
 logits, probs = model(x)
 ```
 
 ``` python
 aikit.set_backend("jax")
-model = IvyNet()
+model = AikitNet()
 x = jax.random.uniform(key, shape=(1, 3, 32, 32))
 logits, probs = model(x)
 ```
 
 ``` python
 aikit.set_backend("numpy")
-model = IvyNet()
+model = AikitNet()
 x = np.random.uniform(size=(1, 3, 32, 32))
 logits, probs = model(x)
 ```
@@ -1222,7 +1222,7 @@ def generate_batches(images, classes, dataset_size, batch_size=32):
     targets = {k: v for v, k in enumerate(np.unique(classes))}
     y_train = [targets[classes[i]] for i in range(len(classes))]
     if batch_size > dataset_size:
-        raise aikit.utils.exceptions.IvyError("Use a smaller batch size")
+        raise aikit.utils.exceptions.AikitError("Use a smaller batch size")
     for idx in range(0, dataset_size, batch_size):
         yield aikit.stack(images[idx : min(idx + batch_size, dataset_size)]), aikit.array(
             y_train[idx : min(idx + batch_size, dataset_size)]
@@ -1256,7 +1256,7 @@ batch_size = 64
 num_epochs = 20
 num_classes = 10
 
-model = IvyNet(
+model = AikitNet(
     h_w=(28, 28),
     input_channels=1,
     output_channels=120,
@@ -1337,18 +1337,18 @@ train(images, classes, num_epochs, model, device, num_classes = num_classes, bat
 
 # Diving deeper
 
-Although the [Docs](https://unify.ai/docs/aikit/) are the best place to learn more, in the next section we will take a look at how Ivy works both as a transpiler and a framework in a bit more detail to get an idea of why and where to use it.
+Although the [Docs](https://unify.ai/docs/aikit/) are the best place to learn more, in the next section we will take a look at how Aikit works both as a transpiler and a framework in a bit more detail to get an idea of why and where to use it.
 
 <details>
-<summary><b>Ivy as a transpiler</b></summary>
+<summary><b>Aikit as a transpiler</b></summary>
 
-Ivy\'s transpiler allows you to use code from any other framework (or
+Aikit\'s transpiler allows you to use code from any other framework (or
 from any other version of the same framework!) in your own code, by just
-adding one line of code. Under the hood, Ivy traces a computational
+adding one line of code. Under the hood, Aikit traces a computational
 graph and leverages the frontends and backends to link one framework to
 another.
 
-This way, Ivy makes all ML-related projects available for you,
+This way, Aikit makes all ML-related projects available for you,
 independently of the framework you want to use to research, develop, or
 deploy systems. Feel free to head over to the docs for the full API
 reference, but the functions you\'d most likely want to use are:
@@ -1360,7 +1360,7 @@ aikit.trace_graph()
 # Converts framework-specific code to a different framework
 aikit.transpile()
 
-# Converts framework-specific code to Ivy
+# Converts framework-specific code to Aikit
 aikit.unify()
 ```
 
@@ -1400,11 +1400,11 @@ ret = lazy_graph(x1)
 ret = lazy_graph(x1)
 ```
 
-If you want to learn more, you can find more information in the [Ivy as
+If you want to learn more, you can find more information in the [Aikit as
 a transpiler section of the
 docs!](https://unify.ai/docs/aikit/overview/design/aikit_as_a_transpiler.html)
 
-## When should I use Ivy as a transpiler?
+## When should I use Aikit as a transpiler?
 
 If you want to use building blocks published in other frameworks (neural
 networks, layers, array computing libraries, training pipelines\...),
@@ -1419,22 +1419,22 @@ project to all of the unique perks of a different framework.
 </details>
 
 <details>
-<summary><b>Ivy as a framework</b></summary>
+<summary><b>Aikit as a framework</b></summary>
 
-The Ivy framework is built on top of various essential components,
+The Aikit framework is built on top of various essential components,
 mainly the [Backend
 Handler](https://unify.ai/docs/aikit/overview/design/building_blocks.html#backend-handler),
 which manages what framework is being used behind the scenes and the
 [Backend Functional
 APIs](https://unify.ai/docs/aikit/overview/design/building_blocks.html#backend-functional-apis),
-which provide framework-specific implementations of the Ivy functions.
+which provide framework-specific implementations of the Aikit functions.
 Likewise, classes such as `aikit.Container` or `aikit.Array` are also
 available, facilitating the use of structured data and array-like
 objects (learn more about them
 [here!](https://unify.ai/docs/aikit/overview/design/aikit_as_a_framework.html)).
 
-All of the functionalities in Ivy are exposed through the
-`Ivy functional API` and the `Ivy stateful API`. All functions in the
+All of the functionalities in Aikit are exposed through the
+`Aikit functional API` and the `Aikit stateful API`. All functions in the
 [Functional
 API](https://unify.ai/docs/aikit/overview/design/building_blocks.html#aikit-functional-api)
 are **Framework Agnostic Functions**, which means that we can use them
@@ -1456,12 +1456,12 @@ np_mse    = mse_loss(np.ones((5,)), np.ones((5,)))
 torch_mse = mse_loss(torch.ones((5,)), torch.ones((5,)))
 ```
 
-In the example above we show how Ivy\'s functions are compatible with
-tensors from different frameworks. This is the same for ALL Ivy
+In the example above we show how Aikit\'s functions are compatible with
+tensors from different frameworks. This is the same for ALL Aikit
 functions. They can accept tensors from any framework and return the
 correct result.
 
-The [Ivy Stateful
+The [Aikit Stateful
 API](https://unify.ai/docs/aikit/overview/design/aikit_as_a_framework/aikit_stateful_api.html),
 on the other hand, allows you to define trainable modules and layers,
 which you can use alone or as a part of any other framework code!
@@ -1548,18 +1548,18 @@ The model\'s output can be visualized as follows:
    <img width="50%" class="dark-light" src="https://raw.githubusercontent.com/khulnasoft/khulnasoft.github.io/main/img/regressor_lq.gif">
 </div>
 
-As always, you can find more information about [Ivy as a framework in
+As always, you can find more information about [Aikit as a framework in
 the
 docs!](https://unify.ai/docs/aikit/overview/design/aikit_as_a_framework.html)
 
-<h2> When should I use Ivy as a framework? </h2>
+<h2> When should I use Aikit as a framework? </h2>
 
-As Ivy supports multiple backends, writing code in Ivy breaks you free
+As Aikit supports multiple backends, writing code in Aikit breaks you free
 from framework limitations. If you want to publish highly flexible code
 for everyone to use, independently of the framework they are using, or
 you plan to develop ML-related tools and want them to be interoperable
 with not only the already existing frameworks, but also with future
-frameworks, then Ivy is for you!
+frameworks, then Aikit is for you!
 
 </details>
 
@@ -1591,10 +1591,10 @@ our journey to unify all ML frameworks!
 
 In order to achieve the ambitious goal of unifying AI, we definitely need
 as many hands as possible on it! Whether you are a seasoned developer or
-just starting out, you\'ll find a place here! Join the Ivy community on
+just starting out, you\'ll find a place here! Join the Aikit community on
 our [Discord](https://discord.gg/sXyFF8tDtm) 👾 server, which is the
 perfect place to ask questions, share ideas, and get help from both
-fellow developers and the Ivy Team directly!
+fellow developers and the Aikit Team directly!
 
 Also! Feel free to follow us on
 [Twitter](https://twitter.com/letskhulnasoft) 🐦 as well, we use it to
@@ -1607,14 +1607,14 @@ Can\'t wait to see you there!
 
 # Citation
 
-If you use Ivy for your work, please don\'t forget to give proper credit
+If you use Aikit for your work, please don\'t forget to give proper credit
 by including the accompanying [paper](https://arxiv.org/abs/2102.02886)
 📄 in your references. It\'s a small way to show appreciation and help
 to continue to support this and other open source projects 🙌
 
 
     @article{lenton2021aikit,
-      title={Ivy: Templated deep learning for inter-framework portability},
+      title={Aikit: Templated deep learning for inter-framework portability},
       author={Lenton, Daniel and Pardo, Fabio and Falck, Fabian and James, Stephen and Clark, Ronald},
       journal={arXiv preprint arXiv:2102.02886},
       year={2021}

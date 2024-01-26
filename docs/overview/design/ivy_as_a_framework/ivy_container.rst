@@ -1,66 +1,66 @@
-Ivy Container
+Aikit Container
 =============
 
-Here, we explain how the :class:`ivy.Container` class saves you a ton of time and cleans up code in almost all aspects of your ML workflow.
+Here, we explain how the :class:`aikit.Container` class saves you a ton of time and cleans up code in almost all aspects of your ML workflow.
 So without further ado, let’s dive in!
 
 Firstly, Dictionaries are an incredibly powerful and useful data type in Python.
 They enable a clean, readable, and efficient-access (via hashing) storage of arbitrarily hierarchical data.
 
-The :class:`ivy.Container` class can be seen as a souped-up Dict, with many useful features built on top.
-It’s the backbone of most high level operations in Ivy.
+The :class:`aikit.Container` class can be seen as a souped-up Dict, with many useful features built on top.
+It’s the backbone of most high level operations in Aikit.
 
-Let’s walk through some of the most important features of the :class:`ivy.Container`!
+Let’s walk through some of the most important features of the :class:`aikit.Container`!
 
 Construction
 ------------
 
 A container can be constructed in a number of ways.
-All construction approaches below result in identical :class:`ivy.Container` instances.
+All construction approaches below result in identical :class:`aikit.Container` instances.
 
 .. code-block:: python
 
-   import ivy
+   import aikit
 
-    dct = {'a': ivy.array([0.]),
-           'b': {'c': ivy.array([1.]),
-                 'd': ivy.array([2.])}}
+    dct = {'a': aikit.array([0.]),
+           'b': {'c': aikit.array([1.]),
+                 'd': aikit.array([2.])}}
 
    # via dict
-   cnt = ivy.Container(dct)
+   cnt = aikit.Container(dct)
 
    # via keyword
-   cnt = ivy.Container(a=ivy.array([0.]),
-                       b=ivy.Container(c=ivy.array([1.]),
-                                       d=ivy.array([2.])))
+   cnt = aikit.Container(a=aikit.array([0.]),
+                       b=aikit.Container(c=aikit.array([1.]),
+                                       d=aikit.array([2.])))
 
    # combos
-   cnt = ivy.Container(a=ivy.array([0.]),
-                       b={'c': ivy.array([1.]),
-                          'd': ivy.array([2.])})
+   cnt = aikit.Container(a=aikit.array([0.]),
+                       b={'c': aikit.array([1.]),
+                          'd': aikit.array([2.])})
 
-   cnt = ivy.Container({'a': ivy.array([0.]),
-                        'b': ivy.Container(c=ivy.array([1.]),
-                                           d=ivy.array([2.]))})
+   cnt = aikit.Container({'a': aikit.array([0.]),
+                        'b': aikit.Container(c=aikit.array([1.]),
+                                           d=aikit.array([2.]))})
 
 Representation
 --------------
 
-:class:`ivy.Container` prints the hierarchical structure to the terminal in a very intuitive manner, much more so than native Python Dicts.
+:class:`aikit.Container` prints the hierarchical structure to the terminal in a very intuitive manner, much more so than native Python Dicts.
 
 .. code-block:: python
 
     print(dct)
 
-    {'a': ivy.array([0.]), 'b': {'c': ivy.array([1.]), 'd': ivy.array([2.])}}
+    {'a': aikit.array([0.]), 'b': {'c': aikit.array([1.]), 'd': aikit.array([2.])}}
 
     print(cnt)
 
     {
-        a: ivy.array([0.]),
+        a: aikit.array([0.]),
         b: {
-            c: ivy.array([1.]),
-            d: ivy.array([2.])
+            c: aikit.array([1.]),
+            d: aikit.array([2.])
         }
     }
 
@@ -69,21 +69,21 @@ Again, this does not happen with native Python Dicts.
 
 .. code-block:: python
 
-   dct = {'a': ivy.ones((1000, 3)),
-          'b': {'c': ivy.zeros((3, 1000)),
-                'd': ivy.ones((1000, 2))}}
+   dct = {'a': aikit.ones((1000, 3)),
+          'b': {'c': aikit.zeros((3, 1000)),
+                'd': aikit.ones((1000, 2))}}
 
    print(dct)
 
-   {'a': ivy.array([[1., 1., 1.],
+   {'a': aikit.array([[1., 1., 1.],
            [1., 1., 1.],
            [1., 1., 1.],
            ...,
            [1., 1., 1.],
            [1., 1., 1.],
-           [1., 1., 1.]]), 'b': {'c': ivy.array([[0., 0., 0., ..., 0., 0., 0.],
+           [1., 1., 1.]]), 'b': {'c': aikit.array([[0., 0., 0., ..., 0., 0., 0.],
            [0., 0., 0., ..., 0., 0., 0.],
-           [0., 0., 0., ..., 0., 0., 0.]]), 'd': ivy.array([[1., 1.],
+           [0., 0., 0., ..., 0., 0., 0.]]), 'd': aikit.array([[1., 1.],
            [1., 1.],
            [1., 1.],
            ...,
@@ -91,31 +91,31 @@ Again, this does not happen with native Python Dicts.
            [1., 1.],
            [1., 1.]])}}
 
-   cnt = ivy.Container(dct)
+   cnt = aikit.Container(dct)
 
    print(cnt)
 
     {
-        a: (<class ivy.array.array.Array> shape=[1000, 3]),
+        a: (<class aikit.array.array.Array> shape=[1000, 3]),
         b: {
-            c: (<class ivy.array.array.Array> shape=[3, 1000]),
-            d: (<class ivy.array.array.Array> shape=[1000, 2])
+            c: (<class aikit.array.array.Array> shape=[3, 1000]),
+            d: (<class aikit.array.array.Array> shape=[1000, 2])
         }
     }
 
 Recursive Methods
 -----------------
 
-All methods in Ivy’s functional API are implemented as recursive methods on the :class:`ivy.Container`.
+All methods in Aikit’s functional API are implemented as recursive methods on the :class:`aikit.Container`.
 This means you can easily map a single method to all arrays in the container with a single line.
 
 Starting with the following container:
 
 .. code-block:: python
 
-   cnt = ivy.Container({'a': ivy.array([0., 1., 2.]),
-                        'b': {'c': ivy.array([2., 6., 5.]),
-                              'd': ivy.array([10., 5., 2.])}})
+   cnt = aikit.Container({'a': aikit.array([0., 1., 2.]),
+                        'b': {'c': aikit.array([2., 6., 5.]),
+                              'd': aikit.array([10., 5., 2.])}})
 
 We can compute the mean of each sub-array:
 
@@ -124,10 +124,10 @@ We can compute the mean of each sub-array:
    print(cnt.mean())
 
    {
-        a: ivy.array(1.),
+        a: aikit.array(1.),
         b: {
-            c: ivy.array(4.3333335),
-            d: ivy.array(5.6666665)
+            c: aikit.array(4.3333335),
+            d: aikit.array(5.6666665)
         }
     }
 
@@ -138,14 +138,14 @@ Or we can flip each sub-array:
    print(cnt.flip())
 
     {
-        a: ivy.array([2., 1., 0.]),
+        a: aikit.array([2., 1., 0.]),
         b: {
-            c: ivy.array([5., 6., 2.]),
-            d: ivy.array([2., 5., 10.])
+            c: aikit.array([5., 6., 2.]),
+            d: aikit.array([2., 5., 10.])
         }
     }
 
-There are about 200 such functions for the :class:`ivy.Container` class in total, check out the `code <https://github.com/khulnasoft/aikit/tree/main/ivy/data_classes/container>`_ or `docs <../../../docs/data_classes/data_classes/ivy.data_classes.container.rst>`_ to see what they are!
+There are about 200 such functions for the :class:`aikit.Container` class in total, check out the `code <https://github.com/khulnasoft/aikit/tree/main/aikit/data_classes/container>`_ or `docs <../../../docs/data_classes/data_classes/aikit.data_classes.container.rst>`_ to see what they are!
 
 Built-ins
 ----------
@@ -155,13 +155,13 @@ For example, performing a gradient update step for a set of network weights can 
 
 .. code-block:: python
 
-   weights = ivy.Container(
-          {'linear': {'b': ivy.array([0.2]),
-                      'w': ivy.array([1.5, 2.3, 0.9])}})
+   weights = aikit.Container(
+          {'linear': {'b': aikit.array([0.2]),
+                      'w': aikit.array([1.5, 2.3, 0.9])}})
 
-   grads = ivy.Container(
-          {'linear': {'b': ivy.array([1.4]),
-                      'w': ivy.array([1.9, 0.6, 2.1])}})
+   grads = aikit.Container(
+          {'linear': {'b': aikit.array([1.4]),
+                      'w': aikit.array([1.9, 0.6, 2.1])}})
 
    lr = 0.1
 
@@ -170,32 +170,32 @@ For example, performing a gradient update step for a set of network weights can 
 
     {
         linear: {
-            b: ivy.array([0.06]),
-            w: ivy.array([1.31, 2.24, 0.69])
+            b: aikit.array([0.06]),
+            w: aikit.array([1.31, 2.24, 0.69])
         }
     }
 
-Check out the section below on Ivy’s stateful API to see how the :class:`ivy.Container` is used for storing all network weights in :class:`ivy.Module` instances!
+Check out the section below on Aikit’s stateful API to see how the :class:`aikit.Container` is used for storing all network weights in :class:`aikit.Module` instances!
 
 Access
 ------
 
-The keys in an :class:`ivy.Container` can be set and accessed by using either class attributes or keys in the dictionary.
+The keys in an :class:`aikit.Container` can be set and accessed by using either class attributes or keys in the dictionary.
 Both of these setting and accessing approaches are equivalent under the hood.
 
 .. code-block:: python
 
-   cnt = ivy.Container({'a': ivy.array([0.])})
+   cnt = aikit.Container({'a': aikit.array([0.])})
 
-   cnt['b'] = ivy.array([1.])
-   cnt.c = ivy.array([2.])
+   cnt['b'] = aikit.array([1.])
+   cnt.c = aikit.array([2.])
 
    print(cnt)
 
     {
-        a: ivy.array([0.]),
-        b: ivy.array([1.]),
-        c: ivy.array([2.])
+        a: aikit.array([0.]),
+        b: aikit.array([1.]),
+        c: aikit.array([2.])
     }
 
    assert cnt.c is cnt['c']
@@ -204,20 +204,20 @@ Nested keys can also be set in one line, using either ‘/’ or ‘.’ as a de
 
 .. code-block:: python
 
-   cnt = ivy.Container({'a': ivy.array([0.])})
-   cnt['b/c'] = ivy.array([1.])
-   cnt['d.e.f'] = ivy.array([2.])
+   cnt = aikit.Container({'a': aikit.array([0.])})
+   cnt['b/c'] = aikit.array([1.])
+   cnt['d.e.f'] = aikit.array([2.])
 
    print(cnt)
 
     {
-        a: ivy.array([0.]),
+        a: aikit.array([0.]),
         b: {
-            c: ivy.array([1.])
+            c: aikit.array([1.])
         },
         d: {
             e: {
-                f: ivy.array([2.])
+                f: aikit.array([2.])
             }
         }
     }
@@ -228,9 +228,9 @@ This is not possible with Dicts.
 
 .. code-block:: python
 
-   cnt = ivy.Container({'agent': {'total_speed': ivy.array([0.])}})
-   cnt.agent.total_height = ivy.array([1.])
-   cnt['agent/total_width'] = ivy.array([2.])
+   cnt = aikit.Container({'agent': {'total_speed': aikit.array([0.])}})
+   cnt.agent.total_height = aikit.array([1.])
+   cnt['agent/total_width'] = aikit.array([2.])
 
    cnt.age -> tab
    cnt.agent
@@ -242,7 +242,7 @@ This is not possible with Dicts.
    cnt.agent.total_h -> tab
    cnt.agent.total_height
 
-   ivy.array([1.])
+   aikit.array([1.])
 
 Saving and Loading
 ------------------
@@ -253,27 +253,27 @@ For example, if the container mainly contains arrays (such as the weights of a n
 
 .. code-block:: python
 
-   weights = ivy.Container(
-          {'linear': {'b': ivy.array([[0.2]]),
-                      'w': ivy.array([[1.5, 2.3, 0.9]])}})
+   weights = aikit.Container(
+          {'linear': {'b': aikit.array([[0.2]]),
+                      'w': aikit.array([[1.5, 2.3, 0.9]])}})
 
    # save and load as hdf5
    weights.cont_to_disk_as_hdf5('weights.hdf5')
-   loaded = ivy.Container.cont_from_disk_as_hdf5('weights.hdf5')
-   assert ivy.Container.cont_identical(
+   loaded = aikit.Container.cont_from_disk_as_hdf5('weights.hdf5')
+   assert aikit.Container.cont_identical(
           [loaded, weights], same_arrays=False)
 
    # save and load as pickled
    weights.cont_to_disk_as_pickled('weights.pickled')
-   loaded = ivy.Container.cont_from_disk_as_pickled('weights.pickled')
-   assert ivy.Container.cont_identical(
+   loaded = aikit.Container.cont_from_disk_as_pickled('weights.pickled')
+   assert aikit.Container.cont_identical(
           [loaded, weights], same_arrays=False)
 
 Alternatively, if the container mainly stored experiment configuration data, then the following can be used.
 
 .. code-block:: python
 
-   config = ivy.Container(
+   config = aikit.Container(
           {'loading': {'batch_size': 16,
                        'dir': '/dataset/images'},
            'training': {'dropout': True,
@@ -297,7 +297,7 @@ Alternatively, if the container mainly stored experiment configuration data, the
    # }                                 #
    # ----------------------------------#
 
-   loaded = ivy.Container.cont_from_disk_as_json('config.json')
+   loaded = aikit.Container.cont_from_disk_as_json('config.json')
    assert (config == loaded).cont_all_true()
 
 Comparisons
@@ -310,37 +310,37 @@ We can then very quickly find conflicting leaves.
 
 .. code-block:: python
 
-    cnt0 = ivy.Container({'a': ivy.array([0.]),
-                      'b': ivy.array([1.])})
+    cnt0 = aikit.Container({'a': aikit.array([0.]),
+                      'b': aikit.array([1.])})
     cnt1 = cnt0.cont_deep_copy()
-    cnt1.b = ivy.array([0.])
+    cnt1.b = aikit.array([0.])
 
-    print(ivy.Container.cont_diff(cnt0, cnt1))
+    print(aikit.Container.cont_diff(cnt0, cnt1))
 
     {
-        a: ivy.array([0.]),
+        a: aikit.array([0.]),
         b: {
-            diff_0: ivy.array([1.]),
-            diff_1: ivy.array([0.])
+            diff_0: aikit.array([1.]),
+            diff_1: aikit.array([0.])
         }
     }
 
 Or perhaps we saved JSON configuration files to disk for two different experiment runs, and then want to quickly see their differences.
-The :meth:`ivy.Container.cont_diff` method will also detect differences in the hierarchical structure and key name differences.
+The :meth:`aikit.Container.cont_diff` method will also detect differences in the hierarchical structure and key name differences.
 
 .. code-block:: python
 
-    config0 = ivy.Container(
+    config0 = aikit.Container(
            {'batch_size': 8,
             'lr': 0.1,
             'optim': 'ADAM'})
 
-    config1 = ivy.Container(
+    config1 = aikit.Container(
            {'batch_size': 16,
             'dropout': 0.5,
             'lr': 0.1})
 
-    print(ivy.Container.cont_diff(config0, config1))
+    print(aikit.Container.cont_diff(config0, config1))
 
     {
         batch_size: {
@@ -355,12 +355,12 @@ The :meth:`ivy.Container.cont_diff` method will also detect differences in the h
             diff_0: ADAM
         }
     }
-The :meth:`ivy.Container.cont_diff` method can be applied to arbitrarily many containers at once in a single call, not just two as in the examples above.
+The :meth:`aikit.Container.cont_diff` method can be applied to arbitrarily many containers at once in a single call, not just two as in the examples above.
 
 Customized Representations
 --------------------------
 
-Not only does :class:`ivy.Container` print to the terminal in a very intuitive manner, but there are also helper functions to fully control this representation.
+Not only does :class:`aikit.Container` print to the terminal in a very intuitive manner, but there are also helper functions to fully control this representation.
 This is very helpful when debugging networks with huge numbers of parameters with a deep hierarchical structure for example.
 
 If our networks weights go many levels deep in the nested hierarchy, we might not want to see all of them when printing our container to the screen.
@@ -368,27 +368,27 @@ Consider the following nested structure.
 
 .. code-block:: python
 
-    weights = ivy.Container(
+    weights = aikit.Container(
         {'decoder':
              {'l0':
-                  {'b': ivy.array([0.]),
-                   'w': ivy.array([[0.]])},
+                  {'b': aikit.array([0.]),
+                   'w': aikit.array([[0.]])},
               'l1':
-                  {'b': ivy.array([0.]),
-                   'w': ivy.array([[0.]])}},
+                  {'b': aikit.array([0.]),
+                   'w': aikit.array([[0.]])}},
          'encoder':
              {'l0':
-                  {'b': ivy.array([0.]),
-                   'w': ivy.array([[0.]])},
+                  {'b': aikit.array([0.]),
+                   'w': aikit.array([[0.]])},
               'l1':
-                  {'b': ivy.array([0.]),
-                   'w': ivy.array([[0.]])}},
+                  {'b': aikit.array([0.]),
+                   'w': aikit.array([[0.]])}},
          'l0':
-             {'b': ivy.array([0.]),
-              'w': ivy.array([[0.]])},
+             {'b': aikit.array([0.]),
+              'w': aikit.array([[0.]])},
          'l1':
-             {'b': ivy.array([0.]),
-              'w': ivy.array([[0.]])}})
+             {'b': aikit.array([0.]),
+              'w': aikit.array([[0.]])}})
 
 We can clip the depth of the printed container in order to make the structure of the root keys clearer.
 All nested structures below this depth are truncated into single keys with a “__” delimiter appending all keys below this depth.
@@ -399,28 +399,28 @@ All nested structures below this depth are truncated into single keys with a “
 
     {
         decoder__l0: {
-            b: ivy.array([0.]),
-            w: ivy.array([[0.]])
+            b: aikit.array([0.]),
+            w: aikit.array([[0.]])
         },
         decoder__l1: {
-            b: ivy.array([0.]),
-            w: ivy.array([[0.]])
+            b: aikit.array([0.]),
+            w: aikit.array([[0.]])
         },
         encoder__l0: {
-            b: ivy.array([0.]),
-            w: ivy.array([[0.]])
+            b: aikit.array([0.]),
+            w: aikit.array([[0.]])
         },
         encoder__l1: {
-            b: ivy.array([0.]),
-            w: ivy.array([[0.]])
+            b: aikit.array([0.]),
+            w: aikit.array([[0.]])
         },
         l0: {
-            b: ivy.array([0.]),
-            w: ivy.array([[0.]])
+            b: aikit.array([0.]),
+            w: aikit.array([[0.]])
         },
         l1: {
-            b: ivy.array([0.]),
-            w: ivy.array([[0.]])
+            b: aikit.array([0.]),
+            w: aikit.array([[0.]])
         }
     }
 
@@ -434,49 +434,49 @@ All nested structures above this height are truncated into single keys with a �
 
     {
         decoder: {
-            l0__b: ivy.array([0.]),
-            l0__w: ivy.array([[0.]]),
-            l1__b: ivy.array([0.]),
-            l1__w: ivy.array([[0.]])
+            l0__b: aikit.array([0.]),
+            l0__w: aikit.array([[0.]]),
+            l1__b: aikit.array([0.]),
+            l1__w: aikit.array([[0.]])
         },
         encoder: {
-            l0__b: ivy.array([0.]),
-            l0__w: ivy.array([[0.]]),
-            l1__b: ivy.array([0.]),
-            l1__w: ivy.array([[0.]])
+            l0__b: aikit.array([0.]),
+            l0__w: aikit.array([[0.]]),
+            l1__b: aikit.array([0.]),
+            l1__w: aikit.array([[0.]])
         },
         l0: {
-            b: ivy.array([0.]),
-            w: ivy.array([[0.]])
+            b: aikit.array([0.]),
+            w: aikit.array([[0.]])
         },
         l1: {
-            b: ivy.array([0.]),
-            w: ivy.array([[0.]])
+            b: aikit.array([0.]),
+            w: aikit.array([[0.]])
         }
     }
 
 These are very useful methods when stepping through code and debugging complex nested structures such as the weights of a network.
 
 There are also methods: :code:`cont_with_print_limit` for controlling the printable size of arrays before the shape is instead displayed, :code:`cont_with_key_length_limit` for setting the maximum key length before string clipping, :code:`cont_with_print_indent` for controlling the nested indent, and many more.
-Check out the `docs <../../../docs/data_classes/data_classes/ivy.data_classes.container.rst>`_ for more details!
+Check out the `docs <../../../docs/data_classes/data_classes/aikit.data_classes.container.rst>`_ for more details!
 
 Use Cases
 ---------
 
-We’ll now just go through a few of the different use cases for the Ivy Container.
+We’ll now just go through a few of the different use cases for the Aikit Container.
 The container is not limited to these use cases though, the container is the right choice whenever you are storing nested data!
 
 Compartmentalization
 --------------------
 
-The most obvious use case for the :class:`ivy.Container` class is to compartmentalize inputs into a useful structure.
+The most obvious use case for the :class:`aikit.Container` class is to compartmentalize inputs into a useful structure.
 For example, without better foresight, we could untidily implement a function :code:`update_agent` as follows:
 
 .. code-block:: python
 
     def normalize_img(img):
-        img_max = ivy.reduce_max(img)
-        img_min = ivy.reduce_min(img)
+        img_max = aikit.reduce_max(img)
+        img_min = aikit.reduce_min(img)
         img_range = img_max - img_min
         return (img - img_min) / img_range
 
@@ -486,8 +486,8 @@ For example, without better foresight, we could untidily implement a function :c
                      agent_cam_lidar):
 
         # update agent state
-        agent_position += ivy.array([0., 1., 2.])
-        agent_velocity -= ivy.array([2., 1., 0.])
+        agent_position += aikit.array([0., 1., 2.])
+        agent_velocity -= aikit.array([2., 1., 0.])
 
         # normalize images
         agent_cam_front_rgb = normalize_img(agent_cam_front_rgb)
@@ -505,11 +505,11 @@ Our code will be much cleaner if we do something like the following, particularl
 
 .. code-block:: python
 
-    class Cameras(ivy.Container):
+    class Cameras(aikit.Container):
 
-        def __init__(self, front_rgb: ivy.Array, front_depth: ivy.Array,
-                     rear_rgb: ivy.Array, rear_depth: ivy.Array,
-                     lidar: ivy.Array):
+        def __init__(self, front_rgb: aikit.Array, front_depth: aikit.Array,
+                     rear_rgb: aikit.Array, rear_depth: aikit.Array,
+                     lidar: aikit.Array):
             super().__init__(self,
                              front={'rgb': front_rgb,
                                     'depth': front_depth},
@@ -517,18 +517,18 @@ Our code will be much cleaner if we do something like the following, particularl
                                    'depth': rear_depth},
                              lidar=lidar)
 
-    class Agent(ivy.Container):
+    class Agent(aikit.Container):
 
-        def __init__(self, position: ivy.Array,
-                     velocity: ivy.Array, cams: Cameras):
+        def __init__(self, position: aikit.Array,
+                     velocity: aikit.Array, cams: Cameras):
             super().__init__(self, position=position,
                              velocity=velocity, cams=cams)
 
     def update_agent(agent: Agent):
 
         # update agent state
-        agent.position += ivy.array([0., 1., 2.])
-        agent.velocity -= ivy.array([2., 1., 0.])
+        agent.position += aikit.array([0., 1., 2.])
+        agent.velocity -= aikit.array([2., 1., 0.])
 
         # normalize images
         cam_max = agent.cams.reduce_max()
@@ -536,14 +536,14 @@ Our code will be much cleaner if we do something like the following, particularl
         cam_range = cam_max - cam_min
         agent.cams = (agent.cams - cam_min) / cam_range
 
-Of course, this argument holds for the use of custom classes or built-in containers (Python list, dict, tuple etc.), and isn’t only relevant for the Ivy container.
-However, the recursive methods of the Ivy Container make things even more convenient, such as where we recursively normalize all five images in the final four lines of the :code:`update_agent` method.
+Of course, this argument holds for the use of custom classes or built-in containers (Python list, dict, tuple etc.), and isn’t only relevant for the Aikit container.
+However, the recursive methods of the Aikit Container make things even more convenient, such as where we recursively normalize all five images in the final four lines of the :code:`update_agent` method.
 
 Configuration
 --------------
 
-As briefly alluded to when explaining the :meth:`ivy.Container.cont_diff` method, the container class is also the ideal data type for storing experiment configurations.
-Configurations can either first be stored to disk as a JSON file and then loaded into the :class:`ivy.Container` for recursive comparisons to see differences between experiments, or the config can be specified in the code and then saved to disk as a JSON to keep a permanent log afterwards.
+As briefly alluded to when explaining the :meth:`aikit.Container.cont_diff` method, the container class is also the ideal data type for storing experiment configurations.
+Configurations can either first be stored to disk as a JSON file and then loaded into the :class:`aikit.Container` for recursive comparisons to see differences between experiments, or the config can be specified in the code and then saved to disk as a JSON to keep a permanent log afterwards.
 
 Data loading
 ------------
@@ -561,7 +561,7 @@ This is useful if we need to recursively unroll the entire batch in the time dim
     class DataLoader:
 
         def __init__(self, batch_size):
-            self._cnt = ivy.Container(
+            self._cnt = aikit.Container(
                 dict(imgs={'front': 'images/front/img_{}.png',
                            'rear': 'images/rear/img_{}.png'}))
             self._dataset_size = 8
@@ -572,7 +572,7 @@ This is useful if we need to recursively unroll the entire batch in the time dim
             cnt = self._cnt.cont_copy()
 
             # image filenames
-            img_fnames = ivy.Container.cont_list_stack(
+            img_fnames = aikit.Container.cont_list_stack(
                 [cnt.imgs.cont_map(
                     lambda fname, _: fname.format(self._count + i)
                 ) for i in range(self._batch_size)], 0
@@ -607,36 +607,36 @@ This is useful if we need to recursively unroll the entire batch in the time dim
 Network weights
 ---------------
 
-Finally, the Ivy Containers can also be used for storing network weights.
-In fact, as is discussed in the documentation for the Ivy stateful API, this is how the :class:`ivy.Module` class stores all trainable variables in the model.
+Finally, the Aikit Containers can also be used for storing network weights.
+In fact, as is discussed in the documentation for the Aikit stateful API, this is how the :class:`aikit.Module` class stores all trainable variables in the model.
 The following code is possible thanks to the recursive operation of the container, which applies the gradient update to all variable arrays in the container recursively.
 
 .. code-block:: python
 
-    class MyModel(ivy.Module):
+    class MyModel(aikit.Module):
         def __init__(self):
-            self.linear0 = ivy.Linear(3, 64)
-            self.linear1 = ivy.Linear(64, 1)
-            ivy.Module.__init__(self)
+            self.linear0 = aikit.Linear(3, 64)
+            self.linear1 = aikit.Linear(64, 1)
+            aikit.Module.__init__(self)
 
         def _forward(self, x):
-            x = ivy.relu(self.linear0(x))
-            return ivy.sigmoid(self.linear1(x))
+            x = aikit.relu(self.linear0(x))
+            return aikit.sigmoid(self.linear1(x))
 
     model = MyModel()
-    x_in = ivy.array([1., 2., 3.])
-    target = ivy.array([0.])
+    x_in = aikit.array([1., 2., 3.])
+    target = aikit.array([0.])
     lr = 0.001
 
     def loss_fn(v):
         out = model(x_in, v=v)
-        return ivy.reduce_mean((out - target)**2)[0]
+        return aikit.reduce_mean((out - target)**2)[0]
 
     for step in range(100):
-        loss, grads = ivy.execute_with_gradients(
+        loss, grads = aikit.execute_with_gradients(
           loss_fn, model.v)
         model.v = model.v - lr * grads
-        print(f'step {step} loss {ivy.to_numpy(loss).item()}')
+        print(f'step {step} loss {aikit.to_numpy(loss).item()}')
 
     print(model.v)
 
@@ -653,6 +653,6 @@ The following code is possible thanks to the recursive operation of the containe
 
 **Round Up**
 
-That should hopefully be enough to get you started with the :class:`ivy.Container` class 😊
+That should hopefully be enough to get you started with the :class:`aikit.Container` class 😊
 
 Please reach out on `discord <https://discord.gg/sXyFF8tDtm>`_ if you have any questions!

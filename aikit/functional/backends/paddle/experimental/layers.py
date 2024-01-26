@@ -6,7 +6,7 @@ from aikit.functional.aikit.layers import (
     _depth_max_pooling_helper,
     _validate_max_pool_params,
 )
-from aikit.utils.exceptions import IvyNotImplementedException, IvyValueError
+from aikit.utils.exceptions import AikitNotImplementedException, AikitValueError
 from aikit.func_wrapper import (
     with_supported_device_and_dtypes,
     with_unsupported_dtypes,
@@ -252,7 +252,7 @@ def avg_pool1d(
     divisor_override: Optional[int] = None,
     out: Optional[paddle.Tensor] = None,
 ) -> paddle.Tensor:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def avg_pool2d(
@@ -268,7 +268,7 @@ def avg_pool2d(
     divisor_override: Optional[int] = None,
     out: Optional[paddle.Tensor] = None,
 ) -> paddle.Tensor:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def avg_pool3d(
@@ -284,7 +284,7 @@ def avg_pool3d(
     divisor_override: Optional[int] = None,
     out: Optional[paddle.Tensor] = None,
 ) -> paddle.Tensor:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def dct(
@@ -297,7 +297,7 @@ def dct(
     norm: Optional[Literal["ortho"]] = None,
     out: Optional[paddle.Tensor] = None,
 ) -> paddle.Tensor:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 @with_unsupported_dtypes(
@@ -313,13 +313,13 @@ def fft(
     out: Optional[paddle.Tensor] = None,
 ) -> paddle.Tensor:
     if not isinstance(dim, int):
-        raise IvyValueError(f"Expecting <class 'int'> instead of {type(dim)}")
+        raise AikitValueError(f"Expecting <class 'int'> instead of {type(dim)}")
 
     if n is None:
         n = x.shape[dim]
 
     if dim < -x.ndim or dim >= x.ndim:
-        raise IvyValueError(
+        raise AikitValueError(
             f"Invalid dim {dim}, expecting a value ranging from {-x.ndim} to {x.ndim-1}"
         )
 
@@ -327,11 +327,11 @@ def fft(
         raise TypeError(f"Expecting int type for 'n', instead of {type(n)}")
 
     if n <= 1:
-        raise IvyValueError(f"Invalid number of data points {n}, expecting more than 1")
+        raise AikitValueError(f"Invalid number of data points {n}, expecting more than 1")
 
     valid_norm_modes = ["backward", "ortho", "forward"]
     if norm not in valid_norm_modes:
-        raise IvyValueError(
+        raise AikitValueError(
             f"Unrecognized normalization mode {norm}, expecting one of"
             f" {valid_norm_modes}"
         )
@@ -417,7 +417,7 @@ def ifft(
     n: Optional[Union[int, Tuple[int]]] = None,
     out: Optional[paddle.Tensor] = None,
 ) -> paddle.Tensor:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 @with_supported_device_and_dtypes(
@@ -469,7 +469,7 @@ def interpolate(
     antialias: Optional[bool] = False,
     out: Optional[paddle.Tensor] = None,
 ):
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def adaptive_max_pool2d(
@@ -573,31 +573,31 @@ def stft(
     out: Optional[paddle.Tensor] = None,
 ) -> paddle.Tensor:
     if not isinstance(frame_length, int):
-        raise IvyValueError(f"Expecting <class 'int'> instead of {type(frame_length)}")
+        raise AikitValueError(f"Expecting <class 'int'> instead of {type(frame_length)}")
 
     if frame_length < 1:
-        raise IvyValueError(
+        raise AikitValueError(
             f"Invalid data points {frame_length}, expecting frame_length larger than or"
             " equal to 1"
         )
 
     if not isinstance(frame_step, int):
-        raise IvyValueError(f"Expecting <class 'int'> instead of {type(frame_step)}")
+        raise AikitValueError(f"Expecting <class 'int'> instead of {type(frame_step)}")
 
     if frame_step < 1:
-        raise IvyValueError(
+        raise AikitValueError(
             f"Invalid data points {frame_length}, expecting frame_length larger than or"
             " equal to 1"
         )
 
     if fft_length is not None:
         if not isinstance(fft_length, int):
-            raise IvyValueError(
+            raise AikitValueError(
                 f"Expecting <class 'int'> instead of {type(fft_length)}"
             )
 
         if fft_length < 1:
-            raise IvyValueError(
+            raise AikitValueError(
                 f"Invalid data points {frame_length}, expecting frame_length larger"
                 " than or equal to 1"
             )

@@ -6,7 +6,7 @@ aikit_tests/array_api_testing/test_array_api/array_api_tests/test_signatures.py:
 aikit_tests/array_api_testing/test_array_api/array_api_tests/test_special_cases.py::test_iop[__ipow__(x1_i is -infinity and x2_i > 0 and not (x2_i.is_integer() and x2_i % 2 == 1)) -> +infinity]
 aikit_tests/array_api_testing/test_array_api/array_api_tests/test_special_cases.py::test_iop[__ipow__(x1_i is -0 and x2_i > 0 and not (x2_i.is_integer() and x2_i % 2 == 1)) -> +0]
 
-############################# Ivy only skips - tensorflow #############################
+############################# Aikit only skips - tensorflow #############################
 
 # failed health check - hypothesis test filtering too much data
 # https://github.com/data-apis/array-api-tests/issues/132
@@ -133,19 +133,19 @@ aikit_tests/array_api_testing/test_array_api/array_api_tests/test_array_object.p
 # ValueError: mask cannot be scalar
 aikit_tests/array_api_testing/test_array_api/array_api_tests/test_array_object.py::test_getitem_masking
 
-############################# Ivy only skips - numpy ####################################
+############################# Aikit only skips - numpy ####################################
 # tolerance issue when asserting isequal()
 aikit_tests/array_api_testing/test_array_api/array_api_tests/test_linalg.py::test_matrix_norm
 aikit_tests/array_api_testing/test_array_api/array_api_tests/test_linalg.py::test_det
 #aikit_tests/array_api_testing/test_array_api/array_api_tests/test_creation_functions.py::test_arange
 
-############################# Ivy only skips - torch #############################
+############################# Aikit only skips - torch #############################
 
 # Test is sending unsupported torch dtypes
 aikit_tests/array_api_testing/test_array_api/array_api_tests/test_statistical_functions.py::test_prod
 aikit_tests/array_api_testing/test_array_api/array_api_tests/test_statistical_functions.py::test_sum
 
-############################# Ivy only skips - torch and tensorflow #############################
+############################# Aikit only skips - torch and tensorflow #############################
 
 # floor_divide and remainder implementation deviates from standard
 aikit_tests/array_api_testing/test_array_api/array_api_tests/test_type_promotion.py::test_func_promotion[floor_divide(int32, uint8) -> int32]
@@ -457,7 +457,7 @@ aikit_tests/array_api_testing/test_array_api/array_api_tests/test_type_promotion
 aikit_tests/array_api_testing/test_array_api/array_api_tests/test_type_promotion.py::test_inplace_op_scalar_promotion[__imod__(int32, int) -> int32]
 aikit_tests/array_api_testing/test_array_api/array_api_tests/test_type_promotion.py::test_inplace_op_scalar_promotion[__imod__(int64, int) -> int64]
 
-############################# Ivy only skips - values error #############################
+############################# Aikit only skips - values error #############################
 
 # Issues with backend implementation. Straightforward floordiv implementation deviates from standard,
 # as noted by the skip in the array-api repo.

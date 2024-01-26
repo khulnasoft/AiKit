@@ -198,7 +198,7 @@ class Uniform(Initializer):
             )
             fan = (fan_in + fan_out) / 2
         else:
-            raise aikit.utils.exceptions.IvyException(
+            raise aikit.utils.exceptions.AikitException(
                 "Invalid denominator mode, must be one of [ fan_in | fan_out | "
                 "fan_sum | fan_avg ] "
             )
@@ -348,7 +348,7 @@ class KaimingNormal(Initializer):
             )
             fan = (fan_in + fan_out) / 2
         else:
-            raise aikit.utils.exceptions.IvyException(
+            raise aikit.utils.exceptions.AikitException(
                 "Invalid denominator mode, must be one of [ fan_in | fan_out | "
                 "fan_sum | fan_avg ] "
             )

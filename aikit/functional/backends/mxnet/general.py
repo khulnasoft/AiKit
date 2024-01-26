@@ -2,7 +2,7 @@ import mxnet as mx
 from typing import Union, Optional
 import numpy as np
 
-from aikit.utils.exceptions import IvyNotImplementedException
+from aikit.utils.exceptions import AikitNotImplementedException
 
 
 def current_backend_str() -> str:
@@ -48,4 +48,4 @@ def gather(
     batch_dims: int = 0,
     out: Optional[mx.ndarray.NDArray] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()

@@ -1,39 +1,39 @@
-Ivy Frontend Tests
+Aikit Frontend Tests
 ==================
 
-.. _`here`: ../design/ivy_as_a_transpiler.rst
-.. _`ivy frontends tests thread`: https://discord.com/channels/799879767196958751/1190246804940402738
-.. _`test ivy`: https://github.com/khulnasoft/aikit/tree/db9a22d96efd3820fb289e9997eb41dda6570868/ivy_tests/test_ivy
-.. _`test_frontend_function`: https://github.com/khulnasoft/aikit/blob/591ac37a664ebdf2ca50a5b0751a3a54ee9d5934/ivy_tests/test_ivy/helpers.py#L1047
+.. _`here`: ../design/aikit_as_a_transpiler.rst
+.. _`aikit frontends tests thread`: https://discord.com/channels/799879767196958751/1190246804940402738
+.. _`test aikit`: https://github.com/khulnasoft/aikit/tree/db9a22d96efd3820fb289e9997eb41dda6570868/aikit_tests/test_aikit
+.. _`test_frontend_function`: https://github.com/khulnasoft/aikit/blob/591ac37a664ebdf2ca50a5b0751a3a54ee9d5934/aikit_tests/test_aikit/helpers.py#L1047
 .. _`discord`: https://discord.gg/sXyFF8tDtm
 .. _`Function Wrapping`: function_wrapping.rst
 .. _`open task`: ../contributing/open_tasks.rst
-.. _`Ivy Tests`: ivy_tests.rst
-.. _`Function Testing Helpers`: https://github.com/khulnasoft/aikit/blob/bf0becd459004ae6cffeb3c38c02c94eab5b7721/ivy_tests/test_ivy/helpers/function_testing.py
+.. _`Aikit Tests`: aikit_tests.rst
+.. _`Function Testing Helpers`: https://github.com/khulnasoft/aikit/blob/bf0becd459004ae6cffeb3c38c02c94eab5b7721/aikit_tests/test_aikit/helpers/function_testing.py
 .. _`CI Pipeline`: continuous_integration.rst
 
 
 Introduction
 ------------
 
-Just like the backend functional API, our frontend functional API has a collection of Ivy tests located in the subfolder `test ivy`_.
-In this section of the deep dive we are going to jump into Ivy Frontend Tests!
+Just like the backend functional API, our frontend functional API has a collection of Aikit tests located in the subfolder `test aikit`_.
+In this section of the deep dive we are going to jump into Aikit Frontend Tests!
 
-**Writing Ivy Frontend Tests**
+**Writing Aikit Frontend Tests**
 
-The Ivy tests in this section make use of hypothesis for performing property based testing which is documented in detail in the Ivy Tests section of the Deep Dive.
+The Aikit tests in this section make use of hypothesis for performing property based testing which is documented in detail in the Aikit Tests section of the Deep Dive.
 We assume knowledge of hypothesis data generation strategies and how to implement them for testing.
 
-**Ivy Decorators**
+**Aikit Decorators**
 
-Ivy provides test decorators for frontend tests to make them easier and more maintainable, currently there are two:
+Aikit provides test decorators for frontend tests to make them easier and more maintainable, currently there are two:
 
 * :func:`@handle_frontend_test` a decorator which is used to test frontend functions, for example :func:`np.zeros` and :func:`tensorflow.tan`.
 * :func:`@handle_frontend_method` a decorator which is used to test frontend methods and special methods, for example :func:`torch.Tensor.add` and :func:`numpy.ndarray.__add__`.
 
 **Important Helper Functions**
 
-* :func:`helpers.test_frontend_function` helper function that is designed to do the heavy lifting and make testing Ivy Frontends easy!
+* :func:`helpers.test_frontend_function` helper function that is designed to do the heavy lifting and make testing Aikit Frontends easy!
   One of the many `Function Testing Helpers`_.
   It is used to test a frontend function for the current backend by comparing the result with the function in the associated framework.
 
@@ -63,14 +63,14 @@ Frontend Test Examples
 Before you begin writing a frontend test, make sure you are placing it in the correct location.
 See the :ref:`/overview/contributing/open_tasks:Where to place a frontend function` sub-section of the frontend APIs `open task`_ for more details.
 
-ivy.tan()
+aikit.tan()
 ^^^^^^^^^
 
 **Jax**
 
 .. code-block:: python
 
-    # ivy_tests/test_ivy/test_frontends/test_jax/test_lax/test_operators.py
+    # aikit_tests/test_aikit/test_frontends/test_jax/test_lax/test_operators.py
     @handle_frontend_test(
         fn_tree="jax.lax.tan",
         dtype_and_x=helpers.dtype_and_values(available_dtypes=helpers.get_dtypes("float")),
@@ -109,7 +109,7 @@ ivy.tan()
 
 .. code-block:: python
 
-    # ivy_tests/test_ivy/test_frontends/test_numpy/test_mathematical_functions/test_trigonometric_functions.py
+    # aikit_tests/test_aikit/test_frontends/test_numpy/test_mathematical_functions/test_trigonometric_functions.py
     @handle_frontend_test(
         fn_tree="numpy.tan",
         dtypes_values_casting=np_frontend_helpers.dtypes_values_casting_dtype(
@@ -168,7 +168,7 @@ ivy.tan()
 
 .. code-block:: python
 
-    # ivy_tests/test_ivy/test_frontends/test_tensorflow/test_math.py
+    # aikit_tests/test_aikit/test_frontends/test_tensorflow/test_math.py
     @handle_frontend_test(
         fn_tree="tensorflow.math.tan",
         dtype_and_x=helpers.dtype_and_values(available_dtypes=helpers.get_dtypes("float")),
@@ -202,7 +202,7 @@ ivy.tan()
 
 .. code-block:: python
 
-    # ivy_tests/test_ivy/test_frontends/test_torch/test_pointwise_ops.py
+    # aikit_tests/test_aikit/test_frontends/test_torch/test_pointwise_ops.py
     @handle_frontend_test(
         fn_tree="torch.tan",
         dtype_and_x=helpers.dtype_and_values(
@@ -231,7 +231,7 @@ ivy.tan()
 
 * We use :code:`helpers.get_dtypes("float")` to generate :code:`available_dtypes`, these are valid float data types specifically for the function.
 
-ivy.full()
+aikit.full()
 ^^^^^^^^^^
 
 Here we are going to look at an example of a function that does not consume an :code:`array`.
@@ -243,14 +243,14 @@ This function requires us to create extra functions for generating :code:`shape`
 
 .. code-block:: python
 
-    # ivy_tests/test_ivy/test_frontends/test_jax/test_lax/test_operators.py
+    # aikit_tests/test_aikit/test_frontends/test_jax/test_lax/test_operators.py
     @st.composite
     def _fill_value(draw):
         dtype = draw(helpers.get_dtypes("numeric", full=False, key="dtype"))[0]
-        with update_backend(test_globals.CURRENT_BACKEND) as ivy_backend:
-            if ivy_backend.is_uint_dtype(dtype):
+        with update_backend(test_globals.CURRENT_BACKEND) as aikit_backend:
+            if aikit_backend.is_uint_dtype(dtype):
                 return draw(helpers.ints(min_value=0, max_value=5))
-            elif ivy_backend.is_int_dtype(dtype):
+            elif aikit_backend.is_int_dtype(dtype):
                 return draw(helpers.ints(min_value=-5, max_value=5))
         return draw(helpers.floats(min_value=-5, max_value=5))
 
@@ -302,15 +302,15 @@ This function requires us to create extra functions for generating :code:`shape`
 
 .. code-block:: python
 
-    # ivy_tests/test_ivy/test_frontends/test_numpy/creation_routines/test_from_shape_or_value.py
+    # aikit_tests/test_aikit/test_frontends/test_numpy/creation_routines/test_from_shape_or_value.py
     @st.composite
     def _input_fill_and_dtype(draw):
         dtype = draw(helpers.get_dtypes("float", full=False))
         dtype_and_input = draw(helpers.dtype_and_values(dtype=dtype))
-        with update_backend(test_globals.CURRENT_BACKEND) as ivy_backend:
-            if ivy_backend.is_uint_dtype(dtype[0]):
+        with update_backend(test_globals.CURRENT_BACKEND) as aikit_backend:
+            if aikit_backend.is_uint_dtype(dtype[0]):
                 fill_values = draw(st.integers(min_value=0, max_value=5))
-            elif ivy_backend.is_int_dtype(dtype[0]):
+            elif aikit_backend.is_int_dtype(dtype[0]):
                 fill_values = draw(st.integers(min_value=-5, max_value=5))
             else:
                 fill_values = draw(
@@ -368,14 +368,14 @@ This function requires us to create extra functions for generating :code:`shape`
 
 .. code-block:: python
 
-    # ivy_tests/test_ivy/test_frontends/test_tensorflow/test_raw_ops.py
+    # aikit_tests/test_aikit/test_frontends/test_tensorflow/test_raw_ops.py
     @st.composite
     def _fill_value(draw):
         dtype = draw(_dtypes())[0]
-        with update_backend(test_globals.CURRENT_BACKEND) as ivy_backend:
-            if ivy_backend.is_uint_dtype(dtype):
+        with update_backend(test_globals.CURRENT_BACKEND) as aikit_backend:
+            if aikit_backend.is_uint_dtype(dtype):
                 return draw(helpers.ints(min_value=0, max_value=5))
-            elif ivy_backend.is_int_dtype(dtype):
+            elif aikit_backend.is_int_dtype(dtype):
                 return draw(helpers.ints(min_value=-5, max_value=5))
             return draw(helpers.floats(min_value=-5, max_value=5))
 
@@ -425,15 +425,15 @@ This function requires us to create extra functions for generating :code:`shape`
 
 .. code-block:: python
 
-    # ivy_tests/test_ivy/test_frontends/test_torch/test_creation_ops.py
+    # aikit_tests/test_aikit/test_frontends/test_torch/test_creation_ops.py
     @st.composite
     def _fill_value(draw):
         with_array = draw(st.sampled_from([True, False]))
         dtype = draw(st.shared(helpers.get_dtypes("numeric", full=False), key="dtype"))[0]
-        with update_backend(test_globals.CURRENT_BACKEND) as ivy_backend:
-            if ivy_backend.is_uint_dtype(dtype):
+        with update_backend(test_globals.CURRENT_BACKEND) as aikit_backend:
+            if aikit_backend.is_uint_dtype(dtype):
                 ret = draw(helpers.ints(min_value=0, max_value=5))
-            elif ivy_backend.is_int_dtype(dtype):
+            elif aikit_backend.is_int_dtype(dtype):
                 ret = draw(helpers.ints(min_value=-5, max_value=5))
             else:
                 ret = draw(helpers.floats(min_value=-5, max_value=5))
@@ -492,7 +492,7 @@ we can not and we have to reconstruct the output as shown in the example below.
 
 .. code-block:: python
 
-    # ivy_tests/test_ivy/test_frontends/test_torch/test_linalg.py
+    # aikit_tests/test_aikit/test_frontends/test_torch/test_linalg.py
     @handle_frontend_test(
         fn_tree="torch.linalg.qr",
         dtype_and_input=_get_dtype_and_matrix(batch=True),
@@ -518,8 +518,8 @@ we can not and we have to reconstruct the output as shown in the example below.
             test_values=False,
         )
 
-        with update_backend(backend_fw) as ivy_backend:
-            ret = [ivy_backend.to_numpy(x) for x in ret]
+        with update_backend(backend_fw) as aikit_backend:
+            ret = [aikit_backend.to_numpy(x) for x in ret]
 
         frontend_ret = [np.asarray(x) for x in frontend_ret]
         q, r = ret
@@ -564,11 +564,11 @@ Code example for alias function:
 
 .. code-block:: python
 
-    # in ivy/functional/frontends/torch/comparison_ops.py
-    @to_ivy_arrays_and_back
+    # in aikit/functional/frontends/torch/comparison_ops.py
+    @to_aikit_arrays_and_back
     def greater(input, other, *, out=None):
         input, other = torch_frontend.promote_types_of_torch_inputs(input, other)
-        return ivy.greater(input, other, out=out
+        return aikit.greater(input, other, out=out
 
 
     gt = greater
@@ -579,7 +579,7 @@ Code example for alias function:
 
 .. code-block:: python
 
-    # ivy_tests/test_ivy/test_frontends/test_torch/test_comparison_ops.py
+    # aikit_tests/test_aikit/test_frontends/test_torch/test_comparison_ops.py
     @handle_frontend_test(
         fn_tree="torch.gt",
         aliases=["torch.greater"],
@@ -624,7 +624,7 @@ for example, :code:`ndarray.__add__` would expect an array as input, despite the
 **Important Helper Functions**
 
 :func:`@handle_frontend_method` requires 3 keyword only parameters:
-    - :code:`class_tree` A full path to the array class in **Ivy** namespace.
+    - :code:`class_tree` A full path to the array class in **Aikit** namespace.
     - :code:`init_tree` A full path to initialization function.
     - :code:`method_name` The name of the method to test.
 
@@ -638,13 +638,13 @@ for example, :code:`ndarray.__add__` would expect an array as input, despite the
 Frontend Instance Method Test Examples
 --------------------------------------
 
-ivy.add()
+aikit.add()
 ^^^^^^^^^
 **NumPy**
 
 .. code-block:: python
 
-    # ivy_tests/test_ivy/test_frontends/test_numpy/test_ndarray.py
+    # aikit_tests/test_aikit/test_frontends/test_numpy/test_ndarray.py
     @handle_frontend_method(
         class_tree=CLASS_TREE,
         init_tree="numpy.array",
@@ -680,7 +680,7 @@ ivy.add()
         )
 
 
-* We specify the :code:`class_tree` to be :meth:`ivy.functional.frontends.numpy.array` which is the path to the class in ivy namespace.
+* We specify the :code:`class_tree` to be :meth:`aikit.functional.frontends.numpy.array` which is the path to the class in aikit namespace.
 * We specify the function that is used to initialize the array, for jax, we use :code:`numpy.array` to create a :code:`numpy.ndarray`.
 * We specify the :code:`method_name` to be :meth:`__add__` which is the path to the method in the frontend class.
 
@@ -688,7 +688,7 @@ ivy.add()
 
 .. code-block:: python
 
-    # ivy_tests/test_ivy/test_frontends/test_tensorflow/test_tensor.py
+    # aikit_tests/test_aikit/test_frontends/test_tensorflow/test_tensor.py
     @handle_frontend_method(
         class_tree=CLASS_TREE,
         init_tree="tensorflow.constant",
@@ -732,7 +732,7 @@ ivy.add()
 
 .. code-block:: python
 
-    # ivy_tests/test_ivy/test_frontends/test_torch/test_tensor.py
+    # aikit_tests/test_aikit/test_frontends/test_torch/test_tensor.py
     @handle_frontend_method(
         class_tree=CLASS_TREE,
         init_tree="torch.tensor",
@@ -781,24 +781,24 @@ ivy.add()
 Hypothesis Helpers
 ------------------
 
-Naturally, many of the functions in the various frontend APIs are very similar to many of the functions in the Ivy API.
+Naturally, many of the functions in the various frontend APIs are very similar to many of the functions in the Aikit API.
 Therefore, the unit tests will follow very similar structures with regards to the data generated for testing.
-There are many data generation helper functions defined in the Ivy API test files, such as :func:`_arrays_idx_n_dtypes` defined in :mod:`ivy/ivy_tests/test_ivy/test_functional/test_core/test_manipulation.py`.
+There are many data generation helper functions defined in the Aikit API test files, such as :func:`_arrays_idx_n_dtypes` defined in :mod:`aikit/aikit_tests/test_aikit/test_functional/test_core/test_manipulation.py`.
 This helper generates: a set of concatenation-compatible arrays, the index for the concatenation, and the data types of each array.
-Not surprisingly, this helper is used for testing :func:`ivy.concat`, as shown `here <https://github.com/khulnasoft/aikit/blob/86287f4e45bbe581fe54e37d5081c684130cba2b/ivy_tests/test_ivy/test_functional/test_core/test_manipulation.py#L53>`_.
+Not surprisingly, this helper is used for testing :func:`aikit.concat`, as shown `here <https://github.com/khulnasoft/aikit/blob/86287f4e45bbe581fe54e37d5081c684130cba2b/aikit_tests/test_aikit/test_functional/test_core/test_manipulation.py#L53>`_.
 
 Clearly, this helper would also be very useful for testing the various frontend concatenation functions, such as :code:`jax.numpy.concatenate`, :code:`numpy.concatenate`, :code:`tensorflow.concat` and :code:`torch.cat`.
-We could simply copy and paste the implementation from :mod:`/ivy_tests/test_ivy/test_functional/test_core/test_manipulation.py` into each file :mod:`/ivy_tests/test_ivy/test_frontends/test_<framework>/test_<group>.py`, but this would result in needless duplication.
-Instead, we should simply import the helper function from the ivy test file into the frontend test file, like so :code:`from ivy_tests.test_ivy.test_frontends.test_manipulation import _arrays_idx_n_dtypes`.
+We could simply copy and paste the implementation from :mod:`/aikit_tests/test_aikit/test_functional/test_core/test_manipulation.py` into each file :mod:`/aikit_tests/test_aikit/test_frontends/test_<framework>/test_<group>.py`, but this would result in needless duplication.
+Instead, we should simply import the helper function from the aikit test file into the frontend test file, like so :code:`from aikit_tests.test_aikit.test_frontends.test_manipulation import _arrays_idx_n_dtypes`.
 
-In cases where a helper function is uniquely useful for a frontend function without being useful for an Ivy function, then it should be implemented directly in :mod:`/ivy_tests/test_ivy/test_frontends/test_<framework>/test_<group>.py` rather than in :mod:`/ivy_tests/test_ivy/test_functional/test_core/test_<closest_relevant_group>.py`.
-However, as shown above, in many cases the same helper function can be shared between the Ivy API tests and the frontend tests, and we should strive for as much sharing as possible to minimize the amount of code.
+In cases where a helper function is uniquely useful for a frontend function without being useful for an Aikit function, then it should be implemented directly in :mod:`/aikit_tests/test_aikit/test_frontends/test_<framework>/test_<group>.py` rather than in :mod:`/aikit_tests/test_aikit/test_functional/test_core/test_<closest_relevant_group>.py`.
+However, as shown above, in many cases the same helper function can be shared between the Aikit API tests and the frontend tests, and we should strive for as much sharing as possible to minimize the amount of code.
 
-**Running Ivy Frontend Tests**
+**Running Aikit Frontend Tests**
 
 The CI Pipeline runs the entire collection of Frontend Tests for the frontend that is being updated on every push to the repo.
 
-You will need to make sure the Frontend Test is passing for each Ivy Frontend function you introduce/modify.
+You will need to make sure the Frontend Test is passing for each Aikit Frontend function you introduce/modify.
 If a test fails on the CI, you can see details about the failure under `Details -> Run Frontend Tests` as shown in `CI Pipeline`_.
 
 You can also run the tests locally before making a PR. See the relevant :ref:`overview/contributing/setting_up:Setting Up Testing in PyCharm` section for instructions on how to do so.
@@ -810,13 +810,13 @@ This information includes how to create an array, return type checking, supporte
 
 All the required information for a frontend is stored in a configuration file, which serves as a reference for our testing pipeline.
 The process of incorporating a new frontend into our testing procedure involves simply writing a new config file for that framework.
-The configuration files are located at: :code:`ivy_tests/test_ivy/test_frontends/config/`
+The configuration files are located at: :code:`aikit_tests/test_aikit/test_frontends/config/`
 
 **Round Up**
 
-This should have hopefully given you a good understanding of Ivy Frontend Tests!
+This should have hopefully given you a good understanding of Aikit Frontend Tests!
 
-If you have any questions, please feel free to reach out on `discord`_ in the `ivy frontends tests thread`_!
+If you have any questions, please feel free to reach out on `discord`_ in the `aikit frontends tests thread`_!
 
 
 **Video**

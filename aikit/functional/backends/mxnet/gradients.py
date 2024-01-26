@@ -1,4 +1,4 @@
-"""Collection of MXNet gradient functions, wrapped to fit Ivy syntax and
+"""Collection of MXNet gradient functions, wrapped to fit Aikit syntax and
 signature."""
 
 # global
@@ -6,7 +6,7 @@ from typing import Sequence, Union
 import mxnet as mx
 
 # local
-from aikit.utils.exceptions import IvyNotImplementedException
+from aikit.utils.exceptions import AikitNotImplementedException
 
 
 def variable(x, /):
@@ -18,7 +18,7 @@ def is_variable(x, /, *, exclusive=False):
 
 
 def variable_data(x, /):
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def execute_with_gradients(
@@ -30,20 +30,20 @@ def execute_with_gradients(
     xs_grad_idxs: Sequence[Sequence[Union[str, int]]] = ((0,),),
     ret_grad_idxs: Sequence[Sequence[Union[str, int]]] = ((0,),),
 ):
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def value_and_grad(func):
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def jac(func):
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def grad(func, argnums=0):
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def stop_gradient(x, /, *, preserve_type=True, out=None):
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()

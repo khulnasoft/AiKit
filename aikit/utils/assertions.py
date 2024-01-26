@@ -38,11 +38,11 @@ def check_less(x1, x2, allow_equal=False, message="", as_array=True):
     gt, gt_eq = comp_fn(x1, x2)
     # less_equal
     if allow_equal and gt:
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             f"{x1} must be lesser than or equal to {x2}" if message == "" else message
         )
     elif not allow_equal and gt_eq:
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             f"{x1} must be lesser than {x2}" if message == "" else message
         )
 
@@ -64,11 +64,11 @@ def check_greater(x1, x2, allow_equal=False, message="", as_array=True):
     lt, lt_eq = comp_fn(x1, x2)
     # greater_equal
     if allow_equal and lt:
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             f"{x1} must be greater than or equal to {x2}" if message == "" else message
         )
     elif not allow_equal and lt_eq:
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             f"{x1} must be greater than {x2}" if message == "" else message
         )
 
@@ -91,18 +91,18 @@ def check_equal(x1, x2, inverse=False, message="", as_array=True):
 
     eq = comp_fn(x1, x2)
     if inverse and eq:
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             f"{x1} must not be equal to {x2}" if message == "" else message
         )
     elif not inverse and eq:
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             f"{x1} must be equal to {x2}" if message == "" else message
         )
 
 
 def check_isinstance(x, allowed_types, message=""):
     if not isinstance(x, allowed_types):
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             f"type of x: {type(x)} must be one of the allowed types: {allowed_types}"
             if message == ""
             else message
@@ -112,45 +112,45 @@ def check_isinstance(x, allowed_types, message=""):
 def check_exists(x, inverse=False, message=""):
     # not_exists
     if inverse and aikit.exists(x):
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             "arg must be None" if message == "" else message
         )
     # exists
     elif not inverse and not aikit.exists(x):
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             "arg must not be None" if message == "" else message
         )
 
 
 def check_elem_in_list(elem, list, inverse=False, message=""):
     if inverse and elem in list:
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             message if message != "" else f"{elem} must not be one of {list}"
         )
     elif not inverse and elem not in list:
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             message if message != "" else f"{elem} must be one of {list}"
         )
 
 
 def check_true(expression, message="expression must be True"):
     if not expression:
-        raise aikit.utils.exceptions.IvyException(message)
+        raise aikit.utils.exceptions.AikitException(message)
 
 
 def check_false(expression, message="expression must be False"):
     if expression:
-        raise aikit.utils.exceptions.IvyException(message)
+        raise aikit.utils.exceptions.AikitException(message)
 
 
 def check_all(results, message="one of the args is False", as_array=True):
     if (as_array and not aikit.all(results)) or (not as_array and not all(results)):
-        raise aikit.utils.exceptions.IvyException(message)
+        raise aikit.utils.exceptions.AikitException(message)
 
 
 def check_any(results, message="all of the args are False", as_array=True):
     if (as_array and not aikit.any(results)) or (not as_array and not any(results)):
-        raise aikit.utils.exceptions.IvyException(message)
+        raise aikit.utils.exceptions.AikitException(message)
 
 
 def check_all_or_any_fn(
@@ -168,9 +168,9 @@ def check_all_or_any_fn(
         for arg in args:
             count = count + 1 if fn(arg) else count
         if count not in limit:
-            raise aikit.utils.exceptions.IvyException(message)
+            raise aikit.utils.exceptions.AikitException(message)
     else:
-        raise aikit.utils.exceptions.IvyException("type must be all or any")
+        raise aikit.utils.exceptions.AikitException("type must be all or any")
 
 
 def check_shape(x1, x2, message=""):
@@ -183,7 +183,7 @@ def check_shape(x1, x2, message=""):
         )
     )
     if aikit.shape(x1)[:] != aikit.shape(x2)[:]:
-        raise aikit.utils.exceptions.IvyException(message)
+        raise aikit.utils.exceptions.AikitException(message)
 
 
 def check_same_dtype(x1, x2, message=""):
@@ -196,7 +196,7 @@ def check_same_dtype(x1, x2, message=""):
                 f" {aikit.dtype(x2)})"
             )
         )
-        raise aikit.utils.exceptions.IvyException(message)
+        raise aikit.utils.exceptions.AikitException(message)
 
 
 # Creation #
@@ -253,11 +253,11 @@ def check_unsorted_segment_valid_params(data, segment_ids, num_segments):
 
 def check_gather_input_valid(params, indices, axis, batch_dims):
     if batch_dims > axis:
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             f"batch_dims ({batch_dims}) must be less than or equal to axis ({axis})."
         )
     if params.shape[0:batch_dims] != indices.shape[0:batch_dims]:
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             "batch dimensions must match in `params` and `indices`; saw"
             f" {params.shape[0:batch_dims]} vs. {indices.shape[0:batch_dims]}"
         )
@@ -265,22 +265,22 @@ def check_gather_input_valid(params, indices, axis, batch_dims):
 
 def check_gather_nd_input_valid(params, indices, batch_dims):
     if batch_dims >= len(params.shape):
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             f"batch_dims = {batch_dims} must be less than rank(`params`) ="
             f" {len(params.shape)}."
         )
     if batch_dims >= len(indices.shape):
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             f"batch_dims = {batch_dims}  must be less than rank(`indices`) ="
             f" {len(indices.shape)}."
         )
     if params.shape[0:batch_dims] != indices.shape[0:batch_dims]:
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             "batch dimensions must match in `params` and `indices`; saw"
             f" {params.shape[0:batch_dims]} vs. {indices.shape[0:batch_dims]}"
         )
     if indices.shape[-1] > (len(params.shape[batch_dims:])):
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             "index innermost dimension length must be <= rank(`params[batch_dims:]`);"
             f" saw: {indices.shape[-1]} vs. {len(params.shape[batch_dims:])} ."
         )
@@ -299,7 +299,7 @@ def check_one_way_broadcastable(x1, x2):
 
 def check_inplace_sizes_valid(var, data):
     if not check_one_way_broadcastable(data.shape, var.shape):
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             f"Could not output values of shape {var.shape} into array with shape"
             f" {data.shape}."
         )
@@ -307,14 +307,14 @@ def check_inplace_sizes_valid(var, data):
 
 def check_shapes_broadcastable(var, data):
     if not check_one_way_broadcastable(var, data):
-        raise aikit.utils.exceptions.IvyBroadcastShapeError(
+        raise aikit.utils.exceptions.AikitBroadcastShapeError(
             f"Could not broadcast shape {data} to shape {var}."
         )
 
 
 def check_dimensions(x):
     if len(x.shape) <= 1:
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             f"input must have greater than one dimension;  {x} has"
             f" {len(x.shape)} dimensions"
         )

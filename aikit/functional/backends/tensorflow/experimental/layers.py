@@ -660,7 +660,7 @@ def _fft_norm(
     elif norm == "forward":
         return x / tf.cast(n, x.dtype)
     else:
-        raise aikit.utils.exceptions.IvyError(f"Unrecognized normalization mode {norm}")
+        raise aikit.utils.exceptions.AikitError(f"Unrecognized normalization mode {norm}")
 
 
 def _ifft_norm(
@@ -677,7 +677,7 @@ def _ifft_norm(
     elif norm == "forward":
         return x * n
     else:
-        raise aikit.utils.exceptions.IvyError(f"Unrecognized normalization mode {norm}")
+        raise aikit.utils.exceptions.AikitError(f"Unrecognized normalization mode {norm}")
 
 
 @with_supported_dtypes(
@@ -698,26 +698,26 @@ def fft(
     elif x.dtype == "float64":
         x = tf.cast(x, tf.complex128)
     if not isinstance(dim, int):
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Expecting <class 'int'> instead of {type(dim)}"
         )
     if n is None:
         n = x.shape[dim]
     if n < -len(x.shape):
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Invalid dim {dim}, expecting ranging"
             " from {-len(x.shape)} to {len(x.shape)-1}  "
         )
     if not isinstance(n, int):
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Expecting <class 'int'> instead of {type(n)}"
         )
     if n <= 1:
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Invalid data points {n}, expecting more than 1"
         )
     if norm not in ["backward", "ortho", "forward"]:
-        raise aikit.utils.exceptions.IvyError(f"Unrecognized normalization mode {norm}")
+        raise aikit.utils.exceptions.AikitError(f"Unrecognized normalization mode {norm}")
     if x.shape[dim] != n:
         s = list(x.shape)
         if s[dim] > n:
@@ -842,26 +842,26 @@ def ifft(
     out: Optional[Union[tf.Tensor, tf.Variable]] = None,
 ) -> Union[tf.Tensor, tf.Variable]:
     if not isinstance(dim, int):
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Expecting <class 'int'> instead of {type(dim)}"
         )
     if n is None:
         n = x.shape[dim]
     if n < -len(x.shape):
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Invalid dim {dim}, expecting ranging"
             " from {-len(x.shape)} to {len(x.shape)-1}  "
         )
     if not isinstance(n, int):
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Expecting <class 'int'> instead of {type(n)}"
         )
     if n <= 1:
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Invalid data points {n}, expecting more than 1"
         )
     if norm not in ["backward", "ortho", "forward"]:
-        raise aikit.utils.exceptions.IvyError(f"Unrecognized normalization mode {norm}")
+        raise aikit.utils.exceptions.AikitError(f"Unrecognized normalization mode {norm}")
     if x.shape[dim] != n:
         s = list(x.shape)
         if s[dim] > n:
@@ -993,7 +993,7 @@ def _fft2_norm(
     elif norm == "forward":
         return x / n
     else:
-        raise aikit.utils.exceptions.IvyError(f"Unrecognized normalization mode {norm}")
+        raise aikit.utils.exceptions.AikitError(f"Unrecognized normalization mode {norm}")
 
 
 def trans_x_to_s(
@@ -1459,7 +1459,7 @@ def rfft(
 
     # axis check
     if not isinstance(axis, int):
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Expecting <class 'int'> instead of {type(axis)}"
         )
 
@@ -1468,7 +1468,7 @@ def rfft(
     if axis < 0:
         naxis = x.ndim + axis
     if naxis < 0 or naxis >= x.ndim:
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Axis {axis} is out of bounds for array of dimension {x.ndim}"
         )
     axis = naxis
@@ -1477,11 +1477,11 @@ def rfft(
     if n is None:
         n = x.shape[axis]
     if not isinstance(n, int):
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Expecting <class 'int'> instead of {type(n)}"
         )
     if n < 1:
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Invalid number of FFT data points ({n}) specified."
         )
 
@@ -1493,7 +1493,7 @@ def rfft(
         if norm == "ortho":
             inv_norm = tf.math.sqrt(inv_norm)
     else:
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f'Invalid norm value {norm}; should be "backward", "ortho" or "forward".'
         )
     fct = 1 / inv_norm
@@ -1571,35 +1571,35 @@ def stft(
     out: Optional[Union[tf.Tensor, tf.Variable]] = None,
 ) -> Union[tf.Tensor, tf.Variable]:
     if not isinstance(frame_length, int):
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Expecting <class 'int'> instead of {type(frame_length)}"
         )
 
     if frame_length < 1:
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Invalid data points {frame_length}, expecting frame_length larger than or"
             " equal to 1"
         )
 
     if not isinstance(frame_step, int):
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Expecting <class 'int'> instead of {type(frame_step)}"
         )
 
     if frame_step < 1:
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Invalid data points {frame_length}, expecting frame_length larger than or"
             " equal to 1"
         )
 
     if fft_length is not None:
         if not isinstance(fft_length, int):
-            raise aikit.utils.exceptions.IvyError(
+            raise aikit.utils.exceptions.AikitError(
                 f"Expecting <class 'int'> instead of {type(fft_length)}"
             )
 
         if fft_length < 1:
-            raise aikit.utils.exceptions.IvyError(
+            raise aikit.utils.exceptions.AikitError(
                 f"Invalid data points {frame_length}, expecting frame_length larger"
                 " than or equal to 1"
             )
@@ -1670,7 +1670,7 @@ def sliding_window(
     elif padding[0] == padding[1] != 0:
         padding = "SAME"
     else:
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Cannot convert padding sequence {padding} to TensorFlow padding mode"
         )
 

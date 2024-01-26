@@ -1,5 +1,5 @@
 {
-    "ivy": {
+    "aikit": {
         "compiler": [
             "_compiler.so",
             {

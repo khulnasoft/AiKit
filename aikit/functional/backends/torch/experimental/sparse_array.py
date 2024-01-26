@@ -114,4 +114,4 @@ def native_sparse_array_to_indices_values_and_shape(x):
             x.values(),
             x.size(),
         )
-    raise aikit.utils.exceptions.IvyException("not a sparse COO/CSR/CSC/BSC/BSR Tensor")
+    raise aikit.utils.exceptions.AikitException("not a sparse COO/CSR/CSC/BSC/BSR Tensor")

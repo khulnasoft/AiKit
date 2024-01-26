@@ -2,15 +2,15 @@ import operator
 from typing import Optional, Union, Tuple, List, Sequence
 from numbers import Number
 
-from ivy import (
+from aikit import (
     promote_types_of_inputs,
     default_float_dtype,
     is_float_dtype,
 )
-from ivy.func_wrapper import (
+from aikit.func_wrapper import (
     with_supported_dtypes,
 )
-from ivy.functional.backends.jax import JaxArray
+from aikit.functional.backends.jax import JaxArray
 import jax.numpy as jnp
 import jax.scipy as js
 import jax.lax as jlax

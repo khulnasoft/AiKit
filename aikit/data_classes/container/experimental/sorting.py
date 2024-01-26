@@ -2,25 +2,25 @@
 from typing import Optional, List, Union, Dict
 
 # local
-from ivy.data_classes.container.base import ContainerBase
-import ivy
+from aikit.data_classes.container.base import ContainerBase
+import aikit
 
 
 class _ContainerWithSortingExperimental(ContainerBase):
     @staticmethod
     def static_invert_permutation(
-        x: Union[ivy.Array, ivy.NativeArray, ivy.Container, list, tuple],
+        x: Union[aikit.Array, aikit.NativeArray, aikit.Container, list, tuple],
         /,
         *,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> ivy.Container:
-        """ivy.Container static method variant of ivy.invert_permutation.
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> aikit.Container:
+        """aikit.Container static method variant of aikit.invert_permutation.
 
         This method simply wraps the function, and so the docstring for
-        ivy.invert_permutation also applies to this method with minimal
+        aikit.invert_permutation also applies to this method with minimal
         changes.
         """
         return ContainerBase.cont_multi_map_in_function(
@@ -33,18 +33,18 @@ class _ContainerWithSortingExperimental(ContainerBase):
         )
 
     def invert_permutation(
-        self: ivy.Container,
+        self: aikit.Container,
         /,
         *,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of ivy.invert_permutation.
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of aikit.invert_permutation.
 
         This method simply wraps the function, and so the docstring for
-        ivy.invert_permutation also applies to this method with minimal
+        aikit.invert_permutation also applies to this method with minimal
         changes.
         """
         return self.static_invert_permutation(
@@ -57,18 +57,18 @@ class _ContainerWithSortingExperimental(ContainerBase):
 
     @staticmethod
     def static_lexsort(
-        a: Union[ivy.Array, ivy.NativeArray, ivy.Container],
+        a: Union[aikit.Array, aikit.NativeArray, aikit.Container],
         /,
         *,
-        axis: Union[int, ivy.Container] = -1,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container static method variant of ivy.lexsort. This method
-        simply wraps the function, and so the docstring for ivy.lexsort also
+        axis: Union[int, aikit.Container] = -1,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container static method variant of aikit.lexsort. This method
+        simply wraps the function, and so the docstring for aikit.lexsort also
         applies to this method with minimal changes.
 
         Parameters
@@ -88,14 +88,14 @@ class _ContainerWithSortingExperimental(ContainerBase):
 
         Examples
         --------
-        With :class:`ivy.Container` input:
+        With :class:`aikit.Container` input:
 
-        >>> a = ivy.Container(x = ivy.asarray([[9,4,0,4,0,2,1],[1,5,1,4,3,4,4]]),
-        ...                   y = ivy.asarray([[1, 5, 2],[3, 4, 4]])
-        >>> ivy.Container.static_lexsort(a)
+        >>> a = aikit.Container(x = aikit.asarray([[9,4,0,4,0,2,1],[1,5,1,4,3,4,4]]),
+        ...                   y = aikit.asarray([[1, 5, 2],[3, 4, 4]])
+        >>> aikit.Container.static_lexsort(a)
         {
-            x: ivy.array([2, 0, 4, 6, 5, 3, 1])),
-            y: ivy.array([0, 2, 1])
+            x: aikit.array([2, 0, 4, 6, 5, 3, 1])),
+            y: aikit.array([0, 2, 1])
         }
         """
         return ContainerBase.cont_multi_map_in_function(
@@ -110,18 +110,18 @@ class _ContainerWithSortingExperimental(ContainerBase):
         )
 
     def lexsort(
-        self: ivy.Container,
+        self: aikit.Container,
         /,
         *,
-        axis: Union[int, ivy.Container] = -1,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of ivy.lexsort. This method
-        simply wraps the function, and so the docstring for ivy.lexsort also
+        axis: Union[int, aikit.Container] = -1,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of aikit.lexsort. This method
+        simply wraps the function, and so the docstring for aikit.lexsort also
         applies to this method with minimal changes.
 
         Parameters
@@ -141,12 +141,12 @@ class _ContainerWithSortingExperimental(ContainerBase):
 
         Examples
         --------
-        >>> a = ivy.Container(x = ivy.asarray([[9,4,0,4,0,2,1],[1,5,1,4,3,4,4]]),
-        ...                   y = ivy.asarray([[1, 5, 2],[3, 4, 4]])
+        >>> a = aikit.Container(x = aikit.asarray([[9,4,0,4,0,2,1],[1,5,1,4,3,4,4]]),
+        ...                   y = aikit.asarray([[1, 5, 2],[3, 4, 4]])
         >>> a.lexsort()
         {
-            x: ivy.array([2, 0, 4, 6, 5, 3, 1])),
-            y: ivy.array([0, 2, 1])
+            x: aikit.array([2, 0, 4, 6, 5, 3, 1])),
+            y: aikit.array([0, 2, 1])
         }
         """
         return self.static_lexsort(

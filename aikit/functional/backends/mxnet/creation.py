@@ -6,7 +6,7 @@ from typing import Union, List, Optional, Sequence, Tuple
 
 # local
 import aikit
-from aikit.utils.exceptions import IvyNotImplementedException
+from aikit.utils.exceptions import AikitNotImplementedException
 from aikit.functional.aikit.creation import (
     _asarray_to_native_arrays_and_back,
     _asarray_infer_device,
@@ -27,7 +27,7 @@ def arange(
     device: str,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 @_asarray_to_native_arrays_and_back
@@ -68,7 +68,7 @@ def empty(
     device: str,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def empty_like(
@@ -79,7 +79,7 @@ def empty_like(
     device: str,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def eye(
@@ -93,7 +93,7 @@ def eye(
     device: str,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def to_dlpack(
@@ -102,7 +102,7 @@ def to_dlpack(
     *,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ):
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def from_dlpack(
@@ -111,7 +111,7 @@ def from_dlpack(
     *,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def full(
@@ -122,7 +122,7 @@ def full(
     device: str,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def full_like(
@@ -134,7 +134,7 @@ def full_like(
     device: str,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def linspace(
@@ -149,7 +149,7 @@ def linspace(
     device: str,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ):
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def meshgrid(
@@ -158,7 +158,7 @@ def meshgrid(
     indexing: str = "xy",
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> List[Union[(None, mx.ndarray.NDArray)]]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def ones(
@@ -189,7 +189,7 @@ def tril(
     k: int = 0,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def triu(
@@ -199,7 +199,7 @@ def triu(
     k: int = 0,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def zeros(
@@ -209,7 +209,7 @@ def zeros(
     device: str,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def zeros_like(
@@ -250,7 +250,7 @@ def one_hot(
     device: str,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def frombuffer(
@@ -259,10 +259,10 @@ def frombuffer(
     count: Optional[int] = (-1),
     offset: Optional[int] = 0,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def triu_indices(
     n_rows: int, n_cols: Optional[int] = None, k: int = 0, /, *, device: str
 ) -> Tuple[Union[(None, mx.ndarray.NDArray)]]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()

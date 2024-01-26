@@ -1,13 +1,13 @@
 """MXNet activation functions.
 
-Collection of MXNet activation functions, wrapped to fit Ivy syntax and
+Collection of MXNet activation functions, wrapped to fit Aikit syntax and
 signature.
 """
 
 import mxnet as mx
 import numpy as np
 
-from aikit.utils.exceptions import IvyNotImplementedException
+from aikit.utils.exceptions import AikitNotImplementedException
 from typing import Optional, Union
 
 
@@ -77,8 +77,8 @@ def softsign(x: None, /, *, out: Optional[None] = None) -> None:
 
 
 def log_softmax(x: None, /, *, axis: Optional[int] = -1, out: Optional[None] = None):
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def mish(x: None, /, *, out: Optional[None] = None) -> None:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()

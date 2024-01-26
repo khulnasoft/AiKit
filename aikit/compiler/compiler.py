@@ -42,7 +42,7 @@ def trace_graph(
         the module mode(s) which should be traced when tracing a trainable module
         can be either "all", "train" or "eval".
     backend_compile
-        whether to apply the native compilers, i.e. tf.function, after ivy's tracing
+        whether to apply the native compilers, i.e. tf.function, after aikit's tracing
     static_argnums
         for jax's jit compilation
     static_argnames
@@ -62,20 +62,20 @@ def trace_graph(
 
     Examples
     --------
-    >>> import ivy, time
-    >>> from ivy import trace_graph
-    >>> ivy.set_backend("torch")
-    >>> x = ivy.array([1.])
+    >>> import aikit, time
+    >>> from aikit import trace_graph
+    >>> aikit.set_backend("torch")
+    >>> x = aikit.array([1.])
 
     >>> def fn(x):
-    ...     y = ivy.sum(x)
-    ...     z = ivy.prod(x)
-    ...     a = ivy.sin(y)
-    ...     b = ivy.cos(z)
-    ...     c = ivy.tan(z)
-    ...     i = ivy.round(a)
-    ...     j = ivy.floor(b)
-    ...     k = ivy.ceil(c)
+    ...     y = aikit.sum(x)
+    ...     z = aikit.prod(x)
+    ...     a = aikit.sin(y)
+    ...     b = aikit.cos(z)
+    ...     c = aikit.tan(z)
+    ...     i = aikit.round(a)
+    ...     j = aikit.floor(b)
+    ...     k = aikit.ceil(c)
     ...     return i, j, k
 
 

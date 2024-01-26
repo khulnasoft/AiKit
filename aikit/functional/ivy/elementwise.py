@@ -1492,7 +1492,7 @@ def bitwise_xor(
     /,
     *,
     out: Optional[aikit.Array] = None,
-) -> ivy.Array:
+) -> aikit.Array:
     """Compute the bitwise XOR of the underlying binary representation of each
     element ``x1_i`` of the input array ``x1`` with the respective element
     ``x2_i`` of the input array ``x2``.
@@ -1522,7 +1522,7 @@ def bitwise_xor(
     in the standard.
 
     Both the description and the type hints above assume an array input for simplicity,
-    but this function is *nestable*, and therefore also accepts :class:`ivy.Container`
+    but this function is *nestable*, and therefore also accepts :class:`aikit.Container`
     instances in place of any of the arguments.
 
     Examples
@@ -1531,56 +1531,56 @@ def bitwise_xor(
 
     >>> x1 = 4
     >>> x2 = 5
-    >>> y = ivy.bitwise_xor(x1, x2)
+    >>> y = aikit.bitwise_xor(x1, x2)
     >>> print(y)
-    ivy.array(1)
+    aikit.array(1)
 
     With :class:`bool` input:
 
     >>> x1 = True
     >>> x2 = False
-    >>> y = ivy.bitwise_xor(x1, x2)
+    >>> y = aikit.bitwise_xor(x1, x2)
     >>> print(y)
-    ivy.array(True)
+    aikit.array(True)
 
-    With :class:`ivy.Array` inputs:
+    With :class:`aikit.Array` inputs:
 
-    >>> x1 = ivy.array([1, 2, 3])
-    >>> x2 = ivy.array([3, 5, 7])
-    >>> y = ivy.zeros(3, dtype=ivy.int32)
-    >>> ivy.bitwise_xor(x1, x2, out=y)
+    >>> x1 = aikit.array([1, 2, 3])
+    >>> x2 = aikit.array([3, 5, 7])
+    >>> y = aikit.zeros(3, dtype=aikit.int32)
+    >>> aikit.bitwise_xor(x1, x2, out=y)
     >>> print(y)
-    ivy.array([2, 7, 4])
+    aikit.array([2, 7, 4])
 
-    >>> x1 = ivy.array([[True], [True]])
-    >>> x2 = ivy.array([[False], [True]])
-    >>> ivy.bitwise_xor(x1, x2, out=x2)
+    >>> x1 = aikit.array([[True], [True]])
+    >>> x2 = aikit.array([[False], [True]])
+    >>> aikit.bitwise_xor(x1, x2, out=x2)
     >>> print(x2)
-    ivy.array([[True], [False]])
+    aikit.array([[True], [False]])
 
-    With :class:`ivy.Container` input:
+    With :class:`aikit.Container` input:
 
-    >>> x1 = ivy.Container(a=ivy.array([1, 2, 3]), b=ivy.array([4, 5, 6]))
-    >>> x2 = ivy.Container(a=ivy.array([7, 8, 9]), b=ivy.array([10, 11, 12]))
-    >>> y = ivy.bitwise_xor(x1, x2)
+    >>> x1 = aikit.Container(a=aikit.array([1, 2, 3]), b=aikit.array([4, 5, 6]))
+    >>> x2 = aikit.Container(a=aikit.array([7, 8, 9]), b=aikit.array([10, 11, 12]))
+    >>> y = aikit.bitwise_xor(x1, x2)
     >>> print(y)
     {
-        a: ivy.array([6, 10, 10]),
-        b: ivy.array([14, 14, 10])
+        a: aikit.array([6, 10, 10]),
+        b: aikit.array([14, 14, 10])
     }
 
-    With a mix of :class:`ivy.Array` and :class:`ivy.Container` inputs:
+    With a mix of :class:`aikit.Array` and :class:`aikit.Container` inputs:
 
-    >>> x1 = ivy.array([True, True])
-    >>> x2 = ivy.Container(a=ivy.array([True, False]), b=ivy.array([False, True]))
-    >>> y = ivy.bitwise_xor(x1, x2)
+    >>> x1 = aikit.array([True, True])
+    >>> x2 = aikit.Container(a=aikit.array([True, False]), b=aikit.array([False, True]))
+    >>> y = aikit.bitwise_xor(x1, x2)
     >>> print(y)
     {
-        a: ivy.array([False, True]),
-        b: ivy.array([True, False])
+        a: aikit.array([False, True]),
+        b: aikit.array([True, False])
     }
     """
-    return ivy.current_backend(x1, x2).bitwise_xor(x1, x2, out=out)
+    return aikit.current_backend(x1, x2).bitwise_xor(x1, x2, out=out)
 
 
 @handle_exceptions
@@ -1592,11 +1592,11 @@ def bitwise_xor(
 @handle_array_function
 @handle_device
 def ceil(
-    x: Union[ivy.Array, ivy.NativeArray],
+    x: Union[aikit.Array, aikit.NativeArray],
     /,
     *,
-    out: Optional[ivy.Array] = None,
-) -> ivy.Array:
+    out: Optional[aikit.Array] = None,
+) -> aikit.Array:
     """Round each element ``x_i`` of the input array ``x`` to the smallest
     (i.e., closest to ``-infinity``) integer-valued number that is not less
     than ``x_i``.
@@ -1636,42 +1636,42 @@ def ceil(
     in the standard.
 
     Both the description and the type hints above assumes an array input for simplicity,
-    but this function is *nestable*, and therefore also accepts :class:`ivy.Container`
+    but this function is *nestable*, and therefore also accepts :class:`aikit.Container`
     instances in place of any of the arguments.
 
     Examples
     --------
-    With :class:`ivy.Array` input:
+    With :class:`aikit.Array` input:
 
-    >>> x = ivy.array([0.1, 0, -0.1])
-    >>> y = ivy.ceil(x)
+    >>> x = aikit.array([0.1, 0, -0.1])
+    >>> y = aikit.ceil(x)
     >>> print(y)
-    ivy.array([1., 0., -0.])
+    aikit.array([1., 0., -0.])
 
-    >>> x = ivy.array([2.5, -3.5, 0, -3, -0])
-    >>> y = ivy.ones(5)
-    >>> ivy.ceil(x, out=y)
+    >>> x = aikit.array([2.5, -3.5, 0, -3, -0])
+    >>> y = aikit.ones(5)
+    >>> aikit.ceil(x, out=y)
     >>> print(y)
-    ivy.array([ 3., -3.,  0., -3.,  0.])
+    aikit.array([ 3., -3.,  0., -3.,  0.])
 
-    >>> x = ivy.array([[3.3, 4.4, 5.5], [-6.6, -7.7, -8.8]])
-    >>> ivy.ceil(x, out=x)
+    >>> x = aikit.array([[3.3, 4.4, 5.5], [-6.6, -7.7, -8.8]])
+    >>> aikit.ceil(x, out=x)
     >>> print(x)
-    ivy.array([[ 4.,  5.,  6.],
+    aikit.array([[ 4.,  5.,  6.],
                [-6., -7., -8.]])
 
-    With :class:`ivy.Container` input:
+    With :class:`aikit.Container` input:
 
-    >>> x = ivy.Container(a=ivy.array([2.5, 0.5, -1.4]),
-    ...                   b=ivy.array([5.4, -3.2, -0, 5.2]))
-    >>> y = ivy.ceil(x)
+    >>> x = aikit.Container(a=aikit.array([2.5, 0.5, -1.4]),
+    ...                   b=aikit.array([5.4, -3.2, -0, 5.2]))
+    >>> y = aikit.ceil(x)
     >>> print(y)
     {
-        a: ivy.array([3., 1., -1.]),
-        b: ivy.array([6., -3., 0., 6.])
+        a: aikit.array([3., 1., -1.]),
+        b: aikit.array([6., -3., 0., 6.])
     }
     """
-    return ivy.current_backend(x).ceil(x, out=out)
+    return aikit.current_backend(x).ceil(x, out=out)
 
 
 @handle_exceptions
@@ -1683,11 +1683,11 @@ def ceil(
 @handle_array_function
 @handle_device
 def cos(
-    x: Union[ivy.Array, ivy.NativeArray],
+    x: Union[aikit.Array, aikit.NativeArray],
     /,
     *,
-    out: Optional[ivy.Array] = None,
-) -> ivy.Array:
+    out: Optional[aikit.Array] = None,
+) -> aikit.Array:
     """Calculate an implementation-dependent approximation to the cosine,
     having domain ``(-infinity, +infinity)`` and codomain ``[-1, +1]``, for
     each element ``x_i`` of the input array ``x``. Each element ``x_i`` is
@@ -1730,35 +1730,35 @@ def cos(
     in the standard.
 
     Both the description and the type hints above assumes an array input for simplicity,
-    but this function is *nestable*, and therefore also accepts :class:`ivy.Container`
+    but this function is *nestable*, and therefore also accepts :class:`aikit.Container`
     instances in place of any of the arguments.
 
     Examples
     --------
-    With :class:`ivy.Array` input:
+    With :class:`aikit.Array` input:
 
-    >>> x = ivy.array([0., 1., 2.])
-    >>> y = ivy.cos(x)
+    >>> x = aikit.array([0., 1., 2.])
+    >>> y = aikit.cos(x)
     >>> print(y)
-    ivy.array([1., 0.54, -0.416])
+    aikit.array([1., 0.54, -0.416])
 
-    >>> x = ivy.array([4., 0., -6.])
-    >>> y = ivy.zeros(3)
-    >>> ivy.cos(x, out=y)
+    >>> x = aikit.array([4., 0., -6.])
+    >>> y = aikit.zeros(3)
+    >>> aikit.cos(x, out=y)
     >>> print(y)
-    ivy.array([-0.654, 1., 0.96])
+    aikit.array([-0.654, 1., 0.96])
 
-    With :class:`ivy.Container` input:
+    With :class:`aikit.Container` input:
 
-    >>> x = ivy.Container(a=ivy.array([0., -1, 1]), b=ivy.array([1., 0., -6]))
-    >>> y = ivy.cos(x)
+    >>> x = aikit.Container(a=aikit.array([0., -1, 1]), b=aikit.array([1., 0., -6]))
+    >>> y = aikit.cos(x)
     >>> print(y)
     {
-        a: ivy.array([1., 0.54, 0.54]),
-        b: ivy.array([0.54, 1., 0.96])
+        a: aikit.array([1., 0.54, 0.54]),
+        b: aikit.array([0.54, 1., 0.96])
     }
     """
-    return ivy.current_backend(x).cos(x, out=out)
+    return aikit.current_backend(x).cos(x, out=out)
 
 
 @handle_exceptions
@@ -1770,11 +1770,11 @@ def cos(
 @handle_array_function
 @handle_device
 def cosh(
-    x: Union[ivy.Array, ivy.NativeArray],
+    x: Union[aikit.Array, aikit.NativeArray],
     /,
     *,
-    out: Optional[ivy.Array] = None,
-) -> ivy.Array:
+    out: Optional[aikit.Array] = None,
+) -> aikit.Array:
     """Calculate an implementation-dependent approximation to the hyperbolic
     cosine, having domain ``[-infinity, +infinity]`` and codomain ``[-infinity,
     +infinity]``, for each element ``x_i`` in the input array ``x``.
@@ -1844,40 +1844,40 @@ def cosh(
     in the standard.
 
     Both the description and the type hints above assumes an array input for simplicity,
-    but this function is *nestable*, and therefore also accepts :class:`ivy.Container`
+    but this function is *nestable*, and therefore also accepts :class:`aikit.Container`
     instances in place of any of the arguments.
 
     Examples
     --------
-    With :class:`ivy.Array` input:
+    With :class:`aikit.Array` input:
 
-    >>> x = ivy.array([1, 2, 3, 4])
-    >>> y = ivy.cosh(x)
+    >>> x = aikit.array([1, 2, 3, 4])
+    >>> y = aikit.cosh(x)
     >>> print(y)
-    ivy.array([1.54,3.76,10.1,27.3])
+    aikit.array([1.54,3.76,10.1,27.3])
 
-    >>> x = ivy.array([0.2, -1.7, -5.4, 1.1])
-    >>> y = ivy.zeros(4)
-    >>> ivy.cosh(x, out=y)
-    ivy.array([[1.67,4.57,13.6,12.3],[40.7,122.,368.,670.]])
+    >>> x = aikit.array([0.2, -1.7, -5.4, 1.1])
+    >>> y = aikit.zeros(4)
+    >>> aikit.cosh(x, out=y)
+    aikit.array([[1.67,4.57,13.6,12.3],[40.7,122.,368.,670.]])
 
-    >>> x = ivy.array([[1.1, 2.2, 3.3, 3.2],
+    >>> x = aikit.array([[1.1, 2.2, 3.3, 3.2],
     ...                [-4.4, -5.5, -6.6, -7.2]])
-    >>> y = ivy.cosh(x)
+    >>> y = aikit.cosh(x)
     >>> print(y)
-    ivy.array([[1.67,4.57,13.6,12.3],[40.7,122.,368.,670.]])
+    aikit.array([[1.67,4.57,13.6,12.3],[40.7,122.,368.,670.]])
 
-    With :class:`ivy.Container` input:
+    With :class:`aikit.Container` input:
 
-    >>> x = ivy.Container(a=ivy.array([1., 2., 3.]), b=ivy.array([6., 7., 8.]))
-    >>> y = ivy.cosh(x)
+    >>> x = aikit.Container(a=aikit.array([1., 2., 3.]), b=aikit.array([6., 7., 8.]))
+    >>> y = aikit.cosh(x)
     >>> print(y)
     {
-        a:ivy.array([1.54,3.76,10.1]),
-        b:ivy.array([202.,548.,1490.])
+        a:aikit.array([1.54,3.76,10.1]),
+        b:aikit.array([202.,548.,1490.])
     }
     """
-    return ivy.current_backend(x).cosh(x, out=out)
+    return aikit.current_backend(x).cosh(x, out=out)
 
 
 @handle_exceptions
@@ -1888,12 +1888,12 @@ def cosh(
 @handle_array_function
 @handle_device
 def divide(
-    x1: Union[float, ivy.Array, ivy.NativeArray],
-    x2: Union[float, ivy.Array, ivy.NativeArray],
+    x1: Union[float, aikit.Array, aikit.NativeArray],
+    x2: Union[float, aikit.Array, aikit.NativeArray],
     /,
     *,
-    out: Optional[ivy.Array] = None,
-) -> ivy.Array:
+    out: Optional[aikit.Array] = None,
+) -> aikit.Array:
     r"""Calculate the division for each element x1_i of the input array x1 with
     the respective element x2_i of the input array x2.
 
@@ -2009,7 +2009,7 @@ def divide(
     in the standard.
 
     Both the description and the type hints above assumes an array input for simplicity,
-    but this function is *nestable*, and therefore also accepts :class:`ivy.Container`
+    but this function is *nestable*, and therefore also accepts :class:`aikit.Container`
     instances in place of any of the arguments.
 
     Parameters
@@ -2031,44 +2031,44 @@ def divide(
 
     Examples
     --------
-    With :class:`ivy.Array` inputs:
+    With :class:`aikit.Array` inputs:
 
-    >>> x1 = ivy.array([2., 7., 9.])
-    >>> x2 = ivy.array([3., 4., 0.6])
-    >>> y = ivy.divide(x1, x2)
+    >>> x1 = aikit.array([2., 7., 9.])
+    >>> x2 = aikit.array([3., 4., 0.6])
+    >>> y = aikit.divide(x1, x2)
     >>> print(y)
-    ivy.array([0.667, 1.75, 15.])
+    aikit.array([0.667, 1.75, 15.])
 
-    With mixed :class:`ivy.Array` and :class:`ivy.NativeArray` inputs:
+    With mixed :class:`aikit.Array` and :class:`aikit.NativeArray` inputs:
 
-    >>> x1 = ivy.array([5., 6., 9.])
-    >>> x2 = ivy.native_array([2., 2., 2.])
-    >>> y = ivy.divide(x1, x2)
+    >>> x1 = aikit.array([5., 6., 9.])
+    >>> x2 = aikit.native_array([2., 2., 2.])
+    >>> y = aikit.divide(x1, x2)
     >>> print(y)
-    ivy.array([2.5, 3., 4.5])
+    aikit.array([2.5, 3., 4.5])
 
-    With :class:`ivy.Container` inputs:
+    With :class:`aikit.Container` inputs:
 
-    >>> x1 = ivy.Container(a=ivy.array([12., 3.5, 6.3]), b=ivy.array([3., 1., 0.9]))
-    >>> x2 = ivy.Container(a=ivy.array([1., 2.3, 3]), b=ivy.array([2.4, 3., 2.]))
-    >>> y = ivy.divide(x1, x2)
+    >>> x1 = aikit.Container(a=aikit.array([12., 3.5, 6.3]), b=aikit.array([3., 1., 0.9]))
+    >>> x2 = aikit.Container(a=aikit.array([1., 2.3, 3]), b=aikit.array([2.4, 3., 2.]))
+    >>> y = aikit.divide(x1, x2)
     >>> print(y)
     {
-        a: ivy.array([12., 1.52, 2.1]),
-        b: ivy.array([1.25, 0.333, 0.45])
+        a: aikit.array([12., 1.52, 2.1]),
+        b: aikit.array([1.25, 0.333, 0.45])
     }
 
-    With mixed :class:`ivy.Container` and :class:`ivy.Array` inputs:
+    With mixed :class:`aikit.Container` and :class:`aikit.Array` inputs:
 
-    >>> x1 = ivy.Container(a=ivy.array([12., 3.5, 6.3]), b=ivy.array([3., 1., 0.9]))
-    >>> x2 = ivy.array([4.3, 3., 5.])
-    >>> y = ivy.divide(x1, x2)
+    >>> x1 = aikit.Container(a=aikit.array([12., 3.5, 6.3]), b=aikit.array([3., 1., 0.9]))
+    >>> x2 = aikit.array([4.3, 3., 5.])
+    >>> y = aikit.divide(x1, x2)
     {
-        a: ivy.array([2.79, 1.17, 1.26]),
-        b: ivy.array([0.698, 0.333, 0.18])
+        a: aikit.array([2.79, 1.17, 1.26]),
+        b: aikit.array([0.698, 0.333, 0.18])
     }
     """
-    return ivy.current_backend(x1, x2).divide(x1, x2, out=out)
+    return aikit.current_backend(x1, x2).divide(x1, x2, out=out)
 
 
 @handle_exceptions
@@ -2079,12 +2079,12 @@ def divide(
 @handle_array_function
 @handle_device
 def equal(
-    x1: Union[float, ivy.Array, ivy.NativeArray, ivy.Container],
-    x2: Union[float, ivy.Array, ivy.NativeArray, ivy.Container],
+    x1: Union[float, aikit.Array, aikit.NativeArray, aikit.Container],
+    x2: Union[float, aikit.Array, aikit.NativeArray, aikit.Container],
     /,
     *,
-    out: Optional[ivy.Array] = None,
-) -> ivy.Array:
+    out: Optional[aikit.Array] = None,
+) -> aikit.Array:
     """Compute the truth value of x1_i == x2_i for each element x1_i of the
     input array x1 with the respective element x2_i of the input array x2.
 
@@ -2141,50 +2141,50 @@ def equal(
     in the standard.
 
     Both the description and the type hints above assumes an array input for simplicity,
-    but this function is *nestable*, and therefore also accepts :class:`ivy.Container`
+    but this function is *nestable*, and therefore also accepts :class:`aikit.Container`
     instances in place of any of the arguments.
 
     Examples
     --------
-    With :class:`ivy.Array` inputs:
+    With :class:`aikit.Array` inputs:
 
-    >>> x1 = ivy.array([2., 7., 9.])
-    >>> x2 = ivy.array([1., 7., 9.])
-    >>> y = ivy.equal(x1, x2)
+    >>> x1 = aikit.array([2., 7., 9.])
+    >>> x2 = aikit.array([1., 7., 9.])
+    >>> y = aikit.equal(x1, x2)
     >>> print(y)
-    ivy.array([False, True, True])
+    aikit.array([False, True, True])
 
-    With mixed :class:`ivy.Array` and :class:`ivy.NativeArray` inputs:
+    With mixed :class:`aikit.Array` and :class:`aikit.NativeArray` inputs:
 
-    >>> x1 = ivy.array([5, 6, 9])
-    >>> x2 = ivy.native_array([2, 6, 2])
-    >>> y = ivy.equal(x1, x2)
+    >>> x1 = aikit.array([5, 6, 9])
+    >>> x2 = aikit.native_array([2, 6, 2])
+    >>> y = aikit.equal(x1, x2)
     >>> print(y)
-    ivy.array([False, True, False])
+    aikit.array([False, True, False])
 
-    With :class:`ivy.Container` inputs:
+    With :class:`aikit.Container` inputs:
 
-    >>> x1 = ivy.Container(a=ivy.array([12, 3.5, 6.3]), b=ivy.array([3., 1., 0.9]))
-    >>> x2 = ivy.Container(a=ivy.array([12, 2.3, 3]), b=ivy.array([2.4, 3., 2.]))
-    >>> y = ivy.equal(x1, x2)
+    >>> x1 = aikit.Container(a=aikit.array([12, 3.5, 6.3]), b=aikit.array([3., 1., 0.9]))
+    >>> x2 = aikit.Container(a=aikit.array([12, 2.3, 3]), b=aikit.array([2.4, 3., 2.]))
+    >>> y = aikit.equal(x1, x2)
     >>> print(y)
     {
-        a: ivy.array([True, False, False]),
-        b: ivy.array([False, False, False])
+        a: aikit.array([True, False, False]),
+        b: aikit.array([False, False, False])
     }
 
-    With mixed :class:`ivy.Container` and :class:`ivy.Array` inputs:
+    With mixed :class:`aikit.Container` and :class:`aikit.Array` inputs:
 
-    >>> x1 = ivy.Container(a=ivy.array([12., 3.5, 6.3]), b=ivy.array([3., 1., 0.9]))
-    >>> x2 = ivy.array([3., 1., 0.9])
-    >>> y = ivy.equal(x1, x2)
+    >>> x1 = aikit.Container(a=aikit.array([12., 3.5, 6.3]), b=aikit.array([3., 1., 0.9]))
+    >>> x2 = aikit.array([3., 1., 0.9])
+    >>> y = aikit.equal(x1, x2)
     >>> print(y)
     {
-        a: ivy.array([False, False, False]),
-        b: ivy.array([True, True, True])
+        a: aikit.array([False, False, False]),
+        b: aikit.array([True, True, True])
     }
     """
-    return ivy.current_backend(x1, x2).equal(x1, x2, out=out)
+    return aikit.current_backend(x1, x2).equal(x1, x2, out=out)
 
 
 @handle_exceptions
@@ -2196,11 +2196,11 @@ def equal(
 @handle_array_function
 @handle_device
 def exp(
-    x: Union[ivy.Array, ivy.NativeArray, Number],
+    x: Union[aikit.Array, aikit.NativeArray, Number],
     /,
     *,
-    out: Optional[ivy.Array] = None,
-) -> ivy.Array:
+    out: Optional[aikit.Array] = None,
+) -> aikit.Array:
     """Calculate an implementation-dependent approximation to the exponential
     function, having domain ``[-infinity, +infinity]`` and codomain ``[+0,
     +infinity]``, for each element ``x_i`` of the input array ``x`` (``e``
@@ -2280,7 +2280,7 @@ def exp(
     in the standard.
 
     Both the description and the type hints above assumes an array input for simplicity,
-    but this function is *nestable*, and therefore also accepts :class:`ivy.Container`
+    but this function is *nestable*, and therefore also accepts :class:`aikit.Container`
     instances in place of any of the arguments.
 
     Examples
@@ -2288,44 +2288,44 @@ def exp(
     With :class:Number:
 
     >>> x = 3
-    >>> y = ivy.exp(x)
+    >>> y = aikit.exp(x)
     >>> print(y)
-    ivy.array(20.08553692)
+    aikit.array(20.08553692)
 
-    With :class:`ivy.Array` input:
+    With :class:`aikit.Array` input:
 
-    >>> x = ivy.array([1., 2., 3.])
-    >>> y = ivy.exp(x)
+    >>> x = aikit.array([1., 2., 3.])
+    >>> y = aikit.exp(x)
     >>> print(y)
-    ivy.array([ 2.71828175,  7.38905621, 20.08553696])
+    aikit.array([ 2.71828175,  7.38905621, 20.08553696])
 
-    With nested inputs in :class:`ivy.Array`:
+    With nested inputs in :class:`aikit.Array`:
 
-    >>> x = ivy.array([[-5.67], [ivy.nan], [0.567]])
-    >>> y = ivy.exp(x)
+    >>> x = aikit.array([[-5.67], [aikit.nan], [0.567]])
+    >>> y = aikit.exp(x)
     >>> print(y)
-    ivy.array([[0.00344786],
+    aikit.array([[0.00344786],
            [       nan],
            [1.76297021]])
 
-    With :class:`ivy.NativeArray` input:
+    With :class:`aikit.NativeArray` input:
 
-    >>> x = ivy.native_array([0., 4., 2.])
-    >>> y = ivy.exp(x)
+    >>> x = aikit.native_array([0., 4., 2.])
+    >>> y = aikit.exp(x)
     >>> print(y)
-    ivy.array([ 1.        , 54.59814835,  7.38905621])
+    aikit.array([ 1.        , 54.59814835,  7.38905621])
 
-    With :class:`ivy.Container` input:
+    With :class:`aikit.Container` input:
 
-    >>> x = ivy.Container(a=3.1, b=ivy.array([3.2, 1.]))
-    >>> y = ivy.exp(x)
+    >>> x = aikit.Container(a=3.1, b=aikit.array([3.2, 1.]))
+    >>> y = aikit.exp(x)
     >>> print(y)
     {
-        a: ivy.array(22.197948),
-        b: ivy.array([24.53253174, 2.71828175])
+        a: aikit.array(22.197948),
+        b: aikit.array([24.53253174, 2.71828175])
     }
     """
-    return ivy.current_backend(x).exp(x, out=out)
+    return aikit.current_backend(x).exp(x, out=out)
 
 
 @handle_backend_invalid
@@ -2335,11 +2335,11 @@ def exp(
 @to_native_arrays_and_back
 @handle_device
 def imag(
-    val: Union[ivy.Array, ivy.NativeArray],
+    val: Union[aikit.Array, aikit.NativeArray],
     /,
     *,
-    out: Optional[ivy.Array] = None,
-) -> ivy.Array:
+    out: Optional[aikit.Array] = None,
+) -> aikit.Array:
     """Return the imaginary part of a complex number for each element ``x_i``
     of the input array ``val``.
 
@@ -2366,18 +2366,18 @@ def imag(
     in the standard.
 
     Both the description and the type hints above assumes an array input for simplicity,
-    but this function is *nestable*, and therefore also accepts :class:`ivy.Container`
+    but this function is *nestable*, and therefore also accepts :class:`aikit.Container`
     instances in place of any of the arguments.
 
     Examples
     --------
-    >>> b = ivy.array(np.array([1+2j, 3+4j, 5+6j]))
+    >>> b = aikit.array(np.array([1+2j, 3+4j, 5+6j]))
     >>> b
-    ivy.array([1.+2.j, 3.+4.j, 5.+6.j])
-    >>> ivy.imag(b)
-    ivy.array([2., 4., 6.])
+    aikit.array([1.+2.j, 3.+4.j, 5.+6.j])
+    >>> aikit.imag(b)
+    aikit.array([2., 4., 6.])
     """
-    return ivy.current_backend(val).imag(val, out=out)
+    return aikit.current_backend(val).imag(val, out=out)
 
 
 @handle_backend_invalid
@@ -2387,12 +2387,12 @@ def imag(
 @to_native_arrays_and_back
 @handle_device
 def angle(
-    z: Union[ivy.Array, ivy.NativeArray],
+    z: Union[aikit.Array, aikit.NativeArray],
     /,
     *,
     deg: bool = False,
-    out: Optional[ivy.Array] = None,
-) -> ivy.Array:
+    out: Optional[aikit.Array] = None,
+) -> aikit.Array:
     """Calculate Element-wise the angle for an array of complex numbers(x+yj).
 
     Parameters
@@ -2413,15 +2413,15 @@ def angle(
 
     Examples
     --------
-    >>> z = ivy.array([-1 + 1j, -2 + 2j, 3 - 3j])
+    >>> z = aikit.array([-1 + 1j, -2 + 2j, 3 - 3j])
     >>> z
-    ivy.array([-1.+1.j, -2.+2.j,  3.-3.j])
-    >>> ivy.angle(z)
-    ivy.array([ 2.35619449,  2.35619449, -0.78539816])
-    >>> ivy.angle(z,deg=True)
-    ivy.array([135., 135., -45.])
+    aikit.array([-1.+1.j, -2.+2.j,  3.-3.j])
+    >>> aikit.angle(z)
+    aikit.array([ 2.35619449,  2.35619449, -0.78539816])
+    >>> aikit.angle(z,deg=True)
+    aikit.array([135., 135., -45.])
     """
-    return ivy.current_backend(z).angle(z, deg=deg, out=out)
+    return aikit.current_backend(z).angle(z, deg=deg, out=out)
 
 
 @handle_backend_invalid
@@ -2430,12 +2430,12 @@ def angle(
 @to_native_arrays_and_back
 @handle_device
 def gcd(
-    x1: Union[ivy.Array, ivy.NativeArray, int, list, tuple],
-    x2: Union[ivy.Array, ivy.NativeArray, int, list, tuple],
+    x1: Union[aikit.Array, aikit.NativeArray, int, list, tuple],
+    x2: Union[aikit.Array, aikit.NativeArray, int, list, tuple],
     /,
     *,
-    out: Optional[ivy.Array] = None,
-) -> ivy.Array:
+    out: Optional[aikit.Array] = None,
+) -> aikit.Array:
     """Return the greatest common divisor of |x1| and |x2|.
 
     Parameters
@@ -2454,15 +2454,15 @@ def gcd(
 
     Examples
     --------
-    >>> x1 = ivy.array([1, 2, 3])
-    >>> x2 = ivy.array([4, 5, 6])
-    >>> ivy.gcd(x1, x2)
-    ivy.array([1.,    1.,   3.])
-    >>> x1 = ivy.array([1, 2, 3])
-    >>> ivy.gcd(x1, 10)
-    ivy.array([1.,   2.,  1.])
+    >>> x1 = aikit.array([1, 2, 3])
+    >>> x2 = aikit.array([4, 5, 6])
+    >>> aikit.gcd(x1, x2)
+    aikit.array([1.,    1.,   3.])
+    >>> x1 = aikit.array([1, 2, 3])
+    >>> aikit.gcd(x1, 10)
+    aikit.array([1.,   2.,  1.])
     """
-    return ivy.current_backend(x1, x2).gcd(x1, x2, out=out)
+    return aikit.current_backend(x1, x2).gcd(x1, x2, out=out)
 
 
 @handle_backend_invalid
@@ -2472,11 +2472,11 @@ def gcd(
 @to_native_arrays_and_back
 @handle_device
 def exp2(
-    x: Union[ivy.Array, float, list, tuple],
+    x: Union[aikit.Array, float, list, tuple],
     /,
     *,
-    out: Optional[ivy.Array] = None,
-) -> ivy.Array:
+    out: Optional[aikit.Array] = None,
+) -> aikit.Array:
     """Calculate 2**p for all p in the input array.
 
     Parameters
@@ -2493,14 +2493,14 @@ def exp2(
 
     Examples
     --------
-    >>> x = ivy.array([1, 2, 3])
-    >>> ivy.exp2(x)
-    ivy.array([2.,    4.,   8.])
+    >>> x = aikit.array([1, 2, 3])
+    >>> aikit.exp2(x)
+    aikit.array([2.,    4.,   8.])
     >>> x = [5, 6, 7]
-    >>> ivy.exp2(x)
-    ivy.array([32.,   64.,  128.])
+    >>> aikit.exp2(x)
+    aikit.array([32.,   64.,  128.])
     """
-    return ivy.current_backend(x).exp2(x, out=out)
+    return aikit.current_backend(x).exp2(x, out=out)
 
 
 @handle_exceptions
@@ -2512,11 +2512,11 @@ def exp2(
 @handle_array_function
 @handle_device
 def expm1(
-    x: Union[ivy.Array, ivy.NativeArray],
+    x: Union[aikit.Array, aikit.NativeArray],
     /,
     *,
-    out: Optional[ivy.Array] = None,
-) -> ivy.Array:
+    out: Optional[aikit.Array] = None,
+) -> aikit.Array:
     """Calculate an implementation-dependent approximation to ``exp(x)-1``,
     having domain ``[-infinity, +infinity]`` and codomain ``[-1, +infinity]``,
     for each element ``x_i`` of the input array ``x``.
@@ -2600,33 +2600,33 @@ def expm1(
     in the standard.
 
     Both the description and the type hints above assumes an array input for simplicity,
-    but this function is *nestable*, and therefore also accepts :class:`ivy.Container`
+    but this function is *nestable*, and therefore also accepts :class:`aikit.Container`
     instances in place of any of the arguments.
 
     Examples
     --------
-    With :class:`ivy.Array` inputs:
+    With :class:`aikit.Array` inputs:
 
-    >>> x = ivy.array([[0, 5, float('-0'), ivy.nan]])
-    >>> ivy.expm1(x)
-    ivy.array([[  0., 147.,  -0.,  nan]])
+    >>> x = aikit.array([[0, 5, float('-0'), aikit.nan]])
+    >>> aikit.expm1(x)
+    aikit.array([[  0., 147.,  -0.,  nan]])
 
-    >>> x = ivy.array([ivy.inf, 1, float('-inf')])
-    >>> y = ivy.zeros(3)
-    >>> ivy.expm1(x, out=y)
-    ivy.array([  inf,  1.72, -1.  ])
+    >>> x = aikit.array([aikit.inf, 1, float('-inf')])
+    >>> y = aikit.zeros(3)
+    >>> aikit.expm1(x, out=y)
+    aikit.array([  inf,  1.72, -1.  ])
 
-    With :class:`ivy.Container` inputs:
+    With :class:`aikit.Container` inputs:
 
-    >>> x = ivy.Container(a=ivy.array([-1, 0,]),
-    ...                   b=ivy.array([10, 1]))
-    >>> ivy.expm1(x)
+    >>> x = aikit.Container(a=aikit.array([-1, 0,]),
+    ...                   b=aikit.array([10, 1]))
+    >>> aikit.expm1(x)
     {
-        a: ivy.array([-0.632, 0.]),
-        b: ivy.array([2.20e+04, 1.72e+00])
+        a: aikit.array([-0.632, 0.]),
+        b: aikit.array([2.20e+04, 1.72e+00])
     }
     """
-    return ivy.current_backend(x).expm1(x, out=out)
+    return aikit.current_backend(x).expm1(x, out=out)
 
 
 @handle_exceptions
@@ -2638,11 +2638,11 @@ def expm1(
 @handle_array_function
 @handle_device
 def floor(
-    x: Union[ivy.Array, ivy.NativeArray],
+    x: Union[aikit.Array, aikit.NativeArray],
     /,
     *,
-    out: Optional[ivy.Array] = None,
-) -> ivy.Array:
+    out: Optional[aikit.Array] = None,
+) -> aikit.Array:
     """Round each element ``x_i`` of the input array ``x`` to the greatest
     (i.e., closest to ``+infinity``) integer-valued number that is not greater
     than ``x_i``.
@@ -2682,42 +2682,42 @@ def floor(
     in the standard.
 
     Both the description and the type hints above assumes an array input for simplicity,
-    but this function is *nestable*, and therefore also accepts :class:`ivy.Container`
+    but this function is *nestable*, and therefore also accepts :class:`aikit.Container`
     instances in place of any of the arguments.
 
     Examples
     --------
-    With :class:`ivy.Array` input:
+    With :class:`aikit.Array` input:
 
-    >>> x = ivy.array([2,3,4])
-    >>> y = ivy.floor(x)
+    >>> x = aikit.array([2,3,4])
+    >>> y = aikit.floor(x)
     >>> print(y)
-    ivy.array([2, 3, 4])
+    aikit.array([2, 3, 4])
 
-    >>> x = ivy.array([1.5, -5.5, 0, -1, -0])
-    >>> y = ivy.zeros(5)
-    >>> ivy.floor(x, out=y)
+    >>> x = aikit.array([1.5, -5.5, 0, -1, -0])
+    >>> y = aikit.zeros(5)
+    >>> aikit.floor(x, out=y)
     >>> print(y)
-    ivy.array([ 1., -6.,  0., -1.,  0.])
+    aikit.array([ 1., -6.,  0., -1.,  0.])
 
-    >>> x = ivy.array([[1.1, 2.2, 3.3], [-4.4, -5.5, -6.6]])
-    >>> ivy.floor(x, out=x)
+    >>> x = aikit.array([[1.1, 2.2, 3.3], [-4.4, -5.5, -6.6]])
+    >>> aikit.floor(x, out=x)
     >>> print(x)
-    ivy.array([[ 1.,  2.,  3.],
+    aikit.array([[ 1.,  2.,  3.],
                [-5., -6., -7.]])
 
-    With :class:`ivy.Container` input:
+    With :class:`aikit.Container` input:
 
-    >>> x = ivy.Container(a=ivy.array([0., 1.5, -2.4]),
-    ...                   b=ivy.array([3.4, -4.2, -0, -1.2]))
-    >>> y = ivy.floor(x)
+    >>> x = aikit.Container(a=aikit.array([0., 1.5, -2.4]),
+    ...                   b=aikit.array([3.4, -4.2, -0, -1.2]))
+    >>> y = aikit.floor(x)
     >>> print(y)
     {
-        a: ivy.array([0., 1., -3.]),
-        b: ivy.array([3., -5., 0., -2.])
+        a: aikit.array([0., 1., -3.]),
+        b: aikit.array([3., -5., 0., -2.])
     }
     """
-    return ivy.current_backend(x).floor(x, out=out)
+    return aikit.current_backend(x).floor(x, out=out)
 
 
 @handle_exceptions
@@ -2728,12 +2728,12 @@ def floor(
 @handle_array_function
 @handle_device
 def floor_divide(
-    x1: Union[float, ivy.Array, ivy.NativeArray],
-    x2: Union[float, ivy.Array, ivy.NativeArray],
+    x1: Union[float, aikit.Array, aikit.NativeArray],
+    x2: Union[float, aikit.Array, aikit.NativeArray],
     /,
     *,
-    out: Optional[ivy.Array] = None,
-) -> ivy.Array:
+    out: Optional[aikit.Array] = None,
+) -> aikit.Array:
     r"""Round the result of dividing each element x1_i of the input array x1 by
     the respective element x2_i of the input array x2 to the greatest (i.e.,
     closest to +infinity) integer-value number that is not greater than the
@@ -2859,65 +2859,65 @@ def floor_divide(
     in the standard.
 
     Both the description and the type hints above assumes an array input for simplicity,
-    but this function is *nestable*, and therefore also accepts :class:`ivy.Container`
+    but this function is *nestable*, and therefore also accepts :class:`aikit.Container`
     instances in place of any of the arguments
 
 
     Examples
     --------
-    With :class:`ivy.Array` inputs:
+    With :class:`aikit.Array` inputs:
 
-    >>> x1 = ivy.array([13., 7., 8.])
-    >>> x2 = ivy.array([3., 2., 7.])
-    >>> y = ivy.floor_divide(x1, x2)
+    >>> x1 = aikit.array([13., 7., 8.])
+    >>> x2 = aikit.array([3., 2., 7.])
+    >>> y = aikit.floor_divide(x1, x2)
     >>> print(y)
-    ivy.array([4., 3., 1.])
+    aikit.array([4., 3., 1.])
 
-    >>> x1 = ivy.array([13., 7., 8.])
-    >>> x2 = ivy.array([3., 2., 7.])
-    >>> y = ivy.zeros((2, 3))
-    >>> ivy.floor_divide(x1, x2, out=y)
+    >>> x1 = aikit.array([13., 7., 8.])
+    >>> x2 = aikit.array([3., 2., 7.])
+    >>> y = aikit.zeros((2, 3))
+    >>> aikit.floor_divide(x1, x2, out=y)
     >>> print(y)
-    ivy.array([4., 3., 1.])
+    aikit.array([4., 3., 1.])
 
-    >>> x1 = ivy.array([13., 7., 8.])
-    >>> x2 = ivy.array([3., 2., 7.])
-    >>> ivy.floor_divide(x1, x2, out=x1)
+    >>> x1 = aikit.array([13., 7., 8.])
+    >>> x2 = aikit.array([3., 2., 7.])
+    >>> aikit.floor_divide(x1, x2, out=x1)
     >>> print(x1)
-    ivy.array([4., 3., 1.])
+    aikit.array([4., 3., 1.])
 
 
-    With a mix of :class:`ivy.Array` and :class:`ivy.NativeArray` inputs:
+    With a mix of :class:`aikit.Array` and :class:`aikit.NativeArray` inputs:
 
-    >>> x1 = ivy.array([3., 4., 5.])
-    >>> x2 = ivy.native_array([5., 2., 1.])
-    >>> y = ivy.floor_divide(x1, x2)
+    >>> x1 = aikit.array([3., 4., 5.])
+    >>> x2 = aikit.native_array([5., 2., 1.])
+    >>> y = aikit.floor_divide(x1, x2)
     >>> print(y)
-    ivy.array([0., 2., 5.])
+    aikit.array([0., 2., 5.])
 
-    With :class:`ivy.Container` inputs:
+    With :class:`aikit.Container` inputs:
 
-    >>> x1 = ivy.Container(a=ivy.array([4., 5., 6.]), b=ivy.array([7., 8., 9.]))
-    >>> x2 = ivy.Container(a=ivy.array([5., 4., 2.5]), b=ivy.array([2.3, 3.7, 5]))
-    >>> y = ivy.floor_divide(x1, x2)
+    >>> x1 = aikit.Container(a=aikit.array([4., 5., 6.]), b=aikit.array([7., 8., 9.]))
+    >>> x2 = aikit.Container(a=aikit.array([5., 4., 2.5]), b=aikit.array([2.3, 3.7, 5]))
+    >>> y = aikit.floor_divide(x1, x2)
     >>> print(y)
     {
-        a: ivy.array([0., 1., 2.]),
-        b: ivy.array([3., 2., 1.])
+        a: aikit.array([0., 1., 2.]),
+        b: aikit.array([3., 2., 1.])
     }
 
-    With mixed :class:`ivy.Container` and :class:`ivy.Array` inputs:
+    With mixed :class:`aikit.Container` and :class:`aikit.Array` inputs:
 
-    >>> x1 = ivy.Container(a=ivy.array([4., 5., 6.]), b=ivy.array([7., 8., 9.]))
-    >>> x2 = ivy.array([2., 2., 2.])
-    >>> y = ivy.floor_divide(x1, x2)
+    >>> x1 = aikit.Container(a=aikit.array([4., 5., 6.]), b=aikit.array([7., 8., 9.]))
+    >>> x2 = aikit.array([2., 2., 2.])
+    >>> y = aikit.floor_divide(x1, x2)
     >>> print(y)
     {
-        a: ivy.array([2., 2., 3.]),
-        b: ivy.array([3., 4., 4.])
+        a: aikit.array([2., 2., 3.]),
+        b: aikit.array([3., 4., 4.])
     }
     """
-    return ivy.current_backend(x1, x2).floor_divide(x1, x2, out=out)
+    return aikit.current_backend(x1, x2).floor_divide(x1, x2, out=out)
 
 
 @handle_backend_invalid
@@ -2926,15 +2926,15 @@ def floor_divide(
 @to_native_arrays_and_back
 @handle_device
 def fmin(
-    x1: Union[ivy.Array, ivy.NativeArray],
-    x2: Union[ivy.Array, ivy.NativeArray],
+    x1: Union[aikit.Array, aikit.NativeArray],
+    x2: Union[aikit.Array, aikit.NativeArray],
     /,
     *,
-    out: Optional[Union[ivy.Array, ivy.NativeArray]] = None,
-) -> Union[ivy.Array, ivy.NativeArray]:
+    out: Optional[Union[aikit.Array, aikit.NativeArray]] = None,
+) -> Union[aikit.Array, aikit.NativeArray]:
     """Compute the element-wise minimums of two arrays. Differs from
-    ivy.minimum in the case where one of the elements is NaN. ivy.minimum
-    returns the NaN element while ivy.fmin returns the non-NaN element.
+    aikit.minimum in the case where one of the elements is NaN. aikit.minimum
+    returns the NaN element while aikit.fmin returns the non-NaN element.
 
     Parameters
     ----------
@@ -2952,17 +2952,17 @@ def fmin(
 
     Examples
     --------
-    >>> x1 = ivy.array([2, 3, 4])
-    >>> x2 = ivy.array([1, 5, 2])
-    >>> ivy.fmin(x1, x2)
-    ivy.array([1, 3, 2])
+    >>> x1 = aikit.array([2, 3, 4])
+    >>> x2 = aikit.array([1, 5, 2])
+    >>> aikit.fmin(x1, x2)
+    aikit.array([1, 3, 2])
 
-    >>> x1 = ivy.array([ivy.nan, 0, ivy.nan])
-    >>> x2 = ivy.array([0, ivy.nan, ivy.nan])
-    >>> ivy.fmin(x1, x2)
-    ivy.array([ 0.,  0., nan])
+    >>> x1 = aikit.array([aikit.nan, 0, aikit.nan])
+    >>> x2 = aikit.array([0, aikit.nan, aikit.nan])
+    >>> aikit.fmin(x1, x2)
+    aikit.array([ 0.,  0., nan])
     """
-    return ivy.current_backend(x1, x2).fmin(x1, x2, out=out)
+    return aikit.current_backend(x1, x2).fmin(x1, x2, out=out)
 
 
 @handle_exceptions
@@ -2973,12 +2973,12 @@ def fmin(
 @handle_array_function
 @handle_device
 def greater(
-    x1: Union[float, ivy.Array, ivy.NativeArray],
-    x2: Union[float, ivy.Array, ivy.NativeArray],
+    x1: Union[float, aikit.Array, aikit.NativeArray],
+    x2: Union[float, aikit.Array, aikit.NativeArray],
     /,
     *,
-    out: Optional[ivy.Array] = None,
-) -> ivy.Array:
+    out: Optional[aikit.Array] = None,
+) -> aikit.Array:
     """Compute the truth value of x1_i < x2_i for each element x1_i of the
     input array x1 with the respective element x2_i of the input array x2.
 
@@ -3006,63 +3006,63 @@ def greater(
     in the standard.
 
     Both the description and the type hints above assumes an array input for simplicity,
-    but this function is *nestable*, and therefore also accepts :class:`ivy.Container`
+    but this function is *nestable*, and therefore also accepts :class:`aikit.Container`
     instances in place of any of the arguments
 
     Examples
     --------
-    With :class:`ivy.Array` input:
+    With :class:`aikit.Array` input:
 
-    >>> x = ivy.greater(ivy.array([1,2,3]),ivy.array([2,2,2]))
+    >>> x = aikit.greater(aikit.array([1,2,3]),aikit.array([2,2,2]))
     >>> print(x)
-    ivy.array([False, False,  True])
+    aikit.array([False, False,  True])
 
-    >>> x = ivy.array([[[1.1], [3.2], [-6.3]]])
-    >>> y = ivy.array([[8.4], [2.5], [1.6]])
-    >>> ivy.greater(x, y, out=x)
+    >>> x = aikit.array([[[1.1], [3.2], [-6.3]]])
+    >>> y = aikit.array([[8.4], [2.5], [1.6]])
+    >>> aikit.greater(x, y, out=x)
     >>> print(x)
-    ivy.array([[[0.],
+    aikit.array([[[0.],
             [1.],
             [0.]]])
 
-    With a mix of :class:`ivy.Array` and :class:`ivy.NativeArray` inputs:
+    With a mix of :class:`aikit.Array` and :class:`aikit.NativeArray` inputs:
 
-    >>> x = ivy.array([1, 2, 3])
-    >>> y = ivy.native_array([4, 5, 0])
-    >>> z = ivy.greater(x, y)
+    >>> x = aikit.array([1, 2, 3])
+    >>> y = aikit.native_array([4, 5, 0])
+    >>> z = aikit.greater(x, y)
     >>> print(z)
-    ivy.array([False, False,  True])
+    aikit.array([False, False,  True])
 
-    With a mix of :class:`ivy.Array` and :class:`ivy.Container` inputs:
+    With a mix of :class:`aikit.Array` and :class:`aikit.Container` inputs:
 
-    >>> x = ivy.array([[5.1, 2.3, -3.6]])
-    >>> y = ivy.Container(a=ivy.array([[4.], [5.], [6.]]),
-    ...                   b=ivy.array([[5.], [6.], [7.]]))
-    >>> z = ivy.greater(x, y)
+    >>> x = aikit.array([[5.1, 2.3, -3.6]])
+    >>> y = aikit.Container(a=aikit.array([[4.], [5.], [6.]]),
+    ...                   b=aikit.array([[5.], [6.], [7.]]))
+    >>> z = aikit.greater(x, y)
     >>> print(z)
     {
-        a: ivy.array([[True, False, False],
+        a: aikit.array([[True, False, False],
                       [True, False, False],
                       [False, False, False]]),
-        b: ivy.array([[True, False, False],
+        b: aikit.array([[True, False, False],
                       [False, False, False],
                       [False, False, False]])
     }
 
-    With :class:`ivy.Container` input:
+    With :class:`aikit.Container` input:
 
-    >>> x = ivy.Container(a=ivy.array([4, 5, 6]),
-    ...                   b=ivy.array([2, 3, 4]))
-    >>> y = ivy.Container(a=ivy.array([1, 2, 3]),
-    ...                   b=ivy.array([5, 6, 7]))
-    >>> z = ivy.greater(x, y)
+    >>> x = aikit.Container(a=aikit.array([4, 5, 6]),
+    ...                   b=aikit.array([2, 3, 4]))
+    >>> y = aikit.Container(a=aikit.array([1, 2, 3]),
+    ...                   b=aikit.array([5, 6, 7]))
+    >>> z = aikit.greater(x, y)
     >>> print(z)
     {
-        a: ivy.array([True, True, True]),
-        b: ivy.array([False, False, False])
+        a: aikit.array([True, True, True]),
+        b: aikit.array([False, False, False])
     }
     """
-    return ivy.current_backend(x1, x2).greater(x1, x2, out=out)
+    return aikit.current_backend(x1, x2).greater(x1, x2, out=out)
 
 
 @handle_exceptions
@@ -3073,12 +3073,12 @@ def greater(
 @handle_array_function
 @handle_device
 def greater_equal(
-    x1: Union[ivy.Array, ivy.NativeArray],
-    x2: Union[ivy.Array, ivy.NativeArray],
+    x1: Union[aikit.Array, aikit.NativeArray],
+    x2: Union[aikit.Array, aikit.NativeArray],
     /,
     *,
-    out: Optional[ivy.Array] = None,
-) -> ivy.Array:
+    out: Optional[aikit.Array] = None,
+) -> aikit.Array:
     """Compute the truth value of x1_i >= x2_i for each element x1_i of the
     input array x1 with the respective element x2_i of the input array x2.
 
@@ -3107,48 +3107,48 @@ def greater_equal(
     in the standard.
 
     Both the description and the type hints above assumes an array input for simplicity,
-    but this function is *nestable*, and therefore also accepts :class:`ivy.Container`
+    but this function is *nestable*, and therefore also accepts :class:`aikit.Container`
     instances in place of any of the arguments
 
     Examples
     --------
-    With :class:`ivy.Array` input:
+    With :class:`aikit.Array` input:
 
-    >>> x = ivy.greater_equal(ivy.array([1,2,3]),ivy.array([2,2,2]))
+    >>> x = aikit.greater_equal(aikit.array([1,2,3]),aikit.array([2,2,2]))
     >>> print(x)
-    ivy.array([False, True, True])
+    aikit.array([False, True, True])
 
-    >>> x = ivy.array([[10.1, 2.3, -3.6]])
-    >>> y = ivy.array([[4.8], [5.2], [6.1]])
+    >>> x = aikit.array([[10.1, 2.3, -3.6]])
+    >>> y = aikit.array([[4.8], [5.2], [6.1]])
     >>> shape = (3,3)
     >>> fill_value = False
-    >>> z = ivy.full(shape, fill_value)
-    >>> ivy.greater_equal(x, y, out=z)
+    >>> z = aikit.full(shape, fill_value)
+    >>> aikit.greater_equal(x, y, out=z)
     >>> print(z)
-    ivy.array([[ True, False, False],
+    aikit.array([[ True, False, False],
            [ True, False, False],
            [ True, False, False]])
 
-    >>> x = ivy.array([[[1.1], [3.2], [-6.3]]])
-    >>> y = ivy.array([[8.4], [2.5], [1.6]])
-    >>> ivy.greater_equal(x, y, out=x)
+    >>> x = aikit.array([[[1.1], [3.2], [-6.3]]])
+    >>> y = aikit.array([[8.4], [2.5], [1.6]])
+    >>> aikit.greater_equal(x, y, out=x)
     >>> print(x)
-    ivy.array([[[0.],
+    aikit.array([[[0.],
             [1.],
             [0.]]])
 
-    With :class:`ivy.Container` input:
+    With :class:`aikit.Container` input:
 
-    >>> x = ivy.Container(a=ivy.array([4, 5, 6]),b=ivy.array([2, 3, 4]))
-    >>> y = ivy.Container(a=ivy.array([1, 2, 3]),b=ivy.array([5, 6, 7]))
-    >>> z = ivy.greater_equal(x, y)
+    >>> x = aikit.Container(a=aikit.array([4, 5, 6]),b=aikit.array([2, 3, 4]))
+    >>> y = aikit.Container(a=aikit.array([1, 2, 3]),b=aikit.array([5, 6, 7]))
+    >>> z = aikit.greater_equal(x, y)
     >>> print(z)
     {
-        a:ivy.array([True,True,True]),
-        b:ivy.array([False,False,False])
+        a:aikit.array([True,True,True]),
+        b:aikit.array([False,False,False])
     }
     """
-    return ivy.current_backend(x1, x2).greater_equal(x1, x2, out=out)
+    return aikit.current_backend(x1, x2).greater_equal(x1, x2, out=out)
 
 
 @handle_exceptions
@@ -3159,12 +3159,12 @@ def greater_equal(
 @handle_array_function
 @handle_device
 def less_equal(
-    x1: Union[ivy.Array, ivy.NativeArray],
-    x2: Union[ivy.Array, ivy.NativeArray],
+    x1: Union[aikit.Array, aikit.NativeArray],
+    x2: Union[aikit.Array, aikit.NativeArray],
     /,
     *,
-    out: Optional[ivy.Array] = None,
-) -> ivy.Array:
+    out: Optional[aikit.Array] = None,
+) -> aikit.Array:
     """Compute the truth value of x1_i <= x2_i for each element x1_i of the
     input array x1 with the respective element x2_i of the input array x2.
 
@@ -3193,48 +3193,48 @@ def less_equal(
     in the standard.
 
     Both the description and the type hints above assumes an array input for simplicity,
-    but this function is *nestable*, and therefore also accepts :class:`ivy.Container`
+    but this function is *nestable*, and therefore also accepts :class:`aikit.Container`
     instances in place of any of the arguments
 
     Examples
     --------
-    With :class:`ivy.Array` input:
+    With :class:`aikit.Array` input:
 
-    >>> x = ivy.less_equal(ivy.array([1,2,3]),ivy.array([2,2,2]))
+    >>> x = aikit.less_equal(aikit.array([1,2,3]),aikit.array([2,2,2]))
     >>> print(x)
-    ivy.array([True, True,  False])
+    aikit.array([True, True,  False])
 
-    >>> x = ivy.array([[10.1, 2.3, -3.6]])
-    >>> y = ivy.array([[4.8], [5.2], [6.1]])
+    >>> x = aikit.array([[10.1, 2.3, -3.6]])
+    >>> y = aikit.array([[4.8], [5.2], [6.1]])
     >>> shape = (3,3)
     >>> fill_value = False
-    >>> z = ivy.full(shape, fill_value)
-    >>> ivy.less_equal(x, y, out=z)
+    >>> z = aikit.full(shape, fill_value)
+    >>> aikit.less_equal(x, y, out=z)
     >>> print(z)
-    ivy.array([[False,  True,  True],
+    aikit.array([[False,  True,  True],
            [False,  True,  True],
            [False,  True,  True]])
 
-    >>> x = ivy.array([[[1.1], [3.2], [-6.3]]])
-    >>> y = ivy.array([[8.4], [2.5], [1.6]])
-    >>> ivy.less_equal(x, y, out=x)
+    >>> x = aikit.array([[[1.1], [3.2], [-6.3]]])
+    >>> y = aikit.array([[8.4], [2.5], [1.6]])
+    >>> aikit.less_equal(x, y, out=x)
     >>> print(x)
-    ivy.array([[[1.],
+    aikit.array([[[1.],
             [0.],
             [1.]]])
 
-    With :class:`ivy.Container` input:
+    With :class:`aikit.Container` input:
 
-    >>> x = ivy.Container(a=ivy.array([4, 5, 6]),b=ivy.array([2, 3, 4]))
-    >>> y = ivy.Container(a=ivy.array([1, 2, 3]),b=ivy.array([5, 6, 7]))
-    >>> z = ivy.less_equal(x, y)
+    >>> x = aikit.Container(a=aikit.array([4, 5, 6]),b=aikit.array([2, 3, 4]))
+    >>> y = aikit.Container(a=aikit.array([1, 2, 3]),b=aikit.array([5, 6, 7]))
+    >>> z = aikit.less_equal(x, y)
     >>> print(z)
     {
-        a: ivy.array([False, False, False]),
-        b: ivy.array([True, True, True])
+        a: aikit.array([False, False, False]),
+        b: aikit.array([True, True, True])
     }
     """
-    return ivy.current_backend(x1, x2).less_equal(x1, x2, out=out)
+    return aikit.current_backend(x1, x2).less_equal(x1, x2, out=out)
 
 
 @handle_exceptions
@@ -3245,12 +3245,12 @@ def less_equal(
 @handle_array_function
 @handle_device
 def multiply(
-    x1: Union[float, ivy.Array, ivy.NativeArray],
-    x2: Union[float, ivy.Array, ivy.NativeArray],
+    x1: Union[float, aikit.Array, aikit.NativeArray],
+    x2: Union[float, aikit.Array, aikit.NativeArray],
     /,
     *,
-    out: Optional[ivy.Array] = None,
-) -> ivy.Array:
+    out: Optional[aikit.Array] = None,
+) -> aikit.Array:
     r"""Calculate the product for each element x1_i of the input array x1 with
     the respective element x2_i of the input array x2.
 
@@ -3362,7 +3362,7 @@ def multiply(
     in the standard.
 
     Both the description and the type hints above assumes an array input for simplicity,
-    but this function is *nestable*, and therefore also accepts :class:`ivy.Container`
+    but this function is *nestable*, and therefore also accepts :class:`aikit.Container`
     instances in place of any of the arguments.
 
     Returns
@@ -3373,53 +3373,53 @@ def multiply(
 
     Examples
     --------
-    With :code:`ivy.Array` inputs:
+    With :code:`aikit.Array` inputs:
 
-    >>> x1 = ivy.array([3., 5., 7.])
-    >>> x2 = ivy.array([4., 6., 8.])
-    >>> y = ivy.multiply(x1, x2)
+    >>> x1 = aikit.array([3., 5., 7.])
+    >>> x2 = aikit.array([4., 6., 8.])
+    >>> y = aikit.multiply(x1, x2)
     >>> print(y)
-    ivy.array([12., 30., 56.])
+    aikit.array([12., 30., 56.])
 
-    With :code:`ivy.NativeArray` inputs:
+    With :code:`aikit.NativeArray` inputs:
 
-    >>> x1 = ivy.native_array([1., 3., 9.])
-    >>> x2 = ivy.native_array([4., 7.2, 1.])
-    >>> y = ivy.multiply(x1, x2)
+    >>> x1 = aikit.native_array([1., 3., 9.])
+    >>> x2 = aikit.native_array([4., 7.2, 1.])
+    >>> y = aikit.multiply(x1, x2)
     >>> print(y)
-    ivy.array([ 4. , 21.6,  9. ])
+    aikit.array([ 4. , 21.6,  9. ])
 
-    With mixed :code:`ivy.Array` and :code:`ivy.NativeArray` inputs:
+    With mixed :code:`aikit.Array` and :code:`aikit.NativeArray` inputs:
 
-    >>> x1 = ivy.array([8., 6., 7.])
-    >>> x2 = ivy.native_array([1., 2., 3.])
-    >>> y = ivy.multiply(x1, x2)
+    >>> x1 = aikit.array([8., 6., 7.])
+    >>> x2 = aikit.native_array([1., 2., 3.])
+    >>> y = aikit.multiply(x1, x2)
     >>> print(y)
-    ivy.array([ 8., 12., 21.])
+    aikit.array([ 8., 12., 21.])
 
-    With :code:`ivy.Container` inputs:
+    With :code:`aikit.Container` inputs:
 
-    >>> x1 = ivy.Container(a=ivy.array([12.,4.,6.]), b=ivy.array([3.,1.,5.]))
-    >>> x2 = ivy.Container(a=ivy.array([1.,3.,4.]), b=ivy.array([3.,3.,2.]))
-    >>> y = ivy.multiply(x1, x2)
+    >>> x1 = aikit.Container(a=aikit.array([12.,4.,6.]), b=aikit.array([3.,1.,5.]))
+    >>> x2 = aikit.Container(a=aikit.array([1.,3.,4.]), b=aikit.array([3.,3.,2.]))
+    >>> y = aikit.multiply(x1, x2)
     >>> print(y)
     {
-        a: ivy.array([12.,12.,24.]),
-        b: ivy.array([9.,3.,10.])
+        a: aikit.array([12.,12.,24.]),
+        b: aikit.array([9.,3.,10.])
     }
 
-    With mixed :code:`ivy.Container` and :code:`ivy.Array` inputs:
+    With mixed :code:`aikit.Container` and :code:`aikit.Array` inputs:
 
-    >>> x1 = ivy.Container(a=ivy.array([3., 4., 5.]), b=ivy.array([2., 2., 1.]))
-    >>> x2 = ivy.array([1.,2.,3.])
-    >>> y = ivy.multiply(x1, x2)
+    >>> x1 = aikit.Container(a=aikit.array([3., 4., 5.]), b=aikit.array([2., 2., 1.]))
+    >>> x2 = aikit.array([1.,2.,3.])
+    >>> y = aikit.multiply(x1, x2)
     >>> print(y)
     {
-        a: ivy.array([3.,8.,15.]),
-        b: ivy.array([2.,4.,3.])
+        a: aikit.array([3.,8.,15.]),
+        b: aikit.array([2.,4.,3.])
     }
     """
-    return ivy.current_backend(x1, x2).multiply(x1, x2, out=out)
+    return aikit.current_backend(x1, x2).multiply(x1, x2, out=out)
 
 
 @handle_exceptions
@@ -3431,11 +3431,11 @@ def multiply(
 @handle_array_function
 @handle_device
 def isfinite(
-    x: Union[ivy.Array, ivy.NativeArray],
+    x: Union[aikit.Array, aikit.NativeArray],
     /,
     *,
-    out: Optional[ivy.Array] = None,
-) -> ivy.Array:
+    out: Optional[aikit.Array] = None,
+) -> aikit.Array:
     """Test each element ``x_i`` of the input array ``x`` to determine if
     finite (i.e., not ``NaN`` and not equal to positive or negative infinity).
 
@@ -3481,42 +3481,42 @@ def isfinite(
     _ in the standard.
 
     Both the description and the type hints above assumes an array input for simplicity,
-    but this function is *nestable*, and therefore also accepts :class:`ivy.Container`
+    but this function is *nestable*, and therefore also accepts :class:`aikit.Container`
     instances in place of any of the arguments.
 
     Examples
     --------
-    With :class:`ivy.Array` input:
+    With :class:`aikit.Array` input:
 
-    >>> x = ivy.array([0, ivy.nan, -ivy.inf, float('inf')])
-    >>> y = ivy.isfinite(x)
+    >>> x = aikit.array([0, aikit.nan, -aikit.inf, float('inf')])
+    >>> y = aikit.isfinite(x)
     >>> print(y)
-    ivy.array([ True, False, False, False])
+    aikit.array([ True, False, False, False])
 
-    >>> x = ivy.array([0, ivy.nan, -ivy.inf])
-    >>> y = ivy.zeros(3)
-    >>> ivy.isfinite(x, out=y)
+    >>> x = aikit.array([0, aikit.nan, -aikit.inf])
+    >>> y = aikit.zeros(3)
+    >>> aikit.isfinite(x, out=y)
     >>> print(y)
-    ivy.array([1., 0., 0.])
+    aikit.array([1., 0., 0.])
 
-    >>> x = ivy.array([[9, float('-0')], [ivy.nan, ivy.inf]])
-    >>> ivy.isfinite(x, out=x)
+    >>> x = aikit.array([[9, float('-0')], [aikit.nan, aikit.inf]])
+    >>> aikit.isfinite(x, out=x)
     >>> print(x)
-    ivy.array([[1., 1.],
+    aikit.array([[1., 1.],
            [0., 0.]])
 
-    With :class:`ivy.Container` input:
+    With :class:`aikit.Container` input:
 
-    >>> x = ivy.Container(a=ivy.array([0., 999999999999]),
-    ...                   b=ivy.array([float('-0'), ivy.nan]))
-    >>> y = ivy.isfinite(x)
+    >>> x = aikit.Container(a=aikit.array([0., 999999999999]),
+    ...                   b=aikit.array([float('-0'), aikit.nan]))
+    >>> y = aikit.isfinite(x)
     >>> print(y)
     {
-        a: ivy.array([True, True]),
-        b: ivy.array([True, False])
+        a: aikit.array([True, True]),
+        b: aikit.array([True, False])
     }
     """
-    return ivy.current_backend(x).isfinite(x, out=out)
+    return aikit.current_backend(x).isfinite(x, out=out)
 
 
 @handle_exceptions
@@ -3528,13 +3528,13 @@ def isfinite(
 @handle_array_function
 @handle_device
 def isinf(
-    x: Union[ivy.Array, ivy.NativeArray],
+    x: Union[aikit.Array, aikit.NativeArray],
     /,
     *,
     detect_positive: bool = True,
     detect_negative: bool = True,
-    out: Optional[ivy.Array] = None,
-) -> ivy.Array:
+    out: Optional[aikit.Array] = None,
+) -> aikit.Array:
     """Test each element x_i of the input array x to determine if equal to
     positive or negative infinity.
 
@@ -3581,64 +3581,64 @@ def isinf(
     in the standard.
 
     Both the description and the type hints above assumes an array input for simplicity,
-    but this function is *nestable*, and therefore also accepts :class:`ivy.Container`
+    but this function is *nestable*, and therefore also accepts :class:`aikit.Container`
     instances in place of any of the arguments.
 
     Examples
     --------
-    With :class:`ivy.Array` inputs:
+    With :class:`aikit.Array` inputs:
 
-    >>> x = ivy.array([1, 2, 3])
-    >>> z = ivy.isinf(x)
+    >>> x = aikit.array([1, 2, 3])
+    >>> z = aikit.isinf(x)
     >>> print(z)
-    ivy.array([False, False, False])
+    aikit.array([False, False, False])
 
-    >>> x = ivy.array([[1.1, 2.3, -3.6]])
-    >>> z = ivy.isinf(x)
+    >>> x = aikit.array([[1.1, 2.3, -3.6]])
+    >>> z = aikit.isinf(x)
     >>> print(z)
-    ivy.array([[False, False, False]])
+    aikit.array([[False, False, False]])
 
-    >>> x = ivy.array([[[1.1], [float('inf')], [-6.3]]])
-    >>> z = ivy.isinf(x)
+    >>> x = aikit.array([[[1.1], [float('inf')], [-6.3]]])
+    >>> z = aikit.isinf(x)
     >>> print(z)
-    ivy.array([[[False],
+    aikit.array([[[False],
             [True],
             [False]]])
 
-    >>> x = ivy.array([[-float('inf'), float('inf'), 0.0]])
-    >>> z = ivy.isinf(x)
+    >>> x = aikit.array([[-float('inf'), float('inf'), 0.0]])
+    >>> z = aikit.isinf(x)
     >>> print(z)
-    ivy.array([[ True,  True, False]])
+    aikit.array([[ True,  True, False]])
 
-    >>> x = ivy.zeros((3, 3))
-    >>> z = ivy.isinf(x)
+    >>> x = aikit.zeros((3, 3))
+    >>> z = aikit.isinf(x)
     >>> print(z)
-    ivy.array([[False, False, False],
+    aikit.array([[False, False, False],
        [False, False, False],
        [False, False, False]])
 
-    With :class:`ivy.Container` input:
+    With :class:`aikit.Container` input:
 
-    >>> x = ivy.Container(a=ivy.array([-1, -float('inf'), 1.23]),
-    ...                   b=ivy.array([float('inf'), 3.3, -4.2]))
-    >>> z = ivy.isinf(x)
+    >>> x = aikit.Container(a=aikit.array([-1, -float('inf'), 1.23]),
+    ...                   b=aikit.array([float('inf'), 3.3, -4.2]))
+    >>> z = aikit.isinf(x)
     >>> print(z)
     {
-        a: ivy.array([False, True, False]),
-        b: ivy.array([True, False, False])
+        a: aikit.array([False, True, False]),
+        b: aikit.array([True, False, False])
     }
 
-    With :class:`ivy.Container` input:
+    With :class:`aikit.Container` input:
 
-    >>> x = ivy.Container(a=ivy.array([-1, -float('inf'), 1.23]),
-    ...                   b=ivy.array([float('inf'), 3.3, -4.2]))
+    >>> x = aikit.Container(a=aikit.array([-1, -float('inf'), 1.23]),
+    ...                   b=aikit.array([float('inf'), 3.3, -4.2]))
     >>> x.isinf()
     {
-        a: ivy.array([False, True, False]),
-        b: ivy.array([True, False, False])
+        a: aikit.array([False, True, False]),
+        b: aikit.array([True, False, False])
     }
     """
-    return ivy.current_backend(x).isinf(
+    return aikit.current_backend(x).isinf(
         x, detect_positive=detect_positive, detect_negative=detect_negative, out=out
     )
 
@@ -3652,11 +3652,11 @@ def isinf(
 @handle_array_function
 @handle_device
 def isnan(
-    x: Union[ivy.Array, ivy.NativeArray],
+    x: Union[aikit.Array, aikit.NativeArray],
     /,
     *,
-    out: Optional[ivy.Array] = None,
-) -> ivy.Array:
+    out: Optional[aikit.Array] = None,
+) -> aikit.Array:
     """Test each element ``x_i`` of the input array ``x`` to determine whether
     the element is ``NaN``.
 
@@ -3696,60 +3696,60 @@ def isnan(
     in the standard.
 
     Both the description and the type hints above assumes an array input for simplicity,
-    but this function is *nestable*, and therefore also accepts :class:`ivy.Container`
+    but this function is *nestable*, and therefore also accepts :class:`aikit.Container`
     instances in place of any of the arguments
 
     Examples
     --------
-    With :class:`ivy.Array` inputs:
+    With :class:`aikit.Array` inputs:
 
-    >>> x = ivy.array([1, 2, 3])
-    >>> z = ivy.isnan(x)
+    >>> x = aikit.array([1, 2, 3])
+    >>> z = aikit.isnan(x)
     >>> print(z)
-    ivy.array([False, False, False])
+    aikit.array([False, False, False])
 
-    >>> x = ivy.array([[1.1, 2.3, -3.6]])
-    >>> z = ivy.isnan(x)
+    >>> x = aikit.array([[1.1, 2.3, -3.6]])
+    >>> z = aikit.isnan(x)
     >>> print(z)
-    ivy.array([[False, False, False]])
+    aikit.array([[False, False, False]])
 
-    >>> x = ivy.array([[[1.1], [float('inf')], [-6.3]]])
-    >>> z = ivy.isnan(x)
+    >>> x = aikit.array([[[1.1], [float('inf')], [-6.3]]])
+    >>> z = aikit.isnan(x)
     >>> print(z)
-    ivy.array([[[False],
+    aikit.array([[[False],
                 [False],
                 [False]]])
 
-    >>> x = ivy.array([[-float('nan'), float('nan'), 0.0]])
-    >>> z = ivy.isnan(x)
+    >>> x = aikit.array([[-float('nan'), float('nan'), 0.0]])
+    >>> z = aikit.isnan(x)
     >>> print(z)
-    ivy.array([[ True,  True, False]])
+    aikit.array([[ True,  True, False]])
 
-    >>> x = ivy.array([[-float('nan'), float('inf'), float('nan'), 0.0]])
-    >>> z = ivy.isnan(x)
+    >>> x = aikit.array([[-float('nan'), float('inf'), float('nan'), 0.0]])
+    >>> z = aikit.isnan(x)
     >>> print(z)
-    ivy.array([[ True, False,  True, False]])
+    aikit.array([[ True, False,  True, False]])
 
-    >>> x = ivy.zeros((3, 3))
-    >>> z = ivy.isnan(x)
+    >>> x = aikit.zeros((3, 3))
+    >>> z = aikit.isnan(x)
     >>> print(z)
-    ivy.array([[False, False, False],
+    aikit.array([[False, False, False],
        [False, False, False],
        [False, False, False]])
 
 
-    With :class:`ivy.Container` input:
+    With :class:`aikit.Container` input:
 
-    >>> x = ivy.Container(a=ivy.array([-1, -float('nan'), 1.23]),
-    ...                   b=ivy.array([float('nan'), 3.3, -4.2]))
-    >>> z = ivy.isnan(x)
+    >>> x = aikit.Container(a=aikit.array([-1, -float('nan'), 1.23]),
+    ...                   b=aikit.array([float('nan'), 3.3, -4.2]))
+    >>> z = aikit.isnan(x)
     >>> print(z)
     {
-        a: ivy.array([False, True, False]),
-        b: ivy.array([True, False, False])
+        a: aikit.array([False, True, False]),
+        b: aikit.array([True, False, False])
     }
     """
-    return ivy.current_backend(x).isnan(x, out=out)
+    return aikit.current_backend(x).isnan(x, out=out)
 
 
 @handle_exceptions
@@ -3760,12 +3760,12 @@ def isnan(
 @handle_array_function
 @handle_device
 def less(
-    x1: Union[float, ivy.Array, ivy.NativeArray],
-    x2: Union[float, ivy.Array, ivy.NativeArray],
+    x1: Union[float, aikit.Array, aikit.NativeArray],
+    x2: Union[float, aikit.Array, aikit.NativeArray],
     /,
     *,
-    out: Optional[ivy.Array] = None,
-) -> ivy.Array:
+    out: Optional[aikit.Array] = None,
+) -> aikit.Array:
     """Compute the truth value of ``x1_i < x2_i`` for each element ``x1_i`` of
     the input array ``x1`` with the respective element ``x2_i`` of the input
     array ``x2``.
@@ -3789,57 +3789,57 @@ def less(
 
     Examples
     --------
-    With :class:`ivy.Array` input:
+    With :class:`aikit.Array` input:
 
-    >>> x = ivy.less(ivy.array([1,2,3]),ivy.array([2,2,2]))
+    >>> x = aikit.less(aikit.array([1,2,3]),aikit.array([2,2,2]))
     >>> print(x)
-    ivy.array([ True, False, False])
+    aikit.array([ True, False, False])
 
 
-    >>> x = ivy.array([[[1.1], [3.2], [-6.3]]])
-    >>> y = ivy.array([[8.4], [2.5], [1.6]])
-    >>> ivy.less(x, y, out=x)
+    >>> x = aikit.array([[[1.1], [3.2], [-6.3]]])
+    >>> y = aikit.array([[8.4], [2.5], [1.6]])
+    >>> aikit.less(x, y, out=x)
     >>> print(x)
-    ivy.array([[[1.],
+    aikit.array([[[1.],
             [0.],
             [1.]]])
 
-    With a mix of :class:`ivy.Array` and :class:`ivy.NativeArray` inputs:
+    With a mix of :class:`aikit.Array` and :class:`aikit.NativeArray` inputs:
 
-    >>> x = ivy.array([1, 2, 3])
-    >>> y = ivy.native_array([4, 5, 0])
-    >>> z = ivy.less(x, y)
+    >>> x = aikit.array([1, 2, 3])
+    >>> y = aikit.native_array([4, 5, 0])
+    >>> z = aikit.less(x, y)
     >>> print(z)
-    ivy.array([ True,  True, False])
+    aikit.array([ True,  True, False])
 
-    With a mix of :class:`ivy.Array` and :class:`ivy.Container` inputs:
+    With a mix of :class:`aikit.Array` and :class:`aikit.Container` inputs:
 
-    >>> x = ivy.array([[5.1, 2.3, -3.6]])
-    >>> y = ivy.Container(a=ivy.array([[4.], [5.], [6.]]),
-    ...                   b=ivy.array([[5.], [6.], [7.]]))
-    >>> z = ivy.less(x, y)
+    >>> x = aikit.array([[5.1, 2.3, -3.6]])
+    >>> y = aikit.Container(a=aikit.array([[4.], [5.], [6.]]),
+    ...                   b=aikit.array([[5.], [6.], [7.]]))
+    >>> z = aikit.less(x, y)
     >>> print(z)
     {
-        a: ivy.array([[False, True, True],
+        a: aikit.array([[False, True, True],
                       [False, True, True],
                       [True, True, True]]),
-        b: ivy.array([[False, True, True],
+        b: aikit.array([[False, True, True],
                       [True, True, True],
                       [True, True, True]])
     }
 
-    With :class:`ivy.Container` input:
+    With :class:`aikit.Container` input:
 
-    >>> x = ivy.Container(a=ivy.array([4, 5, 6]),b=ivy.array([2, 3, 4]))
-    >>> y = ivy.Container(a=ivy.array([1, 2, 3]),b=ivy.array([5, 6, 7]))
-    >>> z = ivy.less(x, y)
+    >>> x = aikit.Container(a=aikit.array([4, 5, 6]),b=aikit.array([2, 3, 4]))
+    >>> y = aikit.Container(a=aikit.array([1, 2, 3]),b=aikit.array([5, 6, 7]))
+    >>> z = aikit.less(x, y)
     >>> print(z)
     {
-        a: ivy.array([False, False, False]),
-        b: ivy.array([True, True, True])
+        a: aikit.array([False, False, False]),
+        b: aikit.array([True, True, True])
     }
     """
-    return ivy.current_backend(x1).less(x1, x2, out=out)
+    return aikit.current_backend(x1).less(x1, x2, out=out)
 
 
 @handle_exceptions
@@ -3851,11 +3851,11 @@ def less(
 @handle_array_function
 @handle_device
 def log(
-    x: Union[ivy.Array, ivy.NativeArray],
+    x: Union[aikit.Array, aikit.NativeArray],
     /,
     *,
-    out: Optional[ivy.Array] = None,
-) -> ivy.Array:
+    out: Optional[aikit.Array] = None,
+) -> aikit.Array:
     """Calculate an implementation-dependent approximation to the natural (base
     ``e``) logarithm, having domain ``[0, +infinity]`` and codomain
     ``[-infinity, +infinity]``, for each element ``x_i`` of the input array
@@ -3913,34 +3913,34 @@ def log(
 
     Examples
     --------
-    With :class:`ivy.Array` input:
+    With :class:`aikit.Array` input:
 
-    >>> x = ivy.array([4.0, 1, -0.0, -5.0])
-    >>> y = ivy.log(x)
+    >>> x = aikit.array([4.0, 1, -0.0, -5.0])
+    >>> y = aikit.log(x)
     >>> print(y)
-    ivy.array([1.39, 0., -inf, nan])
+    aikit.array([1.39, 0., -inf, nan])
 
-    >>> x = ivy.array([[float('nan'), 1, 5.0, float('+inf')],
+    >>> x = aikit.array([[float('nan'), 1, 5.0, float('+inf')],
     ...                [+0, -1.0, -5, float('-inf')]])
-    >>> y = ivy.log(x)
+    >>> y = aikit.log(x)
     >>> print(y)
-    ivy.array([[nan, 0., 1.61, inf],
+    aikit.array([[nan, 0., 1.61, inf],
                [-inf, nan, nan, nan]])
 
-    With :class:`ivy.Container` input:
+    With :class:`aikit.Container` input:
 
-    >>> x = ivy.Container(a=ivy.array([0.0, float('nan')]),
-    ...                   b=ivy.array([-0., -3.9, float('+inf')]),
-    ...                   c=ivy.array([7.9, 1.1, 1.]))
-    >>> y = ivy.log(x)
+    >>> x = aikit.Container(a=aikit.array([0.0, float('nan')]),
+    ...                   b=aikit.array([-0., -3.9, float('+inf')]),
+    ...                   c=aikit.array([7.9, 1.1, 1.]))
+    >>> y = aikit.log(x)
     >>> print(y)
     {
-        a: ivy.array([-inf, nan]),
-        b: ivy.array([-inf, nan, inf]),
-        c: ivy.array([2.07, 0.0953, 0.])
+        a: aikit.array([-inf, nan]),
+        b: aikit.array([-inf, nan, inf]),
+        c: aikit.array([2.07, 0.0953, 0.])
     }
     """
-    return ivy.current_backend(x).log(x, out=out)
+    return aikit.current_backend(x).log(x, out=out)
 
 
 @handle_exceptions
@@ -3952,11 +3952,11 @@ def log(
 @handle_array_function
 @handle_device
 def log10(
-    x: Union[ivy.Array, ivy.NativeArray],
+    x: Union[aikit.Array, aikit.NativeArray],
     /,
     *,
-    out: Optional[ivy.Array] = None,
-) -> ivy.Array:
+    out: Optional[aikit.Array] = None,
+) -> aikit.Array:
     r"""Calculate an implementation-dependent approximation to the base ``10``
     logarithm, having domain ``[0, +infinity]`` and codomain ``[-infinity,
     +infinity]``, for each element ``x_i`` of the input array ``x``.
@@ -4002,39 +4002,39 @@ def log10(
     in the standard.
 
     Both the description and the type hints above assumes an array input for simplicity,
-    but this function is *nestable*, and therefore also accepts :class:`ivy.Container`
+    but this function is *nestable*, and therefore also accepts :class:`aikit.Container`
     instances in place of any of the arguments.
 
     Examples
     --------
-    With :class:`ivy.Array` input:
+    With :class:`aikit.Array` input:
 
-    >>> x = ivy.array([4.0, 1, -0.0, -5.0])
-    >>> y = ivy.log10(x)
+    >>> x = aikit.array([4.0, 1, -0.0, -5.0])
+    >>> y = aikit.log10(x)
     >>> print(y)
-    ivy.array([0.602, 0., -inf, nan])
+    aikit.array([0.602, 0., -inf, nan])
 
-    >>> x = ivy.array([[float('nan'), 1, 5.0, float('+inf')],
+    >>> x = aikit.array([[float('nan'), 1, 5.0, float('+inf')],
     ...                [+0, -1.0, -5, float('-inf')]])
-    >>> y = ivy.log10(x)
+    >>> y = aikit.log10(x)
     >>> print(y)
-    ivy.array([[nan, 0., 0.699, inf],
+    aikit.array([[nan, 0., 0.699, inf],
                [-inf, nan, nan, nan]])
 
-    With :class:`ivy.Container` input:
+    With :class:`aikit.Container` input:
 
-    >>> x = ivy.Container(a=ivy.array([0.0, float('nan')]),
-    ...                   b=ivy.array([-0., -3.9, float('+inf')]),
-    ...                   c=ivy.array([7.9, 1.1, 1.]))
-    >>> y = ivy.log10(x)
+    >>> x = aikit.Container(a=aikit.array([0.0, float('nan')]),
+    ...                   b=aikit.array([-0., -3.9, float('+inf')]),
+    ...                   c=aikit.array([7.9, 1.1, 1.]))
+    >>> y = aikit.log10(x)
     >>> print(y)
     {
-        a: ivy.array([-inf, nan]),
-        b: ivy.array([-inf, nan, inf]),
-        c: ivy.array([0.898, 0.0414, 0.])
+        a: aikit.array([-inf, nan]),
+        b: aikit.array([-inf, nan, inf]),
+        c: aikit.array([0.898, 0.0414, 0.])
     }
     """
-    return ivy.current_backend(x).log10(x, out=out)
+    return aikit.current_backend(x).log10(x, out=out)
 
 
 @handle_exceptions
@@ -4046,11 +4046,11 @@ def log10(
 @handle_array_function
 @handle_device
 def log1p(
-    x: Union[ivy.Array, ivy.NativeArray],
+    x: Union[aikit.Array, aikit.NativeArray],
     /,
     *,
-    out: Optional[ivy.Array] = None,
-) -> ivy.Array:
+    out: Optional[aikit.Array] = None,
+) -> aikit.Array:
     """Calculate an implementation-dependent approximation to log(1+x), where
     log refers to the natural (base e) logarithm.
 
@@ -4119,40 +4119,40 @@ def log1p(
     in the standard.
 
     Both the description and the type hints above assumes an array input for simplicity,
-    but this function is *nestable*, and therefore also accepts :class:`ivy.Container`
+    but this function is *nestable*, and therefore also accepts :class:`aikit.Container`
     instances in place of any of the arguments.
 
     Examples
     --------
-    With :class:`ivy.Array` input:
+    With :class:`aikit.Array` input:
 
-    >>> x = ivy.array([1., 2., 3.])
+    >>> x = aikit.array([1., 2., 3.])
     >>> y = x.log1p()
     >>> print(y)
-    ivy.array([0.693, 1.1  , 1.39 ])
+    aikit.array([0.693, 1.1  , 1.39 ])
 
-    >>> x = ivy.array([0. , 1.])
-    >>> y = ivy.zeros(2)
-    >>> ivy.log1p(x , out = y)
+    >>> x = aikit.array([0. , 1.])
+    >>> y = aikit.zeros(2)
+    >>> aikit.log1p(x , out = y)
     >>> print(y)
-    ivy.array([0.   , 0.693])
+    aikit.array([0.   , 0.693])
 
-    >>> x = ivy.array([[1.1, 2.2, 3.3],[4.4, 5.5, 6.6]])
-    >>> ivy.log1p(x, out = x)
+    >>> x = aikit.array([[1.1, 2.2, 3.3],[4.4, 5.5, 6.6]])
+    >>> aikit.log1p(x, out = x)
     >>> print(x)
-    ivy.array([[0.742, 1.16 , 1.46 ],[1.69 , 1.87 , 2.03 ]])
+    aikit.array([[0.742, 1.16 , 1.46 ],[1.69 , 1.87 , 2.03 ]])
 
-    With :class:`ivy.Container` input:
+    With :class:`aikit.Container` input:
 
-    >>> x = ivy.Container(a=ivy.array([0., 1., 2.]), b=ivy.array([3., 4., 5.1]))
-    >>> y = ivy.log1p(x)
+    >>> x = aikit.Container(a=aikit.array([0., 1., 2.]), b=aikit.array([3., 4., 5.1]))
+    >>> y = aikit.log1p(x)
     >>> print(y)
     {
-        a: ivy.array([0., 0.693, 1.1]),
-        b: ivy.array([1.39, 1.61, 1.81])
+        a: aikit.array([0., 0.693, 1.1]),
+        b: aikit.array([1.39, 1.61, 1.81])
     }
     """
-    return ivy.current_backend(x).log1p(x, out=out)
+    return aikit.current_backend(x).log1p(x, out=out)
 
 
 @handle_exceptions
@@ -4164,11 +4164,11 @@ def log1p(
 @handle_array_function
 @handle_device
 def log2(
-    x: Union[ivy.Array, ivy.NativeArray],
+    x: Union[aikit.Array, aikit.NativeArray],
     /,
     *,
-    out: Optional[ivy.Array] = None,
-) -> ivy.Array:
+    out: Optional[aikit.Array] = None,
+) -> aikit.Array:
     r"""Calculate an implementation-dependent approximation to the base ``2``
     logarithm, having domain ``[0, +infinity]`` and codomain ``[-infinity,
     +infinity]``, for each element ``x_i`` of the input array ``x``.
@@ -4215,41 +4215,41 @@ def log2(
     in the standard.
 
     Both the description and the type hints above assumes an array input for simplicity,
-    but this function is *nestable*, and therefore also accepts :class:`ivy.Container`
+    but this function is *nestable*, and therefore also accepts :class:`aikit.Container`
     instances in place of any of the arguments.
 
     Examples
     --------
-    With :class:`ivy.Array` input:
-    >>> x = ivy.array([5.0, 1, -0.0, -6.0])
-    >>> y = ivy.log2(x)
+    With :class:`aikit.Array` input:
+    >>> x = aikit.array([5.0, 1, -0.0, -6.0])
+    >>> y = aikit.log2(x)
     >>> print(y)
-    ivy.array([2.32, 0., -inf, nan])
-    >>> x = ivy.array([[float('nan'), 1, 6.0, float('+inf')],
+    aikit.array([2.32, 0., -inf, nan])
+    >>> x = aikit.array([[float('nan'), 1, 6.0, float('+inf')],
     ...               [+0, -2.0, -7, float('-inf')]])
-    >>> y = ivy.empty_like(x)
-    >>> ivy.log2(x, out=y)
+    >>> y = aikit.empty_like(x)
+    >>> aikit.log2(x, out=y)
     >>> print(y)
-    ivy.array([[nan, 0., 2.58, inf],[inf, nan, nan, nan]])
-    >>> x = ivy.array([[float('nan'), 1, 7.0, float('+inf')],
+    aikit.array([[nan, 0., 2.58, inf],[inf, nan, nan, nan]])
+    >>> x = aikit.array([[float('nan'), 1, 7.0, float('+inf')],
     ...               [+0, -3.0, -8, float('-inf')]])
-    >>> ivy.log2(x, out=x)
+    >>> aikit.log2(x, out=x)
     >>> print(x)
-    ivy.array([[nan, 0., 2.81, inf],[inf, nan, nan, nan]])
+    aikit.array([[nan, 0., 2.81, inf],[inf, nan, nan, nan]])
 
-    With :class:`ivy.Container` input:
-    >>> x = ivy.Container(a=ivy.array([0.0, float('nan')]),
-    ...                   b=ivy.array([-0., -4.9, float('+inf')]),
-    ...                   c=ivy.array([8.9, 2.1, 1.]))
-    >>> y = ivy.log2(x)
+    With :class:`aikit.Container` input:
+    >>> x = aikit.Container(a=aikit.array([0.0, float('nan')]),
+    ...                   b=aikit.array([-0., -4.9, float('+inf')]),
+    ...                   c=aikit.array([8.9, 2.1, 1.]))
+    >>> y = aikit.log2(x)
     >>> print(y)
     {
-        a: ivy.array([-inf, nan]),
-        b: ivy.array([-inf, nan, inf]),
-        c: ivy.array([3.15, 1.07, 0.])
+        a: aikit.array([-inf, nan]),
+        b: aikit.array([-inf, nan, inf]),
+        c: aikit.array([3.15, 1.07, 0.])
     }
     """
-    return ivy.current_backend(x).log2(x, out=out)
+    return aikit.current_backend(x).log2(x, out=out)
 
 
 @handle_exceptions
@@ -4260,12 +4260,12 @@ def log2(
 @handle_array_function
 @handle_device
 def logaddexp(
-    x1: Union[ivy.Array, ivy.NativeArray],
-    x2: Union[ivy.Array, ivy.NativeArray],
+    x1: Union[aikit.Array, aikit.NativeArray],
+    x2: Union[aikit.Array, aikit.NativeArray],
     /,
     *,
-    out: Optional[ivy.Array] = None,
-) -> ivy.Array:
+    out: Optional[aikit.Array] = None,
+) -> aikit.Array:
     """Calculate the logarithm of the sum of exponentiations ``log(exp(x1) +
     exp(x2))`` for each element ``x1_i`` of the input array ``x1`` with the
     respective element ``x2_i`` of the input array ``x2``.
@@ -4305,53 +4305,53 @@ def logaddexp(
     in the standard.
 
     Both the description and the type hints above assumes an array input for simplicity,
-    but this function is *nestable*, and therefore also accepts :class:`ivy.Container`
+    but this function is *nestable*, and therefore also accepts :class:`aikit.Container`
     instances in place of any of the arguments.
 
     Examples
     --------
-    With :class:`ivy.Array` input:
+    With :class:`aikit.Array` input:
 
-    >>> x = ivy.array([2., 5., 15.])
-    >>> y = ivy.array([3., 2., 4.])
-    >>> z = ivy.logaddexp(x, y)
+    >>> x = aikit.array([2., 5., 15.])
+    >>> y = aikit.array([3., 2., 4.])
+    >>> z = aikit.logaddexp(x, y)
     >>> print(z)
-    ivy.array([ 3.31,  5.05, 15.  ])
+    aikit.array([ 3.31,  5.05, 15.  ])
 
-    >>> x = ivy.array([[[1.1], [3.2], [-6.3]]])
-    >>> y = ivy.array([[8.4], [2.5], [1.6]])
-    >>> ivy.logaddexp(x, y, out=x)
+    >>> x = aikit.array([[[1.1], [3.2], [-6.3]]])
+    >>> y = aikit.array([[8.4], [2.5], [1.6]])
+    >>> aikit.logaddexp(x, y, out=x)
     >>> print(x)
-    ivy.array([[[8.4], [3.6], [1.6]]])
+    aikit.array([[[8.4], [3.6], [1.6]]])
 
-    With one :class:`ivy.Container` input:
+    With one :class:`aikit.Container` input:
 
-    >>> x = ivy.array([[5.1, 2.3, -3.6]])
-    >>> y = ivy.Container(a=ivy.array([[4.], [5.], [6.]]),
-    ...                   b=ivy.array([[5.], [6.], [7.]]))
-    >>> z = ivy.logaddexp(x, y)
+    >>> x = aikit.array([[5.1, 2.3, -3.6]])
+    >>> y = aikit.Container(a=aikit.array([[4.], [5.], [6.]]),
+    ...                   b=aikit.array([[5.], [6.], [7.]]))
+    >>> z = aikit.logaddexp(x, y)
     >>> print(z)
     {
-    a: ivy.array([[5.39, 4.17, 4.],
+    a: aikit.array([[5.39, 4.17, 4.],
                   [5.74, 5.07, 5.],
                   [6.34, 6.02, 6.]]),
-    b: ivy.array([[5.74, 5.07, 5.],
+    b: aikit.array([[5.74, 5.07, 5.],
                   [6.34, 6.02, 6.],
                   [7.14, 7.01, 7.]])
     }
 
-    With multiple :class:`ivy.Container` inputs:
+    With multiple :class:`aikit.Container` inputs:
 
-    >>> x = ivy.Container(a=ivy.array([4., 5., 6.]),b=ivy.array([2., 3., 4.]))
-    >>> y = ivy.Container(a=ivy.array([1., 2., 3.]),b=ivy.array([5., 6., 7.]))
-    >>> z = ivy.logaddexp(y,x)
+    >>> x = aikit.Container(a=aikit.array([4., 5., 6.]),b=aikit.array([2., 3., 4.]))
+    >>> y = aikit.Container(a=aikit.array([1., 2., 3.]),b=aikit.array([5., 6., 7.]))
+    >>> z = aikit.logaddexp(y,x)
     >>> print(z)
     {
-        a: ivy.array([4.05, 5.05, 6.05]),
-        b: ivy.array([5.05, 6.05, 7.05])
+        a: aikit.array([4.05, 5.05, 6.05]),
+        b: aikit.array([5.05, 6.05, 7.05])
     }
     """
-    return ivy.current_backend(x1, x2).logaddexp(x1, x2, out=out)
+    return aikit.current_backend(x1, x2).logaddexp(x1, x2, out=out)
 
 
 @handle_backend_invalid
@@ -4360,12 +4360,12 @@ def logaddexp(
 @to_native_arrays_and_back
 @handle_device
 def logaddexp2(
-    x1: Union[ivy.Array, ivy.NativeArray, float, list, tuple],
-    x2: Union[ivy.Array, ivy.NativeArray, float, list, tuple],
+    x1: Union[aikit.Array, aikit.NativeArray, float, list, tuple],
+    x2: Union[aikit.Array, aikit.NativeArray, float, list, tuple],
     /,
     *,
-    out: Optional[ivy.Array] = None,
-) -> ivy.Array:
+    out: Optional[aikit.Array] = None,
+) -> aikit.Array:
     """Calculate log2(2**x1 + 2**x2).
 
     Parameters
@@ -4384,12 +4384,12 @@ def logaddexp2(
 
     Examples
     --------
-    >>> x1 = ivy.array([1, 2, 3])
-    >>> x2 = ivy.array([4, 5, 6])
-    >>> ivy.logaddexp2(x1, x2)
-    ivy.array([4.169925, 5.169925, 6.169925])
+    >>> x1 = aikit.array([1, 2, 3])
+    >>> x2 = aikit.array([4, 5, 6])
+    >>> aikit.logaddexp2(x1, x2)
+    aikit.array([4.169925, 5.169925, 6.169925])
     """
-    return ivy.current_backend(x1, x2).logaddexp2(x1, x2, out=out)
+    return aikit.current_backend(x1, x2).logaddexp2(x1, x2, out=out)
 
 
 # ToDo: compare the examples against special case for zeros.
@@ -4403,12 +4403,12 @@ def logaddexp2(
 @handle_array_function
 @handle_device
 def logical_and(
-    x1: Union[ivy.Array, ivy.NativeArray],
-    x2: Union[ivy.Array, ivy.NativeArray],
+    x1: Union[aikit.Array, aikit.NativeArray],
+    x2: Union[aikit.Array, aikit.NativeArray],
     /,
     *,
-    out: Optional[ivy.Array] = None,
-) -> ivy.Array:
+    out: Optional[aikit.Array] = None,
+) -> aikit.Array:
     """Compute the logical AND for each element x1_i of the input array x1 with
     the respective element x2_i of the input array x2.
 
@@ -4437,62 +4437,62 @@ def logical_and(
     in the standard.
 
     Both the description and the type hints above assumes an array input for simplicity,
-    but this function is *nestable*, and therefore also accepts :class:`ivy.Container`
+    but this function is *nestable*, and therefore also accepts :class:`aikit.Container`
     instances in place of any of the arguments
 
     Examples
     --------
-    With :class:`ivy.Array` input:
+    With :class:`aikit.Array` input:
 
-    >>> x = ivy.array([True, True, False])
-    >>> y = ivy.array([True, False, True])
-    >>> print(ivy.logical_and(x, y))
-    ivy.array([True,False,False])
+    >>> x = aikit.array([True, True, False])
+    >>> y = aikit.array([True, False, True])
+    >>> print(aikit.logical_and(x, y))
+    aikit.array([True,False,False])
 
-    >>> ivy.logical_and(x, y, out=y)
+    >>> aikit.logical_and(x, y, out=y)
     >>> print(y)
-    ivy.array([True,False,False])
+    aikit.array([True,False,False])
 
-    With :class:`ivy.Container` input:
+    With :class:`aikit.Container` input:
 
-    >>> x = ivy.Container(a=ivy.array([False, True, True]),
-    ...                   b=ivy.array([True, False, False]))
-    >>> y = ivy.Container(a=ivy.array([True, True, False]),
-    ...                   b=ivy.array([False, False, True]))
-    >>> print(ivy.logical_and(y, x))
+    >>> x = aikit.Container(a=aikit.array([False, True, True]),
+    ...                   b=aikit.array([True, False, False]))
+    >>> y = aikit.Container(a=aikit.array([True, True, False]),
+    ...                   b=aikit.array([False, False, True]))
+    >>> print(aikit.logical_and(y, x))
     {
-        a: ivy.array([False, True, False]),
-        b: ivy.array([False, False, False])
+        a: aikit.array([False, True, False]),
+        b: aikit.array([False, False, False])
     }
 
-    >>> ivy.logical_and(y, x, out=y)
+    >>> aikit.logical_and(y, x, out=y)
     >>> print(y)
     {
-        a: ivy.array([False, True, False]),
-        b: ivy.array([False, False, False])
+        a: aikit.array([False, True, False]),
+        b: aikit.array([False, False, False])
     }
 
 
-    >>> x = ivy.Container(a=ivy.array([False, True, True]),
-    ...                   b=ivy.array([True, False, False]))
-    >>> y = ivy.array([True, False, True])
-    >>> print(ivy.logical_and(y, x))
+    >>> x = aikit.Container(a=aikit.array([False, True, True]),
+    ...                   b=aikit.array([True, False, False]))
+    >>> y = aikit.array([True, False, True])
+    >>> print(aikit.logical_and(y, x))
     {
-        a: ivy.array([False, False, True]),
-        b: ivy.array([True, False, False])
+        a: aikit.array([False, False, True]),
+        b: aikit.array([True, False, False])
     }
 
-    >>> x = ivy.Container(a=ivy.array([False, True, True]),
-    ...                   b=ivy.array([True, False, False]))
-    >>> y = ivy.array([True, False, True])
-    >>> ivy.logical_and(y, x, out=x)
+    >>> x = aikit.Container(a=aikit.array([False, True, True]),
+    ...                   b=aikit.array([True, False, False]))
+    >>> y = aikit.array([True, False, True])
+    >>> aikit.logical_and(y, x, out=x)
     >>> print(x)
     {
-        a: ivy.array([False, False, True]),
-        b: ivy.array([True, False, False])
+        a: aikit.array([False, False, True]),
+        b: aikit.array([True, False, False])
     }
     """
-    return ivy.current_backend(x1, x2).logical_and(x1, x2, out=out)
+    return aikit.current_backend(x1, x2).logical_and(x1, x2, out=out)
 
 
 @handle_exceptions
@@ -4504,11 +4504,11 @@ def logical_and(
 @handle_array_function
 @handle_device
 def logical_not(
-    x: Union[ivy.Array, ivy.NativeArray],
+    x: Union[aikit.Array, aikit.NativeArray],
     /,
     *,
-    out: Optional[ivy.Array] = None,
-) -> ivy.Array:
+    out: Optional[aikit.Array] = None,
+) -> aikit.Array:
     """Compute the logical NOT for each element ``x_i`` of the input array
     ``x``.
 
@@ -4550,47 +4550,47 @@ def logical_not(
     in the standard.
 
     Both the description and the type hints above assumes an array input for simplicity,
-    but this function is *nestable*, and therefore also accepts :class:`ivy.Container`
+    but this function is *nestable*, and therefore also accepts :class:`aikit.Container`
     instances in place of any of the arguments
 
     Examples
     --------
-    With :class:`ivy.Array` input:
+    With :class:`aikit.Array` input:
 
-    >>> x=ivy.array([1,0,1,1,0])
-    >>> y=ivy.logical_not(x)
+    >>> x=aikit.array([1,0,1,1,0])
+    >>> y=aikit.logical_not(x)
     >>> print(y)
-    ivy.array([False, True, False, False,  True])
+    aikit.array([False, True, False, False,  True])
 
-    >>> x=ivy.array([2,0,3,5])
-    >>> y=ivy.logical_not(x)
+    >>> x=aikit.array([2,0,3,5])
+    >>> y=aikit.logical_not(x)
     >>> print(y)
-    ivy.array([False, True, False, False])
+    aikit.array([False, True, False, False])
 
-    >>> x=ivy.native_array([1,0,6,5])
-    >>> y=ivy.logical_not(x)
+    >>> x=aikit.native_array([1,0,6,5])
+    >>> y=aikit.logical_not(x)
     >>> print(y)
-    ivy.array([False, True, False, False])
+    aikit.array([False, True, False, False])
 
-    With :class:`ivy.Container` input:
+    With :class:`aikit.Container` input:
 
-    >>> x=ivy.Container(a=ivy.array([1,0,1,1]), b=ivy.array([1,0,8,9]))
-    >>> y=ivy.logical_not(x)
+    >>> x=aikit.Container(a=aikit.array([1,0,1,1]), b=aikit.array([1,0,8,9]))
+    >>> y=aikit.logical_not(x)
     >>> print(y)
     {
-        a: ivy.array([False, True, False, False]),
-        b: ivy.array([False, True, False, False])
+        a: aikit.array([False, True, False, False]),
+        b: aikit.array([False, True, False, False])
     }
 
-    >>> x=ivy.Container(a=ivy.array([1,0,1,0]), b=ivy.native_array([5,2,0,3]))
-    >>> y=ivy.logical_not(x)
+    >>> x=aikit.Container(a=aikit.array([1,0,1,0]), b=aikit.native_array([5,2,0,3]))
+    >>> y=aikit.logical_not(x)
     >>> print(y)
     {
-        a: ivy.array([False, True, False, True]),
-        b: ivy.array([False, False, True, False])
+        a: aikit.array([False, True, False, True]),
+        b: aikit.array([False, False, True, False])
     }
     """
-    return ivy.current_backend(x).logical_not(x, out=out)
+    return aikit.current_backend(x).logical_not(x, out=out)
 
 
 @handle_exceptions
@@ -4601,12 +4601,12 @@ def logical_not(
 @handle_array_function
 @handle_device
 def logical_or(
-    x1: Union[ivy.Array, ivy.NativeArray],
-    x2: Union[ivy.Array, ivy.NativeArray],
+    x1: Union[aikit.Array, aikit.NativeArray],
+    x2: Union[aikit.Array, aikit.NativeArray],
     /,
     *,
-    out: Optional[ivy.Array] = None,
-) -> ivy.Array:
+    out: Optional[aikit.Array] = None,
+) -> aikit.Array:
     """Compute the logical OR for each element ``x1_i`` of the input array
     ``x1`` with the respective element ``x2_i`` of the input array ``x2``.
 
@@ -4642,46 +4642,46 @@ def logical_or(
     in the standard.
 
     Both the description and the type hints above assumes an array input for simplicity,
-    but this function is *nestable*, and therefore also accepts :class:`ivy.Container`
+    but this function is *nestable*, and therefore also accepts :class:`aikit.Container`
     instances in place of any of the arguments.
 
     Examples
     --------
-    With :class:`ivy.Array` input:
+    With :class:`aikit.Array` input:
 
-    >>> x = ivy.array([True, False, True])
-    >>> y = ivy.array([True, True, False])
-    >>> print(ivy.logical_or(x, y))
-    ivy.array([ True,  True,  True])
+    >>> x = aikit.array([True, False, True])
+    >>> y = aikit.array([True, True, False])
+    >>> print(aikit.logical_or(x, y))
+    aikit.array([ True,  True,  True])
 
-    >>> x = ivy.array([[False, False, True], [True, False, True]])
-    >>> y = ivy.array([[False, True, False], [True, True, False]])
-    >>> z = ivy.zeros_like(x)
-    >>> ivy.logical_or(x, y, out=z)
+    >>> x = aikit.array([[False, False, True], [True, False, True]])
+    >>> y = aikit.array([[False, True, False], [True, True, False]])
+    >>> z = aikit.zeros_like(x)
+    >>> aikit.logical_or(x, y, out=z)
     >>> print(z)
-    ivy.array([[False,  True,  True],
+    aikit.array([[False,  True,  True],
            [ True,  True,  True]])
 
-    >>> x = ivy.array([False, 3, 0])
-    >>> y = ivy.array([2, True, False])
-    >>> ivy.logical_or(x, y, out=x)
+    >>> x = aikit.array([False, 3, 0])
+    >>> y = aikit.array([2, True, False])
+    >>> aikit.logical_or(x, y, out=x)
     >>> print(x)
-    ivy.array([1, 1, 0])
+    aikit.array([1, 1, 0])
 
-    With :class:`ivy.Container` input:
+    With :class:`aikit.Container` input:
 
-    >>> x = ivy.Container(a=ivy.array([False, False, True]),
-    ...                   b=ivy.array([True, False, True]))
-    >>> y = ivy.Container(a=ivy.array([False, True, False]),
-    ...                   b=ivy.array([True, True, False]))
-    >>> z = ivy.logical_or(x, y)
+    >>> x = aikit.Container(a=aikit.array([False, False, True]),
+    ...                   b=aikit.array([True, False, True]))
+    >>> y = aikit.Container(a=aikit.array([False, True, False]),
+    ...                   b=aikit.array([True, True, False]))
+    >>> z = aikit.logical_or(x, y)
     >>> print(z)
     {
-        a: ivy.array([False, True, True]),
-        b: ivy.array([True, True, True])
+        a: aikit.array([False, True, True]),
+        b: aikit.array([True, True, True])
     }
     """
-    return ivy.current_backend(x1, x2).logical_or(x1, x2, out=out)
+    return aikit.current_backend(x1, x2).logical_or(x1, x2, out=out)
 
 
 @handle_exceptions
@@ -4692,12 +4692,12 @@ def logical_or(
 @handle_array_function
 @handle_device
 def logical_xor(
-    x1: Union[ivy.Array, ivy.NativeArray],
-    x2: Union[ivy.Array, ivy.NativeArray],
+    x1: Union[aikit.Array, aikit.NativeArray],
+    x2: Union[aikit.Array, aikit.NativeArray],
     /,
     *,
-    out: Optional[ivy.Array] = None,
-) -> ivy.Array:
+    out: Optional[aikit.Array] = None,
+) -> aikit.Array:
     """Compute the bitwise XOR of the underlying binary representation of each
     element ``x1_i`` of the input array ``x1`` with the respective element
     ``x2_i`` of the input array ``x2``.
@@ -4721,7 +4721,7 @@ def logical_xor(
     in the standard.
 
     Both the description and the type hints above assumes an array input for simplicity,
-    but this function is *nestable*, and therefore also accepts :class:`ivy.Container`
+    but this function is *nestable*, and therefore also accepts :class:`aikit.Container`
     instances in place of any of the arguments
 
     Returns
@@ -4732,55 +4732,55 @@ def logical_xor(
 
     Examples
     --------
-    With :class:`ivy.Array` inputs:
+    With :class:`aikit.Array` inputs:
 
-    >>> x = ivy.array([1,0,1,1,0])
-    >>> y = ivy.array([1,0,1,1,0])
-    >>> z = ivy.logical_xor(x,y)
+    >>> x = aikit.array([1,0,1,1,0])
+    >>> y = aikit.array([1,0,1,1,0])
+    >>> z = aikit.logical_xor(x,y)
     >>> print(z)
-    ivy.array([False, False, False, False, False])
+    aikit.array([False, False, False, False, False])
 
-    >>> x = ivy.array([[[1], [2], [3], [4]]])
-    >>> y = ivy.array([[[4], [5], [6], [7]]])
-    >>> z = ivy.logical_xor(x,y)
+    >>> x = aikit.array([[[1], [2], [3], [4]]])
+    >>> y = aikit.array([[[4], [5], [6], [7]]])
+    >>> z = aikit.logical_xor(x,y)
     >>> print(z)
-    ivy.array([[[False],
+    aikit.array([[[False],
             [False],
             [False],
             [False]]])
 
-    >>> x = ivy.array([[[1], [2], [3], [4]]])
-    >>> y = ivy.array([4, 5, 6, 7])
-    >>> z = ivy.logical_xor(x,y)
+    >>> x = aikit.array([[[1], [2], [3], [4]]])
+    >>> y = aikit.array([4, 5, 6, 7])
+    >>> z = aikit.logical_xor(x,y)
     >>> print(z)
-    ivy.array([[[False, False, False, False],
+    aikit.array([[[False, False, False, False],
             [False, False, False, False],
             [False, False, False, False],
             [False, False, False, False]]])
 
-    With :class:`ivy.Container` inputs:
+    With :class:`aikit.Container` inputs:
 
-    >>> x = ivy.Container(a=ivy.array([1,0,0,1,0]), b=ivy.array([1,0,1,0,0]))
-    >>> y = ivy.Container(a=ivy.array([0,0,1,1,0]), b=ivy.array([1,0,1,1,0]))
-    >>> z = ivy.logical_xor(x,y)
+    >>> x = aikit.Container(a=aikit.array([1,0,0,1,0]), b=aikit.array([1,0,1,0,0]))
+    >>> y = aikit.Container(a=aikit.array([0,0,1,1,0]), b=aikit.array([1,0,1,1,0]))
+    >>> z = aikit.logical_xor(x,y)
     >>> print(z)
     {
-    a: ivy.array([True, False, True, False, False]),
-    b: ivy.array([False, False, False, True, False])
+    a: aikit.array([True, False, True, False, False]),
+    b: aikit.array([False, False, False, True, False])
     }
 
-    With a mix of :class:`ivy.Array` and :class:`ivy.Container` inputs:
+    With a mix of :class:`aikit.Array` and :class:`aikit.Container` inputs:
 
-    >>> x = ivy.Container(a=ivy.array([1,0,0,1,0]), b=ivy.array([1,0,1,0,0]))
-    >>> y = ivy.array([0,0,1,1,0])
-    >>> z = ivy.logical_xor(x,y)
+    >>> x = aikit.Container(a=aikit.array([1,0,0,1,0]), b=aikit.array([1,0,1,0,0]))
+    >>> y = aikit.array([0,0,1,1,0])
+    >>> z = aikit.logical_xor(x,y)
     >>> print(z)
     {
-    a: ivy.array([True, False, True, False, False]),
-    b: ivy.array([True, False, False, True, False])
+    a: aikit.array([True, False, True, False, False]),
+    b: aikit.array([True, False, False, True, False])
     }
     """
-    return ivy.current_backend(x1, x2).logical_xor(x1, x2, out=out)
+    return aikit.current_backend(x1, x2).logical_xor(x1, x2, out=out)
 
 
 @handle_backend_invalid
@@ -4790,15 +4790,15 @@ def logical_xor(
 @to_native_arrays_and_back
 @handle_device
 def nan_to_num(
-    x: Union[ivy.Array, ivy.NativeArray],
+    x: Union[aikit.Array, aikit.NativeArray],
     /,
     *,
     copy: bool = True,
     nan: Union[float, int] = 0.0,
     posinf: Optional[Union[float, int]] = None,
     neginf: Optional[Union[float, int]] = None,
-    out: Optional[ivy.Array] = None,
-) -> ivy.Array:
+    out: Optional[aikit.Array] = None,
+) -> aikit.Array:
     """Replace NaN with zero and infinity with large finite numbers (default
     behaviour) or with the numbers defined by the user using the nan, posinf
     and/or neginf keywords.
@@ -4832,14 +4832,14 @@ def nan_to_num(
 
     Examples
     --------
-    >>> x = ivy.array([1, 2, 3, nan])
-    >>> ivy.nan_to_num(x)
-    ivy.array([1.,    1.,   3.,   0.0])
-    >>> x = ivy.array([1, 2, 3, inf])
-    >>> ivy.nan_to_num(x, posinf=5e+100)
-    ivy.array([1.,   2.,   3.,   5e+100])
+    >>> x = aikit.array([1, 2, 3, nan])
+    >>> aikit.nan_to_num(x)
+    aikit.array([1.,    1.,   3.,   0.0])
+    >>> x = aikit.array([1, 2, 3, inf])
+    >>> aikit.nan_to_num(x, posinf=5e+100)
+    aikit.array([1.,   2.,   3.,   5e+100])
     """
-    return ivy.current_backend(x).nan_to_num(
+    return aikit.current_backend(x).nan_to_num(
         x, copy=copy, nan=nan, posinf=posinf, neginf=neginf, out=out
     )
 
@@ -4853,11 +4853,11 @@ def nan_to_num(
 @handle_array_function
 @handle_device
 def negative(
-    x: Union[float, ivy.Array, ivy.NativeArray],
+    x: Union[float, aikit.Array, aikit.NativeArray],
     /,
     *,
-    out: Optional[ivy.Array] = None,
-) -> ivy.Array:
+    out: Optional[aikit.Array] = None,
+) -> aikit.Array:
     """Return a new array with the negative value of each element in ``x``.
 
     .. note::
@@ -4891,43 +4891,43 @@ def negative(
     in the standard.
 
     Both the description and the type hints above assumes an array input for simplicity,
-    but this function is *nestable*, and therefore also accepts :class:`ivy.Container`
+    but this function is *nestable*, and therefore also accepts :class:`aikit.Container`
     instances in place of any of the arguments.
 
     Examples
     --------
-    With :class:`ivy.Array` input:
+    With :class:`aikit.Array` input:
 
-    >>> x = ivy.array([0,1,1,2])
-    >>> y = ivy.negative(x)
+    >>> x = aikit.array([0,1,1,2])
+    >>> y = aikit.negative(x)
     >>> print(y)
-    ivy.array([ 0, -1, -1, -2])
+    aikit.array([ 0, -1, -1, -2])
 
-    >>> x = ivy.array([0,-1,-0.5,2,3])
-    >>> y = ivy.zeros(5)
-    >>> ivy.negative(x, out=y)
+    >>> x = aikit.array([0,-1,-0.5,2,3])
+    >>> y = aikit.zeros(5)
+    >>> aikit.negative(x, out=y)
     >>> print(y)
-    ivy.array([-0. ,  1. ,  0.5, -2. , -3. ])
+    aikit.array([-0. ,  1. ,  0.5, -2. , -3. ])
 
-    >>> x = ivy.array([[1.1, 2.2, 3.3],
+    >>> x = aikit.array([[1.1, 2.2, 3.3],
     ...                [-4.4, -5.5, -6.6]])
-    >>> ivy.negative(x,out=x)
+    >>> aikit.negative(x,out=x)
     >>> print(x)
-    ivy.array([[-1.1, -2.2, -3.3],
+    aikit.array([[-1.1, -2.2, -3.3],
        [4.4, 5.5, 6.6]])
 
-    With :class:`ivy.Container` input:
+    With :class:`aikit.Container` input:
 
-    >>> x = ivy.Container(a=ivy.array([0., 1., 2.]),
-    ...                   b=ivy.array([3., 4., -5.]))
-    >>> y = ivy.negative(x)
+    >>> x = aikit.Container(a=aikit.array([0., 1., 2.]),
+    ...                   b=aikit.array([3., 4., -5.]))
+    >>> y = aikit.negative(x)
     >>> print(y)
     {
-        a: ivy.array([-0., -1., -2.]),
-        b: ivy.array([-3., -4., 5.])
+        a: aikit.array([-0., -1., -2.]),
+        b: aikit.array([-3., -4., 5.])
     }
     """
-    return ivy.current_backend(x).negative(x, out=out)
+    return aikit.current_backend(x).negative(x, out=out)
 
 
 @handle_exceptions
@@ -4938,12 +4938,12 @@ def negative(
 @handle_array_function
 @handle_device
 def not_equal(
-    x1: Union[float, ivy.Array, ivy.NativeArray, ivy.Container],
-    x2: Union[float, ivy.Array, ivy.NativeArray, ivy.Container],
+    x1: Union[float, aikit.Array, aikit.NativeArray, aikit.Container],
+    x2: Union[float, aikit.Array, aikit.NativeArray, aikit.Container],
     /,
     *,
-    out: Optional[ivy.Array] = None,
-) -> ivy.Array:
+    out: Optional[aikit.Array] = None,
+) -> aikit.Array:
     """Compute the truth value of ``x1_i != x2_i`` for each element ``x1_i`` of
     the input array ``x1`` with the respective element ``x2_i`` of the input
     array ``x2``.
@@ -4996,121 +4996,121 @@ def not_equal(
     in the standard.
 
     Both the description and the type hints above assumes an array input for simplicity,
-    but this function is *nestable*, and therefore also accepts :class:`ivy.Container`
+    but this function is *nestable*, and therefore also accepts :class:`aikit.Container`
     instances in place of any of the arguments.
 
     Examples
     --------
-    With :class:`ivy.Array` inputs:
+    With :class:`aikit.Array` inputs:
 
-    >>> x1 = ivy.array([1, 0, 1, 1])
-    >>> x2 = ivy.array([1, 0, 0, -1])
-    >>> y = ivy.not_equal(x1, x2)
+    >>> x1 = aikit.array([1, 0, 1, 1])
+    >>> x2 = aikit.array([1, 0, 0, -1])
+    >>> y = aikit.not_equal(x1, x2)
     >>> print(y)
-    ivy.array([False, False, True, True])
+    aikit.array([False, False, True, True])
 
-    >>> x1 = ivy.array([1, 0, 1, 0])
-    >>> x2 = ivy.array([0, 1, 0, 1])
-    >>> y = ivy.not_equal(x1, x2)
+    >>> x1 = aikit.array([1, 0, 1, 0])
+    >>> x2 = aikit.array([0, 1, 0, 1])
+    >>> y = aikit.not_equal(x1, x2)
     >>> print(y)
-    ivy.array([True, True, True, True])
+    aikit.array([True, True, True, True])
 
-    >>> x1 = ivy.array([1, -1, 1, -1])
-    >>> x2 = ivy.array([0, -1, 1, 0])
-    >>> y = ivy.zeros(4)
-    >>> ivy.not_equal(x1, x2, out=y)
+    >>> x1 = aikit.array([1, -1, 1, -1])
+    >>> x2 = aikit.array([0, -1, 1, 0])
+    >>> y = aikit.zeros(4)
+    >>> aikit.not_equal(x1, x2, out=y)
     >>> print(y)
-    ivy.array([1., 0., 0., 1.])
+    aikit.array([1., 0., 0., 1.])
 
-    >>> x1 = ivy.array([1, -1, 1, -1])
-    >>> x2 = ivy.array([0, -1, 1, 0])
-    >>> y = ivy.not_equal(x1, x2, out=x1)
+    >>> x1 = aikit.array([1, -1, 1, -1])
+    >>> x2 = aikit.array([0, -1, 1, 0])
+    >>> y = aikit.not_equal(x1, x2, out=x1)
     >>> print(y)
-    ivy.array([1, 0, 0, 1])
+    aikit.array([1, 0, 0, 1])
 
-    With a mix of :class:`ivy.Array` and :class:`ivy.NativeArray` inputs:
+    With a mix of :class:`aikit.Array` and :class:`aikit.NativeArray` inputs:
 
-    >>> x1 = ivy.native_array([1, 2])
-    >>> x2 = ivy.array([1, 2])
-    >>> y = ivy.not_equal(x1, x2)
+    >>> x1 = aikit.native_array([1, 2])
+    >>> x2 = aikit.array([1, 2])
+    >>> y = aikit.not_equal(x1, x2)
     >>> print(y)
-    ivy.array([False, False])
+    aikit.array([False, False])
 
-    >>> x1 = ivy.native_array([1, -1])
-    >>> x2 = ivy.array([0, 1])
-    >>> y = ivy.not_equal(x1, x2)
+    >>> x1 = aikit.native_array([1, -1])
+    >>> x2 = aikit.array([0, 1])
+    >>> y = aikit.not_equal(x1, x2)
     >>> print(y)
-    ivy.array([True, True])
+    aikit.array([True, True])
 
-    >>> x1 = ivy.native_array([1, -1, 1, -1])
-    >>> x2 = ivy.native_array([0, -1, 1, 0])
-    >>> y = ivy.zeros(4)
-    >>> ivy.not_equal(x1, x2, out=y)
+    >>> x1 = aikit.native_array([1, -1, 1, -1])
+    >>> x2 = aikit.native_array([0, -1, 1, 0])
+    >>> y = aikit.zeros(4)
+    >>> aikit.not_equal(x1, x2, out=y)
     >>> print(y)
-    ivy.array([1., 0., 0., 1.])
+    aikit.array([1., 0., 0., 1.])
 
-    >>> x1 = ivy.native_array([1, 2, 3, 4])
-    >>> x2 = ivy.native_array([0, 2, 3, 4])
-    >>> y = ivy.zeros(4)
-    >>> ivy.not_equal(x1, x2, out=y)
+    >>> x1 = aikit.native_array([1, 2, 3, 4])
+    >>> x2 = aikit.native_array([0, 2, 3, 4])
+    >>> y = aikit.zeros(4)
+    >>> aikit.not_equal(x1, x2, out=y)
     >>> print(y)
-    ivy.array([1., 0., 0., 0.])
+    aikit.array([1., 0., 0., 0.])
 
-    With :class:`ivy.Container` input:
+    With :class:`aikit.Container` input:
 
-    >>> x1 = ivy.Container(a=ivy.array([1, 0, 3]),
-    ...                    b=ivy.array([1, 2, 3]),
-    ...                    c=ivy.native_array([1, 2, 4]))
-    >>> x2 = ivy.Container(a=ivy.array([1, 2, 3]),
-    ...                    b=ivy.array([1, 2, 3]),
-    ...                    c=ivy.native_array([1, 2, 4]))
-    >>> y = ivy.not_equal(x1, x2)
+    >>> x1 = aikit.Container(a=aikit.array([1, 0, 3]),
+    ...                    b=aikit.array([1, 2, 3]),
+    ...                    c=aikit.native_array([1, 2, 4]))
+    >>> x2 = aikit.Container(a=aikit.array([1, 2, 3]),
+    ...                    b=aikit.array([1, 2, 3]),
+    ...                    c=aikit.native_array([1, 2, 4]))
+    >>> y = aikit.not_equal(x1, x2)
     >>> print(y)
     {
-        a: ivy.array([False, True, False]),
-        b: ivy.array([False, False, False]),
-        c: ivy.array([False, False, False])
+        a: aikit.array([False, True, False]),
+        b: aikit.array([False, False, False]),
+        c: aikit.array([False, False, False])
     }
 
-    >>> x1 = ivy.Container(a=ivy.native_array([0, 1, 0]),
-    ...                    b=ivy.array([1, 2, 3]),
-    ...                    c=ivy.native_array([1.0, 2.0, 4.0]))
-    >>> x2 = ivy.Container(a=ivy.array([1, 2, 3]),
-    ...                    b=ivy.native_array([1.1, 2.1, 3.1]),
-    ...                    c=ivy.native_array([1, 2, 4]))
-    >>> y = ivy.not_equal(x1, x2)
+    >>> x1 = aikit.Container(a=aikit.native_array([0, 1, 0]),
+    ...                    b=aikit.array([1, 2, 3]),
+    ...                    c=aikit.native_array([1.0, 2.0, 4.0]))
+    >>> x2 = aikit.Container(a=aikit.array([1, 2, 3]),
+    ...                    b=aikit.native_array([1.1, 2.1, 3.1]),
+    ...                    c=aikit.native_array([1, 2, 4]))
+    >>> y = aikit.not_equal(x1, x2)
     >>> print(y)
     {
-        a: ivy.array([True, True, True]),
-        b: ivy.array([True, True, True]),
-        c: ivy.array([False, False, False])
+        a: aikit.array([True, True, True]),
+        b: aikit.array([True, True, True]),
+        c: aikit.array([False, False, False])
     }
 
-    With a mix of :class:`ivy.Array` and :class:`ivy.Container` inputs:
+    With a mix of :class:`aikit.Array` and :class:`aikit.Container` inputs:
 
-    >>> x1 = ivy.Container(a=ivy.array([1, 2, 3]),
-    ...                    b=ivy.array([1, 3, 5]))
-    >>> x2 = ivy.Container(a=ivy.array([1, 2, 3]),
-    ...                    b=ivy.array([1, 4, 5]))
-    >>> y = ivy.not_equal(x1, x2)
+    >>> x1 = aikit.Container(a=aikit.array([1, 2, 3]),
+    ...                    b=aikit.array([1, 3, 5]))
+    >>> x2 = aikit.Container(a=aikit.array([1, 2, 3]),
+    ...                    b=aikit.array([1, 4, 5]))
+    >>> y = aikit.not_equal(x1, x2)
     >>> print(y)
     {
-        a: ivy.array([False, False, False]),
-        b: ivy.array([False, True, False])
+        a: aikit.array([False, False, False]),
+        b: aikit.array([False, True, False])
     }
 
-    >>> x1 = ivy.Container(a=ivy.array([1.0, 2.0, 3.0]),
-    ...                    b=ivy.array([1, 4, 5]))
-    >>> x2 = ivy.Container(a=ivy.array([1, 2, 3.0]),
-    ...                    b=ivy.array([1.0, 4.0, 5.0]))
-    >>> y = ivy.not_equal(x1, x2)
+    >>> x1 = aikit.Container(a=aikit.array([1.0, 2.0, 3.0]),
+    ...                    b=aikit.array([1, 4, 5]))
+    >>> x2 = aikit.Container(a=aikit.array([1, 2, 3.0]),
+    ...                    b=aikit.array([1.0, 4.0, 5.0]))
+    >>> y = aikit.not_equal(x1, x2)
     >>> print(y)
     {
-        a: ivy.array([False, False, False]),
-        b: ivy.array([False, False, False])
+        a: aikit.array([False, False, False]),
+        b: aikit.array([False, False, False])
     }
     """
-    return ivy.current_backend(x1, x2).not_equal(x1, x2, out=out)
+    return aikit.current_backend(x1, x2).not_equal(x1, x2, out=out)
 
 
 @handle_exceptions
@@ -5122,11 +5122,11 @@ def not_equal(
 @handle_array_function
 @handle_device
 def positive(
-    x: Union[float, ivy.Array, ivy.NativeArray],
+    x: Union[float, aikit.Array, aikit.NativeArray],
     /,
     *,
-    out: Optional[ivy.Array] = None,
-) -> ivy.Array:
+    out: Optional[aikit.Array] = None,
+) -> aikit.Array:
     """Return a new array with the positive value of each element in ``x``.
 
     Parameters
@@ -5150,43 +5150,43 @@ def positive(
     in the standard.
 
     Both the description and the type hints above assumes an array input for simplicity,
-    but this function is *nestable*, and therefore also accepts :class:`ivy.Container`
+    but this function is *nestable*, and therefore also accepts :class:`aikit.Container`
     instances in place of any of the arguments
 
     Examples
     --------
-    With :class:`ivy.Array` input:
+    With :class:`aikit.Array` input:
 
-    >>> x = ivy.array([2, 3 ,5, 7])
-    >>> y = ivy.positive(x)
+    >>> x = aikit.array([2, 3 ,5, 7])
+    >>> y = aikit.positive(x)
     >>> print(y)
-    ivy.array([2, 3, 5, 7])
+    aikit.array([2, 3, 5, 7])
 
-    >>> x = ivy.array([0, -1, -0.5, 2, 3])
-    >>> y = ivy.zeros(5)
-    >>> ivy.positive(x, out=y)
+    >>> x = aikit.array([0, -1, -0.5, 2, 3])
+    >>> y = aikit.zeros(5)
+    >>> aikit.positive(x, out=y)
     >>> print(y)
-    ivy.array([0., -1., -0.5,  2.,  3.])
+    aikit.array([0., -1., -0.5,  2.,  3.])
 
-    >>> x = ivy.array([[1.1, 2.2, 3.3],
+    >>> x = aikit.array([[1.1, 2.2, 3.3],
     ...                [-4.4, -5.5, -6.6]])
-    >>> ivy.positive(x,out=x)
+    >>> aikit.positive(x,out=x)
     >>> print(x)
-    ivy.array([[ 1.1,  2.2,  3.3],
+    aikit.array([[ 1.1,  2.2,  3.3],
        [-4.4, -5.5, -6.6]])
 
-    With :class:`ivy.Container` input:
+    With :class:`aikit.Container` input:
 
-    >>> x = ivy.Container(a=ivy.array([0., 1., 2.]),
-    ...                   b=ivy.array([3., 4., -5.]))
-    >>> y = ivy.positive(x)
+    >>> x = aikit.Container(a=aikit.array([0., 1., 2.]),
+    ...                   b=aikit.array([3., 4., -5.]))
+    >>> y = aikit.positive(x)
     >>> print(y)
     {
-    a: ivy.array([0., 1., 2.]),
-    b: ivy.array([3., 4., -5.])
+    a: aikit.array([0., 1., 2.]),
+    b: aikit.array([3., 4., -5.])
     }
     """
-    return ivy.current_backend(x).positive(x, out=out)
+    return aikit.current_backend(x).positive(x, out=out)
 
 
 @handle_exceptions
@@ -5197,12 +5197,12 @@ def positive(
 @handle_array_function
 @handle_device
 def pow(
-    x1: Union[ivy.Array, ivy.NativeArray],
-    x2: Union[int, float, ivy.Array, ivy.NativeArray],
+    x1: Union[aikit.Array, aikit.NativeArray],
+    x2: Union[int, float, aikit.Array, aikit.NativeArray],
     /,
     *,
-    out: Optional[ivy.Array] = None,
-) -> ivy.Array:
+    out: Optional[aikit.Array] = None,
+) -> aikit.Array:
     """Calculate an implementation-dependent approximation of exponentiation by
     raising each element ``x1_i`` (the base) of the input array ``x1`` to the
     power of ``x2_i`` (the exponent), where ``x2_i`` is the corresponding
@@ -5288,41 +5288,41 @@ def pow(
     in the standard.
 
     Both the description and the type hints above assumes an array input for simplicity,
-    but this function is *nestable*, and therefore also accepts :class:`ivy.Container`
+    but this function is *nestable*, and therefore also accepts :class:`aikit.Container`
     instances in place of any of the arguments
 
     Examples
     --------
-    With :class:`ivy.Array` input:
+    With :class:`aikit.Array` input:
 
-    >>> x = ivy.array([1, 2, 3])
-    >>> y = ivy.pow(x, 3)
+    >>> x = aikit.array([1, 2, 3])
+    >>> y = aikit.pow(x, 3)
     >>> print(y)
-    ivy.array([1, 8, 27])
+    aikit.array([1, 8, 27])
 
-    >>> x = ivy.array([1.5, -0.8, 0.3])
-    >>> y = ivy.zeros(3)
-    >>> ivy.pow(x, 2, out=y)
+    >>> x = aikit.array([1.5, -0.8, 0.3])
+    >>> y = aikit.zeros(3)
+    >>> aikit.pow(x, 2, out=y)
     >>> print(y)
-    ivy.array([2.25, 0.64, 0.09])
+    aikit.array([2.25, 0.64, 0.09])
 
-    >>> x = ivy.array([[1.2, 2, 3.1], [1, 2.5, 9]])
-    >>> ivy.pow(x, 2.3, out=x)
+    >>> x = aikit.array([[1.2, 2, 3.1], [1, 2.5, 9]])
+    >>> aikit.pow(x, 2.3, out=x)
     >>> print(x)
-    ivy.array([[  1.52095687,   4.92457771,  13.49372482],
+    aikit.array([[  1.52095687,   4.92457771,  13.49372482],
            [  1.        ,   8.22738838, 156.5877228 ]])
 
-    With :class:`ivy.Container` input:
+    With :class:`aikit.Container` input:
 
-    >>> x = ivy.Container(a=ivy.array([0, 1]), b=ivy.array([2, 3]))
-    >>> y = ivy.pow(x, 3)
+    >>> x = aikit.Container(a=aikit.array([0, 1]), b=aikit.array([2, 3]))
+    >>> y = aikit.pow(x, 3)
     >>> print(y)
     {
-        a:ivy.array([0,1]),
-        b:ivy.array([8,27])
+        a:aikit.array([0,1]),
+        b:aikit.array([8,27])
     }
     """
-    return ivy.current_backend(x1, x2).pow(x1, x2, out=out)
+    return aikit.current_backend(x1, x2).pow(x1, x2, out=out)
 
 
 pow.unsupported_gradients = {"torch": ["float16"]}
@@ -5330,7 +5330,7 @@ pow.unsupported_gradients = {"torch": ["float16"]}
 
 def _complex_to_inf(exponent):
     if exponent < 0:
-        return float("inf") + ivy.nan * 1j
+        return float("inf") + aikit.nan * 1j
     else:
         return -0 * 1j
 
@@ -5343,11 +5343,11 @@ def _complex_to_inf(exponent):
 @to_native_arrays_and_back
 @handle_device
 def real(
-    x: Union[ivy.Array, ivy.NativeArray],
+    x: Union[aikit.Array, aikit.NativeArray],
     /,
     *,
-    out: Optional[ivy.Array] = None,
-) -> ivy.Array:
+    out: Optional[aikit.Array] = None,
+) -> aikit.Array:
     """Test each element ``x_i`` of the input array ``x`` to take only real
     part from it. Returns a float array, where it only contains . If element
     has complex type with zero complex part, the return value will be that
@@ -5373,36 +5373,36 @@ def real(
         the returned array must have the floating-point precision of ``float32``).
 
     The descriptions above assume an array input for simplicity, but
-    the method also accepts :class:`ivy.Container` instances
-    in place of: class:`ivy.Array` or :class:`ivy.NativeArray`
+    the method also accepts :class:`aikit.Container` instances
+    in place of: class:`aikit.Array` or :class:`aikit.NativeArray`
     instances, as shown in the type hints and also the examples below.
 
     Examples
     --------
-    With :class:`ivy.Array` inputs:
+    With :class:`aikit.Array` inputs:
 
-    >>> x = ivy.array([[[1.1], [2], [-6.3]]])
-    >>> z = ivy.real(x)
+    >>> x = aikit.array([[[1.1], [2], [-6.3]]])
+    >>> z = aikit.real(x)
     >>> print(z)
-    ivy.array([[[1.1], [2.], [-6.3]]])
+    aikit.array([[[1.1], [2.], [-6.3]]])
 
-    >>> x = ivy.array([4.2-0j, 3j, 7+5j])
-    >>> z = ivy.real(x)
+    >>> x = aikit.array([4.2-0j, 3j, 7+5j])
+    >>> z = aikit.real(x)
     >>> print(z)
-    ivy.array([4.2, 0., 7.])
+    aikit.array([4.2, 0., 7.])
 
-    With :class:`ivy.Container` input:
+    With :class:`aikit.Container` input:
 
-    >>> x = ivy.Container(a=ivy.array([-6.7-7j, 0.314+0.355j, 1.23]),\
-                          b=ivy.array([5j, 5.32-6.55j, 3.001]))
-    >>> z = ivy.real(x)
+    >>> x = aikit.Container(a=aikit.array([-6.7-7j, 0.314+0.355j, 1.23]),\
+                          b=aikit.array([5j, 5.32-6.55j, 3.001]))
+    >>> z = aikit.real(x)
     >>> print(z)
     {
-        a: ivy.array([-6.7, 0.314, 1.23]),
-        b: ivy.array([0., 5.32, 3.001])
+        a: aikit.array([-6.7, 0.314, 1.23]),
+        b: aikit.array([0., 5.32, 3.001])
     }
     """
-    return ivy.current_backend(x).real(x, out=out)
+    return aikit.current_backend(x).real(x, out=out)
 
 
 @handle_exceptions
@@ -5413,13 +5413,13 @@ def real(
 @handle_array_function
 @handle_device
 def remainder(
-    x1: Union[float, ivy.Array, ivy.NativeArray],
-    x2: Union[float, ivy.Array, ivy.NativeArray],
+    x1: Union[float, aikit.Array, aikit.NativeArray],
+    x2: Union[float, aikit.Array, aikit.NativeArray],
     /,
     *,
     modulus: bool = True,
-    out: Optional[ivy.Array] = None,
-) -> ivy.Array:
+    out: Optional[aikit.Array] = None,
+) -> aikit.Array:
     """Return the remainder of division for each element ``x1_i`` of the input
     array ``x1`` and the respective element ``x2_i`` of the input array ``x2``.
 
@@ -5499,39 +5499,39 @@ def remainder(
     in the standard.
 
     Both the description and the type hints above assumes an array input for simplicity,
-    but this function is *nestable*, and therefore also accepts :class:`ivy.Container`
+    but this function is *nestable*, and therefore also accepts :class:`aikit.Container`
     instances in place of any of the arguments
 
     Examples
     --------
-    With :class:`ivy.Array` inputs:
+    With :class:`aikit.Array` inputs:
 
-    >>> x1 = ivy.array([2., 5., 15.])
-    >>> x2 = ivy.array([3., 2., 4.])
-    >>> y = ivy.remainder(x1, x2)
+    >>> x1 = aikit.array([2., 5., 15.])
+    >>> x2 = aikit.array([3., 2., 4.])
+    >>> y = aikit.remainder(x1, x2)
     >>> print(y)
-    ivy.array([2., 1., 3.])
+    aikit.array([2., 1., 3.])
 
-    With mixed :class:`ivy.Array` and :class:`ivy.NativeArray` inputs:
+    With mixed :class:`aikit.Array` and :class:`aikit.NativeArray` inputs:
 
-    >>> x1 = ivy.array([23., 1., 6.])
-    >>> x2 = ivy.native_array([11., 2., 4.])
-    >>> y = ivy.remainder(x1, x2)
+    >>> x1 = aikit.array([23., 1., 6.])
+    >>> x2 = aikit.native_array([11., 2., 4.])
+    >>> y = aikit.remainder(x1, x2)
     >>> print(y)
-    ivy.array([1., 1., 2.])
+    aikit.array([1., 1., 2.])
 
-    With :class:`ivy.Container` inputs:
+    With :class:`aikit.Container` inputs:
 
-    >>> x1 = ivy.Container(a=ivy.array([2., 3., 5.]), b=ivy.array([2., 2., 4.]))
-    >>> x2 = ivy.Container(a=ivy.array([1., 3., 4.]), b=ivy.array([1., 3., 3.]))
-    >>> y = ivy.remainder(x1, x2)
+    >>> x1 = aikit.Container(a=aikit.array([2., 3., 5.]), b=aikit.array([2., 2., 4.]))
+    >>> x2 = aikit.Container(a=aikit.array([1., 3., 4.]), b=aikit.array([1., 3., 3.]))
+    >>> y = aikit.remainder(x1, x2)
     >>> print(y)
     {
-        a: ivy.array([0., 0., 1.]),
-        b: ivy.array([0., 2., 1.])
+        a: aikit.array([0., 0., 1.]),
+        b: aikit.array([0., 2., 1.])
     }
     """
-    return ivy.current_backend(x1, x2).remainder(x1, x2, modulus=modulus, out=out)
+    return aikit.current_backend(x1, x2).remainder(x1, x2, modulus=modulus, out=out)
 
 
 @handle_exceptions
@@ -5543,12 +5543,12 @@ def remainder(
 @handle_array_function
 @handle_device
 def round(
-    x: Union[ivy.Array, ivy.NativeArray],
+    x: Union[aikit.Array, aikit.NativeArray],
     /,
     *,
     decimals: Optional[int] = 0,
-    out: Optional[ivy.Array] = None,
-) -> ivy.Array:
+    out: Optional[aikit.Array] = None,
+) -> aikit.Array:
     """Round each element ``x_i`` of the input array ``x`` to the nearest
     integer-valued number.
 
@@ -5612,47 +5612,47 @@ def round(
     in the standard.
 
     Both the description and the type hints above assumes an array input for simplicity,
-    but this function is *nestable*, and therefore also accepts :class:`ivy.Container`
+    but this function is *nestable*, and therefore also accepts :class:`aikit.Container`
     instances in place of any of the arguments.
 
     Examples
     --------
-    With :class:`ivy.Array` input:
+    With :class:`aikit.Array` input:
 
-    >>> x = ivy.array([1.2, 2.4, 3.6])
-    >>> y = ivy.round(x)
+    >>> x = aikit.array([1.2, 2.4, 3.6])
+    >>> y = aikit.round(x)
     >>> print(y)
-    ivy.array([1.,2.,4.])
+    aikit.array([1.,2.,4.])
 
-    >>> x = ivy.array([-0, 5, 4.5])
-    >>> y = ivy.round(x)
+    >>> x = aikit.array([-0, 5, 4.5])
+    >>> y = aikit.round(x)
     >>> print(y)
-    ivy.array([0.,5.,4.])
+    aikit.array([0.,5.,4.])
 
-    >>> x = ivy.array([1.5654, 2.034, 15.1, -5.0])
-    >>> y = ivy.zeros(4)
-    >>> ivy.round(x, out=y)
+    >>> x = aikit.array([1.5654, 2.034, 15.1, -5.0])
+    >>> y = aikit.zeros(4)
+    >>> aikit.round(x, out=y)
     >>> print(y)
-    ivy.array([2.,2.,15.,-5.])
+    aikit.array([2.,2.,15.,-5.])
 
-    >>> x = ivy.array([[0, 5.433, -343.3, 1.5],
+    >>> x = aikit.array([[0, 5.433, -343.3, 1.5],
     ...                [-5.5, 44.2, 11.5, 12.01]])
-    >>> ivy.round(x, out=x)
+    >>> aikit.round(x, out=x)
     >>> print(x)
-    ivy.array([[0.,5.,-343.,2.],[-6.,44.,12.,12.]])
+    aikit.array([[0.,5.,-343.,2.],[-6.,44.,12.,12.]])
 
-    With :class:`ivy.Container` input:
+    With :class:`aikit.Container` input:
 
-    >>> x = ivy.Container(a=ivy.array([4.20, 8.6, 6.90, 0.0]),
-    ...                   b=ivy.array([-300.9, -527.3, 4.5]))
-    >>> y = ivy.round(x)
+    >>> x = aikit.Container(a=aikit.array([4.20, 8.6, 6.90, 0.0]),
+    ...                   b=aikit.array([-300.9, -527.3, 4.5]))
+    >>> y = aikit.round(x)
     >>> print(y)
     {
-        a:ivy.array([4.,9.,7.,0.]),
-        b:ivy.array([-301.,-527.,4.])
+        a:aikit.array([4.,9.,7.,0.]),
+        b:aikit.array([-301.,-527.,4.])
     }
     """
-    return ivy.current_backend(x).round(x, decimals=decimals, out=out)
+    return aikit.current_backend(x).round(x, decimals=decimals, out=out)
 
 
 @handle_exceptions
@@ -5664,12 +5664,12 @@ def round(
 @handle_array_function
 @handle_device
 def sign(
-    x: Union[ivy.Array, ivy.NativeArray],
+    x: Union[aikit.Array, aikit.NativeArray],
     /,
     *,
     np_variant: Optional[bool] = True,
-    out: Optional[ivy.Array] = None,
-) -> ivy.Array:
+    out: Optional[aikit.Array] = None,
+) -> aikit.Array:
     r"""Return an indication of the sign of a number for each element ``x_i`` of
     the input array ``x``.
 
@@ -5729,39 +5729,39 @@ def sign(
     in the standard.
 
     Both the description and the type hints above assumes an array input for simplicity,
-    but this function is *nestable*, and therefore also accepts :class:`ivy.Container`
+    but this function is *nestable*, and therefore also accepts :class:`aikit.Container`
     instances in place of any of the arguments.
 
     Examples
     --------
-    With :class:`ivy.Array` input:
+    With :class:`aikit.Array` input:
 
-    >>> x = ivy.array([8.3, -0, 6.8, 0.07])
-    >>> y = ivy.sign(x)
+    >>> x = aikit.array([8.3, -0, 6.8, 0.07])
+    >>> y = aikit.sign(x)
     >>> print(y)
-    ivy.array([1., 0., 1., 1.])
+    aikit.array([1., 0., 1., 1.])
 
-    >>> x = ivy.array([[5.78, -4., -6.9, 0],
+    >>> x = aikit.array([[5.78, -4., -6.9, 0],
     ...                [-.4, 0.5, 8, -0.01]])
-    >>> y = ivy.sign(x)
+    >>> y = aikit.sign(x)
     >>> print(y)
-    ivy.array([[ 1., -1., -1.,  0.],
+    aikit.array([[ 1., -1., -1.,  0.],
                [-1.,  1.,  1., -1.]])
 
-    With :class:`ivy.Container` input:
+    With :class:`aikit.Container` input:
 
-    >>> x = ivy.Container(a=ivy.array([0., -0.]),
-    ...                   b=ivy.array([1.46, 5.9, -0.0]),
-    ...                   c=ivy.array([-8.23, -4.9, -2.6, 7.4]))
-    >>> y = ivy.sign(x)
+    >>> x = aikit.Container(a=aikit.array([0., -0.]),
+    ...                   b=aikit.array([1.46, 5.9, -0.0]),
+    ...                   c=aikit.array([-8.23, -4.9, -2.6, 7.4]))
+    >>> y = aikit.sign(x)
     >>> print(y)
     {
-        a: ivy.array([0., 0.]),
-        b: ivy.array([1., 1., 0.]),
-        c: ivy.array([-1., -1., -1., 1.])
+        a: aikit.array([0., 0.]),
+        b: aikit.array([1., 1., 0.]),
+        c: aikit.array([-1., -1., -1., 1.])
     }
     """
-    return ivy.current_backend(x).sign(x, np_variant=np_variant, out=out)
+    return aikit.current_backend(x).sign(x, np_variant=np_variant, out=out)
 
 
 @handle_exceptions
@@ -5773,11 +5773,11 @@ def sign(
 @handle_array_function
 @handle_device
 def sin(
-    x: Union[ivy.Array, ivy.NativeArray],
+    x: Union[aikit.Array, aikit.NativeArray],
     /,
     *,
-    out: Optional[ivy.Array] = None,
-) -> ivy.Array:
+    out: Optional[aikit.Array] = None,
+) -> aikit.Array:
     r"""Calculate an implementation-dependent approximation to the sine, having
     domain ``(-infinity, +infinity)`` and codomain ``[-1, +1]``, for each
     element ``x_i`` of the input array ``x``. Each element ``x_i`` is assumed
@@ -5821,42 +5821,42 @@ def sin(
     in the standard.
 
     Both the description and the type hints above assumes an array input for simplicity,
-    but this function is *nestable*, and therefore also accepts :class:`ivy.Container`
+    but this function is *nestable*, and therefore also accepts :class:`aikit.Container`
     instances in place of any of the arguments
 
     Examples
     --------
-    With :class:`ivy.Array` input:
+    With :class:`aikit.Array` input:
 
-    >>> x = ivy.array([0., 1., 2.])
-    >>> y = ivy.sin(x)
+    >>> x = aikit.array([0., 1., 2.])
+    >>> y = aikit.sin(x)
     >>> print(y)
-    ivy.array([0., 0.841, 0.909])
+    aikit.array([0., 0.841, 0.909])
 
-    >>> x = ivy.array([0., 1.2, -2.3, 3.6])
-    >>> y = ivy.zeros(4)
-    >>> ivy.sin(x, out=y)
+    >>> x = aikit.array([0., 1.2, -2.3, 3.6])
+    >>> y = aikit.zeros(4)
+    >>> aikit.sin(x, out=y)
     >>> print(y)
-    ivy.array([0., 0.932, -0.746, -0.443])
+    aikit.array([0., 0.932, -0.746, -0.443])
 
-    >>> x = ivy.array([[1., 2., 3.], [-4., -5., -6.]])
-    >>> ivy.sin(x, out=x)
+    >>> x = aikit.array([[1., 2., 3.], [-4., -5., -6.]])
+    >>> aikit.sin(x, out=x)
     >>> print(x)
-    ivy.array([[0.841, 0.909, 0.141],
+    aikit.array([[0.841, 0.909, 0.141],
                [0.757, 0.959, 0.279]])
 
-    With :class:`ivy.Container` input:
+    With :class:`aikit.Container` input:
 
-    >>> x = ivy.Container(a=ivy.array([0., 1., 2., 3.]),
-    ...                   b=ivy.array([-4., -5., -6., -7.]))
-    >>> y = ivy.sin(x)
+    >>> x = aikit.Container(a=aikit.array([0., 1., 2., 3.]),
+    ...                   b=aikit.array([-4., -5., -6., -7.]))
+    >>> y = aikit.sin(x)
     >>> print(y)
     {
-        a: ivy.array([0., 0.841, 0.909, 0.141]),
-        b: ivy.array([0.757, 0.959, 0.279, -0.657])
+        a: aikit.array([0., 0.841, 0.909, 0.141]),
+        b: aikit.array([0.757, 0.959, 0.279, -0.657])
     }
     """
-    return ivy.current_backend(x).sin(x, out=out)
+    return aikit.current_backend(x).sin(x, out=out)
 
 
 @handle_exceptions
@@ -5868,11 +5868,11 @@ def sin(
 @handle_array_function
 @handle_device
 def sinh(
-    x: Union[ivy.Array, ivy.NativeArray],
+    x: Union[aikit.Array, aikit.NativeArray],
     /,
     *,
-    out: Optional[ivy.Array] = None,
-) -> ivy.Array:
+    out: Optional[aikit.Array] = None,
+) -> aikit.Array:
     r"""Calculate an implementation-dependent approximation to the hyperbolic
     sine, having domain ``[-infinity, +infinity]`` and codomain ``[-infinity,
     +infinity]``, for each element ``x_i`` of the input array ``x``.
@@ -5952,34 +5952,34 @@ def sinh(
     in the standard.
 
     Both the description and the type hints above assumes an array input for simplicity,
-    but this function is *nestable*, and therefore also accepts :class:`ivy.Container`
+    but this function is *nestable*, and therefore also accepts :class:`aikit.Container`
     instances in place of any of the arguments
 
     Examples
     --------
-    With :class:`ivy.Array` input:
+    With :class:`aikit.Array` input:
 
-    >>> x = ivy.array([1, 2, 3])
-    >>> y = ivy.sinh(x)
+    >>> x = aikit.array([1, 2, 3])
+    >>> y = aikit.sinh(x)
     >>> print(y)
-        ivy.array([1.18, 3.63, 10.])
+        aikit.array([1.18, 3.63, 10.])
 
-    >>> x = ivy.array([0.23, 3., -1.2])
-    >>> ivy.sinh(x, out=x)
+    >>> x = aikit.array([0.23, 3., -1.2])
+    >>> aikit.sinh(x, out=x)
     >>> print(x)
-        ivy.array([0.232, 10., -1.51])
+        aikit.array([0.232, 10., -1.51])
 
-    With :class:`ivy.Container` input:
+    With :class:`aikit.Container` input:
 
-    >>> x = ivy.Container(a=ivy.array([0.23, -0.25, 1]), b=ivy.array([3, -4, 1.26]))
-    >>> y = ivy.sinh(x)
+    >>> x = aikit.Container(a=aikit.array([0.23, -0.25, 1]), b=aikit.array([3, -4, 1.26]))
+    >>> y = aikit.sinh(x)
     >>> print(y)
     {
-        a: ivy.array([0.232, -0.253, 1.18]),
-        b: ivy.array([10., -27.3, 1.62])
+        a: aikit.array([0.232, -0.253, 1.18]),
+        b: aikit.array([10., -27.3, 1.62])
     }
     """
-    return ivy.current_backend(x).sinh(x, out=out)
+    return aikit.current_backend(x).sinh(x, out=out)
 
 
 @handle_exceptions
@@ -5991,11 +5991,11 @@ def sinh(
 @handle_array_function
 @handle_device
 def sqrt(
-    x: Union[ivy.Array, ivy.NativeArray],
+    x: Union[aikit.Array, aikit.NativeArray],
     /,
     *,
-    out: Optional[ivy.Array] = None,
-) -> ivy.Array:
+    out: Optional[aikit.Array] = None,
+) -> aikit.Array:
     r"""Calculate the square root, having domain ``[0, +infinity]`` and codomain
     ``[0, +infinity]``, for each element ``x_i`` of the input array ``x``.
     After rounding, each result must be indistinguishable from the infinitely
@@ -6078,39 +6078,39 @@ def sqrt(
     in the standard.
 
     Both the description and the type hints above assumes an array input for simplicity,
-    but this function is *nestable*, and therefore also accepts :class:`ivy.Container`
+    but this function is *nestable*, and therefore also accepts :class:`aikit.Container`
     instances in place of any of the arguments
 
     Examples
     --------
-    With :class:`ivy.Array` input:
+    With :class:`aikit.Array` input:
 
-    >>> x = ivy.array([0, 4., 8.])
-    >>> y = ivy.sqrt(x)
+    >>> x = aikit.array([0, 4., 8.])
+    >>> y = aikit.sqrt(x)
     >>> print(y)
-    ivy.array([0., 2., 2.83])
+    aikit.array([0., 2., 2.83])
 
-    >>> x = ivy.array([1, 2., 4.])
-    >>> y = ivy.zeros(3)
-    >>> ivy.sqrt(x, out=y)
-    ivy.array([1., 1.41, 2.])
+    >>> x = aikit.array([1, 2., 4.])
+    >>> y = aikit.zeros(3)
+    >>> aikit.sqrt(x, out=y)
+    aikit.array([1., 1.41, 2.])
 
-    >>> X = ivy.array([40., 24., 100.])
-    >>> ivy.sqrt(x, out=x)
-    >>> ivy.array([6.32455532, 4.89897949, 10.])
+    >>> X = aikit.array([40., 24., 100.])
+    >>> aikit.sqrt(x, out=x)
+    >>> aikit.array([6.32455532, 4.89897949, 10.])
 
-    With :class:`ivy.Container` input:
+    With :class:`aikit.Container` input:
 
-    >>> x = ivy.Container(a=ivy.array([44., 56., 169.]), b=ivy.array([[49.,1.], [0,20.]])) # noqa
-    >>> y = ivy.sqrt(x)
+    >>> x = aikit.Container(a=aikit.array([44., 56., 169.]), b=aikit.array([[49.,1.], [0,20.]])) # noqa
+    >>> y = aikit.sqrt(x)
     >>> print(y)
     {
-        a: ivy.array([6.63, 7.48, 13.]),
-        b: ivy.array([[7., 1.],
+        a: aikit.array([6.63, 7.48, 13.]),
+        b: aikit.array([[7., 1.],
                       [0., 4.47]])
     }
     """  # noqa: E501
-    return ivy.current_backend(x).sqrt(x, out=out)
+    return aikit.current_backend(x).sqrt(x, out=out)
 
 
 @handle_exceptions
@@ -6122,11 +6122,11 @@ def sqrt(
 @handle_array_function
 @handle_device
 def square(
-    x: Union[ivy.Array, ivy.NativeArray],
+    x: Union[aikit.Array, aikit.NativeArray],
     /,
     *,
-    out: Optional[ivy.Array] = None,
-) -> ivy.Array:
+    out: Optional[aikit.Array] = None,
+) -> aikit.Array:
     """Each element ``x_i`` of the input array ``x``.
 
     Parameters
@@ -6150,40 +6150,40 @@ def square(
     in the standard.
 
     Both the description and the type hints above assumes an array input for simplicity,
-    but this function is *nestable*, and therefore also accepts :class:`ivy.Container`
+    but this function is *nestable*, and therefore also accepts :class:`aikit.Container`
     instances in place of any of the arguments.
 
     Examples
     --------
-    With :class:`ivy.Array` input:
+    With :class:`aikit.Array` input:
 
-    >>> x = ivy.array([1, 2, 3])
-    >>> y = ivy.square(x)
+    >>> x = aikit.array([1, 2, 3])
+    >>> y = aikit.square(x)
     >>> print(y)
-    ivy.array([1, 4, 9])
+    aikit.array([1, 4, 9])
 
-    >>> x = ivy.array([1.5, -0.8, 0.3])
-    >>> y = ivy.zeros(3)
-    >>> ivy.square(x, out=y)
+    >>> x = aikit.array([1.5, -0.8, 0.3])
+    >>> y = aikit.zeros(3)
+    >>> aikit.square(x, out=y)
     >>> print(y)
-    ivy.array([2.25, 0.64, 0.09])
+    aikit.array([2.25, 0.64, 0.09])
 
-    >>> x = ivy.array([[1.2, 2, 3.1], [-1, -2.5, -9]])
-    >>> ivy.square(x, out=x)
+    >>> x = aikit.array([[1.2, 2, 3.1], [-1, -2.5, -9]])
+    >>> aikit.square(x, out=x)
     >>> print(x)
-    ivy.array([[1.44,4.,9.61],[1.,6.25,81.]])
+    aikit.array([[1.44,4.,9.61],[1.,6.25,81.]])
 
-    With :class:`ivy.Container` input:
+    With :class:`aikit.Container` input:
 
-    >>> x = ivy.Container(a=ivy.array([0, 1]), b=ivy.array([2, 3]))
-    >>> y = ivy.square(x)
+    >>> x = aikit.Container(a=aikit.array([0, 1]), b=aikit.array([2, 3]))
+    >>> y = aikit.square(x)
     >>> print(y)
     {
-        a:ivy.array([0,1]),
-        b:ivy.array([4,9])
+        a:aikit.array([0,1]),
+        b:aikit.array([4,9])
     }
     """
-    return ivy.current_backend(x).square(x, out=out)
+    return aikit.current_backend(x).square(x, out=out)
 
 
 @handle_exceptions
@@ -6194,13 +6194,13 @@ def square(
 @handle_array_function
 @handle_device
 def subtract(
-    x1: Union[float, ivy.Array, ivy.NativeArray],
-    x2: Union[float, ivy.Array, ivy.NativeArray],
+    x1: Union[float, aikit.Array, aikit.NativeArray],
+    x2: Union[float, aikit.Array, aikit.NativeArray],
     /,
     *,
     alpha: Optional[Union[int, float]] = None,
-    out: Optional[ivy.Array] = None,
-) -> ivy.Array:
+    out: Optional[aikit.Array] = None,
+) -> aikit.Array:
     """Calculate the difference for each element ``x1_i`` of the input array
     ``x1`` with the respective element ``x2_i`` of the input array ``x2``.
 
@@ -6230,24 +6230,24 @@ def subtract(
     in the standard.
 
     Both the description and the type hints above assumes an array input for simplicity,
-    but this function is *nestable*, and therefore also accepts :class:`ivy.Container`
+    but this function is *nestable*, and therefore also accepts :class:`aikit.Container`
     instances in place of any of the arguments.
 
     Examples
     --------
-    >>> x = ivy.array([3, 6, 3])
-    >>> y = ivy.array([2, 1, 6])
-    >>> z = ivy.subtract(x, y)
+    >>> x = aikit.array([3, 6, 3])
+    >>> y = aikit.array([2, 1, 6])
+    >>> z = aikit.subtract(x, y)
     >>> print(z)
-    ivy.array([ 1,  5, -3])
+    aikit.array([ 1,  5, -3])
 
-    >>> x = ivy.array([3, 6, 3])
-    >>> y = ivy.array([2, 1, 6])
-    >>> z = ivy.subtract(x, y, alpha=2)
+    >>> x = aikit.array([3, 6, 3])
+    >>> y = aikit.array([2, 1, 6])
+    >>> z = aikit.subtract(x, y, alpha=2)
     >>> print(z)
-    ivy.array([-1,  4, -9])
+    aikit.array([-1,  4, -9])
     """
-    return ivy.current_backend(x1).subtract(x1, x2, alpha=alpha, out=out)
+    return aikit.current_backend(x1).subtract(x1, x2, alpha=alpha, out=out)
 
 
 @handle_exceptions
@@ -6259,11 +6259,11 @@ def subtract(
 @handle_array_function
 @handle_device
 def tan(
-    x: Union[ivy.Array, ivy.NativeArray],
+    x: Union[aikit.Array, aikit.NativeArray],
     /,
     *,
-    out: Optional[ivy.Array] = None,
-) -> ivy.Array:
+    out: Optional[aikit.Array] = None,
+) -> aikit.Array:
     r"""Calculate an implementation-dependent approximation to the tangent, having
     domain ``(-infinity, +infinity)`` and codomain ``(-infinity, +infinity)``, for each
     element ``x_i`` of the input array ``x``. Each element ``x_i`` is assumed to be
@@ -6316,42 +6316,42 @@ def tan(
     in the standard.
 
     Both the description and the type hints above assumes an array input for simplicity,
-    but this function is *nestable*, and therefore also accepts :class:`ivy.Container`
+    but this function is *nestable*, and therefore also accepts :class:`aikit.Container`
     instances in place of any of the arguments.
 
     Examples
     --------
-    With :class:`ivy.Array` input:
+    With :class:`aikit.Array` input:
 
-    >>> x = ivy.array([0., 1., 2.])
-    >>> y = ivy.tan(x)
+    >>> x = aikit.array([0., 1., 2.])
+    >>> y = aikit.tan(x)
     >>> print(y)
-    ivy.array([0., 1.56, -2.19])
+    aikit.array([0., 1.56, -2.19])
 
-    >>> x = ivy.array([0.5, -0.7, 2.4])
-    >>> y = ivy.zeros(3)
-    >>> ivy.tan(x, out=y)
+    >>> x = aikit.array([0.5, -0.7, 2.4])
+    >>> y = aikit.zeros(3)
+    >>> aikit.tan(x, out=y)
     >>> print(y)
-    ivy.array([0.546, -0.842, -0.916])
+    aikit.array([0.546, -0.842, -0.916])
 
-    >>> x = ivy.array([[1.1, 2.2, 3.3],
+    >>> x = aikit.array([[1.1, 2.2, 3.3],
     ...                [-4.4, -5.5, -6.6]])
-    >>> ivy.tan(x, out=x)
+    >>> aikit.tan(x, out=x)
     >>> print(x)
-    ivy.array([[1.96, -1.37, 0.16],
+    aikit.array([[1.96, -1.37, 0.16],
         [-3.1, 0.996, -0.328]])
 
-    With :class:`ivy.Container` input:
+    With :class:`aikit.Container` input:
 
-    >>> x = ivy.Container(a=ivy.array([0., 1., 2.]), b=ivy.array([3., 4., 5.]))
-    >>> y = ivy.tan(x)
+    >>> x = aikit.Container(a=aikit.array([0., 1., 2.]), b=aikit.array([3., 4., 5.]))
+    >>> y = aikit.tan(x)
     >>> print(y)
     {
-        a: ivy.array([0., 1.56, -2.19]),
-        b: ivy.array([-0.143, 1.16, -3.38])
+        a: aikit.array([0., 1.56, -2.19]),
+        b: aikit.array([-0.143, 1.16, -3.38])
     }
     """
-    return ivy.current_backend(x).tan(x, out=out)
+    return aikit.current_backend(x).tan(x, out=out)
 
 
 @handle_exceptions
@@ -6364,12 +6364,12 @@ def tan(
 @handle_device
 @handle_complex_input
 def tanh(
-    x: Union[ivy.Array, ivy.NativeArray],
+    x: Union[aikit.Array, aikit.NativeArray],
     /,
     *,
     complex_mode: Literal["split", "magnitude", "jax"] = "jax",
-    out: Optional[ivy.Array] = None,
-) -> ivy.Array:
+    out: Optional[aikit.Array] = None,
+) -> aikit.Array:
     """Calculate an implementation-dependent approximation to the hyperbolic
     tangent, having domain ``[-infinity, +infinity]`` and codomain ``[-1,
     +1]``, for each element ``x_i`` of the input array ``x``.
@@ -6438,7 +6438,7 @@ def tanh(
         type.
     complex_mode
         optional specifier for how to handle complex data types. See
-        ``ivy.func_wrapper.handle_complex_input`` for more detail.
+        ``aikit.func_wrapper.handle_complex_input`` for more detail.
     out
         optional output, for writing the result to. It must have a shape that the inputs
         broadcast to.
@@ -6458,43 +6458,43 @@ def tanh(
     in the standard.
 
     Both the description and the type hints above assumes an array input for simplicity,
-    but this function is *nestable*, and therefore also accepts :class:`ivy.Container`
+    but this function is *nestable*, and therefore also accepts :class:`aikit.Container`
     instances in place of any of the arguments
 
     Examples
     --------
-    With :class:`ivy.Array` input:
+    With :class:`aikit.Array` input:
 
-    >>> x = ivy.array([0., 1., 2.])
-    >>> y = ivy.tanh(x)
+    >>> x = aikit.array([0., 1., 2.])
+    >>> y = aikit.tanh(x)
     >>> print(y)
-    ivy.array([0., 0.762, 0.964])
+    aikit.array([0., 0.762, 0.964])
 
-    >>> x = ivy.array([0.5, -0.7, 2.4])
-    >>> y = ivy.zeros(3)
-    >>> ivy.tanh(x, out=y)
+    >>> x = aikit.array([0.5, -0.7, 2.4])
+    >>> y = aikit.zeros(3)
+    >>> aikit.tanh(x, out=y)
     >>> print(y)
-    ivy.array([0.462, -0.604, 0.984])
+    aikit.array([0.462, -0.604, 0.984])
 
-    >>> x = ivy.array([[1.1, 2.2, 3.3],
+    >>> x = aikit.array([[1.1, 2.2, 3.3],
     ...                [-4.4, -5.5, -6.6]])
-    >>> ivy.tanh(x, out=x)
+    >>> aikit.tanh(x, out=x)
     >>> print(x)
-    ivy.array([[0.8, 0.976, 0.997],
+    aikit.array([[0.8, 0.976, 0.997],
               [-1., -1., -1.]])
 
-    With :class:`ivy.Container` input:
+    With :class:`aikit.Container` input:
 
-    >>> x = ivy.Container(a=ivy.array([0., 1., 2.]),
-    ...                   b=ivy.array([3., 4., 5.]))
-    >>> y = ivy.tanh(x)
+    >>> x = aikit.Container(a=aikit.array([0., 1., 2.]),
+    ...                   b=aikit.array([3., 4., 5.]))
+    >>> y = aikit.tanh(x)
     >>> print(y)
     {
-        a: ivy.array([0., 0.762, 0.964]),
-        b: ivy.array([0.995, 0.999, 1.])
+        a: aikit.array([0., 0.762, 0.964]),
+        b: aikit.array([0.995, 0.999, 1.])
     }
     """
-    return ivy.current_backend(x).tanh(x, out=out)
+    return aikit.current_backend(x).tanh(x, out=out)
 
 
 @handle_backend_invalid
@@ -6504,14 +6504,14 @@ def tanh(
 @to_native_arrays_and_back
 @handle_device
 def trapz(
-    y: ivy.Array,
+    y: aikit.Array,
     /,
     *,
-    x: Optional[ivy.Array] = None,
+    x: Optional[aikit.Array] = None,
     dx: float = 1.0,
     axis: int = -1,
-    out: Optional[ivy.Array] = None,
-) -> ivy.Array:
+    out: Optional[aikit.Array] = None,
+) -> aikit.Array:
     """Integrate along the given axis using the composite trapezoidal rule.
 
     If x is provided, the integration happens in sequence along its elements
@@ -6542,17 +6542,17 @@ def trapz(
 
     Examples
     --------
-    >>> y = ivy.array([1, 2, 3])
-    >>> ivy.trapz([1,2,3])
+    >>> y = aikit.array([1, 2, 3])
+    >>> aikit.trapz([1,2,3])
     4.0
-    >>> y = ivy.array([1, 2, 3])
-    >>> ivy.trapz([1,2,3], x=[4, 6, 8])
+    >>> y = aikit.array([1, 2, 3])
+    >>> aikit.trapz([1,2,3], x=[4, 6, 8])
     8.0
-    >>> y = ivy.array([1, 2, 3])
-    >>> ivy.trapz([1,2,3], dx=2)
+    >>> y = aikit.array([1, 2, 3])
+    >>> aikit.trapz([1,2,3], dx=2)
     8.0
     """
-    return ivy.current_backend(y).trapz(y, x=x, dx=dx, axis=axis, out=out)
+    return aikit.current_backend(y).trapz(y, x=x, dx=dx, axis=axis, out=out)
 
 
 @handle_exceptions
@@ -6564,11 +6564,11 @@ def trapz(
 @handle_array_function
 @handle_device
 def trunc(
-    x: Union[ivy.Array, ivy.NativeArray],
+    x: Union[aikit.Array, aikit.NativeArray],
     /,
     *,
-    out: Optional[ivy.Array] = None,
-) -> ivy.Array:
+    out: Optional[aikit.Array] = None,
+) -> aikit.Array:
     """Round each element x_i of the input array x to the integer-valued number
     that is closest to but no greater than x_i.
 
@@ -6606,41 +6606,41 @@ def trunc(
     in the standard.
 
     Both the description and the type hints above assumes an array input for simplicity,
-    but this function is *nestable*, and therefore also accepts :class:`ivy.Container`
+    but this function is *nestable*, and therefore also accepts :class:`aikit.Container`
     instances in place of any of the arguments
 
     Examples
     --------
-    With :class:`ivy.Array` input:
+    With :class:`aikit.Array` input:
 
-    >>> x = ivy.array([-1, 0.54, 3.67, -0.025])
-    >>> y = ivy.trunc(x)
+    >>> x = aikit.array([-1, 0.54, 3.67, -0.025])
+    >>> y = aikit.trunc(x)
     >>> print(y)
-    ivy.array([-1.,  0.,  3., -0.])
+    aikit.array([-1.,  0.,  3., -0.])
 
-    >>> x = ivy.array([0.56, 7, -23.4, -0.0375])
-    >>> ivy.trunc(x, out=x)
+    >>> x = aikit.array([0.56, 7, -23.4, -0.0375])
+    >>> aikit.trunc(x, out=x)
     >>> print(x)
-    ivy.array([  0.,   7., -23.,  -0.])
+    aikit.array([  0.,   7., -23.,  -0.])
 
-    >>> x = ivy.array([[0.4, -8, 0.55], [0, 0.032, 2]])
-    >>> y = ivy.zeros([2,3])
-    >>> ivy.trunc(x, out=y)
+    >>> x = aikit.array([[0.4, -8, 0.55], [0, 0.032, 2]])
+    >>> y = aikit.zeros([2,3])
+    >>> aikit.trunc(x, out=y)
     >>> print(y)
-    ivy.array([[ 0., -8.,  0.],
+    aikit.array([[ 0., -8.,  0.],
            [ 0.,  0.,  2.]])
 
-    With :class:`ivy.Container` input:
+    With :class:`aikit.Container` input:
 
-    >>> x = ivy.Container(a=ivy.array([-0.25, 4, 1.3]), b=ivy.array([12, -3.5, 1.234]))
-    >>> y = ivy.trunc(x)
+    >>> x = aikit.Container(a=aikit.array([-0.25, 4, 1.3]), b=aikit.array([12, -3.5, 1.234]))
+    >>> y = aikit.trunc(x)
     >>> print(y)
     {
-        a: ivy.array([-0., 4., 1.]),
-        b: ivy.array([12., -3., 1.])
+        a: aikit.array([-0., 4., 1.]),
+        b: aikit.array([12., -3., 1.])
     }
     """
-    return ivy.current_backend(x).trunc(x, out=out)
+    return aikit.current_backend(x).trunc(x, out=out)
 
 
 # Extra #
@@ -6656,11 +6656,11 @@ def trunc(
 @handle_array_function
 @handle_device
 def erf(
-    x: Union[ivy.Array, ivy.NativeArray],
+    x: Union[aikit.Array, aikit.NativeArray],
     /,
     *,
-    out: Optional[ivy.Array] = None,
-) -> ivy.Array:
+    out: Optional[aikit.Array] = None,
+) -> aikit.Array:
     """Compute the Gauss error function of ``x`` element-wise.
 
     Parameters
@@ -6678,35 +6678,35 @@ def erf(
 
     Examples
     --------
-    With :class:`ivy.Array` inputs:
+    With :class:`aikit.Array` inputs:
 
-    >>> x = ivy.array([0, 0.3, 0.7])
-    >>> y = ivy.erf(x)
+    >>> x = aikit.array([0, 0.3, 0.7])
+    >>> y = aikit.erf(x)
     >>> print(y)
-    ivy.array([0., 0.32862675, 0.67780113])
+    aikit.array([0., 0.32862675, 0.67780113])
 
-    >>> x = ivy.array([0.1, 0.3, 0.4, 0.5])
-    >>> ivy.erf(x, out=x)
+    >>> x = aikit.array([0.1, 0.3, 0.4, 0.5])
+    >>> aikit.erf(x, out=x)
     >>> print(x)
-    ivy.array([0.11246294, 0.32862675, 0.42839241, 0.52050018])
+    aikit.array([0.11246294, 0.32862675, 0.42839241, 0.52050018])
 
-    >>> x = ivy.array([[0.15, 0.28], [0.41, 1.75]])
-    >>> y = ivy.zeros((2, 2))
-    >>> ivy.erf(x, out=y)
+    >>> x = aikit.array([[0.15, 0.28], [0.41, 1.75]])
+    >>> y = aikit.zeros((2, 2))
+    >>> aikit.erf(x, out=y)
     >>> print(y)
-    ivy.array([[0.16799599, 0.30787992], [0.43796915, 0.98667163]])
+    aikit.array([[0.16799599, 0.30787992], [0.43796915, 0.98667163]])
 
-    With :class:`ivy.Container` input:
+    With :class:`aikit.Container` input:
 
-    >>> x = ivy.Container(a=ivy.array([0.9, 1.1, 1.2]), b=ivy.array([1.3, 1.4, 1.5]))
-    >>> y = ivy.erf(x)
+    >>> x = aikit.Container(a=aikit.array([0.9, 1.1, 1.2]), b=aikit.array([1.3, 1.4, 1.5]))
+    >>> y = aikit.erf(x)
     >>> print(y)
     {
-        a: ivy.array([0.79690808, 0.88020504, 0.91031402]),
-        b: ivy.array([0.934008, 0.95228523, 0.96610528])
+        a: aikit.array([0.79690808, 0.88020504, 0.91031402]),
+        b: aikit.array([0.934008, 0.95228523, 0.96610528])
     }
     """
-    return ivy.current_backend(x).erf(x, out=out)
+    return aikit.current_backend(x).erf(x, out=out)
 
 
 @handle_exceptions
@@ -6717,13 +6717,13 @@ def erf(
 @handle_array_function
 @handle_device
 def maximum(
-    x1: Union[ivy.Array, ivy.NativeArray, Number],
-    x2: Union[ivy.Array, ivy.NativeArray, Number],
+    x1: Union[aikit.Array, aikit.NativeArray, Number],
+    x2: Union[aikit.Array, aikit.NativeArray, Number],
     /,
     *,
     use_where: bool = True,
-    out: Optional[ivy.Array] = None,
-) -> ivy.Array:
+    out: Optional[aikit.Array] = None,
+) -> aikit.Array:
     """Return the max of x1 and x2 (i.e. x1 > x2 ? x1 : x2) element-wise.
 
     Parameters
@@ -6747,57 +6747,57 @@ def maximum(
 
     Examples
     --------
-    With :class:`ivy.Array` inputs:
+    With :class:`aikit.Array` inputs:
 
-    >>> x = ivy.array([7, 9, 5])
-    >>> y = ivy.array([9, 3, 2])
-    >>> z = ivy.maximum(x, y)
+    >>> x = aikit.array([7, 9, 5])
+    >>> y = aikit.array([9, 3, 2])
+    >>> z = aikit.maximum(x, y)
     >>> print(z)
-    ivy.array([9, 9, 5])
+    aikit.array([9, 9, 5])
 
-    >>> x = ivy.array([1, 5, 9, 8, 3, 7])
-    >>> y = ivy.array([[9], [3], [2]])
-    >>> z = ivy.zeros((3, 6))
-    >>> ivy.maximum(x, y, out=z)
+    >>> x = aikit.array([1, 5, 9, 8, 3, 7])
+    >>> y = aikit.array([[9], [3], [2]])
+    >>> z = aikit.zeros((3, 6))
+    >>> aikit.maximum(x, y, out=z)
     >>> print(z)
-    ivy.array([[9., 9., 9., 9., 9., 9.],
+    aikit.array([[9., 9., 9., 9., 9., 9.],
            [3., 5., 9., 8., 3., 7.],
            [2., 5., 9., 8., 3., 7.]])
 
-    >>> x = ivy.array([[7, 3]])
-    >>> y = ivy.array([0, 7])
-    >>> ivy.maximum(x, y, out=x)
+    >>> x = aikit.array([[7, 3]])
+    >>> y = aikit.array([0, 7])
+    >>> aikit.maximum(x, y, out=x)
     >>> print(x)
-    ivy.array([[7, 7]])
+    aikit.array([[7, 7]])
 
-    With one :class:`ivy.Container` input:
+    With one :class:`aikit.Container` input:
 
-    >>> x = ivy.array([[1, 3], [2, 4], [3, 7]])
-    >>> y = ivy.Container(a=ivy.array([1, 0,]),
-    ...                   b=ivy.array([-5, 9]))
-    >>> z = ivy.maximum(x, y)
+    >>> x = aikit.array([[1, 3], [2, 4], [3, 7]])
+    >>> y = aikit.Container(a=aikit.array([1, 0,]),
+    ...                   b=aikit.array([-5, 9]))
+    >>> z = aikit.maximum(x, y)
     >>> print(z)
     {
-        a: ivy.array([[1, 3],
+        a: aikit.array([[1, 3],
                       [2, 4],
                       [3, 7]]),
-        b: ivy.array([[1, 9],
+        b: aikit.array([[1, 9],
                       [2, 9],
                       [3, 9]])
     }
 
-    With multiple :class:`ivy.Container` inputs:
+    With multiple :class:`aikit.Container` inputs:
 
-    >>> x = ivy.Container(a=ivy.array([1, 3, 1]),b=ivy.array([2, 8, 5]))
-    >>> y = ivy.Container(a=ivy.array([1, 5, 6]),b=ivy.array([5, 9, 7]))
-    >>> z = ivy.maximum(x, y)
+    >>> x = aikit.Container(a=aikit.array([1, 3, 1]),b=aikit.array([2, 8, 5]))
+    >>> y = aikit.Container(a=aikit.array([1, 5, 6]),b=aikit.array([5, 9, 7]))
+    >>> z = aikit.maximum(x, y)
     >>> print(z)
     {
-        a: ivy.array([1, 5, 6]),
-        b: ivy.array([5, 9, 7])
+        a: aikit.array([1, 5, 6]),
+        b: aikit.array([5, 9, 7])
     }
     """
-    return ivy.current_backend(x1).maximum(x1, x2, use_where=use_where, out=out)
+    return aikit.current_backend(x1).maximum(x1, x2, use_where=use_where, out=out)
 
 
 @handle_exceptions
@@ -6808,13 +6808,13 @@ def maximum(
 @handle_array_function
 @handle_device
 def minimum(
-    x1: Union[ivy.Array, ivy.NativeArray],
-    x2: Union[ivy.Array, ivy.NativeArray],
+    x1: Union[aikit.Array, aikit.NativeArray],
+    x2: Union[aikit.Array, aikit.NativeArray],
     /,
     *,
     use_where: bool = True,
-    out: Optional[ivy.Array] = None,
-) -> ivy.Array:
+    out: Optional[aikit.Array] = None,
+) -> aikit.Array:
     """Return the min of x1 and x2 (i.e. x1 < x2 ? x1 : x2) element-wise.
 
     Parameters
@@ -6837,58 +6837,58 @@ def minimum(
 
     Examples
     --------
-    With :class:`ivy.Array` inputs:
+    With :class:`aikit.Array` inputs:
 
-    >>> x = ivy.array([7, 9, 5])
-    >>> y = ivy.array([9, 3, 2])
-    >>> z = ivy.minimum(x, y)
+    >>> x = aikit.array([7, 9, 5])
+    >>> y = aikit.array([9, 3, 2])
+    >>> z = aikit.minimum(x, y)
     >>> print(z)
-    ivy.array([7, 3, 2])
+    aikit.array([7, 3, 2])
 
-    >>> x = ivy.array([1, 5, 9, 8, 3, 7])
-    >>> y = ivy.array([[9], [3], [2]])
-    >>> z = ivy.zeros((3, 6))
-    >>> ivy.minimum(x, y, out=z)
+    >>> x = aikit.array([1, 5, 9, 8, 3, 7])
+    >>> y = aikit.array([[9], [3], [2]])
+    >>> z = aikit.zeros((3, 6))
+    >>> aikit.minimum(x, y, out=z)
     >>> print(z)
-    ivy.array([[1.,5.,9.,8.,3.,7.],
+    aikit.array([[1.,5.,9.,8.,3.,7.],
                [1.,3.,3.,3.,3.,3.],
                [1.,2.,2.,2.,2.,2.]])
 
-    >>> x = ivy.array([[7, 3]])
-    >>> y = ivy.array([0, 7])
-    >>> ivy.minimum(x, y, out=x)
+    >>> x = aikit.array([[7, 3]])
+    >>> y = aikit.array([0, 7])
+    >>> aikit.minimum(x, y, out=x)
     >>> print(x)
-    ivy.array([[0, 3]])
+    aikit.array([[0, 3]])
 
-    With one :class:`ivy.Container` input:
+    With one :class:`aikit.Container` input:
 
-    >>> x = ivy.array([[1, 3], [2, 4], [3, 7]])
-    >>> y = ivy.Container(a=ivy.array([1, 0,]),b=ivy.array([-5, 9]))
-    >>> z = ivy.minimum(x, y)
+    >>> x = aikit.array([[1, 3], [2, 4], [3, 7]])
+    >>> y = aikit.Container(a=aikit.array([1, 0,]),b=aikit.array([-5, 9]))
+    >>> z = aikit.minimum(x, y)
     >>> print(z)
     {
-        a: ivy.array([[1, 0],
+        a: aikit.array([[1, 0],
                       [1, 0],
                       [1, 0]]),
-        b: ivy.array([[-5, 3],
+        b: aikit.array([[-5, 3],
                       [-5, 4],
                       [-5, 7]])
     }
 
-    With multiple :class:`ivy.Container` inputs:
+    With multiple :class:`aikit.Container` inputs:
 
-    >>> x = ivy.Container(a=ivy.array([1, 3, 1]),
-    ...                   b=ivy.array([2, 8, 5]))
-    >>> y = ivy.Container(a=ivy.array([1, 5, 6]),
-    ...                   b=ivy.array([5, 9, 7]))
-    >>> z = ivy.minimum(x, y)
+    >>> x = aikit.Container(a=aikit.array([1, 3, 1]),
+    ...                   b=aikit.array([2, 8, 5]))
+    >>> y = aikit.Container(a=aikit.array([1, 5, 6]),
+    ...                   b=aikit.array([5, 9, 7]))
+    >>> z = aikit.minimum(x, y)
     >>> print(z)
     {
-        a: ivy.array([1, 3, 1]),
-        b: ivy.array([2, 8, 5])
+        a: aikit.array([1, 3, 1]),
+        b: aikit.array([2, 8, 5])
     }
     """
-    return ivy.current_backend(x1).minimum(x1, x2, use_where=use_where, out=out)
+    return aikit.current_backend(x1).minimum(x1, x2, use_where=use_where, out=out)
 
 
 @handle_exceptions
@@ -6900,11 +6900,11 @@ def minimum(
 @handle_array_function
 @handle_device
 def reciprocal(
-    x: Union[float, ivy.Array, ivy.NativeArray],
+    x: Union[float, aikit.Array, aikit.NativeArray],
     /,
     *,
-    out: Optional[ivy.Array] = None,
-) -> ivy.Array:
+    out: Optional[aikit.Array] = None,
+) -> aikit.Array:
     """Return a new array with the reciprocal of each element in ``x``.
 
     Parameters
@@ -6922,12 +6922,12 @@ def reciprocal(
 
     Examples
     --------
-    >>> x = ivy.array([1, 2, 3])
-    >>> y = ivy.reciprocal(x)
+    >>> x = aikit.array([1, 2, 3])
+    >>> y = aikit.reciprocal(x)
     >>> print(y)
-    ivy.array([1.        , 0.5       , 0.33333333])
+    aikit.array([1.        , 0.5       , 0.33333333])
     """
-    return ivy.current_backend(x).reciprocal(x, out=out)
+    return aikit.current_backend(x).reciprocal(x, out=out)
 
 
 @handle_backend_invalid
@@ -6938,11 +6938,11 @@ def reciprocal(
 @handle_array_function
 @handle_device
 def deg2rad(
-    x: Union[ivy.Array, ivy.NativeArray],
+    x: Union[aikit.Array, aikit.NativeArray],
     /,
     *,
-    out: Optional[ivy.Array] = None,
-) -> ivy.Array:
+    out: Optional[aikit.Array] = None,
+) -> aikit.Array:
     """Convert the input from degrees to radians.
 
     Parameters
@@ -6960,52 +6960,52 @@ def deg2rad(
 
     Examples
     --------
-    With :class:`ivy.Array` input:
+    With :class:`aikit.Array` input:
 
-    >>> x=ivy.array([0,90,180,270,360])
-    >>> y=ivy.deg2rad(x)
+    >>> x=aikit.array([0,90,180,270,360])
+    >>> y=aikit.deg2rad(x)
     >>> print(y)
-    ivy.array([0., 1.57079633, 3.14159265, 4.71238898, 6.28318531])
+    aikit.array([0., 1.57079633, 3.14159265, 4.71238898, 6.28318531])
 
-    >>> x=ivy.array([0,-1.5,-50,ivy.nan])
-    >>> y=ivy.zeros(4)
-    >>> ivy.deg2rad(x,out=y)
+    >>> x=aikit.array([0,-1.5,-50,aikit.nan])
+    >>> y=aikit.zeros(4)
+    >>> aikit.deg2rad(x,out=y)
     >>> print(y)
-    ivy.array([ 0., -0.02617994, -0.87266463, nan])
+    aikit.array([ 0., -0.02617994, -0.87266463, nan])
 
-    >>> x = ivy.array([[1.1, 2.2, 3.3],[-4.4, -5.5, -6.6]])
-    >>> ivy.deg2rad(x, out=x)
+    >>> x = aikit.array([[1.1, 2.2, 3.3],[-4.4, -5.5, -6.6]])
+    >>> aikit.deg2rad(x, out=x)
     >>> print(x)
-    ivy.array([[ 0.01919862,  0.03839725,  0.05759586],
+    aikit.array([[ 0.01919862,  0.03839725,  0.05759586],
            [-0.07679449, -0.09599311, -0.11519173]])
 
-    >>> x=ivy.native_array([-0,20.1,ivy.nan])
-    >>> y=ivy.zeros(3)
-    >>> ivy.deg2rad(x,out=y)
+    >>> x=aikit.native_array([-0,20.1,aikit.nan])
+    >>> y=aikit.zeros(3)
+    >>> aikit.deg2rad(x,out=y)
     >>> print(y)
-    ivy.array([0., 0.35081118, nan])
+    aikit.array([0., 0.35081118, nan])
 
-    With :class:`ivy.Container` input:
+    With :class:`aikit.Container` input:
 
-    >>> x=ivy.Container(a=ivy.array([-0,20.1,-50.5,-ivy.nan]),
-    ...                 b=ivy.array([0,90,180,270,360]))
-    >>> y=ivy.deg2rad(x)
+    >>> x=aikit.Container(a=aikit.array([-0,20.1,-50.5,-aikit.nan]),
+    ...                 b=aikit.array([0,90,180,270,360]))
+    >>> y=aikit.deg2rad(x)
     >>> print(y)
     {
-        a: ivy.array([0., 0.35081118, -0.88139129, nan]),
-        b: ivy.array([0., 1.57079633, 3.14159265, 4.71238898, 6.28318531])
+        a: aikit.array([0., 0.35081118, -0.88139129, nan]),
+        b: aikit.array([0., 1.57079633, 3.14159265, 4.71238898, 6.28318531])
     }
 
-    >>> x=ivy.Container(a=ivy.array([0,90,180,270,360]),
-    ...                 b=ivy.native_array([0,-1.5,-50,ivy.nan]))
-    >>> y=ivy.deg2rad(x)
+    >>> x=aikit.Container(a=aikit.array([0,90,180,270,360]),
+    ...                 b=aikit.native_array([0,-1.5,-50,aikit.nan]))
+    >>> y=aikit.deg2rad(x)
     >>> print(y)
     {
-        a: ivy.array([0., 1.57079633, 3.14159265, 4.71238898, 6.28318531]),
-        b: ivy.array([0., -0.02617994, -0.87266463, nan])
+        a: aikit.array([0., 1.57079633, 3.14159265, 4.71238898, 6.28318531]),
+        b: aikit.array([0., -0.02617994, -0.87266463, nan])
     }
     """
-    return ivy.current_backend(x).deg2rad(x, out=out)
+    return aikit.current_backend(x).deg2rad(x, out=out)
 
 
 @handle_backend_invalid
@@ -7016,11 +7016,11 @@ def deg2rad(
 @handle_array_function
 @handle_device
 def rad2deg(
-    x: Union[ivy.Array, ivy.NativeArray],
+    x: Union[aikit.Array, aikit.NativeArray],
     /,
     *,
-    out: Optional[ivy.Array] = None,
-) -> ivy.Array:
+    out: Optional[aikit.Array] = None,
+) -> aikit.Array:
     """Convert the input from radians to degrees.
 
     Parameters
@@ -7038,66 +7038,66 @@ def rad2deg(
 
     Examples
     --------
-    With :class:`ivy.Array` input:
+    With :class:`aikit.Array` input:
 
-    >>> x=ivy.array([0.,1.57,3.14,4.71,6.28])
-    >>> y=ivy.rad2deg(x)
+    >>> x=aikit.array([0.,1.57,3.14,4.71,6.28])
+    >>> y=aikit.rad2deg(x)
     >>> print(y)
-    ivy.array([  0.,  90., 180., 270., 360.])
+    aikit.array([  0.,  90., 180., 270., 360.])
 
-    >>> x=ivy.array([0.,-0.0262,-0.873,ivy.nan])
-    >>> y=ivy.zeros(4)
-    >>> ivy.rad2deg(x,out=y)
+    >>> x=aikit.array([0.,-0.0262,-0.873,aikit.nan])
+    >>> y=aikit.zeros(4)
+    >>> aikit.rad2deg(x,out=y)
     >>> print(y)
-    ivy.array([  0. ,  -1.5, -50. ,   nan])
+    aikit.array([  0. ,  -1.5, -50. ,   nan])
 
-    >>> x = ivy.array([[1.1, 2.2, 3.3],[-4.4, -5.5, -6.6]])
-    >>> ivy.rad2deg(x, out=x)
+    >>> x = aikit.array([[1.1, 2.2, 3.3],[-4.4, -5.5, -6.6]])
+    >>> aikit.rad2deg(x, out=x)
     >>> print(x)
-    ivy.array([[  63.,  126.,  189.],
+    aikit.array([[  63.,  126.,  189.],
         [-252., -315., -378.]])
 
-    >>> x=ivy.native_array([-0,20.1,ivy.nan])
-    >>> y=ivy.zeros(3)
-    >>> ivy.rad2deg(x,out=y)
+    >>> x=aikit.native_array([-0,20.1,aikit.nan])
+    >>> y=aikit.zeros(3)
+    >>> aikit.rad2deg(x,out=y)
     >>> print(y)
-    ivy.array([   0., 1150.,   nan])
+    aikit.array([   0., 1150.,   nan])
 
-    With :class:`ivy.Container` input:
+    With :class:`aikit.Container` input:
 
-    >>> x=ivy.Container(a=ivy.array([-0., 20.1, -50.5, -ivy.nan]),
-    ...                 b=ivy.array([0., 1., 2., 3., 4.]))
-    >>> y=ivy.rad2deg(x)
+    >>> x=aikit.Container(a=aikit.array([-0., 20.1, -50.5, -aikit.nan]),
+    ...                 b=aikit.array([0., 1., 2., 3., 4.]))
+    >>> y=aikit.rad2deg(x)
     >>> print(y)
     {
-        a: ivy.array([0., 1150., -2890., nan]),
-        b: ivy.array([0., 57.3, 115., 172., 229.])
+        a: aikit.array([0., 1150., -2890., nan]),
+        b: aikit.array([0., 57.3, 115., 172., 229.])
     }
 
-    >>> x=ivy.Container(a=ivy.array([0,10,180,8.5,6]),
-    ...                 b=ivy.native_array([0,-1.5,0.5,ivy.nan]))
-    >>> y=ivy.rad2deg(x)
+    >>> x=aikit.Container(a=aikit.array([0,10,180,8.5,6]),
+    ...                 b=aikit.native_array([0,-1.5,0.5,aikit.nan]))
+    >>> y=aikit.rad2deg(x)
     >>> print(y)
     {
-        a: ivy.array([0., 573., 10300., 487., 344.]),
-        b: ivy.array([0., -85.9, 28.6, nan])
+        a: aikit.array([0., 573., 10300., 487., 344.]),
+        b: aikit.array([0., -85.9, 28.6, nan])
     }
     """
-    return ivy.current_backend(x).rad2deg(x, out=out)
+    return aikit.current_backend(x).rad2deg(x, out=out)
 
 
 @handle_exceptions
 @handle_nestable
 @handle_array_like_without_promotion
-@inputs_to_ivy_arrays
+@inputs_to_aikit_arrays
 @handle_array_function
 def trunc_divide(
-    x1: Union[float, ivy.Array, ivy.NativeArray],
-    x2: Union[float, ivy.Array, ivy.NativeArray],
+    x1: Union[float, aikit.Array, aikit.NativeArray],
+    x2: Union[float, aikit.Array, aikit.NativeArray],
     /,
     *,
-    out: Optional[ivy.Array] = None,
-) -> ivy.Array:
+    out: Optional[aikit.Array] = None,
+) -> aikit.Array:
     """Perform element-wise integer division of the inputs rounding the results
     towards zero.
 
@@ -7120,15 +7120,15 @@ def trunc_divide(
 
     Examples
     --------
-    With :class:`ivy.Array` inputs:
+    With :class:`aikit.Array` inputs:
 
-    >>> x1 = ivy.array([2., 7., 9.])
-    >>> x2 = ivy.array([3., -4., 0.6])
-    >>> y = ivy.trunc_divide(x1, x2)
+    >>> x1 = aikit.array([2., 7., 9.])
+    >>> x2 = aikit.array([3., -4., 0.6])
+    >>> y = aikit.trunc_divide(x1, x2)
     >>> print(y)
-    ivy.array([ 0., -1., 14.])
+    aikit.array([ 0., -1., 14.])
     """
-    return ivy.trunc(ivy.divide(x1, x2), out=out)
+    return aikit.trunc(aikit.divide(x1, x2), out=out)
 
 
 trunc_divide.mixed_backend_wrappers = {
@@ -7136,11 +7136,11 @@ trunc_divide.mixed_backend_wrappers = {
         "handle_backend_invalid",
         "handle_out_argument",
         "inputs_to_native_arrays",
-        "outputs_to_ivy_arrays",
+        "outputs_to_aikit_arrays",
         "handle_device",
         "handle_backend_invalid",
     ),
-    "to_skip": ("inputs_to_ivy_arrays",),
+    "to_skip": ("inputs_to_aikit_arrays",),
 }
 
 
@@ -7153,11 +7153,11 @@ trunc_divide.mixed_backend_wrappers = {
 @handle_array_function
 @handle_device
 def isreal(
-    x: Union[ivy.Array, ivy.NativeArray],
+    x: Union[aikit.Array, aikit.NativeArray],
     /,
     *,
-    out: Optional[ivy.Array] = None,
-) -> ivy.Array:
+    out: Optional[aikit.Array] = None,
+) -> aikit.Array:
     """Test each element ``x_i`` of the input array ``x`` to determine whether
     the element is real number. Returns a bool array, where True if input
     element is real. If element has complex type with zero complex part, the
@@ -7179,36 +7179,36 @@ def isreal(
         of ``bool``.
 
     The descriptions above assume an array input for simplicity, but
-    the method also accepts :class:`ivy.Container` instances in place of
-    :class:`ivy.Array` or :class:`ivy.NativeArray` instances, as shown in the type hints
+    the method also accepts :class:`aikit.Container` instances in place of
+    :class:`aikit.Array` or :class:`aikit.NativeArray` instances, as shown in the type hints
     and also the examples below.
 
     Examples
     --------
-    With :class:`ivy.Array` inputs:
+    With :class:`aikit.Array` inputs:
 
-    >>> x = ivy.array([[[1.1], [float('inf')], [-6.3]]])
-    >>> z = ivy.isreal(x)
+    >>> x = aikit.array([[[1.1], [float('inf')], [-6.3]]])
+    >>> z = aikit.isreal(x)
     >>> print(z)
-    ivy.array([[[True], [True], [True]]])
+    aikit.array([[[True], [True], [True]]])
 
-    >>> x = ivy.array([1-0j, 3j, 7+5j])
-    >>> z = ivy.isreal(x)
+    >>> x = aikit.array([1-0j, 3j, 7+5j])
+    >>> z = aikit.isreal(x)
     >>> print(z)
-    ivy.array([ True, False, False])
+    aikit.array([ True, False, False])
 
-    With :class:`ivy.Container` input:
+    With :class:`aikit.Container` input:
 
-    >>> x = ivy.Container(a=ivy.array([-6.7-7j, -np.inf, 1.23]),\
-                          b=ivy.array([5j, 5-6j, 3]))
-    >>> z = ivy.isreal(x)
+    >>> x = aikit.Container(a=aikit.array([-6.7-7j, -np.inf, 1.23]),\
+                          b=aikit.array([5j, 5-6j, 3]))
+    >>> z = aikit.isreal(x)
     >>> print(z)
     {
-        a: ivy.array([False, True, True]),
-        b: ivy.array([False, False, True])
+        a: aikit.array([False, True, True]),
+        b: aikit.array([False, False, True])
     }
     """
-    return ivy.current_backend(x).isreal(x, out=out)
+    return aikit.current_backend(x).isreal(x, out=out)
 
 
 @handle_backend_invalid
@@ -7217,12 +7217,12 @@ def isreal(
 @to_native_arrays_and_back
 @handle_device
 def fmod(
-    x1: Union[ivy.Array, ivy.NativeArray],
-    x2: Union[ivy.Array, ivy.NativeArray],
+    x1: Union[aikit.Array, aikit.NativeArray],
+    x2: Union[aikit.Array, aikit.NativeArray],
     /,
     *,
-    out: Optional[Union[ivy.Array, ivy.NativeArray]] = None,
-) -> Union[ivy.Array, ivy.NativeArray]:
+    out: Optional[Union[aikit.Array, aikit.NativeArray]] = None,
+) -> Union[aikit.Array, aikit.NativeArray]:
     """Compute the element-wise remainder of divisions of two arrays.
 
     Parameters
@@ -7241,17 +7241,17 @@ def fmod(
 
     Examples
     --------
-    >>> x1 = ivy.array([2, 3, 4])
-    >>> x2 = ivy.array([1, 5, 2])
-    >>> ivy.fmod(x1, x2)
-    ivy.array([ 0,  3,  0])
+    >>> x1 = aikit.array([2, 3, 4])
+    >>> x2 = aikit.array([1, 5, 2])
+    >>> aikit.fmod(x1, x2)
+    aikit.array([ 0,  3,  0])
 
-    >>> x1 = ivy.array([ivy.nan, 0, ivy.nan])
-    >>> x2 = ivy.array([0, ivy.nan, ivy.nan])
-    >>> ivy.fmod(x1, x2)
-    ivy.array([ nan,  nan,  nan])
+    >>> x1 = aikit.array([aikit.nan, 0, aikit.nan])
+    >>> x2 = aikit.array([0, aikit.nan, aikit.nan])
+    >>> aikit.fmod(x1, x2)
+    aikit.array([ nan,  nan,  nan])
     """
-    return ivy.current_backend(x1, x2).fmod(x1, x2, out=out)
+    return aikit.current_backend(x1, x2).fmod(x1, x2, out=out)
 
 
 @handle_backend_invalid
@@ -7260,12 +7260,12 @@ def fmod(
 @to_native_arrays_and_back
 @handle_device
 def lcm(
-    x1: Union[ivy.Array, ivy.NativeArray],
-    x2: Union[ivy.Array, ivy.NativeArray],
+    x1: Union[aikit.Array, aikit.NativeArray],
+    x2: Union[aikit.Array, aikit.NativeArray],
     /,
     *,
-    out: Optional[ivy.Array] = None,
-) -> ivy.Array:
+    out: Optional[aikit.Array] = None,
+) -> aikit.Array:
     """Compute the element-wise least common multiple (LCM) of x1 and x2.
 
     Parameters
@@ -7284,11 +7284,11 @@ def lcm(
 
     Examples
     --------
-    With :class:`ivy.Array` input:
+    With :class:`aikit.Array` input:
 
-    >>> x1=ivy.array([2, 3, 4])
-    >>> x2=ivy.array([5, 7, 15])
+    >>> x1=aikit.array([2, 3, 4])
+    >>> x2=aikit.array([5, 7, 15])
     >>> x1.lcm(x1, x2)
-    ivy.array([10, 21, 60])
+    aikit.array([10, 21, 60])
     """
-    return ivy.current_backend(x1, x2).lcm(x1, x2, out=out)
+    return aikit.current_backend(x1, x2).lcm(x1, x2, out=out)

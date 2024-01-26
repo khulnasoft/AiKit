@@ -390,7 +390,7 @@ def test_prune_nest_at_indices(nest, indices):
         try:
             ele_org = aikit.index_nest(nest, idx)
             ele_new = aikit.index_nest(nest_copy, idx)
-        except aikit.utils.exceptions.IvyIndexError:
+        except aikit.utils.exceptions.AikitIndexError:
             return
         else:
             assert ele_org != ele_new

@@ -101,4 +101,4 @@ def native_sparse_array(
 def native_sparse_array_to_indices_values_and_shape(x):
     if isinstance(x, tf.SparseTensor):
         return {"coo_indices": x.indices}, x.values, x.dense_shape
-    raise aikit.utils.exceptions.IvyException("not a SparseTensor")
+    raise aikit.utils.exceptions.AikitException("not a SparseTensor")

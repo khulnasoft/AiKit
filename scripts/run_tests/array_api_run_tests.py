@@ -66,7 +66,7 @@ def main():
     cluster = MongoClient(
         f"mongodb+srv://deep-aikit:{mongo_key}@cluster0.qdvf8q3.mongodb.net/?retryWrites=true&w=majority"  # noqa
     )
-    db = cluster["Ivy_tests_multi"]
+    db = cluster["Aikit_tests_multi"]
     k_flag = {}
     subprocess.run(
         ["python3", "aikit_tests/array_api_testing/write_array_api_tests_k_flag.py"],
@@ -85,7 +85,7 @@ def main():
             test, backend = line.split(",")
             backend = backend.strip("\n")
             coll, submod, test_fn = get_submodule(test)
-            command = f'docker run --rm --env IVY_BACKEND={backend} --env ARRAY_API_TESTS_MODULE="aikit" --env REDIS_URL={redis_url} --env REDIS_PASSWD={redis_pass} -v "$(pwd)":/aikit -v "$(pwd)"/.hypothesis:/.hypothesis khulnasoft/aikit:latest timeout 30m python3 -m pytest {test} -k "{k_flag[backend]}" --tb=short -vv'  # noqa
+            command = f'docker run --rm --env AIKIT_BACKEND={backend} --env ARRAY_API_TESTS_MODULE="aikit" --env REDIS_URL={redis_url} --env REDIS_PASSWD={redis_pass} -v "$(pwd)":/aikit -v "$(pwd)"/.hypothesis:/.hypothesis khulnasoft/aikit:latest timeout 30m python3 -m pytest {test} -k "{k_flag[backend]}" --tb=short -vv'  # noqa
             print(f"\n{'*' * 100}")
             print(f"{line[:-1]}")
             print(f"{'*' * 100}\n")

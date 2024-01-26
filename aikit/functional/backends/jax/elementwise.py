@@ -5,14 +5,14 @@ import jax
 import jax.numpy as jnp
 
 # local
-import ivy
-from ivy import (
+import aikit
+from aikit import (
     default_float_dtype,
     is_float_dtype,
 )
-from ivy import promote_types_of_inputs
-from ivy.functional.backends.jax import JaxArray
-from ivy.func_wrapper import with_unsupported_dtypes
+from aikit import promote_types_of_inputs
+from aikit.functional.backends.jax import JaxArray
+from aikit.func_wrapper import with_unsupported_dtypes
 from . import backend_version
 
 
@@ -45,9 +45,9 @@ def add(
     alpha: Union[int, float] = 1,
     out: Optional[JaxArray] = None,
 ) -> JaxArray:
-    x1, x2 = ivy.promote_types_of_inputs(x1, x2)
+    x1, x2 = aikit.promote_types_of_inputs(x1, x2)
     if alpha not in (1, None):
-        with ivy.ArrayMode(False):
+        with aikit.ArrayMode(False):
             x2 = multiply(x2, alpha)
     return jnp.add(x1, x2)
 
@@ -67,7 +67,7 @@ def atan(x: JaxArray, /, *, out: Optional[JaxArray] = None) -> JaxArray:
 
 
 def atan2(x1: JaxArray, x2: JaxArray, /, *, out: Optional[JaxArray] = None) -> JaxArray:
-    x1, x2 = ivy.promote_types_of_inputs(x1, x2)
+    x1, x2 = aikit.promote_types_of_inputs(x1, x2)
     return jnp.arctan2(x1, x2)
 
 
@@ -84,7 +84,7 @@ def bitwise_and(
     *,
     out: Optional[JaxArray] = None,
 ) -> JaxArray:
-    x1, x2 = ivy.promote_types_of_inputs(x1, x2, array_api_promotion=True)
+    x1, x2 = aikit.promote_types_of_inputs(x1, x2, array_api_promotion=True)
     return jnp.bitwise_and(x1, x2)
 
 
@@ -103,7 +103,7 @@ def bitwise_left_shift(
     *,
     out: Optional[JaxArray] = None,
 ) -> JaxArray:
-    x1, x2 = ivy.promote_types_of_inputs(x1, x2, array_api_promotion=True)
+    x1, x2 = aikit.promote_types_of_inputs(x1, x2, array_api_promotion=True)
     return jnp.left_shift(x1, x2)
 
 
@@ -115,7 +115,7 @@ def bitwise_or(
     *,
     out: Optional[JaxArray] = None,
 ) -> JaxArray:
-    x1, x2 = ivy.promote_types_of_inputs(x1, x2, array_api_promotion=True)
+    x1, x2 = aikit.promote_types_of_inputs(x1, x2, array_api_promotion=True)
     return jnp.bitwise_or(x1, x2)
 
 
@@ -127,7 +127,7 @@ def bitwise_right_shift(
     *,
     out: Optional[JaxArray] = None,
 ) -> JaxArray:
-    x1, x2 = ivy.promote_types_of_inputs(x1, x2, array_api_promotion=True)
+    x1, x2 = aikit.promote_types_of_inputs(x1, x2, array_api_promotion=True)
     return jnp.right_shift(x1, x2)
 
 
@@ -139,7 +139,7 @@ def bitwise_xor(
     *,
     out: Optional[JaxArray] = None,
 ) -> JaxArray:
-    x1, x2 = ivy.promote_types_of_inputs(x1, x2, array_api_promotion=True)
+    x1, x2 = aikit.promote_types_of_inputs(x1, x2, array_api_promotion=True)
     return jnp.bitwise_xor(x1, x2)
 
 
@@ -167,12 +167,12 @@ def divide(
     *,
     out: Optional[JaxArray] = None,
 ) -> JaxArray:
-    x1, x2 = ivy.promote_types_of_inputs(x1, x2)
+    x1, x2 = aikit.promote_types_of_inputs(x1, x2)
     ret = jax.numpy.divide(x1, x2)
-    if ivy.is_float_dtype(x1.dtype) or ivy.is_complex_dtype(x1.dtype):
+    if aikit.is_float_dtype(x1.dtype) or aikit.is_complex_dtype(x1.dtype):
         ret = jnp.asarray(ret, dtype=x1.dtype)
     else:
-        ret = jnp.asarray(ret, dtype=ivy.default_float_dtype(as_native=True))
+        ret = jnp.asarray(ret, dtype=aikit.default_float_dtype(as_native=True))
     return ret
 
 
@@ -183,7 +183,7 @@ def equal(
     *,
     out: Optional[JaxArray] = None,
 ) -> JaxArray:
-    x1, x2 = ivy.promote_types_of_inputs(x1, x2)
+    x1, x2 = aikit.promote_types_of_inputs(x1, x2)
     return jnp.equal(x1, x2)
 
 
@@ -211,7 +211,7 @@ def floor_divide(
     *,
     out: Optional[JaxArray] = None,
 ) -> JaxArray:
-    x1, x2 = ivy.promote_types_of_inputs(x1, x2)
+    x1, x2 = aikit.promote_types_of_inputs(x1, x2)
     return jnp.floor(jnp.divide(x1, x2)).astype(x1.dtype)
 
 
@@ -232,7 +232,7 @@ def greater(
     *,
     out: Optional[JaxArray] = None,
 ) -> JaxArray:
-    x1, x2 = ivy.promote_types_of_inputs(x1, x2)
+    x1, x2 = aikit.promote_types_of_inputs(x1, x2)
     return jnp.greater(x1, x2)
 
 
@@ -243,7 +243,7 @@ def greater_equal(
     *,
     out: Optional[JaxArray] = None,
 ) -> JaxArray:
-    x1, x2 = ivy.promote_types_of_inputs(x1, x2)
+    x1, x2 = aikit.promote_types_of_inputs(x1, x2)
     return jnp.greater_equal(x1, x2)
 
 
@@ -285,7 +285,7 @@ def less(
     *,
     out: Optional[JaxArray] = None,
 ) -> JaxArray:
-    x1, x2 = ivy.promote_types_of_inputs(x1, x2)
+    x1, x2 = aikit.promote_types_of_inputs(x1, x2)
     return jnp.less(x1, x2)
 
 
@@ -296,7 +296,7 @@ def less_equal(
     *,
     out: Optional[JaxArray] = None,
 ) -> JaxArray:
-    x1, x2 = ivy.promote_types_of_inputs(x1, x2)
+    x1, x2 = aikit.promote_types_of_inputs(x1, x2)
     return jnp.less_equal(x1, x2)
 
 
@@ -365,7 +365,7 @@ def multiply(
     *,
     out: Optional[JaxArray] = None,
 ) -> JaxArray:
-    x1, x2 = ivy.promote_types_of_inputs(x1, x2)
+    x1, x2 = aikit.promote_types_of_inputs(x1, x2)
     return jnp.multiply(x1, x2)
 
 
@@ -395,7 +395,7 @@ def not_equal(
     *,
     out: Optional[JaxArray] = None,
 ) -> JaxArray:
-    x1, x2 = ivy.promote_types_of_inputs(x1, x2)
+    x1, x2 = aikit.promote_types_of_inputs(x1, x2)
     return jnp.not_equal(x1, x2)
 
 
@@ -412,14 +412,14 @@ def pow(
     *,
     out: Optional[JaxArray] = None,
 ) -> JaxArray:
-    x1, x2 = ivy.promote_types_of_inputs(x1, x2)
+    x1, x2 = aikit.promote_types_of_inputs(x1, x2)
     if (
-        ivy.any(x1 == 0)
-        and ivy.is_int_dtype(x1)
-        and ivy.any(x2 < 0)
+        aikit.any(x1 == 0)
+        and aikit.is_int_dtype(x1)
+        and aikit.any(x2 < 0)
         and all(dtype not in str(x1.dtype) for dtype in ["int16", "int8"])
     ):
-        if ivy.is_int_dtype(x1):
+        if aikit.is_int_dtype(x1):
             fill_value = jnp.iinfo(x1.dtype).min
         else:
             fill_value = jnp.finfo(x1.dtype).min
@@ -427,7 +427,7 @@ def pow(
         return jnp.where(jnp.bitwise_and(x1 == 0, x2 < 0), fill_value, ret).astype(
             x1.dtype
         )
-    if ivy.is_int_dtype(x1) and ivy.any(x2 < 0):
+    if aikit.is_int_dtype(x1) and aikit.any(x2 < 0):
         return jnp.float_power(x1, x2).astype(x1.dtype)
     return jnp.power(x1, x2)
 
@@ -441,12 +441,12 @@ def remainder(
     modulus: bool = True,
     out: Optional[JaxArray] = None,
 ) -> JaxArray:
-    x1, x2 = ivy.promote_types_of_inputs(x1, x2)
+    x1, x2 = aikit.promote_types_of_inputs(x1, x2)
     if not modulus:
         res = x1 / x2
         res_floored = jnp.where(res >= 0, jnp.floor(res), jnp.ceil(res))
         diff = res - res_floored
-        diff, x2 = ivy.promote_types_of_inputs(diff, x2)
+        diff, x2 = aikit.promote_types_of_inputs(diff, x2)
         return jnp.round(diff * x2).astype(x1.dtype)
     return jnp.remainder(x1, x2)
 
@@ -458,8 +458,8 @@ def round(
         ret = jnp.copy(x)
     else:
         ret = jnp.round(x, decimals=decimals)
-    if ivy.exists(out):
-        return ivy.inplace_update(out, ret)
+    if aikit.exists(out):
+        return aikit.inplace_update(out, ret)
     return ret
 
 
@@ -499,11 +499,11 @@ def subtract(
     alpha: Optional[Union[int, float]] = None,
     out: Optional[JaxArray] = None,
 ) -> JaxArray:
-    x1, x2 = ivy.promote_types_of_inputs(x1, x2)
+    x1, x2 = aikit.promote_types_of_inputs(x1, x2)
     if alpha not in (1, None):
-        ivy.set_array_mode(False)
+        aikit.set_array_mode(False)
         x2 = multiply(x2, alpha)
-        ivy.unset_array_mode()
+        aikit.unset_array_mode()
     return jnp.subtract(x1, x2)
 
 
@@ -585,7 +585,7 @@ def maximum(
     use_where: bool = True,
     out: Optional[JaxArray] = None,
 ) -> JaxArray:
-    x1, x2 = ivy.promote_types_of_inputs(x1, x2)
+    x1, x2 = aikit.promote_types_of_inputs(x1, x2)
     if use_where:
         return jnp.where(x1 >= x2, x1, x2)
     return jnp.maximum(x1, x2)
@@ -599,7 +599,7 @@ def minimum(
     use_where: bool = True,
     out: Optional[JaxArray] = None,
 ) -> JaxArray:
-    x1, x2 = ivy.promote_types_of_inputs(x1, x2)
+    x1, x2 = aikit.promote_types_of_inputs(x1, x2)
     if use_where:
         return jnp.where(x1 <= x2, x1, x2)
     return jnp.minimum(x1, x2)

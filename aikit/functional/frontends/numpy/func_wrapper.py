@@ -259,7 +259,7 @@ def from_zero_dim_arrays_to_scalar(fn: Callable) -> Callable:
                         lambda x: np_frontend.numpy_dtype_to_scalar[aikit.dtype(x)](x),
                     )
                 except KeyError as e:
-                    raise aikit.utils.exceptions.IvyException(
+                    raise aikit.utils.exceptions.AikitException(
                         "Casting to specified type is unsupported"
                     ) from e
                 return tuple(data)
@@ -270,7 +270,7 @@ def from_zero_dim_arrays_to_scalar(fn: Callable) -> Callable:
                     try:
                         return np_frontend.numpy_dtype_to_scalar[aikit.dtype(data)](data)
                     except KeyError as e:
-                        raise aikit.utils.exceptions.IvyException(
+                        raise aikit.utils.exceptions.AikitException(
                             f"Casting to {aikit.dtype(data)} is unsupported"
                         ) from e
         return ret
@@ -294,7 +294,7 @@ def handle_numpy_casting(fn: Callable) -> Callable:
 
         Returns
         -------
-            The return of the function, or raise IvyException if error is thrown.
+            The return of the function, or raise AikitException if error is thrown.
         """
         aikit.utils.assertions.check_elem_in_list(
             casting,
@@ -356,7 +356,7 @@ def handle_numpy_casting_special(fn: Callable) -> Callable:
 
         Returns
         -------
-            The return of the function, or raise IvyException if error is thrown.
+            The return of the function, or raise AikitException if error is thrown.
         """
         aikit.utils.assertions.check_elem_in_list(
             casting,

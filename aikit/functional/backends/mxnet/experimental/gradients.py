@@ -8,11 +8,11 @@ from aikit.functional.aikit.gradients import (
     _flatten_containers,
     _rebuild_flattened_containers,
 )
-from aikit.utils.exceptions import IvyNotImplementedException
+from aikit.utils.exceptions import AikitNotImplementedException
 
 
 def bind_custom_gradient_function(func, custom_grad_fn):
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def vjp(func: Callable, *primals):
@@ -53,4 +53,4 @@ def vjp(func: Callable, *primals):
 
 
 def jvp(func: Callable, primals, tangents):
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()

@@ -2,32 +2,32 @@ Data Types
 ==========
 
 .. _`Array API Standard`: https://data-apis.org/array-api/latest/
-.. _`backend setting`: https://github.com/khulnasoft/aikit/blob/1eb841cdf595e2bb269fce084bd50fb79ce01a69/ivy/backend_handler.py#L204
-.. _`infer_dtype`: https://github.com/khulnasoft/aikit/blob/1eb841cdf595e2bb269fce084bd50fb79ce01a69/ivy/func_wrapper.py#L249
-.. _`import time`: https://github.com/khulnasoft/aikit/blob/9c2eb725387152d721040d8638c8f898541a9da4/ivy/__init__.py#L225
-.. _`ivy.Dtype`: https://github.com/khulnasoft/aikit/blob/48c70bce7ff703d817e130a17f63f02209be08ec/ivy/__init__.py#L65
-.. _`empty class`: https://github.com/khulnasoft/aikit/blob/9c2eb725387152d721040d8638c8f898541a9da4/ivy/__init__.py#L38
-.. _`also specified`: https://github.com/khulnasoft/aikit/blob/9c2eb725387152d721040d8638c8f898541a9da4/ivy/__init__.py#L241
-.. _`tuples`: https://github.com/khulnasoft/aikit/blob/9c2eb725387152d721040d8638c8f898541a9da4/ivy/__init__.py#L256
-.. _`valid tuples`: https://github.com/khulnasoft/aikit/blob/9c2eb725387152d721040d8638c8f898541a9da4/ivy/__init__.py#L303
-.. _`invalid tuples`: https://github.com/khulnasoft/aikit/blob/9c2eb725387152d721040d8638c8f898541a9da4/ivy/__init__.py#L309
-.. _`data type class`: https://github.com/khulnasoft/aikit/blob/a594075390532d2796a6b649785b93532aee5c9a/ivy/functional/backends/torch/__init__.py#L14
-.. _`true native data types`: https://github.com/khulnasoft/aikit/blob/a594075390532d2796a6b649785b93532aee5c9a/ivy/functional/backends/torch/__init__.py#L16
-.. _`valid data types`: https://github.com/khulnasoft/aikit/blob/a594075390532d2796a6b649785b93532aee5c9a/ivy/functional/backends/torch/__init__.py#L29
-.. _`invalid data types`: https://github.com/khulnasoft/aikit/blob/a594075390532d2796a6b649785b93532aee5c9a/ivy/functional/backends/torch/__init__.py#L56
-.. _`original definition`: https://github.com/khulnasoft/aikit/blob/a594075390532d2796a6b649785b93532aee5c9a/ivy/__init__.py#L225
-.. _`new definition`: https://github.com/khulnasoft/aikit/blob/a594075390532d2796a6b649785b93532aee5c9a/ivy/functional/backends/torch/__init__.py#L16
-.. _`handled`: https://github.com/khulnasoft/aikit/blob/a594075390532d2796a6b649785b93532aee5c9a/ivy/backend_handler.py#L194
-.. _`data_type.py`: https://github.com/khulnasoft/aikit/blob/8482eb3fcadd0721f339a1a55c3f3b9f5c86d8ba/ivy/functional/ivy/data_type.py
-.. _`ivy.can_cast`: https://github.com/khulnasoft/aikit/blob/8482eb3fcadd0721f339a1a55c3f3b9f5c86d8ba/ivy/functional/ivy/data_type.py#L246
-.. _`ivy.default_dtype`: https://github.com/khulnasoft/aikit/blob/8482eb3fcadd0721f339a1a55c3f3b9f5c86d8ba/ivy/functional/ivy/data_type.py#L879
-.. _`ivy.set_default_dtype`: https://github.com/khulnasoft/aikit/blob/8482eb3fcadd0721f339a1a55c3f3b9f5c86d8ba/ivy/functional/ivy/data_type.py#L1555
+.. _`backend setting`: https://github.com/khulnasoft/aikit/blob/1eb841cdf595e2bb269fce084bd50fb79ce01a69/aikit/backend_handler.py#L204
+.. _`infer_dtype`: https://github.com/khulnasoft/aikit/blob/1eb841cdf595e2bb269fce084bd50fb79ce01a69/aikit/func_wrapper.py#L249
+.. _`import time`: https://github.com/khulnasoft/aikit/blob/9c2eb725387152d721040d8638c8f898541a9da4/aikit/__init__.py#L225
+.. _`aikit.Dtype`: https://github.com/khulnasoft/aikit/blob/48c70bce7ff703d817e130a17f63f02209be08ec/aikit/__init__.py#L65
+.. _`empty class`: https://github.com/khulnasoft/aikit/blob/9c2eb725387152d721040d8638c8f898541a9da4/aikit/__init__.py#L38
+.. _`also specified`: https://github.com/khulnasoft/aikit/blob/9c2eb725387152d721040d8638c8f898541a9da4/aikit/__init__.py#L241
+.. _`tuples`: https://github.com/khulnasoft/aikit/blob/9c2eb725387152d721040d8638c8f898541a9da4/aikit/__init__.py#L256
+.. _`valid tuples`: https://github.com/khulnasoft/aikit/blob/9c2eb725387152d721040d8638c8f898541a9da4/aikit/__init__.py#L303
+.. _`invalid tuples`: https://github.com/khulnasoft/aikit/blob/9c2eb725387152d721040d8638c8f898541a9da4/aikit/__init__.py#L309
+.. _`data type class`: https://github.com/khulnasoft/aikit/blob/a594075390532d2796a6b649785b93532aee5c9a/aikit/functional/backends/torch/__init__.py#L14
+.. _`true native data types`: https://github.com/khulnasoft/aikit/blob/a594075390532d2796a6b649785b93532aee5c9a/aikit/functional/backends/torch/__init__.py#L16
+.. _`valid data types`: https://github.com/khulnasoft/aikit/blob/a594075390532d2796a6b649785b93532aee5c9a/aikit/functional/backends/torch/__init__.py#L29
+.. _`invalid data types`: https://github.com/khulnasoft/aikit/blob/a594075390532d2796a6b649785b93532aee5c9a/aikit/functional/backends/torch/__init__.py#L56
+.. _`original definition`: https://github.com/khulnasoft/aikit/blob/a594075390532d2796a6b649785b93532aee5c9a/aikit/__init__.py#L225
+.. _`new definition`: https://github.com/khulnasoft/aikit/blob/a594075390532d2796a6b649785b93532aee5c9a/aikit/functional/backends/torch/__init__.py#L16
+.. _`handled`: https://github.com/khulnasoft/aikit/blob/a594075390532d2796a6b649785b93532aee5c9a/aikit/backend_handler.py#L194
+.. _`data_type.py`: https://github.com/khulnasoft/aikit/blob/8482eb3fcadd0721f339a1a55c3f3b9f5c86d8ba/aikit/functional/aikit/data_type.py
+.. _`aikit.can_cast`: https://github.com/khulnasoft/aikit/blob/8482eb3fcadd0721f339a1a55c3f3b9f5c86d8ba/aikit/functional/aikit/data_type.py#L246
+.. _`aikit.default_dtype`: https://github.com/khulnasoft/aikit/blob/8482eb3fcadd0721f339a1a55c3f3b9f5c86d8ba/aikit/functional/aikit/data_type.py#L879
+.. _`aikit.set_default_dtype`: https://github.com/khulnasoft/aikit/blob/8482eb3fcadd0721f339a1a55c3f3b9f5c86d8ba/aikit/functional/aikit/data_type.py#L1555
 .. _`repo`: https://github.com/khulnasoft/aikit
 .. _`discord`: https://discord.gg/sXyFF8tDtm
 .. _`data type thread`: https://discord.com/channels/799879767196958751/1190234670806351892
 
 
-The data types supported by Ivy are as follows:
+The data types supported by Aikit are as follows:
 
 * int8
 * int16
@@ -45,14 +45,14 @@ The data types supported by Ivy are as follows:
 * complex64
 * complex128
 
-The supported data types are all defined at `import time`_, with each of these set as an `ivy.Dtype`_ instance.
-The :class:`ivy.Dtype` class derives from :class:`str`, and has simple logic in the constructor to verify that the string formatting is correct.
-All data types can be queried as attributes of the :mod:`ivy` namespace, such as ``ivy.float32`` etc.
+The supported data types are all defined at `import time`_, with each of these set as an `aikit.Dtype`_ instance.
+The :class:`aikit.Dtype` class derives from :class:`str`, and has simple logic in the constructor to verify that the string formatting is correct.
+All data types can be queried as attributes of the :mod:`aikit` namespace, such as ``aikit.float32`` etc.
 
 In addition, *native* data types are `also specified`_ at import time.
-Likewise, these are all *initially* set as `ivy.Dtype`_ instances.
+Likewise, these are all *initially* set as `aikit.Dtype`_ instances.
 
-There is also an :class:`ivy.NativeDtype` class defined, but this is initially set as an `empty class`_.
+There is also an :class:`aikit.NativeDtype` class defined, but this is initially set as an `empty class`_.
 
 The following `tuples`_ are also defined: ``all_dtypes``, ``all_numeric_dtypes``, ``all_int_dtypes``, ``all_float_dtypes``.
 These each contain all possible data types which fall into the corresponding category.
@@ -60,47 +60,47 @@ Each of these tuples is also replicated in a new set of four `valid tuples`_ and
 When no backend is set, all data types are assumed to be valid, and so the invalid tuples are all empty, and the valid tuples are set as equal to the original four *"all"* tuples.
 
 However, when a backend is set, then some of these are updated.
-Firstly, the :class:`ivy.NativeDtype` is replaced with the backend-specific `data type class`_.
+Firstly, the :class:`aikit.NativeDtype` is replaced with the backend-specific `data type class`_.
 Secondly, each of the native data types are replaced with the `true native data types`_.
 Thirdly, the `valid data types`_ are updated.
 Finally, the `invalid data types`_ are updated.
 
-This leaves each of the data types unmodified, for example ``ivy.float32`` will still reference the  `original definition`_ in :mod:`ivy/ivy/__init__.py`,
-whereas ``ivy.native_float32`` will now reference the `new definition`_ in :mod:`/ivy/functional/backends/backend/__init__.py`.
+This leaves each of the data types unmodified, for example ``aikit.float32`` will still reference the  `original definition`_ in :mod:`aikit/aikit/__init__.py`,
+whereas ``aikit.native_float32`` will now reference the `new definition`_ in :mod:`/aikit/functional/backends/backend/__init__.py`.
 
 The tuples ``all_dtypes``, ``all_numeric_dtypes``, ``all_int_dtypes`` and ``all_float_dtypes`` are also left unmodified.
-Importantly, we must ensure that unsupported data types are removed from the :mod:`ivy` namespace.
+Importantly, we must ensure that unsupported data types are removed from the :mod:`aikit` namespace.
 For example, torch supports ``uint8``, but does not support ``uint16``, ``uint32`` or ``uint64``.
-Therefore, after setting a torch backend via :code:`ivy.set_backend('torch')`, we should no longer be able to access ``ivy.uint16``.
-This is `handled`_ in :func:`ivy.set_backend`.
+Therefore, after setting a torch backend via :code:`aikit.set_backend('torch')`, we should no longer be able to access ``aikit.uint16``.
+This is `handled`_ in :func:`aikit.set_backend`.
 
 Data Type Module
 ----------------
 
 The `data_type.py`_ module provides a variety of functions for working with data types.
-A few examples include :func:`ivy.astype` which copies an array to a specified data type, :func:`ivy.broadcast_to` which broadcasts an array to a specified shape, and :func:`ivy.result_type` which returns the dtype that results from applying the type promotion rules to the arguments.
+A few examples include :func:`aikit.astype` which copies an array to a specified data type, :func:`aikit.broadcast_to` which broadcasts an array to a specified shape, and :func:`aikit.result_type` which returns the dtype that results from applying the type promotion rules to the arguments.
 
 Many functions in the :mod:`data_type.py` module are *convenience* functions, which means that they do not directly modify arrays, as explained in the `Function Types <function_types.rst>`_ section.
 
 For example, the following are all convenience functions:
-`ivy.can_cast`_, which determines if one data type can be cast to another data type according to type-promotion rules, `ivy.dtype <https://github.com/khulnasoft/aikit/blob/8482eb3fcadd0721f339a1a55c3f3b9f5c86d8ba/ivy/functional/ivy/data_type.py#L1096>`__, which gets the data type for the input array, `ivy.set_default_dtype`_, which sets the global default data dtype, and `ivy.default_dtype`_, which returns the correct data type to use.
+`aikit.can_cast`_, which determines if one data type can be cast to another data type according to type-promotion rules, `aikit.dtype <https://github.com/khulnasoft/aikit/blob/8482eb3fcadd0721f339a1a55c3f3b9f5c86d8ba/aikit/functional/aikit/data_type.py#L1096>`__, which gets the data type for the input array, `aikit.set_default_dtype`_, which sets the global default data dtype, and `aikit.default_dtype`_, which returns the correct data type to use.
 
-`ivy.default_dtype`_ is arguably the most important function.
+`aikit.default_dtype`_ is arguably the most important function.
 Any function in the functional API that receives a ``dtype`` argument will make use of this function, as explained below.
 
 
 Data Type Promotion
 -------------------
 
-In order to ensure that the same data type is always returned when operations are performed on arrays with different data types, regardless of which backend framework is set, Ivy has it's own set of data type promotion rules and corresponding functions.
+In order to ensure that the same data type is always returned when operations are performed on arrays with different data types, regardless of which backend framework is set, Aikit has it's own set of data type promotion rules and corresponding functions.
 These rules build directly on top of the `rules <https://data-apis.org/array-api/latest/API_specification/type_promotion.html>`_ outlined in the `Array API Standard`_.
 
-The rules are simple: all data type promotions in Ivy should adhere a promotion table that extends Array API Standard `promotion table <https://github.com/khulnasoft/aikit/blob/7a048c1ad7193bc3033a68c1c80f0dfd5d4e74df/ivy/__init__.py#L1245-L1285>`_ using this `promotion table <https://github.com/khulnasoft/aikit/blob/7a048c1ad7193bc3033a68c1c80f0dfd5d4e74df/ivy/__init__.py#L1290-L1354>`_, and one of two extra `promotion tables <https://github.com/khulnasoft/aikit/blob/7a048c1ad7193bc3033a68c1c80f0dfd5d4e74df/ivy/__init__.py#L1356-L1400>`_ depending on precision mode that will be explained in the following section.
+The rules are simple: all data type promotions in Aikit should adhere a promotion table that extends Array API Standard `promotion table <https://github.com/khulnasoft/aikit/blob/7a048c1ad7193bc3033a68c1c80f0dfd5d4e74df/aikit/__init__.py#L1245-L1285>`_ using this `promotion table <https://github.com/khulnasoft/aikit/blob/7a048c1ad7193bc3033a68c1c80f0dfd5d4e74df/aikit/__init__.py#L1290-L1354>`_, and one of two extra `promotion tables <https://github.com/khulnasoft/aikit/blob/7a048c1ad7193bc3033a68c1c80f0dfd5d4e74df/aikit/__init__.py#L1356-L1400>`_ depending on precision mode that will be explained in the following section.
 
-In order to ensure adherence to this promotion table, many backend functions make use of the functions `ivy.promote_types <https://github.com/khulnasoft/aikit/blob/db96e50860802b2944ed9dabacd8198608699c7c/ivy/functional/ivy/data_type.py#L1804>`_, `ivy.type_promote_arrays <https://github.com/khulnasoft/aikit/blob/db96e50860802b2944ed9dabacd8198608699c7c/ivy/functional/ivy/data_type.py#L1940>`_, or `ivy.promote_types_of_inputs <https://github.com/khulnasoft/aikit/blob/db96e50860802b2944ed9dabacd8198608699c7c/ivy/functional/ivy/data_type.py#L2085>`_.
+In order to ensure adherence to this promotion table, many backend functions make use of the functions `aikit.promote_types <https://github.com/khulnasoft/aikit/blob/db96e50860802b2944ed9dabacd8198608699c7c/aikit/functional/aikit/data_type.py#L1804>`_, `aikit.type_promote_arrays <https://github.com/khulnasoft/aikit/blob/db96e50860802b2944ed9dabacd8198608699c7c/aikit/functional/aikit/data_type.py#L1940>`_, or `aikit.promote_types_of_inputs <https://github.com/khulnasoft/aikit/blob/db96e50860802b2944ed9dabacd8198608699c7c/aikit/functional/aikit/data_type.py#L2085>`_.
 These functions: promote data types in the inputs and return the new data types, promote the data types of the arrays in the input and return new arrays, and promote the data types of the numeric or array values inputs and return new type promoted values, respectively.
 
-For an example of how some of these functions are used, the implementations for :func:`ivy.add` in each backend framework are as follows:
+For an example of how some of these functions are used, the implementations for :func:`aikit.add` in each backend framework are as follows:
 
 JAX:
 
@@ -113,7 +113,7 @@ JAX:
         *,
         out: Optional[JaxArray] = None,
     ) -> JaxArray:
-        x1, x2 = ivy.promote_types_of_inputs(x1, x2)
+        x1, x2 = aikit.promote_types_of_inputs(x1, x2)
         return jnp.add(x1, x2)
 
 NumPy:
@@ -128,7 +128,7 @@ NumPy:
         *,
         out: Optional[np.ndarray] = None,
     ) -> np.ndarray:
-        x1, x2 = ivy.promote_types_of_inputs(x1, x2)
+        x1, x2 = aikit.promote_types_of_inputs(x1, x2)
         return np.add(x1, x2, out=out)
 
 TensorFlow:
@@ -142,7 +142,7 @@ TensorFlow:
         *,
         out: Optional[Union[tf.Tensor, tf.Variable]] = None,
     ) -> Union[tf.Tensor, tf.Variable]:
-        x1, x2 = ivy.promote_types_of_inputs(x1, x2)
+        x1, x2 = aikit.promote_types_of_inputs(x1, x2)
         return tf.experimental.numpy.add(x1, x2)
 
 PyTorch:
@@ -156,12 +156,12 @@ PyTorch:
         *,
         out: Optional[torch.Tensor] = None,
     ) -> torch.Tensor:
-        x1, x2 = ivy.promote_types_of_inputs(x1, x2)
+        x1, x2 = aikit.promote_types_of_inputs(x1, x2)
         return torch.add(x1, x2, out=out)
 
-It's important to always make use of the Ivy promotion functions as opposed to backend-specific promotion functions such as :func:`jax.numpy.promote_types`, :func:`numpy.promote_types`, :func:`tf.experimental.numpy.promote_types` and :func:`torch.promote_types`, as these will generally have promotion rules which will subtly differ from one another and from Ivy's unified promotion rules.
+It's important to always make use of the Aikit promotion functions as opposed to backend-specific promotion functions such as :func:`jax.numpy.promote_types`, :func:`numpy.promote_types`, :func:`tf.experimental.numpy.promote_types` and :func:`torch.promote_types`, as these will generally have promotion rules which will subtly differ from one another and from Aikit's unified promotion rules.
 
-On the other hand, each frontend framework has its own set of rules for how data types should be promoted, and their own type promoting functions :func:`promote_types_frontend_name` and :func:`promote_types_of_frontend_name_inputs` in :mod:`ivy/functional/frontends/frontend_name/__init__.py`.
+On the other hand, each frontend framework has its own set of rules for how data types should be promoted, and their own type promoting functions :func:`promote_types_frontend_name` and :func:`promote_types_of_frontend_name_inputs` in :mod:`aikit/functional/frontends/frontend_name/__init__.py`.
 We should always use these functions in any frontend implementation, to ensure we follow exactly the same promotion rules as the frontend framework uses.
 
 It should be noted that data type promotion is only used for unifying data types of inputs to a common one for performing various mathematical operations.
@@ -179,7 +179,7 @@ However, temporary upcasting and subsequent downcasting can not be performed as 
 Whenever the user defines data with a specific data type, they expect a certain memory footprint.
 
 The user expects specific behaviour and memory constraints whenever they specify and use concrete data types, and those decisions should be respected.
-Therefore, Ivy does not upcast specific values to improve the stability or precision of the computation.
+Therefore, Aikit does not upcast specific values to improve the stability or precision of the computation.
 
 Precise Mode
 ~~~~~~~~~~~~~~~
@@ -197,8 +197,8 @@ This table focuses on numerical accuracy at the cost of a higher memory footprin
 
 .. code-block:: python
 
-    with ivy.PreciseMode(True):
-        print(ivy.promote_types("float32","int32"))
+    with aikit.PreciseMode(True):
+        print(aikit.promote_types("float32","int32"))
     # float64
 
 Non-Precise Promotion Table
@@ -208,54 +208,54 @@ the disadvantage of this approach is that mixed float/integer promotion is very 
 
 .. code-block:: python
 
-    with ivy.PreciseMode(False):
-        print(ivy.promote_types("float32","int32"))
+    with aikit.PreciseMode(False):
+        print(aikit.promote_types("float32","int32"))
     # float32
 
 Arguments in other Functions
 -------------------
 All ``dtype`` arguments are keyword-only.
 All creation functions include the ``dtype`` argument, for specifying the data type of the created array.
-Some other non-creation functions also support the ``dtype`` argument, such as :func:`ivy.prod` and :func:`ivy.sum`, but most functions do not include it.
+Some other non-creation functions also support the ``dtype`` argument, such as :func:`aikit.prod` and :func:`aikit.sum`, but most functions do not include it.
 The non-creation functions which do support it are generally functions that involve a compounding reduction across the array, which could result in overflows, and so an explicit ``dtype`` argument is useful for handling such cases.
 
 The ``dtype`` argument is handled in the `infer_dtype`_ wrapper, for all functions which have the decorator :code:`@infer_dtype`.
-This function calls `ivy.default_dtype`_ in order to determine the correct data type.
+This function calls `aikit.default_dtype`_ in order to determine the correct data type.
 As discussed in the `Function Wrapping <function_wrapping.rst>`_ section, this is applied to all applicable functions dynamically during `backend setting`_.
 
-Overall, `ivy.default_dtype`_ infers the data type as follows:
+Overall, `aikit.default_dtype`_ infers the data type as follows:
 
 #. if the ``dtype`` argument is provided, use this directly
 #. otherwise, if an array is present in the arguments, set ``arr`` to this array.
-   This will then be used to infer the data type by calling :func:`ivy.dtype` on the array
-#. otherwise, if a *relevant* scalar is present in the arguments, set ``arr`` to this scalar and derive the data type from this by calling either :func:`ivy.default_int_dtype` or :func:`ivy.default_float_dtype` depending on whether the scalar is an int or float.
-   This will either return the globally set default int data type or globally set default float data type (settable via :func:`ivy.set_default_int_dtype` and :func:`ivy.set_default_float_dtype` respectively).
-   An example of a *relevant* scalar is ``start`` in the function :func:`ivy.arange`, which is used to set the starting value of the returned array.
+   This will then be used to infer the data type by calling :func:`aikit.dtype` on the array
+#. otherwise, if a *relevant* scalar is present in the arguments, set ``arr`` to this scalar and derive the data type from this by calling either :func:`aikit.default_int_dtype` or :func:`aikit.default_float_dtype` depending on whether the scalar is an int or float.
+   This will either return the globally set default int data type or globally set default float data type (settable via :func:`aikit.set_default_int_dtype` and :func:`aikit.set_default_float_dtype` respectively).
+   An example of a *relevant* scalar is ``start`` in the function :func:`aikit.arange`, which is used to set the starting value of the returned array.
    Examples of *irrelevant* scalars which should **not** be used for determining the data type are ``axis``, ``axes``, ``dims`` etc. which must be integers, and control other configurations of the function being called, with no bearing at all on the data types used by that function.
 #. otherwise, if no arrays or relevant scalars are present in the arguments, then use the global default data type, which can either be an int or float data type.
-   This is settable via :func:`ivy.set_default_dtype`.
+   This is settable via :func:`aikit.set_default_dtype`.
 
 For the majority of functions which defer to `infer_dtype`_ for handling the data type, these steps will have been followed and the ``dtype`` argument will be populated with the correct value before the backend-specific implementation is even entered into.
-Therefore, whereas the ``dtype`` argument is listed as optional in the ivy API at :mod:`ivy/functional/ivy/category_name.py`, the argument is listed as required in the backend-specific implementations at :mod:`ivy/functional/backends/backend_name/category_name.py`.
+Therefore, whereas the ``dtype`` argument is listed as optional in the aikit API at :mod:`aikit/functional/aikit/category_name.py`, the argument is listed as required in the backend-specific implementations at :mod:`aikit/functional/backends/backend_name/category_name.py`.
 
-Let's take a look at the function :func:`ivy.zeros` as an example.
+Let's take a look at the function :func:`aikit.zeros` as an example.
 
-The implementation in :mod:`ivy/functional/ivy/creation.py` has the following signature:
+The implementation in :mod:`aikit/functional/aikit/creation.py` has the following signature:
 
 .. code-block:: python
 
-    @outputs_to_ivy_arrays
+    @outputs_to_aikit_arrays
     @handle_out_argument
     @infer_dtype
     @infer_device
     def zeros(
         shape: Union[int, Sequence[int]],
         *,
-        dtype: Optional[Union[ivy.Dtype, ivy.NativeDtype]] = None,
-        device: Optional[Union[ivy.Device, ivy.NativeDevice]] = None,
-    ) -> ivy.Array:
+        dtype: Optional[Union[aikit.Dtype, aikit.NativeDtype]] = None,
+        device: Optional[Union[aikit.Device, aikit.NativeDevice]] = None,
+    ) -> aikit.Array:
 
-Whereas the backend-specific implementations in :mod:`ivy/functional/backends/backend_name/statistical.py`
+Whereas the backend-specific implementations in :mod:`aikit/functional/backends/backend_name/statistical.py`
 all list ``dtype`` as required.
 
 Jax:
@@ -309,7 +309,7 @@ However, the ``dtype`` argument for functions which don't have the :code:`@infer
 One reason for not adding :code:`@infer_dtype` to a function is because it includes *relevant* scalar arguments for inferring the data type from.
 `infer_dtype`_ is not able to correctly handle such cases, and so the dtype handling is delegated to the backend-specific implementations.
 
-For example :func:`ivy.full` doesn't have the :code:`@infer_dtype` decorator even though it has a ``dtype`` argument because of the *relevant* ``fill_value`` which cannot be correctly handled by `infer_dtype`_.
+For example :func:`aikit.full` doesn't have the :code:`@infer_dtype` decorator even though it has a ``dtype`` argument because of the *relevant* ``fill_value`` which cannot be correctly handled by `infer_dtype`_.
 
 The PyTorch-specific implementation is as follows:
 
@@ -319,22 +319,22 @@ The PyTorch-specific implementation is as follows:
         shape: Union[int, Sequence[int]],
         fill_value: Union[int, float],
         *,
-        dtype: Optional[Union[ivy.Dtype, torch.dtype]] = None,
+        dtype: Optional[Union[aikit.Dtype, torch.dtype]] = None,
         device: torch.device,
     ) -> Tensor:
         return torch.full(
             shape_to_tuple(shape),
             fill_value,
-            dtype=ivy.default_dtype(dtype=dtype, item=fill_value, as_native=True),
+            dtype=aikit.default_dtype(dtype=dtype, item=fill_value, as_native=True),
             device=device,
         )
 
-The implementations for all other backends follow a similar pattern to this PyTorch implementation, where the ``dtype`` argument is optional and :func:`ivy.default_dtype` is called inside the backend-specific implementation.
+The implementations for all other backends follow a similar pattern to this PyTorch implementation, where the ``dtype`` argument is optional and :func:`aikit.default_dtype` is called inside the backend-specific implementation.
 
 Supported and Unsupported Data Types
 ------------------------------------
 
-Some backend functions (implemented in :mod:`ivy/functional/backends/<some_backend>`) make use of the decorators :attr:`@with_supported_dtypes` or :attr:`@with_unsupported_dtypes`, which flag the data types which this particular function does and does not support respectively for the associated backend.
+Some backend functions (implemented in :mod:`aikit/functional/backends/<some_backend>`) make use of the decorators :attr:`@with_supported_dtypes` or :attr:`@with_unsupported_dtypes`, which flag the data types which this particular function does and does not support respectively for the associated backend.
 Only one of these decorators can be specified for any given function.
 In the case of :attr:`@with_supported_dtypes` it is assumed that all unmentioned data types are unsupported, and in the case of :attr:`@with_unsupported_dtypes` it is assumed that all unmentioned data types are supported.
 
@@ -362,10 +362,10 @@ For Frontend Functions:
         if "int" in input.dtype:
             input = input.astype("int64")
         target_type = "int64" if "int" in input.dtype else input.dtype
-        return ivy.astype(ivy.trace(input), target_type)
+        return aikit.astype(aikit.trace(input), target_type)
 
 
-For compositional functions, the supported and unsupported data types can then be inferred automatically using the helper functions `function_supported_dtypes <https://github.com/khulnasoft/aikit/blob/9e71fc2b589bf8f6b7a0762602723ac084bb5d9e/ivy/functional/ivy/data_type.py#L1370>`_ and `function_unsupported_dtypes <https://github.com/khulnasoft/aikit/blob/9e71fc2b589bf8f6b7a0762602723ac084bb5d9e/ivy/functional/ivy/data_type.py#L1407>`_ respectively, which traverse the abstract syntax tree of the compositional function and evaluate the relevant attributes for each primary function in the composition.
+For compositional functions, the supported and unsupported data types can then be inferred automatically using the helper functions `function_supported_dtypes <https://github.com/khulnasoft/aikit/blob/9e71fc2b589bf8f6b7a0762602723ac084bb5d9e/aikit/functional/aikit/data_type.py#L1370>`_ and `function_unsupported_dtypes <https://github.com/khulnasoft/aikit/blob/9e71fc2b589bf8f6b7a0762602723ac084bb5d9e/aikit/functional/aikit/data_type.py#L1407>`_ respectively, which traverse the abstract syntax tree of the compositional function and evaluate the relevant attributes for each primary function in the composition.
 The same approach applies for most stateful methods, which are themselves compositional.
 
 It is also possible to add supported and unsupported dtypes as a combination of both class and individual dtypes. The allowed dtype classes are: ``valid``, ``numeric``, ``float``, ``integer``, and ``unsigned``.
@@ -382,13 +382,13 @@ In order to get the supported and unsupported devices and dtypes for a function,
 However, sometimes new unsupported dtypes are discovered while testing too.
 So it is suggested to explore it both ways.
 
-It should be noted that :attr:`unsupported_dtypes` is different from ``ivy.invalid_dtypes`` which consists of all the data types that every function of that particular backend does not support, and so if a certain ``dtype`` is already present in the ``ivy.invalid_dtypes`` then we should not add it to the :attr:`@with_unsupported_dtypes` decorator.
+It should be noted that :attr:`unsupported_dtypes` is different from ``aikit.invalid_dtypes`` which consists of all the data types that every function of that particular backend does not support, and so if a certain ``dtype`` is already present in the ``aikit.invalid_dtypes`` then we should not add it to the :attr:`@with_unsupported_dtypes` decorator.
 
 Sometimes, it might be possible to support a natively unsupported data type by either
 casting to a supported data type and then casting back, or explicitly handling these
 data types without deferring to a backend function at all.
 
-An example of the former is :func:`ivy.logical_not` with a tensorflow backend:
+An example of the former is :func:`aikit.logical_not` with a tensorflow backend:
 
 .. code-block:: python
 
@@ -400,7 +400,7 @@ An example of the former is :func:`ivy.logical_not` with a tensorflow backend:
     ) -> Union[tf.Tensor, tf.Variable]:
         return tf.logical_not(tf.cast(x, tf.bool))
 
-An example of the latter is :func:`ivy.abs` with a tensorflow backend:
+An example of the latter is :func:`aikit.abs` with a tensorflow backend:
 
 .. code-block:: python
 
@@ -410,7 +410,7 @@ An example of the latter is :func:`ivy.abs` with a tensorflow backend:
         *,
         out: Optional[Union[tf.Tensor, tf.Variable]] = None,
     ) -> Union[tf.Tensor, tf.Variable]:
-        if "uint" in ivy.dtype(x):
+        if "uint" in aikit.dtype(x):
             return x
         else:
             return tf.abs(x)
@@ -466,18 +466,18 @@ For example, in many cases casting to another data type will result in a loss of
 In such cases, the best solution is to simply add the data type to the :attr:`@with_unsupported_dtypes` decorator, rather than trying to implement a long and complex patch to achieve the desired behaviour.
 
 Some cases where a data type is not supported are very subtle.
-For example, ``uint8`` is not supported for :func:`ivy.prod` with a torch backend, despite :func:`torch.prod` handling ``torch.uint8`` types in the input totally fine.
+For example, ``uint8`` is not supported for :func:`aikit.prod` with a torch backend, despite :func:`torch.prod` handling ``torch.uint8`` types in the input totally fine.
 
 The reason for this is that the `Array API Standard`_ mandates that :func:`prod` upcasts the unsigned integer return to have the same number of bits as the default integer data type.
-By default, the default integer data type in Ivy is ``int32``, and so we should return an array of type ``uint32`` despite the input arrays being of type ``uint8``.
+By default, the default integer data type in Aikit is ``int32``, and so we should return an array of type ``uint32`` despite the input arrays being of type ``uint8``.
 However, torch does not support ``uint32``, and so we cannot fully adhere to the requirements of the standard for ``uint8`` inputs.
 Rather than breaking this rule and returning arrays of type ``uint8`` only with a torch backend, we instead opt to remove official support entirely for this combination of data type, function, and backend framework.
-This will avoid all of the potential confusion that could arise if we were to have inconsistent and unexpected outputs when using officially supported data types in Ivy.
+This will avoid all of the potential confusion that could arise if we were to have inconsistent and unexpected outputs when using officially supported data types in Aikit.
 
 Another important point to note is that for cases where an entire dtype series is not supported or supported. For example if `float16`, `float32` and `float64` are not supported or is supported by a framework which could be a backend or frontend framework,
 then we simply identify that by simply replacing the different float dtypes with the str `float`. The same logic is applied to other dtypes such as `complex`, where we simply replace the entire dtypes with the str `complex`
 
-An example is :func:`ivy.fmin` with a tensorflow backend:
+An example is :func:`aikit.fmin` with a tensorflow backend:
 
 .. code-block:: python
 
@@ -497,7 +497,7 @@ An example is :func:`ivy.fmin` with a tensorflow backend:
 
 As seen in the above code, we simply use the str `float` instead of writing all the float dtypes that are supported
 
-Another example is :func:`ivy.floor_divide` with a tensorflow backend:
+Another example is :func:`aikit.floor_divide` with a tensorflow backend:
 
 .. code-block:: python
 
@@ -509,7 +509,7 @@ Another example is :func:`ivy.floor_divide` with a tensorflow backend:
         *,
         out: Optional[Union[tf.Tensor, tf.Variable]] = None,
     ) -> Union[tf.Tensor, tf.Variable]:
-        x1, x2 = ivy.promote_types_of_inputs(x1, x2)
+        x1, x2 = aikit.promote_types_of_inputs(x1, x2)
         return tf.experimental.numpy.floor_divide(x1, x2)
 
 As seen in the above code, we simply use the str `complex` instead of writing all the complex dtypes that are not supported
@@ -522,14 +522,14 @@ In addition to the unsupported / supported data types decorator, we also have th
 Special Case
 """"""""""""
 
-However, the major difference between the attributes and the decorators is that the attributes are set and assigned in the ivy function itself :mod:`ivy/functional/ivy/<ivy_functional_API>` ,
-while the decorators are used within the frontend :mod:`ivy/functional/frontends/<some_frontend>` and backend :mod:`ivy/functional/backends/<some_backend>` to identify the supported or unsupported data types, depending on the use case.
-The attributes are set for functions that don't have a specific backend implementation for each backend, where we provide the backend as one of the arguments to the attribute of the framework agnostic function (because all ivy functions are framework agnostic), which allows it to identify the supported or unsupported dtypes for each backend.
+However, the major difference between the attributes and the decorators is that the attributes are set and assigned in the aikit function itself :mod:`aikit/functional/aikit/<aikit_functional_API>` ,
+while the decorators are used within the frontend :mod:`aikit/functional/frontends/<some_frontend>` and backend :mod:`aikit/functional/backends/<some_backend>` to identify the supported or unsupported data types, depending on the use case.
+The attributes are set for functions that don't have a specific backend implementation for each backend, where we provide the backend as one of the arguments to the attribute of the framework agnostic function (because all aikit functions are framework agnostic), which allows it to identify the supported or unsupported dtypes for each backend.
 
-An example of an ivy function which does not have a specific backend implementation for each backend is the :attr:`einops_reduce` function. `This function <https://github.com/khulnasoft/aikit/blob/8516d3f12a8dfc4ec5f819789937d196c7e28566/ivy/functional/ivy/general.py#L1964>`_ , makes use of a third-party library :attr:`einops` which has its own backend-agnostic implementations.
+An example of an aikit function which does not have a specific backend implementation for each backend is the :attr:`einops_reduce` function. `This function <https://github.com/khulnasoft/aikit/blob/8516d3f12a8dfc4ec5f819789937d196c7e28566/aikit/functional/aikit/general.py#L1964>`_ , makes use of a third-party library :attr:`einops` which has its own backend-agnostic implementations.
 
 The :attr:`unsupported_dtypes` and :attr:`supported_dtypes` attributes take two arguments, a dictionary with the unsupported dtypes mapped to the corresponding backend framework. Based on that, the specific unsupported dtypes are set for the given function every time the function is called.
-For example, we use the :attr:`unsupported_dtypes` attribute for the :attr:`einops_reduce` function within the ivy functional API as shown below:
+For example, we use the :attr:`unsupported_dtypes` attribute for the :attr:`einops_reduce` function within the aikit functional API as shown below:
 
 .. code-block:: python
 
@@ -599,7 +599,7 @@ The decorator assigns the version specific unsupported dtypes to the function an
 
 The same workflow has been implemented for :code:`supported_dtypes`, :code:`unsupported_devices` and :code:`supported_devices`.
 
-The slight downside of this approach is that there is less data type coverage for each version of each backend, but taking responsibility for patching this support for all versions would substantially inflate the implementational requirements for ivy, and so we have decided to opt out of this responsibility!
+The slight downside of this approach is that there is less data type coverage for each version of each backend, but taking responsibility for patching this support for all versions would substantially inflate the implementational requirements for aikit, and so we have decided to opt out of this responsibility!
 
 
 
@@ -619,10 +619,10 @@ There are currently four modes that accomplish this.
 
 :code:`upcast_data_types` mode casts the unsupported dtype encountered to the next highest supported dtype in the same
 dtype group, i.e, if the unsupported dtype encountered is :code:`uint8` , then this mode will try to upcast it to the next available supported :code:`uint` dtype. If no
-higher `uint` dtype is available, then there won't be any upcasting performed. You can set this mode by calling :code:`ivy.upcast_data_types()` with an optional :code:`val` keyword argument that defaults to :code:`True`.
+higher `uint` dtype is available, then there won't be any upcasting performed. You can set this mode by calling :code:`aikit.upcast_data_types()` with an optional :code:`val` keyword argument that defaults to :code:`True`.
 
 Similarly, :code:`downcast_data_dtypes` tries to downcast to the next lower supported dtype in the same dtype group. No casting is performed if no lower dtype is found in the same group.
-It can also be set by calling :code:`ivy.downcast_data_types()` with the optional :code:`val` keyword that defaults to boolean value :code:`True`.
+It can also be set by calling :code:`aikit.downcast_data_types()` with the optional :code:`val` keyword that defaults to boolean value :code:`True`.
 
 :code:`crosscast_data_types` is for cases when a function doesn't support :code:`int` dtypes, but supports :code:`float` and vice-versa. In such cases,
 we cast to the default supported :code:`float` dtype if it's the unsupported integer case or we cast to the default supported :code:`int` dtype if it's the unsupported :code:`float` case.
@@ -648,11 +648,11 @@ is being used for execution at the time of writing this. We will see how cating 
 
 .. code-block:: python
 
-    import ivy
-    ivy.set_backend('torch')
-    ret = ivy.expm1(ivy.array([1], dtype='float16')) # raises exception
-    ivy.upcast_data_types()
-    ret = ivy.expm1(ivy.array([1], dtype='float16')) # doesn't raise exception
+    import aikit
+    aikit.set_backend('torch')
+    ret = aikit.expm1(aikit.array([1], dtype='float16')) # raises exception
+    aikit.upcast_data_types()
+    ret = aikit.expm1(aikit.array([1], dtype='float16')) # doesn't raise exception
 
 
 
@@ -661,23 +661,23 @@ Example of Downcasting mode :
 
 .. code-block:: python
 
-    import ivy
-    ivy.set_backend('torch')
+    import aikit
+    aikit.set_backend('torch')
     try:
-    ret = ivy.expm1(ivy.array([1], dtype='float16')) # raises exception
-    ivy.downcast_data_types()
-    ret = ivy.expm1(ivy.array([1], dtype='float16')) # doesn't raise exception
+    ret = aikit.expm1(aikit.array([1], dtype='float16')) # raises exception
+    aikit.downcast_data_types()
+    ret = aikit.expm1(aikit.array([1], dtype='float16')) # doesn't raise exception
 
 
 Example of Mixed casting mode :
 
 .. code-block:: python
 
-    import ivy
-    ivy.set_backend('torch')
-    ret = ivy.expm1(ivy.array([1], dtype='float16')) # raises exception
-    ivy.cast_data_types()
-    ret = ivy.expm1(ivy.array([1], dtype='float16')) # doesn't raise exception
+    import aikit
+    aikit.set_backend('torch')
+    ret = aikit.expm1(aikit.array([1], dtype='float16')) # raises exception
+    aikit.cast_data_types()
+    ret = aikit.expm1(aikit.array([1], dtype='float16')) # doesn't raise exception
 
 
 
@@ -702,11 +702,11 @@ enable :code:`float` dtypes to be passed here too.
 
 .. code-block:: python
 
-    import ivy
-    ivy.set_backend('torch')
-    ret = ivy.lcm(ivy.array([1], dtype='float16'),ivy.array([1], dtype='float16')) # raises exception
-    ivy.crosscast_data_types()
-    ret = ivy.lcm(ivy.array([1], dtype='float16'),ivy.array([1], dtype='float16')) # doesn't raise exception
+    import aikit
+    aikit.set_backend('torch')
+    ret = aikit.lcm(aikit.array([1], dtype='float16'),aikit.array([1], dtype='float16')) # raises exception
+    aikit.crosscast_data_types()
+    ret = aikit.lcm(aikit.array([1], dtype='float16'),aikit.array([1], dtype='float16')) # doesn't raise exception
 
 
 
@@ -728,16 +728,16 @@ be well understood that this may lead to loss of precision and/or an increase in
 Superset Data Type Support
 --------------------------
 
-As explained in the superset section of the Deep Dive, we generally go for the superset of behaviour for all Ivy functions, and data type support is no exception.
+As explained in the superset section of the Deep Dive, we generally go for the superset of behaviour for all Aikit functions, and data type support is no exception.
 Some backends like tensorflow do not support integer array inputs for certain functions.
 For example :func:`tensorflow.cos` only supports non-integer values.
 However, backends like torch and JAX support integer arrays as inputs.
-To ensure that integer types are supported in Ivy when a tensorflow backend is set, we simply promote any integer array passed to the function to the default float dtype.
+To ensure that integer types are supported in Aikit when a tensorflow backend is set, we simply promote any integer array passed to the function to the default float dtype.
 As with all superset design decisions, this behavior makes it much easier to support all frameworks in our frontends, without the need for lots of extra logic for handling integer array inputs for the frameworks which support it natively.
 
 **Round Up**
 
-This should have hopefully given you a good feel for data types, and how these are handled in Ivy.
+This should have hopefully given you a good feel for data types, and how these are handled in Aikit.
 
 If you have any questions, please feel free to reach out on `discord`_ in the `data types thread`_!
 

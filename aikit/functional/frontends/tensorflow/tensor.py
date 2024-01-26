@@ -213,7 +213,7 @@ class EagerTensor:
         return self.__rxor__(y)
 
     def __setitem__(self, key, value):
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             "aikit.functional.frontends.tensorflow.EagerTensor object "
             "doesn't support assignment"
         )

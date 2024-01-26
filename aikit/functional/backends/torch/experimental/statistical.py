@@ -41,7 +41,7 @@ def histogram(
     min_a = torch.min(a)
     max_a = torch.max(a)
     if isinstance(bins, torch.Tensor) and range:
-        raise aikit.exceptions.IvyException(
+        raise aikit.exceptions.AikitException(
             "Must choose between specifying bins and range or bin edges directly"
         )
     if range:
@@ -56,7 +56,7 @@ def histogram(
         )
         range = None
     if bins.size()[0] < 2:
-        raise aikit.exceptions.IvyException("bins must have at least 1 bin (size > 1)")
+        raise aikit.exceptions.AikitException("bins must have at least 1 bin (size > 1)")
     bins_out = bins.clone()
     if extend_lower_interval and min_a < bins[0]:
         bins.data[0] = min_a

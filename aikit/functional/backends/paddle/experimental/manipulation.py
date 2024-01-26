@@ -397,7 +397,7 @@ def vsplit(
     copy: Optional[bool] = None,
 ) -> List[paddle.Tensor]:
     if ary.ndim < 2:
-        raise aikit.exceptions.IvyError(
+        raise aikit.exceptions.AikitError(
             "vsplit only works on arrays of 2 or more dimensions"
         )
     return aikit.split(ary, copy=copy, num_or_size_splits=indices_or_sections, axis=0)
@@ -411,7 +411,7 @@ def dsplit(
     copy: Optional[bool] = None,
 ) -> List[paddle.Tensor]:
     if ary.ndim < 3:
-        raise aikit.exceptions.IvyError(
+        raise aikit.exceptions.AikitError(
             "dsplit only works on arrays of 3 or more dimensions"
         )
     return aikit.split(ary, num_or_size_splits=indices_or_sections, axis=2)
@@ -504,7 +504,7 @@ def take_along_axis(
     out: Optional[paddle.Tensor] = None,
 ) -> paddle.Tensor:
     if arr.ndim != indices.ndim:
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             "arr and indices must have the same number of dimensions;"
             + f" got {arr.ndim} vs {indices.ndim}"
         )

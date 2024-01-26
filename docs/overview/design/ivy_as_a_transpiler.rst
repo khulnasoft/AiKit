@@ -1,10 +1,10 @@
-Ivy as a Transpiler
+Aikit as a Transpiler
 ===================
 
-On the `Building Blocks <building_blocks.rst>`_ page, we explored the role of the Backend functional APIs, the Ivy functional API, the Backend handler, and the Tracer.
+On the `Building Blocks <building_blocks.rst>`_ page, we explored the role of the Backend functional APIs, the Aikit functional API, the Backend handler, and the Tracer.
 These parts are labelled (a) in the image below.
 
-Here, we explain the role of the backend-specific frontends in Ivy, and how these enable automatic code conversions between different ML frameworks.
+Here, we explain the role of the backend-specific frontends in Aikit, and how these enable automatic code conversions between different ML frameworks.
 This part is labelled as (b) in the image below.
 
 The code conversion tools described on this page are works in progress, as indicated by the construction signs 🚧.
@@ -17,7 +17,7 @@ This is in keeping with the rest of the documentation.
 Frontend Functional APIs 🚧
 ---------------------------
 
-While the backend API, Ivy API, and backend handler enable all Ivy code to be framework-agnostic, they do not, for example, enable PyTorch code to be framework agnostic.
+While the backend API, Aikit API, and backend handler enable all Aikit code to be framework-agnostic, they do not, for example, enable PyTorch code to be framework agnostic.
 But with frontend APIs, we can also achieve this!
 
 Let’s take a look at how the implementation of :code:`clip` method would seem like in the frontends:
@@ -25,28 +25,28 @@ Let’s take a look at how the implementation of :code:`clip` method would seem 
 
 .. code-block:: python
 
-   # ivy/functional/frontends/jax/lax/functions.py
+   # aikit/functional/frontends/jax/lax/functions.py
    def clamp(x_min,x, x_max):
-       return ivy.clip(x, x_min, x_max)
+       return aikit.clip(x, x_min, x_max)
 
 
 .. code-block:: python
 
-   # ivy/functional/frontends/numpy/general.py
+   # aikit/functional/frontends/numpy/general.py
    def clip(x, x_min, x_max):
-       return ivy.clip(x, x_min, x_max)
+       return aikit.clip(x, x_min, x_max)
 
 .. code-block:: python
 
-   # ivy/functional/frontends/tensorflow/general.py
+   # aikit/functional/frontends/tensorflow/general.py
    def clip_by_value(x, x_min, x_max):
-       return ivy.clip(x, x_min, x_max)
+       return aikit.clip(x, x_min, x_max)
 
 .. code-block:: python
 
-   # ivy/functional/frontends/torch/general.py
+   # aikit/functional/frontends/torch/general.py
    def clamp(x, x_min, x_max):
-       return ivy.clip(x, x_min, x_max)
+       return aikit.clip(x, x_min, x_max)
 
 combined, we have the following situation:
 
@@ -55,30 +55,30 @@ combined, we have the following situation:
    :width: 100%
 
 Importantly, we can select the backend and frontend **independently** from one another.
-For example, this means we can select a JAX backend, but also select the PyTorch frontend and write Ivy code which fully adheres to the PyTorch functional API.
-In the reverse direction: we can take pre-written pure PyTorch code, replace each PyTorch function with the equivalent function using Ivy’s PyTorch frontend, and then run this PyTorch code using JAX:
+For example, this means we can select a JAX backend, but also select the PyTorch frontend and write Aikit code which fully adheres to the PyTorch functional API.
+In the reverse direction: we can take pre-written pure PyTorch code, replace each PyTorch function with the equivalent function using Aikit’s PyTorch frontend, and then run this PyTorch code using JAX:
 
 .. image:: https://github.com/khulnasoft/khulnasoft.github.io/blob/main/img/externally_linked/design/clip_conversion.png?raw=true
    :align: center
    :width: 100%
 |
 For this example it’s very simple, the differences are only syntactic, but the above process works for **any** function.
-If there are semantic differences then these will be captured (a) in the wrapped frontend code which expresses the frontend method as a composition of Ivy functions, and (b) in the wrapped backend code which expressed the Ivy functions as compositions of backend methods.
+If there are semantic differences then these will be captured (a) in the wrapped frontend code which expresses the frontend method as a composition of Aikit functions, and (b) in the wrapped backend code which expressed the Aikit functions as compositions of backend methods.
 
 Let’s take a more complex example and convert the PyTorch method :func:`torch.nn.functional.one_hot` into NumPy code.
-The frontend is implemented by wrapping a single Ivy method :func:`ivy.one_hot` as follows:
+The frontend is implemented by wrapping a single Aikit method :func:`aikit.one_hot` as follows:
 
 .. code-block:: python
 
-   # ivy/functional/frontends/torch/nn/sparse_functions.py
+   # aikit/functional/frontends/torch/nn/sparse_functions.py
    def one_hot(tensor, num_classes=-1):
-       return ivy.one_hot(tensor, num_classes)
+       return aikit.one_hot(tensor, num_classes)
 
-Let’s look at the NumPy backend code for this Ivy method:
+Let’s look at the NumPy backend code for this Aikit method:
 
 .. code-block:: python
 
-   # ivy/functional/backends/numpy/general.py
+   # aikit/functional/backends/numpy/general.py
     def one_hot(
         indices: np.ndarray, depth: int, *, device: str, out: Optional[np.ndarray] = None
     ) -> np.ndarray:
@@ -89,31 +89,31 @@ By chaining these methods together, we can now call :func:`torch.nn.functional.o
 
 .. code-block:: python
 
-   import ivy
-   import ivy.frontends.torch as torch
+   import aikit
+   import aikit.frontends.torch as torch
 
-   ivy.set_backend('numpy')
+   aikit.set_backend('numpy')
 
    x = np.array([0., 1., 2.])
    ret = torch.nn.functional.one_hot(x, 3)
 
 Let’s take one more example and convert TensorFlow method :func:`tf.cumprod` into PyTorch code.
-This time, the frontend is implemented by wrapping two Ivy methods :func:`ivy.cumprod`, and :func:`ivy.flip` as follows:
+This time, the frontend is implemented by wrapping two Aikit methods :func:`aikit.cumprod`, and :func:`aikit.flip` as follows:
 
 .. code-block:: python
 
-   # ivy/functional/frontends/tensorflow/math.py
+   # aikit/functional/frontends/tensorflow/math.py
    def cumprod(x, axis=0, exclusive=False, reverse=False, name=None):
-       ret = ivy.cumprod(x, axis, exclusive)
+       ret = aikit.cumprod(x, axis, exclusive)
        if reverse:
-           return ivy.flip(ret, axis)
+           return aikit.flip(ret, axis)
        return ret
 
-Let’s look at the PyTorch backend code for both of these Ivy methods:
+Let’s look at the PyTorch backend code for both of these Aikit methods:
 
 .. code-block:: python
 
-   # ivy/functional/backends/torch/general.py
+   # aikit/functional/backends/torch/general.py
     def cumprod(
         x: torch.Tensor,
         axis: int = 0,
@@ -130,7 +130,7 @@ Let’s look at the PyTorch backend code for both of these Ivy methods:
 
 .. code-block:: python
 
-   # ivy/functional/backends/torch/manipulation.py
+   # aikit/functional/backends/torch/manipulation.py
     def flip(
         x: torch.Tensor,
         axis: Optional[Union[int, Sequence[int]]] = None,
@@ -156,10 +156,10 @@ Again, by chaining these methods together, we can now call :func:`tf.math.cumpro
 
 .. code-block:: python
 
-   import ivy
-   import ivy.frontends.tensorflow as tf
+   import aikit
+   import aikit.frontends.tensorflow as tf
 
-   ivy.set_backend('torch')
+   aikit.set_backend('torch')
 
    x = torch.tensor([[0., 1., 2.]])
    ret = tf.math.cumprod(x, -1)
@@ -189,22 +189,22 @@ For example, let’s take the following PyTorch code and run it using JAX:
    net = Network()
    net(x)
 
-We cannot simply :code:`import ivy.frontends.torch` in place of :code:`import torch` as we did in the previous examples.
-This is because the Ivy frontend only supports the functional API for each framework, whereas the code above makes use of higher level classes through the use of the :mod:`torch.nn` namespace.
+We cannot simply :code:`import aikit.frontends.torch` in place of :code:`import torch` as we did in the previous examples.
+This is because the Aikit frontend only supports the functional API for each framework, whereas the code above makes use of higher level classes through the use of the :mod:`torch.nn` namespace.
 
-In general, the way we convert code is by first decomposing the code into its constituent functions in the core API using Ivy’s tracer, and then we convert this executable graph into the new framework.
+In general, the way we convert code is by first decomposing the code into its constituent functions in the core API using Aikit’s tracer, and then we convert this executable graph into the new framework.
 For the example above, this would look like:
 
 .. code-block:: python
 
    import jax
-   import ivy
+   import aikit
 
-   jax_graph = ivy.trace_graph(net, x).to_backend('jax')
+   jax_graph = aikit.trace_graph(net, x).to_backend('jax')
    x = jax.numpy.array([1., 2., 3.])
    jax_graph(x)
 
-However, when calling :func:`ivy.trace` the graph only connects the inputs to the outputs.
+However, when calling :func:`aikit.trace` the graph only connects the inputs to the outputs.
 Any other tensors or variables which are not listed in the inputs are treated as constants in the graph.
 In this case, this means the learnable weights in the Module will be treated as constants.
 This works fine if we only care about running inference on our graph post-training, but this won’t enable training of the Module in JAX.
@@ -212,14 +212,14 @@ This works fine if we only care about running inference on our graph post-traini
 Converting Network Models 🚧
 ----------------------------
 
-In order to convert a model from PyTorch to JAX, we first must convert the :class:`torch.nn.Module` instance to an :class:`ivy.Module` instance using the method :func:`ivy.to_ivy_module` like so:
+In order to convert a model from PyTorch to JAX, we first must convert the :class:`torch.nn.Module` instance to an :class:`aikit.Module` instance using the method :func:`aikit.to_aikit_module` like so:
 
 .. code-block:: python
 
-   net = ivy.to_ivy_module(net)
+   net = aikit.to_aikit_module(net)
 
-In its current form, the :class:`ivy.Module` instance thinly wraps the PyTorch model into the :class:`ivy.Module` interface, whilst preserving the pure PyTorch backend.
-We can trace a graph of this network using Ivy’s tracer like so:
+In its current form, the :class:`aikit.Module` instance thinly wraps the PyTorch model into the :class:`aikit.Module` interface, whilst preserving the pure PyTorch backend.
+We can trace a graph of this network using Aikit’s tracer like so:
 
 .. code-block:: python
 
@@ -227,35 +227,35 @@ We can trace a graph of this network using Ivy’s tracer like so:
 
 In this case, the learnable weights are treated as inputs to the graph rather than constants.
 
-Now, with a traced graph under the hood of our model, we can call :meth:`to_backend` directly on the :class:`ivy.Module` instance to convert it to any backend of our choosing, like so:
+Now, with a traced graph under the hood of our model, we can call :meth:`to_backend` directly on the :class:`aikit.Module` instance to convert it to any backend of our choosing, like so:
 
 .. code-block:: python
 
    net = net.to_backend('jax')
 
-The network can now be trained using Ivy’s optimizer classes with a JAX backend like so:
+The network can now be trained using Aikit’s optimizer classes with a JAX backend like so:
 
 .. code-block:: python
 
-   optimizer = ivy.Adam(1e-4)
-   x_in = ivy.array([1., 2., 3.])
-   target = ivy.array([0.])
+   optimizer = aikit.Adam(1e-4)
+   x_in = aikit.array([1., 2., 3.])
+   target = aikit.array([0.])
 
    def loss_fn(v):
        out = model(x_in, v=v)
-       return ivy.reduce_mean((out - target)**2)
+       return aikit.reduce_mean((out - target)**2)
 
    for step in range(100):
-       loss, grads = ivy.execute_with_gradients(loss_fn, model.v)
+       loss, grads = aikit.execute_with_gradients(loss_fn, model.v)
        model.v = optimizer.step(model.v, grads)
 
-To convert this :class:`ivy.Module` instance to a :class:`haiku.Module` instance, we can call :meth:`to_haiku_module` like so:
+To convert this :class:`aikit.Module` instance to a :class:`haiku.Module` instance, we can call :meth:`to_haiku_module` like so:
 
 .. code-block:: python
 
    net = net.to_haiku_module()
 
-If we want to remove Ivy from the pipeline entirely, we can then train the model in Haiku like so:
+If we want to remove Aikit from the pipeline entirely, we can then train the model in Haiku like so:
 
 .. code-block:: python
 
@@ -290,7 +290,7 @@ The same is true for any combination of frameworks, and for any network architec
 
 **Round Up**
 
-Hopefully, this has explained how, with the addition of backend-specific frontends, Ivy will be able to easily convert code between different ML frameworks 🙂 works in progress, as indicated by the construction signs 🚧.
+Hopefully, this has explained how, with the addition of backend-specific frontends, Aikit will be able to easily convert code between different ML frameworks 🙂 works in progress, as indicated by the construction signs 🚧.
 This is in keeping with the rest of the documentation.
 
 Please reach out on `discord <https://discord.gg/sXyFF8tDtm>`_ if you have any questions!

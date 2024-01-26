@@ -220,8 +220,8 @@ def get_dtypes(
         retrieval_fn = _get_type_dict
         valid_dtypes = set(retrieval_fn(test_globals.CURRENT_BACKEND, kind))
 
-    # The function may be called from a frontend test or an Ivy API test
-    # In the case of an Ivy API test, the function should make sure it returns a valid
+    # The function may be called from a frontend test or an Aikit API test
+    # In the case of an Aikit API test, the function should make sure it returns a valid
     # dtypes for the backend and also for the ground truth backend, if it is called from
     # a frontend test, we should also count for the frontend support data types
     # In conclusion, the following operations will get the intersection of

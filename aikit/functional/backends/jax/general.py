@@ -1,4 +1,4 @@
-"""Collection of Jax general functions, wrapped to fit Ivy syntax and
+"""Collection of Jax general functions, wrapped to fit Aikit syntax and
 signature."""
 
 # global
@@ -14,12 +14,12 @@ import importlib
 
 
 # local
-import ivy
-from ivy.func_wrapper import with_unsupported_dtypes
-from ivy.functional.backends.jax.device import _to_array, _to_device
-from ivy.functional.ivy.general import _broadcast_to
-from ivy.functional.backends.jax import JaxArray, NativeArray
-from ivy.utils.exceptions import _check_inplace_update_support
+import aikit
+from aikit.func_wrapper import with_unsupported_dtypes
+from aikit.functional.backends.jax.device import _to_array, _to_device
+from aikit.functional.aikit.general import _broadcast_to
+from aikit.functional.backends.jax import JaxArray, NativeArray
+from aikit.utils.exceptions import _check_inplace_update_support
 from . import backend_version
 
 
@@ -55,7 +55,7 @@ def is_native_array(x, /, *, exclusive=False):
 def _mask_to_index(query, x):
     if query.shape != x.shape:
         if len(query.shape) > len(x.shape):
-            raise ivy.exceptions.IvyException("too many indices")
+            raise aikit.exceptions.AikitException("too many indices")
         elif not len(query.shape):
             query = jnp.tile(query, x.shape[0])
     return jnp.where(query)
@@ -68,7 +68,7 @@ def get_item(
     *,
     copy: Optional[bool] = None,
 ) -> JaxArray:
-    if ivy.is_array(query) and ivy.is_bool_dtype(query):
+    if aikit.is_array(query) and aikit.is_bool_dtype(query):
         if not len(query.shape):
             if not query:
                 return jnp.array([], dtype=x.dtype)
@@ -88,15 +88,15 @@ def set_item(
     *,
     copy: Optional[bool] = False,
 ) -> JaxArray:
-    if ivy.is_array(query) and ivy.is_bool_dtype(query):
+    if aikit.is_array(query) and aikit.is_bool_dtype(query):
         query = _mask_to_index(query, x)
     expected_shape = x[query].shape
-    if ivy.is_array(val):
+    if aikit.is_array(val):
         val = _broadcast_to(val, expected_shape)._data
     ret = x.at[query].set(val)
     if copy:
         return ret
-    return ivy.inplace_update(x, _to_device(ret))
+    return aikit.inplace_update(x, _to_device(ret))
 
 
 def array_equal(x0: JaxArray, x1: JaxArray, /) -> bool:
@@ -133,7 +133,7 @@ def gather(
 ) -> JaxArray:
     axis %= len(params.shape)
     batch_dims %= len(params.shape)
-    ivy.utils.assertions.check_gather_input_valid(params, indices, axis, batch_dims)
+    aikit.utils.assertions.check_gather_input_valid(params, indices, axis, batch_dims)
     result = []
     if batch_dims == 0:
         result = jnp.take(params, indices, axis)
@@ -193,7 +193,7 @@ def gather_nd(
     batch_dims: int = 0,
     out: Optional[JaxArray] = None,
 ) -> JaxArray:
-    ivy.utils.assertions.check_gather_nd_input_valid(params, indices, batch_dims)
+    aikit.utils.assertions.check_gather_nd_input_valid(params, indices, batch_dims)
     batch_dims = batch_dims % len(params.shape)
     result = []
     if batch_dims == 0:
@@ -224,50 +224,50 @@ def inplace_arrays_supported():
 
 
 def inplace_decrement(
-    x: Union[ivy.Array, JaxArray], val: Union[ivy.Array, JaxArray]
-) -> ivy.Array:
-    (x_native, val_native), _ = ivy.args_to_native(x, val)
-    if ivy.is_ivy_array(x):
+    x: Union[aikit.Array, JaxArray], val: Union[aikit.Array, JaxArray]
+) -> aikit.Array:
+    (x_native, val_native), _ = aikit.args_to_native(x, val)
+    if aikit.is_aikit_array(x):
         x.data -= val_native
     else:
-        x = ivy.Array(x_native - val_native)
+        x = aikit.Array(x_native - val_native)
     return x
 
 
 def inplace_increment(
-    x: Union[ivy.Array, JaxArray], val: Union[ivy.Array, JaxArray]
-) -> ivy.Array:
-    (x_native, val_native), _ = ivy.args_to_native(x, val)
-    if ivy.is_ivy_array(x):
+    x: Union[aikit.Array, JaxArray], val: Union[aikit.Array, JaxArray]
+) -> aikit.Array:
+    (x_native, val_native), _ = aikit.args_to_native(x, val)
+    if aikit.is_aikit_array(x):
         x.data += val_native
     else:
-        x = ivy.Array(x_native + val_native)
+        x = aikit.Array(x_native + val_native)
     return x
 
 
 def inplace_update(
-    x: Union[ivy.Array, JaxArray],
-    val: Union[ivy.Array, JaxArray],
+    x: Union[aikit.Array, JaxArray],
+    val: Union[aikit.Array, JaxArray],
     /,
     *,
     ensure_in_backend: bool = False,
     keep_input_dtype: bool = False,
-) -> ivy.Array:
-    if ivy.is_array(x) and ivy.is_array(val):
+) -> aikit.Array:
+    if aikit.is_array(x) and aikit.is_array(val):
         _check_inplace_update_support(x, ensure_in_backend)
         if keep_input_dtype:
-            val = ivy.astype(val, x.dtype)
-        (x_native, val_native), _ = ivy.args_to_native(x, val)
-        if ivy.is_ivy_array(x):
+            val = aikit.astype(val, x.dtype)
+        (x_native, val_native), _ = aikit.args_to_native(x, val)
+        if aikit.is_aikit_array(x):
             x.data = val_native
             # Handle view updates
-            if ivy.exists(x._base):
+            if aikit.exists(x._base):
                 base = x._base
-                base_idx = ivy.arange(base.size).reshape(base.shape)
+                base_idx = aikit.arange(base.size).reshape(base.shape)
                 for fn, args, kwargs, index in x._manipulation_stack:
                     kwargs["copy"] = True
-                    base_idx = ivy.__dict__[fn](base_idx, *args, **kwargs)
-                    base_idx = base_idx[index] if ivy.exists(index) else base_idx
+                    base_idx = aikit.__dict__[fn](base_idx, *args, **kwargs)
+                    base_idx = base_idx[index] if aikit.exists(index) else base_idx
                 base_flat = base.data.flatten()
                 base_flat = base_flat.at[base_idx.data.flatten()].set(
                     val_native.flatten()
@@ -277,13 +277,13 @@ def inplace_update(
 
                 for ref in base._view_refs:
                     view = ref()
-                    if ivy.exists(view) and view is not x:
+                    if aikit.exists(view) and view is not x:
                         _update_view(view, base)
 
             else:
                 for ref in x._view_refs:
                     view = ref()
-                    if ivy.exists(view):
+                    if aikit.exists(view):
                         _update_view(view, x)
         return x
     else:
@@ -292,8 +292,8 @@ def inplace_update(
 
 def _update_view(view, base):
     for fn, args, kwargs, index in view._manipulation_stack:
-        base = ivy.__dict__[fn](base, *args, **kwargs)
-        base = base[index] if ivy.exists(index) else base
+        base = aikit.__dict__[fn](base, *args, **kwargs)
+        base = base[index] if aikit.exists(index) else base
     view.data = base.data
     return view
 
@@ -318,10 +318,10 @@ def scatter_flat(
     out: Optional[JaxArray] = None,
 ) -> JaxArray:
     target = out
-    target_given = ivy.exists(target)
-    if ivy.exists(size) and ivy.exists(target):
-        ivy.utils.assertions.check_equal(len(target.shape), 1, as_array=False)
-        ivy.utils.assertions.check_equal(target.shape[0], size, as_array=False)
+    target_given = aikit.exists(target)
+    if aikit.exists(size) and aikit.exists(target):
+        aikit.utils.assertions.check_equal(len(target.shape), 1, as_array=False)
+        aikit.utils.assertions.check_equal(target.shape[0], size, as_array=False)
     if not target_given:
         reduction = "replace"
     if reduction == "sum":
@@ -335,12 +335,12 @@ def scatter_flat(
     elif reduction == "max":
         target = target.at[indices].max(updates)
     else:
-        raise ivy.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             f'reduction is {reduction}, but it must be one of "sum", "min", "max" or'
             ' "replace"'
         )
     if target_given:
-        return ivy.inplace_update(out, target)
+        return aikit.inplace_update(out, target)
     return target
 
 
@@ -351,7 +351,7 @@ def scatter_nd(
     indices: JaxArray,
     updates: JaxArray,
     /,
-    shape: Optional[Union[ivy.NativeShape, Sequence[int]]] = None,
+    shape: Optional[Union[aikit.NativeShape, Sequence[int]]] = None,
     *,
     reduction: str = "sum",
     out: Optional[JaxArray] = None,
@@ -359,20 +359,20 @@ def scatter_nd(
     updates = jnp.array(
         updates,
         dtype=(
-            ivy.dtype(out, as_native=True)
-            if ivy.exists(out)
-            else ivy.default_dtype(item=updates)
+            aikit.dtype(out, as_native=True)
+            if aikit.exists(out)
+            else aikit.default_dtype(item=updates)
         ),
     )
     indices_flat = indices.reshape(-1, indices.shape[-1]).T
     indices_tuple = tuple(indices_flat) + (Ellipsis,)
     target = out
-    target_given = ivy.exists(target)
-    if ivy.exists(shape) and ivy.exists(target):
-        ivy.utils.assertions.check_equal(
-            ivy.Shape(target.shape), ivy.Shape(shape), as_array=False
+    target_given = aikit.exists(target)
+    if aikit.exists(shape) and aikit.exists(target):
+        aikit.utils.assertions.check_equal(
+            aikit.Shape(target.shape), aikit.Shape(shape), as_array=False
         )
-    shape = list(shape) if ivy.exists(shape) else list(out.shape)
+    shape = list(shape) if aikit.exists(shape) else list(out.shape)
     if not target_given:
         target = jnp.zeros(shape, dtype=updates.dtype)
     updates = _broadcast_to(updates, target[indices_tuple].shape)._data
@@ -387,12 +387,12 @@ def scatter_nd(
     elif reduction == "mul":
         target = target.at[indices_tuple].mul(updates)
     else:
-        raise ivy.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             f'reduction is {reduction}, but it must be one of "sum", "min", "max",'
             ' "mul" or "replace"'
         )
-    if ivy.exists(out):
-        return ivy.inplace_update(out, target)
+    if aikit.exists(out):
+        return aikit.inplace_update(out, target)
     return target
 
 
@@ -404,11 +404,11 @@ def shape(
     /,
     *,
     as_array: bool = False,
-) -> Union[ivy.Shape, ivy.Array]:
+) -> Union[aikit.Shape, aikit.Array]:
     if as_array:
-        return ivy.array(jnp.shape(x), dtype=ivy.default_int_dtype())
+        return aikit.array(jnp.shape(x), dtype=aikit.default_int_dtype())
     else:
-        return ivy.Shape(x.shape)
+        return aikit.Shape(x.shape)
 
 
 def vmap(
@@ -416,8 +416,8 @@ def vmap(
     in_axes: Union[int, Sequence[int], Sequence[None]] = 0,
     out_axes: int = 0,
 ) -> Callable:
-    func = ivy.output_to_native_arrays(func)
-    return ivy.inputs_to_native_arrays(
+    func = aikit.output_to_native_arrays(func)
+    return aikit.inputs_to_native_arrays(
         jax.vmap(func, in_axes=in_axes, out_axes=out_axes)
     )
 

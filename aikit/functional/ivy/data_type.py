@@ -853,7 +853,7 @@ default_complex_dtype_stack = []
 
 
 class DefaultDtype:
-    """Ivy's DefaultDtype class."""
+    """Aikit's DefaultDtype class."""
 
     def __init__(self, dtype: aikit.Dtype):
         self._dtype = dtype
@@ -870,7 +870,7 @@ class DefaultDtype:
 
 
 class DefaultFloatDtype:
-    """Ivy's DefaultFloatDtype class."""
+    """Aikit's DefaultFloatDtype class."""
 
     def __init__(self, float_dtype: aikit.Dtype):
         self._float_dtype = float_dtype
@@ -887,7 +887,7 @@ class DefaultFloatDtype:
 
 
 class DefaultIntDtype:
-    """Ivy's DefaultIntDtype class."""
+    """Aikit's DefaultIntDtype class."""
 
     def __init__(self, int_dtype: aikit.Dtype):
         self._int_dtype = int_dtype
@@ -904,7 +904,7 @@ class DefaultIntDtype:
 
 
 class DefaultUintDtype:
-    """Ivy's DefaultUintDtype class."""
+    """Aikit's DefaultUintDtype class."""
 
     def __init__(self, uint_dtype: aikit.UintDtype):
         self._uint_dtype = uint_dtype
@@ -921,7 +921,7 @@ class DefaultUintDtype:
 
 
 class DefaultComplexDtype:
-    """Ivy's DefaultComplexDtype class."""
+    """Aikit's DefaultComplexDtype class."""
 
     def __init__(self, complex_dtype: aikit.Dtype):
         self._complex_dtype = complex_dtype

@@ -27,8 +27,8 @@ try:
 except ImportError:
     warnings.warn(
         "pynvml installation was not found in the environment, functionalities"
-        " of the Ivy's device module will be limited. Please install pynvml if"
-        " you wish to use GPUs with Ivy."
+        " of the Aikit's device module will be limited. Please install pynvml if"
+        " you wish to use GPUs with Aikit."
     )
 
 

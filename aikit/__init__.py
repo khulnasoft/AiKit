@@ -29,7 +29,7 @@ for backend_framework in _not_imported_backends.copy():
 warnings.filterwarnings("ignore", module="^(?!.*aikit).*$")
 
 
-# Local Ivy
+# Local Aikit
 
 import_module_path = "aikit.utils._importlib"
 
@@ -125,9 +125,9 @@ class Dtype(str):
         if dtype_str is builtins.bool:
             dtype_str = "bool"
         if not isinstance(dtype_str, str):
-            raise aikit.utils.exceptions.IvyException("dtype must be type str")
+            raise aikit.utils.exceptions.AikitException("dtype must be type str")
         if dtype_str not in _all_aikit_dtypes_str:
-            raise aikit.utils.exceptions.IvyException(
+            raise aikit.utils.exceptions.AikitException(
                 f"{dtype_str} is not supported by aikit"
             )
         return str.__new__(cls, dtype_str)
@@ -137,7 +137,7 @@ class Dtype(str):
             other = Dtype(other)
 
         if not isinstance(other, Dtype):
-            raise aikit.utils.exceptions.IvyException(
+            raise aikit.utils.exceptions.AikitException(
                 "Attempted to compare a dtype with something which"
                 "couldn't be interpreted as a dtype"
             )
@@ -149,7 +149,7 @@ class Dtype(str):
             other = Dtype(other)
 
         if not isinstance(other, Dtype):
-            raise aikit.utils.exceptions.IvyException(
+            raise aikit.utils.exceptions.AikitException(
                 "Attempted to compare a dtype with something which"
                 "couldn't be interpreted as a dtype"
             )
@@ -161,7 +161,7 @@ class Dtype(str):
             other = Dtype(other)
 
         if not isinstance(other, Dtype):
-            raise aikit.utils.exceptions.IvyException(
+            raise aikit.utils.exceptions.AikitException(
                 "Attempted to compare a dtype with something which"
                 "couldn't be interpreted as a dtype"
             )
@@ -173,7 +173,7 @@ class Dtype(str):
             other = Dtype(other)
 
         if not isinstance(other, Dtype):
-            raise aikit.utils.exceptions.IvyException(
+            raise aikit.utils.exceptions.AikitException(
                 "Attempted to compare a dtype with something which"
                 "couldn't be interpreted as a dtype"
             )
@@ -219,7 +219,7 @@ class Dtype(str):
         elif self.is_float_dtype:
             return finfo(self)
         else:
-            raise aikit.utils.exceptions.IvyError(f"{self} is not supported by info")
+            raise aikit.utils.exceptions.AikitError(f"{self} is not supported by info")
 
     def can_cast(self, to):
         return can_cast(self, to)
@@ -498,7 +498,7 @@ class Shape(Sequence):
 
     def as_list(self):
         if self._shape is None:
-            raise aikit.utils.exceptions.IvyException(
+            raise aikit.utils.exceptions.AikitException(
                 "Cannot convert a partially known Shape to a list"
             )
         return list(self._shape)
@@ -509,13 +509,13 @@ class IntDtype(Dtype):
         if dtype_str is builtins.int:
             dtype_str = default_int_dtype()
         if not isinstance(dtype_str, str):
-            raise aikit.utils.exceptions.IvyException("dtype_str must be type str")
+            raise aikit.utils.exceptions.AikitException("dtype_str must be type str")
         if "int" not in dtype_str:
-            raise aikit.utils.exceptions.IvyException(
+            raise aikit.utils.exceptions.AikitException(
                 "dtype must be string and starts with int"
             )
         if dtype_str not in _all_aikit_dtypes_str:
-            raise aikit.utils.exceptions.IvyException(
+            raise aikit.utils.exceptions.AikitException(
                 f"{dtype_str} is not supported by aikit"
             )
         return str.__new__(cls, dtype_str)
@@ -530,13 +530,13 @@ class FloatDtype(Dtype):
         if dtype_str is builtins.float:
             dtype_str = default_float_dtype()
         if not isinstance(dtype_str, str):
-            raise aikit.utils.exceptions.IvyException("dtype_str must be type str")
+            raise aikit.utils.exceptions.AikitException("dtype_str must be type str")
         if "float" not in dtype_str:
-            raise aikit.utils.exceptions.IvyException(
+            raise aikit.utils.exceptions.AikitException(
                 "dtype must be string and starts with float"
             )
         if dtype_str not in _all_aikit_dtypes_str:
-            raise aikit.utils.exceptions.IvyException(
+            raise aikit.utils.exceptions.AikitException(
                 f"{dtype_str} is not supported by aikit"
             )
         return str.__new__(cls, dtype_str)
@@ -549,13 +549,13 @@ class FloatDtype(Dtype):
 class UintDtype(IntDtype):
     def __new__(cls, dtype_str):
         if not isinstance(dtype_str, str):
-            raise aikit.utils.exceptions.IvyException("dtype_str must be type str")
+            raise aikit.utils.exceptions.AikitException("dtype_str must be type str")
         if "uint" not in dtype_str:
-            raise aikit.utils.exceptions.IvyException(
+            raise aikit.utils.exceptions.AikitException(
                 "dtype must be string and starts with uint"
             )
         if dtype_str not in _all_aikit_dtypes_str:
-            raise aikit.utils.exceptions.IvyException(
+            raise aikit.utils.exceptions.AikitException(
                 f"{dtype_str} is not supported by aikit"
             )
         return str.__new__(cls, dtype_str)
@@ -568,13 +568,13 @@ class UintDtype(IntDtype):
 class ComplexDtype(Dtype):
     def __new__(cls, dtype_str):
         if not isinstance(dtype_str, str):
-            raise aikit.utils.exceptions.IvyException("dtype_str must be type str")
+            raise aikit.utils.exceptions.AikitException("dtype_str must be type str")
         if "complex" not in dtype_str:
-            raise aikit.utils.exceptions.IvyException(
+            raise aikit.utils.exceptions.AikitException(
                 "dtype must be string and starts with complex"
             )
         if dtype_str not in _all_aikit_dtypes_str:
-            raise aikit.utils.exceptions.IvyException(
+            raise aikit.utils.exceptions.AikitException(
                 f"{dtype_str} is not supported by aikit"
             )
         return str.__new__(cls, dtype_str)
@@ -808,14 +808,14 @@ try:
 except:  # noqa: E722
     pass
 finally:
-    # Skip framework imports done by Ivy compiler for now
+    # Skip framework imports done by Aikit compiler for now
     for backend_framework in _not_imported_backends.copy():
         if backend_framework in sys.modules:
             if backend_framework not in _imported_frameworks_before_compiler:
                 _not_imported_backends.remove(backend_framework)
 
 
-# add instance methods to Ivy Array and Container
+# add instance methods to Aikit Array and Container
 from aikit.functional.aikit import (
     activations,
     creation,
@@ -1127,7 +1127,7 @@ def set_nan_policy(warn_level):
         "nothing", "warns", "raise_exception"
     """
     if warn_level not in ["nothing", "warns", "raise_exception"]:
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             "nan_policy must be one of 'nothing', 'warns', 'raise_exception'"
         )
     global nan_policy_stack
@@ -1505,7 +1505,7 @@ class LoggingMode:
         self.logging_mode_stack.append(logging.WARNING)
 
     def set_logging_mode(self, mode):
-        """Set the current logging mode for Ivy.
+        """Set the current logging mode for Aikit.
 
         Possible modes are 'DEBUG', 'INFO', 'WARNING', 'ERROR'.
         """
@@ -1528,13 +1528,13 @@ class LoggingMode:
             logging.getLogger().setLevel(self.logging_mode_stack[-1])
 
 
-class IvyWithGlobalProps(sys.modules[__name__].__class__):
+class AikitWithGlobalProps(sys.modules[__name__].__class__):
     def __setattr__(self, name, value, internal=False):
         previous_frame = inspect.currentframe().f_back
         filename = inspect.getframeinfo(previous_frame)[0]
         internal = internal and _is_from_internal(filename)
         if not internal and name in GLOBAL_PROPS:
-            raise aikit.utils.exceptions.IvyException(
+            raise aikit.utils.exceptions.AikitException(
                 f"Property: {name} is read only! Please use the setter: set_{name}()"
                 " for setting its value!"
             )
@@ -1548,9 +1548,9 @@ if (
     # Required for aikit.with_backend internal compilation
     sys.modules["aikit"].utils._importlib.import_cache[
         __name__
-    ].__class__ = IvyWithGlobalProps
+    ].__class__ = AikitWithGlobalProps
 else:
-    sys.modules[__name__].__class__ = IvyWithGlobalProps
+    sys.modules[__name__].__class__ = AikitWithGlobalProps
 
     # check if all expected binaries are present
     # in this else block to avoid raising the same warning again

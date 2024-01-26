@@ -16,7 +16,7 @@ else:
 
 use = aikit.utils.backend.ContextManager(_module_in_memory)
 
-# wrap __array_ufunc__ method of aikit.Array to prioritize Ivy array methods when using numpu backend
+# wrap __array_ufunc__ method of aikit.Array to prioritize Aikit array methods when using numpu backend
 
 
 def wrap__array_ufunc__(func):

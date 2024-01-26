@@ -1,4 +1,4 @@
-"""Collection of Ivy neural network layers in functional form."""
+"""Collection of Aikit neural network layers in functional form."""
 
 # global
 from typing import Optional, Tuple, Union, Sequence
@@ -2458,7 +2458,7 @@ def lstm(
         input = aikit.swapaxes(input, 0, 1)
 
     if dropout and train:
-        raise aikit.utils.exceptions.IvyNotImplementedException()
+        raise aikit.utils.exceptions.AikitNotImplementedException()
 
     unidirectional = not bidirectional
 

@@ -209,7 +209,7 @@ def promote_types_onnx(
     try:
         ret = onnx_promotion_table[(aikit.as_aikit_dtype(type1), aikit.as_aikit_dtype(type2))]
     except KeyError as e:
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             "these dtypes are not type promotable"
         ) from e
     return ret

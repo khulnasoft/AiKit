@@ -1,4 +1,4 @@
-"""Collection of PyTorch general functions, wrapped to fit Ivy syntax and
+"""Collection of PyTorch general functions, wrapped to fit Aikit syntax and
 signature."""
 
 # global
@@ -144,12 +144,12 @@ def to_numpy(
                 return np.empty(x.shape, dtype=aikit.as_aikit_dtype(x.dtype))
             return np.array(x.tolist(), dtype=aikit.as_aikit_dtype(x.dtype))
         else:
-            raise aikit.utils.exceptions.IvyException(
+            raise aikit.utils.exceptions.AikitException(
                 "Overwriting the same address is not supported for torch."
             )
     elif isinstance(x, list):
         return [aikit.to_numpy(u) for u in x]
-    raise aikit.utils.exceptions.IvyException("Expected a pytorch tensor.")
+    raise aikit.utils.exceptions.AikitException("Expected a pytorch tensor.")
 
 
 def to_scalar(x: torch.Tensor, /) -> Number:
@@ -171,7 +171,7 @@ def to_list(x: torch.Tensor, /) -> list:
             return x.detach().cpu().numpy().astype("bfloat16").tolist()
         else:
             return x.detach().cpu().numpy().tolist()
-    raise aikit.utils.exceptions.IvyException("Expected a pytorch tensor.")
+    raise aikit.utils.exceptions.AikitException("Expected a pytorch tensor.")
 
 
 def gather(
@@ -374,7 +374,7 @@ def scatter_flat(
         aikit.utils.assertions.check_equal(target.shape[0], size, as_array=False)
     dtype = updates.dtype
     if reduction not in ["sum", "replace", "min", "max"]:
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             f'reduction is {reduction}, but it must be one of "sum", "min", "max" or'
             ' "replace"'
         )
@@ -388,7 +388,7 @@ def scatter_flat(
         try:
             import torch_scatter as torch_scatter
         except ImportError as e:
-            raise aikit.utils.exceptions.IvyException(
+            raise aikit.utils.exceptions.AikitException(
                 "Unable to import torch_scatter, verify this is correctly installed."
             ) from e
     if reduction == "replace":
@@ -455,7 +455,7 @@ def scatter_nd(
     implicit_indices_factor = int(result_dim_sizes[num_index_dims - 1].item())
     flat_result_size = _reduce(mul, shape, 1)
     if reduction not in ["sum", "replace", "min", "max"]:
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             f'reduction is {reduction}, but it must be one of "sum", "min", "max" or'
             ' "replace"'
         )
@@ -479,7 +479,7 @@ def scatter_nd(
         try:
             import torch_scatter as torch_scatter
         except ImportError as e:
-            raise aikit.utils.exceptions.IvyException(
+            raise aikit.utils.exceptions.AikitException(
                 "Unable to import torch_scatter, verify this is correctly installed."
             ) from e
     if reduction == "replace":

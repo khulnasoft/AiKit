@@ -6,7 +6,7 @@ from typing import Optional, Tuple, Sequence, Union
 
 import aikit
 from aikit.func_wrapper import with_unsupported_dtypes
-from aikit.utils.exceptions import IvyNotImplementedException
+from aikit.utils.exceptions import AikitNotImplementedException
 from .. import backend_version
 
 from aikit.functional.aikit.experimental.linear_algebra import _check_valid_dimension_size
@@ -210,7 +210,7 @@ def lu_factor(
     pivot: Optional[bool] = True,
     out: Optional[torch.Tensor] = None,
 ) -> Tuple[torch.Tensor]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 @with_unsupported_dtypes({"2.1.1 and below": ("float16",)}, backend_version)

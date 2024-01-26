@@ -1,4 +1,4 @@
-"""Collection of Numpy random functions, wrapped to fit Ivy syntax and
+"""Collection of Numpy random functions, wrapped to fit Aikit syntax and
 signature."""
 
 # global

@@ -209,12 +209,12 @@ def matmul(
     name=None,
 ):
     if transpose_a and adjoint_a:
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             "Only one of `transpose_a` and `adjoint_a` can be True. "
             "Received `transpose_a`=True, `adjoint_a`=True."
         )
     if transpose_b and adjoint_b:
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             "Only one of `transpose_b` and `adjoint_b` can be True. "
             "Received `transpose_b`=True, `adjoint_b`=True."
         )
@@ -301,19 +301,19 @@ def set_diag(input, diagonal, /, *, k=0, align="RIGHT_LEFT", name=None):
     #  1. Add support for different k values and align options
     #  2. Add support for input tensors with ranks larger than 3
 
-    # Convert input and diagonal to Ivy array format
+    # Convert input and diagonal to Aikit array format
     input, diagonal = map(aikit.array, (input, diagonal))
 
     # Check if the input tensor has a rank larger than 3
     if input.ndim > 3:
-        raise aikit.utils.exceptions.IvyNotImplementedException(
+        raise aikit.utils.exceptions.AikitNotImplementedException(
             "Input tensor must have rank less than or equal to 3.\nInput shape:"
             f" {input.shape}"
         )
 
     # Check if the first dimension of the input and diagonal match
     if input.shape[0] != diagonal.shape[0]:
-        raise aikit.utils.exceptions.IvyValueError(
+        raise aikit.utils.exceptions.AikitValueError(
             "Number of diagonal vectors must match the number of matrices in the"
             f" input.\nInput shape: {input.shape}, Diagonal shape: {diagonal.shape}"
         )
@@ -322,7 +322,7 @@ def set_diag(input, diagonal, /, *, k=0, align="RIGHT_LEFT", name=None):
     if input.ndim < 3:
         # Check the diagonal length matches the first dimension of the matrix
         if input.shape[0] != diagonal.shape[0]:
-            raise aikit.utils.exceptions.IvyValueError(
+            raise aikit.utils.exceptions.AikitValueError(
                 "Length of the diagonal vector must match the first dimension of the"
                 f" matrix.\nMatrix shape: {input.shape}, Diagonal shape:"
                 f" {diagonal.shape}"
@@ -333,7 +333,7 @@ def set_diag(input, diagonal, /, *, k=0, align="RIGHT_LEFT", name=None):
         for matrix, new_diagonal in zip(input, diagonal):
             # Check the diagonal length matches the first dimension of the matrix
             if matrix.shape[0] != new_diagonal.shape[0]:
-                raise aikit.utils.exceptions.IvyValueError(
+                raise aikit.utils.exceptions.AikitValueError(
                     "Length of the diagonal vector must match the first dimension of"
                     f" the matrix.\nMatrix shape: {matrix.shape}, Diagonal shape:"
                     f" {new_diagonal.shape}"

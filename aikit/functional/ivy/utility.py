@@ -250,7 +250,7 @@ def save(item, filepath, format=None):
     elif isinstance(item, aikit.Module):
         item.save(filepath)
     else:
-        raise aikit.utils.exceptions.IvyException("Unsupported item type for saving.")
+        raise aikit.utils.exceptions.AikitException("Unsupported item type for saving.")
 
 
 @staticmethod
@@ -263,4 +263,4 @@ def load(filepath, format=None, type="module"):
         else:
             return aikit.Container.cont_load(filepath)
     else:
-        raise aikit.utils.exceptions.IvyException("Unsupported item type for loading.")
+        raise aikit.utils.exceptions.AikitException("Unsupported item type for loading.")

@@ -1,6 +1,6 @@
 """TensorFlow activation functions.
 
-Collection of TensorFlow activation functions, wrapped to fit Ivy syntax
+Collection of TensorFlow activation functions, wrapped to fit Aikit syntax
 and signature.
 """
 

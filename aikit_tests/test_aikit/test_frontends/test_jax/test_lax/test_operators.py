@@ -186,7 +186,7 @@ def _general_dot_helper(draw):
         elif "complex" in input_dtype[0]:
             pref_dtype = draw(complex_cast_st)[-1]
         else:
-            raise aikit.exceptions.IvyException("unsupported dtype")
+            raise aikit.exceptions.AikitException("unsupported dtype")
     return (
         input_dtype * 2,
         (lhs[0], rhs[0]),

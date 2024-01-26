@@ -1,4 +1,4 @@
-"""Collection of NumPy gradient functions, wrapped to fit Ivy syntax and
+"""Collection of NumPy gradient functions, wrapped to fit Aikit syntax and
 signature."""
 
 # global

@@ -1,4 +1,4 @@
-"""Collection of Jax device functions, wrapped to fit Ivy syntax and
+"""Collection of Jax device functions, wrapped to fit Aikit syntax and
 signature."""
 
 # global
@@ -8,9 +8,9 @@ from typing import Union, Optional
 import jaxlib.xla_extension
 
 # local
-import ivy
-from ivy.functional.backends.jax import JaxArray
-from ivy.functional.ivy.device import (
+import aikit
+from aikit.functional.backends.jax import JaxArray
+from aikit.functional.aikit.device import (
     _shift_native_arrays_on_default_device,
     Profiler as BaseProfiler,
 )
@@ -39,14 +39,14 @@ def dev(
     /,
     *,
     as_native: bool = False,
-) -> Union[ivy.Device, jaxlib.xla_extension.Device]:
+) -> Union[aikit.Device, jaxlib.xla_extension.Device]:
     if isinstance(x, jax.interpreters.partial_eval.DynamicJaxprTracer):
         return ""
     if hasattr(x, "device_buffer"):
         dv = _to_array(x).device_buffer.device()
     else:
         dv = jax.devices()[0]
-    return dv if as_native else as_ivy_dev(dv)
+    return dv if as_native else as_aikit_dev(dv)
 
 
 def to_device(
@@ -65,7 +65,7 @@ def to_device(
 
 
 # this is a non-wrapped function used to place JAX arrays on respective devices,
-# since if we use to_device, it will return ivy.array which is not desirable
+# since if we use to_device, it will return aikit.array which is not desirable
 def _to_device(x, device=None):
     if device is not None:
         cur_dev = as_native_dev(dev(x))
@@ -74,21 +74,21 @@ def _to_device(x, device=None):
     return x
 
 
-def as_ivy_dev(device, /):
+def as_aikit_dev(device, /):
     if isinstance(device, str):
-        return ivy.Device(device)
+        return aikit.Device(device)
     if device is None:
         return None
     p, dev_id = (device.platform, device.id)
     if p == "cpu":
-        return ivy.Device(p)
-    return ivy.Device(p + ":" + str(dev_id))
+        return aikit.Device(p)
+    return aikit.Device(p + ":" + str(dev_id))
 
 
 def as_native_dev(device, /):
     if not isinstance(device, str):
         return device
-    dev_split = ivy.Device(device).split(":")
+    dev_split = aikit.Device(device).split(":")
     device = dev_split[0]
     if len(dev_split) > 1:
         idx = int(dev_split[1])

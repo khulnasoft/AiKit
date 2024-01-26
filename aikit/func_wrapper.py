@@ -10,7 +10,7 @@ from typing import Callable, Literal
 import inspect
 import numpy as np
 
-from aikit.utils.exceptions import IvyValueError
+from aikit.utils.exceptions import AikitValueError
 
 
 # for wrapping (sequence matters)
@@ -161,7 +161,7 @@ def try_array_function_override(func, overloaded_args, types, args, kwargs):
         try:
             result = overloaded_arg.__aikit_array_function__(func, types, args, kwargs)
         except Exception:
-            raise aikit.utils.exceptions.IvyNotImplementedException
+            raise aikit.utils.exceptions.AikitNotImplementedException
 
         if result is not NotImplemented:
             return True, result
@@ -759,7 +759,7 @@ def handle_device(fn: Callable) -> Callable:
                 return aikit.handle_soft_device_variable(*args, fn=fn, **kwargs)
         # raise when arrays are on different devices
         elif len(unique_devices) > 1:
-            raise aikit.utils.exceptions.IvyException(
+            raise aikit.utils.exceptions.AikitException(
                 "Expected all input arrays to be on the same device, "
                 f"but found at least two devices - {devices}, "
                 "set `aikit.set_soft_device_mode(True)` to handle this problem."
@@ -1405,7 +1405,7 @@ def handle_nans(fn: Callable) -> Callable:
         if result:
             # handle nans based on the selected policy
             if nan_policy == "raise_exception":
-                raise aikit.utils.exceptions.IvyException(
+                raise aikit.utils.exceptions.AikitException(
                     "Nans are not allowed in `raise_exception` policy."
                 )
             elif nan_policy == "warns":
@@ -1546,7 +1546,7 @@ def handle_complex_input(fn: Callable) -> Callable:
             return jax_like(inp, *args, **kwargs, fn_original=fn)
 
         else:
-            raise IvyValueError(f"complex_mode '{complex_mode}' is not recognised.")
+            raise AikitValueError(f"complex_mode '{complex_mode}' is not recognised.")
 
     _handle_complex_input.handle_complex_input = True
     return _handle_complex_input
@@ -1585,7 +1585,7 @@ def handle_backend_invalid(fn: Callable) -> Callable:
                 and aikit.backend != ""
                 and aikit.current_backend_str() != target_backend.backend
             ):
-                raise aikit.utils.exceptions.IvyInvalidBackendException(
+                raise aikit.utils.exceptions.AikitInvalidBackendException(
                     "Operation not allowed. Array was instantiated with backend"
                     f" {target_backend.backend}. But current backend is"
                     f" {aikit.backend}. Please set dynamic=True"

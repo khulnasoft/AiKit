@@ -4,20 +4,20 @@ from typing import Optional, Union, Tuple, List, Sequence
 from numbers import Number
 
 # local
-import ivy
+import aikit
 
 
 class _ArrayWithElementWiseExperimental(abc.ABC):
     def amax(
-        self: ivy.Array,
+        self: aikit.Array,
         /,
         *,
         axis: Optional[Union[int, Sequence[int]]] = None,
         keepdims: bool = False,
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
-        """ivy.Array instance method variant of ivy.amax. This method simply
-        wraps the function, and so the docstring for ivy.amax also applies to
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
+        """aikit.Array instance method variant of aikit.amax. This method simply
+        wraps the function, and so the docstring for aikit.amax also applies to
         this method with minimal changes.
 
         Parameters
@@ -51,34 +51,34 @@ class _ArrayWithElementWiseExperimental(abc.ABC):
 
         Examples
         --------
-        >>> x = ivy.array([3., 4., 5.])
+        >>> x = aikit.array([3., 4., 5.])
         >>> y = x.amax()
         >>> print(y)
-        ivy.array(5.)
+        aikit.array(5.)
 
-        >>> x = ivy.array([[-1, 0, 1], [2, 3, 4]])
+        >>> x = aikit.array([[-1, 0, 1], [2, 3, 4]])
         >>> y = x.amax(axis=1)
         >>> print(y)
-        ivy.array([1,  4])
+        aikit.array([1,  4])
 
-        >>> x = ivy.array([0.1, 1.1, 2.1])
-        >>> y = ivy.array(0.)
+        >>> x = aikit.array([0.1, 1.1, 2.1])
+        >>> y = aikit.array(0.)
         >>> x.amax(out=y)
         >>> print(y)
-        ivy.array(2.1)
+        aikit.array(2.1)
         """
-        return ivy.amax(self._data, axis=axis, keepdims=keepdims, out=out)
+        return aikit.amax(self._data, axis=axis, keepdims=keepdims, out=out)
 
     def amin(
-        self: ivy.Array,
+        self: aikit.Array,
         /,
         *,
         axis: Optional[Union[int, Sequence[int]]] = None,
         keepdims: bool = False,
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
-        """ivy.Array instance method variant of ivy.amin. This method simply
-        wraps the function, and so the docstring for ivy.amin also applies to
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
+        """aikit.Array instance method variant of aikit.amin. This method simply
+        wraps the function, and so the docstring for aikit.amin also applies to
         this method with minimal changes.
 
         Parameters
@@ -112,27 +112,27 @@ class _ArrayWithElementWiseExperimental(abc.ABC):
 
         Examples
         --------
-        >>> x = ivy.array([3., 4., 5.])
+        >>> x = aikit.array([3., 4., 5.])
         >>> y = x.amin()
         >>> print(y)
-        ivy.array(3.)
+        aikit.array(3.)
 
-        >>> x = ivy.array([[-1, 0, 1], [2, 3, 4]])
+        >>> x = aikit.array([[-1, 0, 1], [2, 3, 4]])
         >>> y = x.amin(axis=1)
         >>> print(y)
-        ivy.array([-1,  2])
+        aikit.array([-1,  2])
 
-        >>> x = ivy.array([0.1, 1.1, 2.1])
-        >>> y = ivy.array(0.)
+        >>> x = aikit.array([0.1, 1.1, 2.1])
+        >>> y = aikit.array(0.)
         >>> x.amin(out=y)
         >>> print(y)
-        ivy.array(0.1)
+        aikit.array(0.1)
         """
-        return ivy.amin(self._data, axis=axis, keepdims=keepdims, out=out)
+        return aikit.amin(self._data, axis=axis, keepdims=keepdims, out=out)
 
-    def lgamma(self: ivy.Array, *, out: Optional[ivy.Array] = None) -> ivy.Array:
-        """ivy.Array instance method variant of ivy.lgamma. This method simply
-        wraps the function, and so the docstring for ivy.lgamma also applies to
+    def lgamma(self: aikit.Array, *, out: Optional[aikit.Array] = None) -> aikit.Array:
+        """aikit.Array instance method variant of aikit.lgamma. This method simply
+        wraps the function, and so the docstring for aikit.lgamma also applies to
         this method with minimal changes.
 
         Parameters
@@ -152,21 +152,21 @@ class _ArrayWithElementWiseExperimental(abc.ABC):
 
         Examples
         --------
-        >>> x = ivy.array([1., 2., 3.])
+        >>> x = aikit.array([1., 2., 3.])
         >>> y = x.lgamma()
         >>> print(y)
-        ivy.array([0., 0., 0.69314718])
+        aikit.array([0., 0., 0.69314718])
 
-        >>> x = ivy.array([4.5, -4, -5.6])
+        >>> x = aikit.array([4.5, -4, -5.6])
         >>> x.lgamma(out = x)
         >>> print(x)
-        ivy.array([2.45373654, inf, -4.6477685 ])
+        aikit.array([2.45373654, inf, -4.6477685 ])
         """
-        return ivy.lgamma(self._data, out=out)
+        return aikit.lgamma(self._data, out=out)
 
-    def sinc(self: ivy.Array, *, out: Optional[ivy.Array] = None) -> ivy.Array:
-        """ivy.Array instance method variant of ivy.sinc. This method simply
-        wraps the function, and so the docstring for ivy.sinc also applies to
+    def sinc(self: aikit.Array, *, out: Optional[aikit.Array] = None) -> aikit.Array:
+        """aikit.Array instance method variant of aikit.sinc. This method simply
+        wraps the function, and so the docstring for aikit.sinc also applies to
         this method with minimal changes.
 
         Parameters
@@ -187,22 +187,22 @@ class _ArrayWithElementWiseExperimental(abc.ABC):
 
         Examples
         --------
-        >>> x = ivy.array([0.5, 1.5, 2.5, 3.5])
+        >>> x = aikit.array([0.5, 1.5, 2.5, 3.5])
         >>> y = x.sinc()
         >>> print(y)
-        ivy.array([0.637,-0.212,0.127,-0.0909])
+        aikit.array([0.637,-0.212,0.127,-0.0909])
         """
-        return ivy.sinc(self._data, out=out)
+        return aikit.sinc(self._data, out=out)
 
     def fmod(
-        self: ivy.Array,
-        x2: ivy.Array,
+        self: aikit.Array,
+        x2: aikit.Array,
         /,
         *,
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
-        """ivy.Array instance method variant of ivy.fmod. This method simply
-        wraps the function, and so the docstring for ivy.fmod also applies to
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
+        """aikit.Array instance method variant of aikit.fmod. This method simply
+        wraps the function, and so the docstring for aikit.fmod also applies to
         this method with minimal changes.
 
         Parameters
@@ -221,27 +221,27 @@ class _ArrayWithElementWiseExperimental(abc.ABC):
 
         Examples
         --------
-        >>> x1 = ivy.array([2, 3, 4])
-        >>> x2 = ivy.array([1, 5, 2])
+        >>> x1 = aikit.array([2, 3, 4])
+        >>> x2 = aikit.array([1, 5, 2])
         >>> x1.fmod(x2)
-        ivy.array([ 0,  3,  0])
+        aikit.array([ 0,  3,  0])
 
-        >>> x1 = ivy.array([ivy.nan, 0, ivy.nan])
-        >>> x2 = ivy.array([0, ivy.nan, ivy.nan])
+        >>> x1 = aikit.array([aikit.nan, 0, aikit.nan])
+        >>> x2 = aikit.array([0, aikit.nan, aikit.nan])
         >>> x1.fmod(x2)
-        ivy.array([ nan,  nan,  nan])
+        aikit.array([ nan,  nan,  nan])
         """
-        return ivy.fmod(self._data, x2, out=out)
+        return aikit.fmod(self._data, x2, out=out)
 
     def fmax(
-        self: ivy.Array,
-        x2: ivy.Array,
+        self: aikit.Array,
+        x2: aikit.Array,
         /,
         *,
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
-        """ivy.Array instance method variant of ivy.fmax. This method simply
-        wraps the function, and so the docstring for ivy.fmax also applies to
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
+        """aikit.Array instance method variant of aikit.fmax. This method simply
+        wraps the function, and so the docstring for aikit.fmax also applies to
         this method with minimal changes.
 
         Parameters
@@ -260,27 +260,27 @@ class _ArrayWithElementWiseExperimental(abc.ABC):
 
         Examples
         --------
-        >>> x1 = ivy.array([2, 3, 4])
-        >>> x2 = ivy.array([1, 5, 2])
-        >>> ivy.fmax(x1, x2)
-        ivy.array([ 2.,  5.,  4.])
+        >>> x1 = aikit.array([2, 3, 4])
+        >>> x2 = aikit.array([1, 5, 2])
+        >>> aikit.fmax(x1, x2)
+        aikit.array([ 2.,  5.,  4.])
 
-        >>> x1 = ivy.array([ivy.nan, 0, ivy.nan])
-        >>> x2 = ivy.array([0, ivy.nan, ivy.nan])
+        >>> x1 = aikit.array([aikit.nan, 0, aikit.nan])
+        >>> x2 = aikit.array([0, aikit.nan, aikit.nan])
         >>> x1.fmax(x2)
-        ivy.array([ 0,  0,  nan])
+        aikit.array([ 0,  0,  nan])
         """
-        return ivy.fmax(self._data, x2, out=out)
+        return aikit.fmax(self._data, x2, out=out)
 
     def float_power(
-        self: Union[ivy.Array, float, list, tuple],
-        x2: Union[ivy.Array, float, list, tuple],
+        self: Union[aikit.Array, float, list, tuple],
+        x2: Union[aikit.Array, float, list, tuple],
         /,
         *,
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
-        """ivy.Array instance method variant of ivy.float_power. This method
-        simply wraps the function, and so the docstring for ivy.float_power
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
+        """aikit.Array instance method variant of aikit.float_power. This method
+        simply wraps the function, and so the docstring for aikit.float_power
         also applies to this method with minimal changes.
 
         Parameters
@@ -302,25 +302,25 @@ class _ArrayWithElementWiseExperimental(abc.ABC):
 
         Examples
         --------
-        >>> x1 = ivy.array([1, 2, 3, 4, 5])
+        >>> x1 = aikit.array([1, 2, 3, 4, 5])
         >>> x1.float_power(3)
-        ivy.array([1.,    8.,   27.,   64.,  125.])
-        >>> x1 = ivy.array([1, 2, 3, 4, 5])
-        >>> x2 = ivy.array([2, 3, 3, 2, 1])
+        aikit.array([1.,    8.,   27.,   64.,  125.])
+        >>> x1 = aikit.array([1, 2, 3, 4, 5])
+        >>> x2 = aikit.array([2, 3, 3, 2, 1])
         >>> x1.float_power(x2)
-        ivy.array([1.,   8.,  27.,  16.,   5.])
+        aikit.array([1.,   8.,  27.,  16.,   5.])
         """
-        return ivy.float_power(self._data, x2, out=out)
+        return aikit.float_power(self._data, x2, out=out)
 
     def copysign(
-        self: Union[ivy.Array, ivy.NativeArray, Number],
-        x2: Union[ivy.Array, ivy.NativeArray, Number],
+        self: Union[aikit.Array, aikit.NativeArray, Number],
+        x2: Union[aikit.Array, aikit.NativeArray, Number],
         /,
         *,
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
-        """ivy.Array instance method variant of ivy.copysign. This method
-        simply wraps the function, and so the docstring for ivy.copysign also
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
+        """aikit.Array instance method variant of aikit.copysign. This method
+        simply wraps the function, and so the docstring for aikit.copysign also
         applies to this method with minimal changes.
 
         Parameters
@@ -341,26 +341,26 @@ class _ArrayWithElementWiseExperimental(abc.ABC):
 
         Examples
         --------
-        >>> x1 = ivy.array([0, 1, 2, 3])
-        >>> x2 = ivy.array([-1, 1, -2, 2])
+        >>> x1 = aikit.array([0, 1, 2, 3])
+        >>> x2 = aikit.array([-1, 1, -2, 2])
         >>> x1.copysign(x2)
-        ivy.array([-0.,  1., -2.,  3.])
+        aikit.array([-0.,  1., -2.,  3.])
         >>> x2.copysign(-1)
-        ivy.array([-1., -1., -2., -2.])
+        aikit.array([-1., -1., -2., -2.])
         """
-        return ivy.copysign(self._data, x2, out=out)
+        return aikit.copysign(self._data, x2, out=out)
 
     def count_nonzero(
-        self: ivy.Array,
+        self: aikit.Array,
         /,
         *,
         axis: Optional[Union[int, Tuple[int, ...]]] = None,
         keepdims: bool = False,
-        dtype: Optional[Union[ivy.Dtype, ivy.NativeDtype]] = None,
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
-        """ivy.Array instance method variant of ivy.count_nonzero. This method
-        simply wraps the function, and so the docstring for ivy.count_nonzero
+        dtype: Optional[Union[aikit.Dtype, aikit.NativeDtype]] = None,
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
+        """aikit.Array instance method variant of aikit.count_nonzero. This method
+        simply wraps the function, and so the docstring for aikit.count_nonzero
         also applies to this method with minimal changes.
 
         Parameters
@@ -388,32 +388,32 @@ class _ArrayWithElementWiseExperimental(abc.ABC):
 
         Examples
         --------
-        >>> x = ivy.array([1, 2, 3])
+        >>> x = aikit.array([1, 2, 3])
         >>> x.count_nonzero()
-        ivy.array(3)
-        >>> x = ivy.array([[[0,1],[2,3]],[[4,5],[6,7]]])
+        aikit.array(3)
+        >>> x = aikit.array([[[0,1],[2,3]],[[4,5],[6,7]]])
         >>> x.count_nonzero(axis=0)
-        ivy.array([[1, 2],
+        aikit.array([[1, 2],
                [2, 2]])
-        >>> x = ivy.array([[[0,1],[2,3]],[[4,5],[6,7]]])
+        >>> x = aikit.array([[[0,1],[2,3]],[[4,5],[6,7]]])
         >>> x.count_nonzero(axis=(0,1), keepdims=True)
-        ivy.array([[[3, 4]]])
+        aikit.array([[[3, 4]]])
         """
-        return ivy.count_nonzero(
+        return aikit.count_nonzero(
             self._data, axis=axis, keepdims=keepdims, dtype=dtype, out=out
         )
 
     def nansum(
-        self: ivy.Array,
+        self: aikit.Array,
         /,
         *,
         axis: Optional[Union[tuple, int]] = None,
-        dtype: Optional[Union[ivy.Dtype, ivy.NativeDtype]] = None,
+        dtype: Optional[Union[aikit.Dtype, aikit.NativeDtype]] = None,
         keepdims: bool = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Array:
-        """ivy.Array instance method variant of ivy.nansum. This method simply
-        wraps the function, and so the docstring for ivy.nansum also applies to
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Array:
+        """aikit.Array instance method variant of aikit.nansum. This method simply
+        wraps the function, and so the docstring for aikit.nansum also applies to
         this method with minimal changes.
 
         Parameters
@@ -441,30 +441,30 @@ class _ArrayWithElementWiseExperimental(abc.ABC):
 
         Examples
         --------
-        >>> a = ivy.array([[ 2.1,  3.4,  ivy.nan], [ivy.nan, 2.4, 2.1]])
-        >>> ivy.nansum(a)
+        >>> a = aikit.array([[ 2.1,  3.4,  aikit.nan], [aikit.nan, 2.4, 2.1]])
+        >>> aikit.nansum(a)
         10.0
-        >>> ivy.nansum(a, axis=0)
-        ivy.array([2.1, 5.8, 2.1])
-        >>> ivy.nansum(a, axis=1)
-        ivy.array([5.5, 4.5])
+        >>> aikit.nansum(a, axis=0)
+        aikit.array([2.1, 5.8, 2.1])
+        >>> aikit.nansum(a, axis=1)
+        aikit.array([5.5, 4.5])
         """
-        return ivy.nansum(
+        return aikit.nansum(
             self._data, axis=axis, dtype=dtype, keepdims=keepdims, out=out
         )
 
     def isclose(
-        self: ivy.Array,
-        b: ivy.Array,
+        self: aikit.Array,
+        b: aikit.Array,
         /,
         *,
         rtol: float = 1e-05,
         atol: float = 1e-08,
         equal_nan: bool = False,
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
-        """ivy.Array instance method variant of ivy.isclose. This method simply
-        wraps the function, and so the docstring for ivy.isclose also applies
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
+        """aikit.Array instance method variant of aikit.isclose. This method simply
+        wraps the function, and so the docstring for aikit.isclose also applies
         to this method with minimal changes.
 
         Parameters
@@ -492,33 +492,33 @@ class _ArrayWithElementWiseExperimental(abc.ABC):
 
         Examples
         --------
-        >>> a = ivy.array([[ 2.1,  3.4,  ivy.nan], [ivy.nan, 2.4, 2.1]])
-        >>> b = ivy.array([[ 2.1,  3.4,  ivy.nan], [ivy.nan, 2.4, 2.1]])
+        >>> a = aikit.array([[ 2.1,  3.4,  aikit.nan], [aikit.nan, 2.4, 2.1]])
+        >>> b = aikit.array([[ 2.1,  3.4,  aikit.nan], [aikit.nan, 2.4, 2.1]])
         >>> a.isclose(b)
-        ivy.array([[True, True, False],
+        aikit.array([[True, True, False],
                [False, True, True]])
         >>> a.isclose(b, equal_nan=True)
-        ivy.array([[True, True, True],
+        aikit.array([[True, True, True],
                [True, True, True]])
-        >>> a=ivy.array([1.0, 2.0])
-        >>> b=ivy.array([1.0, 2.001])
+        >>> a=aikit.array([1.0, 2.0])
+        >>> b=aikit.array([1.0, 2.001])
         >>> a.isclose(b, atol=0.0)
-        ivy.array([True, False])
+        aikit.array([True, False])
         >>> a.isclose(b, rtol=0.01, atol=0.0)
-        ivy.array([True, True])
+        aikit.array([True, True])
         """
-        return ivy.isclose(
+        return aikit.isclose(
             self._data, b, rtol=rtol, atol=atol, equal_nan=equal_nan, out=out
         )
 
     def signbit(
-        self: Union[ivy.Array, float, int, list, tuple],
+        self: Union[aikit.Array, float, int, list, tuple],
         /,
         *,
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
-        """ivy.Array instance method variant of ivy.signbit. This method simply
-        wraps the function, and so the docstring for ivy.signbit also applies
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
+        """aikit.Array instance method variant of aikit.signbit. This method simply
+        wraps the function, and so the docstring for aikit.signbit also applies
         to this method with minimal changes.
 
         Parameters
@@ -535,21 +535,21 @@ class _ArrayWithElementWiseExperimental(abc.ABC):
 
         Examples
         --------
-        >>> x = ivy.array([1, -2, 3])
+        >>> x = aikit.array([1, -2, 3])
         >>> x.signbit()
-        ivy.array([False, True, False])
+        aikit.array([False, True, False])
         """
-        return ivy.signbit(self._data, out=out)
+        return aikit.signbit(self._data, out=out)
 
     def hypot(
-        self: ivy.Array,
-        x2: ivy.Array,
+        self: aikit.Array,
+        x2: aikit.Array,
         /,
         *,
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
-        """ivy.Array instance method variant of ivy.hypot. This method simply
-        wraps the function, and so the docstring for ivy.hypot also applies to
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
+        """aikit.Array instance method variant of aikit.hypot. This method simply
+        wraps the function, and so the docstring for aikit.hypot also applies to
         this method with minimal changes.
 
         Parameters
@@ -570,25 +570,25 @@ class _ArrayWithElementWiseExperimental(abc.ABC):
 
         Examples
         --------
-        >>> x = ivy.array([3.0, 4.0, 5.0])
-        >>> y = ivy.array([4.0, 5.0, 6.0])
+        >>> x = aikit.array([3.0, 4.0, 5.0])
+        >>> y = aikit.array([4.0, 5.0, 6.0])
         >>> x.hypot(y)
-        ivy.array([5.0, 6.4031, 7.8102])
+        aikit.array([5.0, 6.4031, 7.8102])
         """
-        return ivy.hypot(self._data, x2, out=out)
+        return aikit.hypot(self._data, x2, out=out)
 
     def allclose(
-        self: ivy.Array,
-        x2: ivy.Array,
+        self: aikit.Array,
+        x2: aikit.Array,
         /,
         *,
         rtol: float = 1e-05,
         atol: float = 1e-08,
         equal_nan: bool = False,
-        out: Optional[ivy.Container] = None,
+        out: Optional[aikit.Container] = None,
     ) -> bool:
-        """ivy.Array instance method variant of ivy.allclose. This method
-        simply wraps the function, and so the docstring for ivy.allclose also
+        """aikit.Array instance method variant of aikit.allclose. This method
+        simply wraps the function, and so the docstring for aikit.allclose also
         applies to this method with minimal changes.
 
         Parameters
@@ -616,40 +616,40 @@ class _ArrayWithElementWiseExperimental(abc.ABC):
 
         Examples
         --------
-        >>> x1 = ivy.array([1e10, 1e-7])
-        >>> x2 = ivy.array([1.00001e10, 1e-8])
+        >>> x1 = aikit.array([1e10, 1e-7])
+        >>> x2 = aikit.array([1.00001e10, 1e-8])
         >>> y = x1.allclose(x2)
         >>> print(y)
-        ivy.array(False)
+        aikit.array(False)
 
-        >>> x1 = ivy.array([1.0, ivy.nan])
-        >>> x2 = ivy.array([1.0, ivy.nan])
+        >>> x1 = aikit.array([1.0, aikit.nan])
+        >>> x2 = aikit.array([1.0, aikit.nan])
         >>> y = x1.allclose(x2, equal_nan=True)
         >>> print(y)
-        ivy.array(True)
+        aikit.array(True)
 
-        >>> x1 = ivy.array([1e-10, 1e-10])
-        >>> x2 = ivy.array([1.00001e-10, 1e-10])
+        >>> x1 = aikit.array([1e-10, 1e-10])
+        >>> x2 = aikit.array([1.00001e-10, 1e-10])
         >>> y = x1.allclose(x2, rtol=0.005, atol=0.0)
         >>> print(y)
-        ivy.array(True)
+        aikit.array(True)
         """
-        return ivy.allclose(
+        return aikit.allclose(
             self._data, x2, rtol=rtol, atol=atol, equal_nan=equal_nan, out=out
         )
 
     def diff(
-        self: ivy.Array,
+        self: aikit.Array,
         /,
         *,
         n: int = 1,
         axis: int = -1,
-        prepend: Optional[Union[ivy.Array, ivy.NativeArray, int, list, tuple]] = None,
-        append: Optional[Union[ivy.Array, ivy.NativeArray, int, list, tuple]] = None,
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
-        """ivy.Array instance method variant of ivy.diff. This method simply
-        wraps the function, and so the docstring for ivy.diff also applies to
+        prepend: Optional[Union[aikit.Array, aikit.NativeArray, int, list, tuple]] = None,
+        append: Optional[Union[aikit.Array, aikit.NativeArray, int, list, tuple]] = None,
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
+        """aikit.Array instance method variant of aikit.diff. This method simply
+        wraps the function, and so the docstring for aikit.diff also applies to
         this method with minimal changes.
 
         Parameters
@@ -676,22 +676,22 @@ class _ArrayWithElementWiseExperimental(abc.ABC):
 
         Examples
         --------
-        >>> x = ivy.array([1, 2, 4, 7, 0])
+        >>> x = aikit.array([1, 2, 4, 7, 0])
         >>> x.diff()
-        ivy.array([ 1,  2,  3, -7])
+        aikit.array([ 1,  2,  3, -7])
         """
-        return ivy.diff(
+        return aikit.diff(
             self._data, n=n, axis=axis, prepend=prepend, append=append, out=out
         )
 
     def fix(
-        self: ivy.Array,
+        self: aikit.Array,
         /,
         *,
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
-        """ivy.Array instance method variant of ivy.fix. This method simply
-        wraps the function, and so the docstring for ivy.fix also applies to
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
+        """aikit.Array instance method variant of aikit.fix. This method simply
+        wraps the function, and so the docstring for aikit.fix also applies to
         this method with minimal changes.
 
         Parameters
@@ -709,21 +709,21 @@ class _ArrayWithElementWiseExperimental(abc.ABC):
 
         Examples
         --------
-        >>> x = ivy.array([2.1, 2.9, -2.1])
+        >>> x = aikit.array([2.1, 2.9, -2.1])
         >>> x.fix()
-        ivy.array([ 2.,  2., -2.])
+        aikit.array([ 2.,  2., -2.])
         """
-        return ivy.fix(self._data, out=out)
+        return aikit.fix(self._data, out=out)
 
     def nextafter(
-        self: ivy.Array,
-        x2: ivy.Array,
+        self: aikit.Array,
+        x2: aikit.Array,
         /,
         *,
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
-        """ivy.Array instance method variant of ivy.nextafter. This method
-        simply wraps the function, and so the docstring for ivy.nextafter also
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
+        """aikit.Array instance method variant of aikit.nextafter. This method
+        simply wraps the function, and so the docstring for aikit.nextafter also
         applies to this method with minimal changes.
 
         Parameters
@@ -743,22 +743,22 @@ class _ArrayWithElementWiseExperimental(abc.ABC):
 
         Examples
         --------
-        >>> x1 = ivy.array([1.0e-50, 2.0e+50])
-        >>> x2 = ivy.array([2.0, 1.0])
+        >>> x1 = aikit.array([1.0e-50, 2.0e+50])
+        >>> x2 = aikit.array([2.0, 1.0])
         >>> x1.nextafter(x2)
-        ivy.array([1.4013e-45., 3.4028e+38])
+        aikit.array([1.4013e-45., 3.4028e+38])
         """
-        return ivy.nextafter(self._data, x2, out=out)
+        return aikit.nextafter(self._data, x2, out=out)
 
     def zeta(
-        self: ivy.Array,
-        q: ivy.Array,
+        self: aikit.Array,
+        q: aikit.Array,
         /,
         *,
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
-        """ivy.Array instance method variant of ivy.zeta. This method simply
-        wraps the function, and so the docstring for ivy.zeta also applies to
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
+        """aikit.Array instance method variant of aikit.zeta. This method simply
+        wraps the function, and so the docstring for aikit.zeta also applies to
         this method with minimal changes.
 
         Parameters
@@ -779,21 +779,21 @@ class _ArrayWithElementWiseExperimental(abc.ABC):
 
         Examples
         --------
-        >>> x = ivy.array([5.0, 3.0])
-        >>> q = ivy.array([2.0])
+        >>> x = aikit.array([5.0, 3.0])
+        >>> q = aikit.array([2.0])
         >>> x.zeta(q)
-        ivy.array([0.0369, 0.2021])
+        aikit.array([0.0369, 0.2021])
         """
-        return ivy.zeta(self._data, q, out=out)
+        return aikit.zeta(self._data, q, out=out)
 
     def gradient(
-        self: Union[ivy.Array, ivy.NativeArray],
+        self: Union[aikit.Array, aikit.NativeArray],
         /,
         *,
         spacing: Union[int, list, tuple] = 1,
         edge_order: int = 1,
         axis: Optional[Union[int, list, tuple]] = None,
-    ) -> Union[ivy.Array, List[ivy.Array]]:
+    ) -> Union[aikit.Array, List[aikit.Array]]:
         """Calculate gradient of x with respect to (w.r.t.) spacing.
 
         Parameters
@@ -821,53 +821,53 @@ class _ArrayWithElementWiseExperimental(abc.ABC):
 
         Examples
         --------
-        >>> spacing = (ivy.array([-2., -1., 1., 4.]),)
-        >>> x = ivy.array([4., 1., 1., 16.], )
-        >>> ivy.gradient(x, spacing=spacing)
-        ivy.array([-3., -2.,  2.,  5.])
+        >>> spacing = (aikit.array([-2., -1., 1., 4.]),)
+        >>> x = aikit.array([4., 1., 1., 16.], )
+        >>> aikit.gradient(x, spacing=spacing)
+        aikit.array([-3., -2.,  2.,  5.])
 
-        >>> x = ivy.array([[1, 2, 4, 8], [10, 20, 40, 80]])
-        >>> ivy.gradient(x)
-        [ivy.array([[ 9., 18., 36., 72.],
-           [ 9., 18., 36., 72.]]), ivy.array([[ 1. ,  1.5,  3. ,  4. ],
+        >>> x = aikit.array([[1, 2, 4, 8], [10, 20, 40, 80]])
+        >>> aikit.gradient(x)
+        [aikit.array([[ 9., 18., 36., 72.],
+           [ 9., 18., 36., 72.]]), aikit.array([[ 1. ,  1.5,  3. ,  4. ],
            [10. , 15. , 30. , 40. ]])]
 
-        >>> x = ivy.array([[1, 2, 4, 8], [10, 20, 40, 80]])
-        >>> ivy.gradient(x, spacing=2.0)
-        [ivy.array([[ 4.5,  9. , 18. , 36. ],
-           [ 4.5,  9. , 18. , 36. ]]), ivy.array([[ 0.5 ,  0.75,  1.5 ,  2.  ],
+        >>> x = aikit.array([[1, 2, 4, 8], [10, 20, 40, 80]])
+        >>> aikit.gradient(x, spacing=2.0)
+        [aikit.array([[ 4.5,  9. , 18. , 36. ],
+           [ 4.5,  9. , 18. , 36. ]]), aikit.array([[ 0.5 ,  0.75,  1.5 ,  2.  ],
            [ 5.  ,  7.5 , 15.  , 20.  ]])]
 
-        >>> x = ivy.array([[1, 2, 4, 8], [10, 20, 40, 80]])
-        >>> ivy.gradient(x, axis=1)
-        ivy.array([[ 1. ,  1.5,  3. ,  4. ],
+        >>> x = aikit.array([[1, 2, 4, 8], [10, 20, 40, 80]])
+        >>> aikit.gradient(x, axis=1)
+        aikit.array([[ 1. ,  1.5,  3. ,  4. ],
            [10. , 15. , 30. , 40. ]])
 
-        >>> x = ivy.array([[1, 2, 4, 8], [10, 20, 40, 80]])
-        >>> ivy.gradient(x, spacing=[3., 2.])
-        [ivy.array([[ 3.,  6., 12., 24.],
-           [ 3.,  6., 12., 24.]]), ivy.array([[ 0.5 ,  0.75,  1.5 ,  2.  ],
+        >>> x = aikit.array([[1, 2, 4, 8], [10, 20, 40, 80]])
+        >>> aikit.gradient(x, spacing=[3., 2.])
+        [aikit.array([[ 3.,  6., 12., 24.],
+           [ 3.,  6., 12., 24.]]), aikit.array([[ 0.5 ,  0.75,  1.5 ,  2.  ],
            [ 5.  ,  7.5 , 15.  , 20.  ]])]
 
-        >>> spacing = (ivy.array([0, 2]), ivy.array([0, 3, 6, 9]))
-        >>> ivy.gradient(x, spacing=spacing)
-        [ivy.array([[ 4.5,  9. , 18. , 36. ],
-           [ 4.5,  9. , 18. , 36. ]]), ivy.array([[ 0.33333333,  0.5,  1., 1.33333333],
+        >>> spacing = (aikit.array([0, 2]), aikit.array([0, 3, 6, 9]))
+        >>> aikit.gradient(x, spacing=spacing)
+        [aikit.array([[ 4.5,  9. , 18. , 36. ],
+           [ 4.5,  9. , 18. , 36. ]]), aikit.array([[ 0.33333333,  0.5,  1., 1.33333333],
            [ 3.33333333,  5.        , 10.        , 13.33333333]])]
         """
-        return ivy.gradient(
+        return aikit.gradient(
             self._data, spacing=spacing, axis=axis, edge_order=edge_order
         )
 
     def xlogy(
-        self: ivy.Array,
-        y: ivy.Array,
+        self: aikit.Array,
+        y: aikit.Array,
         /,
         *,
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
-        """ivy.Array instance method variant of ivy.xlogy. This method simply
-        wraps the function, and so the docstring for ivy.xlogy also applies to
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
+        """aikit.Array instance method variant of aikit.xlogy. This method simply
+        wraps the function, and so the docstring for aikit.xlogy also applies to
         this method with minimal changes.
 
         Parameters
@@ -887,21 +887,21 @@ class _ArrayWithElementWiseExperimental(abc.ABC):
 
         Examples
         --------
-        >>> x = ivy.zeros(3)
-        >>> y = ivy.array([-1.0, 0.0, 1.0])
+        >>> x = aikit.zeros(3)
+        >>> y = aikit.array([-1.0, 0.0, 1.0])
         >>> x.xlogy(y)
-        ivy.array([0.0, 0.0, 0.0])
+        aikit.array([0.0, 0.0, 0.0])
 
-        >>> x = ivy.array([1.0, 2.0, 3.0])
-        >>> y = ivy.array([3.0, 2.0, 1.0])
+        >>> x = aikit.array([1.0, 2.0, 3.0])
+        >>> y = aikit.array([3.0, 2.0, 1.0])
         >>> x.xlogy(y)
-        ivy.array([1.0986, 1.3863, 0.0000])
+        aikit.array([1.0986, 1.3863, 0.0000])
         """
-        return ivy.xlogy(self._data, y, out=out)
+        return aikit.xlogy(self._data, y, out=out)
 
     def binarizer(
-        self: ivy.Array, /, *, threshold: float = 0, out: Optional[ivy.Array] = None
-    ) -> ivy.Array:
+        self: aikit.Array, /, *, threshold: float = 0, out: Optional[aikit.Array] = None
+    ) -> aikit.Array:
         """Map the values of the input tensor to either 0 or 1, element-wise,
         based on the outcome of a comparison against a threshold value.
 
@@ -921,11 +921,11 @@ class _ArrayWithElementWiseExperimental(abc.ABC):
         ret
             Binarized output data
         """
-        return ivy.binarizer(self._data, threshold=threshold, out=out)
+        return aikit.binarizer(self._data, threshold=threshold, out=out)
 
-    def conj(self: ivy.Array, /, *, out: Optional[ivy.Array] = None) -> ivy.Array:
-        """ivy.Array instance method variant of ivy.conj. This method simply
-        wraps the function, and so the docstring for ivy.conj also applies to
+    def conj(self: aikit.Array, /, *, out: Optional[aikit.Array] = None) -> aikit.Array:
+        """aikit.Array instance method variant of aikit.conj. This method simply
+        wraps the function, and so the docstring for aikit.conj also applies to
         this method with minimal changes.
 
         Parameters
@@ -944,22 +944,22 @@ class _ArrayWithElementWiseExperimental(abc.ABC):
 
         Examples
         --------
-        >>> x = ivy.array([4+3j, 6+2j, 1-6j])
+        >>> x = aikit.array([4+3j, 6+2j, 1-6j])
         >>> x.conj()
-        ivy.array([4-3j, 6-2j, 1+6j])
+        aikit.array([4-3j, 6-2j, 1+6j])
         """
-        return ivy.conj(self._data, out=out)
+        return aikit.conj(self._data, out=out)
 
     def lerp(
-        self: ivy.Array,
-        end: ivy.Array,
-        weight: Union[ivy.Array, float],
+        self: aikit.Array,
+        end: aikit.Array,
+        weight: Union[aikit.Array, float],
         /,
         *,
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
-        """ivy.Array instance method variant of ivy.lerp. This method simply
-        wraps the function, and so the docstring for ivy.lerp also applies to
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
+        """aikit.Array instance method variant of aikit.lerp. This method simply
+        wraps the function, and so the docstring for aikit.lerp also applies to
         this method with minimal changes.
 
         Parameters
@@ -983,23 +983,23 @@ class _ArrayWithElementWiseExperimental(abc.ABC):
 
         Examples
         --------
-        >>> x = ivy.array([1.0, 2.0, 3.0, 4.0])
-        >>> end = ivy.array([10.0, 10.0, 10.0, 10.0])
+        >>> x = aikit.array([1.0, 2.0, 3.0, 4.0])
+        >>> end = aikit.array([10.0, 10.0, 10.0, 10.0])
         >>> weight = 0.5
         >>> x.lerp(end, weight)
-        ivy.array([5.5, 6. , 6.5, 7. ])
+        aikit.array([5.5, 6. , 6.5, 7. ])
         """
-        return ivy.lerp(self, end, weight, out=out)
+        return aikit.lerp(self, end, weight, out=out)
 
     def ldexp(
-        self: ivy.Array,
-        x2: ivy.Array,
+        self: aikit.Array,
+        x2: aikit.Array,
         /,
         *,
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
-        """ivy.Array instance method variant of ivy.ldexp. This method simply
-        wraps the function, and so the docstring for ivy.ldexp also applies to
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
+        """aikit.Array instance method variant of aikit.ldexp. This method simply
+        wraps the function, and so the docstring for aikit.ldexp also applies to
         this method with minimal changes.
 
         Parameters
@@ -1019,18 +1019,18 @@ class _ArrayWithElementWiseExperimental(abc.ABC):
 
         Examples
         --------
-        >>> x = ivy.array([1.0, 2.0, 3.0])
-        >>> y = ivy.array([3.0, 2.0, 1.0])
+        >>> x = aikit.array([1.0, 2.0, 3.0])
+        >>> y = aikit.array([3.0, 2.0, 1.0])
         >>> x.ldexp(y)
-        ivy.array([8.0, 8.0, 6.0])
+        aikit.array([8.0, 8.0, 6.0])
         """
-        return ivy.ldexp(self._data, x2, out=out)
+        return aikit.ldexp(self._data, x2, out=out)
 
     def frexp(
-        self: ivy.Array, /, *, out: Optional[Tuple[ivy.Array, ivy.Array]] = None
-    ) -> ivy.Array:
-        """ivy.Array instance method variant of ivy.frexp. This method simply
-        wraps the function, and so the docstring for ivy.frexp also applies to
+        self: aikit.Array, /, *, out: Optional[Tuple[aikit.Array, aikit.Array]] = None
+    ) -> aikit.Array:
+        """aikit.Array instance method variant of aikit.frexp. This method simply
+        wraps the function, and so the docstring for aikit.frexp also applies to
         this method with minimal changes.
 
         Parameters
@@ -1048,17 +1048,17 @@ class _ArrayWithElementWiseExperimental(abc.ABC):
 
         Examples
         --------
-        >>> x = ivy.array([1.0, 2.0, 3.0])
+        >>> x = aikit.array([1.0, 2.0, 3.0])
         >>> x.frexp()
-        ivy.array([[0.5, 0.5, 0.75], [1, 2, 2]])
+        aikit.array([[0.5, 0.5, 0.75], [1, 2, 2]])
         """
-        return ivy.frexp(self._data, out=out)
+        return aikit.frexp(self._data, out=out)
 
     def modf(
-        self: ivy.Array, /, *, out: Optional[Tuple[ivy.Array, ivy.Array]] = None
-    ) -> Tuple[ivy.Array, ivy.Array]:
-        """ivy.Array instance method variant of ivy.modf. This method simply
-        wraps the function, and so the docstring for ivy.modf also applies to
+        self: aikit.Array, /, *, out: Optional[Tuple[aikit.Array, aikit.Array]] = None
+    ) -> Tuple[aikit.Array, aikit.Array]:
+        """aikit.Array instance method variant of aikit.modf. This method simply
+        wraps the function, and so the docstring for aikit.modf also applies to
         this method with minimal changes.
 
         Parameters
@@ -1076,25 +1076,25 @@ class _ArrayWithElementWiseExperimental(abc.ABC):
 
         Examples
         --------
-        >>> x = ivy.array([1.5, 2.7, 3.9])
+        >>> x = aikit.array([1.5, 2.7, 3.9])
         >>> x.modf()
-        (ivy.array([0.5, 0.7, 0.9]), ivy.array([1, 2, 3]))
+        (aikit.array([0.5, 0.7, 0.9]), aikit.array([1, 2, 3]))
         """
-        return ivy.modf(self._data, out=out)
+        return aikit.modf(self._data, out=out)
 
     def digamma(
-        self: ivy.Array,
+        self: aikit.Array,
         /,
         *,
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
-        """ivy.Array instance method variant of ivy.digamma. This method simply
-        wraps the function, and so the docstring for ivy.digamma also applies
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
+        """aikit.Array instance method variant of aikit.digamma. This method simply
+        wraps the function, and so the docstring for aikit.digamma also applies
         to this method with minimal changes.
 
         Note
         ----
-        The Ivy version only accepts real-valued inputs.
+        The Aikit version only accepts real-valued inputs.
 
         Parameters
         ----------
@@ -1112,21 +1112,21 @@ class _ArrayWithElementWiseExperimental(abc.ABC):
 
         Examples
         --------
-        >>> x = ivy.array([.9, 3, 3.2])
-        >>> y = ivy.digamma(x)
-        ivy.array([-0.7549271   0.92278427  0.9988394])
+        >>> x = aikit.array([.9, 3, 3.2])
+        >>> y = aikit.digamma(x)
+        aikit.array([-0.7549271   0.92278427  0.9988394])
         """
-        return ivy.digamma(self._data, out=out)
+        return aikit.digamma(self._data, out=out)
 
     def sparsify_tensor(
-        self: ivy.Array,
+        self: aikit.Array,
         card: int,
         /,
         *,
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
-        """ivy.Array class method variant of ivy.sparsify_tensor. This method
-        simply wraps the function, and so the docstring for ivy.sparsify_tensor
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
+        """aikit.Array class method variant of aikit.sparsify_tensor. This method
+        simply wraps the function, and so the docstring for aikit.sparsify_tensor
         also applies to this method with minimal changes.
 
         Parameters
@@ -1145,10 +1145,10 @@ class _ArrayWithElementWiseExperimental(abc.ABC):
 
         Examples
         --------
-        >>> x = ivy.arange(100)
-        >>> x = ivy.reshape(x, (10, 10))
+        >>> x = aikit.arange(100)
+        >>> x = aikit.reshape(x, (10, 10))
         >>> x.sparsify_tensor(10)
-        ivy.array([[ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+        aikit.array([[ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
         [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
         [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
         [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
@@ -1159,16 +1159,16 @@ class _ArrayWithElementWiseExperimental(abc.ABC):
         [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
         [90, 91, 92, 93, 94, 95, 96, 97, 98, 99]])
         """
-        return ivy.sparsify_tensor(self._data, card, out=out)
+        return aikit.sparsify_tensor(self._data, card, out=out)
 
     def erfc(
-        self: ivy.Array,
+        self: aikit.Array,
         /,
         *,
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
-        """ivy.Array instance method variant of ivy.erfc. This method simply
-        wraps the function, and so the docstring for ivy.erfc also applies to
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
+        """aikit.Array instance method variant of aikit.erfc. This method simply
+        wraps the function, and so the docstring for aikit.erfc also applies to
         this method with minimal changes.
 
         Parameters
@@ -1186,8 +1186,8 @@ class _ArrayWithElementWiseExperimental(abc.ABC):
 
         Examples
         --------
-        >>> x = ivy.array([0, -1., 10.])
+        >>> x = aikit.array([0, -1., 10.])
         >>> x.erfc()
-        ivy.array([1.00000000e+00, 1.84270084e+00, 2.80259693e-45])
+        aikit.array([1.00000000e+00, 1.84270084e+00, 2.80259693e-45])
         """
-        return ivy.erfc(self._data, out=out)
+        return aikit.erfc(self._data, out=out)

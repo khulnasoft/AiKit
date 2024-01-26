@@ -91,7 +91,7 @@ def broadcast_arrays(*arrays: torch.Tensor) -> List[torch.Tensor]:
     try:
         return list(torch.broadcast_tensors(*arrays))
     except RuntimeError as e:
-        raise aikit.utils.exceptions.IvyBroadcastShapeError(e) from e
+        raise aikit.utils.exceptions.AikitBroadcastShapeError(e) from e
 
 
 def broadcast_to(
@@ -158,7 +158,7 @@ def as_aikit_dtype(
         if dtype_in in native_dtype_dict:
             dtype_str = dtype_in
         else:
-            raise aikit.utils.exceptions.IvyException(
+            raise aikit.utils.exceptions.AikitException(
                 "Cannot convert to aikit dtype."
                 f" {dtype_in} is not supported by PyTorch backend."
             )
@@ -176,7 +176,7 @@ def as_aikit_dtype(
     elif "bool" in dtype_str:
         return aikit.Dtype("bool")
     else:
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             f"Cannot recognize {dtype_str} as a valid Dtype."
         )
 
@@ -200,7 +200,7 @@ def as_native_dtype(
     if dtype_in in native_dtype_dict:
         return native_dtype_dict[aikit.Dtype(dtype_in)]
     else:
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             f"Cannot convert to PyTorch dtype. {dtype_in} is not supported by PyTorch."
         )
 

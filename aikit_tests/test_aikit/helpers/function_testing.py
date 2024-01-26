@@ -70,7 +70,7 @@ def traced_if_required(backend: str, fn, test_trace=False, args=None, kwargs=Non
     return fn
 
 
-# Ivy Function testing ##########################
+# Aikit Function testing ##########################
 
 # Test Function Helpers ###############
 
@@ -249,7 +249,7 @@ def test_function_backend_computation(
         assert aikit_backend.nested_map(
             lambda x: aikit_backend.is_aikit_array(x) if aikit_backend.is_array(x) else True,
             ret_from_target,
-        ), f"Ivy function returned non-aikit arrays: {ret_from_target}"
+        ), f"Aikit function returned non-aikit arrays: {ret_from_target}"
 
         # Assert indices of return if the indices of the out array provided
         if test_flags.with_out and not test_flags.test_trace:
@@ -843,7 +843,7 @@ def test_frontend_function(
 
         local_importer = aikit_backend.utils.dynamic_import
 
-        # strip the decorator to get an Ivy array
+        # strip the decorator to get an Aikit array
         # TODO, fix testing for jax frontend for x32
         if frontend == "jax":
             local_importer.import_module("aikit.functional.frontends.jax").config.update(
@@ -2686,7 +2686,7 @@ def arrays_to_frontend(backend: str, frontend_array_fn):
                         ret = frontend_array_fn(
                             x, dtype=aikit_backend.Dtype(str(x.dtype))
                         )
-                    except aikit_backend.utils.exceptions.IvyException:
+                    except aikit_backend.utils.exceptions.AikitException:
                         ret = frontend_array_fn(x, dtype=aikit_backend.array(x).dtype)
                 else:
                     ret = frontend_array_fn(x)

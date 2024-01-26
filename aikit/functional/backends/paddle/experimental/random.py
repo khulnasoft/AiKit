@@ -3,7 +3,7 @@ from typing import Optional, Union, Sequence
 import paddle
 from aikit import with_unsupported_device_and_dtypes
 from aikit.functional.backends.paddle import backend_version
-from aikit.utils.exceptions import IvyNotImplementedException
+from aikit.utils.exceptions import AikitNotImplementedException
 from aikit.functional.aikit.random import _check_bounds_and_get_shape
 
 # local
@@ -84,7 +84,7 @@ def gamma(
     seed: Optional[int] = None,
     out: Optional[paddle.Tensor] = None,
 ) -> paddle.Tensor:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def poisson(
@@ -97,7 +97,7 @@ def poisson(
     fill_value: Optional[Union[float, int]] = 0,
     out: Optional[paddle.Tensor] = None,
 ):
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 # bernoulli

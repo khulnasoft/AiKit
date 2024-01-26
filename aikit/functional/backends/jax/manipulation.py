@@ -6,9 +6,9 @@ import jax.numpy as jnp
 import numpy as np
 
 # local
-import ivy
-from ivy.func_wrapper import with_unsupported_dtypes
-from ivy.functional.backends.jax import JaxArray
+import aikit
+from aikit.func_wrapper import with_unsupported_dtypes
+from aikit.functional.backends.jax import JaxArray
 from . import backend_version
 
 
@@ -39,7 +39,7 @@ def concat(
     try:
         return jnp.concatenate(xs, axis)
     except ValueError as error:
-        raise ivy.utils.exceptions.IvyIndexError(error) from error
+        raise aikit.utils.exceptions.AikitIndexError(error) from error
 
 
 def expand_dims(
@@ -54,7 +54,7 @@ def expand_dims(
         ret = jnp.expand_dims(x, axis)
         return ret
     except ValueError as error:
-        raise ivy.utils.exceptions.IvyIndexError(error) from error
+        raise aikit.utils.exceptions.AikitIndexError(error) from error
 
 
 def flip(
@@ -82,14 +82,14 @@ def permute_dims(
 def reshape(
     x: JaxArray,
     /,
-    shape: Union[ivy.NativeShape, Sequence[int]],
+    shape: Union[aikit.NativeShape, Sequence[int]],
     *,
     copy: Optional[bool] = None,
     order: str = "C",
     allowzero: bool = True,
     out: Optional[JaxArray] = None,
 ) -> JaxArray:
-    ivy.utils.assertions.check_elem_in_list(order, ["C", "F"])
+    aikit.utils.assertions.check_elem_in_list(order, ["C", "F"])
     if not allowzero:
         shape = [
             new_s if con else old_s
@@ -125,7 +125,7 @@ def squeeze(
     if x.shape == ():
         if axis is None or axis == 0 or axis == -1:
             return x
-        raise ivy.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             f"tried to squeeze a zero-dimensional input by axis {axis}"
         )
     else:
@@ -143,7 +143,7 @@ def stack(
     try:
         return jnp.stack(arrays, axis=axis)
     except ValueError as error:
-        raise ivy.utils.exceptions.IvyIndexError(error) from error
+        raise aikit.utils.exceptions.AikitIndexError(error) from error
 
 
 # Extra #
@@ -161,7 +161,7 @@ def split(
 ) -> List[JaxArray]:
     if x.shape == ():
         if num_or_size_splits is not None and num_or_size_splits != 1:
-            raise ivy.utils.exceptions.IvyException(
+            raise aikit.utils.exceptions.AikitException(
                 "input array had no shape, but num_sections specified was"
                 f" {num_or_size_splits}"
             )
@@ -213,14 +213,14 @@ def clip(
     promoted_type = x.dtype
     if x_min is not None:
         if not hasattr(x_min, "dtype"):
-            x_min = ivy.array(x_min).data
-        promoted_type = ivy.as_native_dtype(ivy.promote_types(x.dtype, x_min.dtype))
+            x_min = aikit.array(x_min).data
+        promoted_type = aikit.as_native_dtype(aikit.promote_types(x.dtype, x_min.dtype))
         x = jnp.where(x < x_min, x_min.astype(promoted_type), x.astype(promoted_type))
     if x_max is not None:
         if not hasattr(x_max, "dtype"):
-            x_max = ivy.array(x_max).data
-        promoted_type = ivy.as_native_dtype(
-            ivy.promote_types(promoted_type, x_max.dtype)
+            x_max = aikit.array(x_max).data
+        promoted_type = aikit.as_native_dtype(
+            aikit.promote_types(promoted_type, x_max.dtype)
         )
         x = jnp.where(x > x_max, x_max.astype(promoted_type), x.astype(promoted_type))
     return x

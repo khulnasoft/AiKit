@@ -34,7 +34,7 @@ def optional_get_element(
         Input array if it is not None
     """
     if x is None:
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             "The requested optional input has no value."
         )
     return x

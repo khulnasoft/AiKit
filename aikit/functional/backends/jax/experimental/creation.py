@@ -6,8 +6,8 @@ import jax.numpy as jnp
 import jaxlib.xla_extension
 
 # local
-from ivy.functional.backends.jax import JaxArray
-import ivy
+from aikit.functional.backends.jax import JaxArray
+import aikit
 
 # Array API Standard #
 # ------------------ #
@@ -23,7 +23,7 @@ def vorbis_window(
         [
             round(
                 math.sin(
-                    (ivy.pi / 2) * (math.sin(ivy.pi * (i) / (window_length * 2)) ** 2)
+                    (aikit.pi / 2) * (math.sin(aikit.pi * (i) / (window_length * 2)) ** 2)
                 ),
                 8,
             )
@@ -83,7 +83,7 @@ def unsorted_segment_min(
     num_segments: int,
 ) -> JaxArray:
     # added this check to keep the same behaviour as tensorflow
-    ivy.utils.assertions.check_unsorted_segment_valid_params(
+    aikit.utils.assertions.check_unsorted_segment_valid_params(
         data, segment_ids, num_segments
     )
     return jax.ops.segment_min(data, segment_ids, num_segments)
@@ -98,7 +98,7 @@ def unsorted_segment_sum(
     # the check should be same
     # Might require to change the assertion function name to
     # check_unsorted_segment_valid_params
-    ivy.utils.assertions.check_unsorted_segment_valid_params(
+    aikit.utils.assertions.check_unsorted_segment_valid_params(
         data, segment_ids, num_segments
     )
     return jax.ops.segment_sum(data, segment_ids, num_segments)
@@ -170,7 +170,7 @@ def unsorted_segment_mean(
     segment_ids: JaxArray,
     num_segments: int,
 ) -> JaxArray:
-    ivy.utils.assertions.check_unsorted_segment_valid_params(
+    aikit.utils.assertions.check_unsorted_segment_valid_params(
         data, segment_ids, num_segments
     )
     segment_sum = jax.ops.segment_sum(data, segment_ids, num_segments)
@@ -186,9 +186,9 @@ def polyval(
     coeffs: JaxArray,
     x: JaxArray,
 ) -> JaxArray:
-    with ivy.PreciseMode(True):
-        promoted_type = ivy.promote_types(ivy.dtype(coeffs[0]), ivy.dtype(x[0]))
-    coeffs, x = ivy.promote_types_of_inputs(coeffs, x)
+    with aikit.PreciseMode(True):
+        promoted_type = aikit.promote_types(aikit.dtype(coeffs[0]), aikit.dtype(x[0]))
+    coeffs, x = aikit.promote_types_of_inputs(coeffs, x)
     y = jnp.zeros_like(x)
     for pv in coeffs:
         y = y * x + pv

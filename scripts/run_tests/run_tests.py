@@ -49,8 +49,8 @@ if __name__ == "__main__":
     else:
         priority_flag = False
     failed = False
-    old_db = cluster["Ivy_tests_multi_gpu"]
-    old_db_priority = cluster["Ivy_tests_priority"]
+    old_db = cluster["Aikit_tests_multi_gpu"]
+    old_db_priority = cluster["Aikit_tests_priority"]
 
     # pull gpu image for gpu testing
     if device == "gpu":

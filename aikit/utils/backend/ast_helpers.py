@@ -25,7 +25,7 @@ _compiled_modules_cache = {}
 
 def _retrive_local_modules():
     ret = ["aikit"]  # TODO temporary hacky solution for finder
-    # Get Ivy package root
+    # Get Aikit package root
     wd = sys.modules["aikit"].__path__[0]
     for entry in os.scandir(wd):
         if entry.is_file() and entry.name.endswith(".py"):
@@ -224,7 +224,7 @@ class ImportTransformer(ast.NodeTransformer):
         return tree
 
 
-class IvyPathFinder(MetaPathFinder):
+class AikitPathFinder(MetaPathFinder):
     def find_spec(self, fullname, path, target=None):
         if fullname.partition(".")[0] not in local_modules:
             return None
@@ -248,13 +248,13 @@ class IvyPathFinder(MetaPathFinder):
             return spec_from_file_location(
                 fullname,
                 filename,
-                loader=IvyLoader(filename),
+                loader=AikitLoader(filename),
                 submodule_search_locations=submodule_locations,
             )
         return None
 
 
-class IvyLoader(Loader):
+class AikitLoader(Loader):
     def __init__(self, filename):
         self.filename = filename
 

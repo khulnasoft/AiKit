@@ -8,16 +8,16 @@ Fix Failing Tests:
 .. _`docker thread`: https://discord.com/channels/799879767196958751/1186629067966009424
 .. _`miniconda`: https://docs.conda.io/en/latest/miniconda.html
 .. _`venv`: https://docs.python.org/3/library/venv.html
-.. _`ivy/scripts/shell`: https://github.com/khulnasoft/aikit/tree/f71a414417646e1dfecb5de27fb555f80333932c/scripts/shell
+.. _`aikit/scripts/shell`: https://github.com/khulnasoft/aikit/tree/f71a414417646e1dfecb5de27fb555f80333932c/scripts/shell
 .. _`platform compatibility tags`: https://packaging.python.org/en/latest/specifications/platform-compatibility-tags/
 .. _`logging level`: https://docs.python.org/3/library/logging.html#logging.Logger.setLevel
 .. _`pycharm thread`: https://discord.com/channels/799879767196958751/1186628916522262629
 .. _`pre-commit thread`: https://discord.com/channels/799879767196958751/1186629635694399539
 .. _`pip packages thread`: https://discord.com/channels/799879767196958751/1186629837515935765
-.. _`ivy tests thread`: https://discord.com/channels/799879767196958751/1189907526226034698
-.. _`ivy frontend tests thread`: https://discord.com/channels/799879767196958751/1190246804940402738
+.. _`aikit tests thread`: https://discord.com/channels/799879767196958751/1189907526226034698
+.. _`aikit frontend tests thread`: https://discord.com/channels/799879767196958751/1190246804940402738
 
-We're really happy you'd like to learn how to contribute towards Ivy 🙂
+We're really happy you'd like to learn how to contribute towards Aikit 🙂
 
 This page explains the main steps to get started with fixing failing tests!
 
@@ -36,7 +36,7 @@ Setting Up
 
 **Forking and cloning the repo**
 
-#. `Fork Ivy Repo <https://github.com/khulnasoft/aikit/fork>`_
+#. `Fork Aikit Repo <https://github.com/khulnasoft/aikit/fork>`_
 #. `Clone <https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository>`_ the fork with it's submoodules locally or on codespaces
 
    .. dropdown:: If you are new to Git:
@@ -45,17 +45,17 @@ Setting Up
 
       .. code-block:: bash
 
-         git clone --recurse-submodules git@github.com:YOUR_USERNAME/ivy.git
+         git clone --recurse-submodules git@github.com:YOUR_USERNAME/aikit.git
 
       .. code-block:: bash
 
-         git clone --recurse-submodules https://github.com/YOUR_USERNAME/ivy.git
+         git clone --recurse-submodules https://github.com/YOUR_USERNAME/aikit.git
 
       .. code-block:: bash
 
-         gh repo clone YOUR_USERNAME/ivy your_folder -- --recurse-submodules
+         gh repo clone YOUR_USERNAME/aikit your_folder -- --recurse-submodules
 
-      Then enter into your cloned ivy folder, for example :code:`cd ~/ivy` and add Ivy original repository as upstream, to easily sync with the latest changes.
+      Then enter into your cloned aikit folder, for example :code:`cd ~/aikit` and add Aikit original repository as upstream, to easily sync with the latest changes.
 
       .. code-block:: bash
 
@@ -64,7 +64,7 @@ Setting Up
 .. dropdown:: **Windows, docker and VsCode**
 
    #. Open the Docker desktop, make sure it's running in the background while following the process below.
-   #. Open Ivy repo folder with Visual Studio Code, and follow the next steps:
+   #. Open Aikit repo folder with Visual Studio Code, and follow the next steps:
       a. At the bottom right a window will pop up asking for "Dev Containers" extension, install that.
          In case the window doesn't pop up, search for the "Dev Containers" extension in the Visual Studio Code and install that.
       b. Install the "Docker" extension for Visual Studio Code, you'll easily find that by searching "docker" in the extensions tab.
@@ -90,7 +90,7 @@ In the case of :code:`test_jax_transpose`, the command will be
 
 .. code-block:: bash
 
-   pytest ivy_tests/test_ivy/test_frontends/test_jax/test_numpy/test_manipulations.py::test_jax_transpose
+   pytest aikit_tests/test_aikit/test_frontends/test_jax/test_numpy/test_manipulations.py::test_jax_transpose
 
 You will need to read through the errors in the terminal and use the common errors in the list at the end of this page to solve the test.
 
@@ -103,7 +103,7 @@ You will need to read through the errors in the terminal and use the common erro
    .. image:: https://github.com/khulnasoft/khulnasoft.github.io/blob/main/img/externally_linked/contributing/setting_up/vs_code_testing_setup/vs_testing_01.png?raw=true
       :width: 420
 
-   1. Select ivy_tests as the root directory for testing.
+   1. Select aikit_tests as the root directory for testing.
 
    .. image:: https://github.com/khulnasoft/khulnasoft.github.io/blob/main/img/externally_linked/contributing/setting_up/vs_code_testing_setup/vs_testing_02.png?raw=true
       :width: 420
@@ -121,8 +121,8 @@ You will need to read through the errors in the terminal and use the common erro
 
          {
             "python.testing.pytestArgs": [
-               "./ivy_tests/test_ivy/",
-               "./ivy_tests/array_api_testing/test_array_api/",
+               "./aikit_tests/test_aikit/",
+               "./aikit_tests/array_api_testing/test_array_api/",
                "--continue-on-collection-errors",
             ],
             "python.testing.unittestEnabled": false,
@@ -133,13 +133,13 @@ You will need to read through the errors in the terminal and use the common erro
 Common Errors
 *************
 
-This section aims to assist you in navigating through some common errors you might encounter while working with the Ivy's Functional API. We'll go through :code:`test_jax_transpose` and then some common errors which you might encounter while working as a contributor or a developer.
+This section aims to assist you in navigating through some common errors you might encounter while working with the Aikit's Functional API. We'll go through :code:`test_jax_transpose` and then some common errors which you might encounter while working as a contributor or a developer.
 
 #. Starting off with :code:`test_jax_transpose`, it throws an Assertion error because the shape returned by ground truth is different from the shape returned by the target backend.
 
    .. code-block:: python
 
-    E       ivy.utils.exceptions.IvyBackendException: paddle: to_numpy: paddle: default_device: paddle: dev: (PreconditionNotMet) Tensor not initialized yet when DenseTensor::place() is called.
+    E       aikit.utils.exceptions.AikitBackendException: paddle: to_numpy: paddle: default_device: paddle: dev: (PreconditionNotMet) Tensor not initialized yet when DenseTensor::place() is called.
     E         [Hint: holder_ should not be null.] (at /paddle/paddle/phi/core/dense_tensor_impl.cc:61)
     E
     E       Falsifying example: test_jax_transpose(
@@ -160,7 +160,7 @@ This section aims to assist you in navigating through some common errors you mig
     E               transpile=False,
     E               precision_mode=True,
     E           ),
-    E           fn_tree='ivy.functional.frontends.jax.numpy.transpose',
+    E           fn_tree='aikit.functional.frontends.jax.numpy.transpose',
     E       )
     E
     E       You can reproduce this example by temporarily adding @reproduce_failure('6.87.3', b'AAEGBAEGAQAAAAAAAAAAAAAB') as a decorator on your test case
@@ -243,7 +243,7 @@ This section aims to assist you in navigating through some common errors you mig
          .. code-block:: python
 
                @handle_test(
-                   fn_tree="functional.ivy.acosh",
+                   fn_tree="functional.aikit.acosh",
                    dtype_and_x=helpers.dtype_and_values(
                        available_dtypes=helpers.get_dtypes("float"),
                        min_value=1,
@@ -307,4 +307,4 @@ This section aims to assist you in navigating through some common errors you mig
 Where to ask for Help
 *********************
 
-The best place to ask for help is our `discord`_ server in the relevant channels. For instance, lets say you're facing an issue with :code:`test_jax_transpose` function, in this case you should post your query in the `ivy frontend tests thread`_.
+The best place to ask for help is our `discord`_ server in the relevant channels. For instance, lets say you're facing an issue with :code:`test_jax_transpose` function, in this case you should post your query in the `aikit frontend tests thread`_.

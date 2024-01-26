@@ -1,4 +1,4 @@
-"""Collection of Paddle general functions, wrapped to fit Ivy syntax and
+"""Collection of Paddle general functions, wrapped to fit Aikit syntax and
 signature."""
 
 # global
@@ -150,7 +150,7 @@ def to_numpy(
             return np.asarray(x).astype(dtype)
     elif isinstance(x, list):
         return [aikit.to_numpy(u) for u in x]
-    raise aikit.utils.exceptions.IvyException("Expected a Paddle Tensor.")
+    raise aikit.utils.exceptions.AikitException("Expected a Paddle Tensor.")
 
 
 def to_scalar(x: paddle.Tensor, /) -> Number:
@@ -514,7 +514,7 @@ def scatter_nd(
             aikit.Shape(target.shape), aikit.Shape(shape), as_array=False
         )
     if reduction not in ["sum", "replace", "min", "max"]:
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             f'reduction is {reduction}, but it must be one of "sum", "min", "max" or'
             ' "replace"'
         )
@@ -615,7 +615,7 @@ def vmap(
                     axis_size.add(arg.shape[axis])
 
         if len(axis_size) > 1:
-            raise aikit.utils.exceptions.IvyException(
+            raise aikit.utils.exceptions.AikitException(
                 """Inconsistent sizes. All mapped axes should have the same size"""
             )
 

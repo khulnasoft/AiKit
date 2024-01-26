@@ -7,7 +7,7 @@ from collections import namedtuple
 
 # local
 from aikit import inf
-from aikit.utils.exceptions import IvyNotImplementedException
+from aikit.utils.exceptions import AikitNotImplementedException
 
 
 def cholesky(
@@ -17,7 +17,7 @@ def cholesky(
     upper: bool = False,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def cross(
@@ -31,7 +31,7 @@ def cross(
     axis: Optional[int] = None,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def det(
@@ -52,7 +52,7 @@ def diagonal(
     axis2: int = (-1),
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def eig(
@@ -61,7 +61,7 @@ def eig(
     *,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Tuple[Union[(None, mx.ndarray.NDArray)]]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def eigh(
@@ -71,7 +71,7 @@ def eigh(
     UPLO: str = "L",
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Tuple[Union[(None, mx.ndarray.NDArray)]]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def eigvalsh(
@@ -81,7 +81,7 @@ def eigvalsh(
     UPLO: str = "L",
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def inner(
@@ -91,7 +91,7 @@ def inner(
     *,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def inv(
@@ -101,7 +101,7 @@ def inv(
     adjoint: bool = False,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def matmul(
@@ -115,7 +115,7 @@ def matmul(
     adjoint_b: bool = False,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def matrix_norm(
@@ -127,7 +127,7 @@ def matrix_norm(
     keepdims: bool = False,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def matrix_power(
@@ -137,7 +137,7 @@ def matrix_power(
     *,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def matrix_rank(
@@ -148,7 +148,7 @@ def matrix_rank(
     rtol: Optional[Union[(float, Tuple[float])]] = None,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def matrix_transpose(
@@ -158,7 +158,7 @@ def matrix_transpose(
     conjugate: bool = False,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def outer(
@@ -168,7 +168,7 @@ def outer(
     *,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def pinv(
@@ -178,7 +178,7 @@ def pinv(
     rtol: Optional[Union[(float, Tuple[float])]] = None,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def qr(
@@ -198,7 +198,7 @@ def qr(
 def slogdet(
     x: Union[(None, mx.ndarray.NDArray)], /
 ) -> Tuple[(Union[(None, mx.ndarray.NDArray)], Union[(None, mx.ndarray.NDArray)])]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def solve(
@@ -209,7 +209,7 @@ def solve(
     adjoint: bool = False,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def svd(
@@ -221,7 +221,7 @@ def svd(
 ) -> Union[
     (Union[(None, mx.ndarray.NDArray)], Tuple[(Union[(None, mx.ndarray.NDArray)], ...)])
 ]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def svdvals(
@@ -232,7 +232,7 @@ def svdvals(
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
     # TODO: handling the driver argument
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def tensordot(
@@ -243,7 +243,7 @@ def tensordot(
     axes: Union[(int, Tuple[(List[int], List[int])])] = 2,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def trace(
@@ -255,7 +255,7 @@ def trace(
     axis2: int = 1,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def vecdot(
@@ -266,7 +266,7 @@ def vecdot(
     axis: int = (-1),
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def vector_norm(
@@ -279,7 +279,7 @@ def vector_norm(
     dtype: Optional[None] = None,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def diag(
@@ -289,7 +289,7 @@ def diag(
     k: int = 0,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def vander(
@@ -300,7 +300,7 @@ def vander(
     increasing: bool = False,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def vector_to_skew_symmetric_matrix(
@@ -309,4 +309,4 @@ def vector_to_skew_symmetric_matrix(
     *,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()

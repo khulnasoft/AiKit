@@ -26,7 +26,7 @@ class matrix:
         elif aikit.isscalar(data):
             self._data = aikit.asarray(data, dtype=dtype)
         else:
-            raise aikit.utils.exceptions.IvyException(
+            raise aikit.utils.exceptions.AikitException(
                 "data must be an array, list, or scalar"
             )
         if self._data.ndim < 2:

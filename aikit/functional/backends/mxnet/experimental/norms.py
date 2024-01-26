@@ -1,7 +1,7 @@
 from typing import Union, Optional, Tuple
 import mxnet as mx
 
-from aikit.utils.exceptions import IvyNotImplementedException
+from aikit.utils.exceptions import AikitNotImplementedException
 
 
 def l2_normalize(
@@ -11,7 +11,7 @@ def l2_normalize(
     axis: Optional[int] = None,
     out: Optional[None] = None,
 ) -> None:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def batch_norm(
@@ -31,7 +31,7 @@ def batch_norm(
     Union[(None, mx.ndarray.NDArray)],
     Union[(None, mx.ndarray.NDArray)],
 )]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def instance_norm(
@@ -51,7 +51,7 @@ def instance_norm(
     Union[(None, mx.ndarray.NDArray)],
     Union[(None, mx.ndarray.NDArray)],
 )]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def lp_normalize(
@@ -62,4 +62,4 @@ def lp_normalize(
     axis: Optional[int] = None,
     out: Optional[None] = None,
 ) -> None:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()

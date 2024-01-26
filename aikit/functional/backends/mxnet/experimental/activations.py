@@ -1,7 +1,7 @@
 from typing import Optional, Union
 import mxnet as mx
 
-from aikit.utils.exceptions import IvyNotImplementedException
+from aikit.utils.exceptions import AikitNotImplementedException
 
 
 def logit(
@@ -11,29 +11,29 @@ def logit(
     eps: Optional[float] = None,
     out: Optional[None] = None,
 ) -> None:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def thresholded_relu(
     x: None, /, *, threshold: Union[(int, float)] = 0, out: Optional[None] = None
 ) -> None:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def relu6(x: None, /, *, out: Optional[None] = None) -> None:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def logsigmoid(input: None) -> None:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def selu(x: None, /, *, out: Optional[None] = None) -> None:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def silu(x: None, /, *, out: Optional[None] = None) -> None:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def celu(

@@ -1,4 +1,4 @@
-"""Collection of Numpy network layers, wrapped to fit Ivy syntax and
+"""Collection of Numpy network layers, wrapped to fit Aikit syntax and
 signature."""
 
 # global

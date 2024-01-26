@@ -7,7 +7,7 @@ from aikit.functional.aikit.experimental.sparse_array import (
 from aikit.func_wrapper import (
     with_unsupported_device_and_dtypes,
 )
-from aikit.utils.exceptions import IvyNotImplementedException
+from aikit.utils.exceptions import AikitNotImplementedException
 import paddle
 
 # local
@@ -36,7 +36,7 @@ def native_sparse_array(
     format = format.lower()
 
     if format not in ["coo", "csr"]:
-        raise IvyNotImplementedException(
+        raise AikitNotImplementedException(
             "paddle only supports 'coo' and 'csr' sparse formats."
         )
 
@@ -81,7 +81,7 @@ def native_sparse_array(
 
 def native_sparse_array_to_indices_values_and_shape(x):
     if not is_native_sparse_array(x):
-        raise aikit.utils.exceptions.IvyException("not a Paddle Sparse Array")
+        raise aikit.utils.exceptions.AikitException("not a Paddle Sparse Array")
     if x.is_sparse_coo():
         return {"coo_indices": x.indices()}, x.values(), x.shape
     else:

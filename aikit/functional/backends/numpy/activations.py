@@ -1,4 +1,4 @@
-"""Collection of Numpy activation functions, wrapped to fit Ivy syntax and
+"""Collection of Numpy activation functions, wrapped to fit Aikit syntax and
 signature."""
 
 # global

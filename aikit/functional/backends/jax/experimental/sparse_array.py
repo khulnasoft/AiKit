@@ -1,6 +1,6 @@
 import logging
-import ivy
-from ivy.functional.ivy.experimental.sparse_array import (
+import aikit
+from aikit.functional.aikit.experimental.sparse_array import (
     _is_valid_format,
     _verify_bsc_components,
     _verify_bsr_components,
@@ -27,7 +27,7 @@ def native_sparse_array(
     dense_shape=None,
     format="coo"
 ):
-    ivy.utils.assertions.check_exists(
+    aikit.utils.assertions.check_exists(
         data,
         inverse=True,
         message="data cannot be specified, Jax does not support sparse array natively",
@@ -43,7 +43,7 @@ def native_sparse_array(
         dense_shape,
         format,
     ):
-        raise ivy.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             "format should be one of the strings coo, csr, csc, bsr, and bsc."
         )
     format = format.lower()

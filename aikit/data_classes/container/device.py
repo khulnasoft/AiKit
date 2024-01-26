@@ -1,8 +1,8 @@
 # local
 from typing import Union, Optional, Any, List, Dict
 
-import ivy
-from ivy.data_classes.container.base import ContainerBase
+import aikit
+from aikit.data_classes.container.base import ContainerBase
 
 
 # ToDo: implement all methods here as public instance methods
@@ -11,18 +11,18 @@ from ivy.data_classes.container.base import ContainerBase
 class _ContainerWithDevice(ContainerBase):
     @staticmethod
     def _static_dev(
-        x: ivy.Container, /, *, as_native: Union[bool, ivy.Container] = False
-    ) -> ivy.Container:
-        """ivy.Container static method variant of ivy.dev. This method simply
-        wraps the function, and so the docstring for ivy.dev also applies to
+        x: aikit.Container, /, *, as_native: Union[bool, aikit.Container] = False
+    ) -> aikit.Container:
+        """aikit.Container static method variant of aikit.dev. This method simply
+        wraps the function, and so the docstring for aikit.dev also applies to
         this method with minimal changes.
 
         Examples
         --------
-        >>> x = ivy.Container(a=ivy.array([[2, 3], [3, 5]]),
-        ...                   b=ivy.native_array([1, 2, 4, 5, 7]))
-        >>> as_native = ivy.Container(a=True, b=False)
-        >>> y = ivy.Container.static_dev(x, as_native=as_native)
+        >>> x = aikit.Container(a=aikit.array([[2, 3], [3, 5]]),
+        ...                   b=aikit.native_array([1, 2, 4, 5, 7]))
+        >>> as_native = aikit.Container(a=True, b=False)
+        >>> y = aikit.Container.static_dev(x, as_native=as_native)
         >>> print(y)
         {
             a: device(type=cpu),
@@ -32,10 +32,10 @@ class _ContainerWithDevice(ContainerBase):
         return ContainerBase.cont_multi_map_in_function("dev", x, as_native=as_native)
 
     def dev(
-        self: ivy.Container, as_native: Union[bool, ivy.Container] = False
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of ivy.dev. This method simply
-        wraps the function, and so the docstring for ivy.dev also applies to
+        self: aikit.Container, as_native: Union[bool, aikit.Container] = False
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of aikit.dev. This method simply
+        wraps the function, and so the docstring for aikit.dev also applies to
         this method with minimal changes.
 
         Parameters
@@ -47,9 +47,9 @@ class _ContainerWithDevice(ContainerBase):
 
         Examples
         --------
-        >>> x = ivy.Container(a=ivy.array([[2, 3, 1], [3, 5, 3]]),
-        ...                   b=ivy.native_array([[1, 2], [4, 5]]))
-        >>> as_native = ivy.Container(a=False, b=True)
+        >>> x = aikit.Container(a=aikit.array([[2, 3, 1], [3, 5, 3]]),
+        ...                   b=aikit.native_array([[1, 2], [4, 5]]))
+        >>> as_native = aikit.Container(a=False, b=True)
         >>> y = x.dev(as_native=as_native)
         >>> print(y)
         {
@@ -61,19 +61,19 @@ class _ContainerWithDevice(ContainerBase):
 
     @staticmethod
     def _static_to_device(
-        x: Union[ivy.Container, ivy.Array, ivy.NativeArray],
-        device: Union[ivy.Device, ivy.NativeDevice, ivy.Container],
+        x: Union[aikit.Container, aikit.Array, aikit.NativeArray],
+        device: Union[aikit.Device, aikit.NativeDevice, aikit.Container],
         /,
         *,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        stream: Optional[Union[int, Any, ivy.Container]] = None,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of ivy.to_device. This method
-        simply wraps the function, and so the docstring for ivy.to_device also
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        stream: Optional[Union[int, Any, aikit.Container]] = None,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of aikit.to_device. This method
+        simply wraps the function, and so the docstring for aikit.to_device also
         applies to this method with minimal changes.
 
         Parameters
@@ -109,9 +109,9 @@ class _ContainerWithDevice(ContainerBase):
 
         Examples
         --------
-        >>> x = ivy.Container(a=ivy.array([[2, 3, 1], [3, 5, 3]]),
-        ...                   b=ivy.native_array([[1, 2], [4, 5]]))
-        >>> y = ivy.Container.static_to_device(x, 'cpu')
+        >>> x = aikit.Container(a=aikit.array([[2, 3, 1], [3, 5, 3]]),
+        ...                   b=aikit.native_array([[1, 2], [4, 5]]))
+        >>> y = aikit.Container.static_to_device(x, 'cpu')
         >>> print(y.a.device, y.b.device)
         cpu cpu
         """
@@ -128,18 +128,18 @@ class _ContainerWithDevice(ContainerBase):
         )
 
     def to_device(
-        self: ivy.Container,
-        device: Union[ivy.Device, ivy.NativeDevice, ivy.Container],
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
+        self: aikit.Container,
+        device: Union[aikit.Device, aikit.NativeDevice, aikit.Container],
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
         *,
-        stream: Optional[Union[int, Any, ivy.Container]] = None,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of ivy.to_device. This method
-        simply wraps the function, and so the docstring for ivy.to_device also
+        stream: Optional[Union[int, Any, aikit.Container]] = None,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of aikit.to_device. This method
+        simply wraps the function, and so the docstring for aikit.to_device also
         applies to this method with minimal changes.
 
         Parameters
@@ -175,8 +175,8 @@ class _ContainerWithDevice(ContainerBase):
 
         Examples
         --------
-        >>> x = ivy.Container(a=ivy.array([[2, 3, 1], [3, 5, 3]]),
-        ...                   b=ivy.native_array([[1, 2], [4, 5]]))
+        >>> x = aikit.Container(a=aikit.array([[2, 3, 1], [3, 5, 3]]),
+        ...                   b=aikit.native_array([[1, 2], [4, 5]]))
         >>> y = x.to_device('cpu')
         >>> print(y.a.device, y.b.device)
         cpu cpu

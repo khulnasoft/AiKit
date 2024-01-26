@@ -5,14 +5,14 @@ from typing import Union, Optional, Tuple, Literal, Sequence, NamedTuple
 import jax.numpy as jnp
 
 # local
-import ivy
-from ivy import inf
-from ivy.func_wrapper import with_unsupported_dtypes
-from ivy.functional.backends.jax import JaxArray
+import aikit
+from aikit import inf
+from aikit.func_wrapper import with_unsupported_dtypes
+from aikit.functional.backends.jax import JaxArray
 
 from . import backend_version
 
-from ivy import promote_types_of_inputs
+from aikit import promote_types_of_inputs
 
 
 # Array API Standard #
@@ -129,7 +129,7 @@ def eigvalsh(
 
 @with_unsupported_dtypes({"0.4.23 and below": ("complex",)}, backend_version)
 def inner(x1: JaxArray, x2: JaxArray, /, *, out: Optional[JaxArray] = None) -> JaxArray:
-    x1, x2 = ivy.promote_types_of_inputs(x1, x2)
+    x1, x2 = aikit.promote_types_of_inputs(x1, x2)
     return jnp.inner(x1, x2)
 
 
@@ -261,7 +261,7 @@ def outer(
     *,
     out: Optional[JaxArray] = None,
 ) -> JaxArray:
-    x1, x2 = ivy.promote_types_of_inputs(x1, x2)
+    x1, x2 = aikit.promote_types_of_inputs(x1, x2)
     return jnp.outer(x1, x2)
 
 
@@ -323,7 +323,7 @@ def solve(
     if adjoint:
         x1 = jnp.swapaxes(jnp.conjugate(x1), -1, -2)
     expanded_last = False
-    x1, x2 = ivy.promote_types_of_inputs(x1, x2)
+    x1, x2 = aikit.promote_types_of_inputs(x1, x2)
     if len(x2.shape) <= 1:
         if x2.shape[-1] == x1.shape[-1]:
             expanded_last = True

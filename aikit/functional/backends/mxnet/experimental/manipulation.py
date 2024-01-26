@@ -2,7 +2,7 @@ from typing import Union, Optional, Sequence, Tuple, List
 from numbers import Number
 import mxnet as mx
 
-from aikit.utils.exceptions import IvyNotImplementedException
+from aikit.utils.exceptions import AikitNotImplementedException
 
 
 def moveaxis(
@@ -14,7 +14,7 @@ def moveaxis(
     copy: Optional[bool] = None,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def heaviside(
@@ -24,7 +24,7 @@ def heaviside(
     *,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def flipud(
@@ -34,7 +34,7 @@ def flipud(
     copy: Optional[bool] = None,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def vstack(
@@ -43,7 +43,7 @@ def vstack(
     *,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def hstack(
@@ -52,7 +52,7 @@ def hstack(
     *,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def rot90(
@@ -64,7 +64,7 @@ def rot90(
     axes: Tuple[(int, int)] = (0, 1),
     out: Union[(None, mx.ndarray.NDArray)] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def top_k(
@@ -77,7 +77,7 @@ def top_k(
     sorted: bool = True,
     out: Optional[Tuple[(None, None)]] = None,
 ) -> Tuple[(None, None)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def fliplr(
@@ -87,7 +87,7 @@ def fliplr(
     copy: Optional[bool] = None,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def i0(
@@ -96,7 +96,7 @@ def i0(
     *,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def vsplit(
@@ -106,7 +106,7 @@ def vsplit(
     *,
     copy: Optional[bool] = None,
 ) -> List[Union[(None, mx.ndarray.NDArray)]]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def dsplit(
@@ -116,13 +116,13 @@ def dsplit(
     *,
     copy: Optional[bool] = None,
 ) -> List[Union[(None, mx.ndarray.NDArray)]]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def atleast_1d(
     *arys: Union[(None, mx.ndarray.NDArray, bool, Number)], copy: Optional[bool] = None
 ) -> List[Union[(None, mx.ndarray.NDArray)]]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def dstack(
@@ -131,19 +131,19 @@ def dstack(
     *,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def atleast_2d(
     *arys: Union[(None, mx.ndarray.NDArray)], copy: Optional[bool] = None
 ) -> List[Union[(None, mx.ndarray.NDArray)]]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def atleast_3d(
     *arys: Union[(None, mx.ndarray.NDArray, bool, Number)], copy: Optional[bool] = None
 ) -> List[Union[(None, mx.ndarray.NDArray)]]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def take(
@@ -156,7 +156,7 @@ def take(
     fill_value: Optional[Number] = None,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def take_along_axis(
@@ -168,7 +168,7 @@ def take_along_axis(
     mode: str = "fill",
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def hsplit(
@@ -178,11 +178,11 @@ def hsplit(
     *,
     copy: Optional[bool] = None,
 ) -> List[Union[(None, mx.ndarray.NDArray)]]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def broadcast_shapes(*shapes: Union[(List[int], List[Tuple])]) -> Tuple[(int, ...)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def expand(
@@ -193,7 +193,7 @@ def expand(
     copy: Optional[bool] = None,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def concat_from_sequence(
@@ -204,4 +204,4 @@ def concat_from_sequence(
     axis: int = 0,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()

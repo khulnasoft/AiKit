@@ -70,7 +70,7 @@ class Array:
         try:
             return jax_frontend.numpy.asarray(self, dtype=dtype)
         except:  # noqa: E722
-            raise aikit.utils.exceptions.IvyException(
+            raise aikit.utils.exceptions.AikitException(
                 f"Dtype {self.dtype} is not castable to {dtype}"
             )
 
@@ -336,7 +336,7 @@ class Array:
         return self.at[idx].get()
 
     def __setitem__(self, idx, val):
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             "aikit.functional.frontends.jax.Array object doesn't support assignment"
         )
 

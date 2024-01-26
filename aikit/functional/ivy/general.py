@@ -1,4 +1,4 @@
-"""Collection of general Ivy functions."""
+"""Collection of general Aikit functions."""
 
 # global
 import gc
@@ -320,7 +320,7 @@ def is_native_array(
 def is_aikit_array(
     x: Union[aikit.Array, aikit.NativeArray], /, *, exclusive: Optional[bool] = False
 ) -> bool:
-    """Determine whether the input x is a valid Ivy Array.
+    """Determine whether the input x is a valid Aikit Array.
 
     Parameters
     ----------
@@ -333,7 +333,7 @@ def is_aikit_array(
     Returns
     -------
     ret
-        Boolean, whether or not x is a valid Ivy Array.
+        Boolean, whether or not x is a valid Aikit Array.
 
     Examples
     --------
@@ -351,7 +351,7 @@ def is_aikit_array(
 @handle_exceptions
 @handle_backend_invalid
 def is_array(x: Any, /, *, exclusive: bool = False) -> bool:
-    """Determine whether the input x is either an Ivy Array or a Native Array.
+    """Determine whether the input x is either an Aikit Array or a Native Array.
 
     Parameters
     ----------
@@ -387,7 +387,7 @@ def is_array(x: Any, /, *, exclusive: bool = False) -> bool:
 
 @handle_exceptions
 def is_aikit_container(x: Any, /) -> bool:
-    """Determine whether the input x is an Ivy Container.
+    """Determine whether the input x is an Aikit Container.
 
     Parameters
     ----------
@@ -2458,9 +2458,9 @@ def num_arrays_in_memory() -> int:
 
 @handle_exceptions
 def print_all_arrays_in_memory():
-    """Print all native Ivy arrays in memory to the console.
+    """Print all native Aikit arrays in memory to the console.
 
-    Gets all the native Ivy arrays which are currently alive(in the
+    Gets all the native Aikit arrays which are currently alive(in the
     garbage collector) from get_all_arrays_in_memory() function and
     prints them to the console.
     """
@@ -2643,7 +2643,7 @@ def supports_inplace_updates(x: Union[aikit.Array, aikit.NativeArray], /) -> boo
 
     Raises
     ------
-    IvyException
+    AikitException
         If x isn't a class instance of aikit.Array or aikit.NativeArray, an exception will
         be raised.
 
@@ -2680,7 +2680,7 @@ def supports_inplace_updates(x: Union[aikit.Array, aikit.NativeArray], /) -> boo
         return aikit.inplace_variables_supported()
     elif aikit.is_native_array(x):
         return aikit.inplace_arrays_supported()
-    raise aikit.utils.exceptions.IvyException(
+    raise aikit.utils.exceptions.AikitException(
         "Input x must be either a variable or an array."
     )
 
@@ -2700,7 +2700,7 @@ def assert_supports_inplace(x: Union[aikit.Array, aikit.NativeArray], /) -> bool
     Returns
     -------
     ret
-        True if supports, raises IvyBackendException otherwise
+        True if supports, raises AikitBackendException otherwise
 
     This function is *nestable*, and therefore also accepts :code:'aikit.Container'
     instance in place of the argument.
@@ -2988,7 +2988,7 @@ def inplace_update(
 
     Raises
     ------
-    IvyException
+    AikitException
         If backend set doesn't natively support inplace updates and ensure_in_backend is
         True, above exception will be raised.
 
@@ -3055,9 +3055,9 @@ aikit.inplace_mode = inplace_mode_stack[-1] if inplace_mode_stack else "lenient"
 
 @handle_exceptions
 def set_inplace_mode(mode: str = "lenient") -> None:
-    """Set the memory management behavior for in-place updates in Ivy.
+    """Set the memory management behavior for in-place updates in Aikit.
 
-    By default, Ivy creates new arrays in the backend for in-place updates.
+    By default, Aikit creates new arrays in the backend for in-place updates.
     However, this behavior can be controlled by the user
     using the 'inplace_mode' parameter.
 
@@ -3102,7 +3102,7 @@ def set_inplace_mode(mode: str = "lenient") -> None:
 
 @handle_exceptions
 def unset_inplace_mode() -> None:
-    """Reset the memory management behavior for in-place updates in Ivy to the
+    """Reset the memory management behavior for in-place updates in Aikit to the
     previous state.
 
     Examples
@@ -4318,7 +4318,7 @@ def strides(
 
 
 def is_aikit_nested_array(x: Any, /) -> bool:
-    """Determine whether the input x is an Ivy Nested Array.
+    """Determine whether the input x is an Aikit Nested Array.
 
     Parameters
     ----------

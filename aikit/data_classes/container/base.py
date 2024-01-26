@@ -10,7 +10,7 @@ import termcolor
 import numpy as np
 import json
 
-from aikit.utils.exceptions import IvyBackendException, IvyException
+from aikit.utils.exceptions import AikitBackendException, AikitException
 
 
 try:
@@ -146,7 +146,7 @@ class ContainerBase(dict, abc.ABC):
             else:
                 dict_in = {}
         elif kwargs:
-            raise aikit.utils.exceptions.IvyException(
+            raise aikit.utils.exceptions.AikitException(
                 "dict_in and **kwargs cannot both be specified for aikit.Container "
                 "constructor, please specify one or the other, not both."
             )
@@ -536,7 +536,7 @@ class ContainerBase(dict, abc.ABC):
                         elif isinstance(diff_keys, (list, tuple)):
                             key = diff_keys[idx]
                         else:
-                            raise aikit.utils.exceptions.IvyException(
+                            raise aikit.utils.exceptions.AikitException(
                                 "diff_keys must be either a string or list of strings,"
                                 f" but found {diff_keys} of type {type(diff_keys)}"
                             )
@@ -589,7 +589,7 @@ class ContainerBase(dict, abc.ABC):
                         elif isinstance(diff_keys, (list, tuple)):
                             diff_dict[diff_keys[i]] = cont[key]
                         else:
-                            raise aikit.utils.exceptions.IvyException(
+                            raise aikit.utils.exceptions.AikitException(
                                 "diff_keys must be either a string or list of strings,"
                                 f" but found {diff_keys} of type {type(diff_keys)}"
                             )
@@ -1121,7 +1121,7 @@ class ContainerBase(dict, abc.ABC):
         elif format == "h5py":
             return aikit.Container.cont_from_disk_as_hdf5(filepath)
         else:
-            raise aikit.utils.exceptions.IvyException("Unsupported format")
+            raise aikit.utils.exceptions.AikitException("Unsupported format")
 
     @staticmethod
     def cont_from_disk_as_hdf5(
@@ -1170,7 +1170,7 @@ class ContainerBase(dict, abc.ABC):
                     list(value[slice_obj]), dtype=str(value[slice_obj].dtype)
                 )
             else:
-                raise aikit.utils.exceptions.IvyException(
+                raise aikit.utils.exceptions.AikitException(
                     "Item found inside h5_obj which was neither a Group nor a Dataset."
                 )
         return aikit.Container(container_dict, aikith=aikith)
@@ -1254,7 +1254,7 @@ class ContainerBase(dict, abc.ABC):
                 size += _reduce(mul, value_shape, 1) * value.dtype.itemsize
                 batch_size = value_shape[0]
             else:
-                raise aikit.utils.exceptions.IvyException(
+                raise aikit.utils.exceptions.AikitException(
                     "Item found inside h5_obj which was neither a Group nor a Dataset."
                 )
         return size, batch_size
@@ -1293,7 +1293,7 @@ class ContainerBase(dict, abc.ABC):
                 # noinspection PyTypeChecker
                 random.shuffle(value)
             else:
-                raise aikit.utils.exceptions.IvyException(
+                raise aikit.utils.exceptions.AikitException(
                     "Item found inside h5_obj which was neither a Group nor a Dataset."
                 )
         if isinstance(h5_obj, h5py.File):
@@ -1334,7 +1334,7 @@ class ContainerBase(dict, abc.ABC):
             try:
                 return reduction(containers)
             except Exception as e:
-                raise aikit.utils.exceptions.IvyException(
+                raise aikit.utils.exceptions.AikitException(
                     str(e)
                     + "\nContainer reduce operation only valid for containers of arrays"
                 )
@@ -1648,7 +1648,7 @@ class ContainerBase(dict, abc.ABC):
                 )
             )
         else:
-            raise aikit.utils.exceptions.IvyException(f"invalid input {dict_in}")
+            raise aikit.utils.exceptions.AikitException(f"invalid input {dict_in}")
         items = sorted(dict_in.items()) if self._alphabetical_keys else dict_in.items()
         for key, value in items:
             if (
@@ -2352,14 +2352,14 @@ class ContainerBase(dict, abc.ABC):
             aikit.utils.assertions.check_true(
                 self.cont_contains_sub_container(sub_cont, partial)
             )
-        except aikit.utils.exceptions.IvyException:
+        except aikit.utils.exceptions.AikitException:
             key_chain = self.cont_find_sub_structure(
                 sub_cont, check_shapes=False, partial=True
             )
             if not key_chain:
                 key_chain = ""
             # noinspection PyTypeChecker
-            raise aikit.utils.exceptions.IvyException(
+            raise aikit.utils.exceptions.AikitException(
                 "Containers did not have identical structure and"
                 f" values:\n\n{aikit.Container.cont_diff(self[key_chain], sub_cont)}"
             )
@@ -2449,14 +2449,14 @@ class ContainerBase(dict, abc.ABC):
             aikit.utils.assertions.check_true(
                 self.cont_contains_sub_structure(sub_cont, check_shapes, partial)
             )
-        except aikit.utils.exceptions.IvyException:
+        except aikit.utils.exceptions.AikitException:
             key_chain = self.cont_find_sub_structure(
                 sub_cont, check_shapes=False, partial=True
             )
             if not key_chain:
                 key_chain = ""
             # noinspection PyTypeChecker
-            raise aikit.utils.exceptions.IvyException(
+            raise aikit.utils.exceptions.AikitException(
                 "Containers did not have identical structure:\n\n{}".format(
                     aikit.Container.cont_structural_diff(
                         self[key_chain],
@@ -2537,7 +2537,7 @@ class ContainerBase(dict, abc.ABC):
             except KeyError as e:
                 if ignore_key_errors:
                     return
-                raise aikit.utils.exceptions.IvyException(repr(e))
+                raise aikit.utils.exceptions.AikitException(repr(e))
         return ret
 
     def cont_at_key_chains(self, key_chains, ignore_none=True, ignore_key_errors=False):
@@ -2573,7 +2573,7 @@ class ContainerBase(dict, abc.ABC):
                 [key_chains], ignore_key_errors=ignore_key_errors
             )
         else:
-            raise aikit.utils.exceptions.IvyException(
+            raise aikit.utils.exceptions.AikitException(
                 "Invalid type for input key_chains, must either be a list, tuple, dict"
                 f" or aikit.Container, but found type {type(key_chains)}"
             )
@@ -2872,7 +2872,7 @@ class ContainerBase(dict, abc.ABC):
         elif isinstance(key_chains, str):
             return self._cont_prune_key_chains_input_as_seq([key_chains])
         else:
-            raise aikit.utils.exceptions.IvyException(
+            raise aikit.utils.exceptions.AikitException(
                 "Invalid type for input key_chains, must either be a list, tuple, dict"
                 f" or aikit.Container, but found type {type(key_chains)}"
             )
@@ -3268,7 +3268,7 @@ class ContainerBase(dict, abc.ABC):
         def to_list(x, _=""):
             try:
                 return self._cont_aikit.to_list(x)
-            except (IvyException, IvyBackendException):
+            except (AikitException, AikitBackendException):
                 return x
 
         return self.cont_map(to_list)
@@ -3343,7 +3343,7 @@ class ContainerBase(dict, abc.ABC):
         """
         try:
             return self[key]
-        except IvyException:
+        except AikitException:
             return self
 
     def cont_cutoff_at_depth(self, depth_cutoff, inplace=False):
@@ -3944,7 +3944,7 @@ class ContainerBase(dict, abc.ABC):
                 range(query[0].start, query[0].stop, aikit.default(query[0].step, 1))
             )
         else:
-            raise aikit.utils.exceptions.IvyException(
+            raise aikit.utils.exceptions.AikitException(
                 "Invalid slice type, must be one of integer, slice "
                 "or sequences of slices."
             )

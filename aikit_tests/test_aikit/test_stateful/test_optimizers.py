@@ -1,4 +1,4 @@
-"""Collection of tests for Ivy optimizers."""
+"""Collection of tests for Aikit optimizers."""
 
 # global
 from hypothesis import strategies as st

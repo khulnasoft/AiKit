@@ -1,4 +1,4 @@
-"""Collection of Paddle network layers, wrapped to fit Ivy syntax and
+"""Collection of Paddle network layers, wrapped to fit Aikit syntax and
 signature."""
 
 from typing import Optional, Tuple, Union, Sequence
@@ -7,7 +7,7 @@ from typing import Optional, Tuple, Union, Sequence
 import paddle
 import aikit
 from aikit.func_wrapper import with_unsupported_device_and_dtypes
-from aikit.utils.exceptions import IvyNotImplementedException
+from aikit.utils.exceptions import AikitNotImplementedException
 from aikit.functional.aikit.layers import (
     _handle_padding,
     _get_x_data_format,
@@ -155,7 +155,7 @@ def conv1d(
     bias: Optional[paddle.Tensor] = None,
     out: Optional[paddle.Tensor] = None,
 ) -> paddle.Tensor:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 @with_unsupported_device_and_dtypes(
@@ -216,7 +216,7 @@ def conv2d(
     bias: Optional[paddle.Tensor] = None,
     out: Optional[paddle.Tensor] = None,
 ) -> paddle.Tensor:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 @with_unsupported_device_and_dtypes(
@@ -277,7 +277,7 @@ def depthwise_conv2d(
     dilations: Union[int, Tuple[int, int]] = 1,
     out: Optional[paddle.Tensor] = None,
 ) -> paddle.Tensor:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 @with_unsupported_device_and_dtypes(
@@ -337,7 +337,7 @@ def conv3d_transpose(
     bias: Optional[paddle.Tensor] = None,
     out: Optional[paddle.Tensor] = None,
 ) -> paddle.Tensor:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 @with_unsupported_device_and_dtypes(

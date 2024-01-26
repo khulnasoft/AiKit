@@ -4,18 +4,18 @@ import hypothesis.strategies as st
 
 from aikit import handle_exceptions
 from aikit.utils.exceptions import (
-    IvyError,
-    IvyNotImplementedException,
-    IvyBroadcastShapeError,
-    IvyValueError,
+    AikitError,
+    AikitNotImplementedException,
+    AikitBroadcastShapeError,
+    AikitValueError,
     InplaceUpdateException,
-    IvyException,
-    IvyIndexError,
-    IvyAttributeError,
-    IvyBackendException,
-    IvyDeviceError,
-    IvyInvalidBackendException,
-    IvyDtypePromotionError,
+    AikitException,
+    AikitIndexError,
+    AikitAttributeError,
+    AikitBackendException,
+    AikitDeviceError,
+    AikitInvalidBackendException,
+    AikitDtypePromotionError,
     _non_aikit_exceptions_mapping,
 )
 
@@ -31,18 +31,18 @@ def func(e):
 @pytest.mark.parametrize(
     "e",
     [
-        IvyError,
-        IvyNotImplementedException,
-        IvyBroadcastShapeError,
-        IvyValueError,
+        AikitError,
+        AikitNotImplementedException,
+        AikitBroadcastShapeError,
+        AikitValueError,
         InplaceUpdateException,
-        IvyException,
-        IvyIndexError,
-        IvyAttributeError,
-        IvyBackendException,
-        IvyDeviceError,
-        IvyInvalidBackendException,
-        IvyDtypePromotionError,
+        AikitException,
+        AikitIndexError,
+        AikitAttributeError,
+        AikitBackendException,
+        AikitDeviceError,
+        AikitInvalidBackendException,
+        AikitDtypePromotionError,
     ],
 )
 def test_aikit_errors_raising(e):
@@ -80,5 +80,5 @@ def test_non_aikit_errors_mapping(e, to_be_raised):
     )
 )
 def test_non_aikit_errors_raising(e):
-    with pytest.raises(IvyBackendException):
+    with pytest.raises(AikitBackendException):
         func(e)

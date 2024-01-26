@@ -28,7 +28,7 @@ def histogram(
     min_a = tf.reduce_min(a)
     max_a = tf.reduce_max(a)
     if isinstance(bins, tf.Tensor) and range:
-        raise aikit.exceptions.IvyException(
+        raise aikit.exceptions.AikitException(
             "Must choose between specifying bins and range or bin edges directly"
         )
     if range:
@@ -42,14 +42,14 @@ def histogram(
             tf.linspace(start=range[0], stop=range[1], num=bins + 1), dtype=a.dtype
         )
     if tf.shape(bins)[0] < 2:
-        raise aikit.exceptions.IvyException("bins must have at least 1 bin (size > 1)")
+        raise aikit.exceptions.AikitException("bins must have at least 1 bin (size > 1)")
     if min_a < bins[0] and not extend_lower_interval:
-        raise aikit.exceptions.IvyException(
+        raise aikit.exceptions.AikitException(
             "Values of x outside of the intervals cause errors in tensorflow backend. "
             "Consider using extend_lower_interval to deal with this."
         )
     if max_a > bins[-1] and not extend_upper_interval:
-        raise aikit.exceptions.IvyException(
+        raise aikit.exceptions.AikitException(
             "Values of x outside of the intervals cause errors in tensorflow backend. "
             "Consider using extend_upper_interval to deal with this."
         )

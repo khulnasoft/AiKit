@@ -197,7 +197,7 @@ def foldl(
         callable(fn), f"{fn.__name__} must be a callable function"
     )
     if len(aikit.shape(elems)) == 0 or aikit.get_num_dims(elems) == 0:
-        raise aikit.utils.exceptions.IvyValueError(
+        raise aikit.utils.exceptions.AikitValueError(
             "elems must be a non-empty iterable object with at least one dimension"
         )
     if initializer is not None:
@@ -230,7 +230,7 @@ def foldr(
         callable(fn), f"{fn.__name__} must be a callable function"
     )
     if len(aikit.shape(elems)) == 0 or aikit.get_num_dims(elems) == 0:
-        raise aikit.utils.exceptions.IvyValueError(
+        raise aikit.utils.exceptions.AikitValueError(
             "elems must be a non-empty iterable object with at least one dimension"
         )
 

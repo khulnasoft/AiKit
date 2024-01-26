@@ -28,7 +28,7 @@ def can_cast(from_, to, casting="safe"):
     elif isinstance(from_, np_frontend.dtype):
         from_ = from_._aikit_dtype
     else:
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             "from_ must be one of dtype, dtype specifier, scalar, or array"
         )
 
@@ -37,7 +37,7 @@ def can_cast(from_, to, casting="safe"):
     elif isinstance(to, np_frontend.dtype):
         to = to._aikit_dtype
     else:
-        raise aikit.utils.exceptions.IvyException("to must be dtype or dtype specifier")
+        raise aikit.utils.exceptions.AikitException("to must be dtype or dtype specifier")
 
     if casting in ["no", "equiv"]:
         return from_ == to
@@ -101,7 +101,7 @@ def promote_types(type1, type2, /):
 @to_aikit_arrays_and_back
 def result_type(*arrays_and_dtypes):
     if len(arrays_and_dtypes) == 0:
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             "At least one array or dtype must be provided"
         )
     if len(arrays_and_dtypes) == 1:

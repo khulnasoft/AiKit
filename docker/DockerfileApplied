@@ -1,5 +1,5 @@
 FROM ubuntu:20.04
-WORKDIR /ivy
+WORKDIR /aikit
 ARG CLI
 
 FROM khulnasoft/aikit:latest as base

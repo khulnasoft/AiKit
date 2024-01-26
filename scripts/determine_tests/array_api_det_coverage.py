@@ -87,7 +87,7 @@ def main():
     for test_backend in tqdm(test_names[start:end]):
         test_name, backend = test_backend.split(",")
         command = (
-            f"docker run --rm --env IVY_BACKEND={backend} --env "
+            f"docker run --rm --env AIKIT_BACKEND={backend} --env "
             'ARRAY_API_TESTS_MODULE="aikit" -v "$(pwd)":/aikit khulnasoft/aikit:latest '
             'timeout 30m /bin/bash -c "coverage run --source=aikit,aikit_tests -m pytest '
             f'{test_name} -k \\"{k_flag[backend]}\\" --disable-warnings --tb=short '

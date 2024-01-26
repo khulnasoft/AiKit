@@ -3,10 +3,10 @@ from typing import Optional, Union, Literal
 # global
 import jax
 import jax.numpy as jnp
-from ivy.functional.backends.jax import JaxArray
+from aikit.functional.backends.jax import JaxArray
 from jax import lax
-import ivy
-from ivy.func_wrapper import with_unsupported_dtypes
+import aikit
+from aikit.func_wrapper import with_unsupported_dtypes
 from . import backend_version
 
 
@@ -38,7 +38,7 @@ def relu6(
             (x_and_grad[0] < 6) & (x_and_grad[0] > 0), one, lax.full_like(one, 0)
         )
 
-    new_func = ivy.bind_custom_gradient_function(relu6_func, custom_grad_func)
+    new_func = aikit.bind_custom_gradient_function(relu6_func, custom_grad_func)
 
     return new_func(x).astype(x.dtype)
 
@@ -61,15 +61,15 @@ def logsigmoid(
 
 def selu(x: JaxArray, /, *, out: Optional[JaxArray] = None) -> JaxArray:
     ret = jax.nn.selu(x).astype(x.dtype)
-    if ivy.exists(out):
-        return ivy.inplace_update(out, ret).astype(x.dtype)
+    if aikit.exists(out):
+        return aikit.inplace_update(out, ret).astype(x.dtype)
     return ret
 
 
 def silu(x: JaxArray, /, *, out: Optional[JaxArray] = None) -> JaxArray:
     ret = jax.nn.silu(x)
-    if ivy.exists(out):
-        return ivy.inplace_update(out, ret).astype(x.dtype)
+    if aikit.exists(out):
+        return aikit.inplace_update(out, ret).astype(x.dtype)
     return ret
 
 
@@ -78,8 +78,8 @@ def elu(
     x: JaxArray, /, *, alpha: float = 1.0, out: Optional[JaxArray] = None
 ) -> JaxArray:
     ret = jax.nn.elu(x, alpha)
-    if ivy.exists(out):
-        return ivy.inplace_update(out, ret).astype(x.dtype)
+    if aikit.exists(out):
+        return aikit.inplace_update(out, ret).astype(x.dtype)
     return ret
 
 
@@ -104,15 +104,15 @@ def hardtanh(
     out: Optional[JaxArray] = None,
 ) -> JaxArray:
     ret = jnp.where(x > max_val, max_val, jnp.where(x < min_val, min_val, x))
-    if ivy.exists(out):
-        return ivy.inplace_update(out, ret).astype(x.dtype)
-    return ivy.astype(ret, x.dtype)
+    if aikit.exists(out):
+        return aikit.inplace_update(out, ret).astype(x.dtype)
+    return aikit.astype(ret, x.dtype)
 
 
 def tanhshrink(x: JaxArray, /, *, out: Optional[JaxArray] = None) -> JaxArray:
     ret = jnp.subtract(x, jax.nn.tanh(x))
-    if ivy.exists(out):
-        return ivy.inplace_update(out, ret).astype(x.dtype)
+    if aikit.exists(out):
+        return aikit.inplace_update(out, ret).astype(x.dtype)
     return ret
 
 
@@ -125,8 +125,8 @@ def threshold(
     out: Optional[JaxArray] = None,
 ) -> JaxArray:
     ret = jnp.where(x > threshold, x, value).astype(x.dtype)
-    if ivy.exists(out):
-        return ivy.inplace_update(out, ret).astype(x.dtype)  # type: ignore
+    if aikit.exists(out):
+        return aikit.inplace_update(out, ret).astype(x.dtype)  # type: ignore
     return ret
 
 
@@ -135,8 +135,8 @@ def softshrink(
     x: JaxArray, /, *, lambd: float = 0.5, out: Optional[JaxArray] = None
 ) -> JaxArray:
     ret = jnp.where(x > lambd, x - lambd, jnp.where(x < -lambd, x + lambd, 0))
-    if ivy.exists(out):
-        return ivy.inplace_update(out, ret).astype(x.dtype)
+    if aikit.exists(out):
+        return aikit.inplace_update(out, ret).astype(x.dtype)
     return ret
 
 
@@ -157,6 +157,6 @@ def hardshrink(
     x: JaxArray, /, *, lambd: float = 0.5, out: Optional[JaxArray] = None
 ) -> JaxArray:
     ret = jnp.where(x > lambd, x, jnp.where(x < -lambd, x, 0))
-    if ivy.exists(out):
-        return ivy.inplace_update(out, ret).astype(x.dtype)
+    if aikit.exists(out):
+        return aikit.inplace_update(out, ret).astype(x.dtype)
     return ret

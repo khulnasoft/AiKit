@@ -6,9 +6,9 @@ Error Handling
 .. _`docker thread`: https://discord.com/channels/799879767196958751/1186629067966009424
 .. _`pre-commit thread`: https://discord.com/channels/799879767196958751/1186629635694399539
 .. _`pip packages thread`: https://discord.com/channels/799879767196958751/1186629837515935765
-.. _`ivy tests thread`: https://discord.com/channels/799879767196958751/1189907526226034698
+.. _`aikit tests thread`: https://discord.com/channels/799879767196958751/1189907526226034698
 
-This section, "Error Handling" aims to assist you in navigating through some common errors you might encounter while working with the Ivy's Functional API. We'll go through some common errors which you might encounter while working as a contributor or a developer.
+This section, "Error Handling" aims to assist you in navigating through some common errors you might encounter while working with the Aikit's Functional API. We'll go through some common errors which you might encounter while working as a contributor or a developer.
 
 #. This is the case where we pass in a dtype to `torch` which is not actually supported by the torch's native framework itself.
 
@@ -82,7 +82,7 @@ This section, "Error Handling" aims to assist you in navigating through some com
          .. code-block:: python
 
                @handle_test(
-                   fn_tree="functional.ivy.acosh",
+                   fn_tree="functional.aikit.acosh",
                    dtype_and_x=helpers.dtype_and_values(
                        available_dtypes=helpers.get_dtypes("float"),
                        min_value=1,
@@ -144,10 +144,10 @@ This section, "Error Handling" aims to assist you in navigating through some com
 
 **Note**
 
-This section is specifically targeted towards dealing with the Ivy Functional API and the Ivy Experimental API.
+This section is specifically targeted towards dealing with the Aikit Functional API and the Aikit Experimental API.
 
 **Round Up**
 
 This should have hopefully given you an understanding of how to deal with common errors while working with the the functional API.
 
-If you have any questions, please feel free to reach out on `discord`_  in the `ivy tests thread`_, `pycharm thread`_, `docker thread`_, `pre-commit thread`_, `pip packages thread`_ depending on the question!
+If you have any questions, please feel free to reach out on `discord`_  in the `aikit tests thread`_, `pycharm thread`_, `docker thread`_, `pre-commit thread`_, `pip packages thread`_ depending on the question!

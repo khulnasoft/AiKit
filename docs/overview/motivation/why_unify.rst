@@ -5,9 +5,9 @@ Why Unify?
 
 You may be perfectly happy with the framework you currently use, and that’s great! We live in a time where great ML tools are in abundance, and that’s a wonderful thing!
 
-Ivy just makes a wonderful thing **even better**…
+Aikit just makes a wonderful thing **even better**…
 
-We’ll give two clear examples of how Ivy can streamline your ML workflow and save you **weeks** of development time.
+We’ll give two clear examples of how Aikit can streamline your ML workflow and save you **weeks** of development time.
 
 No More Re-implementations 🚧
 -----------------------------
@@ -26,7 +26,7 @@ What happens currently is:
 #. In total, 100s of hours are spent on: developing each spin-off codebase, testing the code, discussing the errors, and iterating to try and address them.
    This is all for the sake of re-implementing a single project in multiple frameworks.
 
-With Ivy, this process becomes:
+With Aikit, this process becomes:
 
 #. With one line, convert the code directly to your framework with a computation graph guaranteed to be identical to the original.
 
@@ -50,7 +50,7 @@ For example: `TorchVision <https://github.com/rolandgvc/flaxvision>`_, `TensorFl
 
 What about the next framework that gets released in a few years from now, must we continue re-implementing everything over and over again?
 
-With Ivy, you can write your code **once**, and then it will support all future ML frameworks with **zero** changes needed.
+With Aikit, you can write your code **once**, and then it will support all future ML frameworks with **zero** changes needed.
 
 .. image:: https://github.com/khulnasoft/khulnasoft.github.io/blob/main/img/externally_linked/background/why_unify/future_proof.png?raw=true
    :align: center
@@ -59,7 +59,7 @@ With Ivy, you can write your code **once**, and then it will support all future 
 The same can be said about high-level code for: Modules, Optimizers and Trainers etc.
 Currently, the status quo is to continue implementing new high-level libraries for each new framework, with examples being: (a) `Sonnet <https://github.com/deepmind/sonnet>`_, `Keras <https://github.com/keras-team/keras>`_ and `Dopamine <https://github.com/google/dopamine>`_ for TensorFlow (b) `Ignite <https://github.com/pytorch/ignite>`_, `Catalyst <https://github.com/catalyst-team/catalyst>`_, `Lightning <https://github.com/PyTorchLightning/pytorch-lightning>`_, and `FastAI <https://github.com/fastai/fastai>`_ for PyTorch, and (c) `Haiku <https://github.com/deepmind/dm-haiku>`_, `Flax <https://github.com/google/flax>`_, `Trax <https://github.com/google/trax>`_ and `Objax <https://github.com/google/objax>`_ for JAX.
 
-With Ivy, we have implemented Modules, Optimizers, and Trainers **once** with simultaneous support for all **current** and **future** frameworks.
+With Aikit, we have implemented Modules, Optimizers, and Trainers **once** with simultaneous support for all **current** and **future** frameworks.
 
 .. image:: https://github.com/khulnasoft/khulnasoft.github.io/blob/main/img/externally_linked/background/why_unify/reinvented_wheels.png?raw=true
    :align: center

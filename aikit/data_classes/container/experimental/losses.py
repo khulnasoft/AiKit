@@ -2,26 +2,26 @@
 from typing import Optional, Union, List, Dict
 
 # local
-import ivy
-from ivy.data_classes.container.base import ContainerBase
+import aikit
+from aikit.data_classes.container.base import ContainerBase
 
 
 class _ContainerWithLossesExperimental(ContainerBase):
     @staticmethod
     def _static_l1_loss(
-        input: Union[ivy.Container, ivy.Array, ivy.NativeArray],
-        target: Union[ivy.Container, ivy.Array, ivy.NativeArray],
+        input: Union[aikit.Container, aikit.Array, aikit.NativeArray],
+        target: Union[aikit.Container, aikit.Array, aikit.NativeArray],
         /,
         *,
-        reduction: Optional[Union[str, ivy.Container]] = "mean",
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container static method variant of ivy.l1_loss. This method
-        simply wraps the function, and so the docstring for ivy.l1_loss also
+        reduction: Optional[Union[str, aikit.Container]] = "mean",
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container static method variant of aikit.l1_loss. This method
+        simply wraps the function, and so the docstring for aikit.l1_loss also
         applies to this method with minimal changes.
 
         Parameters
@@ -56,26 +56,26 @@ class _ContainerWithLossesExperimental(ContainerBase):
 
         Examples
         --------
-        With :class:`ivy.Container` inputs:
+        With :class:`aikit.Container` inputs:
 
-        >>> x = ivy.Container(a=ivy.array([1, 2, 3]), b=ivy.array([4, 5, 6]))
-        >>> y = ivy.Container(a=ivy.array([2, 2, 2]), b=ivy.array([5, 5, 5]))
-        >>> z = ivy.Container.static_l1_loss(x, y)
+        >>> x = aikit.Container(a=aikit.array([1, 2, 3]), b=aikit.array([4, 5, 6]))
+        >>> y = aikit.Container(a=aikit.array([2, 2, 2]), b=aikit.array([5, 5, 5]))
+        >>> z = aikit.Container.static_l1_loss(x, y)
         >>> print(z)
         {
-            a: ivy.array(1.),
-            b: ivy.array(0.)
+            a: aikit.array(1.),
+            b: aikit.array(0.)
         }
 
-        With a mix of :class:`ivy.Array` and :class:`ivy.Container` inputs:
+        With a mix of :class:`aikit.Array` and :class:`aikit.Container` inputs:
 
-        >>> x = ivy.array([1, 2, 3])
-        >>> y = ivy.Container(a=ivy.array([2, 2, 2]), b=ivy.array([5, 5, 5]))
-        >>> z = ivy.Container.static_l1_loss(x, y)
+        >>> x = aikit.array([1, 2, 3])
+        >>> y = aikit.Container(a=aikit.array([2, 2, 2]), b=aikit.array([5, 5, 5]))
+        >>> z = aikit.Container.static_l1_loss(x, y)
         >>> print(z)
         {
-            a: ivy.array(1.),
-            b: ivy.array(4.)
+            a: aikit.array(1.),
+            b: aikit.array(4.)
         }
         """
         return ContainerBase.cont_multi_map_in_function(
@@ -91,19 +91,19 @@ class _ContainerWithLossesExperimental(ContainerBase):
         )
 
     def l1_loss(
-        self: ivy.Container,
-        target: Union[ivy.Container, ivy.Array, ivy.NativeArray],
+        self: aikit.Container,
+        target: Union[aikit.Container, aikit.Array, aikit.NativeArray],
         /,
         *,
-        reduction: Optional[Union[str, ivy.Container]] = "mean",
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of ivy.l1_loss. This method
-        simply wraps the function, and so the docstring for ivy.l1_loss also
+        reduction: Optional[Union[str, aikit.Container]] = "mean",
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of aikit.l1_loss. This method
+        simply wraps the function, and so the docstring for aikit.l1_loss also
         applies to this method with minimal changes.
 
         Parameters
@@ -138,13 +138,13 @@ class _ContainerWithLossesExperimental(ContainerBase):
 
         Examples
         --------
-        >>> x = ivy.Container(a=ivy.array([1, 2, 3]), b=ivy.array([4, 5, 6]))
-        >>> y = ivy.Container(a=ivy.array([2, 2, 2]), b=ivy.array([5, 5, 5]))
+        >>> x = aikit.Container(a=aikit.array([1, 2, 3]), b=aikit.array([4, 5, 6]))
+        >>> y = aikit.Container(a=aikit.array([2, 2, 2]), b=aikit.array([5, 5, 5]))
         >>> z = x.l1_loss(y)
         >>> print(z)
         {
-            a: ivy.array(1.),
-            b: ivy.array(0.)
+            a: aikit.array(1.),
+            b: aikit.array(0.)
         }
         """
         return self._static_l1_loss(
@@ -160,22 +160,22 @@ class _ContainerWithLossesExperimental(ContainerBase):
 
     @staticmethod
     def _static_log_poisson_loss(
-        input: Union[ivy.Container, ivy.Array, ivy.NativeArray],
-        target: Union[ivy.Container, ivy.Array, ivy.NativeArray],
+        input: Union[aikit.Container, aikit.Array, aikit.NativeArray],
+        target: Union[aikit.Container, aikit.Array, aikit.NativeArray],
         /,
         *,
         compute_full_loss: bool = False,
         axis: int = -1,
-        reduction: Optional[Union[str, ivy.Container]] = "mean",
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container static method variant of ivy.log_poisson_loss. This
+        reduction: Optional[Union[str, aikit.Container]] = "mean",
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container static method variant of aikit.log_poisson_loss. This
         method simply wraps the function, and so the docstring for
-        ivy.log_poisson_loss also applies to this method with minimal changes.
+        aikit.log_poisson_loss also applies to this method with minimal changes.
 
         Parameters
         ----------
@@ -216,26 +216,26 @@ class _ContainerWithLossesExperimental(ContainerBase):
 
         Examples
         --------
-        With :class:`ivy.Container` inputs:
+        With :class:`aikit.Container` inputs:
 
-        >>> x = ivy.Container(a=ivy.array([1, 2, 3]), b=ivy.array([4, 5, 6]))
-        >>> y = ivy.Container(a=ivy.array([2, 2, 2]), b=ivy.array([5, 5, 5]))
-        >>> z = ivy.Container.static_log_poisson_loss(x, y, reduction='mean')
+        >>> x = aikit.Container(a=aikit.array([1, 2, 3]), b=aikit.array([4, 5, 6]))
+        >>> y = aikit.Container(a=aikit.array([2, 2, 2]), b=aikit.array([5, 5, 5]))
+        >>> z = aikit.Container.static_log_poisson_loss(x, y, reduction='mean')
         >>> print(z)
         {
-            a: ivy.array(1.),
-            b: ivy.array(0.)
+            a: aikit.array(1.),
+            b: aikit.array(0.)
         }
 
-        With a mix of :class:`ivy.Array` and :class:`ivy.Container` inputs:
+        With a mix of :class:`aikit.Array` and :class:`aikit.Container` inputs:
 
-        >>> x = ivy.array([1, 2, 3])
-        >>> y = ivy.Container(a=ivy.array([2, 2, 2]), b=ivy.array([5, 5, 5]))
-        >>> z = ivy.Container.static_log_poisson_loss(x, y, reduction='mean')
+        >>> x = aikit.array([1, 2, 3])
+        >>> y = aikit.Container(a=aikit.array([2, 2, 2]), b=aikit.array([5, 5, 5]))
+        >>> z = aikit.Container.static_log_poisson_loss(x, y, reduction='mean')
         >>> print(z)
         {
-            a: ivy.array(1.),
-            b: ivy.array(4.)
+            a: aikit.array(1.),
+            b: aikit.array(4.)
         }
         """
         return ContainerBase.cont_multi_map_in_function(
@@ -253,22 +253,22 @@ class _ContainerWithLossesExperimental(ContainerBase):
         )
 
     def log_poisson_loss(
-        self: ivy.Container,
-        target: Union[ivy.Container, ivy.Array, ivy.NativeArray],
+        self: aikit.Container,
+        target: Union[aikit.Container, aikit.Array, aikit.NativeArray],
         /,
         *,
         compute_full_loss: bool = False,
         axis: int = -1,
-        reduction: Optional[Union[str, ivy.Container]] = "mean",
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of ivy.log_poisson_loss. This
+        reduction: Optional[Union[str, aikit.Container]] = "mean",
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of aikit.log_poisson_loss. This
         method simply wraps the function, and so the docstring for
-        ivy.log_poisson_loss also applies to this method with minimal changes.
+        aikit.log_poisson_loss also applies to this method with minimal changes.
 
         Parameters
         ----------
@@ -309,13 +309,13 @@ class _ContainerWithLossesExperimental(ContainerBase):
 
         Examples
         --------
-        >>> x = ivy.Container(a=ivy.array([1, 2, 3]), b=ivy.array([4, 5, 6]))
-        >>> y = ivy.Container(a=ivy.array([2, 2, 2]), b=ivy.array([5, 5, 5]))
+        >>> x = aikit.Container(a=aikit.array([1, 2, 3]), b=aikit.array([4, 5, 6]))
+        >>> y = aikit.Container(a=aikit.array([2, 2, 2]), b=aikit.array([5, 5, 5]))
         >>> z = x.log_poisson_loss(y)
         >>> print(z)
         {
-            a: ivy.array(1.),
-            b: ivy.array(0.)
+            a: aikit.array(1.),
+            b: aikit.array(0.)
         }
         """
         return self._static_log_poisson_loss(
@@ -333,20 +333,20 @@ class _ContainerWithLossesExperimental(ContainerBase):
 
     @staticmethod
     def _static_smooth_l1_loss(
-        input: Union[ivy.Container, ivy.Array, ivy.NativeArray],
-        target: Union[ivy.Container, ivy.Array, ivy.NativeArray],
+        input: Union[aikit.Container, aikit.Array, aikit.NativeArray],
+        target: Union[aikit.Container, aikit.Array, aikit.NativeArray],
         /,
         *,
-        beta: Optional[Union[float, ivy.Container]] = 1.0,
-        reduction: Optional[Union[str, ivy.Container]] = "mean",
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container static method variant of ivy.smooth_l1_loss. This
-        method simply wraps the function, and so the docstring for ivy.
+        beta: Optional[Union[float, aikit.Container]] = 1.0,
+        reduction: Optional[Union[str, aikit.Container]] = "mean",
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container static method variant of aikit.smooth_l1_loss. This
+        method simply wraps the function, and so the docstring for aikit.
         smooth_l1_loss also applies to this method with minimal changes.
 
         Parameters
@@ -384,28 +384,28 @@ class _ContainerWithLossesExperimental(ContainerBase):
 
         Examples
         --------
-        With :class:`ivy.Container` inputs:
+        With :class:`aikit.Container` inputs:
 
-        >>> x = ivy.Container(a=ivy.array([1, 0, 2]), b=ivy.array([3, 2, 1]))
-        >>> y = ivy.Container(a=ivy.array([0.6, 0.2, 0.3]),
-        b=ivy.array([0.8, 0.2, 0.2]))
-        >>> z = ivy.Container.static_smooth_l1_loss(x, y)
+        >>> x = aikit.Container(a=aikit.array([1, 0, 2]), b=aikit.array([3, 2, 1]))
+        >>> y = aikit.Container(a=aikit.array([0.6, 0.2, 0.3]),
+        b=aikit.array([0.8, 0.2, 0.2]))
+        >>> z = aikit.Container.static_smooth_l1_loss(x, y)
         >>> print(z)
         {
-            a: ivy.array(0.9),
-            b: ivy.array(0.25)
+            a: aikit.array(0.9),
+            b: aikit.array(0.25)
         }
 
-        With a mix of :class:`ivy.Array` and :class:`ivy.Container` inputs:
+        With a mix of :class:`aikit.Array` and :class:`aikit.Container` inputs:
 
-        >>> x = ivy.array([1 , 0, 2])
-        >>> y = ivy.Container(a=ivy.array([0.6, 0.2, 0.3]),
-        b=ivy.array([0.8, 0.2, 0.2]))
-        >>> z = ivy.Container.static_smooth_l1_loss(x, y)
+        >>> x = aikit.array([1 , 0, 2])
+        >>> y = aikit.Container(a=aikit.array([0.6, 0.2, 0.3]),
+        b=aikit.array([0.8, 0.2, 0.2]))
+        >>> z = aikit.Container.static_smooth_l1_loss(x, y)
         >>> print(z)
         {
-            a: ivy.array(0.9),
-            b: ivy.array(0.25)
+            a: aikit.array(0.9),
+            b: aikit.array(0.25)
         }
         """
         return ContainerBase.cont_multi_map_in_function(
@@ -422,20 +422,20 @@ class _ContainerWithLossesExperimental(ContainerBase):
         )
 
     def smooth_l1_loss(
-        self: ivy.Container,
-        target: Union[ivy.Container, ivy.Array, ivy.NativeArray],
+        self: aikit.Container,
+        target: Union[aikit.Container, aikit.Array, aikit.NativeArray],
         /,
         *,
-        beta: Optional[Union[float, ivy.Container]] = 1.0,
-        reduction: Optional[Union[str, ivy.Container]] = "mean",
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of ivy.smooth_l1_loss. This
-        method simply wraps the function, and so the docstring for ivy.
+        beta: Optional[Union[float, aikit.Container]] = 1.0,
+        reduction: Optional[Union[str, aikit.Container]] = "mean",
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of aikit.smooth_l1_loss. This
+        method simply wraps the function, and so the docstring for aikit.
         smooth_l1_loss also applies to this method with minimal changes.
 
         Parameters
@@ -476,14 +476,14 @@ class _ContainerWithLossesExperimental(ContainerBase):
 
         Examples
         --------
-        >>> x = ivy.Container(a=ivy.array([1, 0, 2]), b=ivy.array([3, 2, 1]))
-        >>> y = ivy.Container(a=ivy.array([0.6, 0.2, 0.3]),
-        b=ivy.array([0.8, 0.2, 0.2]))
+        >>> x = aikit.Container(a=aikit.array([1, 0, 2]), b=aikit.array([3, 2, 1]))
+        >>> y = aikit.Container(a=aikit.array([0.6, 0.2, 0.3]),
+        b=aikit.array([0.8, 0.2, 0.2]))
         >>> z = x.smooth_l1_loss(y)
         >>> print(z)
         {
-            a: ivy.array(0.9),
-            b: ivy.array(0.25)
+            a: aikit.array(0.9),
+            b: aikit.array(0.25)
         }
         """
         return self._static_smooth_l1_loss(
@@ -500,19 +500,19 @@ class _ContainerWithLossesExperimental(ContainerBase):
 
     @staticmethod
     def _static_huber_loss(
-        true: Union[ivy.Container, ivy.Array, ivy.NativeArray],
-        pred: Union[ivy.Container, ivy.Array, ivy.NativeArray],
+        true: Union[aikit.Container, aikit.Array, aikit.NativeArray],
+        pred: Union[aikit.Container, aikit.Array, aikit.NativeArray],
         /,
         *,
-        delta: Optional[Union[float, ivy.Container]] = 1.0,
-        reduction: Optional[Union[str, ivy.Container]] = "mean",
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container static method variant of huber_loss. This method
+        delta: Optional[Union[float, aikit.Container]] = 1.0,
+        reduction: Optional[Union[str, aikit.Container]] = "mean",
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container static method variant of huber_loss. This method
         simply wraps the function, and so the docstring for huber_loss also
         applies to this method with minimal changes.
 
@@ -551,28 +551,28 @@ class _ContainerWithLossesExperimental(ContainerBase):
 
         Examples
         --------
-        With :class:`ivy.Container` trues:
+        With :class:`aikit.Container` trues:
 
-        >>> x = ivy.Container(a=ivy.array([1, 0, 3]), b=ivy.array([0, 0, 2]))
-        >>> y = ivy.Container(a=ivy.array([1.5, 0.2, 2.8]), b=ivy.array([0.5, 0.2, 1.9])
+        >>> x = aikit.Container(a=aikit.array([1, 0, 3]), b=aikit.array([0, 0, 2]))
+        >>> y = aikit.Container(a=aikit.array([1.5, 0.2, 2.8]), b=aikit.array([0.5, 0.2, 1.9])
         )
-        >>> z = ivy.Container.static_huber_loss(x, y, delta=1.0)
+        >>> z = aikit.Container.static_huber_loss(x, y, delta=1.0)
         >>> print(z)
         {
-            a: ivy.array(0.0575),
-            b: ivy.array(0.005)
+            a: aikit.array(0.0575),
+            b: aikit.array(0.005)
         }
 
-        With a mix of :class:`ivy.Array` and :class:`ivy.Container` trues:
+        With a mix of :class:`aikit.Array` and :class:`aikit.Container` trues:
 
-        >>> x = ivy.array([1, 0, 3])
-        >>> y = ivy.Container(a=ivy.array([1.5, 0.2, 2.8]), b=ivy.array([0.5, 0.2, 1.9])
+        >>> x = aikit.array([1, 0, 3])
+        >>> y = aikit.Container(a=aikit.array([1.5, 0.2, 2.8]), b=aikit.array([0.5, 0.2, 1.9])
         )
-        >>> z = ivy.Container.static_huber_loss(x, y, delta=1.0)
+        >>> z = aikit.Container.static_huber_loss(x, y, delta=1.0)
         >>> print(z)
         {
-            a: ivy.array(0.0575),
-            b: ivy.array(0.005)
+            a: aikit.array(0.0575),
+            b: aikit.array(0.005)
         }
         """
         return ContainerBase.cont_multi_map_in_function(
@@ -589,19 +589,19 @@ class _ContainerWithLossesExperimental(ContainerBase):
         )
 
     def huber_loss(
-        self: ivy.Container,
-        pred: Union[ivy.Container, ivy.Array, ivy.NativeArray],
+        self: aikit.Container,
+        pred: Union[aikit.Container, aikit.Array, aikit.NativeArray],
         /,
         *,
-        delta: Optional[Union[float, ivy.Container]] = 1.0,
-        reduction: Optional[Union[str, ivy.Container]] = "mean",
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of huber_loss. This method
+        delta: Optional[Union[float, aikit.Container]] = 1.0,
+        reduction: Optional[Union[str, aikit.Container]] = "mean",
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of huber_loss. This method
         simply wraps the function, and so the docstring for huber_loss also
         applies to this method with minimal changes.
 
@@ -640,14 +640,14 @@ class _ContainerWithLossesExperimental(ContainerBase):
 
         Examples
         --------
-        >>> x = ivy.Container(a=ivy.array([1, 0, 3]), b=ivy.array([0, 0, 2]))
-        >>> y = ivy.Container(a=ivy.array([1.5, 0.2, 2.8]), b=ivy.array([0.5, 0.2, 1.9])
+        >>> x = aikit.Container(a=aikit.array([1, 0, 3]), b=aikit.array([0, 0, 2]))
+        >>> y = aikit.Container(a=aikit.array([1.5, 0.2, 2.8]), b=aikit.array([0.5, 0.2, 1.9])
         )
         >>> z = x.huber_loss(y, delta=1.0)
         >>> print(z)
         {
-            a: ivy.array(0.0575),
-            b: ivy.array(0.005)
+            a: aikit.array(0.0575),
+            b: aikit.array(0.005)
         }
         """
         return self._static_huber_loss(
@@ -664,20 +664,20 @@ class _ContainerWithLossesExperimental(ContainerBase):
 
     @staticmethod
     def _static_soft_margin_loss(
-        input: Union[ivy.Container, ivy.Array, ivy.NativeArray],
-        target: Union[ivy.Container, ivy.Array, ivy.NativeArray],
+        input: Union[aikit.Container, aikit.Array, aikit.NativeArray],
+        target: Union[aikit.Container, aikit.Array, aikit.NativeArray],
         /,
         *,
-        reduction: Optional[Union[str, ivy.Container]] = "mean",
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container static method variant of ivy.soft_margin_loss. This
+        reduction: Optional[Union[str, aikit.Container]] = "mean",
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container static method variant of aikit.soft_margin_loss. This
         method simply wraps the function, and so the docstring for
-        ivy.soft_margin_loss also applies to this method with minimal changes.
+        aikit.soft_margin_loss also applies to this method with minimal changes.
 
         # Insert the docstring here
 
@@ -722,20 +722,20 @@ class _ContainerWithLossesExperimental(ContainerBase):
         )
 
     def soft_margin_loss(
-        self: ivy.Container,
-        target: Union[ivy.Container, ivy.Array, ivy.NativeArray],
+        self: aikit.Container,
+        target: Union[aikit.Container, aikit.Array, aikit.NativeArray],
         /,
         *,
-        reduction: Optional[Union[str, ivy.Container]] = "mean",
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of ivy.soft_margin_loss. This
+        reduction: Optional[Union[str, aikit.Container]] = "mean",
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of aikit.soft_margin_loss. This
         method simply wraps the function, and so the docstring for
-        ivy.soft_margin_loss also applies to this method with minimal changes.
+        aikit.soft_margin_loss also applies to this method with minimal changes.
 
         # Insert the docstring here
 
@@ -780,20 +780,20 @@ class _ContainerWithLossesExperimental(ContainerBase):
 
     @staticmethod
     def _static_kl_div(
-        input: Union[ivy.Container, ivy.Array, ivy.NativeArray],
-        target: Union[ivy.Container, ivy.Array, ivy.NativeArray],
+        input: Union[aikit.Container, aikit.Array, aikit.NativeArray],
+        target: Union[aikit.Container, aikit.Array, aikit.NativeArray],
         /,
         *,
-        reduction: Optional[Union[str, ivy.Container]] = "mean",
+        reduction: Optional[Union[str, aikit.Container]] = "mean",
         log_target=False,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container static method variant of ivy.kl_div. This method
-        simply wraps the function, and so the docstring for ivy.kl_div also
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container static method variant of aikit.kl_div. This method
+        simply wraps the function, and so the docstring for aikit.kl_div also
         applies to this method with minimal changes.
 
         Parameters
@@ -838,20 +838,20 @@ class _ContainerWithLossesExperimental(ContainerBase):
         )
 
     def kl_div(
-        self: ivy.Container,
-        target: Union[ivy.Container, ivy.Array, ivy.NativeArray],
+        self: aikit.Container,
+        target: Union[aikit.Container, aikit.Array, aikit.NativeArray],
         /,
         *,
-        reduction: Optional[Union[str, ivy.Container]] = "mean",
+        reduction: Optional[Union[str, aikit.Container]] = "mean",
         log_target=False,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of ivy.kl_div. This method
-        simply wraps the function, and so the docstring for ivy.kl_div also
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of aikit.kl_div. This method
+        simply wraps the function, and so the docstring for aikit.kl_div also
         applies to this method with minimal changes.
 
         Parameters
@@ -896,21 +896,21 @@ class _ContainerWithLossesExperimental(ContainerBase):
 
     @staticmethod
     def _static_poisson_nll_loss(
-        input: Union[ivy.Container, ivy.Array, ivy.NativeArray],
-        target: Union[ivy.Container, ivy.Array, ivy.NativeArray],
+        input: Union[aikit.Container, aikit.Array, aikit.NativeArray],
+        target: Union[aikit.Container, aikit.Array, aikit.NativeArray],
         *,
-        log_input: [Union[bool, ivy.Container]] = True,
-        full: [Union[bool, ivy.Container]] = False,
-        eps: [Union[float, ivy.Container]] = 1e-8,
-        reduction: [Union[str, ivy.Container]] = "mean",
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> ivy.Container:
-        r"""ivy.Container static method variant of ivy.poisson_nll_loss. This
+        log_input: [Union[bool, aikit.Container]] = True,
+        full: [Union[bool, aikit.Container]] = False,
+        eps: [Union[float, aikit.Container]] = 1e-8,
+        reduction: [Union[str, aikit.Container]] = "mean",
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> aikit.Container:
+        r"""aikit.Container static method variant of aikit.poisson_nll_loss. This
         method simplywraps the function, and so the docstring for
-        ivy.poisson_nll_loss also applies to this method with minimal changes.
+        aikit.poisson_nll_loss also applies to this method with minimal changes.
 
         Parameters
         ----------
@@ -961,29 +961,29 @@ class _ContainerWithLossesExperimental(ContainerBase):
 
         Examples
         --------
-        With :class:`ivy.Container` inputs:
+        With :class:`aikit.Container` inputs:
 
-        >>> x = ivy.Container(a=ivy.array([[0.6, 0.2, 0.3]], dtype=ivy.float32),
-        ...                   b=ivy.array([[0.8, 0.2, 0.2]], dtype=ivy.float32))
-        >>> y = ivy.Container(a=ivy.array([[1, 0, 2]], dtype=ivy.float32),
-        ...                   b=ivy.array([[3, 2, 1]], dtype=ivy.float32))
-        >>> z = ivy.Container._static_poisson_nll_loss(x,y)
+        >>> x = aikit.Container(a=aikit.array([[0.6, 0.2, 0.3]], dtype=aikit.float32),
+        ...                   b=aikit.array([[0.8, 0.2, 0.2]], dtype=aikit.float32))
+        >>> y = aikit.Container(a=aikit.array([[1, 0, 2]], dtype=aikit.float32),
+        ...                   b=aikit.array([[3, 2, 1]], dtype=aikit.float32))
+        >>> z = aikit.Container._static_poisson_nll_loss(x,y)
         >>> print(z)
         {
-            a: ivy.array(1.06446016),
-            b: ivy.array(0.55611551)
+            a: aikit.array(1.06446016),
+            b: aikit.array(0.55611551)
         }
 
-        With a mix of :class:`ivy.Array` and :class:`ivy.Container` inputs:
+        With a mix of :class:`aikit.Array` and :class:`aikit.Container` inputs:
 
-        >>> x = ivy.array([[1, 0, 2]], dtype=ivy.float32)
-        >>> y = ivy.Container(a=ivy.array([[0.6, 0.2, 0.3]], dtype=ivy.float32),
-        ...             b=ivy.array([[0.8, 0.2, 0.2]], dtype=ivy.float32))
-        >>> z = ivy.Container._static_poisson_nll_loss(x, y)
+        >>> x = aikit.array([[1, 0, 2]], dtype=aikit.float32)
+        >>> y = aikit.Container(a=aikit.array([[0.6, 0.2, 0.3]], dtype=aikit.float32),
+        ...             b=aikit.array([[0.8, 0.2, 0.2]], dtype=aikit.float32))
+        >>> z = aikit.Container._static_poisson_nll_loss(x, y)
         >>> print(z)
         {
-            a: ivy.array(3.30244565),
-            b: ivy.array(3.30244565)
+            a: aikit.array(3.30244565),
+            b: aikit.array(3.30244565)
         }
         """
         return ContainerBase.cont_multi_map_in_function(
@@ -1001,20 +1001,20 @@ class _ContainerWithLossesExperimental(ContainerBase):
         )
 
     def poisson_nll_loss(
-        self: Union[ivy.Container, ivy.Array, ivy.NativeArray],
-        target: Union[ivy.Container, ivy.Array, ivy.NativeArray],
+        self: Union[aikit.Container, aikit.Array, aikit.NativeArray],
+        target: Union[aikit.Container, aikit.Array, aikit.NativeArray],
         *,
-        log_input: [Union[bool, ivy.Container]] = True,
-        full: [Union[bool, ivy.Container]] = False,
-        eps: [Union[float, ivy.Container]] = 1e-8,
-        reduction: [Union[str, ivy.Container]] = "mean",
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> ivy.Container:
-        r"""ivy.Container instance method variant of ivy.poisson_nll_loss. This
-        method simply wraps the function, and so the docstring for ivy.
+        log_input: [Union[bool, aikit.Container]] = True,
+        full: [Union[bool, aikit.Container]] = False,
+        eps: [Union[float, aikit.Container]] = 1e-8,
+        reduction: [Union[str, aikit.Container]] = "mean",
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> aikit.Container:
+        r"""aikit.Container instance method variant of aikit.poisson_nll_loss. This
+        method simply wraps the function, and so the docstring for aikit.
         poisson_nll_loss also applies to this method with minimal changes.
 
         Parameters
@@ -1066,15 +1066,15 @@ class _ContainerWithLossesExperimental(ContainerBase):
 
         Examples
         --------
-        >>> x = ivy.Container(a=ivy.array([[1, 0, 2]], dtype=ivy.float32),
-        ...              b=ivy.array([[3, 2, 1]], dtype=ivy.float32))
-        >>> y = ivy.Container(a=ivy.array([[0.6, 0.2, 0.3]], dtype=ivy.float32),
-        ...              b=ivy.array([[0.8, 0.2, 0.2]], dtype=ivy.float32))
+        >>> x = aikit.Container(a=aikit.array([[1, 0, 2]], dtype=aikit.float32),
+        ...              b=aikit.array([[3, 2, 1]], dtype=aikit.float32))
+        >>> y = aikit.Container(a=aikit.array([[0.6, 0.2, 0.3]], dtype=aikit.float32),
+        ...              b=aikit.array([[0.8, 0.2, 0.2]], dtype=aikit.float32))
         >>> z = x.poisson_nll_loss(y)
         >>> print(z)
         {
-            a: ivy.array(3.30244565),
-            b: ivy.array(9.06429195)
+            a: aikit.array(3.30244565),
+            b: aikit.array(9.06429195)
         }
         """
         return self._static_poisson_nll_loss(
@@ -1092,19 +1092,19 @@ class _ContainerWithLossesExperimental(ContainerBase):
 
     @staticmethod
     def _static_hinge_embedding_loss(
-        input: Union[ivy.Container, ivy.Array, ivy.NativeArray],
-        target: Union[ivy.Container, ivy.Array, ivy.NativeArray],
+        input: Union[aikit.Container, aikit.Array, aikit.NativeArray],
+        target: Union[aikit.Container, aikit.Array, aikit.NativeArray],
         *,
-        margin: [Union[float, ivy.Container]] = 1.0,
-        reduction: [Union[str, ivy.Container]] = "mean",
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> ivy.Container:
-        r"""ivy.Container static method variant of ivy.hinge_embedding_loss.
+        margin: [Union[float, aikit.Container]] = 1.0,
+        reduction: [Union[str, aikit.Container]] = "mean",
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> aikit.Container:
+        r"""aikit.Container static method variant of aikit.hinge_embedding_loss.
         This method simplywraps the function, and so the docstring for
-        ivy.hinge_embedding_loss also applies to this method with minimal
+        aikit.hinge_embedding_loss also applies to this method with minimal
         changes.
 
         Parameters
@@ -1152,30 +1152,30 @@ class _ContainerWithLossesExperimental(ContainerBase):
 
         Examples
         --------
-        With :class:`ivy.Container` inputs:
+        With :class:`aikit.Container` inputs:
 
-        >>> x = ivy.Container(a=ivy.array([[1, 0, 2]], dtype=ivy.float32),
-        ...             b=ivy.array([[-1, 1, 1]], dtype=ivy.float32))
-        >>> y = ivy.Container(a=ivy.array([[0.6, 0.2, 0.3]], dtype=ivy.float32),
-        ...            b=ivy.array([[1, 1, 1]], dtype=ivy.float32))
-        >>> z = ivy.Container._static_hinge_embedding_loss(x, y, reduction="none")
+        >>> x = aikit.Container(a=aikit.array([[1, 0, 2]], dtype=aikit.float32),
+        ...             b=aikit.array([[-1, 1, 1]], dtype=aikit.float32))
+        >>> y = aikit.Container(a=aikit.array([[0.6, 0.2, 0.3]], dtype=aikit.float32),
+        ...            b=aikit.array([[1, 1, 1]], dtype=aikit.float32))
+        >>> z = aikit.Container._static_hinge_embedding_loss(x, y, reduction="none")
         >>> z
         {
-            a: ivy.array([[0., 0., 0.]]),
-            b: ivy.array([[-1., 1., 1.]])
+            a: aikit.array([[0., 0., 0.]]),
+            b: aikit.array([[-1., 1., 1.]])
         }
 
-        With a mix of :class:`ivy.Array` and :class:`ivy.Container` inputs:
+        With a mix of :class:`aikit.Array` and :class:`aikit.Container` inputs:
 
-        >>> x = ivy.array([[10, 20, 32]], dtype=ivy.float32)
-        >>> y = ivy.Container(a=ivy.array([[-1, -1, -1]], dtype=ivy.float32),
-        ...           b=ivy.array([[1, 1, 1]], dtype=ivy.float32))
-        >>> z = ivy.Container._static_hinge_embedding_loss(x, y,
+        >>> x = aikit.array([[10, 20, 32]], dtype=aikit.float32)
+        >>> y = aikit.Container(a=aikit.array([[-1, -1, -1]], dtype=aikit.float32),
+        ...           b=aikit.array([[1, 1, 1]], dtype=aikit.float32))
+        >>> z = aikit.Container._static_hinge_embedding_loss(x, y,
         ...                             reduction="sum", margin=2.0)
         >>> z
         {
-            a: ivy.array(0.),
-            b: ivy.array(62.)
+            a: aikit.array(0.),
+            b: aikit.array(62.)
         }
         """
         return ContainerBase.cont_multi_map_in_function(
@@ -1191,19 +1191,19 @@ class _ContainerWithLossesExperimental(ContainerBase):
         )
 
     def hinge_embedding_loss(
-        self: Union[ivy.Container, ivy.Array, ivy.NativeArray],
-        target: Union[ivy.Container, ivy.Array, ivy.NativeArray],
+        self: Union[aikit.Container, aikit.Array, aikit.NativeArray],
+        target: Union[aikit.Container, aikit.Array, aikit.NativeArray],
         *,
-        margin: [Union[float, ivy.Container]] = 1.0,
-        reduction: [Union[str, ivy.Container]] = "mean",
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> ivy.Container:
-        r"""ivy.Container instance method variant of ivy.hinge_embedding_loss.
+        margin: [Union[float, aikit.Container]] = 1.0,
+        reduction: [Union[str, aikit.Container]] = "mean",
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> aikit.Container:
+        r"""aikit.Container instance method variant of aikit.hinge_embedding_loss.
         This method simply wraps the function, and so the docstring for
-        ivy.hinge_embedding_loss also applies to this method with minimal
+        aikit.hinge_embedding_loss also applies to this method with minimal
         changes.
 
         Parameters
@@ -1252,14 +1252,14 @@ class _ContainerWithLossesExperimental(ContainerBase):
 
         Examples
         --------
-        >>> x = ivy.Container(a=ivy.array([[1, 0, 2]], dtype=ivy.float32),
-        ...              b=ivy.array([[3, 2, 1]], dtype=ivy.float32))
-        >>> y = ivy.Container(a=ivy.array([[-1, -1, -1]], dtype=ivy.float32),
-        ...              b=ivy.array([[1, 1, 1]], dtype=ivy.float32))
+        >>> x = aikit.Container(a=aikit.array([[1, 0, 2]], dtype=aikit.float32),
+        ...              b=aikit.array([[3, 2, 1]], dtype=aikit.float32))
+        >>> y = aikit.Container(a=aikit.array([[-1, -1, -1]], dtype=aikit.float32),
+        ...              b=aikit.array([[1, 1, 1]], dtype=aikit.float32))
         >>> x.hinge_embedding_loss(y, reduction="none", margin=0.5)
         {
-            a: ivy.array([[0., 0.5, 0.]]),
-            b: ivy.array([[3., 2., 1.]])
+            a: aikit.array([[0., 0.5, 0.]]),
+            b: aikit.array([[3., 2., 1.]])
         }
         """
         return self._static_hinge_embedding_loss(

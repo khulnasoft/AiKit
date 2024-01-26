@@ -104,7 +104,7 @@ def unfold(x, kernel_sizes, strides=1, paddings=0, dilations=1, name=None):
     if isinstance(kernel_sizes, int):
         kernel_sizes = [kernel_sizes, kernel_sizes]
     elif not isinstance(kernel_sizes, (list, tuple)):
-        raise aikit.exceptions.IvyError(
+        raise aikit.exceptions.AikitError(
             "Expected kernel size input as type int, tuple or list but got"
             f" {type(kernel_sizes)}"
         )
@@ -112,14 +112,14 @@ def unfold(x, kernel_sizes, strides=1, paddings=0, dilations=1, name=None):
     if isinstance(strides, int):
         strides = [strides, strides]
     elif not isinstance(strides, (list, tuple)):
-        raise aikit.exceptions.IvyError(
+        raise aikit.exceptions.AikitError(
             f"Expected strides input as type int, tuple or list but got {type(strides)}"
         )
 
     if isinstance(dilations, int):
         dilations = [dilations, dilations]
     elif not isinstance(dilations, (list, tuple)):
-        raise aikit.exceptions.IvyError(
+        raise aikit.exceptions.AikitError(
             "Expected dilations input as type int, tuple or list but got"
             f" {type(dilations)}"
         )
@@ -127,7 +127,7 @@ def unfold(x, kernel_sizes, strides=1, paddings=0, dilations=1, name=None):
     if isinstance(paddings, int):
         paddings = [paddings, paddings]
     elif not isinstance(paddings, (list, tuple)):
-        raise aikit.exceptions.IvyError(
+        raise aikit.exceptions.AikitError(
             "Expected paddings, input as type int, tuple or list but got"
             f" {type(paddings)}"
         )
@@ -141,7 +141,7 @@ def unfold(x, kernel_sizes, strides=1, paddings=0, dilations=1, name=None):
         ]
         x = aikit.pad(x, padding_tup, mode="constant", constant_values=0.0)
     else:
-        raise aikit.exceptions.IvyError(
+        raise aikit.exceptions.AikitError(
             f"Expected padding size larger than 0 but got {paddings[0]}/{paddings[1]}"
         )
 
@@ -157,7 +157,7 @@ def unfold(x, kernel_sizes, strides=1, paddings=0, dilations=1, name=None):
     )
 
     if h_steps < 1 or w_steps < 1:
-        raise aikit.exceptions.IvyError(
+        raise aikit.exceptions.AikitError(
             "Expected at least one for height and width, but got expected output shape"
             f" H:{h_steps} W:{w_steps}]"
         )

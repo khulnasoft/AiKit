@@ -136,7 +136,7 @@ def main():
     cluster = MongoClient(
         f"mongodb+srv://deep-aikit:{mongo_key}@cluster0.qdvf8q3.mongodb.net/?retryWrites=true&w=majority"  # noqa
     )
-    db = cluster["Ivy_tests_multi_gpu"]
+    db = cluster["Aikit_tests_multi_gpu"]
     for collection_name in db.list_collection_names():
         collection = db[collection_name]
         for document in collection.find({}):

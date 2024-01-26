@@ -3,7 +3,7 @@ import mxnet as mx
 from numbers import Number
 
 # local
-from aikit.utils.exceptions import IvyNotImplementedException
+from aikit.utils.exceptions import AikitNotImplementedException
 import aikit
 
 
@@ -15,7 +15,7 @@ def min(
     keepdims: bool = False,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def max(
@@ -26,7 +26,7 @@ def max(
     keepdims: bool = False,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def mean(
@@ -37,7 +37,7 @@ def mean(
     keepdims: bool = False,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def prod(
@@ -73,7 +73,7 @@ def std(
     keepdims: bool = False,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def sum(
@@ -109,7 +109,7 @@ def var(
     keepdims: bool = False,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def cumprod(
@@ -122,7 +122,7 @@ def cumprod(
     dtype: Optional[None] = None,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def cumsum(
@@ -134,7 +134,7 @@ def cumsum(
     dtype: Optional[None] = None,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def einsum(
@@ -142,4 +142,4 @@ def einsum(
     *operands: Union[(None, mx.ndarray.NDArray)],
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()

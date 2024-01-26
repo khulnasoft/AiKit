@@ -3,12 +3,12 @@ import abc
 from typing import Optional, Union, Tuple, List, Literal, Sequence, Callable
 
 # local
-import ivy
+import aikit
 
 
 class _ArrayWithLayersExperimental(abc.ABC):
     def max_pool1d(
-        self: ivy.Array,
+        self: aikit.Array,
         kernel: Union[int, Tuple[int, ...]],
         strides: Union[int, Tuple[int, ...]],
         padding: Union[str, int, Tuple[int], List[Tuple[int, int]]],
@@ -17,10 +17,10 @@ class _ArrayWithLayersExperimental(abc.ABC):
         data_format: str = "NWC",
         dilation: Union[int, Tuple[int]] = 1,
         ceil_mode: bool = False,
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
-        """ivy.Array instance method variant of `ivy.max_pool1d`. This method
-        simply wraps the function, and so the docstring for `ivy.max_pool1d`
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
+        """aikit.Array instance method variant of `aikit.max_pool1d`. This method
+        simply wraps the function, and so the docstring for `aikit.max_pool1d`
         also applies to this method with minimal changes.
 
         Parameters
@@ -52,18 +52,18 @@ class _ArrayWithLayersExperimental(abc.ABC):
 
         Examples
         --------
-        >>> x = ivy.arange(0, 24.).reshape((2, 3, 4))
+        >>> x = aikit.arange(0, 24.).reshape((2, 3, 4))
         >>> print(x.max_pool1d(2, 2, 'SAME'))
-        ivy.array([[[ 4.,  5.,  6.,  7.],
+        aikit.array([[[ 4.,  5.,  6.,  7.],
                 [ 8.,  9., 10., 11.]],
                [[16., 17., 18., 19.],
                 [20., 21., 22., 23.]]])
-        >>> x = ivy.arange(0, 24.).reshape((2, 3, 4))
+        >>> x = aikit.arange(0, 24.).reshape((2, 3, 4))
         >>> print(x.max_pool1d(2, 2, 'VALID'))
-        ivy.array([[[ 4.,  5.,  6.,  7.]],
+        aikit.array([[[ 4.,  5.,  6.,  7.]],
            [[16., 17., 18., 19.]]])
         """
-        return ivy.max_pool1d(
+        return aikit.max_pool1d(
             self,
             kernel,
             strides,
@@ -75,7 +75,7 @@ class _ArrayWithLayersExperimental(abc.ABC):
         )
 
     def max_pool2d(
-        self: ivy.Array,
+        self: aikit.Array,
         kernel: Union[int, Tuple[int, ...]],
         strides: Union[int, Tuple[int, ...]],
         padding: Union[str, int, Tuple[int], List[Tuple[int, int]]],
@@ -84,10 +84,10 @@ class _ArrayWithLayersExperimental(abc.ABC):
         data_format: str = "NHWC",
         dilation: Union[int, Tuple[int, ...]] = 1,
         ceil_mode: bool = False,
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
-        """ivy.Array instance method variant of `ivy.max_pool2d`. This method
-        simply wraps the function, and so the docstring for `ivy.max_pool2d`
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
+        """aikit.Array instance method variant of `aikit.max_pool2d`. This method
+        simply wraps the function, and so the docstring for `aikit.max_pool2d`
         also applies to this method with minimal changes.
 
         Parameters
@@ -119,9 +119,9 @@ class _ArrayWithLayersExperimental(abc.ABC):
 
         Examples
         --------
-        >>> x = ivy.arange(12.).reshape((2, 1, 3, 2))
+        >>> x = aikit.arange(12.).reshape((2, 1, 3, 2))
         >>> print(x.max_pool2d((2, 2), (1, 1), 'SAME'))
-        ivy.array([[[[ 2.,  3.],
+        aikit.array([[[[ 2.,  3.],
                  [ 4.,  5.],
                  [ 4.,  5.]]],
 
@@ -130,9 +130,9 @@ class _ArrayWithLayersExperimental(abc.ABC):
                  [10., 11.],
                  [10., 11.]]]])
 
-        >>> x = ivy.arange(48.).reshape((2, 4, 3, 2))
+        >>> x = aikit.arange(48.).reshape((2, 4, 3, 2))
         >>> print(x.max_pool2d(3, 1, 'VALID'))
-        ivy.array([[[[16., 17.]],
+        aikit.array([[[[16., 17.]],
 
                 [[22., 23.]]],
 
@@ -141,7 +141,7 @@ class _ArrayWithLayersExperimental(abc.ABC):
 
                 [[46., 47.]]]])
         """
-        return ivy.max_pool2d(
+        return aikit.max_pool2d(
             self,
             kernel,
             strides,
@@ -153,7 +153,7 @@ class _ArrayWithLayersExperimental(abc.ABC):
         )
 
     def max_pool3d(
-        self: ivy.Array,
+        self: aikit.Array,
         kernel: Union[int, Tuple[int, ...]],
         strides: Union[int, Tuple[int, ...]],
         padding: Union[str, int, Tuple[int], List[Tuple[int, int]]],
@@ -162,8 +162,8 @@ class _ArrayWithLayersExperimental(abc.ABC):
         data_format: str = "NDHWC",
         dilation: Union[int, Tuple[int, ...]] = 1,
         ceil_mode: bool = False,
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
         """Compute a 3-D max pool given 5-D input x.
 
         Parameters
@@ -195,17 +195,17 @@ class _ArrayWithLayersExperimental(abc.ABC):
 
         Examples
         --------
-        >>> x = ivy.arange(48.).reshape((2, 3, 2, 2, 2))
+        >>> x = aikit.arange(48.).reshape((2, 3, 2, 2, 2))
         >>> print(x.max_pool3d(2, 2, 'VALID'))
-        ivy.array([[[[[14., 15.]]]],
+        aikit.array([[[[[14., 15.]]]],
            [[[[38., 39.]]]]])
         >>> print(x.max_pool3d(2, 2, 'SAME'))
-        ivy.array([[[[[14., 15.]]],
+        aikit.array([[[[[14., 15.]]],
             [[[22., 23.]]]],
            [[[[38., 39.]]],
             [[[46., 47.]]]]])
         """
-        return ivy.max_pool3d(
+        return aikit.max_pool3d(
             self,
             kernel,
             strides,
@@ -217,7 +217,7 @@ class _ArrayWithLayersExperimental(abc.ABC):
         )
 
     def avg_pool1d(
-        self: ivy.Array,
+        self: aikit.Array,
         kernel: Union[int, Tuple[int]],
         strides: Union[int, Tuple[int]],
         padding: str,
@@ -226,10 +226,10 @@ class _ArrayWithLayersExperimental(abc.ABC):
         data_format: str = "NWC",
         count_include_pad: bool = False,
         ceil_mode: bool = False,
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
-        """ivy.Array instance method variant of `ivy.avg_pool1d`. This method
-        simply wraps the function, and so the docstring for `ivy.avg_pool1d`
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
+        """aikit.Array instance method variant of `aikit.avg_pool1d`. This method
+        simply wraps the function, and so the docstring for `aikit.avg_pool1d`
         also applies to this method with minimal changes.
 
         Parameters
@@ -260,19 +260,19 @@ class _ArrayWithLayersExperimental(abc.ABC):
 
         Examples
         --------
-        >>> x = ivy.arange(0, 24.).reshape((2, 3, 4))
+        >>> x = aikit.arange(0, 24.).reshape((2, 3, 4))
         >>> print(x.avg_pool1d(2, 2, 'SAME'))
-        ivy.array([[[ 2.,  3.,  4.,  5.],
+        aikit.array([[[ 2.,  3.,  4.,  5.],
                 [ 8.,  9., 10., 11.]],
                [[14., 15., 16., 17.],
                 [20., 21., 22., 23.]]])
 
-        >>> x = ivy.arange(0, 24.).reshape((2, 3, 4))
+        >>> x = aikit.arange(0, 24.).reshape((2, 3, 4))
         >>> print(x.avg_pool1d(2, 2, 'VALID'))
-        ivy.array([[[ 2.,  3.,  4.,  5.]],
+        aikit.array([[[ 2.,  3.,  4.,  5.]],
                [[14., 15., 16., 17.]]])
         """
-        return ivy.avg_pool1d(
+        return aikit.avg_pool1d(
             self,
             kernel,
             strides,
@@ -284,7 +284,7 @@ class _ArrayWithLayersExperimental(abc.ABC):
         )
 
     def avg_pool2d(
-        self: ivy.Array,
+        self: aikit.Array,
         kernel: Union[int, Tuple[int], Tuple[int, int]],
         strides: Union[int, Tuple[int], Tuple[int, int]],
         padding: str,
@@ -294,10 +294,10 @@ class _ArrayWithLayersExperimental(abc.ABC):
         count_include_pad: bool = False,
         ceil_mode: bool = False,
         divisor_override: Optional[int] = None,
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
-        """ivy.Array instance method variant of `ivy.avg_pool2d`. This method
-        simply wraps the function, and so the docstring for `ivy.avg_pool2d`
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
+        """aikit.Array instance method variant of `aikit.avg_pool2d`. This method
+        simply wraps the function, and so the docstring for `aikit.avg_pool2d`
         also applies to this method with minimal changes.
 
         Parameters
@@ -331,23 +331,23 @@ class _ArrayWithLayersExperimental(abc.ABC):
 
         Examples
         --------
-        >>> x = ivy.arange(12.).reshape((2, 1, 3, 2))
+        >>> x = aikit.arange(12.).reshape((2, 1, 3, 2))
         >>> print(x.max_pool2d((2, 2), (1, 1), 'SAME'))
-        ivy.array([[[[ 2,  3],
+        aikit.array([[[[ 2,  3],
         [ 4,  5],
         [ 4,  5]]],
         [[[ 8,  9],
         [10, 11],
         [10, 11]]]])
 
-        >>> x = ivy.arange(48.).reshape((2, 4, 3, 2))
+        >>> x = aikit.arange(48.).reshape((2, 4, 3, 2))
         >>> print(x.max_pool2d(3, 1, 'VALID'))
-        ivy.array([[[[16, 17]],
+        aikit.array([[[[16, 17]],
         [[22, 23]]],
         [[[40, 41]],
         [[46, 47]]]])
         """
-        return ivy.avg_pool2d(
+        return aikit.avg_pool2d(
             self,
             kernel,
             strides,
@@ -360,7 +360,7 @@ class _ArrayWithLayersExperimental(abc.ABC):
         )
 
     def avg_pool3d(
-        self: ivy.Array,
+        self: aikit.Array,
         kernel: Union[int, Tuple[int], Tuple[int, int, int]],
         strides: Union[int, Tuple[int], Tuple[int, int, int]],
         padding: str,
@@ -370,8 +370,8 @@ class _ArrayWithLayersExperimental(abc.ABC):
         count_include_pad: bool = False,
         ceil_mode: bool = False,
         divisor_override: Optional[int] = None,
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
         """Compute a 3-D max pool given 5-D input x.
 
         Parameters
@@ -405,17 +405,17 @@ class _ArrayWithLayersExperimental(abc.ABC):
 
         Examples
         --------
-        >>> x = ivy.arange(48.).reshape((2, 3, 2, 2, 2))
+        >>> x = aikit.arange(48.).reshape((2, 3, 2, 2, 2))
         >>> print(x.avg_pool3d(2, 2, 'VALID'))
-        ivy.array([[[[[ 7.,  8.]]]],
+        aikit.array([[[[[ 7.,  8.]]]],
                [[[[31., 32.]]]]])
         >>> print(x.avg_pool3d(2, 2, 'SAME'))
-        ivy.array([[[[[ 7.,  8.]]],
+        aikit.array([[[[[ 7.,  8.]]],
                 [[[19., 20.]]]],
                [[[[31., 32.]]],
                 [[[43., 44.]]]]])
         """
-        return ivy.avg_pool3d(
+        return aikit.avg_pool3d(
             self,
             kernel,
             strides,
@@ -428,17 +428,17 @@ class _ArrayWithLayersExperimental(abc.ABC):
         )
 
     def dct(
-        self: ivy.Array,
+        self: aikit.Array,
         /,
         *,
         type: Literal[1, 2, 3, 4] = 2,
         n: Optional[int] = None,
         axis: int = -1,
         norm: Optional[Literal["ortho"]] = None,
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
-        """ivy.Array instance method variant of ivy.dct. This method simply
-        wraps the function, and so the docstring for ivy.dct also applies to
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
+        """aikit.Array instance method variant of aikit.dct. This method simply
+        wraps the function, and so the docstring for aikit.dct also applies to
         this method with minimal changes.
 
         Parameters
@@ -462,11 +462,11 @@ class _ArrayWithLayersExperimental(abc.ABC):
 
         Examples
         --------
-        >>> x = ivy.array([8., 16., 24., 32., 40., 48., 56., 64.])
+        >>> x = aikit.array([8., 16., 24., 32., 40., 48., 56., 64.])
         >>> x.dct(type=2, norm="ortho")
-        ivy.array([ 102.,  -51.5,   0.,  -5.39,   0.,  -1.61,   0., -0.406])
+        aikit.array([ 102.,  -51.5,   0.,  -5.39,   0.,  -1.61,   0., -0.406])
         """
-        return ivy.dct(
+        return aikit.dct(
             self._data,
             type=type,
             n=n,
@@ -476,17 +476,17 @@ class _ArrayWithLayersExperimental(abc.ABC):
         )
 
     def idct(
-        self: ivy.Array,
+        self: aikit.Array,
         /,
         *,
         type: Literal[1, 2, 3, 4] = 2,
         n: Optional[int] = None,
         axis: int = -1,
         norm: Optional[Literal["ortho"]] = None,
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
-        """ivy.Array instance method variant of ivy.idct. This method simply
-        wraps the function, and so the docstring for ivy.idct also applies to
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
+        """aikit.Array instance method variant of aikit.idct. This method simply
+        wraps the function, and so the docstring for aikit.idct also applies to
         this method with minimal changes.
 
         Parameters
@@ -510,12 +510,12 @@ class _ArrayWithLayersExperimental(abc.ABC):
 
         Examples
         --------
-        >>> x = ivy.array([8., 16., 24., 32., 40., 48., 56., 64.])
+        >>> x = aikit.array([8., 16., 24., 32., 40., 48., 56., 64.])
         >>> x.idct(type=2, norm="ortho")
-        ivy.array([ 79.49862671, -70.37691498,  30.00390816, -23.58938599,
+        aikit.array([ 79.49862671, -70.37691498,  30.00390816, -23.58938599,
             13.92713165, -10.078475  ,   5.19664812,  -1.95411837])
         """
-        return ivy.idct(
+        return aikit.idct(
             self._data,
             type=type,
             n=n,
@@ -525,16 +525,16 @@ class _ArrayWithLayersExperimental(abc.ABC):
         )
 
     def fft(
-        self: ivy.Array,
+        self: aikit.Array,
         dim: int,
         /,
         *,
         norm: str = "backward",
         n: Optional[Union[int, Tuple[int]]] = None,
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
-        """ivy.Array instance method variant of ivy.ifft. This method simply
-        wraps the function, and so the docstring for ivy.ifft also applies to
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
+        """aikit.Array instance method variant of aikit.ifft. This method simply
+        wraps the function, and so the docstring for aikit.ifft also applies to
         this method with minimal changes.
 
         Parameters
@@ -565,14 +565,14 @@ class _ArrayWithLayersExperimental(abc.ABC):
 
         Examples
         --------
-        >>> a = ivy.array((np.exp(2j * np.pi * np.arange(8) / 8)))
+        >>> a = aikit.array((np.exp(2j * np.pi * np.arange(8) / 8)))
         >>> a.fft(0)
-        ivy.array([-3.44509285e-16+1.14423775e-17j,  8.00000000e+00-8.11483250e-16j,
+        aikit.array([-3.44509285e-16+1.14423775e-17j,  8.00000000e+00-8.11483250e-16j,
                     2.33486982e-16+1.22464680e-16j,  0.00000000e+00+1.22464680e-16j,
                     9.95799250e-17+2.33486982e-16j,  0.00000000e+00+7.66951701e-17j,
                     1.14423775e-17+1.22464680e-16j,  0.00000000e+00+1.22464680e-16j])
         """
-        return ivy.fft(
+        return aikit.fft(
             self._data,
             dim,
             norm=norm,
@@ -581,15 +581,15 @@ class _ArrayWithLayersExperimental(abc.ABC):
         )
 
     def ifft(
-        self: ivy.Array,
+        self: aikit.Array,
         dim: int,
         *,
         norm: str = "backward",
         n: Optional[Union[int, Tuple[int]]] = None,
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
-        """ivy.Array instance method variant of ivy.ifft. This method simply
-        wraps the function, and so the docstring for ivy.ifft also applies to
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
+        """aikit.Array instance method variant of aikit.ifft. This method simply
+        wraps the function, and so the docstring for aikit.ifft also applies to
         this method with minimal changes.
 
         Parameters
@@ -620,14 +620,14 @@ class _ArrayWithLayersExperimental(abc.ABC):
 
         Examples
         --------
-        >>> a = ivy.array((np.exp(2j * np.pi * np.arange(8) / 8)))
+        >>> a = aikit.array((np.exp(2j * np.pi * np.arange(8) / 8)))
         >>> a.ifft(0)
-        ivy.array([-4.30636606e-17+1.43029718e-18j,  0.00000000e+00+1.53080850e-17j,
+        aikit.array([-4.30636606e-17+1.43029718e-18j,  0.00000000e+00+1.53080850e-17j,
                     1.43029718e-18+1.53080850e-17j,  0.00000000e+00+9.58689626e-18j,
                     1.24474906e-17+2.91858728e-17j,  0.00000000e+00+1.53080850e-17j,
                     2.91858728e-17+1.53080850e-17j,  1.00000000e+00-1.01435406e-16j])
         """
-        return ivy.ifft(
+        return aikit.ifft(
             self._data,
             dim,
             norm=norm,
@@ -636,14 +636,14 @@ class _ArrayWithLayersExperimental(abc.ABC):
         )
 
     def embedding(
-        self: ivy.Array,
-        indices: ivy.Array,
+        self: aikit.Array,
+        indices: aikit.Array,
         /,
         *,
         max_norm: Optional[int] = None,
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
-        return ivy.embedding(self._data, indices, max_norm=max_norm, out=out)
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
+        return aikit.embedding(self._data, indices, max_norm=max_norm, out=out)
 
     def dft(
         self,
@@ -654,8 +654,8 @@ class _ArrayWithLayersExperimental(abc.ABC):
         onesided: bool = False,
         dft_length: Optional[Union[int, Tuple[int]]] = None,
         norm: str = "backward",
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
         """Compute the discrete Fourier transform of input.
 
         Parameters
@@ -707,7 +707,7 @@ class _ArrayWithLayersExperimental(abc.ABC):
             [floor(signal_dimN/2)+1][2]. The signal_dim at the specified axis
             is equal to the dft_length.
         """
-        return ivy.dft(
+        return aikit.dft(
             self._data,
             axis=axis,
             inverse=inverse,
@@ -738,8 +738,8 @@ class _ArrayWithLayersExperimental(abc.ABC):
         recompute_scale_factor: Optional[bool] = None,
         align_corners: Optional[bool] = None,
         antialias: bool = False,
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
         """Down/up samples the input to the given size. The algorithm used for
         interpolation is determined by mode.
 
@@ -784,7 +784,7 @@ class _ArrayWithLayersExperimental(abc.ABC):
         -------
             resized array
         """
-        return ivy.interpolate(
+        return aikit.interpolate(
             self._data,
             size,
             mode=mode,
@@ -796,9 +796,9 @@ class _ArrayWithLayersExperimental(abc.ABC):
         )
 
     def adaptive_avg_pool1d(
-        self: ivy.Array,
+        self: aikit.Array,
         output_size: int,
-    ) -> ivy.Array:
+    ) -> aikit.Array:
         """Apply a 1D adaptive average pooling over an input signal composed of
         several input planes.
 
@@ -816,18 +816,18 @@ class _ArrayWithLayersExperimental(abc.ABC):
             The result of the pooling operation. Will have shape (N, C, L_out) or
             (C, L_out), where L_out = `output_size`
         """
-        return ivy.adaptive_avg_pool1d(
+        return aikit.adaptive_avg_pool1d(
             self._data,
             output_size,
         )
 
     def adaptive_avg_pool2d(
-        self: ivy.Array,
+        self: aikit.Array,
         output_size: Union[Sequence[int], int],
         /,
         *,
         data_format: str = "NHWC",
-    ) -> ivy.Array:
+    ) -> aikit.Array:
         """Apply a 2D adaptive average pooling over an input signal composed of
         several input planes.
 
@@ -845,16 +845,16 @@ class _ArrayWithLayersExperimental(abc.ABC):
             The result of the pooling operation. Will have shape (N, C, S_0, S_1) or
             (C, S_0, S_1), where S = `output_size`
         """
-        return ivy.adaptive_avg_pool2d(
+        return aikit.adaptive_avg_pool2d(
             self._data,
             output_size,
             data_format=data_format,
         )
 
     def adaptive_max_pool2d(
-        self: ivy.Array,
+        self: aikit.Array,
         output_size: Union[Sequence[int], int],
-    ) -> ivy.Array:
+    ) -> aikit.Array:
         """Apply a 2D adaptive maximum pooling over an input signal composed of
         several input planes.
 
@@ -872,13 +872,13 @@ class _ArrayWithLayersExperimental(abc.ABC):
             The result of the pooling operation. Will have shape (N, C, S_0, S_1) or
             (C, S_0, S_1), where S = `output_size`
         """
-        return ivy.adaptive_max_pool2d(
+        return aikit.adaptive_max_pool2d(
             self._data,
             output_size,
         )
 
     def reduce_window(
-        self: ivy.Array,
+        self: aikit.Array,
         init_value: Union[int, float],
         computation: Callable,
         window_dimensions: Union[int, Sequence[int]],
@@ -888,7 +888,7 @@ class _ArrayWithLayersExperimental(abc.ABC):
         padding: Union[str, int, Sequence[Tuple[int, int]]] = "VALID",
         base_dilation: Union[int, Sequence[int]] = 1,
         window_dilation: Union[int, Sequence[int]] = 1,
-    ) -> ivy.Array:
+    ) -> aikit.Array:
         """Apply a reduction function to all elements in each window of an
         array.
 
@@ -921,13 +921,13 @@ class _ArrayWithLayersExperimental(abc.ABC):
 
         Examples
         --------
-        >>> x = ivy.array([[1, 2, 3, 4],
+        >>> x = aikit.array([[1, 2, 3, 4],
         >>>                [5, 6, 7, 8],
         >>>                [9, 10, 11, 12]])
-        >>> x.reduce_window(0, ivy.sum, (2, 2))
-        ivy.array([[32.]])
+        >>> x.reduce_window(0, aikit.sum, (2, 2))
+        aikit.array([[32.]])
         """
-        return ivy.reduce_window(
+        return aikit.reduce_window(
             self._data,
             init_value,
             computation,
@@ -939,13 +939,13 @@ class _ArrayWithLayersExperimental(abc.ABC):
         )
 
     def fft2(
-        self: ivy.Array,
+        self: aikit.Array,
         *,
         s: Optional[Sequence[int]] = None,
         dim: Sequence[int] = (-2, -1),
         norm: str = "backward",
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
         """Compute the 2-dimensional discrete Fourier Transform.
 
         Parameters
@@ -983,12 +983,12 @@ class _ArrayWithLayersExperimental(abc.ABC):
 
         Examples
         --------
-        >>> a = ivy.array([[0, 0, 0, 0, 0],
+        >>> a = aikit.array([[0, 0, 0, 0, 0],
                         [1, 1, 1, 1, 1],
                         [2, 2, 2, 2, 2],
                         [3, 3, 3, 3, 3],
                         [4, 4, 4, 4, 4]])
-        >>> ivy.fft2(a)
+        >>> aikit.fft2(a)
         array([[ 50.  +0.j        ,   0.  +0.j        ,   0.  +0.j        , # may vary
                 0.  +0.j        ,   0.  +0.j        ],
             [-12.5+17.20477401j,   0.  +0.j        ,   0.  +0.j        ,
@@ -1000,16 +1000,16 @@ class _ArrayWithLayersExperimental(abc.ABC):
             [-12.5-17.20477401j,   0.  +0.j        ,   0.  +0.j        ,
                 0.  +0.j        ,   0.  +0.j        ]])
         """
-        return ivy.fft2(self._data, s=s, dim=dim, norm=norm, out=out)
+        return aikit.fft2(self._data, s=s, dim=dim, norm=norm, out=out)
 
     def ifftn(
-        self: ivy.Array,
+        self: aikit.Array,
         s: Optional[Union[int, Tuple[int, ...]]] = None,
         axes: Optional[Union[int, Tuple[int, ...]]] = None,
         *,
         norm: str = "backward",
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
         """Compute the N-dimensional inverse discrete Fourier Transform.
 
         Parameters
@@ -1046,44 +1046,44 @@ class _ArrayWithLayersExperimental(abc.ABC):
 
         Examples
         --------
-        >>> x = ivy.array([[0.24730653+0.90832391j, 0.49495562+0.9039565j,
+        >>> x = aikit.array([[0.24730653+0.90832391j, 0.49495562+0.9039565j,
         ...                 0.98193269+0.49560517j],
         ...                 [0.93280757+0.48075343j, 0.28526384+0.3351205j,
         ...                 0.2343787 +0.83528011j],
         ...                 [0.18791352+0.30690572j, 0.82115787+0.96195183j,
         ...                 0.44719226+0.72654048j]])
-        >>> y = ivy.ifftn(x)
+        >>> y = aikit.ifftn(x)
         >>> print(y)
-        ivy.array([[ 0.51476765+0.66160417j, -0.04319742-0.05411636j,
+        aikit.array([[ 0.51476765+0.66160417j, -0.04319742-0.05411636j,
                 -0.015561  -0.04216015j],
                [ 0.06310689+0.05347854j, -0.13392983+0.16052352j,
                 -0.08371392+0.17252843j],
                [-0.0031429 +0.05421245j, -0.10446617-0.17747098j,
                  0.05344324+0.07972424j]])
-        >>> x = ivy.array([[0.24730653+0.90832391j, 0.49495562+0.9039565j,
+        >>> x = aikit.array([[0.24730653+0.90832391j, 0.49495562+0.9039565j,
         ...                 0.98193269+0.49560517j],
         ...                 [0.93280757+0.48075343j, 0.28526384+0.3351205j,
         ...                 0.2343787 +0.83528011j],
         ...                 [0.18791352+0.30690572j, 0.82115787+0.96195183j,
         ...                 0.44719226+0.72654048j]])
-        >>> y = ivy.ifftn(x, s=[2, 1], axes=[0, 1], norm='ortho')
+        >>> y = aikit.ifftn(x, s=[2, 1], axes=[0, 1], norm='ortho')
         >>> print(y)
-        ivy.array([[ 0.8344667 +0.98222595j],
+        aikit.array([[ 0.8344667 +0.98222595j],
                [-0.48472244+0.30233797j]])
         """
-        return ivy.ifftn(self._data, s=s, axes=axes, norm=norm, out=out)
+        return aikit.ifftn(self._data, s=s, axes=axes, norm=norm, out=out)
 
     def rfft(
-        self: ivy.Array,
+        self: aikit.Array,
         /,
         *,
         n: Optional[int] = None,
         axis: int = -1,
         norm: Literal["backward", "ortho", "forward"] = "backward",
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
-        """ivy.Array instance method variant of ivy.rfft. This method simply
-        wraps the function, and so the docstring for ivy.rfft also applies to
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
+        """aikit.Array instance method variant of aikit.rfft. This method simply
+        wraps the function, and so the docstring for aikit.rfft also applies to
         this method with minimal changes.
 
         Parameters
@@ -1121,21 +1121,21 @@ class _ArrayWithLayersExperimental(abc.ABC):
 
         Examples
         --------
-        >>> x = ivy.array([0,1,2])
+        >>> x = aikit.array([0,1,2])
         >>> y = x.rfft()
         >>> print(y)
-        ivy.array([ 3. +0.j       , -1.5+0.8660254j])
+        aikit.array([ 3. +0.j       , -1.5+0.8660254j])
         """
-        return ivy.rfft(self, n=n, axis=axis, norm=norm, out=out)
+        return aikit.rfft(self, n=n, axis=axis, norm=norm, out=out)
 
     def rfftn(
-        self: ivy.Array,
+        self: aikit.Array,
         s: Optional[Sequence[int]] = None,
         axes: Optional[Sequence[int]] = None,
         *,
         norm: str = "backward",
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
         """Compute the n-dimensional discrete Fourier Transform.
 
         Parameters
@@ -1157,10 +1157,10 @@ class _ArrayWithLayersExperimental(abc.ABC):
         ret
             The result of the RFFT operation.
         """
-        return ivy.rfftn(self._data, s=s, axes=axes, norm=norm, out=out)
+        return aikit.rfftn(self._data, s=s, axes=axes, norm=norm, out=out)
 
     def stft(
-        self: ivy.Array,
+        self: aikit.Array,
         frame_length: int,
         frame_step: int,
         /,
@@ -1169,8 +1169,8 @@ class _ArrayWithLayersExperimental(abc.ABC):
         window_fn: Optional[Callable] = None,
         pad_end: Optional[bool] = False,
         name: Optional[str] = None,
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
         """Compute the Short-time Fourier Transform of signals.
 
         Parameters
@@ -1203,7 +1203,7 @@ class _ArrayWithLayersExperimental(abc.ABC):
             complex64/complex128 STFT values where fft_unique_bins is
             fft_length // 2 + 1 (the unique components of the FFT).
         """
-        return ivy.stft(
+        return aikit.stft(
             self._data,
             frame_length,
             frame_step,
@@ -1215,14 +1215,14 @@ class _ArrayWithLayersExperimental(abc.ABC):
         )
 
     def sliding_window(
-        self: ivy.Array,
+        self: aikit.Array,
         window_size: Union[int, Tuple[int, int], Tuple[int, int, int]],
         /,
         *,
         stride: Union[int, Tuple[int, int]] = 1,
         dilation: Union[int, Tuple[int, int]] = 1,
         padding: Union[str, int, Sequence[Tuple[int, int]]] = "VALID",
-    ) -> ivy.Array:
+    ) -> aikit.Array:
         """Slide a window of specified dimension over all elements of an array.
 
         Parameters
@@ -1248,11 +1248,11 @@ class _ArrayWithLayersExperimental(abc.ABC):
 
         Examples
         --------
-        >>> x = ivy.array([[1, 2, 3, 4],
+        >>> x = aikit.array([[1, 2, 3, 4],
         >>>                [5, 6, 7, 8],
         >>>                [9, 10, 11, 12]])
         >>> x.sliding_window((2, 2))
-        ivy.array([[[ 1,  2,  5,  6],
+        aikit.array([[[ 1,  2,  5,  6],
                     [ 2,  3,  6,  7],
                     [ 3,  4,  7,  8]],
 
@@ -1260,7 +1260,7 @@ class _ArrayWithLayersExperimental(abc.ABC):
                     [ 6,  7, 10, 11],
                     [ 7,  8, 11, 12]]])
         """
-        return ivy.sliding_window(
+        return aikit.sliding_window(
             self._data,
             window_size,
             stride=stride,
@@ -1269,15 +1269,15 @@ class _ArrayWithLayersExperimental(abc.ABC):
         )
 
     def max_unpool1d(
-        self: ivy.Array,
-        indices: ivy.Array,
+        self: aikit.Array,
+        indices: aikit.Array,
         kernel_size: Union[Tuple[int], int],
         /,
         *,
         strides: Optional[Union[int, Tuple[int]]] = None,
         padding: Union[int, Tuple[int]] = 0,
         data_format: Optional[str] = "NCW",
-    ) -> ivy.Array:
+    ) -> aikit.Array:
         """Compute a 1-D max unpooling given the 1-D pooled input x and its
         indices.
 
@@ -1303,7 +1303,7 @@ class _ArrayWithLayersExperimental(abc.ABC):
         ret
             The result of the unpooling operation.
         """
-        return ivy.max_unpool1d(
+        return aikit.max_unpool1d(
             self._data,
             indices,
             kernel_size,

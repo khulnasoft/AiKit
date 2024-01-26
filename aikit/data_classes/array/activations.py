@@ -3,7 +3,7 @@ import abc
 from typing import Optional, Union, Literal
 
 # local
-import ivy
+import aikit
 
 
 # ToDo: implement all methods here as public instance methods
@@ -11,14 +11,14 @@ import ivy
 
 class _ArrayWithActivations(abc.ABC):
     def relu(
-        self: ivy.Array,
+        self: aikit.Array,
         /,
         *,
         complex_mode: Literal["split", "magnitude", "jax"] = "jax",
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
-        """ivy.Array instance method variant of ivy.relu. This method simply
-        wraps the function, and so the docstring for ivy.relu also applies to
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
+        """aikit.Array instance method variant of aikit.relu. This method simply
+        wraps the function, and so the docstring for aikit.relu also applies to
         this method with minimal changes.
 
         Parameters
@@ -27,7 +27,7 @@ class _ArrayWithActivations(abc.ABC):
             input array.
         complex_mode
             optional specifier for how to handle complex data types. See
-            ``ivy.func_wrapper.handle_complex_input`` for more detail.
+            ``aikit.func_wrapper.handle_complex_input`` for more detail.
         out
             optional output array, for writing the result to. It must have a shape
             that the inputs broadcast to.
@@ -39,23 +39,23 @@ class _ArrayWithActivations(abc.ABC):
 
         Examples
         --------
-        >>> x = ivy.array([-1., 0., 1.])
+        >>> x = aikit.array([-1., 0., 1.])
         >>> y = x.relu()
         >>> print(y)
-        ivy.array([0., 0., 1.])
+        aikit.array([0., 0., 1.])
         """
-        return ivy.relu(self._data, complex_mode=complex_mode, out=out)
+        return aikit.relu(self._data, complex_mode=complex_mode, out=out)
 
     def leaky_relu(
-        self: ivy.Array,
+        self: aikit.Array,
         /,
         *,
         alpha: float = 0.2,
         complex_mode: Literal["split", "magnitude", "jax"] = "jax",
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
-        """ivy.Array instance method variant of ivy.leaky_relu. This method
-        simply wraps the function, and so the docstring for ivy.leaky_relu also
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
+        """aikit.Array instance method variant of aikit.leaky_relu. This method
+        simply wraps the function, and so the docstring for aikit.leaky_relu also
         applies to this method with minimal changes.
 
         Parameters
@@ -66,7 +66,7 @@ class _ArrayWithActivations(abc.ABC):
             the slope of the negative section.
         complex_mode
             optional specifier for how to handle complex data types. See
-            ``ivy.func_wrapper.handle_complex_input`` for more detail.
+            ``aikit.func_wrapper.handle_complex_input`` for more detail.
         out
             optional output array, for writing the result to. It must have a shape
             that the inputs broadcast to.
@@ -78,25 +78,25 @@ class _ArrayWithActivations(abc.ABC):
 
         Examples
         --------
-        >>> x = ivy.array([0.39, -0.85])
+        >>> x = aikit.array([0.39, -0.85])
         >>> y = x.leaky_relu()
         >>> print(y)
-        ivy.array([ 0.39, -0.17])
+        aikit.array([ 0.39, -0.17])
         """
-        return ivy.leaky_relu(
+        return aikit.leaky_relu(
             self._data, alpha=alpha, complex_mode=complex_mode, out=out
         )
 
     def gelu(
-        self: ivy.Array,
+        self: aikit.Array,
         /,
         *,
         approximate: bool = False,
         complex_mode: Literal["split", "magnitude", "jax"] = "jax",
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
-        """ivy.Array instance method variant of ivy.gelu. This method simply
-        wraps the function, and so the docstring for ivy.gelu also applies to
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
+        """aikit.Array instance method variant of aikit.gelu. This method simply
+        wraps the function, and so the docstring for aikit.gelu also applies to
         this method with minimal changes.
 
         Parameters
@@ -107,7 +107,7 @@ class _ArrayWithActivations(abc.ABC):
             whether to use the approximate version of the gelu function.
         complex_mode
             optional specifier for how to handle complex data types. See
-            ``ivy.func_wrapper.handle_complex_input`` for more detail.
+            ``aikit.func_wrapper.handle_complex_input`` for more detail.
         out
             optional output array, for writing the result to. It must have a shape
             that the inputs broadcast to.
@@ -119,25 +119,25 @@ class _ArrayWithActivations(abc.ABC):
 
         Examples
         --------
-        >>> x = ivy.array([-1.2, -0.6, 1.5])
+        >>> x = aikit.array([-1.2, -0.6, 1.5])
         >>> y = x.gelu()
         >>> print(y)
-        ivy.array([-0.138, -0.165, 1.4])
+        aikit.array([-0.138, -0.165, 1.4])
         """
-        return ivy.gelu(
+        return aikit.gelu(
             self._data, approximate=approximate, complex_mode=complex_mode, out=out
         )
 
     def sigmoid(
-        self: ivy.Array,
+        self: aikit.Array,
         /,
         *,
         complex_mode: Literal["split", "magnitude", "jax"] = "jax",
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
-        """ivy.Array instance method variant of ivy.sigmoid.
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
+        """aikit.Array instance method variant of aikit.sigmoid.
 
-        This method simply wraps the function, and so the docstring for ivy.sigmoid also
+        This method simply wraps the function, and so the docstring for aikit.sigmoid also
         applies to this method with minimal changes.
 
         Parameters
@@ -146,7 +146,7 @@ class _ArrayWithActivations(abc.ABC):
             Input array
         complex_mode
             optional specifier for how to handle complex data types. See
-            ``ivy.func_wrapper.handle_complex_input`` for more detail.
+            ``aikit.func_wrapper.handle_complex_input`` for more detail.
         out
             optional output array for writing the result to. It must have the same shape
             the input broadcast to default: None
@@ -159,23 +159,23 @@ class _ArrayWithActivations(abc.ABC):
 
         Examples
         --------
-        >>> x = ivy.array([-1., 1., 2.])
+        >>> x = aikit.array([-1., 1., 2.])
         >>> y = x.sigmoid()
         >>> print(y)
-        ivy.array([0.269, 0.731, 0.881])
+        aikit.array([0.269, 0.731, 0.881])
         """
-        return ivy.sigmoid(self._data, complex_mode=complex_mode, out=out)
+        return aikit.sigmoid(self._data, complex_mode=complex_mode, out=out)
 
     def softmax(
-        self: ivy.Array,
+        self: aikit.Array,
         /,
         *,
         axis: Optional[int] = None,
         complex_mode: Literal["split", "magnitude", "jax"] = "jax",
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
-        """ivy.Array instance method variant of ivy.softmax. This method simply
-        wraps the function, and so the docstring for ivy.softmax also applies
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
+        """aikit.Array instance method variant of aikit.softmax. This method simply
+        wraps the function, and so the docstring for aikit.softmax also applies
         to this method with minimal changes.
 
         Parameters
@@ -186,7 +186,7 @@ class _ArrayWithActivations(abc.ABC):
             the axis or axes along which the softmax should be computed
         complex_mode
             optional specifier for how to handle complex data types. See
-            ``ivy.func_wrapper.handle_complex_input`` for more detail.
+            ``aikit.func_wrapper.handle_complex_input`` for more detail.
         out
             optional output array, for writing the result to. It must have a shape
             that the inputs broadcast to.
@@ -198,24 +198,24 @@ class _ArrayWithActivations(abc.ABC):
 
         Examples
         --------
-        >>> x = ivy.array([1.0, 0, 1.0])
+        >>> x = aikit.array([1.0, 0, 1.0])
         >>> y = x.softmax()
         >>> print(y)
-        ivy.array([0.422, 0.155, 0.422])
+        aikit.array([0.422, 0.155, 0.422])
         """
-        return ivy.softmax(self._data, axis=axis, complex_mode=complex_mode, out=out)
+        return aikit.softmax(self._data, axis=axis, complex_mode=complex_mode, out=out)
 
     def softplus(
-        self: ivy.Array,
+        self: aikit.Array,
         /,
         *,
         beta: Optional[Union[int, float]] = None,
         threshold: Optional[Union[int, float]] = None,
         complex_mode: Literal["split", "magnitude", "jax"] = "jax",
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
-        """ivy.Array instance method variant of ivy.softplus. This method
-        simply wraps the function, and so the docstring for ivy.softplus also
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
+        """aikit.Array instance method variant of aikit.softplus. This method
+        simply wraps the function, and so the docstring for aikit.softplus also
         applies to this method with minimal changes.
 
         Parameters
@@ -228,7 +228,7 @@ class _ArrayWithActivations(abc.ABC):
             the threshold parameter of the softplus function.
         complex_mode
            optional specifier for how to handle complex data types. See
-            ``ivy.func_wrapper.handle_complex_input`` for more detail.
+            ``aikit.func_wrapper.handle_complex_input`` for more detail.
         out
             optional output array, for writing the result to. It must have a shape
 
@@ -239,22 +239,22 @@ class _ArrayWithActivations(abc.ABC):
 
         Examples
         --------
-        >>> x = ivy.array([-0.3461, -0.6491])
+        >>> x = aikit.array([-0.3461, -0.6491])
         >>> y = x.softplus()
         >>> print(y)
-        ivy.array([0.535,0.42])
+        aikit.array([0.535,0.42])
 
-        >>> x = ivy.array([-0.3461, -0.6491])
+        >>> x = aikit.array([-0.3461, -0.6491])
         >>> y = x.softplus(beta=0.5)
         >>> print(y)
-        ivy.array([1.22, 1.09])
+        aikit.array([1.22, 1.09])
 
-        >>> x = ivy.array([1.31, 2., 2.])
+        >>> x = aikit.array([1.31, 2., 2.])
         >>> y = x.softplus(threshold=2, out=x)
         >>> print(x)
-        ivy.array([1.55, 2.13, 2.13])
+        aikit.array([1.55, 2.13, 2.13])
         """
-        return ivy.softplus(
+        return aikit.softplus(
             self._data,
             beta=beta,
             threshold=threshold,
@@ -263,15 +263,15 @@ class _ArrayWithActivations(abc.ABC):
         )
 
     def log_softmax(
-        self: ivy.Array,
+        self: aikit.Array,
         /,
         *,
         axis: Optional[int] = -1,
         complex_mode: Literal["split", "magnitude", "jax"] = "jax",
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
-        """ivy.Array instance method variant of ivy.log_softmax. This method
-        simply wraps the function, and so the docstring for ivy.log_softmax
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
+        """aikit.Array instance method variant of aikit.log_softmax. This method
+        simply wraps the function, and so the docstring for aikit.log_softmax
         also applies to this method with minimal changes.
 
         Parameters
@@ -282,7 +282,7 @@ class _ArrayWithActivations(abc.ABC):
             the axis or axes along which the log_softmax should be computed
         complex_mode
             optional specifier for how to handle complex data types. See
-            ``ivy.func_wrapper.handle_complex_input`` for more detail.
+            ``aikit.func_wrapper.handle_complex_input`` for more detail.
         out
             optional output array, for writing the result to. It must have a shape
             that the inputs broadcast to.
@@ -294,16 +294,16 @@ class _ArrayWithActivations(abc.ABC):
 
         Examples
         --------
-        >>> x = ivy.array([-1.0, -0.98, 2.3])
+        >>> x = aikit.array([-1.0, -0.98, 2.3])
         >>> y = x.log_softmax()
         >>> print(y)
-        ivy.array([-3.37, -3.35, -0.0719])
+        aikit.array([-3.37, -3.35, -0.0719])
 
-        >>> x = ivy.array([2.0, 3.4, -4.2])
+        >>> x = aikit.array([2.0, 3.4, -4.2])
         >>> y = x.log_softmax(x)
-        ivy.array([-1.62, -0.221, -7.82 ])
+        aikit.array([-1.62, -0.221, -7.82 ])
         """
-        return ivy.log_softmax(
+        return aikit.log_softmax(
             self._data,
             axis=axis,
             complex_mode=complex_mode,
@@ -311,14 +311,14 @@ class _ArrayWithActivations(abc.ABC):
         )
 
     def mish(
-        self: ivy.Array,
+        self: aikit.Array,
         /,
         *,
         complex_mode: Literal["split", "magnitude", "jax"] = "jax",
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
-        """ivy.Array instance method variant of ivy.mish. This method simply
-        wraps the function, and so the docstring for ivy.mish also applies to
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
+        """aikit.Array instance method variant of aikit.mish. This method simply
+        wraps the function, and so the docstring for aikit.mish also applies to
         this method with minimal changes.
 
         Parameters
@@ -327,27 +327,27 @@ class _ArrayWithActivations(abc.ABC):
             input array.
         complex_mode
             optional specifier for how to handle complex data types. See
-            ``ivy.func_wrapper.handle_complex_input`` for more detail.
+            ``aikit.func_wrapper.handle_complex_input`` for more detail.
         out
             optional output array, for writing the result to. It must have a shape
             that the inputs broadcast to.
 
         Examples
         --------
-        >>> x = ivy.array([-1., 0., 1.])
+        >>> x = aikit.array([-1., 0., 1.])
         >>> y = x.mish()
         >>> print(y)
-        ivy.array([-0.30340147,  0.        ,  0.86509842])
+        aikit.array([-0.30340147,  0.        ,  0.86509842])
         """
-        return ivy.mish(self._data, complex_mode=complex_mode, out=out)
+        return aikit.mish(self._data, complex_mode=complex_mode, out=out)
 
     def hardswish(
-        self: ivy.Array,
+        self: aikit.Array,
         /,
         *,
         complex_mode: Literal["split", "magnitude", "jax"] = "jax",
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
         """Apply the hardswish activation function element-wise.
 
         Parameters
@@ -356,7 +356,7 @@ class _ArrayWithActivations(abc.ABC):
             input array
         complex_mode
             optional specifier for how to handle complex data types. See
-            ``ivy.func_wrapper.handle_complex_input`` for more detail.
+            ``aikit.func_wrapper.handle_complex_input`` for more detail.
         out
             optional output array, for writing the result to. It must have
             a shape that the inputs broadcast to.
@@ -368,21 +368,21 @@ class _ArrayWithActivations(abc.ABC):
 
         Examples
         --------
-        With :class:`ivy.Array` input:
+        With :class:`aikit.Array` input:
 
-        >>> x = ivy.array([0., 0., 4.])
-        >>> y = ivy.hardswish(x)
+        >>> x = aikit.array([0., 0., 4.])
+        >>> y = aikit.hardswish(x)
         >>> y
-        ivy.array([0., 0., 4.])
+        aikit.array([0., 0., 4.])
 
-        With :class:`ivy.Container` input:
+        With :class:`aikit.Container` input:
 
-        >>> x = ivy.Container(a=ivy.array([-3., 4., 5.]), b=ivy.array([0., 5.]))
-        >>> x = ivy.hardswish(x, out=x)
+        >>> x = aikit.Container(a=aikit.array([-3., 4., 5.]), b=aikit.array([0., 5.]))
+        >>> x = aikit.hardswish(x, out=x)
         >>> x
         {
-            a: ivy.array([-0.,  4.,  5.]),
-            b: ivy.array([0., 5.])
+            a: aikit.array([-0.,  4.,  5.]),
+            b: aikit.array([0., 5.])
         }
         """
-        return ivy.hardswish(self._data, complex_mode=complex_mode, out=out)
+        return aikit.hardswish(self._data, complex_mode=complex_mode, out=out)

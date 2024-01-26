@@ -84,7 +84,7 @@ def randint_like(x, low=0, high=None, dtype=None, name=None):
         high = low
         low = 0
         if high <= 0:
-            raise aikit.exceptions.IvyError(
+            raise aikit.exceptions.AikitError(
                 "If high is None, low must be greater than 0, but received low = 0."
             )
     return aikit.randint(low, high, shape=x.shape, dtype=dtype, seed=None)
@@ -92,7 +92,7 @@ def randint_like(x, low=0, high=None, dtype=None, name=None):
 
 def randn(shape, dtype=None, name=None):
     if dtype not in ["float32", "float64"]:
-        raise aikit.exceptions.IvyError(
+        raise aikit.exceptions.AikitError(
             "Unsupported dtype for randn, only float32 and float64 are supported, "
         )
     return aikit.random_normal(shape=shape, dtype=dtype, seed=None)

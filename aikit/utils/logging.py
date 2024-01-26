@@ -7,7 +7,7 @@ logging_mode_stack = [logging.WARNING]
 
 
 def set_logging_mode(mode):
-    """Set the current logging mode for Ivy.
+    """Set the current logging mode for Aikit.
 
     Possible modes are 'DEBUG', 'INFO', 'WARNING', 'ERROR'.
     """
@@ -31,5 +31,5 @@ def unset_logging_mode():
         logging.getLogger().setLevel(logging_mode_stack[-1])
 
 
-# Expose the functions to the main Ivy package
+# Expose the functions to the main Aikit package
 __all__ = ["set_logging_mode", "unset_logging_mode"]

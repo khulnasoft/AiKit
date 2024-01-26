@@ -1,6 +1,6 @@
 """Tensorflow device functions.
 
-Collection of TensorFlow general functions, wrapped to fit Ivy syntax
+Collection of TensorFlow general functions, wrapped to fit Aikit syntax
 and signature.
 """
 

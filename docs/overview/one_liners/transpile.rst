@@ -1,4 +1,4 @@
-``ivy.transpile()``
+``aikit.transpile()``
 ===================
 
 ..
@@ -6,7 +6,7 @@
    ⚠️ **Warning**: The tracer and the transpiler are not publicly available yet, so certain parts of this doc won't work as expected as of now!
 
 
-Ivy's Transpiler converts a function written in any framework into your framework of
+Aikit's Transpiler converts a function written in any framework into your framework of
 choice, preserving all the logic between frameworks.
 As the output of transpilation is native code in the target framework, it
 can be used as if it was originally developed in that framework,
@@ -22,11 +22,11 @@ want to use to research, develop, or deploy systems. So if you want to:
   library in Jax for extra performance.
 - Take advantage of specific features in other frameworks. Ex: Convert Jax code to Tensorflow for deployment.
 
-Ivy's Transpiler is definitely the tool for the job 🔧
+Aikit's Transpiler is definitely the tool for the job 🔧
 
 To convert the code, it traces a computational graph using the Tracer and
-leverages Ivy's frontends and backends to link one framework to another. After swapping
-each function node in the computational graph with their equivalent Ivy frontend
+leverages Aikit's frontends and backends to link one framework to another. After swapping
+each function node in the computational graph with their equivalent Aikit frontend
 functions, the tracer removes all the wrapping in the frontends and replaces them with the native
 functions of the target framework.
 
@@ -34,7 +34,7 @@ functions of the target framework.
 Transpiler API
 --------------
 
-.. py:function:: ivy.transpile(*objs, source = None, to = None, debug_mode = False, args = None, kwargs = None, params_v = None,)
+.. py:function:: aikit.transpile(*objs, source = None, to = None, debug_mode = False, args = None, kwargs = None, params_v = None,)
 
   Transpiles a ``Callable`` or set of them from a ``source`` framework to another framework. If ``args`` or ``kwargs`` are specified,
   transpilation is performed eagerly, otherwise, transpilation will happen lazily.
@@ -45,8 +45,8 @@ Transpiler API
   :type source: ``Optional[str]``
   :param to: The target framework to transpile ``obj`` to.
   :type to: ``Optional[str]``
-  :param debug_mode: Whether to transpile to ivy first, before the final compilation to
-                     the target framework. If the target is ivy, then this flag makes no
+  :param debug_mode: Whether to transpile to aikit first, before the final compilation to
+                     the target framework. If the target is aikit, then this flag makes no
                      difference.
   :type debug_mode: ``bool``
   :param args: If specified, arguments that will be used to transpile eagerly.
@@ -55,13 +55,13 @@ Transpiler API
   :type kwargs: ``Optional[dict]``
   :param params_v: Parameters of a haiku model, as when transpiling these, the parameters
                    need to be passed explicitly to the function call.
-  :rtype: ``Union[Graph, LazyGraph, ModuleType, ivy.Module, torch.nn.Module, tf.keras.Model, hk.Module]``
+  :rtype: ``Union[Graph, LazyGraph, ModuleType, aikit.Module, torch.nn.Module, tf.keras.Model, hk.Module]``
   :return: A transpiled ``Graph`` or a non-initialized ``LazyGraph``. If the object is a native trainable module, the corresponding module in the target framework will be returned. If the object is a ``ModuleType``, the function will return a copy of the module with every method lazily transpiled.
 
 Using the transpiler
 --------------------
 
-Similar to the ``ivy.trace`` function, ``ivy.unify`` and ``ivy.transpile`` can be used
+Similar to the ``aikit.trace`` function, ``aikit.unify`` and ``aikit.transpile`` can be used
 eagerly and lazily. If you pass the necessary arguments, the function will be called
 instantly, otherwise, transpilation will happen the first time you invoke the function
 with the proper arguments.
@@ -77,23 +77,23 @@ a small JAX function to Torch both eagerly and lazily.
 
 .. code-block:: python
 
-  import ivy
-  ivy.set_backend("jax")
+  import aikit
+  aikit.set_backend("jax")
 
   # Simple JAX function to transpile
   def test_fn(x):
       return jax.numpy.sum(x)
 
-  x1 = ivy.array([1., 2.])
+  x1 = aikit.array([1., 2.])
 
   # Arguments are available -> transpilation happens eagerly
-  eager_graph = ivy.transpile(test_fn, source="jax", to="torch", args=(x1,))
+  eager_graph = aikit.transpile(test_fn, source="jax", to="torch", args=(x1,))
 
   # eager_graph is now torch code and runs efficiently
   ret = eager_graph(x1)
 
   # Arguments are not available -> transpilation happens lazily
-  lazy_graph = ivy.transpile(test_fn, source="jax", to="torch")
+  lazy_graph = aikit.transpile(test_fn, source="jax", to="torch")
 
   # The transpiled graph is initialized, transpilation will happen here
   ret = lazy_graph(x1)
@@ -104,19 +104,19 @@ a small JAX function to Torch both eagerly and lazily.
 Transpiling Libraries
 ~~~~~~~~~~~~~~~~~~~~~
 
-Likewise, you can use ``ivy.transpile`` to convert entire libraries and modules with just one line of
+Likewise, you can use ``aikit.transpile`` to convert entire libraries and modules with just one line of
 code!
 
 .. code-block:: python
 
-  import ivy
+  import aikit
   import kornia
   import requests
   import jax.numpy as jnp
   from PIL import Image
 
   # transpile kornia from torch to jax
-  jax_kornia = ivy.transpile(kornia, source="torch", to="jax")
+  jax_kornia = aikit.transpile(kornia, source="torch", to="jax")
 
   # get an image
   url = "http://images.cocodataset.org/train2017/000000000034.jpg"
@@ -132,13 +132,13 @@ code!
 Transpiling Modules
 ~~~~~~~~~~~~~~~~~~~
 
-Last but not least, Ivy can also transpile trainable modules from one framework to
+Last but not least, Aikit can also transpile trainable modules from one framework to
 another, at the moment we support ``torch.nn.Module`` when ``to="torch"``,
 ``tf.keras.Model`` when ``to="tensorflow"``, and haiku models when ``to="jax"``.
 
 .. code-block::
 
-  import ivy
+  import aikit
   import timm
   import torch
   import jax
@@ -149,7 +149,7 @@ another, at the moment we support ``torch.nn.Module`` when ``to="torch"``,
 
   # Transpile it into a hk.Module with the corresponding parameters
   noise = torch.randn(1, 3, 224, 224)
-  mlp_encoder = ivy.transpile(mlp_encoder, to="jax", args=(noise,))
+  mlp_encoder = aikit.transpile(mlp_encoder, to="jax", args=(noise,))
 
   # Build a classifier using the transpiled encoder
   class Classifier(hk.Module):
@@ -214,12 +214,12 @@ resulting model with tensorflow tensors directly:
 
 .. code-block:: python
 
-  import ivy
+  import aikit
   from transformers import AutoImageProcessor, ResNetForImageClassification
   from datasets import load_dataset
 
   # Set backend to torch
-  ivy.set_backend("torch")
+  aikit.set_backend("torch")
 
   # Download the input image
   dataset = load_dataset("huggingface/cats-image")
@@ -230,7 +230,7 @@ resulting model with tensorflow tensors directly:
   model = ResNetForImageClassification.from_pretrained("microsoft/resnet-50")
 
   # Transpiling the model to tensorflow
-  tf_model = ivy.transpile(model, source="torch", to="tensorflow", kwargs=inputs)
+  tf_model = aikit.transpile(model, source="torch", to="tensorflow", kwargs=inputs)
 
   # Using the transpiled model
   tf_inputs = image_processor(image, return_tensors="tf")

@@ -1,6 +1,6 @@
 """MXNet device functions.
 
-Collection of MXNet general functions, wrapped to fit Ivy syntax and
+Collection of MXNet general functions, wrapped to fit Aikit syntax and
 signature.
 """
 
@@ -8,7 +8,7 @@ import mxnet as mx
 from typing import Union, Optional
 import aikit
 from aikit.functional.aikit.device import Profiler as BaseProfiler
-from aikit.utils.exceptions import IvyNotImplementedException
+from aikit.utils.exceptions import AikitNotImplementedException
 
 
 def dev(
@@ -59,7 +59,7 @@ def as_native_dev(device: str, /):
 
 
 def clear_cached_mem_on_dev(device: str, /):
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def num_gpus() -> int:
@@ -78,16 +78,16 @@ def tpu_is_available() -> bool:
 
 class Profiler(BaseProfiler):
     def __init__(self, save_dir: str):
-        raise IvyNotImplementedException()
+        raise AikitNotImplementedException()
 
     def start(self):
-        raise IvyNotImplementedException()
+        raise AikitNotImplementedException()
 
     def stop(self):
-        raise IvyNotImplementedException()
+        raise AikitNotImplementedException()
 
     def __enter__(self):
-        raise IvyNotImplementedException()
+        raise AikitNotImplementedException()
 
     def __exit__(self, exc_type, exc_val, exc_tb):
-        raise IvyNotImplementedException()
+        raise AikitNotImplementedException()

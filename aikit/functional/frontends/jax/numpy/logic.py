@@ -6,7 +6,7 @@ from aikit.functional.frontends.jax.func_wrapper import (
 from aikit.functional.frontends.jax.numpy import (
     promote_types_of_jax_inputs as promote_jax_arrays,
 )
-from aikit.utils.exceptions import IvyNotImplementedException
+from aikit.utils.exceptions import AikitNotImplementedException
 from aikit.func_wrapper import with_unsupported_dtypes
 
 
@@ -206,7 +206,7 @@ def isscalar(x, /):
 @to_aikit_arrays_and_back
 def left_shift(x1, x2):
     # TODO: implement
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 @to_aikit_arrays_and_back

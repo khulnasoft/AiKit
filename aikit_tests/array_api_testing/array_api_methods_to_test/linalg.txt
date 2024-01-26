@@ -13,7 +13,7 @@ matrix_transpose
 outer
 pinv
 qr
-#slogdet # failing for numpy due to tol issues e.g. x = 0.6931471805599453, y = ivy.array(0.69314718) not equal
+#slogdet # failing for numpy due to tol issues e.g. x = 0.6931471805599453, y = aikit.array(0.69314718) not equal
 solve
 svd
 svdvals

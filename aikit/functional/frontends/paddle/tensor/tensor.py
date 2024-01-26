@@ -182,7 +182,7 @@ class Tensor:
         return paddle_frontend.Tensor(ret)
 
     def __setitem__(self, item, value):
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             "aikit.functional.frontends.paddle.Tensor object doesn't support assignment"
         )
 
@@ -967,7 +967,7 @@ class Tensor:
     @with_supported_dtypes({"2.6.0 and below": ("complex64", "complex128")}, "paddle")
     def as_real(self, name=None):
         if not aikit.is_complex_dtype(self._aikit_array):
-            raise aikit.exceptions.IvyError(
+            raise aikit.exceptions.AikitError(
                 "as_real is only supported for complex tensors"
             )
         re_part = aikit.real(self._aikit_array)
@@ -1073,7 +1073,7 @@ class Tensor:
     @with_supported_dtypes({"2.6.0 and below": ("float32", "float64")}, "paddle")
     def as_complex(self, name=None):
         if self.aikit_array.shape[-1] != 2:
-            raise aikit.exceptions.IvyError(
+            raise aikit.exceptions.AikitError(
                 "The size of the last dimension of tensor does not equals 2"
             )
         dtype = (

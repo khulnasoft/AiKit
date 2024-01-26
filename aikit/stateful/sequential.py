@@ -36,7 +36,7 @@ class Sequential(Module):
                     submod.v = v["submodules"][f"v{str(i)}"]
                 except KeyError as e:
                     if submod.v:
-                        raise aikit.utils.exceptions.IvyException(
+                        raise aikit.utils.exceptions.AikitException(
                             "variables v passed to Sequential class must have key "
                             "chains in the form of "
                             '"submodules/v{}", where {} is an idx'
@@ -66,7 +66,7 @@ class Sequential(Module):
                 x = submod(x, v=self.v.submodules[f"v{str(i)}"])
             except KeyError as e:
                 if submod.v:
-                    raise aikit.utils.exceptions.IvyException(
+                    raise aikit.utils.exceptions.AikitException(
                         "variables v passed to Sequential class must have key chains "
                         "in the form of "
                         '"submodules/v{}", where {} is an idx'

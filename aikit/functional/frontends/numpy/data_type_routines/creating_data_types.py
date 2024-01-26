@@ -20,7 +20,7 @@ class dtype:
         try:
             other = dtype(other)
         except TypeError as e:
-            raise aikit.utils.exceptions.IvyException(
+            raise aikit.utils.exceptions.AikitException(
                 "Attempted to compare a dtype with something which"
                 "couldn't be interpreted as a dtype"
             ) from e
@@ -33,7 +33,7 @@ class dtype:
         try:
             other = dtype(other)
         except TypeError as e:
-            raise aikit.utils.exceptions.IvyException(
+            raise aikit.utils.exceptions.AikitException(
                 "Attempted to compare a dtype with something which"
                 "couldn't be interpreted as a dtype"
             ) from e
@@ -44,7 +44,7 @@ class dtype:
         try:
             other = dtype(other)
         except TypeError as e:
-            raise aikit.utils.exceptions.IvyException(
+            raise aikit.utils.exceptions.AikitException(
                 "Attempted to compare a dtype with something which"
                 "couldn't be interpreted as a dtype"
             ) from e
@@ -57,7 +57,7 @@ class dtype:
         try:
             other = dtype(other)
         except TypeError as e:
-            raise aikit.utils.exceptions.IvyException(
+            raise aikit.utils.exceptions.AikitException(
                 "Attempted to compare a dtype with something which"
                 "couldn't be interpreted as a dtype"
             ) from e

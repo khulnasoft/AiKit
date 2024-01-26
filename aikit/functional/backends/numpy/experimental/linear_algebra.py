@@ -4,7 +4,7 @@ import numpy as np
 
 import aikit
 from aikit.func_wrapper import with_supported_dtypes, with_unsupported_dtypes
-from aikit.utils.exceptions import IvyNotImplementedException
+from aikit.utils.exceptions import AikitNotImplementedException
 from .. import backend_version
 
 from aikit.functional.aikit.experimental.linear_algebra import _check_valid_dimension_size
@@ -214,7 +214,7 @@ def lu_factor(
     pivot: Optional[bool] = True,
     out: Optional[np.ndarray] = None,
 ) -> Tuple[np.ndarray]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def dot(

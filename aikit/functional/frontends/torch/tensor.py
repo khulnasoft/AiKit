@@ -1098,7 +1098,7 @@ class Tensor:
 
     def repeat(self, *args, repeats=None):
         if args and repeats:
-            raise aikit.utils.exceptions.IvyException(
+            raise aikit.utils.exceptions.AikitException(
                 "repeat() got multiple values for argument 'repeats'"
             )
         if args:
@@ -1107,7 +1107,7 @@ class Tensor:
             else:
                 repeats = args
         elif not isinstance(repeats, (tuple, list)):
-            raise aikit.utils.exceptions.IvyException(
+            raise aikit.utils.exceptions.AikitException(
                 "repeat(): argument 'repeats' must be tuple of ints"
             )
 

@@ -24,7 +24,7 @@ def all(
     try:
         return tf.reduce_all(tf.cast(x, tf.bool), axis=axis, keepdims=keepdims)
     except tf.errors.InvalidArgumentError as e:
-        raise aikit.utils.exceptions.IvyIndexError(e) from e
+        raise aikit.utils.exceptions.AikitIndexError(e) from e
 
 
 def any(
@@ -44,4 +44,4 @@ def any(
     try:
         return tf.reduce_any(tf.cast(x, tf.bool), axis=axis, keepdims=keepdims)
     except tf.errors.InvalidArgumentError as e:
-        raise aikit.utils.exceptions.IvyIndexError(e) from e
+        raise aikit.utils.exceptions.AikitIndexError(e) from e

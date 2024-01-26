@@ -2,27 +2,27 @@
 from typing import Optional, Union, List, Dict, Callable, Sequence
 
 # local
-from ivy.data_classes.container.base import ContainerBase
-import ivy
+from aikit.data_classes.container.base import ContainerBase
+import aikit
 
 
 class _ContainerWithGeneralExperimental(ContainerBase):
     @staticmethod
     def _static_reduce(
-        operand: Union[ivy.Container, ivy.Array, ivy.NativeArray],
-        init_value: Union[int, float, ivy.Container],
-        computation: Union[Callable, ivy.Container],
+        operand: Union[aikit.Container, aikit.Array, aikit.NativeArray],
+        init_value: Union[int, float, aikit.Container],
+        computation: Union[Callable, aikit.Container],
         /,
         *,
-        axes: Union[int, Sequence[int], ivy.Container] = 0,
-        keepdims: Union[bool, ivy.Container] = False,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> ivy.Container:
-        """ivy.Container static method variant of ivy.reduce. This method
-        simply wraps the function, and so the docstring for ivy.reduce also
+        axes: Union[int, Sequence[int], aikit.Container] = 0,
+        keepdims: Union[bool, aikit.Container] = False,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> aikit.Container:
+        """aikit.Container static method variant of aikit.reduce. This method
+        simply wraps the function, and so the docstring for aikit.reduce also
         applies to this method with minimal changes.
 
         Parameters
@@ -57,15 +57,15 @@ class _ContainerWithGeneralExperimental(ContainerBase):
 
         Examples
         --------
-        >>> x = ivy.Container(
-        >>>     a=ivy.array([[1, 2, 3], [4, 5, 6]]),
-        >>>     b=ivy.native_array([[7, 8, 9], [10, 5, 1]])
+        >>> x = aikit.Container(
+        >>>     a=aikit.array([[1, 2, 3], [4, 5, 6]]),
+        >>>     b=aikit.native_array([[7, 8, 9], [10, 5, 1]])
         >>> )
-        >>> y = ivy.Container.static_reduce(x, 0, ivy.add)
+        >>> y = aikit.Container.static_reduce(x, 0, aikit.add)
         >>> print(y)
         {
-            a: ivy.array([6, 15]),
-            b: ivy.array([24, 16])
+            a: aikit.array([6, 15]),
+            b: aikit.array([24, 16])
         }
         """
         return ContainerBase.cont_multi_map_in_function(
@@ -82,20 +82,20 @@ class _ContainerWithGeneralExperimental(ContainerBase):
         )
 
     def reduce(
-        self: ivy.Container,
-        init_value: Union[int, float, ivy.Container],
-        computation: Union[Callable, ivy.Container],
+        self: aikit.Container,
+        init_value: Union[int, float, aikit.Container],
+        computation: Union[Callable, aikit.Container],
         /,
         *,
-        axes: Union[int, Sequence[int], ivy.Container] = 0,
-        keepdims: Union[bool, ivy.Container] = False,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of ivy.reduce. This method
-        simply wraps the function, and so the docstring for ivy.reduce also
+        axes: Union[int, Sequence[int], aikit.Container] = 0,
+        keepdims: Union[bool, aikit.Container] = False,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of aikit.reduce. This method
+        simply wraps the function, and so the docstring for aikit.reduce also
         applies to this method with minimal changes.
 
         Parameters
@@ -130,14 +130,14 @@ class _ContainerWithGeneralExperimental(ContainerBase):
 
         Examples
         --------
-        >>> x = ivy.Container(
-        ...     a=ivy.array([[1, 2, 3], [4, 5, 6]]),
-        ...     b=ivy.native_array([[7, 8, 9], [10, 5, 1]]))
-        >>> y = x.reduce(0, ivy.add)
+        >>> x = aikit.Container(
+        ...     a=aikit.array([[1, 2, 3], [4, 5, 6]]),
+        ...     b=aikit.native_array([[7, 8, 9], [10, 5, 1]]))
+        >>> y = x.reduce(0, aikit.add)
         >>> print(y)
         {
-            a: ivy.array([5, 7, 9]),
-            b: ivy.array([17, 13, 10])
+            a: aikit.array([5, 7, 9]),
+            b: aikit.array([17, 13, 10])
         }
         """
         return self._static_reduce(

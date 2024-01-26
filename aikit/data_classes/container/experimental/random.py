@@ -2,28 +2,28 @@
 from typing import Optional, Union, List, Dict
 
 # local
-import ivy
-from ivy.data_classes.container.base import ContainerBase
+import aikit
+from aikit.data_classes.container.base import ContainerBase
 
 
 class _ContainerWithRandomExperimental(ContainerBase):
     # dirichlet
     @staticmethod
     def static_dirichlet(
-        alpha: ivy.Container,
+        alpha: aikit.Container,
         /,
         *,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        size: Optional[Union[ivy.Shape, ivy.NativeShape, ivy.Container]] = None,
-        dtype: Optional[Union[ivy.Dtype, ivy.NativeDtype, ivy.Container]] = None,
-        seed: Optional[Union[int, ivy.Container]] = None,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container static method variant of ivy.dirichlet. This method
-        simply wraps the function, and so the docstring for ivy.dirichlet also
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        size: Optional[Union[aikit.Shape, aikit.NativeShape, aikit.Container]] = None,
+        dtype: Optional[Union[aikit.Dtype, aikit.NativeDtype, aikit.Container]] = None,
+        seed: Optional[Union[int, aikit.Container]] = None,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container static method variant of aikit.dirichlet. This method
+        simply wraps the function, and so the docstring for aikit.dirichlet also
         applies to this method with minimal changes.
 
         Parameters
@@ -48,17 +48,17 @@ class _ContainerWithRandomExperimental(ContainerBase):
 
         Examples
         --------
-        >>> alpha = ivy.Container(a=ivy.array([7,6,5]), \
-                                  b=ivy.array([8,9,4]))
-        >>> size = ivy.Container(a=3, b=5)
-        >>> ivy.Container.static_dirichlet(alpha, size)
+        >>> alpha = aikit.Container(a=aikit.array([7,6,5]), \
+                                  b=aikit.array([8,9,4]))
+        >>> size = aikit.Container(a=3, b=5)
+        >>> aikit.Container.static_dirichlet(alpha, size)
         {
-            a: ivy.array(
+            a: aikit.array(
                 [[0.43643127, 0.32325703, 0.24031169],
                  [0.34251311, 0.31692529, 0.3405616 ],
                  [0.5319725 , 0.22458365, 0.24344385]]
                 ),
-            b: ivy.array(
+            b: aikit.array(
                 [[0.26588406, 0.61075421, 0.12336174],
                  [0.51142915, 0.25041268, 0.23815817],
                  [0.64042903, 0.25763214, 0.10193883],
@@ -80,16 +80,16 @@ class _ContainerWithRandomExperimental(ContainerBase):
         )
 
     def dirichlet(
-        self: ivy.Container,
+        self: aikit.Container,
         /,
         *,
-        size: Optional[Union[ivy.Shape, ivy.NativeShape, ivy.Container]] = None,
-        dtype: Optional[Union[ivy.Dtype, ivy.NativeDtype, ivy.Container]] = None,
-        seed: Optional[Union[int, ivy.Container]] = None,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of ivy.dirichlet. This method
-        simply wraps the function, and so the docstring for ivy.shuffle also
+        size: Optional[Union[aikit.Shape, aikit.NativeShape, aikit.Container]] = None,
+        dtype: Optional[Union[aikit.Dtype, aikit.NativeDtype, aikit.Container]] = None,
+        seed: Optional[Union[int, aikit.Container]] = None,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of aikit.dirichlet. This method
+        simply wraps the function, and so the docstring for aikit.shuffle also
         applies to this method with minimal changes.
 
         Parameters
@@ -114,17 +114,17 @@ class _ContainerWithRandomExperimental(ContainerBase):
 
         Examples
         --------
-        >>> alpha = ivy.Container(a=ivy.array([7,6,5]), \
-                                  b=ivy.array([8,9,4]))
-        >>> size = ivy.Container(a=3, b=5)
+        >>> alpha = aikit.Container(a=aikit.array([7,6,5]), \
+                                  b=aikit.array([8,9,4]))
+        >>> size = aikit.Container(a=3, b=5)
         >>> alpha.dirichlet(size)
         {
-            a: ivy.array(
+            a: aikit.array(
                 [[0.43643127, 0.32325703, 0.24031169],
                  [0.34251311, 0.31692529, 0.3405616 ],
                  [0.5319725 , 0.22458365, 0.24344385]]
                 ),
-            b: ivy.array(
+            b: aikit.array(
                 [[0.26588406, 0.61075421, 0.12336174],
                  [0.51142915, 0.25041268, 0.23815817],
                  [0.64042903, 0.25763214, 0.10193883],
@@ -142,22 +142,22 @@ class _ContainerWithRandomExperimental(ContainerBase):
 
     @staticmethod
     def static_beta(
-        alpha: ivy.Container,
-        beta: Union[int, float, ivy.Container, ivy.Array, ivy.NativeArray],
+        alpha: aikit.Container,
+        beta: Union[int, float, aikit.Container, aikit.Array, aikit.NativeArray],
         /,
         *,
-        shape: Optional[Union[ivy.Shape, ivy.NativeShape, ivy.Container]] = None,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        device: Optional[Union[str, ivy.Container]] = None,
-        dtype: Optional[Union[str, ivy.Container]] = None,
-        seed: Optional[Union[int, ivy.Container]] = None,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container static method variant of ivy.beta. This method simply
-        wraps the function, and so the docstring for ivy.beta also applies to
+        shape: Optional[Union[aikit.Shape, aikit.NativeShape, aikit.Container]] = None,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        device: Optional[Union[str, aikit.Container]] = None,
+        dtype: Optional[Union[str, aikit.Container]] = None,
+        seed: Optional[Union[int, aikit.Container]] = None,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container static method variant of aikit.beta. This method simply
+        wraps the function, and so the docstring for aikit.beta also applies to
         this method with minimal changes.
 
         Parameters
@@ -212,22 +212,22 @@ class _ContainerWithRandomExperimental(ContainerBase):
         )
 
     def beta(
-        self: ivy.Container,
-        beta: Union[int, float, ivy.Container, ivy.Array, ivy.NativeArray],
+        self: aikit.Container,
+        beta: Union[int, float, aikit.Container, aikit.Array, aikit.NativeArray],
         /,
         *,
-        shape: Optional[Union[ivy.Shape, ivy.NativeShape, ivy.Container]] = None,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        device: Optional[Union[str, ivy.Container]] = None,
-        dtype: Optional[Union[str, ivy.Container]] = None,
-        seed: Optional[Union[int, ivy.Container]] = None,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of ivy.beta. This method
-        simply wraps the function, and so the docstring for ivy.beta also
+        shape: Optional[Union[aikit.Shape, aikit.NativeShape, aikit.Container]] = None,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        device: Optional[Union[str, aikit.Container]] = None,
+        dtype: Optional[Union[str, aikit.Container]] = None,
+        seed: Optional[Union[int, aikit.Container]] = None,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of aikit.beta. This method
+        simply wraps the function, and so the docstring for aikit.beta also
         applies to this method with minimal changes.
 
         Parameters
@@ -282,21 +282,21 @@ class _ContainerWithRandomExperimental(ContainerBase):
 
     @staticmethod
     def static_poisson(
-        lam: ivy.Container,
+        lam: aikit.Container,
         *,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        shape: Optional[Union[ivy.Shape, ivy.NativeShape, ivy.Container]] = None,
-        device: Optional[Union[ivy.Device, ivy.NativeDevice, ivy.Container]] = None,
-        dtype: Optional[Union[ivy.Dtype, ivy.NativeDtype, ivy.Container]] = None,
-        seed: Optional[Union[int, ivy.Container]] = None,
-        fill_value: Optional[Union[float, int, ivy.Container]] = 0,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container static method variant of ivy.poisson. This method
-        simply wraps the function, and so the docstring for ivy.poisson also
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        shape: Optional[Union[aikit.Shape, aikit.NativeShape, aikit.Container]] = None,
+        device: Optional[Union[aikit.Device, aikit.NativeDevice, aikit.Container]] = None,
+        dtype: Optional[Union[aikit.Dtype, aikit.NativeDtype, aikit.Container]] = None,
+        seed: Optional[Union[int, aikit.Container]] = None,
+        fill_value: Optional[Union[float, int, aikit.Container]] = 0,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container static method variant of aikit.poisson. This method
+        simply wraps the function, and so the docstring for aikit.poisson also
         applies to this method with minimal changes.
 
         Parameters
@@ -328,14 +328,14 @@ class _ContainerWithRandomExperimental(ContainerBase):
 
         Examples
         --------
-        >>> lam = ivy.Container(a=ivy.array([7,6,5]), \
-                                b=ivy.array([8,9,4]))
-        >>> shape = ivy.Container(a=(2,3), b=(1,1,3))
-        >>> ivy.Container.static_poisson(lam, shape=shape)
+        >>> lam = aikit.Container(a=aikit.array([7,6,5]), \
+                                b=aikit.array([8,9,4]))
+        >>> shape = aikit.Container(a=(2,3), b=(1,1,3))
+        >>> aikit.Container.static_poisson(lam, shape=shape)
         {
-            a: ivy.array([[5, 4, 6],
+            a: aikit.array([[5, 4, 6],
                           [12, 4, 5]]),
-            b: ivy.array([[[8, 13, 3]]])
+            b: aikit.array([[[8, 13, 3]]])
         }
         """
         return ContainerBase.cont_multi_map_in_function(
@@ -354,18 +354,18 @@ class _ContainerWithRandomExperimental(ContainerBase):
         )
 
     def poisson(
-        self: ivy.Container,
+        self: aikit.Container,
         /,
         *,
-        shape: Optional[Union[ivy.Shape, ivy.NativeShape, ivy.Container]] = None,
-        device: Optional[Union[ivy.Device, ivy.NativeDevice, ivy.Container]] = None,
-        dtype: Optional[Union[ivy.Dtype, ivy.NativeDtype, ivy.Container]] = None,
-        seed: Optional[Union[int, ivy.Container]] = None,
-        fill_value: Optional[Union[float, int, ivy.Container]] = 0,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of ivy.poisson. This method
-        simply wraps the function, and so the docstring for ivy.poisson also
+        shape: Optional[Union[aikit.Shape, aikit.NativeShape, aikit.Container]] = None,
+        device: Optional[Union[aikit.Device, aikit.NativeDevice, aikit.Container]] = None,
+        dtype: Optional[Union[aikit.Dtype, aikit.NativeDtype, aikit.Container]] = None,
+        seed: Optional[Union[int, aikit.Container]] = None,
+        fill_value: Optional[Union[float, int, aikit.Container]] = 0,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of aikit.poisson. This method
+        simply wraps the function, and so the docstring for aikit.poisson also
         applies to this method with minimal changes.
 
         Parameters
@@ -397,14 +397,14 @@ class _ContainerWithRandomExperimental(ContainerBase):
 
         Examples
         --------
-        >>> lam = ivy.Container(a=ivy.array([7,6,5]), \
-                                b=ivy.array([8,9,4]))
-        >>> shape = ivy.Container(a=(2,3), b=(1,1,3))
+        >>> lam = aikit.Container(a=aikit.array([7,6,5]), \
+                                b=aikit.array([8,9,4]))
+        >>> shape = aikit.Container(a=(2,3), b=(1,1,3))
         >>> lam.poisson(shape=shape)
         {
-            a: ivy.array([[5, 4, 6],
+            a: aikit.array([[5, 4, 6],
                           [12, 4, 5]]),
-            b: ivy.array([[[8, 13, 3]]])
+            b: aikit.array([[[8, 13, 3]]])
         }
         """
         return self.static_poisson(
@@ -419,21 +419,21 @@ class _ContainerWithRandomExperimental(ContainerBase):
 
     @staticmethod
     def static_bernoulli(
-        probs: ivy.Container,
+        probs: aikit.Container,
         *,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
         logits: Optional[
-            Union[float, ivy.Array, ivy.NativeArray, ivy.Container]
+            Union[float, aikit.Array, aikit.NativeArray, aikit.Container]
         ] = None,
-        shape: Optional[Union[ivy.Shape, ivy.NativeShape, ivy.Container]] = None,
-        device: Optional[Union[ivy.Device, ivy.NativeDevice, ivy.Container]] = None,
-        dtype: Optional[Union[ivy.Dtype, ivy.NativeDtype, ivy.Container]] = None,
-        seed: Optional[Union[int, ivy.Container]] = None,
-        out: Optional[Union[ivy.Array, ivy.Container]] = None,
-    ) -> ivy.Container:
+        shape: Optional[Union[aikit.Shape, aikit.NativeShape, aikit.Container]] = None,
+        device: Optional[Union[aikit.Device, aikit.NativeDevice, aikit.Container]] = None,
+        dtype: Optional[Union[aikit.Dtype, aikit.NativeDtype, aikit.Container]] = None,
+        seed: Optional[Union[int, aikit.Container]] = None,
+        out: Optional[Union[aikit.Array, aikit.Container]] = None,
+    ) -> aikit.Container:
         """
 
         Parameters
@@ -460,7 +460,7 @@ class _ContainerWithRandomExperimental(ContainerBase):
             (logits). Only one of logits or probs should be passed in.
         shape
             If the given shape is, e.g '(m, n, k)', then 'm * n * k' samples are drawn.
-            (Default value = 'None', where 'ivy.shape(logits)' samples are drawn)
+            (Default value = 'None', where 'aikit.shape(logits)' samples are drawn)
         device
             The device to place the output array on. Default is ``None``.
         dtype
@@ -493,18 +493,18 @@ class _ContainerWithRandomExperimental(ContainerBase):
         )
 
     def bernoulli(
-        self: ivy.Container,
+        self: aikit.Container,
         /,
         *,
         logits: Optional[
-            Union[float, ivy.Array, ivy.NativeArray, ivy.Container]
+            Union[float, aikit.Array, aikit.NativeArray, aikit.Container]
         ] = None,
-        shape: Optional[Union[ivy.Shape, ivy.NativeShape, ivy.Container]] = None,
-        device: Optional[Union[ivy.Device, ivy.NativeDevice, ivy.Container]] = None,
-        dtype: Optional[Union[ivy.Dtype, ivy.NativeDtype, ivy.Container]] = None,
-        seed: Optional[Union[int, ivy.Container]] = None,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
+        shape: Optional[Union[aikit.Shape, aikit.NativeShape, aikit.Container]] = None,
+        device: Optional[Union[aikit.Device, aikit.NativeDevice, aikit.Container]] = None,
+        dtype: Optional[Union[aikit.Dtype, aikit.NativeDtype, aikit.Container]] = None,
+        seed: Optional[Union[int, aikit.Container]] = None,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
         """
 
         Parameters
@@ -522,7 +522,7 @@ class _ContainerWithRandomExperimental(ContainerBase):
 
         shape
             If the given shape is, e.g '(m, n, k)', then 'm * n * k' samples are drawn.
-            (Default value = 'None', where 'ivy.shape(logits)' samples are drawn)
+            (Default value = 'None', where 'aikit.shape(logits)' samples are drawn)
         device
             device on which to create the array 'cuda:0', 'cuda:1', 'cpu' etc.
             (Default value = None).
@@ -555,22 +555,22 @@ class _ContainerWithRandomExperimental(ContainerBase):
 
     @staticmethod
     def static_gamma(
-        alpha: ivy.Container,
-        beta: Union[int, float, ivy.Container, ivy.Array, ivy.NativeArray],
+        alpha: aikit.Container,
+        beta: Union[int, float, aikit.Container, aikit.Array, aikit.NativeArray],
         /,
         *,
-        shape: Optional[Union[ivy.Shape, ivy.NativeShape, ivy.Container]] = None,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        device: Optional[Union[str, ivy.Container]] = None,
-        dtype: Optional[Union[str, ivy.Container]] = None,
-        seed: Optional[Union[int, ivy.Container]] = None,
-        out: Optional[ivy.Container] = None,
+        shape: Optional[Union[aikit.Shape, aikit.NativeShape, aikit.Container]] = None,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        device: Optional[Union[str, aikit.Container]] = None,
+        dtype: Optional[Union[str, aikit.Container]] = None,
+        seed: Optional[Union[int, aikit.Container]] = None,
+        out: Optional[aikit.Container] = None,
     ):
-        """ivy.Container static method variant of ivy.gamma. This method simply
-        wraps the function, and so the docstring for ivy.gamma also applies to
+        """aikit.Container static method variant of aikit.gamma. This method simply
+        wraps the function, and so the docstring for aikit.gamma also applies to
         this method with minimal changes.
 
         Parameters
@@ -581,7 +581,7 @@ class _ContainerWithRandomExperimental(ContainerBase):
             Second parameter of the distribution.
         shape
             If the given shape is, e.g '(m, n, k)', then 'm * n * k' samples are drawn.
-            (Default value = 'None', where 'ivy.shape(logits)' samples are drawn)
+            (Default value = 'None', where 'aikit.shape(logits)' samples are drawn)
         key_chains
             The key-chains to apply or not apply the method to. Default is ``None``.
         to_apply
@@ -629,18 +629,18 @@ class _ContainerWithRandomExperimental(ContainerBase):
         )
 
     def gamma(
-        self: ivy.Container,
-        beta: Union[int, float, ivy.Container, ivy.Array, ivy.NativeArray],
+        self: aikit.Container,
+        beta: Union[int, float, aikit.Container, aikit.Array, aikit.NativeArray],
         /,
         *,
-        shape: Optional[Union[ivy.Shape, ivy.NativeShape, ivy.Container]] = None,
-        device: Optional[Union[str, ivy.Container]] = None,
-        dtype: Optional[Union[str, ivy.Container]] = None,
-        seed: Optional[Union[int, ivy.Container]] = None,
-        out: Optional[ivy.Container] = None,
+        shape: Optional[Union[aikit.Shape, aikit.NativeShape, aikit.Container]] = None,
+        device: Optional[Union[str, aikit.Container]] = None,
+        dtype: Optional[Union[str, aikit.Container]] = None,
+        seed: Optional[Union[int, aikit.Container]] = None,
+        out: Optional[aikit.Container] = None,
     ):
-        """ivy.Container method variant of ivy.gamma. This method simply wraps
-        the function, and so the docstring for ivy.gamma also applies to this
+        """aikit.Container method variant of aikit.gamma. This method simply wraps
+        the function, and so the docstring for aikit.gamma also applies to this
         method with minimal changes.
 
         Parameters
@@ -651,7 +651,7 @@ class _ContainerWithRandomExperimental(ContainerBase):
             Second parameter of the distribution.
         shape
             If the given shape is, e.g '(m, n, k)', then 'm * n * k' samples are drawn.
-            (Default value = 'None', where 'ivy.shape(logits)' samples are drawn)
+            (Default value = 'None', where 'aikit.shape(logits)' samples are drawn)
         device
             device on which to create the array 'cuda:0', 'cuda:1', 'cpu' etc.
             (Default value = None).

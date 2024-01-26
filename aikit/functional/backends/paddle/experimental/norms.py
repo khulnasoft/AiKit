@@ -1,7 +1,7 @@
 import paddle
 import paddle.nn.functional as F
 import aikit
-from aikit.utils.exceptions import IvyNotImplementedException
+from aikit.utils.exceptions import AikitNotImplementedException
 from typing import Optional, Tuple
 from aikit.func_wrapper import with_supported_dtypes
 from aikit.func_wrapper import with_unsupported_device_and_dtypes
@@ -133,7 +133,7 @@ def l1_normalize(
 def l2_normalize(
     x: paddle.Tensor, /, *, axis: Optional[int] = None, out: paddle.Tensor = None
 ) -> paddle.Tensor:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def instance_norm(
@@ -160,7 +160,7 @@ def instance_norm(
     paddle.Tensor,
     paddle.Tensor,
 ]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def lp_normalize(
@@ -171,4 +171,4 @@ def lp_normalize(
     axis: Optional[int] = None,
     out: paddle.Tensor = None,
 ) -> paddle.Tensor:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()

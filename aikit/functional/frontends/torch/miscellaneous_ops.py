@@ -20,7 +20,7 @@ def atleast_3d(*tensors):
     return aikit.atleast_3d(*tensors)
 
 
-# TODO: Add Ivy function for block_diag but only scipy.linalg and \
+# TODO: Add Aikit function for block_diag but only scipy.linalg and \
 # and torch supports block_diag currently
 @to_aikit_arrays_and_back
 def block_diag(*tensors):
@@ -38,7 +38,7 @@ def block_diag(*tensors):
     for idx, t_shape in enumerate(shapes_list):
         dim_0, dim_1 = 1, 1
         if len(t_shape) > 2:
-            raise aikit.exceptions.IvyError(
+            raise aikit.exceptions.AikitError(
                 "Input tensors must have 2 or fewer dimensions."
                 f"Input {idx} has {len(t_shape)} dimensions"
             )
@@ -142,7 +142,7 @@ def clone(input, *, memory_format=None):
 @to_aikit_arrays_and_back
 def corrcoef(input):
     if len(aikit.shape(input)) > 2:
-        raise aikit.exceptions.IvyError(
+        raise aikit.exceptions.AikitError(
             "corrcoef(): expected input to have two or fewer dimensions but got an"
             f" input with {aikit.shape(input)} dimensions"
         )
@@ -493,7 +493,7 @@ def searchsorted(
     sorter=None,
 ):
     if right and side == "left":
-        raise aikit.exceptions.IvyError(
+        raise aikit.exceptions.AikitError(
             "side and right can't be set to opposites, got side of left"
             " while right was True"
         )
@@ -566,7 +566,7 @@ def vander(x, N=None, increasing=False):
 @with_supported_dtypes({"2.1.2 and below": ("float32", "float64")}, "torch")
 def view_as_complex(input):
     if aikit.shape(input)[-1] != 2:
-        raise aikit.exceptions.IvyError("The last dimension must have a size of 2")
+        raise aikit.exceptions.AikitError("The last dimension must have a size of 2")
 
     real, imaginary = aikit.split(
         aikit.stop_gradient(input, preserve_type=False),
@@ -587,7 +587,7 @@ def view_as_complex(input):
 @to_aikit_arrays_and_back
 def view_as_real(input):
     if not aikit.is_complex_dtype(input):
-        raise aikit.exceptions.IvyError(
+        raise aikit.exceptions.AikitError(
             "view_as_real is only supported for complex tensors"
         )
     re_part = aikit.real(input)

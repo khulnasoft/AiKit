@@ -29,7 +29,7 @@ def histogram(
     min_a = np.min(a)
     max_a = np.max(a)
     if isinstance(bins, np.ndarray) and range:
-        raise aikit.exceptions.IvyException(
+        raise aikit.exceptions.AikitException(
             "Must choose between specifying bins and range or bin edges directly"
         )
     if range:
@@ -40,7 +40,7 @@ def histogram(
         bins = np.linspace(start=range[0], stop=range[1], num=bins + 1, dtype=a.dtype)
         range = None
     if bins.size < 2:
-        raise aikit.exceptions.IvyException("bins must have at least 1 bin (size > 1)")
+        raise aikit.exceptions.AikitException("bins must have at least 1 bin (size > 1)")
     bins_out = bins.copy()
     if extend_lower_interval and min_a < bins[0]:
         bins[0] = min_a

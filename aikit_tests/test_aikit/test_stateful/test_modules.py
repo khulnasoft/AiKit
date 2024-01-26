@@ -1,4 +1,4 @@
-"""Collection of tests for Ivy modules."""
+"""Collection of tests for Aikit modules."""
 
 # global
 import os
@@ -542,7 +542,7 @@ def test_module_w_partial_v(
                 "TrainableModule did not raise exception despite being passed "
                 "with wrongly shaped variables."
             )
-        except aikit.utils.exceptions.IvyException:
+        except aikit.utils.exceptions.AikitException:
             pass
         v = aikit.Container(
             {
@@ -561,7 +561,7 @@ def test_module_w_partial_v(
                 "TrainableModule did not raise exception despite being passed "
                 "with wrongly shaped variables."
             )
-        except aikit.utils.exceptions.IvyException:
+        except aikit.utils.exceptions.AikitException:
             pass
         module = TrainableModule(
             input_channels, output_channels, device=on_device, v=v, with_partial_v=True

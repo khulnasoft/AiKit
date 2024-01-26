@@ -2,7 +2,7 @@ from typing import Union, Optional, Tuple, List, Sequence
 from numbers import Number
 import mxnet as mx
 
-from aikit.utils.exceptions import IvyNotImplementedException
+from aikit.utils.exceptions import AikitNotImplementedException
 from aikit.func_wrapper import with_supported_dtypes
 from .. import backend_version
 
@@ -15,7 +15,7 @@ def amax(
     keepdims: bool = False,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def amin(
@@ -26,7 +26,7 @@ def amin(
     keepdims: bool = False,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 @with_supported_dtypes(
@@ -48,7 +48,7 @@ def sinc(
     *,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def fmax(
@@ -58,7 +58,7 @@ def fmax(
     *,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def float_power(
@@ -68,7 +68,7 @@ def float_power(
     *,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def copysign(
@@ -78,7 +78,7 @@ def copysign(
     *,
     out: Optional[None] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def count_nonzero(
@@ -90,7 +90,7 @@ def count_nonzero(
     dtype: Optional[None] = None,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def nansum(
@@ -102,7 +102,7 @@ def nansum(
     keepdims: bool = False,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def gcd(
@@ -112,7 +112,7 @@ def gcd(
     *,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def isclose(
@@ -125,7 +125,7 @@ def isclose(
     equal_nan: bool = False,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def signbit(
@@ -134,7 +134,7 @@ def signbit(
     *,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def hypot(
@@ -144,7 +144,7 @@ def hypot(
     *,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def allclose(
@@ -157,7 +157,7 @@ def allclose(
     equal_nan: bool = False,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> bool:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def fix(
@@ -166,7 +166,7 @@ def fix(
     *,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def nextafter(
@@ -176,7 +176,7 @@ def nextafter(
     *,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def diff(
@@ -191,7 +191,7 @@ def diff(
     append: Optional[Union[(None, mx.ndarray.NDArray, int, float, list, tuple)]] = None,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def zeta(
@@ -201,7 +201,7 @@ def zeta(
     *,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def gradient(
@@ -212,7 +212,7 @@ def gradient(
     axis: Optional[Union[(int, list, tuple)]] = None,
     edge_order: int = 1,
 ) -> Union[(None, List[None])]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def xlogy(
@@ -222,7 +222,7 @@ def xlogy(
     *,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def conj(
@@ -231,7 +231,7 @@ def conj(
     *,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def ldexp(
@@ -241,7 +241,7 @@ def ldexp(
     *,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def frexp(
@@ -252,7 +252,7 @@ def frexp(
         Union[(Tuple[(None, None)], Tuple[(mx.ndarray.NDArray, mx.ndarray.NDArray)])]
     ] = None,
 ) -> Union[(Tuple[(None, None)], Tuple[(mx.ndarray.NDArray, mx.ndarray.NDArray)])]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def modf(
@@ -261,4 +261,4 @@ def modf(
     *,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()

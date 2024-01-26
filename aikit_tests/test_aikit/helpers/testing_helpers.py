@@ -207,7 +207,7 @@ def _get_method_supported_devices_dtypes_helper(
 def _get_method_supported_devices_dtypes(
     method_name: str, class_module: str, class_name: str
 ):
-    """Get supported devices and data types for a method in Ivy API.
+    """Get supported devices and data types for a method in Aikit API.
 
     Parameters
     ----------
@@ -273,7 +273,7 @@ def _get_supported_devices_dtypes_helper(
 
 
 def _get_supported_devices_dtypes(fn_name: str, fn_module: str):
-    """Get supported devices and data types for a function in Ivy API.
+    """Get supported devices and data types for a function in Aikit API.
 
     Parameters
     ----------
@@ -341,7 +341,7 @@ def handle_test(
     test_cython_wrapper=BuiltCythonWrapperStrategy,
     **_given_kwargs,
 ):
-    """Test wrapper for Ivy functions.
+    """Test wrapper for Aikit functions.
 
     The wrapper sets the required test globals and creates test flags strategies.
 
@@ -442,8 +442,8 @@ def handle_test(
                     hypothesis_test_fn(*args, **kwargs)
                 except Exception as e:
                     # A string matching is used instead of actual exception due to
-                    # exception object in with_backend is different from global Ivy
-                    if e.__class__.__qualname__ == "IvyNotImplementedException":
+                    # exception object in with_backend is different from global Aikit
+                    if e.__class__.__qualname__ == "AikitNotImplementedException":
                         pytest.skip("Function not implemented in backend.")
                     else:
                         raise e
@@ -484,7 +484,7 @@ def handle_frontend_test(
     precision_mode=BuiltPrecisionModeStrategy,
     **_given_kwargs,
 ):
-    """Test wrapper for Ivy frontend functions.
+    """Test wrapper for Aikit frontend functions.
 
     The wrapper sets the required test globals and creates test flags strategies.
 
@@ -585,8 +585,8 @@ def handle_frontend_test(
                     hypothesis_test_fn(*args, **kwargs)
                 except Exception as e:
                     # A string matching is used instead of actual exception due to
-                    # exception object in with_backend is different from global Ivy
-                    if e.__class__.__qualname__ == "IvyNotImplementedException":
+                    # exception object in with_backend is different from global Aikit
+                    if e.__class__.__qualname__ == "AikitNotImplementedException":
                         pytest.skip("Function not implemented in backend.")
                     else:
                         raise e
@@ -634,7 +634,7 @@ def handle_method(
     method_container_flags=BuiltContainerStrategy,
     **_given_kwargs,
 ):
-    """Test wrapper for Ivy methods.
+    """Test wrapper for Aikit methods.
 
     The wrapper sets the required test globals and creates test flags strategies.
 
@@ -710,8 +710,8 @@ def handle_method(
                     hypothesis_test_fn(*args, **kwargs)
                 except Exception as e:
                     # A string matching is used instead of actual exception due to
-                    # exception object in with_backend is different from global Ivy
-                    if e.__class__.__qualname__ == "IvyNotImplementedException":
+                    # exception object in with_backend is different from global Aikit
+                    if e.__class__.__qualname__ == "AikitNotImplementedException":
                         pytest.skip("Function not implemented in backend.")
                     else:
                         raise e
@@ -752,7 +752,7 @@ def handle_frontend_method(
     generate_frontend_arrays=BuiltFrontendArrayStrategy,
     **_given_kwargs,
 ):
-    """Test wrapper for Ivy frontends methods.
+    """Test wrapper for Aikit frontends methods.
 
     The wrapper sets the required test globals and creates
     test flags strategies.
@@ -881,8 +881,8 @@ def handle_frontend_method(
                     hypothesis_test_fn(*args, **kwargs)
                 except Exception as e:
                     # A string matching is used instead of actual exception due to
-                    # exception object in with_backend is different from global Ivy
-                    if e.__class__.__qualname__ == "IvyNotImplementedException":
+                    # exception object in with_backend is different from global Aikit
+                    if e.__class__.__qualname__ == "AikitNotImplementedException":
                         pytest.skip("Function not implemented in backend.")
                     else:
                         raise e

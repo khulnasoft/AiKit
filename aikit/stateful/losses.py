@@ -1,4 +1,4 @@
-"""Collection of Ivy's losses as stateful classes."""
+"""Collection of Aikit's losses as stateful classes."""
 
 # local
 import aikit

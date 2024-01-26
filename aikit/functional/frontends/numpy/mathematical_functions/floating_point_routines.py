@@ -71,7 +71,7 @@ def _spacing(
     dtype=None,
     subok=True,
 ):
-    # Implement the frontend function using Ivy compositions
+    # Implement the frontend function using Aikit compositions
     if dtype is None:
         dtype = aikit.dtype(x)
     y = aikit.floor(aikit.log2(aikit.abs(x + 1)))

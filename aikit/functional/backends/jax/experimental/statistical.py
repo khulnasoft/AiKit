@@ -1,10 +1,10 @@
 import jax.numpy as jnp
 from typing import Optional, Union, Tuple, Sequence
 
-from ivy.functional.backends.jax import JaxArray
+from aikit.functional.backends.jax import JaxArray
 import jax.lax as jlax
-import ivy
-from ivy.func_wrapper import with_unsupported_dtypes
+import aikit
+from aikit.func_wrapper import with_unsupported_dtypes
 from . import backend_version
 from ..statistical import _infer_dtype
 
@@ -30,7 +30,7 @@ def histogram(
     min_a = jnp.min(a)
     max_a = jnp.max(a)
     if isinstance(bins, jnp.ndarray) and range:
-        raise ivy.exceptions.IvyException(
+        raise aikit.exceptions.AikitException(
             "Must choose between specifying bins and range or bin edges directly"
         )
     if range:
@@ -41,7 +41,7 @@ def histogram(
         bins = jnp.linspace(start=range[0], stop=range[1], num=bins + 1, dtype=a.dtype)
         range = None
     if bins.size < 2:
-        raise ivy.exceptions.IvyException("bins must have at least 1 bin (size > 1)")
+        raise aikit.exceptions.AikitException("bins must have at least 1 bin (size > 1)")
     bins_out = bins.copy()
     if extend_lower_interval and min_a < bins[0]:
         bins = bins.at[0].set(min_a)
@@ -190,7 +190,7 @@ def nanprod(
     initial: Optional[Union[int, float, complex]] = None,
     where: Optional[JaxArray] = None,
 ) -> JaxArray:
-    dtype = ivy.as_native_dtype(dtype)
+    dtype = aikit.as_native_dtype(dtype)
     if dtype is None:
         dtype = _infer_dtype(a.dtype)
     axis = tuple(axis) if isinstance(axis, list) else axis
@@ -425,7 +425,7 @@ def cummin(
 ) -> JaxArray:
     if axis < 0:
         axis = axis + len(x.shape)
-    dtype = ivy.as_native_dtype(dtype)
+    dtype = aikit.as_native_dtype(dtype)
     if dtype is None:
         dtype = _infer_dtype(x.dtype)
     return jlax.cummin(x, axis, reverse=reverse).astype(dtype)

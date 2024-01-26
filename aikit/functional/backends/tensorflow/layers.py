@@ -1,4 +1,4 @@
-"""Collection of TensorFlow network layers, wrapped to fit Ivy syntax and
+"""Collection of TensorFlow network layers, wrapped to fit Aikit syntax and
 signature."""
 
 # global
@@ -176,7 +176,7 @@ def conv1d_transpose(
     if aikit.dev(x) == "cpu" and (
         (dilations > 1) if isinstance(dilations, int) else any(d > 1 for d in dilations)
     ):
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             "Tensorflow does not support dilations greater than 1 when device is cpu"
         )
     permuted_x = False
@@ -271,7 +271,7 @@ def conv2d_transpose(
     if aikit.dev(x) == "cpu" and (
         (dilations > 1) if isinstance(dilations, int) else any(d > 1 for d in dilations)
     ):
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             "Tensorflow does not support dilations greater than 1 when device is cpu"
         )
     permuted_x = False
@@ -384,7 +384,7 @@ def conv3d_transpose(
     if aikit.dev(x) == "cpu" and (
         (dilations > 1) if isinstance(dilations, int) else any(d > 1 for d in dilations)
     ):
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             "Tensorflow does not support dilations greater than 1 when device is cpu"
         )
     permuted_x = False
@@ -432,13 +432,13 @@ def conv_general_dilated(
 
     num_channels = x.shape[1] if data_format == "channel_first" else x.shape[-1]
     if filters.shape[-2] != (num_channels // feature_group_count):
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"given feature_group_count {feature_group_count} expected input channel of"
             f" the filter to be {num_channels // feature_group_count} but got"
             f" {filters.shape[-2]}"
         )
     if num_channels % feature_group_count != 0:
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             "input channel should be divisible by feature group count"
             f" {feature_group_count} but got input channel {num_channels}"
         )

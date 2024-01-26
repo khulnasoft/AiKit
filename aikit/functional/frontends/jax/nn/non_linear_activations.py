@@ -42,7 +42,7 @@ def _batch_promotion(*args, default_dtype="float64"):
 
 def _canonicalize_axis(axis, ndim):
     if not -ndim <= axis < ndim:
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             f"axis {axis} is out of bounds for array of dimension {ndim}"
         )
     if axis < 0:

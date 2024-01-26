@@ -1,4 +1,4 @@
-"""Collection of PyTorch network layers, wrapped to fit Ivy syntax and
+"""Collection of PyTorch network layers, wrapped to fit Aikit syntax and
 signature."""
 
 from typing import Optional, Tuple, Union, Sequence

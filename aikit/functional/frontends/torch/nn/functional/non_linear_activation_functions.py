@@ -51,7 +51,7 @@ def gelu(input, *, approximate="none"):
     elif approximate == "tanh":
         return aikit.gelu(input, approximate=True)
     else:
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             "`approximate` argument must be either 'none' or 'tanh'."
         )
 

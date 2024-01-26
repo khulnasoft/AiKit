@@ -3,7 +3,7 @@ import jax.numpy as jnp
 from typing import Optional, Tuple
 
 # local
-from ivy.functional.backends.jax import JaxArray
+from aikit.functional.backends.jax import JaxArray
 
 
 def unravel_index(

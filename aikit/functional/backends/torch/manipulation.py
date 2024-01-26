@@ -142,7 +142,7 @@ def squeeze(
                 f" dimension size {axis}"
             )
         if x.shape[axis] != 1:
-            raise aikit.utils.exceptions.IvyException(
+            raise aikit.utils.exceptions.AikitException(
                 f"Expected size of axis to be 1 but was {x.shape[axis]}"
             )
         return torch.squeeze(x, axis)
@@ -205,7 +205,7 @@ def split(
 ) -> List[torch.Tensor]:
     if x.shape == ():
         if num_or_size_splits is not None and num_or_size_splits != 1:
-            raise aikit.utils.exceptions.IvyException(
+            raise aikit.utils.exceptions.AikitException(
                 "input array had no shape, but num_sections specified was"
                 f" {num_or_size_splits}"
             )

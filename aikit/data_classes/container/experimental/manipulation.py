@@ -14,27 +14,27 @@ from typing import (
 from numbers import Number
 
 # local
-import ivy
-from ivy.data_classes.container.base import ContainerBase
+import aikit
+from aikit.data_classes.container.base import ContainerBase
 
 
 class _ContainerWithManipulationExperimental(ContainerBase):
     @staticmethod
     def static_moveaxis(
-        a: Union[ivy.Array, ivy.NativeArray, ivy.Container],
-        source: Union[int, Sequence[int], ivy.Container],
-        destination: Union[int, Sequence[int], ivy.Container],
+        a: Union[aikit.Array, aikit.NativeArray, aikit.Container],
+        source: Union[int, Sequence[int], aikit.Container],
+        destination: Union[int, Sequence[int], aikit.Container],
         /,
         *,
-        copy: Optional[Union[bool, ivy.Container]] = None,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container static method variant of ivy.moveaxis. This method
-        simply wraps the function, and so the docstring for ivy.moveaxis also
+        copy: Optional[Union[bool, aikit.Container]] = None,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container static method variant of aikit.moveaxis. This method
+        simply wraps the function, and so the docstring for aikit.moveaxis also
         applies to this method with minimal changes.
 
         Parameters
@@ -63,9 +63,9 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
         Examples
         --------
-        With one :class:`ivy.Container` input:
-        >>> x = ivy.Container(a=ivy.zeros((3, 4, 5)), b=ivy.zeros((2,7,6)))
-        >>> ivy.Container.static_moveaxis(x, 0, -1).shape
+        With one :class:`aikit.Container` input:
+        >>> x = aikit.Container(a=aikit.zeros((3, 4, 5)), b=aikit.zeros((2,7,6)))
+        >>> aikit.Container.static_moveaxis(x, 0, -1).shape
         {
             a: (4, 5, 3)
             b: (7, 6, 2)
@@ -85,16 +85,16 @@ class _ContainerWithManipulationExperimental(ContainerBase):
         )
 
     def moveaxis(
-        self: ivy.Container,
-        source: Union[int, Sequence[int], ivy.Container],
-        destination: Union[int, Sequence[int], ivy.Container],
+        self: aikit.Container,
+        source: Union[int, Sequence[int], aikit.Container],
+        destination: Union[int, Sequence[int], aikit.Container],
         /,
         *,
-        copy: Optional[Union[bool, ivy.Container]] = None,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of ivy.moveaxis. This method
-        simply wraps the function, and so the docstring for ivy.flatten also
+        copy: Optional[Union[bool, aikit.Container]] = None,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of aikit.moveaxis. This method
+        simply wraps the function, and so the docstring for aikit.flatten also
         applies to this method with minimal changes.
 
         Parameters
@@ -123,8 +123,8 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
         Examples
         --------
-        With one :class:`ivy.Container` input:
-        >>> x = ivy.Container(a=ivy.zeros((3, 4, 5)), b=ivy.zeros((2,7,6)))
+        With one :class:`aikit.Container` input:
+        >>> x = aikit.Container(a=aikit.zeros((3, 4, 5)), b=aikit.zeros((2,7,6)))
         >>> x.moveaxis(, 0, -1).shape
         {
             a: (4, 5, 3)
@@ -135,18 +135,18 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
     @staticmethod
     def static_heaviside(
-        x1: Union[ivy.Array, ivy.NativeArray, ivy.Container],
-        x2: Union[ivy.Array, ivy.NativeArray, ivy.Container],
+        x1: Union[aikit.Array, aikit.NativeArray, aikit.Container],
+        x2: Union[aikit.Array, aikit.NativeArray, aikit.Container],
         /,
         *,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container static method variant of ivy.heaviside. This method
-        simply wraps the function, and so the docstring for ivy.heaviside also
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container static method variant of aikit.heaviside. This method
+        simply wraps the function, and so the docstring for aikit.heaviside also
         applies to this method with minimal changes.
 
         Parameters
@@ -165,13 +165,13 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
         Examples
         --------
-        With :class:`ivy.Array` input:
-        >>> x1 = ivy.Container(a=ivy.array([-1.5, 0, 2.0]), b=ivy.array([3.0, 5.0])
-        >>> x2 = ivy.Container(a=0.5, b=[1.0, 2.0])
-        >>> ivy.Container.static_heaviside(x1, x2)
+        With :class:`aikit.Array` input:
+        >>> x1 = aikit.Container(a=aikit.array([-1.5, 0, 2.0]), b=aikit.array([3.0, 5.0])
+        >>> x2 = aikit.Container(a=0.5, b=[1.0, 2.0])
+        >>> aikit.Container.static_heaviside(x1, x2)
         {
-            a: ivy.array([ 0. ,  0.5,  1. ])
-            b: ivy.array([1.0, 1.0])
+            a: aikit.array([ 0. ,  0.5,  1. ])
+            b: aikit.array([1.0, 1.0])
         }
         """
         return ContainerBase.cont_multi_map_in_function(
@@ -186,14 +186,14 @@ class _ContainerWithManipulationExperimental(ContainerBase):
         )
 
     def heaviside(
-        self: ivy.Container,
-        x2: ivy.Container,
+        self: aikit.Container,
+        x2: aikit.Container,
         /,
         *,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of ivy.heaviside. This method
-        simply wraps the function, and so the docstring for ivy.heaviside also
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of aikit.heaviside. This method
+        simply wraps the function, and so the docstring for aikit.heaviside also
         applies to this method with minimal changes.
 
         Parameters
@@ -212,31 +212,31 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
         Examples
         --------
-        With :class:`ivy.Array` input:
-        >>> x1 = ivy.Container(a=ivy.array([-1.5, 0, 2.0]), b=ivy.array([3.0, 5.0])
-        >>> x2 = ivy.Container(a=0.5, b=[1.0, 2.0])
+        With :class:`aikit.Array` input:
+        >>> x1 = aikit.Container(a=aikit.array([-1.5, 0, 2.0]), b=aikit.array([3.0, 5.0])
+        >>> x2 = aikit.Container(a=0.5, b=[1.0, 2.0])
         >>> x1.heaviside(x2)
         {
-            a: ivy.array([ 0. ,  0.5,  1. ])
-            b: ivy.array([1.0, 1.0])
+            a: aikit.array([ 0. ,  0.5,  1. ])
+            b: aikit.array([1.0, 1.0])
         }
         """
         return self.static_heaviside(self, x2, out=out)
 
     @staticmethod
     def static_flipud(
-        m: Union[ivy.Array, ivy.NativeArray, ivy.Container],
+        m: Union[aikit.Array, aikit.NativeArray, aikit.Container],
         /,
         *,
-        copy: Optional[Union[bool, ivy.Container]] = None,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container static method variant of ivy.flipud. This method
-        simply wraps the function, and so the docstring for ivy.flipud also
+        copy: Optional[Union[bool, aikit.Container]] = None,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container static method variant of aikit.flipud. This method
+        simply wraps the function, and so the docstring for aikit.flipud also
         applies to this method with minimal changes.
 
         Parameters
@@ -261,17 +261,17 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
         Examples
         --------
-        With one :class:`ivy.Container` input:
+        With one :class:`aikit.Container` input:
 
-        >>> m = ivy.Container(a=ivy.diag([1, 2, 3]), b=ivy.arange(4))
-        >>> ivy.Container.static_flipud(m)
+        >>> m = aikit.Container(a=aikit.diag([1, 2, 3]), b=aikit.arange(4))
+        >>> aikit.Container.static_flipud(m)
         {
-            a: ivy.array(
+            a: aikit.array(
                 [[ 0.,  0.,  3.],
                  [ 0.,  2.,  0.],
                  [ 1.,  0.,  0.]]
             )
-            b: ivy.array([3, 2, 1, 0])
+            b: aikit.array([3, 2, 1, 0])
         }
         """
         return ContainerBase.cont_multi_map_in_function(
@@ -286,14 +286,14 @@ class _ContainerWithManipulationExperimental(ContainerBase):
         )
 
     def flipud(
-        self: ivy.Container,
+        self: aikit.Container,
         /,
         *,
-        copy: Optional[Union[bool, ivy.Container]] = None,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of ivy.flipud. This method
-        simply wraps the function, and so the docstring for ivy.flipud also
+        copy: Optional[Union[bool, aikit.Container]] = None,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of aikit.flipud. This method
+        simply wraps the function, and so the docstring for aikit.flipud also
         applies to this method with minimal changes.
 
         Parameters
@@ -318,54 +318,54 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
         Examples
         --------
-        With one :class:`ivy.Container` input:
+        With one :class:`aikit.Container` input:
 
-        >>> m = ivy.Container(a=ivy.diag([1, 2, 3]), b=ivy.arange(4))
+        >>> m = aikit.Container(a=aikit.diag([1, 2, 3]), b=aikit.arange(4))
         >>> m.flipud()
         {
-            a: ivy.array(
+            a: aikit.array(
                 [[ 0.,  0.,  3.],
                  [ 0.,  2.,  0.],
                  [ 1.,  0.,  0.]]
             )
-            b: ivy.array([3, 2, 1, 0])
+            b: aikit.array([3, 2, 1, 0])
         }
         """
         return self.static_flipud(self, copy=copy, out=out)
 
     def vstack(
-        self: ivy.Container,
+        self: aikit.Container,
         /,
         xs: Union[
-            Tuple[Union[ivy.Array, ivy.NativeArray, ivy.Container]],
-            List[Union[ivy.Array, ivy.NativeArray, ivy.Container]],
+            Tuple[Union[aikit.Array, aikit.NativeArray, aikit.Container]],
+            List[Union[aikit.Array, aikit.NativeArray, aikit.Container]],
         ],
         *,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of ivy.stack. This method
-        simply wraps the function, and so the docstring for ivy.stack also
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of aikit.stack. This method
+        simply wraps the function, and so the docstring for aikit.stack also
         applies to this method with minimal changes.
 
         Examples
         --------
-        >>> x = ivy.Container(a=ivy.array([[0, 1], [2,3]]), b=ivy.array([[4, 5]]))
-        >>> y = ivy.Container(a=ivy.array([[3, 2], [1,0]]), b=ivy.array([[1, 0]]))
+        >>> x = aikit.Container(a=aikit.array([[0, 1], [2,3]]), b=aikit.array([[4, 5]]))
+        >>> y = aikit.Container(a=aikit.array([[3, 2], [1,0]]), b=aikit.array([[1, 0]]))
         >>> x.vstack([y])
         {
-            a: ivy.array([[[0, 1],
+            a: aikit.array([[[0, 1],
                         [2, 3]],
                         [[3, 2],
                         [1, 0]]]),
-            b: ivy.array([[[4, 5]],
+            b: aikit.array([[[4, 5]],
                         [[1, 0]]])
         }
         """
-        new_xs = xs.cont_copy() if ivy.is_ivy_container(xs) else xs.copy()
+        new_xs = xs.cont_copy() if aikit.is_aikit_container(xs) else xs.copy()
         new_xs.insert(0, self.cont_copy())
         return self.static_vstack(
             new_xs,
@@ -379,33 +379,33 @@ class _ContainerWithManipulationExperimental(ContainerBase):
     @staticmethod
     def static_vstack(
         xs: Union[
-            Tuple[Union[ivy.Array, ivy.NativeArray, ivy.Container]],
-            List[Union[ivy.Array, ivy.NativeArray, ivy.Container]],
+            Tuple[Union[aikit.Array, aikit.NativeArray, aikit.Container]],
+            List[Union[aikit.Array, aikit.NativeArray, aikit.Container]],
         ],
         /,
         *,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container static method variant of ivy.stack. This method simply
-        wraps the function, and so the docstring for ivy.vstack also applies to
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container static method variant of aikit.stack. This method simply
+        wraps the function, and so the docstring for aikit.vstack also applies to
         this method with minimal changes.
 
         Examples
         --------
-        With one :class:`ivy.Container` input:
+        With one :class:`aikit.Container` input:
 
-        >>> c = ivy.Container(a=[ivy.array([1,2,3]), ivy.array([0,0,0])],
-                              b=ivy.arange(3))
-        >>> y = ivy.Container.static_vstack(c)
+        >>> c = aikit.Container(a=[aikit.array([1,2,3]), aikit.array([0,0,0])],
+                              b=aikit.arange(3))
+        >>> y = aikit.Container.static_vstack(c)
         >>> print(y)
         {
-            a: ivy.array([[1, 2, 3],
+            a: aikit.array([[1, 2, 3],
                           [0, 0, 0]]),
-            b: ivy.array([[0],
+            b: aikit.array([[0],
                           [1],
                           [2]])
         }
@@ -421,36 +421,36 @@ class _ContainerWithManipulationExperimental(ContainerBase):
         )
 
     def hstack(
-        self: ivy.Container,
+        self: aikit.Container,
         /,
         xs: Union[
-            Tuple[Union[ivy.Array, ivy.NativeArray, ivy.Container]],
-            List[Union[ivy.Array, ivy.NativeArray, ivy.Container]],
+            Tuple[Union[aikit.Array, aikit.NativeArray, aikit.Container]],
+            List[Union[aikit.Array, aikit.NativeArray, aikit.Container]],
         ],
         *,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of ivy.hstack. This method
-        simply wraps the function, and so the docstring for ivy.hstack also
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of aikit.hstack. This method
+        simply wraps the function, and so the docstring for aikit.hstack also
         applies to this method with minimal changes.
 
         Examples
         --------
-        >>> x = ivy.Container(a=ivy.array([[0, 1], [2,3]]), b=ivy.array([[4, 5]]))
-        >>> y = ivy.Container(a=ivy.array([[3, 2], [1,0]]), b=ivy.array([[1, 0]]))
+        >>> x = aikit.Container(a=aikit.array([[0, 1], [2,3]]), b=aikit.array([[4, 5]]))
+        >>> y = aikit.Container(a=aikit.array([[3, 2], [1,0]]), b=aikit.array([[1, 0]]))
         >>> z = x.hstack([y])
         >>> print(z)
         {
-            a: ivy.array([[0, 1, 3, 2],
+            a: aikit.array([[0, 1, 3, 2],
                           [2, 3, 1, 0]]),
-            b: ivy.array([[4, 5, 1, 0]])
+            b: aikit.array([[4, 5, 1, 0]])
         }
         """
-        new_xs = xs.cont_copy() if ivy.is_ivy_container(xs) else xs.copy()
+        new_xs = xs.cont_copy() if aikit.is_aikit_container(xs) else xs.copy()
         new_xs.insert(0, self.cont_copy())
         return self.static_hstack(
             new_xs,
@@ -464,28 +464,28 @@ class _ContainerWithManipulationExperimental(ContainerBase):
     @staticmethod
     def static_hstack(
         xs: Union[
-            Tuple[Union[ivy.Array, ivy.NativeArray, ivy.Container]],
-            List[Union[ivy.Array, ivy.NativeArray, ivy.Container]],
+            Tuple[Union[aikit.Array, aikit.NativeArray, aikit.Container]],
+            List[Union[aikit.Array, aikit.NativeArray, aikit.Container]],
         ],
         /,
         *,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container static method variant of ivy.hstack. This method
-        simply wraps the function, and so the docstring for ivy.hstack also
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container static method variant of aikit.hstack. This method
+        simply wraps the function, and so the docstring for aikit.hstack also
         applies to this method with minimal changes.
 
         Examples
         --------
-        With one :class:`ivy.Container` input:
-        >>> c = ivy.Container(a=[ivy.array([1,2,3]), ivy.array([0,0,0])])
-        >>> ivy.Container.static_hstack(c)
+        With one :class:`aikit.Container` input:
+        >>> c = aikit.Container(a=[aikit.array([1,2,3]), aikit.array([0,0,0])])
+        >>> aikit.Container.static_hstack(c)
         {
-            a: ivy.array([1, 2, 3, 0, 0, 0])
+            a: aikit.array([1, 2, 3, 0, 0, 0])
         }
         """
         return ContainerBase.cont_multi_map_in_function(
@@ -500,20 +500,20 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
     @staticmethod
     def static_rot90(
-        m: Union[ivy.Container, ivy.Array, ivy.NativeArray],
+        m: Union[aikit.Container, aikit.Array, aikit.NativeArray],
         /,
         *,
-        copy: Union[bool, ivy.Container] = None,
-        k: Union[int, ivy.Container] = 1,
-        axes: Union[Tuple[int, int], ivy.Container] = (0, 1),
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container static method variant of ivy.rot90. This method simply
-        wraps the function, and so the docstring for ivy.rot90 also applies to
+        copy: Union[bool, aikit.Container] = None,
+        k: Union[int, aikit.Container] = 1,
+        axes: Union[Tuple[int, int], aikit.Container] = (0, 1),
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container static method variant of aikit.rot90. This method simply
+        wraps the function, and so the docstring for aikit.rot90 also applies to
         this method with minimal changes.
 
         Parameters
@@ -546,15 +546,15 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
         Examples
         --------
-        >>> m = ivy.Container(a=ivy.array([[1,2], [3,4]]),\
-                        b=ivy.array([[1,2,3,4],\
+        >>> m = aikit.Container(a=aikit.array([[1,2], [3,4]]),\
+                        b=aikit.array([[1,2,3,4],\
                                     [7,8,9,10]]))
-        >>> n = ivy.Container.static_rot90(m)
+        >>> n = aikit.Container.static_rot90(m)
         >>> print(n)
         {
-            a: ivy.array([[2, 4],
+            a: aikit.array([[2, 4],
                           [1, 3]]),
-            b: ivy.array([[4, 10],
+            b: aikit.array([[4, 10],
                           [3, 9],
                           [2, 8],
                           [1, 7]])
@@ -574,20 +574,20 @@ class _ContainerWithManipulationExperimental(ContainerBase):
         )
 
     def rot90(
-        self: Union[ivy.Container, ivy.Array, ivy.NativeArray],
+        self: Union[aikit.Container, aikit.Array, aikit.NativeArray],
         /,
         *,
-        copy: Union[bool, ivy.Container] = None,
-        k: Union[int, ivy.Container] = 1,
-        axes: Union[Tuple[int, int], ivy.Container] = (0, 1),
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container static method variant of ivy.rot90. This method simply
-        wraps the function, and so the docstring for ivy.rot90 also applies to
+        copy: Union[bool, aikit.Container] = None,
+        k: Union[int, aikit.Container] = 1,
+        axes: Union[Tuple[int, int], aikit.Container] = (0, 1),
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container static method variant of aikit.rot90. This method simply
+        wraps the function, and so the docstring for aikit.rot90 also applies to
         this method with minimal changes.
 
         Parameters
@@ -620,14 +620,14 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
         Examples
         --------
-        >>> m = ivy.Container(a=ivy.array([[1,2], [3,4]]),
-        ...                   b=ivy.array([[1,2,3,4],[7,8,9,10]]))
+        >>> m = aikit.Container(a=aikit.array([[1,2], [3,4]]),
+        ...                   b=aikit.array([[1,2,3,4],[7,8,9,10]]))
         >>> n = m.rot90()
         >>> print(n)
         {
-            a: ivy.array([[2, 4],
+            a: aikit.array([[2, 4],
                           [1, 3]]),
-            b: ivy.array([[4, 10],
+            b: aikit.array([[4, 10],
                           [3, 9],
                           [2, 8],
                           [1, 7]])
@@ -647,21 +647,21 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
     @staticmethod
     def static_top_k(
-        x: Union[ivy.Container, ivy.Array, ivy.NativeArray],
-        k: Union[int, ivy.Container],
+        x: Union[aikit.Container, aikit.Array, aikit.NativeArray],
+        k: Union[int, aikit.Container],
         /,
         *,
-        axis: Union[int, ivy.Container] = -1,
-        largest: Union[bool, ivy.Container] = True,
-        sorted: Union[bool, ivy.Container] = True,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[Union[Tuple[ivy.Container, ivy.Container], ivy.Container]] = None,
-    ) -> Tuple[ivy.Container, ivy.Container]:
-        """ivy.Container static method variant of ivy.top_k. This method simply
-        wraps the function, and so the docstring for ivy.top_k also applies to
+        axis: Union[int, aikit.Container] = -1,
+        largest: Union[bool, aikit.Container] = True,
+        sorted: Union[bool, aikit.Container] = True,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[Union[Tuple[aikit.Container, aikit.Container], aikit.Container]] = None,
+    ) -> Tuple[aikit.Container, aikit.Container]:
+        """aikit.Container static method variant of aikit.top_k. This method simply
+        wraps the function, and so the docstring for aikit.top_k also applies to
         this method with minimal changes.
 
         Parameters
@@ -698,19 +698,19 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
         Examples
         --------
-        With :class:`ivy.Container` input:
+        With :class:`aikit.Container` input:
 
-        >>> x = ivy.Container(a=ivy.array([-1, 2, -4]), b=ivy.array([4., 5., 0.]))
-        >>> y = ivy.Container.static_top_k(x, 2)
+        >>> x = aikit.Container(a=aikit.array([-1, 2, -4]), b=aikit.array([4., 5., 0.]))
+        >>> y = aikit.Container.static_top_k(x, 2)
         >>> print(y)
         {
             a: [
-                values = ivy.array([ 2, -1]),
-                indices = ivy.array([1, 0])
+                values = aikit.array([ 2, -1]),
+                indices = aikit.array([1, 0])
             ],
             b: [
-                values = ivy.array([5., 4.]),
-                indices = ivy.array([1, 0])
+                values = aikit.array([5., 4.]),
+                indices = aikit.array([1, 0])
             ]
         }
         """
@@ -729,21 +729,21 @@ class _ContainerWithManipulationExperimental(ContainerBase):
         )
 
     def top_k(
-        self: ivy.Container,
-        k: Union[int, ivy.Container],
+        self: aikit.Container,
+        k: Union[int, aikit.Container],
         /,
         *,
-        axis: Union[int, ivy.Container] = -1,
-        largest: Union[bool, ivy.Container] = True,
-        sorted: Union[bool, ivy.Container] = True,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[Tuple[ivy.Container, ivy.Container]] = None,
-    ) -> Tuple[ivy.Container, ivy.Container]:
-        """ivy.Container instance method variant of ivy.top_k. This method
-        simply wraps the function, and so the docstring for ivy.top_k also
+        axis: Union[int, aikit.Container] = -1,
+        largest: Union[bool, aikit.Container] = True,
+        sorted: Union[bool, aikit.Container] = True,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[Tuple[aikit.Container, aikit.Container]] = None,
+    ) -> Tuple[aikit.Container, aikit.Container]:
+        """aikit.Container instance method variant of aikit.top_k. This method
+        simply wraps the function, and so the docstring for aikit.top_k also
         applies to this method with minimal changes.
 
         Parameters
@@ -780,17 +780,17 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
         Examples
         --------
-        With :class:`ivy.Container` input:
+        With :class:`aikit.Container` input:
 
-        >>> x = ivy.Container(a=ivy.array([-1, 2, -4]), b=ivy.array([4., 5., 0.]))
+        >>> x = aikit.Container(a=aikit.array([-1, 2, -4]), b=aikit.array([4., 5., 0.]))
         >>> y = x.top_k(2)
         >>> print(y)
         [{
-            a: ivy.array([2, -1]),
-            b: ivy.array([5., 4.])
+            a: aikit.array([2, -1]),
+            b: aikit.array([5., 4.])
         }, {
-            a: ivy.array([1, 0]),
-            b: ivy.array([1, 0])
+            a: aikit.array([1, 0]),
+            b: aikit.array([1, 0])
         }]
         """
         return self.static_top_k(
@@ -808,18 +808,18 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
     @staticmethod
     def static_fliplr(
-        m: Union[ivy.Array, ivy.NativeArray, ivy.Container],
+        m: Union[aikit.Array, aikit.NativeArray, aikit.Container],
         /,
         *,
-        copy: Optional[Union[bool, ivy.Container]] = None,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container static method variant of ivy.fliplr. This method
-        simply wraps the function, and so the docstring for ivy.fliplr also
+        copy: Optional[Union[bool, aikit.Container]] = None,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container static method variant of aikit.fliplr. This method
+        simply wraps the function, and so the docstring for aikit.fliplr also
         applies to this method with minimal changes.
 
         Parameters
@@ -855,15 +855,15 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
         Examples
         --------
-        With one :class:`ivy.Container` input:
-        >>> m = ivy.Container(a=ivy.diag([1, 2, 3]),\
-        ...                    b=ivy.array([[1, 2, 3],[4, 5, 6]]))
-        >>> ivy.Container.static_fliplr(m)
+        With one :class:`aikit.Container` input:
+        >>> m = aikit.Container(a=aikit.diag([1, 2, 3]),\
+        ...                    b=aikit.array([[1, 2, 3],[4, 5, 6]]))
+        >>> aikit.Container.static_fliplr(m)
         {
-            a: ivy.array([[0, 0, 1],
+            a: aikit.array([[0, 0, 1],
                           [0, 2, 0],
                           [3, 0, 0]]),
-            b: ivy.array([[3, 2, 1],
+            b: aikit.array([[3, 2, 1],
                           [6, 5, 4]])
         }
         """
@@ -879,14 +879,14 @@ class _ContainerWithManipulationExperimental(ContainerBase):
         )
 
     def fliplr(
-        self: ivy.Container,
+        self: aikit.Container,
         /,
         *,
-        copy: Optional[Union[bool, ivy.Container]] = None,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of ivy.fliplr. This method
-        simply wraps the function, and so the docstring for ivy.fliplr also
+        copy: Optional[Union[bool, aikit.Container]] = None,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of aikit.fliplr. This method
+        simply wraps the function, and so the docstring for aikit.fliplr also
         applies to this method with minimal changes.
 
         Parameters
@@ -911,16 +911,16 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
         Examples
         --------
-        With one :class:`ivy.Container` input:
+        With one :class:`aikit.Container` input:
 
-        >>> m = ivy.Container(a=ivy.diag([1, 2, 3]),\
-        ...                    b=ivy.array([[1, 2, 3],[4, 5, 6]]))
+        >>> m = aikit.Container(a=aikit.diag([1, 2, 3]),\
+        ...                    b=aikit.array([[1, 2, 3],[4, 5, 6]]))
         >>> m.fliplr()
         {
-            a: ivy.array([[0, 0, 1],
+            a: aikit.array([[0, 0, 1],
                           [0, 2, 0],
                           [3, 0, 0]]),
-            b: ivy.array([[3, 2, 1],
+            b: aikit.array([[3, 2, 1],
                           [6, 5, 4]])
         }
         """
@@ -928,17 +928,17 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
     @staticmethod
     def static_i0(
-        x: Union[ivy.Array, ivy.NativeArray, ivy.Container],
+        x: Union[aikit.Array, aikit.NativeArray, aikit.Container],
         /,
         *,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container static method variant of ivy.i0. This method simply
-        wraps the function, and so the docstring for ivy.i0 also applies to
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container static method variant of aikit.i0. This method simply
+        wraps the function, and so the docstring for aikit.i0 also applies to
         this method with minimal changes.
 
         Parameters
@@ -956,13 +956,13 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
         Examples
         --------
-        With one :class:`ivy.Container` input:
+        With one :class:`aikit.Container` input:
 
-        >>> x = ivy.Container(a=ivy.array([1, 2, 3]), b=ivy.array(4))
-        >>> ivy.Container.static_i0(x)
+        >>> x = aikit.Container(a=aikit.array([1, 2, 3]), b=aikit.array(4))
+        >>> aikit.Container.static_i0(x)
         {
-            a: ivy.array([1.26606588, 2.2795853 , 4.88079259])
-            b: ivy.array(11.30192195)
+            a: aikit.array([1.26606588, 2.2795853 , 4.88079259])
+            b: aikit.array(11.30192195)
         }
         """
         return ContainerBase.cont_multi_map_in_function(
@@ -976,13 +976,13 @@ class _ContainerWithManipulationExperimental(ContainerBase):
         )
 
     def i0(
-        self: ivy.Container,
+        self: aikit.Container,
         /,
         *,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of ivy.i0. This method simply
-        wraps the function, and so the docstring for ivy.i0 also applies to
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of aikit.i0. This method simply
+        wraps the function, and so the docstring for aikit.i0 also applies to
         this method with minimal changes.
 
         Parameters
@@ -1000,34 +1000,34 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
         Examples
         --------
-        With one :class:`ivy.Container` input:
+        With one :class:`aikit.Container` input:
 
-        >>> x = ivy.Container(a=ivy.array([1, 2, 3]), b=ivy.array(4))
+        >>> x = aikit.Container(a=aikit.array([1, 2, 3]), b=aikit.array(4))
         >>> x.i0()
         {
-            a: ivy.array([1.26606588, 2.2795853 , 4.88079259])
-            b: ivy.array(11.30192195)
+            a: aikit.array([1.26606588, 2.2795853 , 4.88079259])
+            b: aikit.array(11.30192195)
         }
         """
         return self.static_i0(self, out=out)
 
     @staticmethod
     def static_flatten(
-        x: Union[ivy.Array, ivy.NativeArray, ivy.Container],
+        x: Union[aikit.Array, aikit.NativeArray, aikit.Container],
         /,
         *,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        copy: Optional[Union[bool, ivy.Container]] = None,
-        start_dim: Union[int, ivy.Container] = 0,
-        end_dim: Union[int, ivy.Container] = -1,
-        order: Union[str, ivy.Container] = "C",
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container static method variant of ivy.flatten. This method
-        simply wraps the function, and so the docstring for ivy.flatten also
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        copy: Optional[Union[bool, aikit.Container]] = None,
+        start_dim: Union[int, aikit.Container] = 0,
+        end_dim: Union[int, aikit.Container] = -1,
+        order: Union[str, aikit.Container] = "C",
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container static method variant of aikit.flatten. This method
+        simply wraps the function, and so the docstring for aikit.flatten also
         applies to this method with minimal changes.
 
         Parameters
@@ -1064,22 +1064,22 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
         Examples
         --------
-        With one :class:`ivy.Container` input:
+        With one :class:`aikit.Container` input:
 
-        >>> x = ivy.Container(a=ivy.array([[[1, 2], [3, 4]], [[5, 6], [7, 8]]]),
-        ...                   b=ivy.array([[[9, 10], [11, 12]], [[13, 14], [15, 16]]]))
-        >>> ivy.flatten(x)
+        >>> x = aikit.Container(a=aikit.array([[[1, 2], [3, 4]], [[5, 6], [7, 8]]]),
+        ...                   b=aikit.array([[[9, 10], [11, 12]], [[13, 14], [15, 16]]]))
+        >>> aikit.flatten(x)
         [{
-            a: ivy.array([1, 2, 3, 4, 5, 6, 7, 8])
-            b: ivy.array([9, 10, 11, 12, 13, 14, 15, 16])
+            a: aikit.array([1, 2, 3, 4, 5, 6, 7, 8])
+            b: aikit.array([9, 10, 11, 12, 13, 14, 15, 16])
         }]
 
-        >>> x = ivy.Container(a=ivy.array([[[1, 2], [3, 4]], [[5, 6], [7, 8]]]),
-        ...                   b=ivy.array([[[9, 10], [11, 12]], [[13, 14], [15, 16]]]))
-        >>> ivy.flatten(x, order="F")
+        >>> x = aikit.Container(a=aikit.array([[[1, 2], [3, 4]], [[5, 6], [7, 8]]]),
+        ...                   b=aikit.array([[[9, 10], [11, 12]], [[13, 14], [15, 16]]]))
+        >>> aikit.flatten(x, order="F")
         [{
-            a: ivy.array([1, 5, 3, 7, 2, 6, 4, 8])
-            b: ivy.array([9, 13, 11, 15, 10, 14, 12, 16])
+            a: aikit.array([1, 5, 3, 7, 2, 6, 4, 8])
+            b: aikit.array([9, 13, 11, 15, 10, 14, 12, 16])
         }]
         """
         return ContainerBase.cont_multi_map_in_function(
@@ -1097,16 +1097,16 @@ class _ContainerWithManipulationExperimental(ContainerBase):
         )
 
     def flatten(
-        self: ivy.Container,
+        self: aikit.Container,
         *,
-        copy: Optional[Union[bool, ivy.Container]] = None,
-        start_dim: Union[int, ivy.Container] = 0,
-        end_dim: Union[int, ivy.Container] = -1,
-        order: Union[str, ivy.Container] = "C",
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of ivy.flatten. This method
-        simply wraps the function, and so the docstring for ivy.flatten also
+        copy: Optional[Union[bool, aikit.Container]] = None,
+        start_dim: Union[int, aikit.Container] = 0,
+        end_dim: Union[int, aikit.Container] = -1,
+        order: Union[str, aikit.Container] = "C",
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of aikit.flatten. This method
+        simply wraps the function, and so the docstring for aikit.flatten also
         applies to this method with minimal changes.
 
         Parameters
@@ -1143,22 +1143,22 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
         Examples
         --------
-        With one :class:`ivy.Container` input:
+        With one :class:`aikit.Container` input:
 
-        >>> x = ivy.Container(a=ivy.array([[[1, 2], [3, 4]], [[5, 6], [7, 8]]]),
-        ...                   b=ivy.array([[[9, 10], [11, 12]], [[13, 14], [15, 16]]]))
+        >>> x = aikit.Container(a=aikit.array([[[1, 2], [3, 4]], [[5, 6], [7, 8]]]),
+        ...                   b=aikit.array([[[9, 10], [11, 12]], [[13, 14], [15, 16]]]))
         >>> x.flatten()
         [{
-            a: ivy.array([1, 2, 3, 4, 5, 6, 7, 8])
-            b: ivy.array([9, 10, 11, 12, 13, 14, 15, 16])
+            a: aikit.array([1, 2, 3, 4, 5, 6, 7, 8])
+            b: aikit.array([9, 10, 11, 12, 13, 14, 15, 16])
         }]
 
-        >>> x = ivy.Container(a=ivy.array([[[1, 2], [3, 4]], [[5, 6], [7, 8]]]),
-        ...                   b=ivy.array([[[9, 10], [11, 12]], [[13, 14], [15, 16]]]))
+        >>> x = aikit.Container(a=aikit.array([[[1, 2], [3, 4]], [[5, 6], [7, 8]]]),
+        ...                   b=aikit.array([[[9, 10], [11, 12]], [[13, 14], [15, 16]]]))
         >>> x.flatten(order="F")
         [{
-            a: ivy.array([1, 5, 3, 7, 2, 6, 4, 8])
-            b: ivy.array([9, 13, 11, 15, 10, 14, 12, 16])
+            a: aikit.array([1, 5, 3, 7, 2, 6, 4, 8])
+            b: aikit.array([9, 13, 11, 15, 10, 14, 12, 16])
         }]
         """
         return self.static_flatten(
@@ -1167,8 +1167,8 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
     @staticmethod
     def static_pad(
-        input: ivy.Container,
-        pad_width: Union[Iterable[Tuple[int]], int, ivy.Container],
+        input: aikit.Container,
+        pad_width: Union[Iterable[Tuple[int]], int, aikit.Container],
         /,
         *,
         mode: Union[
@@ -1187,23 +1187,23 @@ class _ContainerWithManipulationExperimental(ContainerBase):
                 "empty",
             ],
             Callable,
-            ivy.Container,
+            aikit.Container,
         ] = "constant",
-        stat_length: Union[Iterable[Tuple[int]], int, ivy.Container] = 1,
-        constant_values: Union[Iterable[Tuple[Number]], Number, ivy.Container] = 0,
-        end_values: Union[Iterable[Tuple[Number]], Number, ivy.Container] = 0,
-        reflect_type: Union[Literal["even", "odd"], ivy.Container] = "even",
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-        **kwargs: Optional[Union[Any, ivy.Container]],
-    ) -> ivy.Container:
-        """ivy.Container static method variant of ivy.pad.
+        stat_length: Union[Iterable[Tuple[int]], int, aikit.Container] = 1,
+        constant_values: Union[Iterable[Tuple[Number]], Number, aikit.Container] = 0,
+        end_values: Union[Iterable[Tuple[Number]], Number, aikit.Container] = 0,
+        reflect_type: Union[Literal["even", "odd"], aikit.Container] = "even",
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+        **kwargs: Optional[Union[Any, aikit.Container]],
+    ) -> aikit.Container:
+        """aikit.Container static method variant of aikit.pad.
 
         This method simply wraps the function, and so the docstring for
-        ivy.pad also applies to this method with minimal changes.
+        aikit.pad also applies to this method with minimal changes.
         """
         return ContainerBase.cont_multi_map_in_function(
             "pad",
@@ -1223,8 +1223,8 @@ class _ContainerWithManipulationExperimental(ContainerBase):
         )
 
     def pad(
-        self: ivy.Container,
-        pad_width: Union[Iterable[Tuple[int]], int, ivy.Container],
+        self: aikit.Container,
+        pad_width: Union[Iterable[Tuple[int]], int, aikit.Container],
         /,
         *,
         mode: Union[
@@ -1243,23 +1243,23 @@ class _ContainerWithManipulationExperimental(ContainerBase):
                 "empty",
             ],
             Callable,
-            ivy.Container,
+            aikit.Container,
         ] = "constant",
-        stat_length: Union[Iterable[Tuple[int]], int, ivy.Container] = 1,
-        constant_values: Union[Iterable[Tuple[Number]], Number, ivy.Container] = 0,
-        end_values: Union[Iterable[Tuple[Number]], Number, ivy.Container] = 0,
-        reflect_type: Union[Literal["even", "odd"], ivy.Container] = "even",
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-        **kwargs: Optional[Union[Any, ivy.Container]],
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of ivy.pad.
+        stat_length: Union[Iterable[Tuple[int]], int, aikit.Container] = 1,
+        constant_values: Union[Iterable[Tuple[Number]], Number, aikit.Container] = 0,
+        end_values: Union[Iterable[Tuple[Number]], Number, aikit.Container] = 0,
+        reflect_type: Union[Literal["even", "odd"], aikit.Container] = "even",
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+        **kwargs: Optional[Union[Any, aikit.Container]],
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of aikit.pad.
 
         This method simply wraps the function, and so the docstring for
-        ivy.pad also applies to this method with minimal changes.
+        aikit.pad also applies to this method with minimal changes.
         """
         return self.static_pad(
             self,
@@ -1279,20 +1279,20 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
     @staticmethod
     def static_vsplit(
-        ary: Union[ivy.Array, ivy.NativeArray, ivy.Container],
+        ary: Union[aikit.Array, aikit.NativeArray, aikit.Container],
         indices_or_sections: Union[
-            int, Sequence[int], ivy.Array, ivy.NativeArray, ivy.Container
+            int, Sequence[int], aikit.Array, aikit.NativeArray, aikit.Container
         ],
         /,
         *,
-        copy: Optional[Union[bool, ivy.Container]] = None,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> List[ivy.Container]:
-        """ivy.Container static method variant of ivy.vsplit. This method
-        simply wraps the function, and so the docstring for ivy.vsplit also
+        copy: Optional[Union[bool, aikit.Container]] = None,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> List[aikit.Container]:
+        """aikit.Container static method variant of aikit.vsplit. This method
+        simply wraps the function, and so the docstring for aikit.vsplit also
         applies to this method with minimal changes.
 
         Parameters
@@ -1329,30 +1329,30 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
         Examples
         --------
-        >>> ary = ivy.Container(
-                a = ivy.array(
+        >>> ary = aikit.Container(
+                a = aikit.array(
                         [[[0.,  1.],
                           [2.,  3.]],
                           [[4.,  5.],
                           [6.,  7.]]]
                     ),
-                b=ivy.array(
+                b=aikit.array(
                         [[ 0.,  1.,  2.,  3.],
                          [ 4.,  5.,  6.,  7.],
                          [ 8.,  9., 10., 11.],
                          [12., 13., 14., 15.]]
                     )
                 )
-        >>> ivy.Container.static_vsplit(ary, 2)
+        >>> aikit.Container.static_vsplit(ary, 2)
         [{
-            a: ivy.array([[[0., 1.],
+            a: aikit.array([[[0., 1.],
                            [2., 3.]]]),
-            b: ivy.array([[0., 1., 2., 3.],
+            b: aikit.array([[0., 1., 2., 3.],
                           [4., 5., 6., 7.]])
         }, {
-            a: ivy.array([[[4., 5.],
+            a: aikit.array([[[4., 5.],
                            [6., 7.]]]),
-            b: ivy.array([[8., 9., 10., 11.],
+            b: aikit.array([[8., 9., 10., 11.],
                           [12., 13., 14., 15.]])
         }]
         """
@@ -1368,16 +1368,16 @@ class _ContainerWithManipulationExperimental(ContainerBase):
         )
 
     def vsplit(
-        self: ivy.Container,
+        self: aikit.Container,
         indices_or_sections: Union[
-            int, Sequence[int], ivy.Array, ivy.NativeArray, ivy.Container
+            int, Sequence[int], aikit.Array, aikit.NativeArray, aikit.Container
         ],
         /,
         *,
-        copy: Optional[Union[bool, ivy.Container]] = None,
-    ) -> List[ivy.Container]:
-        """ivy.Container instance method variant of ivy.vsplit. This method
-        simply wraps the function, and so the docstring for ivy.vsplit also
+        copy: Optional[Union[bool, aikit.Container]] = None,
+    ) -> List[aikit.Container]:
+        """aikit.Container instance method variant of aikit.vsplit. This method
+        simply wraps the function, and so the docstring for aikit.vsplit also
         applies to this method with minimal changes.
 
         Parameters
@@ -1404,14 +1404,14 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
         Examples
         --------
-        >>> ary = ivy.Container(
-                a = ivy.array(
+        >>> ary = aikit.Container(
+                a = aikit.array(
                         [[[0.,  1.],
                           [2.,  3.]],
                           [[4.,  5.],
                           [6.,  7.]]]
                     ),
-                b=ivy.array(
+                b=aikit.array(
                         [[ 0.,  1.,  2.,  3.],
                          [ 4.,  5.,  6.,  7.],
                          [ 8.,  9., 10., 11.],
@@ -1420,14 +1420,14 @@ class _ContainerWithManipulationExperimental(ContainerBase):
                 )
         >>> ary.vsplit(2)
         [{
-            a: ivy.array([[[0., 1.],
+            a: aikit.array([[[0., 1.],
                            [2., 3.]]]),
-            b: ivy.array([[0., 1., 2., 3.],
+            b: aikit.array([[0., 1., 2., 3.],
                           [4., 5., 6., 7.]])
         }, {
-            a: ivy.array([[[4., 5.],
+            a: aikit.array([[[4., 5.],
                            [6., 7.]]]),
-            b: ivy.array([[8., 9., 10., 11.],
+            b: aikit.array([[8., 9., 10., 11.],
                           [12., 13., 14., 15.]])
         }]
         """
@@ -1435,20 +1435,20 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
     @staticmethod
     def static_dsplit(
-        ary: Union[ivy.Array, ivy.NativeArray, ivy.Container],
+        ary: Union[aikit.Array, aikit.NativeArray, aikit.Container],
         indices_or_sections: Union[
-            int, Sequence[int], ivy.Array, ivy.NativeArray, ivy.Container
+            int, Sequence[int], aikit.Array, aikit.NativeArray, aikit.Container
         ],
         /,
         *,
-        copy: Optional[Union[bool, ivy.Container]] = None,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> List[ivy.Container]:
-        """ivy.Container static method variant of ivy.dsplit. This method
-        simply wraps the function, and so the docstring for ivy.dsplit also
+        copy: Optional[Union[bool, aikit.Container]] = None,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> List[aikit.Container]:
+        """aikit.Container static method variant of aikit.dsplit. This method
+        simply wraps the function, and so the docstring for aikit.dsplit also
         applies to this method with minimal changes.
 
         Parameters
@@ -1485,29 +1485,29 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
         Examples
         --------
-        >>> ary = ivy.Container(
-            a = ivy.array(
+        >>> ary = aikit.Container(
+            a = aikit.array(
                     [[[0.,  1.],
                       [2.,  3.]],
                       [[4.,  5.],
                       [6.,  7.]]]
                 ),
-            b=ivy.array(
+            b=aikit.array(
                     [[[ 0.,  1.,  2.,  3.],
                       [ 4.,  5.,  6.,  7.],
                       [ 8.,  9., 10., 11.],
                       [12., 13., 14., 15.]]]
                 )
             )
-        >>> ivy.Container.static_dsplit(ary, 2)
+        >>> aikit.Container.static_dsplit(ary, 2)
         [{
-            a: ivy.array([[[0.], [2.]],
+            a: aikit.array([[[0.], [2.]],
                           [[4.], [6.]]]),
-            b: ivy.array([[[0., 1.], [4., 5.], [8., 9.], [12., 13.]]])
+            b: aikit.array([[[0., 1.], [4., 5.], [8., 9.], [12., 13.]]])
         }, {
-            a: ivy.array([[[1.], [3.]],
+            a: aikit.array([[[1.], [3.]],
                           [[5.], [7.]]]),
-            b: ivy.array([[[2., 3.], [6., 7.], [10., 11.], [14., 15.]]])
+            b: aikit.array([[[2., 3.], [6., 7.], [10., 11.], [14., 15.]]])
         }]
         """
         return ContainerBase.cont_multi_map_in_function(
@@ -1522,16 +1522,16 @@ class _ContainerWithManipulationExperimental(ContainerBase):
         )
 
     def dsplit(
-        self: ivy.Container,
+        self: aikit.Container,
         indices_or_sections: Union[
-            int, Sequence[int], ivy.Array, ivy.NativeArray, ivy.Container
+            int, Sequence[int], aikit.Array, aikit.NativeArray, aikit.Container
         ],
         /,
         *,
-        copy: Optional[Union[bool, ivy.Container]] = None,
-    ) -> List[ivy.Container]:
-        """ivy.Container instance method variant of ivy.dsplit. This method
-        simply wraps the function, and so the docstring for ivy.dsplit also
+        copy: Optional[Union[bool, aikit.Container]] = None,
+    ) -> List[aikit.Container]:
+        """aikit.Container instance method variant of aikit.dsplit. This method
+        simply wraps the function, and so the docstring for aikit.dsplit also
         applies to this method with minimal changes.
 
         Parameters
@@ -1558,14 +1558,14 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
         Examples
         --------
-        >>> ary = ivy.Container(
-            a = ivy.array(
+        >>> ary = aikit.Container(
+            a = aikit.array(
                     [[[0.,  1.],
                       [2.,  3.]],
                       [[4.,  5.],
                       [6.,  7.]]]
                 ),
-            b=ivy.array(
+            b=aikit.array(
                     [[[ 0.,  1.,  2.,  3.],
                       [ 4.,  5.,  6.,  7.],
                       [ 8.,  9., 10., 11.],
@@ -1574,28 +1574,28 @@ class _ContainerWithManipulationExperimental(ContainerBase):
             )
         >>> ary.dsplit(2)
         [{
-            a: ivy.array([[[0.], [2.]],
+            a: aikit.array([[[0.], [2.]],
                           [[4.], [6.]]]),
-            b: ivy.array([[[0., 1.], [4., 5.], [8., 9.], [12., 13.]]])
+            b: aikit.array([[[0., 1.], [4., 5.], [8., 9.], [12., 13.]]])
         }, {
-            a: ivy.array([[[1.], [3.]],
+            a: aikit.array([[[1.], [3.]],
                           [[5.], [7.]]]),
-            b: ivy.array([[[2., 3.], [6., 7.], [10., 11.], [14., 15.]]])
+            b: aikit.array([[[2., 3.], [6., 7.], [10., 11.], [14., 15.]]])
         }]
         """
         return self.static_dsplit(self, indices_or_sections, copy=copy)
 
     @staticmethod
     def static_atleast_1d(
-        *arys: Union[ivy.Array, ivy.NativeArray, ivy.Container],
-        copy: Optional[Union[bool, ivy.Container]] = None,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> List[ivy.Container]:
-        """ivy.Container static method variant of ivy.atleast_1d. This method
-        simply wraps the function, and so the docstring for ivy.atleast_1d also
+        *arys: Union[aikit.Array, aikit.NativeArray, aikit.Container],
+        copy: Optional[Union[bool, aikit.Container]] = None,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> List[aikit.Container]:
+        """aikit.Container static method variant of aikit.atleast_1d. This method
+        simply wraps the function, and so the docstring for aikit.atleast_1d also
         applies to this method with minimal changes.
 
         Parameters
@@ -1629,13 +1629,13 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
         Examples
         --------
-        >>> ary = ivy.Container(a=ivy.array(1), b=ivy.array([3,4,5]),\
-                        c=ivy.array([[3]]))
-        >>> ivy.Container.static_atleast_1d(ary)
+        >>> ary = aikit.Container(a=aikit.array(1), b=aikit.array([3,4,5]),\
+                        c=aikit.array([[3]]))
+        >>> aikit.Container.static_atleast_1d(ary)
         {
-            a: ivy.array([1]),
-            b: ivy.array([3, 4, 5]),
-            c: ivy.array([[3]]),
+            a: aikit.array([1]),
+            b: aikit.array([3, 4, 5]),
+            c: aikit.array([[3]]),
         }
         """
         return ContainerBase.cont_multi_map_in_function(
@@ -1649,16 +1649,16 @@ class _ContainerWithManipulationExperimental(ContainerBase):
         )
 
     def atleast_1d(
-        self: Union[ivy.Container, ivy.Array, ivy.NativeArray],
-        *arys: Union[ivy.Container, ivy.Array, ivy.NativeArray, bool, Number],
-        copy: Optional[Union[bool, ivy.Container]] = None,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> List[ivy.Container]:
-        """ivy.Container instance method variant of ivy.atleast_1d. This method
-        simply wraps the function, and so the docstring for ivy.atleast_1d also
+        self: Union[aikit.Container, aikit.Array, aikit.NativeArray],
+        *arys: Union[aikit.Container, aikit.Array, aikit.NativeArray, bool, Number],
+        copy: Optional[Union[bool, aikit.Container]] = None,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> List[aikit.Container]:
+        """aikit.Container instance method variant of aikit.atleast_1d. This method
+        simply wraps the function, and so the docstring for aikit.atleast_1d also
         applies to this method with minimal changes.
 
         Parameters
@@ -1694,19 +1694,19 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
         Examples
         --------
-        >>> ary1 = ivy.Container(a=ivy.array(1), b=ivy.array([3,4]),\
-                            c=ivy.array([[5]]))
-        >>> ary2 = ivy.Container(a=ivy.array(9), b=ivy.array(2),\
-                            c=ivy.array(3))
+        >>> ary1 = aikit.Container(a=aikit.array(1), b=aikit.array([3,4]),\
+                            c=aikit.array([[5]]))
+        >>> ary2 = aikit.Container(a=aikit.array(9), b=aikit.array(2),\
+                            c=aikit.array(3))
         >>> ary1.atleast_1d(ary2)
         [{
-            a: ivy.array([1]),
-            b: ivy.array([3, 4]),
-            c: ivy.array([[5]])
+            a: aikit.array([1]),
+            b: aikit.array([3, 4]),
+            c: aikit.array([[5]])
         }, {
-            a: ivy.array([9]),
-            b: ivy.array([2]),
-            c: ivy.array([3])
+            a: aikit.array([9]),
+            b: aikit.array([2]),
+            c: aikit.array([3])
         }]
         """
         return self.static_atleast_1d(
@@ -1720,38 +1720,38 @@ class _ContainerWithManipulationExperimental(ContainerBase):
         )
 
     def dstack(
-        self: ivy.Container,
+        self: aikit.Container,
         /,
         xs: Union[
-            Tuple[Union[ivy.Array, ivy.NativeArray, ivy.Container]],
-            List[Union[ivy.Array, ivy.NativeArray, ivy.Container]],
+            Tuple[Union[aikit.Array, aikit.NativeArray, aikit.Container]],
+            List[Union[aikit.Array, aikit.NativeArray, aikit.Container]],
         ],
         *,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of ivy.stack. This method
-        simply wraps the function, and so the docstring for ivy.stack also
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of aikit.stack. This method
+        simply wraps the function, and so the docstring for aikit.stack also
         applies to this method with minimal changes.
 
         Examples
         --------
-        >>> x = ivy.Container(a=ivy.array([[0, 1], [2,3]]), b=ivy.array([[4, 5]]))
-        >>> y = ivy.Container(a=ivy.array([[3, 2], [1,0]]), b=ivy.array([[1, 0]]))
+        >>> x = aikit.Container(a=aikit.array([[0, 1], [2,3]]), b=aikit.array([[4, 5]]))
+        >>> y = aikit.Container(a=aikit.array([[3, 2], [1,0]]), b=aikit.array([[1, 0]]))
         >>> x.dstack([y])
         {
-            a: ivy.array([[[0, 3],
+            a: aikit.array([[[0, 3],
                            [1, 2]],
                           [[2, 1],
                            [3, 0]]]),
-            b: ivy.array([[[4, 1]],
+            b: aikit.array([[[4, 1]],
                            [[5, 0]]])
         }
         """
-        new_xs = xs.cont_copy() if ivy.is_ivy_container(xs) else xs.copy()
+        new_xs = xs.cont_copy() if aikit.is_aikit_container(xs) else xs.copy()
         new_xs.insert(0, self.cont_copy())
         return self.static_dstack(
             new_xs,
@@ -1765,32 +1765,32 @@ class _ContainerWithManipulationExperimental(ContainerBase):
     @staticmethod
     def static_dstack(
         xs: Union[
-            Tuple[Union[ivy.Array, ivy.NativeArray, ivy.Container]],
-            List[Union[ivy.Array, ivy.NativeArray, ivy.Container]],
+            Tuple[Union[aikit.Array, aikit.NativeArray, aikit.Container]],
+            List[Union[aikit.Array, aikit.NativeArray, aikit.Container]],
         ],
         /,
         *,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container static method variant of ivy.stack. This method simply
-        wraps the function, and so the docstring for ivy.dstack also applies to
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container static method variant of aikit.stack. This method simply
+        wraps the function, and so the docstring for aikit.dstack also applies to
         this method with minimal changes.
 
         Examples
         --------
-        With one :class:`ivy.Container` input:
-        >>> c = ivy.Container(a=[ivy.array([1,2,3]), ivy.array([0,0,0])],
-                              b=ivy.arange(3))
-        >>> ivy.Container.static_dstack(c)
+        With one :class:`aikit.Container` input:
+        >>> c = aikit.Container(a=[aikit.array([1,2,3]), aikit.array([0,0,0])],
+                              b=aikit.arange(3))
+        >>> aikit.Container.static_dstack(c)
         {
-            a: ivy.array([[1, 0],
+            a: aikit.array([[1, 0],
                           [2, 0]
                           [3,0]]),
-            b: ivy.array([[0, 1, 2])
+            b: aikit.array([[0, 1, 2])
         }
         """
         return ContainerBase.cont_multi_map_in_function(
@@ -1805,15 +1805,15 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
     @staticmethod
     def static_atleast_2d(
-        *arys: Union[ivy.Array, ivy.NativeArray, ivy.Container],
-        copy: Optional[Union[bool, ivy.Container]] = None,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> List[ivy.Container]:
-        """ivy.Container static method variant of ivy.atleast_2d. This method
-        simply wraps the function, and so the docstring for ivy.atleast_2d also
+        *arys: Union[aikit.Array, aikit.NativeArray, aikit.Container],
+        copy: Optional[Union[bool, aikit.Container]] = None,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> List[aikit.Container]:
+        """aikit.Container static method variant of aikit.atleast_2d. This method
+        simply wraps the function, and so the docstring for aikit.atleast_2d also
         applies to this method with minimal changes.
 
         Parameters
@@ -1847,13 +1847,13 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
         Examples
         --------
-        >>> ary = ivy.Container(a=ivy.array(1), b=ivy.array([3,4,5]),\
-                        c=ivy.array([[3]]))
-        >>> ivy.Container.static_atleast_2d(ary)
+        >>> ary = aikit.Container(a=aikit.array(1), b=aikit.array([3,4,5]),\
+                        c=aikit.array([[3]]))
+        >>> aikit.Container.static_atleast_2d(ary)
         {
-            a: ivy.array([[1]]),
-            b: ivy.array([[3, 4, 5]]),
-            c: ivy.array([[3]])
+            a: aikit.array([[1]]),
+            b: aikit.array([[3, 4, 5]]),
+            c: aikit.array([[3]])
         }
         """
         return ContainerBase.cont_multi_map_in_function(
@@ -1867,16 +1867,16 @@ class _ContainerWithManipulationExperimental(ContainerBase):
         )
 
     def atleast_2d(
-        self: Union[ivy.Container, ivy.Array, ivy.NativeArray],
-        *arys: Union[ivy.Container, ivy.Array, ivy.NativeArray],
-        copy: Optional[Union[bool, ivy.Container]] = None,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> List[ivy.Container]:
-        """ivy.Container instance method variant of ivy.atleast_2d. This method
-        simply wraps the function, and so the docstring for ivy.atleast_2d also
+        self: Union[aikit.Container, aikit.Array, aikit.NativeArray],
+        *arys: Union[aikit.Container, aikit.Array, aikit.NativeArray],
+        copy: Optional[Union[bool, aikit.Container]] = None,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> List[aikit.Container]:
+        """aikit.Container instance method variant of aikit.atleast_2d. This method
+        simply wraps the function, and so the docstring for aikit.atleast_2d also
         applies to this method with minimal changes.
 
         Parameters
@@ -1912,19 +1912,19 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
         Examples
         --------
-        >>> ary1 = ivy.Container(a=ivy.array(1), b=ivy.array([3,4]),\
-                            c=ivy.array([[5]]))
-        >>> ary2 = ivy.Container(a=ivy.array(9), b=ivy.array(2),\
-                            c=ivy.array(3))
+        >>> ary1 = aikit.Container(a=aikit.array(1), b=aikit.array([3,4]),\
+                            c=aikit.array([[5]]))
+        >>> ary2 = aikit.Container(a=aikit.array(9), b=aikit.array(2),\
+                            c=aikit.array(3))
         >>> ary1.atleast_2d(ary2)
         [{
-            a: ivy.array([[1]]),
-            b: ivy.array([[3, 4]]),
-            c: ivy.array([[5]])
+            a: aikit.array([[1]]),
+            b: aikit.array([[3, 4]]),
+            c: aikit.array([[5]])
         }, {
-            a: ivy.array([[9]]),
-            b: ivy.array([[2]]),
-            c: ivy.array([[3]])
+            a: aikit.array([[9]]),
+            b: aikit.array([[2]]),
+            c: aikit.array([[3]])
         }]
         """
         return self.static_atleast_2d(
@@ -1939,15 +1939,15 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
     @staticmethod
     def static_atleast_3d(
-        *arys: Union[ivy.Array, ivy.NativeArray, ivy.Container],
-        copy: Optional[Union[bool, ivy.Container]] = None,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> List[ivy.Container]:
-        """ivy.Container static method variant of ivy.atleast_3d. This method
-        simply wraps the function, and so the docstring for ivy.atleast_3d also
+        *arys: Union[aikit.Array, aikit.NativeArray, aikit.Container],
+        copy: Optional[Union[bool, aikit.Container]] = None,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> List[aikit.Container]:
+        """aikit.Container static method variant of aikit.atleast_3d. This method
+        simply wraps the function, and so the docstring for aikit.atleast_3d also
         applies to this method with minimal changes.
 
         Parameters
@@ -1983,15 +1983,15 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
         Examples
         --------
-        >>> ary = ivy.Container(a=ivy.array(1), b=ivy.array([3,4,5]),\
-                        c=ivy.array([[3]]))
-        >>> ivy.Container.static_atleast_3d(ary)
+        >>> ary = aikit.Container(a=aikit.array(1), b=aikit.array([3,4,5]),\
+                        c=aikit.array([[3]]))
+        >>> aikit.Container.static_atleast_3d(ary)
         {
-            a: ivy.array([[[1]]]),
-            b: ivy.array([[[3],
+            a: aikit.array([[[1]]]),
+            b: aikit.array([[[3],
                            [4],
                            [5]]]),
-            c: ivy.array([[[3]]])
+            c: aikit.array([[[3]]])
         }
         """
         return ContainerBase.cont_multi_map_in_function(
@@ -2005,16 +2005,16 @@ class _ContainerWithManipulationExperimental(ContainerBase):
         )
 
     def atleast_3d(
-        self: Union[ivy.Container, ivy.Array, ivy.NativeArray],
-        *arys: Union[ivy.Container, ivy.Array, ivy.NativeArray, bool, Number],
-        copy: Optional[Union[bool, ivy.Container]] = None,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> List[ivy.Container]:
-        """ivy.Container instance method variant of ivy.atleast_3d. This method
-        simply wraps the function, and so the docstring for ivy.atleast_3d also
+        self: Union[aikit.Container, aikit.Array, aikit.NativeArray],
+        *arys: Union[aikit.Container, aikit.Array, aikit.NativeArray, bool, Number],
+        copy: Optional[Union[bool, aikit.Container]] = None,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> List[aikit.Container]:
+        """aikit.Container instance method variant of aikit.atleast_3d. This method
+        simply wraps the function, and so the docstring for aikit.atleast_3d also
         applies to this method with minimal changes.
 
         Parameters
@@ -2046,20 +2046,20 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
         Examples
         --------
-        >>> ary1 = ivy.Container(a=ivy.array(1), b=ivy.array([3,4]),\
-                            c=ivy.array([[5]]))
-        >>> ary2 = ivy.Container(a=ivy.array(9), b=ivy.array(2),\
-                            c=ivy.array(3))
+        >>> ary1 = aikit.Container(a=aikit.array(1), b=aikit.array([3,4]),\
+                            c=aikit.array([[5]]))
+        >>> ary2 = aikit.Container(a=aikit.array(9), b=aikit.array(2),\
+                            c=aikit.array(3))
         >>> ary1.atleast_3d(ary2)
         [{
-            a: ivy.array([[[1]]]),
-            b: ivy.array([[[3],
+            a: aikit.array([[[1]]]),
+            b: aikit.array([[[3],
                            [4]]]),
-            c: ivy.array([[[5]]])
+            c: aikit.array([[[5]]])
         }, {
-            a: ivy.array([[[9]]]),
-            b: ivy.array([[[2]]]),
-            c: ivy.array([[[3]]])
+            a: aikit.array([[[9]]]),
+            b: aikit.array([[[2]]]),
+            c: aikit.array([[[3]]])
         }]
         """
         return self.static_atleast_3d(
@@ -2074,19 +2074,19 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
     @staticmethod
     def static_take_along_axis(
-        arr: Union[ivy.Array, ivy.NativeArray, ivy.Container],
-        indices: Union[ivy.Array, ivy.NativeArray, ivy.Container],
-        axis: Union[int, ivy.Container],
-        mode: Union[str, ivy.Container] = "fill",
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container static method variant of ivy.take_along_axis. This
+        arr: Union[aikit.Array, aikit.NativeArray, aikit.Container],
+        indices: Union[aikit.Array, aikit.NativeArray, aikit.Container],
+        axis: Union[int, aikit.Container],
+        mode: Union[str, aikit.Container] = "fill",
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container static method variant of aikit.take_along_axis. This
         method simply wraps the function, and so the docstring for
-        ivy.take_along_axis also applies to this method with minimal changes.
+        aikit.take_along_axis also applies to this method with minimal changes.
 
         Parameters
         ----------
@@ -2121,15 +2121,15 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
         Examples
         --------
-        >>> arr = ivy.Container(a=ivy.array([[1, 2], [3, 4]]),\
-                                b=ivy.array([[5, 6], [7, 8]]))
-        >>> indices = ivy.Container(a=ivy.array([[0, 0], [1, 1]]),\
-                                    b=ivy.array([[1, 0], [1, 0]]))
-        >>> ivy.Container.static_take_along_axis(arr, indices, axis=1)
+        >>> arr = aikit.Container(a=aikit.array([[1, 2], [3, 4]]),\
+                                b=aikit.array([[5, 6], [7, 8]]))
+        >>> indices = aikit.Container(a=aikit.array([[0, 0], [1, 1]]),\
+                                    b=aikit.array([[1, 0], [1, 0]]))
+        >>> aikit.Container.static_take_along_axis(arr, indices, axis=1)
         {
-            a: ivy.array([[1, 1],
+            a: aikit.array([[1, 1],
                           [4, 4]]),
-            b: ivy.array([[6, 5],
+            b: aikit.array([[6, 5],
                           [8, 7]])
         }
         """
@@ -2147,19 +2147,19 @@ class _ContainerWithManipulationExperimental(ContainerBase):
         )
 
     def take_along_axis(
-        self: Union[ivy.Container, ivy.Array, ivy.NativeArray],
-        indices: Union[ivy.Container, ivy.Array, ivy.NativeArray],
-        axis: Union[int, ivy.Container],
-        mode: Union[str, ivy.Container] = "fill",
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of ivy.take_along_axis. This
+        self: Union[aikit.Container, aikit.Array, aikit.NativeArray],
+        indices: Union[aikit.Container, aikit.Array, aikit.NativeArray],
+        axis: Union[int, aikit.Container],
+        mode: Union[str, aikit.Container] = "fill",
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of aikit.take_along_axis. This
         method simply wraps the function, and so the docstring for
-        ivy.take_along_axis also applies to this method with minimal changes.
+        aikit.take_along_axis also applies to this method with minimal changes.
 
         Parameters
         ----------
@@ -2194,15 +2194,15 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
         Examples
         --------
-        >>> arr = ivy.Container(a=ivy.array([[1, 2], [3, 4]]),\
-                                b=ivy.array([[5, 6], [7, 8]]))
-        >>> indices = ivy.Container(a=ivy.array([[0, 0], [1, 1]]),\
-                                    b=ivy.array([[1, 0], [1, 0]]))
+        >>> arr = aikit.Container(a=aikit.array([[1, 2], [3, 4]]),\
+                                b=aikit.array([[5, 6], [7, 8]]))
+        >>> indices = aikit.Container(a=aikit.array([[0, 0], [1, 1]]),\
+                                    b=aikit.array([[1, 0], [1, 0]]))
         >>> arr.take_along_axis(indices, axis=1)
         [{
-            a: ivy.array([[1, 1],
+            a: aikit.array([[1, 1],
                           [4, 4]]),
-            b: ivy.array([[6, 5],
+            b: aikit.array([[6, 5],
                             [8, 7]])
         }]
         """
@@ -2220,20 +2220,20 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
     @staticmethod
     def static_hsplit(
-        ary: Union[ivy.Array, ivy.NativeArray, ivy.Container],
+        ary: Union[aikit.Array, aikit.NativeArray, aikit.Container],
         indices_or_sections: Union[
-            int, Sequence[int], ivy.Array, ivy.NativeArray, ivy.Container
+            int, Sequence[int], aikit.Array, aikit.NativeArray, aikit.Container
         ],
         /,
         *,
-        copy: Optional[Union[bool, ivy.Container]] = None,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> List[ivy.Container]:
-        """ivy.Container static method variant of ivy.hsplit. This method
-        simply wraps the function, and so the docstring for ivy.hsplit also
+        copy: Optional[Union[bool, aikit.Container]] = None,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> List[aikit.Container]:
+        """aikit.Container static method variant of aikit.hsplit. This method
+        simply wraps the function, and so the docstring for aikit.hsplit also
         applies to this method with minimal changes.
 
         Parameters
@@ -2264,29 +2264,29 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
         Examples
         --------
-        >>> ary = ivy.Container(
-            a = ivy.array(
+        >>> ary = aikit.Container(
+            a = aikit.array(
                     [[[0.,  1.],
                       [2.,  3.]],
                       [[4.,  5.],
                       [6.,  7.]]]
                 ),
-            b=ivy.array(
+            b=aikit.array(
                     [0.,  1.,  2.,  3.,
                      4.,  5.,  6.,  7.,
                      8.,  9.,  10., 11.,
                      12., 13., 14., 15.]
                 )
             )
-        >>> ivy.Container.static_hsplit(ary, 2)
+        >>> aikit.Container.static_hsplit(ary, 2)
         [{
-            a: ivy.array([[[0., 1.]],
+            a: aikit.array([[[0., 1.]],
                           [[4., 5.]]]),
-            b: ivy.array([0., 1., 2., 3., 4., 5., 6., 7.])
+            b: aikit.array([0., 1., 2., 3., 4., 5., 6., 7.])
         }, {
-            a: ivy.array([[[2., 3.]],
+            a: aikit.array([[[2., 3.]],
                           [[6., 7.]]]),
-            b: ivy.array([8., 9., 10., 11., 12., 13., 14., 15.])
+            b: aikit.array([8., 9., 10., 11., 12., 13., 14., 15.])
         }]
         """
         return ContainerBase.cont_multi_map_in_function(
@@ -2301,15 +2301,15 @@ class _ContainerWithManipulationExperimental(ContainerBase):
         )
 
     def hsplit(
-        self: ivy.Container,
+        self: aikit.Container,
         indices_or_sections: Union[
-            int, Sequence[int], ivy.Array, ivy.NativeArray, ivy.Container
+            int, Sequence[int], aikit.Array, aikit.NativeArray, aikit.Container
         ],
-        copy: Optional[Union[bool, ivy.Container]] = None,
+        copy: Optional[Union[bool, aikit.Container]] = None,
         /,
-    ) -> List[ivy.Container]:
-        """ivy.Container instance method variant of ivy.hsplit. This method
-        simply wraps the function, and so the docstring for ivy.hsplit also
+    ) -> List[aikit.Container]:
+        """aikit.Container instance method variant of aikit.hsplit. This method
+        simply wraps the function, and so the docstring for aikit.hsplit also
         applies to this method with minimal changes.
 
         Parameters
@@ -2329,14 +2329,14 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
         Examples
         --------
-        >>> ary = ivy.Container(
-            a = ivy.array(
+        >>> ary = aikit.Container(
+            a = aikit.array(
                     [[[0.,  1.],
                       [2.,  3.]],
                       [[4.,  5.],
                       [6.,  7.]]]
                 ),
-            b=ivy.array(
+            b=aikit.array(
                     [0.,  1.,  2.,  3.,
                      4.,  5.,  6.,  7.,
                      8.,  9.,  10., 11.,
@@ -2345,30 +2345,30 @@ class _ContainerWithManipulationExperimental(ContainerBase):
             )
         >>> ary.hsplit(2)
         [{
-            a: ivy.array([[[0., 1.]],
+            a: aikit.array([[[0., 1.]],
                           [[4., 5.]]]),
-            b: ivy.array([0., 1., 2., 3., 4., 5., 6., 7.])
+            b: aikit.array([0., 1., 2., 3., 4., 5., 6., 7.])
         }, {
-            a: ivy.array([[[2., 3.]],
+            a: aikit.array([[[2., 3.]],
                           [[6., 7.]]]),
-            b: ivy.array([8., 9., 10., 11., 12., 13., 14., 15.])
+            b: aikit.array([8., 9., 10., 11., 12., 13., 14., 15.])
         }]
         """
         return self.static_hsplit(self, indices_or_sections, copy=copy)
 
     @staticmethod
     def static_broadcast_shapes(
-        shapes: Union[ivy.Container, List[Tuple[int]]],
+        shapes: Union[aikit.Container, List[Tuple[int]]],
         /,
         *,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container static method variant of ivy.broadcast_shapes. This
-        method simply wraps the function, and so the docstring for ivy.hsplit
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container static method variant of aikit.broadcast_shapes. This
+        method simply wraps the function, and so the docstring for aikit.hsplit
         also applies to this method with minimal changes.
 
         Parameters
@@ -2394,11 +2394,11 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
         Examples
         --------
-        >>> shapes = ivy.Container(a = [(2, 3), (2, 1)],
+        >>> shapes = aikit.Container(a = [(2, 3), (2, 1)],
         ...                        b = [(2, 3), (1, 3)],
         ...                        c = [(2, 3), (2, 3)],
         ...                        d = [(2, 3), (2, 1), (1, 3), (2, 3)])
-        >>> z = ivy.Container.static_broadcast_shapes(shapes)
+        >>> z = aikit.Container.static_broadcast_shapes(shapes)
         >>> print(z)
         {
             a: (2, 3),
@@ -2418,14 +2418,14 @@ class _ContainerWithManipulationExperimental(ContainerBase):
         )
 
     def broadcast_shapes(
-        self: ivy.Container,
+        self: aikit.Container,
         /,
         *,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of ivy.broadcast_shapes. This
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of aikit.broadcast_shapes. This
         method simply wraps the function, and so the docstring for
-        ivy.broadcast_shapes also applies to this method with minimal changes.
+        aikit.broadcast_shapes also applies to this method with minimal changes.
 
         Parameters
         ----------
@@ -2439,7 +2439,7 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
         Examples
         --------
-        >>> shapes = ivy.Container(a = (2, 3, 5),
+        >>> shapes = aikit.Container(a = (2, 3, 5),
         ...                        b = (2, 3, 1))
         >>> z = shapes.broadcast_shapes()
         >>> print(z)
@@ -2452,17 +2452,17 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
     @staticmethod
     def static_expand(
-        x: Union[ivy.Array, ivy.NativeArray, ivy.Container],
-        shape: Union[ivy.Shape, ivy.NativeShape, ivy.Container],
+        x: Union[aikit.Array, aikit.NativeArray, aikit.Container],
+        shape: Union[aikit.Shape, aikit.NativeShape, aikit.Container],
         /,
         *,
-        copy: Optional[Union[bool, ivy.Container]] = None,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
+        copy: Optional[Union[bool, aikit.Container]] = None,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
         """
 
         Parameters
@@ -2513,13 +2513,13 @@ class _ContainerWithManipulationExperimental(ContainerBase):
         )
 
     def expand(
-        self: Union[ivy.Array, ivy.NativeArray, ivy.Container],
-        shape: Union[ivy.Shape, ivy.NativeShape, ivy.Container],
+        self: Union[aikit.Array, aikit.NativeArray, aikit.Container],
+        shape: Union[aikit.Shape, aikit.NativeShape, aikit.Container],
         /,
         *,
-        copy: Optional[Union[bool, ivy.Container]] = None,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
+        copy: Optional[Union[bool, aikit.Container]] = None,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
         """
 
         Parameters
@@ -2552,18 +2552,18 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
     @staticmethod
     def static_as_strided(
-        x: Union[ivy.Array, ivy.NativeArray, ivy.Container],
-        shape: Union[ivy.Shape, ivy.NativeShape, Sequence[int], ivy.Container],
-        strides: Union[Sequence[int], ivy.Container],
+        x: Union[aikit.Array, aikit.NativeArray, aikit.Container],
+        shape: Union[aikit.Shape, aikit.NativeShape, Sequence[int], aikit.Container],
+        strides: Union[Sequence[int], aikit.Container],
         /,
         *,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of ivy.as_strided. This method
-        simply wraps the function, and so the docstring for ivy.as_strided also
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of aikit.as_strided. This method
+        simply wraps the function, and so the docstring for aikit.as_strided also
         applies to this method with minimal changes.
 
         Parameters
@@ -2603,13 +2603,13 @@ class _ContainerWithManipulationExperimental(ContainerBase):
         )
 
     def as_strided(
-        self: Union[ivy.Array, ivy.NativeArray, ivy.Container],
-        shape: Union[ivy.Shape, ivy.NativeShape, Sequence[int], ivy.Container],
-        strides: Union[Sequence[int], ivy.Container],
+        self: Union[aikit.Array, aikit.NativeArray, aikit.Container],
+        shape: Union[aikit.Shape, aikit.NativeShape, Sequence[int], aikit.Container],
+        strides: Union[Sequence[int], aikit.Container],
         /,
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of ivy.as_strided. This method
-        simply wraps the function, and so the docstring for ivy.as_strided also
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of aikit.as_strided. This method
+        simply wraps the function, and so the docstring for aikit.as_strided also
         applies to this method with minimal changes.
 
         Parameters
@@ -2631,22 +2631,22 @@ class _ContainerWithManipulationExperimental(ContainerBase):
     @staticmethod
     def static_concat_from_sequence(
         input_sequence: Union[
-            Tuple[Union[ivy.Array, ivy.NativeArray, ivy.Container]],
-            List[Union[ivy.Array, ivy.NativeArray, ivy.Container]],
+            Tuple[Union[aikit.Array, aikit.NativeArray, aikit.Container]],
+            List[Union[aikit.Array, aikit.NativeArray, aikit.Container]],
         ],
         /,
         *,
-        new_axis: Union[int, ivy.Container] = 0,
-        axis: Union[int, ivy.Container] = 0,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container static method variant of ivy.concat_from_sequence.
+        new_axis: Union[int, aikit.Container] = 0,
+        axis: Union[int, aikit.Container] = 0,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container static method variant of aikit.concat_from_sequence.
         This method simply wraps the function, and so the docstring for
-        ivy.concat_from_sequence also applies to this method with minimal
+        aikit.concat_from_sequence also applies to this method with minimal
         changes.
 
         Parameters
@@ -2660,7 +2660,7 @@ class _ContainerWithManipulationExperimental(ContainerBase):
             new_axis = 1: stack
         axis
             axis along which the array leaves will be concatenated. More details
-            can be found in the docstring for ivy.concat_from_sequence.
+            can be found in the docstring for aikit.concat_from_sequence.
 
         key_chains
             The key-chains to apply or not apply the method to. Default is ``None``.
@@ -2684,39 +2684,39 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
         Examples
         --------
-        >>> x = ivy.Container(a=ivy.array([[0, 1], [2,3]]), b=ivy.array([[4, 5]]))
-        >>> z = ivy.Container.static_concat_from_sequence(x,new_axis = 1, axis = 1)
+        >>> x = aikit.Container(a=aikit.array([[0, 1], [2,3]]), b=aikit.array([[4, 5]]))
+        >>> z = aikit.Container.static_concat_from_sequence(x,new_axis = 1, axis = 1)
         >>> print(z)
         {
-            a: ivy.array([[0, 2],
+            a: aikit.array([[0, 2],
                         [1, 3]]),
-            b: ivy.array([[4],
+            b: aikit.array([[4],
                         [5]])
         }
 
-        >>> x = ivy.Container(a=ivy.array([[0, 1], [2,3]]), b=ivy.array([[4, 5]]))
-        >>> y = ivy.Container(a=ivy.array([[3, 2], [1,0]]), b=ivy.array([[1, 0]]))
-        >>> z = ivy.Container.static_concat_from_sequence([x,y])
+        >>> x = aikit.Container(a=aikit.array([[0, 1], [2,3]]), b=aikit.array([[4, 5]]))
+        >>> y = aikit.Container(a=aikit.array([[3, 2], [1,0]]), b=aikit.array([[1, 0]]))
+        >>> z = aikit.Container.static_concat_from_sequence([x,y])
         >>> print(z)
         {
-            a: ivy.array([[0, 1],
+            a: aikit.array([[0, 1],
                           [2, 3],
                           [3, 2],
                           [1, 0]]),
-            b: ivy.array([[4, 5],
+            b: aikit.array([[4, 5],
                           [1, 0]])
         }
 
-        >>> x = ivy.Container(a=ivy.array([[0, 1], [2,3]]), b=ivy.array([[4, 5]]))
-        >>> y = ivy.Container(a=ivy.array([[3, 2], [1,0]]), b=ivy.array([[1, 0]]))
-        >>> z = ivy.Container.static_concat_from_sequence([x,y],new_axis=1, axis=1)
+        >>> x = aikit.Container(a=aikit.array([[0, 1], [2,3]]), b=aikit.array([[4, 5]]))
+        >>> y = aikit.Container(a=aikit.array([[3, 2], [1,0]]), b=aikit.array([[1, 0]]))
+        >>> z = aikit.Container.static_concat_from_sequence([x,y],new_axis=1, axis=1)
         >>> print(z)
         {
-            a: ivy.array([[[0, 1],
+            a: aikit.array([[[0, 1],
                         [3, 2]],
                         [[2, 3],
                         [1, 0]]]),
-            b: ivy.array([[[4, 5],
+            b: aikit.array([[[4, 5],
                         [1, 0]]])
         }
         """
@@ -2733,23 +2733,23 @@ class _ContainerWithManipulationExperimental(ContainerBase):
         )
 
     def concat_from_sequence(
-        self: ivy.Container,
+        self: aikit.Container,
         /,
         input_sequence: Union[
-            Tuple[Union[ivy.Array, ivy.NativeArray, ivy.Container]],
-            List[Union[ivy.Array, ivy.NativeArray, ivy.Container]],
+            Tuple[Union[aikit.Array, aikit.NativeArray, aikit.Container]],
+            List[Union[aikit.Array, aikit.NativeArray, aikit.Container]],
         ],
         *,
-        new_axis: Union[int, ivy.Container] = 0,
-        axis: Union[int, ivy.Container] = 0,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of ivy.stack. This method
-        simply wraps the function, and so the docstring for ivy.stack also
+        new_axis: Union[int, aikit.Container] = 0,
+        axis: Union[int, aikit.Container] = 0,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of aikit.stack. This method
+        simply wraps the function, and so the docstring for aikit.stack also
         applies to this method with minimal changes.
 
         Parameters
@@ -2767,7 +2767,7 @@ class _ContainerWithManipulationExperimental(ContainerBase):
             new_axis = 1: stack
         axis
             axis along which the array leaves will be concatenated. More details can
-            be found in the docstring for ivy.stack.
+            be found in the docstring for aikit.stack.
         key_chains
             The key-chains to apply or not apply the method to. Default is ``None``.
         to_apply
@@ -2790,22 +2790,22 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
         Examples
         --------
-        >>> x = ivy.Container(a=ivy.array([[0, 1], [2,3]]), b=ivy.array([[4, 5]]))
-        >>> y = ivy.Container(a=ivy.array([[3, 2], [1,0]]), b=ivy.array([[1, 0]]))
-        >>> z = ivy.Container.static_concat_from_sequence([x,y],axis=1)
+        >>> x = aikit.Container(a=aikit.array([[0, 1], [2,3]]), b=aikit.array([[4, 5]]))
+        >>> y = aikit.Container(a=aikit.array([[3, 2], [1,0]]), b=aikit.array([[1, 0]]))
+        >>> z = aikit.Container.static_concat_from_sequence([x,y],axis=1)
         >>> print(z)
         {
-            a: ivy.array([[[0, 1],
+            a: aikit.array([[[0, 1],
                         [3, 2]],
                         [[2, 3],
                         [1, 0]]]),
-            b: ivy.array([[[4, 5],
+            b: aikit.array([[[4, 5],
                         [1, 0]]])
         }
         """
         new_input_sequence = (
             input_sequence.cont_copy()
-            if ivy.is_ivy_container(input_sequence)
+            if aikit.is_aikit_container(input_sequence)
             else input_sequence.copy()
         )
         new_input_sequence.insert(0, self.cont_copy())
@@ -2821,16 +2821,16 @@ class _ContainerWithManipulationExperimental(ContainerBase):
         )
 
     def associative_scan(
-        self: Union[ivy.Array, ivy.NativeArray, ivy.Container],
-        fn: Union[Callable, ivy.Container],
+        self: Union[aikit.Array, aikit.NativeArray, aikit.Container],
+        fn: Union[Callable, aikit.Container],
         /,
         *,
-        reverse: Union[bool, ivy.Container] = False,
-        axis: Union[int, ivy.Container] = 0,
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of ivy.associative_scan. This
+        reverse: Union[bool, aikit.Container] = False,
+        axis: Union[int, aikit.Container] = 0,
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of aikit.associative_scan. This
         method simply wraps the function, and so the docstring for
-        ivy.associative_scan also applies to this method with minimal changes.
+        aikit.associative_scan also applies to this method with minimal changes.
 
         Parameters
         ----------
@@ -2848,23 +2848,23 @@ class _ContainerWithManipulationExperimental(ContainerBase):
         ret
             The result of the scan.
         """
-        return ivy.associative_scan(self, fn, reverse=reverse, axis=axis)
+        return aikit.associative_scan(self, fn, reverse=reverse, axis=axis)
 
     @staticmethod
     def _static_unique_consecutive(
-        x: Union[ivy.Array, ivy.NativeArray, ivy.Container],
+        x: Union[aikit.Array, aikit.NativeArray, aikit.Container],
         /,
         *,
-        axis: Optional[Union[int, ivy.Container]] = None,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> ivy.Container:
-        """ivy.Container static method variant of ivy.unique_consecutive.
+        axis: Optional[Union[int, aikit.Container]] = None,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> aikit.Container:
+        """aikit.Container static method variant of aikit.unique_consecutive.
 
         This method simply wraps the function, and so the docstring for
-        ivy.unique_consecutive also applies to this method with minimal
+        aikit.unique_consecutive also applies to this method with minimal
         changes.
         """
         return ContainerBase.cont_multi_map_in_function(
@@ -2878,19 +2878,19 @@ class _ContainerWithManipulationExperimental(ContainerBase):
         )
 
     def unique_consecutive(
-        self: ivy.Container,
+        self: aikit.Container,
         /,
         *,
-        axis: Optional[Union[int, ivy.Container]] = None,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of ivy.unique_consecutive.
+        axis: Optional[Union[int, aikit.Container]] = None,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of aikit.unique_consecutive.
 
         This method simply wraps the function, and so the docstring for
-        ivy.unique_consecutive also applies to this method with minimal
+        aikit.unique_consecutive also applies to this method with minimal
         changes.
         """
         return self._static_unique_consecutive(
@@ -2904,16 +2904,16 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
     @staticmethod
     def _static_fill_diagonal(
-        a: Union[ivy.Array, ivy.NativeArray, ivy.Container],
-        v: Union[ivy.Array, ivy.NativeArray, ivy.Container],
+        a: Union[aikit.Array, aikit.NativeArray, aikit.Container],
+        v: Union[aikit.Array, aikit.NativeArray, aikit.Container],
         /,
         *,
-        wrap: Union[bool, ivy.Container] = False,
-    ) -> ivy.Container:
-        """ivy.Container static method variant of ivy.fill_diagonal.
+        wrap: Union[bool, aikit.Container] = False,
+    ) -> aikit.Container:
+        """aikit.Container static method variant of aikit.fill_diagonal.
 
         This method simply wraps the function, and so the docstring for
-        ivy.fill_diagonal also applies to this method with minimal
+        aikit.fill_diagonal also applies to this method with minimal
         changes.
         """
         return ContainerBase.cont_multi_map_in_function(
@@ -2924,16 +2924,16 @@ class _ContainerWithManipulationExperimental(ContainerBase):
         )
 
     def fill_diagonal(
-        self: ivy.Container,
-        v: Union[int, float, ivy.Container],
+        self: aikit.Container,
+        v: Union[int, float, aikit.Container],
         /,
         *,
-        wrap: Union[bool, ivy.Container] = False,
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of ivy.fill_diagonal.
+        wrap: Union[bool, aikit.Container] = False,
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of aikit.fill_diagonal.
 
         This method simply wraps the function, and so the docstring for
-        ivy.fill_diagonal also applies to this method with minimal
+        aikit.fill_diagonal also applies to this method with minimal
         changes.
         """
         return self._static_fill_diagonal(
@@ -2944,20 +2944,20 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
     @staticmethod
     def static_unfold(
-        x: Union[ivy.Array, ivy.NativeArray, ivy.Container],
+        x: Union[aikit.Array, aikit.NativeArray, aikit.Container],
         /,
-        mode: Optional[Union[int, ivy.Container]] = 0,
+        mode: Optional[Union[int, aikit.Container]] = 0,
         *,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container static method variant of ivy.unfold.
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container static method variant of aikit.unfold.
 
         This method simply wraps the function, and so the docstring for
-        ivy.unfold also applies to this method with minimal
+        aikit.unfold also applies to this method with minimal
         changes.
 
         Parameters
@@ -2987,16 +2987,16 @@ class _ContainerWithManipulationExperimental(ContainerBase):
         )
 
     def unfold(
-        self: ivy.Container,
+        self: aikit.Container,
         /,
-        mode: Optional[Union[int, ivy.Container]] = 0,
+        mode: Optional[Union[int, aikit.Container]] = 0,
         *,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of ivy.unfold.
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of aikit.unfold.
 
         This method simply wraps the function, and so the docstring for
-        ivy.unfold also applies to this method with minimal
+        aikit.unfold also applies to this method with minimal
         changes.
 
         Parameters
@@ -3018,21 +3018,21 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
     @staticmethod
     def static_fold(
-        x: Union[ivy.Array, ivy.NativeArray, ivy.Container],
+        x: Union[aikit.Array, aikit.NativeArray, aikit.Container],
         /,
-        mode: Union[int, ivy.Container],
-        shape: Union[ivy.Shape, ivy.NativeShape, Sequence[int], ivy.Container],
+        mode: Union[int, aikit.Container],
+        shape: Union[aikit.Shape, aikit.NativeShape, Sequence[int], aikit.Container],
         *,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container static method variant of ivy.fold.
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container static method variant of aikit.fold.
 
         This method simply wraps the function, and so the docstring for
-        ivy.fold also applies to this method with minimal
+        aikit.fold also applies to this method with minimal
         changes.
 
         Parameters
@@ -3063,17 +3063,17 @@ class _ContainerWithManipulationExperimental(ContainerBase):
         )
 
     def fold(
-        self: ivy.Container,
+        self: aikit.Container,
         /,
-        mode: Union[int, ivy.Container],
-        shape: Union[ivy.Shape, ivy.NativeShape, Sequence[int], ivy.Container],
+        mode: Union[int, aikit.Container],
+        shape: Union[aikit.Shape, aikit.NativeShape, Sequence[int], aikit.Container],
         *,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of ivy.fold.
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of aikit.fold.
 
         This method simply wraps the function, and so the docstring for
-        ivy.fold also applies to this method with minimal
+        aikit.fold also applies to this method with minimal
         changes.
 
         Parameters
@@ -3096,23 +3096,23 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
     @staticmethod
     def static_partial_unfold(
-        x: Union[ivy.Array, ivy.NativeArray, ivy.Container],
+        x: Union[aikit.Array, aikit.NativeArray, aikit.Container],
         /,
-        mode: Optional[Union[int, ivy.Container]] = 0,
-        skip_begin: Optional[Union[int, ivy.Container]] = 1,
-        skip_end: Optional[Union[int, ivy.Container]] = 0,
-        ravel_tensors: Optional[Union[bool, ivy.Container]] = False,
+        mode: Optional[Union[int, aikit.Container]] = 0,
+        skip_begin: Optional[Union[int, aikit.Container]] = 1,
+        skip_end: Optional[Union[int, aikit.Container]] = 0,
+        ravel_tensors: Optional[Union[bool, aikit.Container]] = False,
         *,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container static method variant of ivy.partial_unfold.
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container static method variant of aikit.partial_unfold.
 
         This method simply wraps the function, and so the docstring for
-        ivy.partial_unfold also applies to this method with minimal
+        aikit.partial_unfold also applies to this method with minimal
         changes.
 
         Parameters
@@ -3151,19 +3151,19 @@ class _ContainerWithManipulationExperimental(ContainerBase):
         )
 
     def partial_unfold(
-        self: Union[ivy.Array, ivy.NativeArray, ivy.Container],
+        self: Union[aikit.Array, aikit.NativeArray, aikit.Container],
         /,
-        mode: Optional[Union[int, ivy.Container]] = 0,
-        skip_begin: Optional[Union[int, ivy.Container]] = 1,
-        skip_end: Optional[Union[int, ivy.Container]] = 0,
-        ravel_tensors: Optional[Union[bool, ivy.Container]] = False,
+        mode: Optional[Union[int, aikit.Container]] = 0,
+        skip_begin: Optional[Union[int, aikit.Container]] = 1,
+        skip_end: Optional[Union[int, aikit.Container]] = 0,
+        ravel_tensors: Optional[Union[bool, aikit.Container]] = False,
         *,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of ivy.partial_unfold.
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of aikit.partial_unfold.
 
         This method simply wraps the function, and so the docstring for
-        ivy.partial_unfold also applies to this method with minimal
+        aikit.partial_unfold also applies to this method with minimal
         changes.
 
         Parameters
@@ -3193,22 +3193,22 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
     @staticmethod
     def static_partial_fold(
-        x: Union[ivy.Array, ivy.NativeArray, ivy.Container],
+        x: Union[aikit.Array, aikit.NativeArray, aikit.Container],
         /,
-        mode: Union[int, ivy.Container],
-        shape: Union[ivy.Shape, ivy.NativeShape, Sequence[int], ivy.Container],
-        skip_begin: Optional[Union[int, ivy.Container]] = 1,
+        mode: Union[int, aikit.Container],
+        shape: Union[aikit.Shape, aikit.NativeShape, Sequence[int], aikit.Container],
+        skip_begin: Optional[Union[int, aikit.Container]] = 1,
         *,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container static method variant of ivy.partial_fold.
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container static method variant of aikit.partial_fold.
 
         This method simply wraps the function, and so the docstring for
-        ivy.partial_fold also applies to this method with minimal
+        aikit.partial_fold also applies to this method with minimal
         changes.
 
         Parameters
@@ -3244,22 +3244,22 @@ class _ContainerWithManipulationExperimental(ContainerBase):
         )
 
     def partial_fold(
-        self: Union[ivy.Array, ivy.NativeArray],
+        self: Union[aikit.Array, aikit.NativeArray],
         /,
-        mode: Union[int, ivy.Container],
-        shape: Union[ivy.Shape, ivy.NativeShape, Sequence[int], ivy.Container],
-        skip_begin: Optional[Union[int, ivy.Container]] = 1,
+        mode: Union[int, aikit.Container],
+        shape: Union[aikit.Shape, aikit.NativeShape, Sequence[int], aikit.Container],
+        skip_begin: Optional[Union[int, aikit.Container]] = 1,
         *,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of ivy.partial_fold.
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of aikit.partial_fold.
 
         This method simply wraps the function, and so the docstring for
-        ivy.partial_fold also applies to this method with minimal
+        aikit.partial_fold also applies to this method with minimal
         changes.
 
         Parameters
@@ -3285,21 +3285,21 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
     @staticmethod
     def static_partial_tensor_to_vec(
-        x: Union[ivy.Array, ivy.NativeArray, ivy.Container],
+        x: Union[aikit.Array, aikit.NativeArray, aikit.Container],
         /,
-        skip_begin: Optional[Union[int, ivy.Container]] = 1,
-        skip_end: Optional[Union[int, ivy.Container]] = 0,
+        skip_begin: Optional[Union[int, aikit.Container]] = 1,
+        skip_end: Optional[Union[int, aikit.Container]] = 0,
         *,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container static method variant of ivy.partial_tensor_to_vec.
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container static method variant of aikit.partial_tensor_to_vec.
 
         This method simply wraps the function, and so the docstring for
-        ivy.partial_tensor_to_vec also applies to this method with minimal
+        aikit.partial_tensor_to_vec also applies to this method with minimal
         changes.
 
         Parameters
@@ -3333,21 +3333,21 @@ class _ContainerWithManipulationExperimental(ContainerBase):
         )
 
     def partial_tensor_to_vec(
-        self: Union[ivy.Array, ivy.NativeArray, ivy.Container],
+        self: Union[aikit.Array, aikit.NativeArray, aikit.Container],
         /,
-        skip_begin: Optional[Union[int, ivy.Container]] = 1,
-        skip_end: Optional[Union[int, ivy.Container]] = 0,
+        skip_begin: Optional[Union[int, aikit.Container]] = 1,
+        skip_end: Optional[Union[int, aikit.Container]] = 0,
         *,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of ivy.partial_tensor_to_vec.
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of aikit.partial_tensor_to_vec.
 
         This method simply wraps the function, and so the docstring for
-        ivy.partial_tensor_to_vec also applies to this method with minimal
+        aikit.partial_tensor_to_vec also applies to this method with minimal
         changes.
 
         Parameters
@@ -3371,21 +3371,21 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
     @staticmethod
     def static_partial_vec_to_tensor(
-        x: Union[ivy.Array, ivy.NativeArray, ivy.Container],
+        x: Union[aikit.Array, aikit.NativeArray, aikit.Container],
         /,
-        shape: Union[ivy.Shape, ivy.NativeShape, Sequence[int], ivy.Container],
-        skip_begin: Optional[Union[int, ivy.Container]] = 1,
+        shape: Union[aikit.Shape, aikit.NativeShape, Sequence[int], aikit.Container],
+        skip_begin: Optional[Union[int, aikit.Container]] = 1,
         *,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container static method variant of ivy.partial_vec_to_tensor.
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container static method variant of aikit.partial_vec_to_tensor.
 
         This method simply wraps the function, and so the docstring for
-        ivy.partial_vec_to_tensor also applies to this method with minimal
+        aikit.partial_vec_to_tensor also applies to this method with minimal
         changes.
 
         Parameters
@@ -3417,21 +3417,21 @@ class _ContainerWithManipulationExperimental(ContainerBase):
         )
 
     def partial_vec_to_tensor(
-        self: Union[ivy.Array, ivy.NativeArray, ivy.Container],
+        self: Union[aikit.Array, aikit.NativeArray, aikit.Container],
         /,
-        shape: Union[ivy.Shape, ivy.NativeShape, Sequence[int], ivy.Container],
-        skip_begin: Optional[Union[int, ivy.Container]] = 1,
+        shape: Union[aikit.Shape, aikit.NativeShape, Sequence[int], aikit.Container],
+        skip_begin: Optional[Union[int, aikit.Container]] = 1,
         *,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of ivy.partial_vec_to_tensor.
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of aikit.partial_vec_to_tensor.
 
         This method simply wraps the function, and so the docstring for
-        ivy.partial_vec_to_tensor also applies to this method with minimal
+        aikit.partial_vec_to_tensor also applies to this method with minimal
         changes.
 
         Parameters
@@ -3455,21 +3455,21 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
     @staticmethod
     def static_matricize(
-        x: Union[ivy.Array, ivy.NativeArray, ivy.Container],
+        x: Union[aikit.Array, aikit.NativeArray, aikit.Container],
         /,
-        row_modes: Union[Sequence[int], ivy.Container],
-        column_modes: Optional[Union[Sequence[int], ivy.Container]] = None,
+        row_modes: Union[Sequence[int], aikit.Container],
+        column_modes: Optional[Union[Sequence[int], aikit.Container]] = None,
         *,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container static method variant of ivy.matricize.
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container static method variant of aikit.matricize.
 
         This method simply wraps the function, and so the docstring for
-        ivy.matricize also applies to this method with minimal
+        aikit.matricize also applies to this method with minimal
         changes.
 
         Parameters
@@ -3486,7 +3486,7 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
         ret
         -------
-            ivy.Container
+            aikit.Container
         """
         return ContainerBase.cont_multi_map_in_function(
             "matricize",
@@ -3501,21 +3501,21 @@ class _ContainerWithManipulationExperimental(ContainerBase):
         )
 
     def matricize(
-        self: Union[ivy.Array, ivy.NativeArray, ivy.Container],
+        self: Union[aikit.Array, aikit.NativeArray, aikit.Container],
         /,
-        row_modes: Union[Sequence[int], ivy.Container],
-        column_modes: Optional[Union[Sequence[int], ivy.Container]] = None,
+        row_modes: Union[Sequence[int], aikit.Container],
+        column_modes: Optional[Union[Sequence[int], aikit.Container]] = None,
         *,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of ivy.matricize.
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of aikit.matricize.
 
         This method simply wraps the function, and so the docstring for
-        ivy.matricize also applies to this method with minimal
+        aikit.matricize also applies to this method with minimal
         changes.
 
         Parameters
@@ -3531,26 +3531,26 @@ class _ContainerWithManipulationExperimental(ContainerBase):
             optional output array, for writing the result to.
         ret
         -------
-            ivy.Container
+            aikit.Container
         """
         return self.static_matricize(self, row_modes, column_modes, out=out)
 
     @staticmethod
     def static_soft_thresholding(
-        x: Union[ivy.Array, ivy.NativeArray, ivy.Container],
+        x: Union[aikit.Array, aikit.NativeArray, aikit.Container],
         /,
-        threshold: Union[float, ivy.Array, ivy.NativeArray, ivy.Container],
+        threshold: Union[float, aikit.Array, aikit.NativeArray, aikit.Container],
         *,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container static method variant of ivy.soft_thresholding.
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container static method variant of aikit.soft_thresholding.
 
         This method simply wraps the function, and so the docstring for
-        ivy.soft_thresholding also applies to this method with minimal
+        aikit.soft_thresholding also applies to this method with minimal
         changes.
 
         Parameters
@@ -3566,7 +3566,7 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
         Returns
         -------
-        ivy.Container
+        aikit.Container
             thresholded tensor on which the operator has been applied
         """
         return ContainerBase.cont_multi_map_in_function(
@@ -3581,20 +3581,20 @@ class _ContainerWithManipulationExperimental(ContainerBase):
         )
 
     def soft_thresholding(
-        self: Union[ivy.Array, ivy.NativeArray, ivy.Container],
+        self: Union[aikit.Array, aikit.NativeArray, aikit.Container],
         /,
-        threshold: Union[float, ivy.Array, ivy.NativeArray, ivy.Container],
+        threshold: Union[float, aikit.Array, aikit.NativeArray, aikit.Container],
         *,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of ivy.soft_thresholding.
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of aikit.soft_thresholding.
 
         This method simply wraps the function, and so the docstring for
-        ivy.soft_thresholding also applies to this method with minimal
+        aikit.soft_thresholding also applies to this method with minimal
         changes.
 
         Parameters
@@ -3610,26 +3610,26 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
         Returns
         -------
-        ivy.Container
+        aikit.Container
             thresholded tensor on which the operator has been applied
         """
         return self.static_soft_thresholding(self, threshold, out=out)
 
     @staticmethod
     def static_column_stack(
-        xs: Sequence[Union[ivy.Array, ivy.NativeArray, ivy.Container]],
+        xs: Sequence[Union[aikit.Array, aikit.NativeArray, aikit.Container]],
         /,
         *,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container static method variant of ivy.column_stack.
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container static method variant of aikit.column_stack.
 
         This method simply wraps the function, and so the docstring for
-        ivy.column_stack also applies to this method with minimal
+        aikit.column_stack also applies to this method with minimal
         changes.
 
         Parameters
@@ -3667,20 +3667,20 @@ class _ContainerWithManipulationExperimental(ContainerBase):
         )
 
     def column_stack(
-        self: ivy.Container,
+        self: aikit.Container,
         /,
-        xs: Sequence[Union[ivy.Array, ivy.NativeArray, ivy.Container]],
+        xs: Sequence[Union[aikit.Array, aikit.NativeArray, aikit.Container]],
         *,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of ivy.column_stack.
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of aikit.column_stack.
 
         This method simply wraps the function, and so the docstring for
-        ivy.column_stack also applies to this method with minimal
+        aikit.column_stack also applies to this method with minimal
         changes.
 
         Parameters
@@ -3709,7 +3709,7 @@ class _ContainerWithManipulationExperimental(ContainerBase):
         ret
             An output container with the results.
         """
-        new_xs = xs.cont_copy() if ivy.is_ivy_container(xs) else list(xs).copy()
+        new_xs = xs.cont_copy() if aikit.is_aikit_container(xs) else list(xs).copy()
         new_xs.insert(0, self.cont_copy())
         return self.static_column_stack(
             new_xs,
@@ -3722,25 +3722,25 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
     @staticmethod
     def _static_put_along_axis(
-        arr: Union[ivy.Array, ivy.NativeArray, ivy.Container],
-        indices: Union[ivy.Array, ivy.NativeArray, ivy.Container],
-        values: Union[ivy.Array, ivy.NativeArray, ivy.Container],
-        axis: Union[int, ivy.Container],
+        arr: Union[aikit.Array, aikit.NativeArray, aikit.Container],
+        indices: Union[aikit.Array, aikit.NativeArray, aikit.Container],
+        values: Union[aikit.Array, aikit.NativeArray, aikit.Container],
+        axis: Union[int, aikit.Container],
         /,
         *,
         mode: Optional[
-            Union[Literal["sum", "min", "max", "mul", "mean", "replace"], ivy.Container]
+            Union[Literal["sum", "min", "max", "mul", "mean", "replace"], aikit.Container]
         ] = "replace",
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
         to_apply: bool = True,
         prune_unapplied: bool = False,
         map_sequences: bool = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container static method variant of ivy.put_along_axis.
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container static method variant of aikit.put_along_axis.
 
         This method simply wraps the function, and so the docstring for
-        ivy.put_along_axis also applies to this method with minimal
+        aikit.put_along_axis also applies to this method with minimal
         changes.
         """
         return ContainerBase.cont_multi_map_in_function(
@@ -3758,25 +3758,25 @@ class _ContainerWithManipulationExperimental(ContainerBase):
         )
 
     def put_along_axis(
-        self: ivy.Container,
-        indices: Union[ivy.Array, ivy.NativeArray, ivy.Container],
-        values: Union[ivy.Array, ivy.NativeArray, ivy.Container],
-        axis: Union[int, ivy.Container],
+        self: aikit.Container,
+        indices: Union[aikit.Array, aikit.NativeArray, aikit.Container],
+        values: Union[aikit.Array, aikit.NativeArray, aikit.Container],
+        axis: Union[int, aikit.Container],
         /,
         *,
         mode: Optional[
-            Union[Literal["sum", "min", "max", "mul", "mean", "replace"], ivy.Container]
+            Union[Literal["sum", "min", "max", "mul", "mean", "replace"], aikit.Container]
         ] = "replace",
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
         to_apply: bool = True,
         prune_unapplied: bool = False,
         map_sequences: bool = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of ivy.put_along_axis.
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of aikit.put_along_axis.
 
         This method simply wraps the function, and so the docstring for
-        ivy.put_along_axis also applies to this method with minimal
+        aikit.put_along_axis also applies to this method with minimal
         changes.
         """
         return self._static_put_along_axis(
@@ -3794,23 +3794,23 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
     @staticmethod
     def _static_take(
-        x: Union[int, ivy.Array, ivy.NativeArray, ivy.Container],
-        indices: Union[int, ivy.Array, ivy.NativeArray, ivy.Container],
+        x: Union[int, aikit.Array, aikit.NativeArray, aikit.Container],
+        indices: Union[int, aikit.Array, aikit.NativeArray, aikit.Container],
         /,
         *,
-        axis: Optional[Union[int, ivy.Container]] = None,
-        mode: Union[str, ivy.Container] = "fill",
-        fill_value: Optional[Union[Number, ivy.Container]] = None,
-        out: Optional[Union[ivy.Array, ivy.Container]] = None,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> ivy.Container:
-        """ivy.Container static method variant of ivy.take.
+        axis: Optional[Union[int, aikit.Container]] = None,
+        mode: Union[str, aikit.Container] = "fill",
+        fill_value: Optional[Union[Number, aikit.Container]] = None,
+        out: Optional[Union[aikit.Array, aikit.Container]] = None,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> aikit.Container:
+        """aikit.Container static method variant of aikit.take.
 
         This method simply wraps the function, and so the docstring for
-        ivy.take also applies to this method with minimal changes.
+        aikit.take also applies to this method with minimal changes.
 
         Parameters
         ----------
@@ -3865,18 +3865,18 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
         Examples
         --------
-        With `ivy.Container` input:
+        With `aikit.Container` input:
 
-        >>> x = ivy.Container(a=ivy.array([True,False,False]),
-        ...                     b=ivy.array([2.3,4.5,6.7]),
-        ...                     c=ivy.array([1,2,3]))
-        >>> indices = ivy.array([[1,9,2]])
-        >>> y = ivy.Container._static_take(x, indices)
+        >>> x = aikit.Container(a=aikit.array([True,False,False]),
+        ...                     b=aikit.array([2.3,4.5,6.7]),
+        ...                     c=aikit.array([1,2,3]))
+        >>> indices = aikit.array([[1,9,2]])
+        >>> y = aikit.Container._static_take(x, indices)
         >>> print(y)
         {
-            a: ivy.array([[False, True, False]]),
-            b: ivy.array([[4.5, nan, 6.69999981]]),
-            c: ivy.array([[2, -2147483648, 3]])
+            a: aikit.array([[False, True, False]]),
+            b: aikit.array([[4.5, nan, 6.69999981]]),
+            c: aikit.array([[2, -2147483648, 3]])
         }
         """
         return ContainerBase.cont_multi_map_in_function(
@@ -3894,23 +3894,23 @@ class _ContainerWithManipulationExperimental(ContainerBase):
         )
 
     def take(
-        self: Union[int, ivy.Array, ivy.NativeArray, ivy.Container],
-        indices: Union[int, ivy.Array, ivy.NativeArray, ivy.Container],
+        self: Union[int, aikit.Array, aikit.NativeArray, aikit.Container],
+        indices: Union[int, aikit.Array, aikit.NativeArray, aikit.Container],
         /,
         *,
-        axis: Optional[Union[int, ivy.Container]] = None,
-        mode: Union[str, ivy.Container] = "fill",
-        fill_value: Optional[Union[Number, ivy.Container]] = None,
-        out: Optional[Union[ivy.Array, ivy.Container]] = None,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of ivy.take.
+        axis: Optional[Union[int, aikit.Container]] = None,
+        mode: Union[str, aikit.Container] = "fill",
+        fill_value: Optional[Union[Number, aikit.Container]] = None,
+        out: Optional[Union[aikit.Array, aikit.Container]] = None,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of aikit.take.
 
         This method simply wraps the function, and so the docstring for
-        ivy.take also applies to this method with minimal changes.
+        aikit.take also applies to this method with minimal changes.
 
         Parameters
         ----------
@@ -3965,18 +3965,18 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
         Examples
         --------
-        With `ivy.Container` input:
+        With `aikit.Container` input:
 
-        >>> x = ivy.Container(a=ivy.array([True,False,False]),
-        ...                     b=ivy.array([2.3,4.5,6.7]),
-        ...                     c=ivy.array([1,2,3]))
-        >>> indices = ivy.array([[1,9,2]])
+        >>> x = aikit.Container(a=aikit.array([True,False,False]),
+        ...                     b=aikit.array([2.3,4.5,6.7]),
+        ...                     c=aikit.array([1,2,3]))
+        >>> indices = aikit.array([[1,9,2]])
         >>> y = x.take(indices)
         >>> print(y)
         {
-            a: ivy.array([[False, True, False]]),
-            b: ivy.array([[4.5, nan, 6.69999981]]),
-            c: ivy.array([[2, -2147483648, 3]])
+            a: aikit.array([[False, True, False]]),
+            b: aikit.array([[4.5, nan, 6.69999981]]),
+            c: aikit.array([[2, -2147483648, 3]])
         }
         """
         return self._static_take(
@@ -3994,13 +3994,13 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
     @staticmethod
     def _static_trim_zeros(
-        a: Union[ivy.Array, ivy.NativeArray, ivy.Container],
+        a: Union[aikit.Array, aikit.NativeArray, aikit.Container],
         /,
         *,
         trim: Optional[str] = "fb",
-    ) -> ivy.Container:
-        """ivy.Container static method variant of ivy.trim_zeros. This method
-        simply wraps the function, and so the docstring for ivy.trim_zeros also
+    ) -> aikit.Container:
+        """aikit.Container static method variant of aikit.trim_zeros. This method
+        simply wraps the function, and so the docstring for aikit.trim_zeros also
         applies to this method with minimal changes.
 
         Parameters
@@ -4019,24 +4019,24 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
         Examples
         --------
-        >>> a = ivy.array([0, 0, 0, 0, 8, 3, 0, 0, 7, 1, 0])
-        >>> ivy.trim_zeros(a)
+        >>> a = aikit.array([0, 0, 0, 0, 8, 3, 0, 0, 7, 1, 0])
+        >>> aikit.trim_zeros(a)
         array([8, 3, 0, 0, 7, 1])
-        >>> ivy.trim_zeros(a, 'b')
+        >>> aikit.trim_zeros(a, 'b')
         array([0, 0, 0, 0, 8, 3, 0, 0, 7, 1])
-        >>> ivy.trim_zeros([0, 8, 3, 0, 0])
+        >>> aikit.trim_zeros([0, 8, 3, 0, 0])
         [8, 3]
         """
         return ContainerBase.cont_multi_map_in_function(a, trim)
 
     def trim_zeros(
-        self: ivy.Container,
+        self: aikit.Container,
         /,
         *,
         trim: Optional[str] = "fb",
-    ) -> ivy.Array:
-        """ivy.Container instance method variant of ivy.trim_zeros. This method
-        simply wraps the function, and so the docstring for ivy.trim_zeros also
+    ) -> aikit.Array:
+        """aikit.Container instance method variant of aikit.trim_zeros. This method
+        simply wraps the function, and so the docstring for aikit.trim_zeros also
         applies to this method with minimal changes.
 
         Parameters
@@ -4055,35 +4055,35 @@ class _ContainerWithManipulationExperimental(ContainerBase):
 
         Examples
         --------
-        >>> a = ivy.array([0, 0, 0, 0, 8, 3, 0, 0, 7, 1, 0])
-        >>> ivy.trim_zeros(a)
+        >>> a = aikit.array([0, 0, 0, 0, 8, 3, 0, 0, 7, 1, 0])
+        >>> aikit.trim_zeros(a)
         array([8, 3, 0, 0, 7, 1])
-        >>> ivy.trim_zeros(a, 'b')
+        >>> aikit.trim_zeros(a, 'b')
         array([0, 0, 0, 0, 8, 3, 0, 0, 7, 1])
-        >>> ivy.trim_zeros([0, 8, 3, 0, 0])
+        >>> aikit.trim_zeros([0, 8, 3, 0, 0])
         [8, 3]
         """
         return self._static_trim_zeros(self, trim=trim)
 
 
 def concat_from_sequence(
-    self: ivy.Container,
+    self: aikit.Container,
     /,
     input_sequence: Union[
-        Tuple[Union[ivy.Array, ivy.NativeArray, ivy.Container]],
-        List[Union[ivy.Array, ivy.NativeArray, ivy.Container]],
+        Tuple[Union[aikit.Array, aikit.NativeArray, aikit.Container]],
+        List[Union[aikit.Array, aikit.NativeArray, aikit.Container]],
     ],
     *,
-    new_axis: Union[int, ivy.Container] = 0,
-    axis: Union[int, ivy.Container] = 0,
-    key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-    to_apply: Union[bool, ivy.Container] = True,
-    prune_unapplied: Union[bool, ivy.Container] = False,
-    map_sequences: Union[bool, ivy.Container] = False,
-    out: Optional[ivy.Container] = None,
-) -> ivy.Container:
-    """ivy.Container instance method variant of ivy.stack. This method simply
-    wraps the function, and so the docstring for ivy.stack also applies to this
+    new_axis: Union[int, aikit.Container] = 0,
+    axis: Union[int, aikit.Container] = 0,
+    key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+    to_apply: Union[bool, aikit.Container] = True,
+    prune_unapplied: Union[bool, aikit.Container] = False,
+    map_sequences: Union[bool, aikit.Container] = False,
+    out: Optional[aikit.Container] = None,
+) -> aikit.Container:
+    """aikit.Container instance method variant of aikit.stack. This method simply
+    wraps the function, and so the docstring for aikit.stack also applies to this
     method with minimal changes.
 
     Parameters
@@ -4101,7 +4101,7 @@ def concat_from_sequence(
     new_axis = 1: stack
     axis
     axis along which the array leaves will be concatenated. More details can be found in
-    the docstring for ivy.stack.
+    the docstring for aikit.stack.
     key_chains
     The key-chains to apply or not apply the method to. Default is ``None``.
     to_apply
@@ -4124,22 +4124,22 @@ def concat_from_sequence(
 
     Examples
     --------
-    >>> x = ivy.Container(a=ivy.array([[0, 1], [2,3]]), b=ivy.array([[4, 5]]))
-    >>> y = ivy.Container(a=ivy.array([[3, 2], [1,0]]), b=ivy.array([[1, 0]]))
-    >>> z = ivy.Container.static_concat_from_sequence([x,y],axis=1)
+    >>> x = aikit.Container(a=aikit.array([[0, 1], [2,3]]), b=aikit.array([[4, 5]]))
+    >>> y = aikit.Container(a=aikit.array([[3, 2], [1,0]]), b=aikit.array([[1, 0]]))
+    >>> z = aikit.Container.static_concat_from_sequence([x,y],axis=1)
     >>> print(z)
     {
-    'a': ivy.array([[[0, 1],
+    'a': aikit.array([[[0, 1],
                      [3, 2]],
                      [[2, 3],
                      [1, 0]]]),
-    'b': ivy.array([[[4, 5],
+    'b': aikit.array([[[4, 5],
                      [1, 0]]])
     }
     """
     new_input_sequence = (
         input_sequence.cont_copy()
-        if ivy.is_ivy_container(input_sequence)
+        if aikit.is_aikit_container(input_sequence)
         else input_sequence.copy()
     )
     new_input_sequence.insert(0, self.cont_copy())

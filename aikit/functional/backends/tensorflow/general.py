@@ -1,6 +1,6 @@
 """Tensorflow general functions.
 
-Collection of TensorFlow general functions, wrapped to fit Ivy syntax
+Collection of TensorFlow general functions, wrapped to fit Aikit syntax
 and signature.
 """
 
@@ -337,7 +337,7 @@ def scatter_flat(
     elif reduction == "sum":
         res = tf.tensor_scatter_nd_add(target, tf.expand_dims(indices, -1), updates)
     else:
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             f'reduction is {reduction}, but it must be one of "sum", "min", "max" or'
             ' "replace"'
         )
@@ -397,7 +397,7 @@ def scatter_nd(
     elif reduction == "replace":
         res = tf.tensor_scatter_nd_update(target, indices, updates)
     else:
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             f'reduction is {reduction}, but it must be one of "sum", "min", "max",'
             ' "mul" or "replace"'
         )
@@ -455,7 +455,7 @@ def vmap(
                     axis_size.add(arg.shape[axis])
 
         if len(axis_size) > 1:
-            raise aikit.utils.exceptions.IvyException(
+            raise aikit.utils.exceptions.AikitException(
                 """Inconsistent sizes. All mapped axes should have the same size"""
             )
 

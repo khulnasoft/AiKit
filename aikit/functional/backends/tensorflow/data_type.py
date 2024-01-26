@@ -117,7 +117,7 @@ def broadcast_arrays(
         try:
             desired_shape = tf.broadcast_dynamic_shape(arrays[0].shape, arrays[1].shape)
         except tf.errors.InvalidArgumentError as e:
-            raise aikit.utils.exceptions.IvyBroadcastShapeError(e) from e
+            raise aikit.utils.exceptions.AikitBroadcastShapeError(e) from e
         if len(arrays) > 2:
             for i in range(2, len(arrays)):
                 try:
@@ -125,7 +125,7 @@ def broadcast_arrays(
                         desired_shape, arrays[i].shape
                     )
                 except tf.errors.InvalidArgumentError as e:
-                    raise aikit.utils.exceptions.IvyBroadcastShapeError(e) from e
+                    raise aikit.utils.exceptions.AikitBroadcastShapeError(e) from e
     else:
         return [arrays[0]]
     result = []
@@ -201,7 +201,7 @@ def as_aikit_dtype(
         if dtype_in in native_dtype_dict:
             dtype_str = dtype_in
         else:
-            raise aikit.utils.exceptions.IvyException(
+            raise aikit.utils.exceptions.AikitException(
                 "Cannot convert to aikit dtype."
                 f" {dtype_in} is not supported by TensorFlow backend."
             )
@@ -219,7 +219,7 @@ def as_aikit_dtype(
     elif "bool" in dtype_str:
         return aikit.Dtype("bool")
     else:
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             f"Cannot recognize {dtype_str} as a valid Dtype."
         )
 
@@ -242,7 +242,7 @@ def as_native_dtype(
     if dtype_in in native_dtype_dict:
         return native_dtype_dict[aikit.Dtype(dtype_in)]
     else:
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             "Cannot convert to TensorFlow dtype."
             f" {dtype_in} is not supported by TensorFlow."
         )

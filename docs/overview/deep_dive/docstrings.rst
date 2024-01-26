@@ -8,10 +8,10 @@ Docstrings
 .. _`docstrings thread`: https://discord.com/channels/799879767196958751/1189906836426596412
 
 
-All functions in the Ivy API at :mod:`ivy/functional/ivy/category_name.py` should have full and thorough docstrings.
-In contrast, all backend implementations at :mod:`ivy/functional/backends/backend_name/category_name.py` should not have any docstrings, on account that these are effectively just different instantiations of the functions at :mod:`ivy/functional/ivy/category_name.py`.
+All functions in the Aikit API at :mod:`aikit/functional/aikit/category_name.py` should have full and thorough docstrings.
+In contrast, all backend implementations at :mod:`aikit/functional/backends/backend_name/category_name.py` should not have any docstrings, on account that these are effectively just different instantiations of the functions at :mod:`aikit/functional/aikit/category_name.py`.
 
-In order to explain how docstrings should be written, we will use :func:`ivy.tan` as an example.
+In order to explain how docstrings should be written, we will use :func:`aikit.tan` as an example.
 
 Firstly, if the function exists in the `Array API Standard`_, then we start with the corresponding docstring as a template.
 These docstrings can be found under `spec/API_specification/array_api`_.
@@ -57,8 +57,8 @@ Therefore, we simply remove all type info from the docstring like so:
     +out
 
 The `Array API Standard`_ defines a subset of behaviour that each function must adhere to.
-Ivy extends many of these functions with additional behaviour and arguments.
-In the case of :func:`ivy.tan`, there is also the argument :code:`out` which needs to be added to the docstring, like so:
+Aikit extends many of these functions with additional behaviour and arguments.
+In the case of :func:`aikit.tan`, there is also the argument :code:`out` which needs to be added to the docstring, like so:
 
 .. code-block:: diff
 
@@ -89,7 +89,7 @@ Finally, **if** the function is *nestable*, then we add a simple explanation for
 .. code-block:: diff
 
     +Both the description and the type hints above assumes an array input for simplicity,
-    +but this function is *nestable*, and therefore also accepts :class:`ivy.Container`
+    +but this function is *nestable*, and therefore also accepts :class:`aikit.Container`
     +instances in place of any of the arguments.
 
 Following these changes, the new docstring is as follows:
@@ -131,21 +131,21 @@ Following these changes, the new docstring is as follows:
     in the standard.
 
     Both the description and the type hints above assumes an array input for simplicity,
-    but this function is *nestable*, and therefore also accepts :class:`ivy.Container`
+    but this function is *nestable*, and therefore also accepts :class:`aikit.Container`
     instances in place of any of the arguments.
 
 If the function that you are writing a docstring for is **not** in the `Array API Standard`_, then you must simply follow this general template as closely as possible, but instead you must use your own judgment when adding descriptions for the overall function, and also for each of its arguments.
 
 **Classes**
 
-The instance methods in :class:`ivy.Array` and :class:`ivy.Container` which directly wrap a function in the functional API do not require thorough docstrings, on account that these instance methods require no explanation beyond that provided in the docstring for the wrapped function.
+The instance methods in :class:`aikit.Array` and :class:`aikit.Container` which directly wrap a function in the functional API do not require thorough docstrings, on account that these instance methods require no explanation beyond that provided in the docstring for the wrapped function.
 
 Therefore, these docstrings should all simply contain the following text:
 
 .. code-block:: python
 
-    ivy.<Array|Container> <instance|special|reverse special> method variant of ivy.<func_name>. This method simply wraps the
-    function, and so the docstring for ivy.<func_name> also applies to this method
+    aikit.<Array|Container> <instance|special|reverse special> method variant of aikit.<func_name>. This method simply wraps the
+    function, and so the docstring for aikit.<func_name> also applies to this method
     with minimal changes.
 
     Parameters
@@ -156,14 +156,14 @@ Therefore, these docstrings should all simply contain the following text:
     -------
     <return value with its description>
 
-The exception to this is :class:`ivy.Container` :code:`special` method docstrings,
+The exception to this is :class:`aikit.Container` :code:`special` method docstrings,
 which should instead use the following text, as these do not *directly* wrap a function
-in Ivy's functional API, but rather wrap the pure operator functions themselves,
+in Aikit's functional API, but rather wrap the pure operator functions themselves,
 which can be called on any types that support the corresponding special methods:
 
 .. parsed-literal::
 
-    ivy.Container <special|reverse special> method for the <operator_name> operator,
+    aikit.Container <special|reverse special> method for the <operator_name> operator,
     calling :code:`operator.<operator_name>` for each of the corresponding leaves of
     the two containers.
 
@@ -175,19 +175,19 @@ which can be called on any types that support the corresponding special methods:
     -------
     <return value with its description>
 
-Let's take :func:`ivy.add` as an example.
-The docstring for `ivy.add <https://github.com/khulnasoft/aikit/blob/04766790a518ecde380cb6eeb05aa89cf5acdbfd/ivy/functional/ivy/elementwise.py#L191>`_ is thorough, as explained above.
-However, the docstrings for `ivy.Array.add <https://github.com/khulnasoft/aikit/blob/04766790a518ecde380cb6eeb05aa89cf5acdbfd/ivy/array/elementwise.py#L36>`_, `ivy.Container.add <https://github.com/khulnasoft/aikit/blob/04766790a518ecde380cb6eeb05aa89cf5acdbfd/ivy/container/elementwise.py#L209>`_ all follow the succinct pattern outlined above.
-Likewise, the docstrings for the special methods `ivy.Array.__add__ <https://github.com/khulnasoft/aikit/blob/04766790a518ecde380cb6eeb05aa89cf5acdbfd/ivy/array/array.py#L310>`_, `ivy.Array.__radd__ <https://github.com/khulnasoft/aikit/blob/04766790a518ecde380cb6eeb05aa89cf5acdbfd/ivy/array/array.py#L359>`_, `ivy.Container.__add__ <https://github.com/khulnasoft/aikit/blob/04766790a518ecde380cb6eeb05aa89cf5acdbfd/ivy/container/container.py#L106>`_, and `ivy.Container.__radd__ <https://github.com/khulnasoft/aikit/blob/04766790a518ecde380cb6eeb05aa89cf5acdbfd/ivy/container/container.py#L171>`_, also follow the succinct pattern outlined above.
+Let's take :func:`aikit.add` as an example.
+The docstring for `aikit.add <https://github.com/khulnasoft/aikit/blob/04766790a518ecde380cb6eeb05aa89cf5acdbfd/aikit/functional/aikit/elementwise.py#L191>`_ is thorough, as explained above.
+However, the docstrings for `aikit.Array.add <https://github.com/khulnasoft/aikit/blob/04766790a518ecde380cb6eeb05aa89cf5acdbfd/aikit/array/elementwise.py#L36>`_, `aikit.Container.add <https://github.com/khulnasoft/aikit/blob/04766790a518ecde380cb6eeb05aa89cf5acdbfd/aikit/container/elementwise.py#L209>`_ all follow the succinct pattern outlined above.
+Likewise, the docstrings for the special methods `aikit.Array.__add__ <https://github.com/khulnasoft/aikit/blob/04766790a518ecde380cb6eeb05aa89cf5acdbfd/aikit/array/array.py#L310>`_, `aikit.Array.__radd__ <https://github.com/khulnasoft/aikit/blob/04766790a518ecde380cb6eeb05aa89cf5acdbfd/aikit/array/array.py#L359>`_, `aikit.Container.__add__ <https://github.com/khulnasoft/aikit/blob/04766790a518ecde380cb6eeb05aa89cf5acdbfd/aikit/container/container.py#L106>`_, and `aikit.Container.__radd__ <https://github.com/khulnasoft/aikit/blob/04766790a518ecde380cb6eeb05aa89cf5acdbfd/aikit/container/container.py#L171>`_, also follow the succinct pattern outlined above.
 Note that these docstrings all *also* include examples, which we will cover in the next section.
 
-For all other classes, such as the various layers at :code:`ivy/ivy/stateful/layers`, then we should add full and thorough docstrings for both the **constructor** and also **all methods**.
+For all other classes, such as the various layers at :code:`aikit/aikit/stateful/layers`, then we should add full and thorough docstrings for both the **constructor** and also **all methods**.
 
 This is the case even when the class directly wraps a function in the functional API.
-For example, the class `ivy.Linear <https://github.com/khulnasoft/aikit/blob/51c23694c2f51e88caef0f382f200b195f8458b5/ivy/stateful/layers.py#L13>`_ wraps the function `ivy.linear <https://github.com/khulnasoft/aikit/blob/51c23694c2f51e88caef0f382f200b195f8458b5/ivy/functional/ivy/layers.py#L22>`_, but does so in a stateful manner with the variables stored internally in the instance of the class.
-Even though the :class:`ivy.Linear` class wraps :func:`ivy.linear` in the forward pass defined in `ivy.Linear._forward <https://github.com/khulnasoft/aikit/blob/51c23694c2f51e88caef0f382f200b195f8458b5/ivy/stateful/layers.py#L84>`_, the function signatures of :func:`ivy.linear` and :meth:`ivy.Linear._forward` are still quite distinct, with the former including all trainable variables explicitly, and the latter having these implicit as internal instance attributes of the class.
+For example, the class `aikit.Linear <https://github.com/khulnasoft/aikit/blob/51c23694c2f51e88caef0f382f200b195f8458b5/aikit/stateful/layers.py#L13>`_ wraps the function `aikit.linear <https://github.com/khulnasoft/aikit/blob/51c23694c2f51e88caef0f382f200b195f8458b5/aikit/functional/aikit/layers.py#L22>`_, but does so in a stateful manner with the variables stored internally in the instance of the class.
+Even though the :class:`aikit.Linear` class wraps :func:`aikit.linear` in the forward pass defined in `aikit.Linear._forward <https://github.com/khulnasoft/aikit/blob/51c23694c2f51e88caef0f382f200b195f8458b5/aikit/stateful/layers.py#L84>`_, the function signatures of :func:`aikit.linear` and :meth:`aikit.Linear._forward` are still quite distinct, with the former including all trainable variables explicitly, and the latter having these implicit as internal instance attributes of the class.
 
-Therefore, with the exception of the :class:`ivy.Array` and :class:`ivy.Container` methods which directly wrap functions in the functional API, we should always add full and thorough docstrings to all methods of all other classes in Ivy, including cases where these also directly wrap functions in the functional API.
+Therefore, with the exception of the :class:`aikit.Array` and :class:`aikit.Container` methods which directly wrap functions in the functional API, we should always add full and thorough docstrings to all methods of all other classes in Aikit, including cases where these also directly wrap functions in the functional API.
 
 **Round Up**
 

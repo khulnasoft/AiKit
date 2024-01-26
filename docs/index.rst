@@ -65,7 +65,7 @@
   :recursive:
   :hide-table:
 
-  ivy.functional.ivy
+  aikit.functional.aikit
 
 
 .. autosummary::
@@ -74,15 +74,15 @@
   :recursive:
   :hide-table:
 
-  ivy.data_classes
+  aikit.data_classes
 
 
 .. autosummary::
   :toctree: docs
-  :template: top_ivy_toc.rst
+  :template: top_aikit_toc.rst
   :recursive:
   :hide-table:
 
-  ivy.stateful
-  ivy.utils
-  ivy_tests.test_ivy.helpers
+  aikit.stateful
+  aikit.utils
+  aikit_tests.test_aikit.helpers

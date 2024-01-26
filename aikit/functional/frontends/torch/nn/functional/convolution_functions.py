@@ -272,7 +272,7 @@ def fold(input, output_size, kernel_size, dilation=1, padding=0, stride=1):
     if orig_ndim == 2:
         input = aikit.expand_dims(input, axis=0)
     elif orig_ndim != 3:
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             "only 2D or batched 3D inputs are supported"
         )
     stride = [stride] * 2 if isinstance(stride, int) else stride
@@ -324,7 +324,7 @@ def unfold(input, kernel_size, dilation=1, padding=0, stride=1):
     # TODO: refactor this function to use aikit.sliding_window, but ensure that the
     # function is transpilable to all backends with varying batch size(see issue #25796)
     if input.ndim != 4:
-        raise aikit.utils.exceptions.IvyException("only batched 4D inputs are supported")
+        raise aikit.utils.exceptions.AikitException("only batched 4D inputs are supported")
     stride = [stride] * 2 if isinstance(stride, int) else stride
     dilation = [dilation] * 2 if isinstance(dilation, int) else dilation
     padding = [padding] * 2 if isinstance(padding, int) else padding

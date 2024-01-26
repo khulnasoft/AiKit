@@ -1,33 +1,33 @@
-"""Ivy wrapping functions for conversions.
+"""Aikit wrapping functions for conversions.
 
-Collection of Ivy functions for wrapping functions to accept and return
-ivy.Array instances.
+Collection of Aikit functions for wrapping functions to accept and return
+aikit.Array instances.
 """
 
 # global
 from typing import Union, Dict, Optional, List
 
 # local
-import ivy
-from ivy.data_classes.container.base import ContainerBase
+import aikit
+from aikit.data_classes.container.base import ContainerBase
 
 
 class _ContainerWithConversions(ContainerBase):
     @staticmethod
     def _static_to_native(
-        x: Union[ivy.Array, ivy.NativeArray, ivy.Container],
-        nested: Union[bool, ivy.Container] = False,
-        include_derived: Optional[Union[Dict[str, bool], ivy.Container]] = None,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
+        x: Union[aikit.Array, aikit.NativeArray, aikit.Container],
+        nested: Union[bool, aikit.Container] = False,
+        include_derived: Optional[Union[Dict[str, bool], aikit.Container]] = None,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
         *,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container static method variant of ivy.to_native.
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container static method variant of aikit.to_native.
 
-        This method simply wraps the function, and so the docstring for ivy.to_native
+        This method simply wraps the function, and so the docstring for aikit.to_native
         also applies to this method with minimal changes.
 
         Parameters
@@ -37,7 +37,7 @@ class _ContainerWithConversions(ContainerBase):
         nested
             Whether to apply the conversion on arguments in a nested manner. If so, all
             dicts, lists and tuples will be traversed to their lowest leaves in search
-            of ivy.Array instances. Default is ``False``.
+            of aikit.Array instances. Default is ``False``.
         include_derived
             Whether to also recursive for classes derived from tuple, list and dict.
             Default is ``False``.
@@ -74,19 +74,19 @@ class _ContainerWithConversions(ContainerBase):
         )
 
     def to_native(
-        self: ivy.Container,
-        nested: Union[bool, ivy.Container] = False,
-        include_derived: Optional[Union[Dict[str, bool], ivy.Container]] = None,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
+        self: aikit.Container,
+        nested: Union[bool, aikit.Container] = False,
+        include_derived: Optional[Union[Dict[str, bool], aikit.Container]] = None,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
         *,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of ivy.to_native.
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of aikit.to_native.
 
-        This method simply wraps the function, and so the docstring for ivy.to_native
+        This method simply wraps the function, and so the docstring for aikit.to_native
         also applies to this method with minimal changes.
 
         Parameters
@@ -96,7 +96,7 @@ class _ContainerWithConversions(ContainerBase):
         nested
             Whether to apply the conversion on arguments in a nested manner. If so, all
             dicts, lists and tuples will be traversed to their lowest leaves in search
-            of ivy.Array instances. Default is ``False``.
+            of aikit.Array instances. Default is ``False``.
         include_derived
             Whether to also recursive for classes derived from tuple, list and dict.
             Default is ``False``.
@@ -132,20 +132,20 @@ class _ContainerWithConversions(ContainerBase):
         )
 
     @staticmethod
-    def _static_to_ivy(
-        x: Union[ivy.Array, ivy.NativeArray, ivy.Container],
-        nested: Union[bool, ivy.Container] = False,
-        include_derived: Optional[Union[Dict[str, bool], ivy.Container]] = None,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
+    def _static_to_aikit(
+        x: Union[aikit.Array, aikit.NativeArray, aikit.Container],
+        nested: Union[bool, aikit.Container] = False,
+        include_derived: Optional[Union[Dict[str, bool], aikit.Container]] = None,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
         *,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container static method variant of ivy.to_ivy.
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container static method variant of aikit.to_aikit.
 
-        This method simply wraps the function, and so the docstring for ivy.to_ivy also
+        This method simply wraps the function, and so the docstring for aikit.to_aikit also
         applies to this method with minimal changes.
 
         Parameters
@@ -155,7 +155,7 @@ class _ContainerWithConversions(ContainerBase):
         nested
             Whether to apply the conversion on arguments in a nested manner. If so, all
             dicts, lists and tuples will be traversed to their lowest leaves in search
-            of ivy.Array instances. Default is ``False``.
+            of aikit.Array instances. Default is ``False``.
         include_derived
             Whether to also recursive for classes derived from tuple, list and dict.
             Default is ``False``.
@@ -177,11 +177,11 @@ class _ContainerWithConversions(ContainerBase):
         Returns
         -------
         ret
-            Container object with all native sub-arrays converted to their ivy.Array
+            Container object with all native sub-arrays converted to their aikit.Array
             instances.
         """
         return ContainerBase.cont_multi_map_in_function(
-            "to_ivy",
+            "to_aikit",
             x,
             nested=nested,
             include_derived=include_derived,
@@ -192,20 +192,20 @@ class _ContainerWithConversions(ContainerBase):
             out=out,
         )
 
-    def to_ivy(
-        self: ivy.Container,
-        nested: Union[bool, ivy.Container] = False,
-        include_derived: Optional[Union[Dict[str, bool], ivy.Container]] = None,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
+    def to_aikit(
+        self: aikit.Container,
+        nested: Union[bool, aikit.Container] = False,
+        include_derived: Optional[Union[Dict[str, bool], aikit.Container]] = None,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
         *,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of ivy.to_ivy.
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of aikit.to_aikit.
 
-        This method simply wraps the function, and so the docstring for ivy.to_ivy also
+        This method simply wraps the function, and so the docstring for aikit.to_aikit also
         applies to this method with minimal changes.
 
         Parameters
@@ -215,7 +215,7 @@ class _ContainerWithConversions(ContainerBase):
         nested
             Whether to apply the conversion on arguments in a nested manner. If so,
             all dicts, lists and tuples will be traversed to their lowest leaves in
-            search of ivy.Array instances. Default is ``False``.
+            search of aikit.Array instances. Default is ``False``.
         include_derived
             Whether to also recursive for classes derived from tuple, list and dict.
             Default is ``False``.
@@ -237,10 +237,10 @@ class _ContainerWithConversions(ContainerBase):
         Returns
         -------
         ret
-            Container object with all native sub-arrays converted to their ivy.Array
+            Container object with all native sub-arrays converted to their aikit.Array
             instances.
         """
-        return self._static_to_ivy(
+        return self._static_to_aikit(
             self,
             nested,
             include_derived,

@@ -4,26 +4,26 @@ from numbers import Number
 import numpy as np
 
 # local
-import ivy
-from ivy.data_classes.container.base import ContainerBase
+import aikit
+from aikit.data_classes.container.base import ContainerBase
 
 
 class _ContainerWithCreation(ContainerBase):
     @staticmethod
     def _static_arange(
-        start: Union[Number, ivy.Container],
+        start: Union[Number, aikit.Container],
         /,
-        stop: Optional[Union[Number, ivy.Container]] = None,
-        step: Union[Number, ivy.Container] = 1,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
+        stop: Optional[Union[Number, aikit.Container]] = None,
+        step: Union[Number, aikit.Container] = 1,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
         *,
-        dtype: Optional[Union[ivy.Dtype, ivy.NativeDtype, ivy.Container]] = None,
-        device: Optional[Union[ivy.Device, ivy.NativeDevice, ivy.Container]] = None,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
+        dtype: Optional[Union[aikit.Dtype, aikit.NativeDtype, aikit.Container]] = None,
+        device: Optional[Union[aikit.Device, aikit.NativeDevice, aikit.Container]] = None,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
         return ContainerBase.cont_multi_map_in_function(
             "arange",
             start,
@@ -41,26 +41,26 @@ class _ContainerWithCreation(ContainerBase):
     @staticmethod
     def _static_asarray(
         x: Union[
-            ivy.Array,
-            ivy.NativeArray,
+            aikit.Array,
+            aikit.NativeArray,
             List[Number],
             Tuple[Number],
             np.ndarray,
-            ivy.Container,
+            aikit.Container,
         ],
         /,
-        copy: Optional[Union[bool, ivy.Container]] = None,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
+        copy: Optional[Union[bool, aikit.Container]] = None,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
         *,
-        dtype: Optional[Union[ivy.Dtype, ivy.NativeDtype, ivy.Container]] = None,
-        device: Optional[Union[ivy.Device, ivy.NativeDevice, ivy.Container]] = None,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container static method variant of ivy.asarray. This method
-        simply wraps the function, and so the docstring for ivy.asarray also
+        dtype: Optional[Union[aikit.Dtype, aikit.NativeDtype, aikit.Container]] = None,
+        device: Optional[Union[aikit.Device, aikit.NativeDevice, aikit.Container]] = None,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container static method variant of aikit.asarray. This method
+        simply wraps the function, and so the docstring for aikit.asarray also
         applies to this method with minimal changes.
 
         Parameters
@@ -91,14 +91,14 @@ class _ContainerWithCreation(ContainerBase):
 
         Examples
         --------
-        With :class:`ivy.Container` as input:
-        >>> x = ivy.Container(a = [(1,2),(3,4),(5,6)], b = ((1,2,3),(4,5,6)))
-        >>> ivy.asarray(x)
+        With :class:`aikit.Container` as input:
+        >>> x = aikit.Container(a = [(1,2),(3,4),(5,6)], b = ((1,2,3),(4,5,6)))
+        >>> aikit.asarray(x)
         {
-            a: ivy.array([[1, 2],
+            a: aikit.array([[1, 2],
                           [3, 4],
                           [5, 6]]),
-            b: ivy.array([[1, 2, 3],
+            b: aikit.array([[1, 2, 3],
                           [4, 5, 6]])
         }
         """
@@ -116,18 +116,18 @@ class _ContainerWithCreation(ContainerBase):
         )
 
     def asarray(
-        self: ivy.Container,
+        self: aikit.Container,
         /,
-        copy: Optional[Union[bool, ivy.Container]] = None,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
+        copy: Optional[Union[bool, aikit.Container]] = None,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
         *,
-        dtype: Optional[Union[ivy.Dtype, ivy.NativeDtype, ivy.Container]] = None,
-        device: Optional[Union[ivy.Device, ivy.NativeDevice, ivy.Container]] = None,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
+        dtype: Optional[Union[aikit.Dtype, aikit.NativeDtype, aikit.Container]] = None,
+        device: Optional[Union[aikit.Device, aikit.NativeDevice, aikit.Container]] = None,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
         return self._static_asarray(
             self,
             key_chains=key_chains,
@@ -142,17 +142,17 @@ class _ContainerWithCreation(ContainerBase):
 
     @staticmethod
     def _static_zeros(
-        shape: Union[int, Sequence[int], ivy.Container],
+        shape: Union[int, Sequence[int], aikit.Container],
         /,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
         *,
-        out: Optional[ivy.Container] = None,
-        dtype: Optional[Union[ivy.Dtype, ivy.NativeDtype, ivy.Container]] = None,
-        device: Optional[Union[ivy.Device, ivy.NativeDevice, ivy.Container]] = None,
-    ) -> ivy.Container:
+        out: Optional[aikit.Container] = None,
+        dtype: Optional[Union[aikit.Dtype, aikit.NativeDtype, aikit.Container]] = None,
+        device: Optional[Union[aikit.Device, aikit.NativeDevice, aikit.Container]] = None,
+    ) -> aikit.Container:
         return ContainerBase.cont_multi_map_in_function(
             "zeros",
             shape,
@@ -167,17 +167,17 @@ class _ContainerWithCreation(ContainerBase):
 
     @staticmethod
     def _static_ones(
-        shape: Union[int, Sequence[int], ivy.Container],
+        shape: Union[int, Sequence[int], aikit.Container],
         /,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
         *,
-        out: Optional[ivy.Container] = None,
-        dtype: Optional[Union[ivy.Dtype, ivy.NativeDtype, ivy.Container]] = None,
-        device: Optional[Union[ivy.Device, ivy.NativeDevice, ivy.Container]] = None,
-    ) -> ivy.Container:
+        out: Optional[aikit.Container] = None,
+        dtype: Optional[Union[aikit.Dtype, aikit.NativeDtype, aikit.Container]] = None,
+        device: Optional[Union[aikit.Device, aikit.NativeDevice, aikit.Container]] = None,
+    ) -> aikit.Container:
         return ContainerBase.cont_multi_map_in_function(
             "ones",
             shape,
@@ -192,17 +192,17 @@ class _ContainerWithCreation(ContainerBase):
 
     @staticmethod
     def _static_empty(
-        shape: Union[int, Sequence[int], ivy.Container],
+        shape: Union[int, Sequence[int], aikit.Container],
         /,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
         *,
-        dtype: Optional[Union[ivy.Dtype, ivy.NativeDtype, ivy.Container]] = None,
-        device: Optional[Union[ivy.Device, ivy.NativeDevice, ivy.Container]] = None,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
+        dtype: Optional[Union[aikit.Dtype, aikit.NativeDtype, aikit.Container]] = None,
+        device: Optional[Union[aikit.Device, aikit.NativeDevice, aikit.Container]] = None,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
         return ContainerBase.cont_multi_map_in_function(
             "empty",
             shape,
@@ -217,18 +217,18 @@ class _ContainerWithCreation(ContainerBase):
 
     @staticmethod
     def _static_full(
-        shape: Union[ivy.Shape, ivy.NativeShape, ivy.Container],
-        fill_value: Union[float, bool, ivy.Container],
+        shape: Union[aikit.Shape, aikit.NativeShape, aikit.Container],
+        fill_value: Union[float, bool, aikit.Container],
         /,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
         *,
-        dtype: Optional[Union[ivy.Dtype, ivy.NativeDtype, ivy.Container]] = None,
-        out: Optional[ivy.Container] = None,
-        device: Optional[Union[ivy.Device, ivy.NativeDevice, ivy.Container]] = None,
-    ) -> ivy.Container:
+        dtype: Optional[Union[aikit.Dtype, aikit.NativeDtype, aikit.Container]] = None,
+        out: Optional[aikit.Container] = None,
+        device: Optional[Union[aikit.Device, aikit.NativeDevice, aikit.Container]] = None,
+    ) -> aikit.Container:
         return ContainerBase.cont_multi_map_in_function(
             "full",
             shape,
@@ -244,20 +244,20 @@ class _ContainerWithCreation(ContainerBase):
 
     @staticmethod
     def _static_full_like(
-        x: Union[ivy.Array, ivy.NativeArray, ivy.Container],
+        x: Union[aikit.Array, aikit.NativeArray, aikit.Container],
         /,
-        fill_value: Union[int, float, ivy.Container],
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
+        fill_value: Union[int, float, aikit.Container],
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
         *,
-        dtype: Optional[Union[ivy.Dtype, ivy.NativeDtype, ivy.Container]] = None,
-        device: Optional[Union[ivy.Device, ivy.NativeDevice, ivy.Container]] = None,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container static method variant of ivy.full_like. This method
-        simply wraps the function, and so the docstring for ivy.full_like also
+        dtype: Optional[Union[aikit.Dtype, aikit.NativeDtype, aikit.Container]] = None,
+        device: Optional[Union[aikit.Device, aikit.NativeDevice, aikit.Container]] = None,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container static method variant of aikit.full_like. This method
+        simply wraps the function, and so the docstring for aikit.full_like also
         applies to this method with minimal changes.
 
         Parameters
@@ -295,24 +295,24 @@ class _ContainerWithCreation(ContainerBase):
 
         Examples
         --------
-        With :class:`ivy.Container` input:
+        With :class:`aikit.Container` input:
 
-        >>> x = ivy.Container(a = ivy.array([1,2,3]) ,b = ivy.array([4,5,6]))
+        >>> x = aikit.Container(a = aikit.array([1,2,3]) ,b = aikit.array([4,5,6]))
         >>> fill_value = 10
-        >>> y = ivy.Container.static_full_like(fill_value)
+        >>> y = aikit.Container.static_full_like(fill_value)
         {
-            a: ivy.array([10, 10, 10]),
-            b: ivy.array([10, 10, 10])
+            a: aikit.array([10, 10, 10]),
+            b: aikit.array([10, 10, 10])
         }
 
-        >>> x = ivy.Container(a=ivy.array([1.2, 2.2324, 3.234]),
-        ...                   b=ivy.array([4.123, 5.23, 6.23]))
+        >>> x = aikit.Container(a=aikit.array([1.2, 2.2324, 3.234]),
+        ...                   b=aikit.array([4.123, 5.23, 6.23]))
         >>> fill_value = 15.0
-        >>> y = ivy.Container.static_full_like(fill_value)
+        >>> y = aikit.Container.static_full_like(fill_value)
         >>> print(y)
         {
-            a: ivy.array([15., 15., 15.]),
-            b: ivy.array([15., 15., 15.])
+            a: aikit.array([15., 15., 15.]),
+            b: aikit.array([15., 15., 15.])
         }
         """
         return ContainerBase.cont_multi_map_in_function(
@@ -329,20 +329,20 @@ class _ContainerWithCreation(ContainerBase):
         )
 
     def full_like(
-        self: ivy.Container,
+        self: aikit.Container,
         /,
-        fill_value: Union[int, float, ivy.Container],
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
+        fill_value: Union[int, float, aikit.Container],
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
         *,
-        out: Optional[ivy.Container] = None,
-        dtype: Optional[Union[ivy.Dtype, ivy.NativeDtype, ivy.Container]] = None,
-        device: Optional[Union[ivy.Device, ivy.NativeDevice, ivy.Container]] = None,
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of ivy.full_like. This method
-        simply wraps the function, and so the docstring for ivy.full_like also
+        out: Optional[aikit.Container] = None,
+        dtype: Optional[Union[aikit.Dtype, aikit.NativeDtype, aikit.Container]] = None,
+        device: Optional[Union[aikit.Device, aikit.NativeDevice, aikit.Container]] = None,
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of aikit.full_like. This method
+        simply wraps the function, and so the docstring for aikit.full_like also
         applies to this method with minimal changes.
 
         Parameters
@@ -380,24 +380,24 @@ class _ContainerWithCreation(ContainerBase):
 
         Examples
         --------
-        With :class:`ivy.Container` input:
+        With :class:`aikit.Container` input:
 
-        >>> x = ivy.Container(a = ivy.array([1,2,3]) ,b = ivy.array([4,5,6]))
+        >>> x = aikit.Container(a = aikit.array([1,2,3]) ,b = aikit.array([4,5,6]))
         >>> fill_value = 10
         >>> y = x.full_like(fill_value)
         {
-            a: ivy.array([10, 10, 10]),
-            b: ivy.array([10, 10, 10])
+            a: aikit.array([10, 10, 10]),
+            b: aikit.array([10, 10, 10])
         }
 
-        >>> x = ivy.Container(a=ivy.array([1.2,2.2324,3.234]),
-        ...                   b=ivy.array([4.123,5.23,6.23]))
+        >>> x = aikit.Container(a=aikit.array([1.2,2.2324,3.234]),
+        ...                   b=aikit.array([4.123,5.23,6.23]))
         >>> fill_value = 15.0
         >>> y = x.full_like(fill_value)
         >>> print(y)
         {
-            a: ivy.array([15., 15., 15.]),
-            b: ivy.array([15., 15., 15.])
+            a: aikit.array([15., 15., 15.]),
+            b: aikit.array([15., 15., 15.])
         }
         """
         return self._static_full_like(
@@ -414,19 +414,19 @@ class _ContainerWithCreation(ContainerBase):
 
     @staticmethod
     def _static_ones_like(
-        x: Union[ivy.Array, ivy.NativeArray, ivy.Container],
+        x: Union[aikit.Array, aikit.NativeArray, aikit.Container],
         /,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
         *,
-        dtype: Optional[Union[ivy.Dtype, ivy.NativeDtype, ivy.Container]] = None,
-        device: Optional[Union[ivy.Device, ivy.NativeDevice, ivy.Container]] = None,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container static method variant of ivy.ones_like. This method
-        simply wraps the function, and so the docstring for ivy.ones_like also
+        dtype: Optional[Union[aikit.Dtype, aikit.NativeDtype, aikit.Container]] = None,
+        device: Optional[Union[aikit.Device, aikit.NativeDevice, aikit.Container]] = None,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container static method variant of aikit.ones_like. This method
+        simply wraps the function, and so the docstring for aikit.ones_like also
         applies to this method with minimal changes.
 
         Parameters
@@ -472,19 +472,19 @@ class _ContainerWithCreation(ContainerBase):
         )
 
     def ones_like(
-        self: ivy.Container,
+        self: aikit.Container,
         /,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
         *,
-        dtype: Optional[Union[ivy.Dtype, ivy.NativeDtype, ivy.Container]] = None,
-        device: Optional[Union[ivy.Device, ivy.NativeDevice, ivy.Container]] = None,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of ivy.ones_like. This method
-        simply wraps the function, and so the docstring for ivy.ones_like also
+        dtype: Optional[Union[aikit.Dtype, aikit.NativeDtype, aikit.Container]] = None,
+        device: Optional[Union[aikit.Device, aikit.NativeDevice, aikit.Container]] = None,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of aikit.ones_like. This method
+        simply wraps the function, and so the docstring for aikit.ones_like also
         applies to this method with minimal changes.
 
         Parameters
@@ -530,19 +530,19 @@ class _ContainerWithCreation(ContainerBase):
 
     @staticmethod
     def _static_zeros_like(
-        x: Union[ivy.Array, ivy.NativeArray, ivy.Container],
+        x: Union[aikit.Array, aikit.NativeArray, aikit.Container],
         /,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
         *,
-        dtype: Optional[Union[ivy.Dtype, ivy.NativeDtype, ivy.Container]] = None,
-        device: Optional[Union[ivy.Device, ivy.NativeDevice, ivy.Container]] = None,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container static method variant of ivy.zeros_like. This method
-        simply wraps the function, and so the docstring for ivy.zeros_like also
+        dtype: Optional[Union[aikit.Dtype, aikit.NativeDtype, aikit.Container]] = None,
+        device: Optional[Union[aikit.Device, aikit.NativeDevice, aikit.Container]] = None,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container static method variant of aikit.zeros_like. This method
+        simply wraps the function, and so the docstring for aikit.zeros_like also
         applies to this method with minimal changes.
 
         Parameters
@@ -588,19 +588,19 @@ class _ContainerWithCreation(ContainerBase):
         )
 
     def zeros_like(
-        self: ivy.Container,
+        self: aikit.Container,
         /,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
         *,
-        dtype: Optional[Union[ivy.Dtype, ivy.NativeDtype, ivy.Container]] = None,
-        device: Optional[Union[ivy.Device, ivy.NativeDevice, ivy.Container]] = None,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of ivy.zeros_like. This method
-        simply wraps the function, and so the docstring for ivy.zeros_like also
+        dtype: Optional[Union[aikit.Dtype, aikit.NativeDtype, aikit.Container]] = None,
+        device: Optional[Union[aikit.Device, aikit.NativeDevice, aikit.Container]] = None,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of aikit.zeros_like. This method
+        simply wraps the function, and so the docstring for aikit.zeros_like also
         applies to this method with minimal changes.
 
         Parameters
@@ -646,16 +646,16 @@ class _ContainerWithCreation(ContainerBase):
 
     @staticmethod
     def _static_tril(
-        x: Union[ivy.Array, ivy.NativeArray, ivy.Container],
+        x: Union[aikit.Array, aikit.NativeArray, aikit.Container],
         /,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
         *,
-        k: Union[int, ivy.Container] = 0,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
+        k: Union[int, aikit.Container] = 0,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
         return ContainerBase.cont_multi_map_in_function(
             "tril",
             x,
@@ -668,16 +668,16 @@ class _ContainerWithCreation(ContainerBase):
         )
 
     def tril(
-        self: ivy.Container,
+        self: aikit.Container,
         /,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
         *,
-        k: Union[int, ivy.Container] = 0,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
+        k: Union[int, aikit.Container] = 0,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
         return self._static_tril(
             self,
             key_chains=key_chains,
@@ -690,16 +690,16 @@ class _ContainerWithCreation(ContainerBase):
 
     @staticmethod
     def _static_triu(
-        x: Union[ivy.Array, ivy.NativeArray, ivy.Container],
+        x: Union[aikit.Array, aikit.NativeArray, aikit.Container],
         /,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
         *,
-        k: Union[int, ivy.Container] = 0,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
+        k: Union[int, aikit.Container] = 0,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
         return ContainerBase.cont_multi_map_in_function(
             "triu",
             x,
@@ -712,16 +712,16 @@ class _ContainerWithCreation(ContainerBase):
         )
 
     def triu(
-        self: ivy.Container,
+        self: aikit.Container,
         /,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
         *,
-        k: Union[int, ivy.Container] = 0,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
+        k: Union[int, aikit.Container] = 0,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
         return self._static_triu(
             self,
             key_chains=key_chains,
@@ -734,17 +734,17 @@ class _ContainerWithCreation(ContainerBase):
 
     @staticmethod
     def _static_empty_like(
-        x: Union[ivy.Array, ivy.NativeArray, ivy.Container],
+        x: Union[aikit.Array, aikit.NativeArray, aikit.Container],
         /,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
         *,
-        dtype: Optional[Union[ivy.Dtype, ivy.NativeDtype, ivy.Container]] = None,
-        device: Optional[Union[ivy.Device, ivy.NativeDevice, ivy.Container]] = None,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
+        dtype: Optional[Union[aikit.Dtype, aikit.NativeDtype, aikit.Container]] = None,
+        device: Optional[Union[aikit.Device, aikit.NativeDevice, aikit.Container]] = None,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
         return ContainerBase.cont_multi_map_in_function(
             "empty_like",
             x,
@@ -758,17 +758,17 @@ class _ContainerWithCreation(ContainerBase):
         )
 
     def empty_like(
-        self: ivy.Container,
+        self: aikit.Container,
         /,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
         *,
-        dtype: Optional[Union[ivy.Dtype, ivy.NativeDtype, ivy.Container]] = None,
-        device: Optional[Union[ivy.Device, ivy.NativeDevice, ivy.Container]] = None,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
+        dtype: Optional[Union[aikit.Dtype, aikit.NativeDtype, aikit.Container]] = None,
+        device: Optional[Union[aikit.Device, aikit.NativeDevice, aikit.Container]] = None,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
         return self._static_empty_like(
             self,
             key_chains=key_chains,
@@ -782,20 +782,20 @@ class _ContainerWithCreation(ContainerBase):
 
     @staticmethod
     def _static_eye(
-        n_rows: Union[int, ivy.Container],
-        n_cols: Optional[Union[int, ivy.Container]] = None,
+        n_rows: Union[int, aikit.Container],
+        n_cols: Optional[Union[int, aikit.Container]] = None,
         /,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
         *,
-        k: Union[int, ivy.Container] = 0,
-        batch_shape: Optional[Union[int, Sequence[int], ivy.Container]] = None,
-        dtype: Optional[Union[ivy.Dtype, ivy.NativeDtype, ivy.Container]] = None,
-        device: Optional[Union[ivy.Device, ivy.NativeDevice, ivy.Container]] = None,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
+        k: Union[int, aikit.Container] = 0,
+        batch_shape: Optional[Union[int, Sequence[int], aikit.Container]] = None,
+        dtype: Optional[Union[aikit.Dtype, aikit.NativeDtype, aikit.Container]] = None,
+        device: Optional[Union[aikit.Device, aikit.NativeDevice, aikit.Container]] = None,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
         return ContainerBase.cont_multi_map_in_function(
             "eye",
             n_rows,
@@ -813,21 +813,21 @@ class _ContainerWithCreation(ContainerBase):
 
     @staticmethod
     def _static_linspace(
-        start: Union[ivy.Array, ivy.NativeArray, float, ivy.Container],
-        stop: Union[ivy.Array, ivy.NativeArray, float, ivy.Container],
+        start: Union[aikit.Array, aikit.NativeArray, float, aikit.Container],
+        stop: Union[aikit.Array, aikit.NativeArray, float, aikit.Container],
         /,
-        num: Union[int, ivy.Container],
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
+        num: Union[int, aikit.Container],
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
         *,
-        axis: Optional[Union[int, ivy.Container]] = None,
-        endpoint: Union[bool, ivy.Container] = True,
-        dtype: Optional[Union[ivy.Dtype, ivy.NativeDtype, ivy.Container]] = None,
-        device: Optional[Union[ivy.Device, ivy.NativeDevice, ivy.Container]] = None,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
+        axis: Optional[Union[int, aikit.Container]] = None,
+        endpoint: Union[bool, aikit.Container] = True,
+        dtype: Optional[Union[aikit.Dtype, aikit.NativeDtype, aikit.Container]] = None,
+        device: Optional[Union[aikit.Device, aikit.NativeDevice, aikit.Container]] = None,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
         return ContainerBase.cont_multi_map_in_function(
             "linspace",
             start,
@@ -845,21 +845,21 @@ class _ContainerWithCreation(ContainerBase):
         )
 
     def linspace(
-        self: ivy.Container,
-        stop: Union[ivy.Array, ivy.NativeArray, float, ivy.Container],
+        self: aikit.Container,
+        stop: Union[aikit.Array, aikit.NativeArray, float, aikit.Container],
         /,
-        num: Union[int, ivy.Container],
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
+        num: Union[int, aikit.Container],
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
         *,
-        axis: Optional[Union[int, ivy.Container]] = None,
-        endpoint: Union[bool, ivy.Container] = True,
-        dtype: Optional[Union[ivy.Dtype, ivy.NativeDtype, ivy.Container]] = None,
-        device: Optional[Union[ivy.Device, ivy.NativeDevice, ivy.Container]] = None,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
+        axis: Optional[Union[int, aikit.Container]] = None,
+        endpoint: Union[bool, aikit.Container] = True,
+        dtype: Optional[Union[aikit.Dtype, aikit.NativeDtype, aikit.Container]] = None,
+        device: Optional[Union[aikit.Device, aikit.NativeDevice, aikit.Container]] = None,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
         return self._static_linspace(
             self,
             stop,
@@ -878,15 +878,15 @@ class _ContainerWithCreation(ContainerBase):
     @staticmethod
     def _static_meshgrid(
         *arrays: Union[
-            ivy.Array, ivy.NativeArray, List[Number], Tuple[Number], ivy.Container
+            aikit.Array, aikit.NativeArray, List[Number], Tuple[Number], aikit.Container
         ],
-        sparse: Union[bool, ivy.Container] = False,
-        indexing: Union[str, ivy.Container] = "xy",
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> ivy.Container:
+        sparse: Union[bool, aikit.Container] = False,
+        indexing: Union[str, aikit.Container] = "xy",
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> aikit.Container:
         return ContainerBase.cont_multi_map_in_function(
             "meshgrid",
             *arrays,
@@ -899,17 +899,17 @@ class _ContainerWithCreation(ContainerBase):
         )
 
     def meshgrid(
-        self: ivy.Container,
+        self: aikit.Container,
         *arrays: Union[
-            ivy.Array, ivy.NativeArray, List[Number], Tuple[Number], ivy.Container
+            aikit.Array, aikit.NativeArray, List[Number], Tuple[Number], aikit.Container
         ],
-        sparse: Union[bool, ivy.Container] = False,
-        indexing: Union[str, ivy.Container] = "xy",
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> ivy.Container:
+        sparse: Union[bool, aikit.Container] = False,
+        indexing: Union[str, aikit.Container] = "xy",
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> aikit.Container:
         return self._static_meshgrid(
             self,
             *arrays,
@@ -923,15 +923,15 @@ class _ContainerWithCreation(ContainerBase):
 
     @staticmethod
     def _static_from_dlpack(
-        x: Union[ivy.Array, ivy.NativeArray, ivy.Container],
+        x: Union[aikit.Array, aikit.NativeArray, aikit.Container],
         /,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
         *,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
         return ContainerBase.cont_multi_map_in_function(
             "from_dlpack",
             x,
@@ -943,15 +943,15 @@ class _ContainerWithCreation(ContainerBase):
         )
 
     def from_dlpack(
-        self: ivy.Container,
+        self: aikit.Container,
         /,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
         *,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
         return self._static_from_dlpack(
             self,
             key_chains=key_chains,
@@ -963,16 +963,16 @@ class _ContainerWithCreation(ContainerBase):
 
     @staticmethod
     def _static_copy_array(
-        x: Union[ivy.Array, ivy.NativeArray, ivy.Container],
+        x: Union[aikit.Array, aikit.NativeArray, aikit.Container],
         /,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
         *,
-        to_ivy_array: Union[bool, ivy.Container] = True,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
+        to_aikit_array: Union[bool, aikit.Container] = True,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
         return ContainerBase.cont_multi_map_in_function(
             "copy_array",
             x,
@@ -980,50 +980,50 @@ class _ContainerWithCreation(ContainerBase):
             to_apply=to_apply,
             prune_unapplied=prune_unapplied,
             map_sequences=map_sequences,
-            to_ivy_array=to_ivy_array,
+            to_aikit_array=to_aikit_array,
             out=out,
         )
 
     def copy_array(
-        self: ivy.Container,
+        self: aikit.Container,
         /,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
         *,
-        to_ivy_array: Union[bool, ivy.Container] = True,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
+        to_aikit_array: Union[bool, aikit.Container] = True,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
         return self._static_copy_array(
             self,
             key_chains=key_chains,
             to_apply=to_apply,
             prune_unapplied=prune_unapplied,
             map_sequences=map_sequences,
-            to_ivy_array=to_ivy_array,
+            to_aikit_array=to_aikit_array,
             out=out,
         )
 
     @staticmethod
     def _static_native_array(
         x: Union[
-            ivy.Array,
-            ivy.NativeArray,
+            aikit.Array,
+            aikit.NativeArray,
             List[Number],
             Tuple[Number],
             np.ndarray,
-            ivy.Container,
+            aikit.Container,
         ],
         /,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
         *,
-        dtype: Optional[Union[ivy.Dtype, ivy.NativeDtype, ivy.Container]] = None,
-        device: Optional[Union[ivy.Device, ivy.NativeDevice, ivy.Container]] = None,
-    ) -> ivy.Container:
+        dtype: Optional[Union[aikit.Dtype, aikit.NativeDtype, aikit.Container]] = None,
+        device: Optional[Union[aikit.Device, aikit.NativeDevice, aikit.Container]] = None,
+    ) -> aikit.Container:
         return ContainerBase.cont_multi_map_in_function(
             "native_array",
             x,
@@ -1036,16 +1036,16 @@ class _ContainerWithCreation(ContainerBase):
         )
 
     def native_array(
-        self: ivy.Container,
+        self: aikit.Container,
         /,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
         *,
-        dtype: Optional[Union[ivy.Dtype, ivy.NativeDtype, ivy.Container]] = None,
-        device: Optional[Union[ivy.Device, ivy.NativeDevice, ivy.Container]] = None,
-    ) -> ivy.Container:
+        dtype: Optional[Union[aikit.Dtype, aikit.NativeDtype, aikit.Container]] = None,
+        device: Optional[Union[aikit.Device, aikit.NativeDevice, aikit.Container]] = None,
+    ) -> aikit.Container:
         return self._static_native_array(
             self,
             key_chains=key_chains,
@@ -1058,24 +1058,24 @@ class _ContainerWithCreation(ContainerBase):
 
     @staticmethod
     def _static_logspace(
-        start: Union[ivy.Array, ivy.NativeArray, float, ivy.Container],
-        stop: Union[ivy.Array, ivy.NativeArray, float, ivy.Container],
+        start: Union[aikit.Array, aikit.NativeArray, float, aikit.Container],
+        stop: Union[aikit.Array, aikit.NativeArray, float, aikit.Container],
         /,
-        num: Union[int, ivy.Container],
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
+        num: Union[int, aikit.Container],
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
         *,
-        base: Union[float, ivy.Container] = 10.0,
-        axis: Union[int, ivy.Container] = 0,
-        endpoint: Union[bool, ivy.Container] = True,
-        dtype: Optional[Union[ivy.Dtype, ivy.NativeDtype, ivy.Container]] = None,
-        device: Optional[Union[ivy.Device, ivy.NativeDevice, ivy.Container]] = None,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container static method variant of ivy.logspace. This method
-        simply wraps the function, and so the docstring for ivy.logspace also
+        base: Union[float, aikit.Container] = 10.0,
+        axis: Union[int, aikit.Container] = 0,
+        endpoint: Union[bool, aikit.Container] = True,
+        dtype: Optional[Union[aikit.Dtype, aikit.NativeDtype, aikit.Container]] = None,
+        device: Optional[Union[aikit.Device, aikit.NativeDevice, aikit.Container]] = None,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container static method variant of aikit.logspace. This method
+        simply wraps the function, and so the docstring for aikit.logspace also
         applies to this method with minimal changes.
 
         Parameters
@@ -1113,13 +1113,13 @@ class _ContainerWithCreation(ContainerBase):
 
         Examples
         --------
-        >>> import ivy.container.creation.static_logspace as static_logspace
-        >>> x = ivy.Container(a = 1, b = 0)
-        >>> y = ivy.Container(a = 4, b = 1)
+        >>> import aikit.container.creation.static_logspace as static_logspace
+        >>> x = aikit.Container(a = 1, b = 0)
+        >>> y = aikit.Container(a = 4, b = 1)
         >>> z = static_logspace(x, y, 4)
         {
-            a: ivy.array([10.,  100.,  1000., 10000.]),
-            b: ivy.array([ 1., 2.15443469, 4.64158883, 10.])
+            a: aikit.array([10.,  100.,  1000., 10000.]),
+            b: aikit.array([ 1., 2.15443469, 4.64158883, 10.])
         }
         """
         return ContainerBase.cont_multi_map_in_function(
@@ -1140,24 +1140,24 @@ class _ContainerWithCreation(ContainerBase):
         )
 
     def logspace(
-        self: ivy.Container,
-        stop: Union[ivy.Array, ivy.NativeArray, float, ivy.Container],
+        self: aikit.Container,
+        stop: Union[aikit.Array, aikit.NativeArray, float, aikit.Container],
         /,
-        num: Union[int, ivy.Container],
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
+        num: Union[int, aikit.Container],
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
         *,
-        base: Union[float, ivy.Container] = 10.0,
-        axis: Union[int, ivy.Container] = None,
-        endpoint: Union[bool, ivy.Container] = True,
-        dtype: Optional[Union[ivy.Dtype, ivy.NativeDtype, ivy.Container]] = None,
-        device: Optional[Union[ivy.Device, ivy.NativeDevice, ivy.Container]] = None,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of ivy.logspace. This method
-        simply wraps the function, and so the docstring for ivy.logspace also
+        base: Union[float, aikit.Container] = 10.0,
+        axis: Union[int, aikit.Container] = None,
+        endpoint: Union[bool, aikit.Container] = True,
+        dtype: Optional[Union[aikit.Dtype, aikit.NativeDtype, aikit.Container]] = None,
+        device: Optional[Union[aikit.Device, aikit.NativeDevice, aikit.Container]] = None,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of aikit.logspace. This method
+        simply wraps the function, and so the docstring for aikit.logspace also
         applies to this method with minimal changes.
 
         Parameters
@@ -1195,32 +1195,32 @@ class _ContainerWithCreation(ContainerBase):
 
         Examples
         --------
-        >>> x = ivy.Container(a = 1, b = 0)
-        >>> y = ivy.Container(a = 4, b = 1)
+        >>> x = aikit.Container(a = 1, b = 0)
+        >>> y = aikit.Container(a = 4, b = 1)
         >>> z = x.logspace(y, 4)
         {
-            a: ivy.array([10.,  100.,  1000., 10000.]),
-            b: ivy.array([ 1., 2.15443469, 4.64158883, 10.])
+            a: aikit.array([10.,  100.,  1000., 10000.]),
+            b: aikit.array([ 1., 2.15443469, 4.64158883, 10.])
         }
 
-        >>> x = ivy.Container(a = 1, b = 0)
-        >>> y = ivy.Container(a = 4, b = 1)
-        >>> z = ivy.logspace(x, y, 4)
+        >>> x = aikit.Container(a = 1, b = 0)
+        >>> y = aikit.Container(a = 4, b = 1)
+        >>> z = aikit.logspace(x, y, 4)
         {
-            a: ivy.array([10.,  100.,  1000., 10000.]),
-            b: ivy.array([ 1., 2.15443469, 4.64158883, 10.])
+            a: aikit.array([10.,  100.,  1000., 10000.]),
+            b: aikit.array([ 1., 2.15443469, 4.64158883, 10.])
         }
 
-        >>> u = ivy.Container(c = 0, d = 0)
-        >>> v = ivy.Container(c = 1, d = 2)
-        >>> x = ivy.Container(a = 1, b = u)
-        >>> y = ivy.Container(a = 4, b = v)
+        >>> u = aikit.Container(c = 0, d = 0)
+        >>> v = aikit.Container(c = 1, d = 2)
+        >>> x = aikit.Container(a = 1, b = u)
+        >>> y = aikit.Container(a = 4, b = v)
         >>> z = x.logspace(y, 4)
         {
-            a: ivy.array([10.,  100.,  1000., 10000.]),
+            a: aikit.array([10.,  100.,  1000., 10000.]),
             b:  {
-                    c: ivy.array([ 1., 2.15443469, 4.64158883, 10.])
-                    d: ivy.array([ 1., 4.64158883, 21.5443469, 100.])
+                    c: aikit.array([ 1., 2.15443469, 4.64158883, 10.])
+                    d: aikit.array([ 1., 4.64158883, 21.5443469, 100.])
                 }
         }
         """
@@ -1242,23 +1242,23 @@ class _ContainerWithCreation(ContainerBase):
 
     @staticmethod
     def _static_one_hot(
-        indices: ivy.Container,
-        depth: Union[int, ivy.Container],
+        indices: aikit.Container,
+        depth: Union[int, aikit.Container],
         /,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
         *,
-        on_value: Optional[Union[Number, ivy.Container]] = None,
-        off_value: Optional[Union[Number, ivy.Container]] = None,
-        axis: Optional[Union[int, ivy.Container]] = None,
-        dtype: Optional[Union[ivy.Dtype, ivy.NativeDtype, ivy.Container]] = None,
-        device: Optional[Union[ivy.Device, ivy.NativeDevice, ivy.Container]] = None,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container static method variant of ivy.one_hot. This method
-        simply wraps the function, and so the docstring for ivy.one_hot also
+        on_value: Optional[Union[Number, aikit.Container]] = None,
+        off_value: Optional[Union[Number, aikit.Container]] = None,
+        axis: Optional[Union[int, aikit.Container]] = None,
+        dtype: Optional[Union[aikit.Dtype, aikit.NativeDtype, aikit.Container]] = None,
+        device: Optional[Union[aikit.Device, aikit.NativeDevice, aikit.Container]] = None,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container static method variant of aikit.one_hot. This method
+        simply wraps the function, and so the docstring for aikit.one_hot also
         applies to this method with minimal changes.
 
         Parameters
@@ -1296,32 +1296,32 @@ class _ContainerWithCreation(ContainerBase):
 
         Examples
         --------
-        With :class:`ivy.Container` inputs:
+        With :class:`aikit.Container` inputs:
 
-        >>> x = ivy.Container(a=ivy.array([1, 2]), \
-            b=ivy.array([3, 1]), c=ivy.array([2, 3]))
+        >>> x = aikit.Container(a=aikit.array([1, 2]), \
+            b=aikit.array([3, 1]), c=aikit.array([2, 3]))
         >>> y = 5
-        >>> z = ivy.Container.static_one_hot(x, y)
+        >>> z = aikit.Container.static_one_hot(x, y)
         >>> print(z)
         {
-            a: ivy.array([[0., 1., 0., 0., 0.],
+            a: aikit.array([[0., 1., 0., 0., 0.],
                         [0., 0., 1., 0., 0.]]),
-            b: ivy.array([[0., 0., 0., 1., 0.],
+            b: aikit.array([[0., 0., 0., 1., 0.],
                         [0., 1., 0., 0., 0.]]),
-            c: ivy.array([[0., 0., 1., 0., 0.],
+            c: aikit.array([[0., 0., 1., 0., 0.],
                         [0., 0., 0., 1., 0.]])
         }
 
-        >>> x = ivy.Container(a=ivy.array([1, 2]), \
-            b=ivy.array([]), c=ivy.native_array([4]))
+        >>> x = aikit.Container(a=aikit.array([1, 2]), \
+            b=aikit.array([]), c=aikit.native_array([4]))
         >>> y = 5
-        >>> z = ivy.Container.static_one_hot(x, y)
+        >>> z = aikit.Container.static_one_hot(x, y)
         >>> print(z)
         {
-            a: ivy.array([[0., 1., 0., 0., 0.],
+            a: aikit.array([[0., 1., 0., 0., 0.],
                         [0., 0., 1., 0., 0.]]),
-            b: ivy.array([], shape=(0, 5)),
-            c: ivy.array([[0., 0., 0., 0., 1.]])
+            b: aikit.array([], shape=(0, 5)),
+            c: aikit.array([[0., 0., 0., 0., 1.]])
         }
         """
         return ContainerBase.cont_multi_map_in_function(
@@ -1341,23 +1341,23 @@ class _ContainerWithCreation(ContainerBase):
         )
 
     def one_hot(
-        self: ivy.Container,
-        depth: Union[int, ivy.Container],
+        self: aikit.Container,
+        depth: Union[int, aikit.Container],
         /,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
         *,
-        on_value: Optional[Union[Number, ivy.Container]] = None,
-        off_value: Optional[Union[Number, ivy.Container]] = None,
-        axis: Optional[Union[int, ivy.Container]] = None,
-        dtype: Optional[Union[ivy.Dtype, ivy.NativeDtype, ivy.Container]] = None,
-        device: Optional[Union[ivy.Device, ivy.NativeDevice, ivy.Container]] = None,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of ivy.one_hot. This method
-        simply wraps the function, and so the docstring for ivy.one_hot also
+        on_value: Optional[Union[Number, aikit.Container]] = None,
+        off_value: Optional[Union[Number, aikit.Container]] = None,
+        axis: Optional[Union[int, aikit.Container]] = None,
+        dtype: Optional[Union[aikit.Dtype, aikit.NativeDtype, aikit.Container]] = None,
+        device: Optional[Union[aikit.Device, aikit.NativeDevice, aikit.Container]] = None,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of aikit.one_hot. This method
+        simply wraps the function, and so the docstring for aikit.one_hot also
         applies to this method with minimal changes.
 
         Parameters
@@ -1398,32 +1398,32 @@ class _ContainerWithCreation(ContainerBase):
 
         Examples
         --------
-        With :class:`ivy.Container` input:
+        With :class:`aikit.Container` input:
 
-        >>> x = ivy.Container(a=ivy.array([1, 2]), \
-             b=ivy.array([3, 1]), c=ivy.array([2, 3]))
+        >>> x = aikit.Container(a=aikit.array([1, 2]), \
+             b=aikit.array([3, 1]), c=aikit.array([2, 3]))
         >>> y = 5
         >>> z = x.one_hot(y)
         >>> print(z)
         {
-            a: ivy.array([[0., 1., 0., 0., 0.],
+            a: aikit.array([[0., 1., 0., 0., 0.],
                         [0., 0., 1., 0., 0.]]),
-            b: ivy.array([[0., 0., 0., 1., 0.],
+            b: aikit.array([[0., 0., 0., 1., 0.],
                         [0., 1., 0., 0., 0.]]),
-            c: ivy.array([[0., 0., 1., 0., 0.],
+            c: aikit.array([[0., 0., 1., 0., 0.],
                         [0., 0., 0., 1., 0.]])
         }
 
-        >>> x = ivy.Container(a=ivy.array([1, 2]), \
-             b=ivy.array([]), c=ivy.native_array([4]))
+        >>> x = aikit.Container(a=aikit.array([1, 2]), \
+             b=aikit.array([]), c=aikit.native_array([4]))
         >>> y = 5
         >>> z = x.one_hot(y)
         >>> print(z)
         {
-            a: ivy.array([[0., 1., 0., 0., 0.],
+            a: aikit.array([[0., 1., 0., 0., 0.],
                         [0., 0., 1., 0., 0.]]),
-            b: ivy.array([], shape=(0, 5)),
-            c: ivy.array([[0., 0., 0., 0., 1.]])
+            b: aikit.array([], shape=(0, 5)),
+            c: aikit.array([[0., 0., 0., 0., 1.]])
         }
         """
         return self._static_one_hot(
@@ -1443,17 +1443,17 @@ class _ContainerWithCreation(ContainerBase):
 
     @staticmethod
     def static_frombuffer(
-        buffer: ivy.Container,
-        dtype: Optional[Union[ivy.Dtype, ivy.NativeDtype, ivy.Container]] = float,
-        count: Optional[Union[int, ivy.Container]] = -1,
-        offset: Optional[Union[int, ivy.Container]] = 0,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> ivy.Container:
-        r"""ivy.Container static method variant of ivy.frombuffer. This method
-        simply wraps the function, and so the docstring for ivy.frombuffer also
+        buffer: aikit.Container,
+        dtype: Optional[Union[aikit.Dtype, aikit.NativeDtype, aikit.Container]] = float,
+        count: Optional[Union[int, aikit.Container]] = -1,
+        offset: Optional[Union[int, aikit.Container]] = 0,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> aikit.Container:
+        r"""aikit.Container static method variant of aikit.frombuffer. This method
+        simply wraps the function, and so the docstring for aikit.frombuffer also
         applies to this method with minimal changes.
 
         Parameters
@@ -1485,28 +1485,28 @@ class _ContainerWithCreation(ContainerBase):
 
         Examples
         --------
-        With :class:`ivy.Container` inputs:
+        With :class:`aikit.Container` inputs:
 
-        >>> x = ivy.Container(
+        >>> x = aikit.Container(
         ...     a = b'\x00\x00\x00\x00\x00\x00\xf0?',
         ...     b = b'\x00\x00\x00\x00\x00\x00\xf0?\x00\x00\x00\x00\x00\x00\x00@'
         ... )
-        >>> y = ivy.Container.static_frombuffer(x)
+        >>> y = aikit.Container.static_frombuffer(x)
         >>> print(y)
         {
-            a: ivy.array([1.]),
-            b: ivy.array([1., 2.])
+            a: aikit.array([1.]),
+            b: aikit.array([1., 2.])
         }
 
-        >>> x = ivy.Container(
+        >>> x = aikit.Container(
         ...     a = b'\x01\x02\x03\x04',
         ...     b = b'\x05\x04\x03\x03\x02'
         ... )
-        >>> y = ivy.Container.static_frombuffer(x, dtype=ivy.int8, count=3, offset=1)
+        >>> y = aikit.Container.static_frombuffer(x, dtype=aikit.int8, count=3, offset=1)
         >>> print(y)
         {
-            a: ivy.array([2, 3, 4]),
-            b: ivy.array([4, 3, 3])
+            a: aikit.array([2, 3, 4]),
+            b: aikit.array([4, 3, 3])
         }
         """
         return ContainerBase.cont_multi_map_in_function(
@@ -1522,17 +1522,17 @@ class _ContainerWithCreation(ContainerBase):
         )
 
     def frombuffer(
-        self: ivy.Container,
-        dtype: Optional[Union[ivy.Dtype, ivy.NativeDtype]] = float,
-        count: Optional[Union[int, ivy.Container]] = -1,
-        offset: Optional[Union[int, ivy.Container]] = 0,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> ivy.Container:
-        r"""ivy.Container instance method variant of ivy.frombuffer. This method
-        simply wraps the function, and so the docstring for ivy.frombuffer also
+        self: aikit.Container,
+        dtype: Optional[Union[aikit.Dtype, aikit.NativeDtype]] = float,
+        count: Optional[Union[int, aikit.Container]] = -1,
+        offset: Optional[Union[int, aikit.Container]] = 0,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> aikit.Container:
+        r"""aikit.Container instance method variant of aikit.frombuffer. This method
+        simply wraps the function, and so the docstring for aikit.frombuffer also
         applies to this method with minimal changes.
 
         Parameters
@@ -1564,28 +1564,28 @@ class _ContainerWithCreation(ContainerBase):
 
         Examples
         --------
-        With :class:`ivy.Container` inputs:
+        With :class:`aikit.Container` inputs:
 
-        >>> x = ivy.Container(
+        >>> x = aikit.Container(
         ...     a = b'\x00\x00\x00\x00\x00\x00\xf0?',
         ...     b = b'\x00\x00\x00\x00\x00\x00\xf0?\x00\x00\x00\x00\x00\x00\x00@'
         ... )
-        >>> y = x.frombuffer(dtype=ivy.float64)
+        >>> y = x.frombuffer(dtype=aikit.float64)
         >>> print(y)
         {
-            a: ivy.array([1.]),
-            b: ivy.array([1., 2.])
+            a: aikit.array([1.]),
+            b: aikit.array([1., 2.])
         }
 
-        >>> x = ivy.Container(
+        >>> x = aikit.Container(
         ...     a = b'\x01\x02\x03\x04',
         ...     b = b'\x05\x04\x03\x03\x02'
         ... )
-        >>> y = x.frombuffer(dtype=ivy.int8, count=3, offset=1)
+        >>> y = x.frombuffer(dtype=aikit.int8, count=3, offset=1)
         >>> print(y)
         {
-            a: ivy.array([2, 3, 4]),
-            b: ivy.array([4, 3, 3])
+            a: aikit.array([2, 3, 4]),
+            b: aikit.array([4, 3, 3])
         }
         """
         return self.static_frombuffer(
@@ -1601,18 +1601,18 @@ class _ContainerWithCreation(ContainerBase):
 
     @staticmethod
     def static_triu_indices(
-        n_rows: Union[int, ivy.Container],
-        n_cols: Optional[Union[int, ivy.Container]] = None,
-        k: Union[int, ivy.Container] = 0,
+        n_rows: Union[int, aikit.Container],
+        n_cols: Optional[Union[int, aikit.Container]] = None,
+        k: Union[int, aikit.Container] = 0,
         /,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
         *,
-        device: Optional[Union[ivy.Device, ivy.NativeDevice, ivy.Container]] = None,
-        out: Optional[Union[Tuple[ivy.Array], ivy.Container]] = None,
-    ) -> ivy.Container:
+        device: Optional[Union[aikit.Device, aikit.NativeDevice, aikit.Container]] = None,
+        out: Optional[Union[Tuple[aikit.Array], aikit.Container]] = None,
+    ) -> aikit.Container:
         return ContainerBase.cont_multi_map_in_function(
             "triu_indices",
             n_rows,
@@ -1627,19 +1627,19 @@ class _ContainerWithCreation(ContainerBase):
         )
 
     def triu_indices(
-        self: ivy.Container,
-        n_rows: Union[int, ivy.Container],
-        n_cols: Optional[Union[int, ivy.Container]] = None,
-        k: Union[int, ivy.Container] = 0,
+        self: aikit.Container,
+        n_rows: Union[int, aikit.Container],
+        n_cols: Optional[Union[int, aikit.Container]] = None,
+        k: Union[int, aikit.Container] = 0,
         /,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
         *,
-        device: Optional[Union[ivy.Device, ivy.NativeDevice, ivy.Container]] = None,
-        out: Optional[Union[Tuple[ivy.Array], ivy.Container]] = None,
-    ) -> ivy.Container:
+        device: Optional[Union[aikit.Device, aikit.NativeDevice, aikit.Container]] = None,
+        out: Optional[Union[Tuple[aikit.Array], aikit.Container]] = None,
+    ) -> aikit.Container:
         return self.static_triu_indices(
             n_rows,
             n_cols,

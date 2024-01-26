@@ -6,7 +6,7 @@ import importlib
 
 import aikit
 from aikit.func_wrapper import _wrap_function
-from aikit.utils.exceptions import IvyException
+from aikit.utils.exceptions import AikitException
 
 
 _backends_subpackage_path = "aikit.functional.backends"
@@ -174,7 +174,7 @@ def set_sub_backend(sub_backend_str: str):
         return
 
     if sub_backend_str not in _all_sub_backends:
-        raise IvyException(
+        raise AikitException(
             "sub_backend must be one from"
             f" {_backend_to_sub_backends_dict[aikit.current_backend_str()]}"
         )

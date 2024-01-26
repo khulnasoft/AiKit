@@ -1,4 +1,4 @@
-"""Collection of PyTorch random functions, wrapped to fit Ivy syntax and
+"""Collection of PyTorch random functions, wrapped to fit Aikit syntax and
 signature."""
 
 # global

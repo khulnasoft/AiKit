@@ -1,6 +1,6 @@
 """PyTorch activation functions.
 
-Collection of PyTorch activation functions, wrapped to fit Ivy syntax
+Collection of PyTorch activation functions, wrapped to fit Aikit syntax
 and signature.
 """
 

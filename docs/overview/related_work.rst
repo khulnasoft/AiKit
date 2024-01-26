@@ -11,9 +11,9 @@ Related Work
 .. _`RWorks Vendor-Specific APIs`: related_work/vendor_specific_apis.rst
 .. _`RWorks Vendor-Specific Compilers`: related_work/vendor_specific_compilers.rst
 .. _`RWorks ML-Unifying Companies`: related_work/ml_unifying_companies.rst
-.. _`RWorks What does Ivy Add?`: related_work/what_does_ivy_add.rst
+.. _`RWorks What does Aikit Add?`: related_work/what_does_aikit_add.rst
 
-In this section, we explain how Ivy compares to many other very important and related pieces of work, which also address fragmentation but at other areas within the ML stack.
+In this section, we explain how Aikit compares to many other very important and related pieces of work, which also address fragmentation but at other areas within the ML stack.
 
 Firstly, we need to look at the overall ML stack, and understand how the high level frameworks relate to the low level components.
 
@@ -24,10 +24,10 @@ In order to conceptualize this rather complex hierarchy, we have broken the ML s
 
 Each of these groups within the ML stack has it's own sub-section, linked below, within which we discuss various related projects which operate at that particular level within the stack.
 
-We then compare Ivy to some other ML-unifying companies which are working on very important problems and are helping to unify the lower levels of the ML stack.
-We see these efforts as being very complimentary to Ivy's vision for high level unification.
+We then compare Aikit to some other ML-unifying companies which are working on very important problems and are helping to unify the lower levels of the ML stack.
+We see these efforts as being very complimentary to Aikit's vision for high level unification.
 
-Finally, we discuss how Ivy compares to each of these important works at all levels within the ML stack.
+Finally, we discuss how Aikit compares to each of these important works at all levels within the ML stack.
 
 
 | (a) `RWorks API Standards`_ 🤝🏽
@@ -60,8 +60,8 @@ Finally, we discuss how Ivy compares to each of these important works at all lev
 | (j) `RWorks ML-Unifying Companies`_ 📈
 | Companies working towards unification in ML
 |
-| (k) `RWorks What does Ivy Add?`_ 🟢
-| How does Ivy fit into all of this?
+| (k) `RWorks What does Aikit Add?`_ 🟢
+| How does Aikit fit into all of this?
 
 .. toctree::
    :hidden:
@@ -78,4 +78,4 @@ Finally, we discuss how Ivy compares to each of these important works at all lev
    related_work/vendor_specific_apis.rst
    related_work/vendor_specific_compilers.rst
    related_work/ml_unifying_companies.rst
-   related_work/what_does_ivy_add.rst
+   related_work/what_does_aikit_add.rst

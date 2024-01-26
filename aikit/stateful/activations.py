@@ -1,4 +1,4 @@
-"""Collection of Ivy neural network activations as stateful classes."""
+"""Collection of Aikit neural network activations as stateful classes."""
 
 # local
 import aikit

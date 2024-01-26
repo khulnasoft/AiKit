@@ -1,7 +1,7 @@
 
 ## Frontend Task Checklist
 #### IMPORTANT NOTICE 🚨:
-The [Ivy Docs](https://unify.ai/docs/ivy/) represent the ground truth for the task descriptions and this checklist should only be used as a supplementary item to aid with the review process.
+The [Aikit Docs](https://unify.ai/docs/aikit/) represent the ground truth for the task descriptions and this checklist should only be used as a supplementary item to aid with the review process.
 
 Please note that the contributor is not expected to understand everything in the checklist. It's mainly here for the reviewer to make sure everything has been done correctly 🙂
 
@@ -19,17 +19,17 @@ Please note that the contributor is not expected to understand everything in the
        2. - [ ] ❌: The alias is added to the existing function/method's test in the `aliases` parameter of `handle_frontend_test`/`handle_frontend_method`.
 3. - [ ] ❌: The naming of the function/method and its arguments exactly matches the original.
 4. - [ ] ❌: No defined argument is being ignored in the function/method's implementation.
-5. - [ ] ❌: In special cases where an argument's implementation should be pending due to an incomplete superset of an ivy function:
+5. - [ ] ❌: In special cases where an argument's implementation should be pending due to an incomplete superset of an aikit function:
        1. - [ ] ❌: A descriptive comment has been left under the `Implement superset behavior` ToDo list in https://github.com/khulnasoft/aikit/issues/6406.
-       2. - [ ] ❌: A ToDo comment has been added prompting to pass the frontend argument to the ivy function whose behavior is to be extended.
+       2. - [ ] ❌: A ToDo comment has been added prompting to pass the frontend argument to the aikit function whose behavior is to be extended.
 6. - [ ] ❌: In case a frontend function is being added:
-       1. - [ ] ❌: It is a composition of ivy functions.
-       2. - [ ] ❌: In case the needed composition is long (using numerous ivy functions), a `Missing Function Suggestion` issue has been opened to suggest a new ivy function should be added to shorten the frontend implementation.
-       3. - [ ] ❌: `@to_ivy_arrays_and_back` has been added to the function.
+       1. - [ ] ❌: It is a composition of aikit functions.
+       2. - [ ] ❌: In case the needed composition is long (using numerous aikit functions), a `Missing Function Suggestion` issue has been opened to suggest a new aikit function should be added to shorten the frontend implementation.
+       3. - [ ] ❌: `@to_aikit_arrays_and_back` has been added to the function.
 7. - [ ] ❌: In case a frontend method is being added:
        1. - [ ] ❌: It is composed of existing frontend functions or methods.
-       2. - [ ] ❌: If a required frontend function has not yet been added, the method may be implemented as a composition of ivy functions, making sure that:
-              - [ ] ❌: `@to_ivy_arrays_and_back` has been added to the method.
+       2. - [ ] ❌: If a required frontend function has not yet been added, the method may be implemented as a composition of aikit functions, making sure that:
+              - [ ] ❌: `@to_aikit_arrays_and_back` has been added to the method.
               - [ ] ❌: A ToDo comment has been made prompting to remove the decorator and update the implementation as soon as the missing function has been added.
 8. - [ ] ❌: The function/method's test has been added (except in the alias case mentioned in <2>):
        1. - [ ] ❌: All supported arguments are being generated in `handle_frontend_test`/`handle_frontend_method` and passed to `test_frontend_function`/`test_frontend_method`.

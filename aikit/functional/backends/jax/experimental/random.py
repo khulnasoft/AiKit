@@ -5,14 +5,14 @@ import jax
 import jaxlib.xla_extension
 
 # local
-import ivy
-from ivy.functional.backends.jax import JaxArray
-from ivy.functional.backends.jax.random import RNG, _setRNG, _getRNG  # noqa
-from ivy.functional.ivy.random import (
+import aikit
+from aikit.functional.backends.jax import JaxArray
+from aikit.functional.backends.jax.random import RNG, _setRNG, _getRNG  # noqa
+from aikit.functional.aikit.random import (
     _check_bounds_and_get_shape,
     _check_shapes_broadcastable,
 )
-from ivy.func_wrapper import with_unsupported_dtypes
+from aikit.func_wrapper import with_unsupported_dtypes
 from .. import backend_version
 
 # Extra #
@@ -24,7 +24,7 @@ def dirichlet(
     alpha: Union[JaxArray, float, Sequence[float]],
     /,
     *,
-    size: Optional[Union[ivy.NativeShape, Sequence[int]]] = None,
+    size: Optional[Union[aikit.NativeShape, Sequence[int]]] = None,
     dtype: Optional[jnp.dtype] = None,
     seed: Optional[int] = None,
     out: Optional[JaxArray] = None,
@@ -42,7 +42,7 @@ def beta(
     b: Union[float, JaxArray],
     /,
     *,
-    shape: Optional[Union[ivy.NativeShape, Sequence[int]]] = None,
+    shape: Optional[Union[aikit.NativeShape, Sequence[int]]] = None,
     device: Optional[jaxlib.xla_extension.Device] = None,
     dtype: Optional[jnp.dtype] = None,
     seed: Optional[int] = None,
@@ -62,7 +62,7 @@ def gamma(
     beta: Union[float, JaxArray],
     /,
     *,
-    shape: Optional[Union[ivy.NativeShape, Sequence[int]]] = None,
+    shape: Optional[Union[aikit.NativeShape, Sequence[int]]] = None,
     device: Optional[jaxlib.xla_extension.Device] = None,
     dtype: Optional[jnp.dtype] = None,
     seed: Optional[int] = None,
@@ -79,7 +79,7 @@ def gamma(
 def poisson(
     lam: Union[float, JaxArray],
     *,
-    shape: Optional[Union[ivy.NativeShape, Sequence[int]]] = None,
+    shape: Optional[Union[aikit.NativeShape, Sequence[int]]] = None,
     device: Optional[jaxlib.xla_extension.Device] = None,
     dtype: Optional[jnp.dtype] = None,
     seed: Optional[int] = None,
@@ -111,7 +111,7 @@ def bernoulli(
     probs: Union[float, JaxArray],
     *,
     logits: Optional[Union[float, JaxArray]] = None,
-    shape: Optional[Union[ivy.NativeArray, Sequence[int]]] = None,
+    shape: Optional[Union[aikit.NativeArray, Sequence[int]]] = None,
     device: Optional[jaxlib.xla_extension.Device] = None,
     dtype: Optional[jnp.dtype] = None,
     seed: Optional[int] = None,

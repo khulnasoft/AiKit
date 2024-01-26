@@ -1,6 +1,6 @@
 """Tensorflow gradient functions.
 
-Collection of TensorFlow gradient functions, wrapped to fit Ivy syntax
+Collection of TensorFlow gradient functions, wrapped to fit Aikit syntax
 and signature.
 """
 

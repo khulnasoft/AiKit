@@ -13,13 +13,13 @@ def _channel_first_input(x, data_format):
     ndims = len(x.shape)
     dims = ndims - 2
     if 1 >= dims >= 3:
-        raise aikit.utils.exceptions.IvyError(f"invalid for input with {dims} dims")
+        raise aikit.utils.exceptions.AikitError(f"invalid for input with {dims} dims")
     # channel first input
     if data_format not in ["NCL", "NCHW", "NCDHW"]:
         if data_format in ["NLC", "NHWC", "NDHWC"]:
             x = aikit.permute_dims(x, axes=(0, ndims - 1, *range(1, ndims - 1)))
         else:
-            raise aikit.utils.exceptions.IvyError(
+            raise aikit.utils.exceptions.AikitError(
                 "data_format should be " + "'NCL' or 'NLC' "
                 if dims == 1
                 else (

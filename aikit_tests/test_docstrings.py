@@ -58,9 +58,9 @@ def check_docstring_examples_run(
     fn
         Callable function to be tested.
     from_container
-        if True, check docstring of the function as a method of an Ivy Container.
+        if True, check docstring of the function as a method of an Aikit Container.
     from_array
-        if True, check docstring of the function as a method of an Ivy Array.
+        if True, check docstring of the function as a method of an Aikit Array.
     num_sig_fig
         Number of significant figures to check in the example.
 

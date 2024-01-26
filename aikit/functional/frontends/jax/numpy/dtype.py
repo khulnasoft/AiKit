@@ -24,7 +24,7 @@ def can_cast(from_, to, casting="safe"):
     elif isinstance(from_, np_dtype):
         from_ = from_._aikit_dtype
     else:
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             "from_ must be one of dtype, dtype specifier, scalar type, or array, "
         )
 
@@ -33,7 +33,7 @@ def can_cast(from_, to, casting="safe"):
     elif isinstance(to, np_dtype):
         to = to._aikit_dtype
     else:
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             "to must be one of dtype, or dtype specifier"
         )
 

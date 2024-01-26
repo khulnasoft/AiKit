@@ -2148,7 +2148,7 @@ def svd(
         computed, which can be significantly faster.
     .. note::
         with backend set as torch, svd with still compute left and right singular
-        vectors irrespective of the value of compute_uv, however Ivy will still
+        vectors irrespective of the value of compute_uv, however Aikit will still
         only return the singular values.
 
     Returns
@@ -3171,7 +3171,7 @@ def tensorsolve(
         prod *= k
 
     if aikit.shape(aikit.flatten(x1))[0] != prod**2:
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             "Input arrays must satisfy the requirement "
             "prod(x1.shape[x2.ndim:]) == prod(x1.shape[:x2.ndim])"
         )

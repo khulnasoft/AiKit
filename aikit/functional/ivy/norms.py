@@ -1,4 +1,4 @@
-"""Collection of Ivy normalization functions."""
+"""Collection of Aikit normalization functions."""
 
 # local
 from typing import List, Union, Optional

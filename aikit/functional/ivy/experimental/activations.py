@@ -131,10 +131,10 @@ def prelu(
     """
     try:
         return aikit.where(x > 0, x, x * slope, out=out)
-    except aikit.utils.exceptions.IvyError(
+    except aikit.utils.exceptions.AikitError(
         f"The shape {slope.shape} is not Unidirectional Broadcastable\n"
         "as per ONNX standards"
-    ) as IvyException:
+    ) as AikitException:
         if len(slope.shape) == 1:
             dim = slope.shape[0]
             new_shape = []
@@ -146,7 +146,7 @@ def prelu(
             if n == 1:
                 xs = x * slope.reshape(tuple(new_shape), out=out)
                 return aikit.where(x > 0, x, xs, out=out)
-        raise IvyException
+        raise AikitException
 
 
 @handle_exceptions

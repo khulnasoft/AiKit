@@ -4,7 +4,7 @@ from numbers import Number
 from typing import Optional, Union, List
 
 # local
-import ivy
+import aikit
 
 
 # Array API Standard #
@@ -13,16 +13,16 @@ import ivy
 
 class _ArrayWithCreation(abc.ABC):
     def asarray(
-        self: ivy.Array,
+        self: aikit.Array,
         /,
         *,
         copy: Optional[bool] = None,
-        dtype: Optional[Union[ivy.Dtype, ivy.NativeDtype]] = None,
-        device: Optional[Union[ivy.Device, ivy.NativeDevice]] = None,
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
-        """ivy.Array instance method variant of ivy.asarray. This method simply
-        wraps the function, and so the docstring for ivy.asarray also applies
+        dtype: Optional[Union[aikit.Dtype, aikit.NativeDtype]] = None,
+        device: Optional[Union[aikit.Device, aikit.NativeDevice]] = None,
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
+        """aikit.Array instance method variant of aikit.asarray. This method simply
+        wraps the function, and so the docstring for aikit.asarray also applies
         to this method with minimal changes.
 
         Parameters
@@ -55,39 +55,39 @@ class _ArrayWithCreation(abc.ABC):
         --------
         With list of lists as input:
 
-        >>> ivy.asarray([[1,2],[3,4]])
-        ivy.array([[1, 2],
+        >>> aikit.asarray([[1,2],[3,4]])
+        aikit.array([[1, 2],
                [3, 4]])
 
         With tuple of lists as input:
 
-        >>> ivy.asarray(([1.4,5.6,5.5],[3.1,9.1,7.5]))
-        ivy.array([[1.39999998, 5.5999999 , 5.5       ],
+        >>> aikit.asarray(([1.4,5.6,5.5],[3.1,9.1,7.5]))
+        aikit.array([[1.39999998, 5.5999999 , 5.5       ],
                [3.0999999 , 9.10000038, 7.5       ]])
 
         With ndarray as input:
 
-        >>> x = ivy.np.ndarray(shape=(2,2), order='C')
+        >>> x = aikit.np.ndarray(shape=(2,2), order='C')
         >>> x
         array([[6.90786433e-310, 6.90786433e-310],
                [6.90786433e-310, 6.90786433e-310]])
-        >>> ivy.asarray(x)
-        ivy.array([[6.90786433e-310, 6.90786433e-310],
+        >>> aikit.asarray(x)
+        aikit.array([[6.90786433e-310, 6.90786433e-310],
                [6.90786433e-310, 6.90786433e-310]])
         """
-        return ivy.asarray(self._data, copy=copy, dtype=dtype, device=device, out=out)
+        return aikit.asarray(self._data, copy=copy, dtype=dtype, device=device, out=out)
 
     def full_like(
-        self: ivy.Array,
+        self: aikit.Array,
         /,
         fill_value: float,
         *,
-        dtype: Optional[Union[ivy.Dtype, ivy.NativeDtype]] = None,
-        device: Optional[Union[ivy.Device, ivy.NativeDevice]] = None,
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
-        """ivy.Array instance method variant of ivy.full_like. This method
-        simply wraps the function, and so the docstring for ivy.full_like also
+        dtype: Optional[Union[aikit.Dtype, aikit.NativeDtype]] = None,
+        device: Optional[Union[aikit.Device, aikit.NativeDevice]] = None,
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
+        """aikit.Array instance method variant of aikit.full_like. This method
+        simply wraps the function, and so the docstring for aikit.full_like also
         applies to this method with minimal changes.
 
         Parameters
@@ -116,41 +116,41 @@ class _ArrayWithCreation(abc.ABC):
         --------
         With :code:`int` datatype:
 
-        >>> x = ivy.array([1,2,3])
+        >>> x = aikit.array([1,2,3])
         >>> fill_value = 0
         >>> x.full_like(fill_value)
-        ivy.array([0, 0, 0])
+        aikit.array([0, 0, 0])
 
         With float datatype:
 
         >>> fill_value = 0.000123
-        >>> x = ivy.array(ivy.ones(5))
+        >>> x = aikit.array(aikit.ones(5))
         >>> y = x.full_like(fill_value)
         >>> print(y)
-        ivy.array([0.000123, 0.000123, 0.000123, 0.000123, 0.000123])
+        aikit.array([0.000123, 0.000123, 0.000123, 0.000123, 0.000123])
 
-        With :class:`ivy.Array` input:
+        With :class:`aikit.Array` input:
 
-        >>> x = ivy.array([1, 2, 3, 4, 5, 6])
+        >>> x = aikit.array([1, 2, 3, 4, 5, 6])
         >>> fill_value = 1
         >>> y = x.full_like(fill_value)
         >>> print(y)
-        ivy.array([1, 1, 1, 1, 1, 1])
+        aikit.array([1, 1, 1, 1, 1, 1])
         """
-        return ivy.full_like(
+        return aikit.full_like(
             self._data, fill_value=fill_value, dtype=dtype, device=device, out=out
         )
 
     def ones_like(
-        self: ivy.Array,
+        self: aikit.Array,
         /,
         *,
-        dtype: Optional[Union[ivy.Dtype, ivy.NativeDtype]] = None,
-        device: Optional[Union[ivy.Device, ivy.NativeDevice]] = None,
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
-        """ivy.Array instance method variant of ivy.ones_like. This method
-        simply wraps the function, and so the docstring for ivy.ones_like also
+        dtype: Optional[Union[aikit.Dtype, aikit.NativeDtype]] = None,
+        device: Optional[Union[aikit.Device, aikit.NativeDevice]] = None,
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
+        """aikit.Array instance method variant of aikit.ones_like. This method
+        simply wraps the function, and so the docstring for aikit.ones_like also
         applies to this method with minimal changes.
 
         Parameters
@@ -172,18 +172,18 @@ class _ArrayWithCreation(abc.ABC):
         ret
             an array having the same shape as ``self`` and filled with ones.
         """
-        return ivy.ones_like(self._data, dtype=dtype, device=device, out=out)
+        return aikit.ones_like(self._data, dtype=dtype, device=device, out=out)
 
     def zeros_like(
-        self: ivy.Array,
+        self: aikit.Array,
         /,
         *,
-        dtype: Optional[Union[ivy.Dtype, ivy.NativeDtype]] = None,
-        device: Optional[Union[ivy.Device, ivy.NativeDevice]] = None,
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
-        """ivy.Array instance method variant of ivy.zeros_like. This method
-        simply wraps the function, and so the docstring for ivy.zeros_like also
+        dtype: Optional[Union[aikit.Dtype, aikit.NativeDtype]] = None,
+        device: Optional[Union[aikit.Device, aikit.NativeDevice]] = None,
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
+        """aikit.Array instance method variant of aikit.zeros_like. This method
+        simply wraps the function, and so the docstring for aikit.zeros_like also
         applies to this method with minimal changes.
 
         Parameters
@@ -205,13 +205,13 @@ class _ArrayWithCreation(abc.ABC):
         ret
             an array having the same shape as ``self`` and filled with ``zeros``.
         """
-        return ivy.zeros_like(self._data, dtype=dtype, device=device, out=out)
+        return aikit.zeros_like(self._data, dtype=dtype, device=device, out=out)
 
     def tril(
-        self: ivy.Array, /, *, k: int = 0, out: Optional[ivy.Array] = None
-    ) -> ivy.Array:
-        """ivy.Array instance method variant of ivy.tril. This method simply
-        wraps the function, and so the docstring for ivy.tril also applies to
+        self: aikit.Array, /, *, k: int = 0, out: Optional[aikit.Array] = None
+    ) -> aikit.Array:
+        """aikit.Array instance method variant of aikit.tril. This method simply
+        wraps the function, and so the docstring for aikit.tril also applies to
         this method with minimal changes.
 
         Parameters
@@ -235,13 +235,13 @@ class _ArrayWithCreation(abc.ABC):
             specified diagonal k must be zeroed. The returned array should be allocated
             on the same device as ``self``.
         """
-        return ivy.tril(self._data, k=k, out=out)
+        return aikit.tril(self._data, k=k, out=out)
 
     def triu(
-        self: ivy.Array, /, *, k: int = 0, out: Optional[ivy.Array] = None
-    ) -> ivy.Array:
-        """ivy.Array instance method variant of ivy.triu. This method simply
-        wraps the function, and so the docstring for ivy.triu also applies to
+        self: aikit.Array, /, *, k: int = 0, out: Optional[aikit.Array] = None
+    ) -> aikit.Array:
+        """aikit.Array instance method variant of aikit.triu. This method simply
+        wraps the function, and so the docstring for aikit.triu also applies to
         this method with minimal changes.
 
         Parameters
@@ -265,18 +265,18 @@ class _ArrayWithCreation(abc.ABC):
             specified diagonal k must be zeroed. The returned array should be allocated
             on the same device as ``self``.
         """
-        return ivy.triu(self._data, k=k, out=out)
+        return aikit.triu(self._data, k=k, out=out)
 
     def empty_like(
-        self: ivy.Array,
+        self: aikit.Array,
         /,
         *,
-        dtype: Optional[Union[ivy.Dtype, ivy.NativeDtype]] = None,
-        device: Optional[Union[ivy.Device, ivy.NativeDevice]] = None,
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
-        """ivy.Array instance method variant of ivy.empty_like. This method
-        simply wraps the function, and so the docstring for ivy.empty_like also
+        dtype: Optional[Union[aikit.Dtype, aikit.NativeDtype]] = None,
+        device: Optional[Union[aikit.Device, aikit.NativeDevice]] = None,
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
+        """aikit.Array instance method variant of aikit.empty_like. This method
+        simply wraps the function, and so the docstring for aikit.empty_like also
         applies to this method with minimal changes.
 
         Parameters
@@ -299,17 +299,17 @@ class _ArrayWithCreation(abc.ABC):
             an array having the same shape as ``self`` and containing uninitialized
             data.
         """
-        return ivy.empty_like(self._data, dtype=dtype, device=device, out=out)
+        return aikit.empty_like(self._data, dtype=dtype, device=device, out=out)
 
     def meshgrid(
-        self: ivy.Array,
+        self: aikit.Array,
         /,
-        *arrays: Union[ivy.Array, ivy.NativeArray],
+        *arrays: Union[aikit.Array, aikit.NativeArray],
         sparse: bool = False,
         indexing: str = "xy",
-    ) -> List[ivy.Array]:
-        """ivy.Array instance method variant of ivy.meshgrid. This method
-        simply wraps the function, and so the docstring for ivy.meshgrid also
+    ) -> List[aikit.Array]:
+        """aikit.Array instance method variant of aikit.meshgrid. This method
+        simply wraps the function, and so the docstring for aikit.meshgrid also
         applies to this method with minimal changes.
 
         Parameters
@@ -335,16 +335,16 @@ class _ArrayWithCreation(abc.ABC):
             input arrays. Each returned array must have rank ``N``. For ``N``
             one-dimensional arrays having lengths ``Ni = len(xi)``.
         """
-        return ivy.meshgrid(self, *arrays, sparse=sparse, indexing=indexing)
+        return aikit.meshgrid(self, *arrays, sparse=sparse, indexing=indexing)
 
     def from_dlpack(
-        self: ivy.Array,
+        self: aikit.Array,
         /,
         *,
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
-        """ivy.Array instance method variant of ivy.from_dlpack. This method
-        simply wraps the function, and so the docstring for ivy.from_dlpack
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
+        """aikit.Array instance method variant of aikit.from_dlpack. This method
+        simply wraps the function, and so the docstring for aikit.from_dlpack
         also applies to this method with minimal changes.
 
         Parameters
@@ -360,29 +360,29 @@ class _ArrayWithCreation(abc.ABC):
         ret
             an array containing the data in ``self``.
         """
-        return ivy.from_dlpack(self._data, out=out)
+        return aikit.from_dlpack(self._data, out=out)
 
     # Extra #
     # ----- #
 
     def copy_array(
-        self: ivy.Array,
+        self: aikit.Array,
         /,
         *,
-        to_ivy_array: bool = True,
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
-        """ivy.Array instance method variant of ivy.copy_array. This method
-        simply wraps the function, and so the docstring for ivy.copy_array also
+        to_aikit_array: bool = True,
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
+        """aikit.Array instance method variant of aikit.copy_array. This method
+        simply wraps the function, and so the docstring for aikit.copy_array also
         applies to this method with minimal changes.
 
         Parameters
         ----------
         self
             input array
-        to_ivy_array
-            boolean, if True the returned array will be an ivy.Array object otherwise
-            returns an ivy.NativeArray object (i.e. a torch.tensor, np.array, etc.,
+        to_aikit_array
+            boolean, if True the returned array will be an aikit.Array object otherwise
+            returns an aikit.NativeArray object (i.e. a torch.tensor, np.array, etc.,
             depending on the backend), defaults to True.
         out
             optional output array, for writing the result to. It must have a shape that
@@ -393,17 +393,17 @@ class _ArrayWithCreation(abc.ABC):
         ret
             a copy of the input array ``x``.
         """
-        return ivy.copy_array(self, to_ivy_array=to_ivy_array, out=out)
+        return aikit.copy_array(self, to_aikit_array=to_aikit_array, out=out)
 
     def native_array(
-        self: ivy.Array,
+        self: aikit.Array,
         /,
         *,
-        dtype: Optional[Union[ivy.Dtype, ivy.NativeDtype]] = None,
-        device: Optional[Union[ivy.Device, ivy.NativeDevice]] = None,
-    ) -> ivy.NativeArray:
-        """ivy.Array instance method variant of ivy.native_array. This method
-        simply wraps the function, and so the docstring for ivy.native_array
+        dtype: Optional[Union[aikit.Dtype, aikit.NativeDtype]] = None,
+        device: Optional[Union[aikit.Device, aikit.NativeDevice]] = None,
+    ) -> aikit.NativeArray:
+        """aikit.Array instance method variant of aikit.native_array. This method
+        simply wraps the function, and so the docstring for aikit.native_array
         also applies to this method with minimal changes.
 
         Parameters
@@ -420,22 +420,22 @@ class _ArrayWithCreation(abc.ABC):
         ret
             A native array interpretation of ``self``.
         """
-        return ivy.native_array(self._data, dtype=dtype, device=device)
+        return aikit.native_array(self._data, dtype=dtype, device=device)
 
     def one_hot(
-        self: ivy.Array,
+        self: aikit.Array,
         depth: int,
         /,
         *,
         on_value: Optional[Number] = None,
         off_value: Optional[Number] = None,
         axis: Optional[int] = None,
-        dtype: Optional[Union[ivy.Dtype, ivy.NativeDtype]] = None,
-        device: Optional[Union[ivy.Device, ivy.NativeDevice]] = None,
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
-        """ivy.Array instance method variant of ivy.one_hot. This method simply
-        wraps the function, and so the docstring for ivy.one_hot also applies
+        dtype: Optional[Union[aikit.Dtype, aikit.NativeDtype]] = None,
+        device: Optional[Union[aikit.Device, aikit.NativeDevice]] = None,
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
+        """aikit.Array instance method variant of aikit.one_hot. This method simply
+        wraps the function, and so the docstring for aikit.one_hot also applies
         to this method with minimal changes.
 
         Parameters
@@ -469,28 +469,28 @@ class _ArrayWithCreation(abc.ABC):
 
         Examples
         --------
-        With :class:`ivy.Array` inputs:
+        With :class:`aikit.Array` inputs:
 
-        >>> x = ivy.array([3, 1])
+        >>> x = aikit.array([3, 1])
         >>> y = 5
         >>> z = x.one_hot(5)
         >>> print(z)
-        ivy.array([[0., 0., 0., 1., 0.],
+        aikit.array([[0., 0., 0., 1., 0.],
         ...    [0., 1., 0., 0., 0.]])
 
-        >>> x = ivy.array([0])
+        >>> x = aikit.array([0])
         >>> y = 5
-        >>> ivy.one_hot(x, y)
-        ivy.array([[1., 0., 0., 0., 0.]])
+        >>> aikit.one_hot(x, y)
+        aikit.array([[1., 0., 0., 0., 0.]])
 
-        >>> x = ivy.array([0])
+        >>> x = aikit.array([0])
         >>> y = 5
-        >>> ivy.one_hot(x, 5, out=z)
-        ivy.array([[1., 0., 0., 0., 0.]])
+        >>> aikit.one_hot(x, 5, out=z)
+        aikit.array([[1., 0., 0., 0., 0.]])
         >>> print(z)
-        ivy.array([[1., 0., 0., 0., 0.]])
+        aikit.array([[1., 0., 0., 0., 0.]])
         """
-        return ivy.one_hot(
+        return aikit.one_hot(
             self,
             depth,
             on_value=on_value,
@@ -502,18 +502,18 @@ class _ArrayWithCreation(abc.ABC):
         )
 
     def linspace(
-        self: ivy.Array,
-        stop: Union[ivy.Array, ivy.NativeArray, float],
+        self: aikit.Array,
+        stop: Union[aikit.Array, aikit.NativeArray, float],
         /,
         num: int,
         *,
         axis: Optional[int] = None,
         endpoint: bool = True,
-        dtype: Optional[Union[ivy.Dtype, ivy.NativeDtype]] = None,
-        device: Optional[Union[ivy.Device, ivy.NativeDevice]] = None,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Array:
-        return ivy.linspace(
+        dtype: Optional[Union[aikit.Dtype, aikit.NativeDtype]] = None,
+        device: Optional[Union[aikit.Device, aikit.NativeDevice]] = None,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Array:
+        return aikit.linspace(
             self,
             stop,
             num=num,
@@ -525,20 +525,20 @@ class _ArrayWithCreation(abc.ABC):
         )
 
     def logspace(
-        self: ivy.Array,
-        stop: Union[ivy.Array, ivy.NativeArray, float],
+        self: aikit.Array,
+        stop: Union[aikit.Array, aikit.NativeArray, float],
         /,
         num: int,
         *,
         base: float = 10.0,
         axis: int = 0,
         endpoint: bool = True,
-        dtype: Optional[Union[ivy.Dtype, ivy.NativeDtype]] = None,
-        device: Optional[Union[ivy.Device, ivy.NativeDevice]] = None,
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
-        """ivy.Array instance method variant of ivy.logspace. This method
-        simply wraps the function, and so the docstring for ivy.logspace also
+        dtype: Optional[Union[aikit.Dtype, aikit.NativeDtype]] = None,
+        device: Optional[Union[aikit.Device, aikit.NativeDevice]] = None,
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
+        """aikit.Array instance method variant of aikit.logspace. This method
+        simply wraps the function, and so the docstring for aikit.logspace also
         applies to this method with minimal changes.
 
         Parameters
@@ -577,33 +577,33 @@ class _ArrayWithCreation(abc.ABC):
 
         Both the description and the type hints above assumes an array input for
         simplicity, but this function is *nestable*, and therefore also accepts
-        :class:`ivy.Container` instances in place of any of the arguments.
+        :class:`aikit.Container` instances in place of any of the arguments.
 
         Examples
         --------
         With float input:
 
-        >>> x = ivy.array([1, 2])
-        >>> y = ivy.array([4, 5])
+        >>> x = aikit.array([1, 2])
+        >>> y = aikit.array([4, 5])
         >>> x.logspace(y, 4)
-        ivy.array([[1.e+01, 1.e+02],
+        aikit.array([[1.e+01, 1.e+02],
                    [1.e+02, 1.e+03],
                    [1.e+03, 1.e+04],
                    [1.e+04, 1.e+05])
 
         >>> x.logspace(y, 4, axis = 1)
-        ivy.array([[[1.e+01, 1.e+02, 1.e+03, 1.e+04],
+        aikit.array([[[1.e+01, 1.e+02, 1.e+03, 1.e+04],
                    [1.e+02, 1.e+03, 1.e+04, 1.e+05]]])
 
-        >>> x = ivy.array([1, 2])
-        >>> y = ivy.array([4])      # Broadcasting example
+        >>> x = aikit.array([1, 2])
+        >>> y = aikit.array([4])      # Broadcasting example
         >>> x.logspace(y, 4)
-        ivy.array([[10., 100.]
+        aikit.array([[10., 100.]
                    [100., 464.15888336]
                    [1000., 2154.43469003]
                    [10000., 10000.]])
         """
-        return ivy.logspace(
+        return aikit.logspace(
             self,
             stop,
             num=num,

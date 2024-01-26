@@ -48,7 +48,7 @@ for i in range(1, total_jobs + 1):
     print(f"  {job_prefix}{i}:")
     print("    runs-on: ubuntu-latest")
     print("    steps:")
-    print("      - name: Checkout Ivy 🛎")
+    print("      - name: Checkout Aikit 🛎")
     print("        uses: actions/checkout@v2")
     print("        with:")
     print("          path: aikit")

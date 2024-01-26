@@ -130,7 +130,7 @@ def broadcast_arrays(*arrays: np.ndarray) -> List[np.ndarray]:
     try:
         return np.broadcast_arrays(*arrays)
     except ValueError as e:
-        raise aikit.utils.exceptions.IvyBroadcastShapeError(e) from e
+        raise aikit.utils.exceptions.AikitBroadcastShapeError(e) from e
 
 
 @with_unsupported_dtypes({"1.26.3 and below": ("complex",)}, backend_version)
@@ -193,7 +193,7 @@ def as_aikit_dtype(
         if dtype_in in native_dtype_dict:
             dtype_str = dtype_in
         else:
-            raise aikit.utils.exceptions.IvyException(
+            raise aikit.utils.exceptions.AikitException(
                 "Cannot convert to aikit dtype."
                 f" {dtype_in} is not supported by NumPy backend."
             )
@@ -211,7 +211,7 @@ def as_aikit_dtype(
     elif "bool" in dtype_str:
         return aikit.Dtype("bool")
     else:
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             f"Cannot recognize {dtype_str} as a valid Dtype."
         )
 
@@ -233,7 +233,7 @@ def as_native_dtype(dtype_in: Union[np.dtype, str, bool, int, float], /) -> np.d
     if dtype_in in native_dtype_dict.values():
         return native_dtype_dict[aikit.Dtype(dtype_in)]
     else:
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             f"Cannot convert to numpy dtype. {dtype_in} is not supported by NumPy."
         )
 

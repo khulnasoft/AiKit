@@ -253,7 +253,7 @@ class Variable:
         return y.__rxor__(self._aikit_array)
 
     def __setitem__(self, key, value):
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             "aikit.functional.frontends.tensorflow.Variable object "
             "doesn't support assignment"
         )

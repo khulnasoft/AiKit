@@ -1,4 +1,4 @@
-"""Collection of gradient Ivy functions."""
+"""Collection of gradient Aikit functions."""
 
 # global
 from typing import Sequence, Union, Optional, Tuple, Callable

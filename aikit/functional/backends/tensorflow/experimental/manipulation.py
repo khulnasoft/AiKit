@@ -145,7 +145,7 @@ def vsplit(
     copy: Optional[bool] = None,
 ) -> List[Union[tf.Tensor, tf.Variable]]:
     if len(ary.shape) < 2:
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             "vsplit only works on arrays of 2 or more dimensions"
         )
     return aikit.split(ary, num_or_size_splits=indices_or_sections, axis=0)
@@ -159,7 +159,7 @@ def dsplit(
     copy: Optional[bool] = None,
 ) -> List[Union[tf.Tensor, tf.Variable]]:
     if len(ary.shape) < 3:
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             "dsplit only works on arrays of 3 or more dimensions"
         )
     return aikit.split(ary, num_or_size_splits=indices_or_sections, axis=2)
@@ -205,7 +205,7 @@ def take_along_axis(
     out: Optional[Union[tf.Tensor, tf.Variable]] = None,
 ) -> Union[tf.Tensor, tf.Variable]:
     if len(arr.shape) != len(indices.shape):
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             "arr and indices must have the same number of dimensions;"
             + f" got {len(arr.shape)} vs {len(indices.shape)}"
         )

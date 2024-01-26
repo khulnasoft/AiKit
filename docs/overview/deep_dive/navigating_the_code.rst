@@ -11,33 +11,33 @@ Navigating the Code
 Categorization
 --------------
 
-Ivy uses the following categories taken from the `Array API Standard`_:
+Aikit uses the following categories taken from the `Array API Standard`_:
 
-* `constants <https://github.com/khulnasoft/aikit/blob/40836963a8edfe23f00a375b63bbb5c878bfbaac/ivy/functional/ivy/constants.py>`_
-* `creation <https://github.com/khulnasoft/aikit/blob/40836963a8edfe23f00a375b63bbb5c878bfbaac/ivy/functional/ivy/creation.py>`_
-* `data_type <https://github.com/khulnasoft/aikit/blob/40836963a8edfe23f00a375b63bbb5c878bfbaac/ivy/functional/ivy/data_type.py>`_
-* `elementwise <https://github.com/khulnasoft/aikit/blob/40836963a8edfe23f00a375b63bbb5c878bfbaac/ivy/functional/ivy/elementwise.py>`_
-* `linear_algebra <https://github.com/khulnasoft/aikit/blob/40836963a8edfe23f00a375b63bbb5c878bfbaac/ivy/functional/ivy/linear_algebra.py>`_
-* `manipulation <https://github.com/khulnasoft/aikit/blob/40836963a8edfe23f00a375b63bbb5c878bfbaac/ivy/functional/ivy/manipulation.py>`_
-* `searching <https://github.com/khulnasoft/aikit/blob/40836963a8edfe23f00a375b63bbb5c878bfbaac/ivy/functional/ivy/searching.py>`_
-* `set <https://github.com/khulnasoft/aikit/blob/40836963a8edfe23f00a375b63bbb5c878bfbaac/ivy/functional/ivy/set.py>`_
-* `sorting <https://github.com/khulnasoft/aikit/blob/40836963a8edfe23f00a375b63bbb5c878bfbaac/ivy/functional/ivy/sorting.py>`_
-* `statistical <https://github.com/khulnasoft/aikit/blob/40836963a8edfe23f00a375b63bbb5c878bfbaac/ivy/functional/ivy/statistical.py>`_
-* `utility <https://github.com/khulnasoft/aikit/blob/40836963a8edfe23f00a375b63bbb5c878bfbaac/ivy/functional/ivy/utility.py>`_
+* `constants <https://github.com/khulnasoft/aikit/blob/40836963a8edfe23f00a375b63bbb5c878bfbaac/aikit/functional/aikit/constants.py>`_
+* `creation <https://github.com/khulnasoft/aikit/blob/40836963a8edfe23f00a375b63bbb5c878bfbaac/aikit/functional/aikit/creation.py>`_
+* `data_type <https://github.com/khulnasoft/aikit/blob/40836963a8edfe23f00a375b63bbb5c878bfbaac/aikit/functional/aikit/data_type.py>`_
+* `elementwise <https://github.com/khulnasoft/aikit/blob/40836963a8edfe23f00a375b63bbb5c878bfbaac/aikit/functional/aikit/elementwise.py>`_
+* `linear_algebra <https://github.com/khulnasoft/aikit/blob/40836963a8edfe23f00a375b63bbb5c878bfbaac/aikit/functional/aikit/linear_algebra.py>`_
+* `manipulation <https://github.com/khulnasoft/aikit/blob/40836963a8edfe23f00a375b63bbb5c878bfbaac/aikit/functional/aikit/manipulation.py>`_
+* `searching <https://github.com/khulnasoft/aikit/blob/40836963a8edfe23f00a375b63bbb5c878bfbaac/aikit/functional/aikit/searching.py>`_
+* `set <https://github.com/khulnasoft/aikit/blob/40836963a8edfe23f00a375b63bbb5c878bfbaac/aikit/functional/aikit/set.py>`_
+* `sorting <https://github.com/khulnasoft/aikit/blob/40836963a8edfe23f00a375b63bbb5c878bfbaac/aikit/functional/aikit/sorting.py>`_
+* `statistical <https://github.com/khulnasoft/aikit/blob/40836963a8edfe23f00a375b63bbb5c878bfbaac/aikit/functional/aikit/statistical.py>`_
+* `utility <https://github.com/khulnasoft/aikit/blob/40836963a8edfe23f00a375b63bbb5c878bfbaac/aikit/functional/aikit/utility.py>`_
 
-In addition to these, we also add the following categories, used for additional functions in Ivy that are not in the `Array API Standard`_:
+In addition to these, we also add the following categories, used for additional functions in Aikit that are not in the `Array API Standard`_:
 
-* `activations <https://github.com/khulnasoft/aikit/blob/40836963a8edfe23f00a375b63bbb5c878bfbaac/ivy/functional/ivy/activations.py>`_
-* `compilation <https://github.com/khulnasoft/aikit/blob/40836963a8edfe23f00a375b63bbb5c878bfbaac/ivy/functional/ivy/compilation.py>`_
-* `device <https://github.com/khulnasoft/aikit/blob/40836963a8edfe23f00a375b63bbb5c878bfbaac/ivy/functional/ivy/device.py>`_
-* `general <https://github.com/khulnasoft/aikit/blob/40836963a8edfe23f00a375b63bbb5c878bfbaac/ivy/functional/ivy/general.py>`_
-* `gradients <https://github.com/khulnasoft/aikit/blob/40836963a8edfe23f00a375b63bbb5c878bfbaac/ivy/functional/ivy/gradients.py>`_
-* `layers <https://github.com/khulnasoft/aikit/blob/40836963a8edfe23f00a375b63bbb5c878bfbaac/ivy/functional/ivy/layers.py>`_
-* `losses <https://github.com/khulnasoft/aikit/blob/40836963a8edfe23f00a375b63bbb5c878bfbaac/ivy/functional/ivy/losses.py>`_
-* `meta <https://github.com/khulnasoft/aikit/blob/40836963a8edfe23f00a375b63bbb5c878bfbaac/ivy/functional/ivy/meta.py>`_
-* `nest <https://github.com/khulnasoft/aikit/blob/40836963a8edfe23f00a375b63bbb5c878bfbaac/ivy/functional/ivy/nest.py>`_
-* `norms <https://github.com/khulnasoft/aikit/blob/40836963a8edfe23f00a375b63bbb5c878bfbaac/ivy/functional/ivy/norms.py>`_
-* `random <https://github.com/khulnasoft/aikit/blob/40836963a8edfe23f00a375b63bbb5c878bfbaac/ivy/functional/ivy/random.py>`_
+* `activations <https://github.com/khulnasoft/aikit/blob/40836963a8edfe23f00a375b63bbb5c878bfbaac/aikit/functional/aikit/activations.py>`_
+* `compilation <https://github.com/khulnasoft/aikit/blob/40836963a8edfe23f00a375b63bbb5c878bfbaac/aikit/functional/aikit/compilation.py>`_
+* `device <https://github.com/khulnasoft/aikit/blob/40836963a8edfe23f00a375b63bbb5c878bfbaac/aikit/functional/aikit/device.py>`_
+* `general <https://github.com/khulnasoft/aikit/blob/40836963a8edfe23f00a375b63bbb5c878bfbaac/aikit/functional/aikit/general.py>`_
+* `gradients <https://github.com/khulnasoft/aikit/blob/40836963a8edfe23f00a375b63bbb5c878bfbaac/aikit/functional/aikit/gradients.py>`_
+* `layers <https://github.com/khulnasoft/aikit/blob/40836963a8edfe23f00a375b63bbb5c878bfbaac/aikit/functional/aikit/layers.py>`_
+* `losses <https://github.com/khulnasoft/aikit/blob/40836963a8edfe23f00a375b63bbb5c878bfbaac/aikit/functional/aikit/losses.py>`_
+* `meta <https://github.com/khulnasoft/aikit/blob/40836963a8edfe23f00a375b63bbb5c878bfbaac/aikit/functional/aikit/meta.py>`_
+* `nest <https://github.com/khulnasoft/aikit/blob/40836963a8edfe23f00a375b63bbb5c878bfbaac/aikit/functional/aikit/nest.py>`_
+* `norms <https://github.com/khulnasoft/aikit/blob/40836963a8edfe23f00a375b63bbb5c878bfbaac/aikit/functional/aikit/norms.py>`_
+* `random <https://github.com/khulnasoft/aikit/blob/40836963a8edfe23f00a375b63bbb5c878bfbaac/aikit/functional/aikit/random.py>`_
 
 Some functions that you're considering adding might overlap several of these categorizations, and in such cases you should look at the other functions included in each file, and use your best judgement for which categorization is most suitable.
 
@@ -46,12 +46,12 @@ We can always suggest a more suitable location when reviewing your pull request 
 Submodule Design
 ----------------
 
-Ivy is designed so that all methods are called directly from the :mod:`ivy` namespace, such as :func:`ivy.matmul`, and not :func:`ivy.some_namespace.matmul`.
-Therefore, inside any of the folders :mod:`ivy.functional.ivy`, :mod:`ivy.functional.backends.some_backend`, :mod:`ivy.functional.backends.another_backend` the functions can be moved to different files or folders without breaking anything at all.
+Aikit is designed so that all methods are called directly from the :mod:`aikit` namespace, such as :func:`aikit.matmul`, and not :func:`aikit.some_namespace.matmul`.
+Therefore, inside any of the folders :mod:`aikit.functional.aikit`, :mod:`aikit.functional.backends.some_backend`, :mod:`aikit.functional.backends.another_backend` the functions can be moved to different files or folders without breaking anything at all.
 This makes it very simple to refactor and re-organize parts of the code structure in an ongoing manner.
 
 The :code:`__init__.py` inside each of the subfolders are very similar, importing each function via :code:`from .file_name import *` and also importing each file as a submodule via :code:`from . import file_name`.
-For example, an extract from `ivy/ivy/functional/ivy/__init__.py <https://github.com/khulnasoft/aikit/blob/40836963a8edfe23f00a375b63bbb5c878bfbaac/ivy/functional/ivy/__init__.py>`_ is given below:
+For example, an extract from `aikit/aikit/functional/aikit/__init__.py <https://github.com/khulnasoft/aikit/blob/40836963a8edfe23f00a375b63bbb5c878bfbaac/aikit/functional/aikit/__init__.py>`_ is given below:
 
 .. code-block:: python
 
@@ -62,10 +62,10 @@ For example, an extract from `ivy/ivy/functional/ivy/__init__.py <https://github
     # etc.
 
 
-Ivy API
+Aikit API
 -------
 
-All function signatures for the Ivy API are defined in the :mod:`ivy.functional.ivy` submodule.
+All function signatures for the Aikit API are defined in the :mod:`aikit.functional.aikit` submodule.
 Functions written here look something like the following, (explained in much more detail in the following sections):
 
 
@@ -73,14 +73,14 @@ Functions written here look something like the following, (explained in much mor
 
 
     def my_func(
-        x: Union[ivy.Array, ivy.NativeArray],
+        x: Union[aikit.Array, aikit.NativeArray],
         /,
         axes: Union[int, Sequence[int]],
         *,
-        dtype: Optional[Union[ivy.Dtype, ivy.NativeDtype]] = None,
-        device: Optional[Union[ivy.Device, ivy.NativeDevice]] = None,
-        out: Optional[ivy.Array] = None
-    ) -> ivy.Array:
+        dtype: Optional[Union[aikit.Dtype, aikit.NativeDtype]] = None,
+        device: Optional[Union[aikit.Device, aikit.NativeDevice]] = None,
+        out: Optional[aikit.Array] = None
+    ) -> aikit.Array:
         """
         Explanation of the function.
 
@@ -119,7 +119,7 @@ Functions written here look something like the following, (explained in much mor
 
         Some examples go here
         """
-        return ivy.current_backend(x).my_func(x, axes, dtype=dtype, device=device, out=out)
+        return aikit.current_backend(x).my_func(x, axes, dtype=dtype, device=device, out=out)
 
 We follow the `Array API Standard convention`_ about positional and keyword arguments.
 
@@ -133,14 +133,14 @@ Keyword-only parameters will mandate the use of argument names when calling func
 Similar arguments can be kept together in the argument list, rather than us needing to add these at the very end to ensure positional argument behaviour remains the same.
 
 The :code:`dtype`, :code:`device` and :code:`out` arguments are always keyword-only.
-Arrays always have a type hint :code:`Union[ivy.Array, ivy.NativeArray]` in the input and :class:`ivy.Array` in the output.
+Arrays always have a type hint :code:`Union[aikit.Array, aikit.NativeArray]` in the input and :class:`aikit.Array` in the output.
 All functions which produce a single array include the :code:`out` argument.
 The reasons for each of these features are explained in the following sections.
 
 Backend API
 -----------
 
-Code in the backend submodules such as :mod:`ivy.functional.backends.torch` should then look something like:
+Code in the backend submodules such as :mod:`aikit.functional.backends.torch` should then look something like:
 
 .. code-block:: python
 
@@ -156,8 +156,8 @@ Code in the backend submodules such as :mod:`ivy.functional.backends.torch` shou
     ) -> torch.Tensor:
         return torch.function_name(x, axes, dtype, device, out)
 
-The :code:`dtype`, :code:`device` and :code:`out` arguments are again all keyword-only, but :code:`dtype` and :code:`device` are now required arguments, rather than optional as they were in the Ivy API.
-All arrays also now have the same type hint :class:`torch.Tensor`, rather than :code:`Union[ivy.Array, ivy.NativeArray]` in the input and :class:`ivy.Array` in the output.
+The :code:`dtype`, :code:`device` and :code:`out` arguments are again all keyword-only, but :code:`dtype` and :code:`device` are now required arguments, rather than optional as they were in the Aikit API.
+All arrays also now have the same type hint :class:`torch.Tensor`, rather than :code:`Union[aikit.Array, aikit.NativeArray]` in the input and :class:`aikit.Array` in the output.
 The backend methods also should not add a docstring.
 Again, the reasons for these features are explained in the following sections.
 
@@ -171,27 +171,27 @@ At times, helper functions specific to the submodule are required to:
 
 To have a better idea on this, let's look at an example!
 
-**Helper in Ivy**
+**Helper in Aikit**
 
 .. code-block:: python
 
-    # in ivy/utils/assertions.py
+    # in aikit/utils/assertions.py
     def check_fill_value_and_dtype_are_compatible(fill_value, dtype):
         if (
             not (
-                (ivy.is_int_dtype(dtype) or ivy.is_uint_dtype(dtype))
+                (aikit.is_int_dtype(dtype) or aikit.is_uint_dtype(dtype))
                 and isinstance(fill_value, int)
             )
             and not (
-                ivy.is_complex_dtype(dtype) and isinstance(fill_value, (float, complex))
+                aikit.is_complex_dtype(dtype) and isinstance(fill_value, (float, complex))
             )
             and not (
-                ivy.is_float_dtype(dtype)
+                aikit.is_float_dtype(dtype)
                 and isinstance(fill_value, (float, np.float32))
                 or isinstance(fill_value, bool)
             )
         ):
-            raise ivy.utils.exceptions.IvyException(
+            raise aikit.utils.exceptions.AikitException(
                 f"the fill_value: {fill_value} and data type: {dtype} are not compatible"
             )
 
@@ -207,7 +207,7 @@ Then, we import this submodule-specific helper function to the respective backen
 
 .. code-block:: python
 
-    # in ivy/functional/backends/jax/creation.py
+    # in aikit/functional/backends/jax/creation.py
 
     def full_like(
         x: JaxArray,
@@ -218,7 +218,7 @@ Then, we import this submodule-specific helper function to the respective backen
         device: jaxlib.xla_extension.Device,
         out: Optional[JaxArray] = None,
     ) -> JaxArray:
-        ivy.utils.assertions.check_fill_value_and_dtype_are_compatible(fill_value, dtype)
+        aikit.utils.assertions.check_fill_value_and_dtype_are_compatible(fill_value, dtype)
         return _to_device(
             jnp.full_like(x, fill_value, dtype=dtype),
             device=device,
@@ -228,7 +228,7 @@ Then, we import this submodule-specific helper function to the respective backen
 
 .. code-block:: python
 
-    # in ivy/functional/backends/numpy/creation.py
+    # in aikit/functional/backends/numpy/creation.py
 
     def full_like(
         x: np.ndarray,
@@ -239,14 +239,14 @@ Then, we import this submodule-specific helper function to the respective backen
         device: str,
         out: Optional[np.ndarray] = None,
     ) -> np.ndarray:
-        ivy.utils.assertions.check_fill_value_and_dtype_are_compatible(fill_value, dtype)
+        aikit.utils.assertions.check_fill_value_and_dtype_are_compatible(fill_value, dtype)
         return _to_device(np.full_like(x, fill_value, dtype=dtype), device=device)
 
 **TensorFlow**
 
 .. code-block:: python
 
-    # in ivy/functional/backends/tensorflow/creation.py
+    # in aikit/functional/backends/tensorflow/creation.py
 
     def full_like(
         x: Union[tf.Tensor, tf.Variable],
@@ -257,7 +257,7 @@ Then, we import this submodule-specific helper function to the respective backen
         device: str,
         out: Optional[Union[tf.Tensor, tf.Variable]] = None,
     ) -> Union[tf.Tensor, tf.Variable]:
-        ivy.utils.assertions.check_fill_value_and_dtype_are_compatible(fill_value, dtype)
+        aikit.utils.assertions.check_fill_value_and_dtype_are_compatible(fill_value, dtype)
         with tf.device(device):
             return tf.experimental.numpy.full_like(x, fill_value, dtype=dtype)
 
@@ -270,7 +270,7 @@ Then, we import this submodule-specific helper function to the respective backen
 
 .. code-block:: python
 
-    # in ivy/functional/backends/torch/creation.py
+    # in aikit/functional/backends/torch/creation.py
 
     def full_like(
         x: torch.Tensor,
@@ -281,13 +281,13 @@ Then, we import this submodule-specific helper function to the respective backen
         device: torch.device,
         out: Optional[torch.Tensor] = None,
     ) -> torch.Tensor:
-        ivy.utils.assertions.check_fill_value_and_dtype_are_compatible(fill_value, dtype)
+        aikit.utils.assertions.check_fill_value_and_dtype_are_compatible(fill_value, dtype)
         return torch.full_like(x, fill_value, dtype=dtype, device=device)
 
 Version Unpinning
 -----------------
 
-At any point in time, Ivy's development will be predominantly focused around the latest pypi version (and all prior versions) for each of the backend frameworks.
+At any point in time, Aikit's development will be predominantly focused around the latest pypi version (and all prior versions) for each of the backend frameworks.
 
 Earlier we had our versions pinned for each framework to provide stability but later concluded that by unpinnning the versions we would be able to account for the latest breaking changes if any and support the latest version of the framework.
 Any prior version's compatibility would be tested by our multiversion testing pipeline, thus keeping us ahead and in light of the latest changes.
@@ -297,7 +297,7 @@ This helps to prevent our work from culminating over a fixed version while strid
 
 **Round Up**
 
-This should have hopefully given you a good feel for how to navigate the Ivy codebase.
+This should have hopefully given you a good feel for how to navigate the Aikit codebase.
 
 If you have any questions, please feel free to reach out on `discord`_ in the `navigating the code thread`_!
 

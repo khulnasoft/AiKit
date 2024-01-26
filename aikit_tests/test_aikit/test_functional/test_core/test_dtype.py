@@ -794,7 +794,7 @@ def test_is_float_dtype(*, dtype_x, test_flags, backend_fw, fn_name, on_device):
     )
 
 
-# Extra Ivy Function Tests #
+# Extra Aikit Function Tests #
 # ------------------------ #
 
 

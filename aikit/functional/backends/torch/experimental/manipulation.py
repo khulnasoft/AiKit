@@ -281,7 +281,7 @@ def vsplit(
     copy: Optional[bool] = None,
 ) -> List[torch.Tensor]:
     if len(ary.shape) < 2:
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             "vsplit only works on arrays of 2 or more dimensions"
         )
     return aikit.split(ary, num_or_size_splits=indices_or_sections, axis=0)
@@ -295,7 +295,7 @@ def dsplit(
     copy: Optional[bool] = None,
 ) -> List[torch.Tensor]:
     if len(ary.shape) < 2:
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             "dsplit only works on arrays of 3 or more dimensions"
         )
     return aikit.split(ary, num_or_size_splits=indices_or_sections, axis=2)
@@ -346,7 +346,7 @@ def take_along_axis(
     out: Optional[torch.Tensor] = None,
 ) -> torch.Tensor:
     if arr.ndim != indices.ndim:
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             "arr and indices must have the same number of dimensions;"
             + f" got {arr.ndim} vs {indices.ndim}"
         )

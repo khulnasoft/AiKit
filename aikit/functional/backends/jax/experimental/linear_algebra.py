@@ -3,13 +3,13 @@ from typing import Optional, Tuple, Sequence, Union
 import jax.numpy as jnp
 import jax.scipy.linalg as jla
 
-from ivy.func_wrapper import with_supported_dtypes
-from ivy.functional.backends.jax import JaxArray
+from aikit.func_wrapper import with_supported_dtypes
+from aikit.functional.backends.jax import JaxArray
 
-import ivy
+import aikit
 
-from ivy.functional.ivy.experimental.linear_algebra import _check_valid_dimension_size
-from ivy.utils.exceptions import IvyNotImplementedException
+from aikit.functional.aikit.experimental.linear_algebra import _check_valid_dimension_size
+from aikit.utils.exceptions import AikitNotImplementedException
 from . import backend_version
 
 
@@ -83,8 +83,8 @@ def diagflat(
     )
 
     ret = output_array.astype(x.dtype)
-    if ivy.exists(out):
-        ivy.inplace_update(out, ret)
+    if aikit.exists(out):
+        aikit.inplace_update(out, ret)
 
     return ret
 
@@ -181,7 +181,7 @@ def lu_factor(
     pivot: Optional[bool] = True,
     out: Optional[JaxArray] = None,
 ) -> Tuple[JaxArray]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def dot(

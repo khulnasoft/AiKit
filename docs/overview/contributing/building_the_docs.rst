@@ -1,7 +1,7 @@
 Building the Docs
 =================
 
-This document describes how to build the Ivy docs. If you want to know more about how
+This document describes how to build the Aikit docs. If you want to know more about how
 our custom building pipeline work, check our `Building the Docs Pipeline
 <../deep_dive/building_the_docs_pipeline.rst>`_ deep dive
 
@@ -33,7 +33,7 @@ The easiest way to build the docs is to use the ``docs/make_docs.sh`` script.
     cd docs
     ./make_docs.sh
 
-This script will build the docs for Ivy and store it in ``docs/build``.
+This script will build the docs for Aikit and store it in ``docs/build``.
 
 Using existing image on Docker Hub
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -47,11 +47,11 @@ the project in the current directory and output them to ``docs/build``.
 
 .. code-block:: bash
 
-    cd <ivy directory>
+    cd <aikit directory>
     docker run --rm -v $(pwd):/project khulnasoft/doc-builder
 
 This command will mount the module directory to ``/project`` in the container, the
-current directory should be the root of ``ivy``.
+current directory should be the root of ``aikit``.
 
 Building the image locally
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -102,8 +102,8 @@ Then, run the following command to build the docs:
 .. code-block:: bash
 
     cd doc-builder
-    ./make_docs_without_docker.sh <ivy directory>
+    ./make_docs_without_docker.sh <aikit directory>
 
 The script will install the required dependencies for `sphinx <https://www.sphinx-doc.org>`_
-which is used to build the docs, as well as dependencies required by Ivy. Then it will
-build the docs for Ivy and store it in ``docs/build``.
+which is used to build the docs, as well as dependencies required by Aikit. Then it will
+build the docs for Aikit and store it in ``docs/build``.

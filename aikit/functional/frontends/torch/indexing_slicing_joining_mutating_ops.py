@@ -90,7 +90,7 @@ def diagonal_scatter(input, src, offset=0, dim1=0, dim2=1):
         indices.reshape(input.shape), offset=offset, axis1=dim1, axis2=dim2
     )
     if src.shape != diagonal_indices.shape:
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             "src must have shape equal to specified diagonal of input. src size ="
             f" {src.shape}, diagonal size = {diagonal_indices.shape}"
         )
@@ -119,7 +119,7 @@ def dstack(tensors, *, out=None):
 @to_aikit_arrays_and_back
 def gather(input, dim, index, *, sparse_grad=False, out=None):
     if sparse_grad:
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             "Gather does not yet support the sparse grad functionality"
         )
 
@@ -415,7 +415,7 @@ def swapdims(input, dim0, dim1):
 @to_aikit_arrays_and_back
 def t(input):
     if input.ndim > 2:
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             f"t(input) expects a tensor with <= 2 dimensions, but self is {input.ndim}D"
         )
     if input.ndim == 2:

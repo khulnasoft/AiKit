@@ -340,7 +340,7 @@ def qr(
         q, r = torch.qr(x, some=False, out=out)
         ret = res(q, r)
     else:
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             "Only 'reduced' and 'complete' qr modes are allowed for the torch backend."
         )
     return ret

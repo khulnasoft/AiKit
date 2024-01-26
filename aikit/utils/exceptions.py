@@ -213,13 +213,13 @@ def _add_native_error(default):
     """
     trace_mode = aikit.exception_trace_mode
     if isinstance(default[-1], Exception):
-        if isinstance(default[-1], IvyException):
+        if isinstance(default[-1], AikitException):
             if default[-1].native_error is not None:
                 # native error was passed in the message
                 native_error = default[-1].native_error
             else:
                 # a string was passed in the message
-                # hence the last element is an IvyException
+                # hence the last element is an AikitException
                 default[-1] = str(default[-1])
                 return default
         else:
@@ -248,7 +248,7 @@ def _combine_messages(*messages, include_backend=True):
     return delimiter.join(default)
 
 
-class IvyException(Exception):
+class AikitException(Exception):
     def __init__(self, *messages, include_backend=False):
         self.native_error = (
             messages[0]
@@ -265,74 +265,74 @@ class IvyException(Exception):
             super().__init__(str(messages[0]))
 
 
-class IvyBackendException(IvyException):
+class AikitBackendException(AikitException):
     def __init__(self, *messages, include_backend=False):
         super().__init__(*messages, include_backend=include_backend)
 
 
-class IvyInvalidBackendException(IvyException):
+class AikitInvalidBackendException(AikitException):
     def __init__(self, *messages, include_backend=False):
         super().__init__(*messages, include_backend=include_backend)
 
 
-class IvyNotImplementedException(IvyException, NotImplementedError):
+class AikitNotImplementedException(AikitException, NotImplementedError):
     def __init__(self, *messages, include_backend=False):
         super().__init__(*messages, include_backend=include_backend)
 
 
-class IvyError(IvyException):
+class AikitError(AikitException):
     def __init__(self, *messages, include_backend=False):
         super().__init__(*messages, include_backend=include_backend)
 
 
-class IvyIndexError(IvyException, IndexError):
+class AikitIndexError(AikitException, IndexError):
     def __init__(self, *messages, include_backend=False):
         super().__init__(*messages, include_backend=include_backend)
 
 
-class IvyAttributeError(IvyException, AttributeError):
+class AikitAttributeError(AikitException, AttributeError):
     def __init__(self, *messages, include_backend=False):
         super().__init__(*messages, include_backend=include_backend)
 
 
-class IvyValueError(IvyException, ValueError):
+class AikitValueError(AikitException, ValueError):
     def __init__(self, *messages, include_backend=False):
         super().__init__(*messages, include_backend=include_backend)
 
 
-class IvyBroadcastShapeError(IvyException):
+class AikitBroadcastShapeError(AikitException):
     def __init__(self, *messages, include_backend=False):
         super().__init__(*messages, include_backend=include_backend)
 
 
-class IvyDtypePromotionError(IvyException):
+class AikitDtypePromotionError(AikitException):
     def __init__(self, *messages, include_backend=False):
         super().__init__(*messages, include_backend=include_backend)
 
 
-class IvyDeviceError(IvyException):
+class AikitDeviceError(AikitException):
     def __init__(self, *messages, include_backend=False):
         super().__init__(*messages, include_backend=include_backend)
 
 
-class InplaceUpdateException(IvyException):
+class InplaceUpdateException(AikitException):
     def __init__(self, *messages, include_backend=False):
         super().__init__(*messages, include_backend=include_backend)
 
 
 _non_aikit_exceptions_mapping = {
-    IndexError: IvyIndexError,
-    AttributeError: IvyAttributeError,
-    ValueError: IvyValueError,
-    Exception: IvyBackendException,
-    NotImplementedError: IvyNotImplementedException,
+    IndexError: AikitIndexError,
+    AttributeError: AikitAttributeError,
+    ValueError: AikitValueError,
+    Exception: AikitBackendException,
+    NotImplementedError: AikitNotImplementedException,
 }
 
 
 def handle_exceptions(fn: Callable) -> Callable:
     @functools.wraps(fn)
     def _handle_exceptions(*args, **kwargs):
-        """Catch all exceptions and raise them in IvyException.
+        """Catch all exceptions and raise them in AikitException.
 
         Parameters
         ----------
@@ -344,15 +344,15 @@ def handle_exceptions(fn: Callable) -> Callable:
 
         Returns
         -------
-            The return of the function, or raise IvyException if error is thrown.
+            The return of the function, or raise AikitException if error is thrown.
         """
         try:
             return fn(*args, **kwargs)
-        except IvyException as e:
+        except AikitException as e:
             _handle_exceptions_helper(e, type(e))
         except Exception as e:
             aikit_exception = _non_aikit_exceptions_mapping.get(
-                type(e), IvyBackendException
+                type(e), AikitBackendException
             )
             _handle_exceptions_helper(e, aikit_exception)
 
@@ -382,7 +382,7 @@ def _handle_inplace_mode(aikit_pack=None):
     ):
         warnings.warn(
             f"The current backend: '{current_backend}' does not support "
-            "inplace updates natively. Ivy would quietly create new arrays when "
+            "inplace updates natively. Aikit would quietly create new arrays when "
             "using inplace updates with this backend, leading to memory overhead "
             "(same applies for views). If you want to control your memory "
             "management, consider doing aikit.set_inplace_mode('strict') which "

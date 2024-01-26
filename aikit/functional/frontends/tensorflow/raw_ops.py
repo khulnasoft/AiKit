@@ -9,7 +9,7 @@ from aikit.functional.frontends.tensorflow.func_wrapper import (
 )
 
 from aikit.func_wrapper import with_unsupported_dtypes, with_supported_dtypes
-from aikit.utils.exceptions import IvyNotImplementedException
+from aikit.utils.exceptions import AikitNotImplementedException
 
 
 Acos = to_aikit_arrays_and_back(map_raw_ops_alias(tf_frontend.math.acos))
@@ -329,7 +329,7 @@ def _tf_to_aikit_aikit_arguments_for_conv(
 @to_aikit_arrays_and_back
 def AccumulateNV2(inputs, shape, name="AccumulateNV2"):
     # TODO
-    raise IvyNotImplementedException
+    raise AikitNotImplementedException
 
 
 @to_aikit_arrays_and_back
@@ -379,25 +379,25 @@ def BandedTriangularSolve(
     name="BandedTriangularSolve",
 ):
     # TODO
-    raise IvyNotImplementedException
+    raise AikitNotImplementedException
 
 
 @to_aikit_arrays_and_back
 def BatchMatMul(x, y, adj_x=False, adj_y=False, name="BatchMatMul"):
     # TODO
-    raise IvyNotImplementedException
+    raise AikitNotImplementedException
 
 
 @to_aikit_arrays_and_back
 def BatchMatMulV2(x, y, adj_x=False, adj_y=False, name="BatchMatMulV2"):
     # TODO
-    raise IvyNotImplementedException
+    raise AikitNotImplementedException
 
 
 @to_aikit_arrays_and_back
 def BatchMatMulV3(x, y, Tout=aikit.Dtype, adj_x=False, adj_y=False, name="BatchMatMulV3"):
     # TODO
-    raise IvyNotImplementedException
+    raise AikitNotImplementedException
 
 
 @to_aikit_arrays_and_back
@@ -436,7 +436,7 @@ def Cholesky(*, input, name="Cholesky"):
 @to_aikit_arrays_and_back
 def Complex(real, imag, Tout=aikit.complex64, name="Complex"):
     # TODO
-    raise IvyNotImplementedException
+    raise AikitNotImplementedException
 
 
 @to_aikit_arrays_and_back
@@ -514,13 +514,13 @@ def CumulativeLogsumexp(
     x, axis, exclusive=False, reverse=False, name="CumulativeLogsumexp"
 ):
     # TODO
-    raise IvyNotImplementedException
+    raise AikitNotImplementedException
 
 
 @to_aikit_arrays_and_back
 def DebugGradientIdentity(input, name="DebugGradientIdentity"):
     # TODO
-    raise IvyNotImplementedException
+    raise AikitNotImplementedException
 
 
 @to_aikit_arrays_and_back
@@ -553,7 +553,7 @@ def Equal(*, x, y, incompatible_shape_error=True, name="Equal"):
 
     try:
         return aikit.equal(x, y)
-    except (aikit.utils.exceptions.IvyError, aikit.utils.exceptions.IvyBackendException):
+    except (aikit.utils.exceptions.AikitError, aikit.utils.exceptions.AikitBackendException):
         return aikit.array(False)
 
 
@@ -707,7 +707,7 @@ def NotEqual(*, x, y, incompatible_shape_error=True, name="NotEqual"):
 
     try:
         return aikit.not_equal(x, y)
-    except (aikit.utils.exceptions.IvyError, aikit.utils.exceptions.IvyBackendException):
+    except (aikit.utils.exceptions.AikitError, aikit.utils.exceptions.AikitBackendException):
         return aikit.array(True)
 
 
@@ -744,7 +744,7 @@ def Prod(*, input, axis, keep_dims=False, name="Prod"):
 @to_aikit_arrays_and_back
 def Real(input, Tout=aikit.float32, name="Real"):
     # TODO
-    raise IvyNotImplementedException
+    raise AikitNotImplementedException
 
 
 @to_aikit_arrays_and_back

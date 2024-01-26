@@ -843,7 +843,7 @@ class _ArrayWithLinearAlgebra(abc.ABC):
             singular values will be computed, which can be significantly faster.
         .. note::
             with backend set as torch, svd with still compute left and right singular
-            vectors irrespective of the value of compute_uv, however Ivy will still only
+            vectors irrespective of the value of compute_uv, however Aikit will still only
             return the singular values.
 
         Returns

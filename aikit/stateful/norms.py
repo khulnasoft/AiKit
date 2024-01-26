@@ -1,4 +1,4 @@
-"""Collection of Ivy normalization classes."""
+"""Collection of Aikit normalization classes."""
 
 # local
 import aikit

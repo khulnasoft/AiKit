@@ -3,7 +3,7 @@ from typing import Optional, Union, Sequence, List
 import numpy as np
 import aikit
 from aikit.functional.aikit.data_type import _handle_nestable_dtype_info
-from aikit.utils.exceptions import IvyNotImplementedException
+from aikit.utils.exceptions import AikitNotImplementedException
 
 aikit_dtype_dict = {
     np.dtype("int8"): "int8",
@@ -101,7 +101,7 @@ def astype(
 def broadcast_arrays(
     *arrays: Union[(None, mx.ndarray.NDArray)]
 ) -> List[Union[(None, mx.ndarray.NDArray)]]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def broadcast_to(
@@ -111,7 +111,7 @@ def broadcast_to(
     *,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 @_handle_nestable_dtype_info
@@ -130,7 +130,7 @@ def iinfo(type: Union[str, mx.ndarray.NDArray, np.dtype], /) -> np.iinfo:
 
 
 def result_type(*arrays_and_dtypes: Union[(None, mx.ndarray.NDArray)]) -> aikit.Dtype:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def as_aikit_dtype(
@@ -149,7 +149,7 @@ def as_aikit_dtype(
         if dtype_in in native_dtype_dict:
             dtype_str = dtype_in
         else:
-            raise aikit.utils.exceptions.IvyException(
+            raise aikit.utils.exceptions.AikitException(
                 "Cannot convert to aikit dtype."
                 f" {dtype_in} is not supported by MXNet backend."
             )
@@ -163,7 +163,7 @@ def as_aikit_dtype(
     elif "bool" in dtype_str:
         return aikit.Dtype("bool")
     else:
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             f"Cannot recognize {dtype_str} as a valid Dtype."
         )
 
@@ -182,7 +182,7 @@ def as_native_dtype(dtype_in: Union[(None, str, bool, int, float, np.dtype)]) ->
     if dtype_in in native_dtype_dict:
         return native_dtype_dict[aikit.Dtype(dtype_in)]
     else:
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             f"Cannot convert to MXNet dtype. {dtype_in} is not supported by MXNet."
         )
 
@@ -196,8 +196,8 @@ def dtype(
 
 
 def dtype_bits(dtype_in: Union[(None, str, np.dtype)], /) -> int:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def is_native_dtype(dtype_in: Union[(None, str)], /) -> bool:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()

@@ -75,21 +75,21 @@ def _get_backend_for_arg(arg_module_name):
 
 
 def _determine_backend_from_args(args):
-    """Return the appropriate Ivy backend, given some arguments.
+    """Return the appropriate Aikit backend, given some arguments.
 
     Parameters
     ----------
     args
-        the arguments from which to figure out the corresponding Ivy backend.
+        the arguments from which to figure out the corresponding Aikit backend.
 
     Returns
     -------
     ret
-        the Ivy backend inferred from `args`.
+        the Aikit backend inferred from `args`.
 
     Examples
     --------
-    If `args` is a jax.numpy array, then Ivy's jax backend will be returned:
+    If `args` is a jax.numpy array, then Aikit's jax backend will be returned:
 
     >>> from aikit.utils.backend.handler import _determine_backend_from_args
     >>> import jax.numpy as jnp
@@ -156,7 +156,7 @@ def current_backend(*args, **kwargs):
     Returns
     -------
     ret
-        Ivy's current backend.
+        Aikit's current backend.
 
     Examples
     --------
@@ -334,7 +334,7 @@ def set_backend(backend: str, dynamic: bool = False):
     Examples
     --------
     If we set the global backend to be numpy, then subsequent calls to aikit functions
-    will be called from Ivy's numpy backend:
+    will be called from Aikit's numpy backend:
 
     >>> aikit.set_backend("numpy")
     >>> native = aikit.native_array([1])
@@ -441,7 +441,7 @@ def set_mxnet_backend():
 def previous_backend():
     """Unset the current global backend, and adjusts the aikit dict such that
     either a previously set global backend is then used as the backend,
-    otherwise we return to Ivy's implementations.
+    otherwise we return to Aikit's implementations.
 
     Returns
     -------
@@ -453,7 +453,7 @@ def previous_backend():
     Torch is the last set backend hence is the backend used in the first examples.
     However, as seen in the example after, if `previous_backend` is called before
     `aikit.native_array` then tensorflow will become the current backend and any
-    torch backend implementations in the Ivy dict will be swapped with the
+    torch backend implementations in the Aikit dict will be swapped with the
     tensorflow implementation::
 
     >>> aikit.set_backend("tensorflow")
@@ -478,7 +478,7 @@ def previous_backend():
         elif backend.current_backend_str() == "jax":
             aikit.del_global_attr("RNG")
         # the new backend is the backend that was set before the one
-        # we just removed from the stack, or Ivy if there was no
+        # we just removed from the stack, or Aikit if there was no
         # previously set backend
         if backend_stack:
             new_backend = backend_stack[-1]
@@ -542,7 +542,7 @@ def with_backend(backend: str, cached: bool = True):
     if cached and backend in compiled_backends:
         cached_backend = compiled_backends[backend][-1]
         return cached_backend
-    with _importlib.LocalIvyImporter():
+    with _importlib.LocalAikitImporter():
         aikit_pack = _importlib._import_module("aikit")
         aikit_pack._is_local_pkg = True
         aikit_pack._compiled_id = id(aikit_pack)

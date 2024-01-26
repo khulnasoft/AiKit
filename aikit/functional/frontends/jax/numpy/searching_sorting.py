@@ -65,7 +65,7 @@ def argmin(a, axis=None, out=None, keepdims=None):
                     ]
             else:
                 raise ValueError(
-                    "Input 'a' must be an Ivy array or a list of Ivy arrays."
+                    "Input 'a' must be an Aikit array or a list of Aikit arrays."
                 )
 
         if not isinstance(a, aikit.Array):
@@ -86,7 +86,7 @@ def argsort(a, axis=-1, kind="stable", order=None):
             "'kind' argument to argsort is ignored; only 'stable' sorts are supported."
         )
     if order is not None:
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             "'order' argument to argsort is not supported."
         )
 

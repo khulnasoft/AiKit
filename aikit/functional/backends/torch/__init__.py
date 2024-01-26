@@ -21,7 +21,7 @@ else:
 use = aikit.utils.backend.ContextManager(_module_in_memory)
 
 
-# wrap dunder methods of native tensors to return NotImplemented to prioritize Ivy array methods.
+# wrap dunder methods of native tensors to return NotImplemented to prioritize Aikit array methods.
 def dunder_wrapper(func):
     def rep_method(*args, **kwargs):
         for arg in args:

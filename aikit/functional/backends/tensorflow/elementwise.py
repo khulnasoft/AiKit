@@ -781,7 +781,7 @@ def trunc(
 ) -> Union[tf.Tensor, tf.Variable]:
     ret = x
     if not aikit.is_array(x):
-        raise aikit.utils.exceptions.IvyException("Input must be array")
+        raise aikit.utils.exceptions.AikitException("Input must be array")
     elif "int" not in str(x.dtype):
         if ret.get_shape().ndims != 0:
             ret = tf.tensor_scatter_nd_update(

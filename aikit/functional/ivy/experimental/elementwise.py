@@ -1525,7 +1525,7 @@ def digamma(
 
     Note
     ----
-    The Ivy version only accepts real-valued inputs.
+    The Aikit version only accepts real-valued inputs.
 
     Parameters
     ----------

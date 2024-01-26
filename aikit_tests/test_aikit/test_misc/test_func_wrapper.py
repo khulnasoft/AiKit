@@ -33,7 +33,7 @@ def _fn5(x):
 
 
 def _fn6(x):
-    # Assert input was converted to Ivy Array
+    # Assert input was converted to Aikit Array
     assert isinstance(x, aikit.Array)
 
 

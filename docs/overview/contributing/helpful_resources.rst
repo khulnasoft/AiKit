@@ -1,12 +1,12 @@
 Helpful Resources
 =================
 
-Here, we list out a few resources that you may find helpful when climbing the steep Ivy learning curve.
+Here, we list out a few resources that you may find helpful when climbing the steep Aikit learning curve.
 
 **Docs for respective Backends**
 
 `Tensorflow Documentation <https://www.tensorflow.org/api_docs>`_, `PyTorch Documentation <https://pytorch.org/docs>`_, `NumPy Documentation <https://numpy.org/doc/stable/reference/>`_ and `Jax Documentation <https://jax.readthedocs.io/>`_ are the most useful resources to find your way through the behaviours from different backends.
-These are the most important resources when working on Docstrings, Ivy Frontends, and Ivy Frontends tests.
+These are the most important resources when working on Docstrings, Aikit Frontends, and Aikit Frontends tests.
 
 **Python - Reference**
 
@@ -19,7 +19,7 @@ Useful when working on almost any section in the Deep Dive.
 
 **Co-Pilot**
 
-GitHub Co-Pilot can be used to write any bit of code in Ivy.
+GitHub Co-Pilot can be used to write any bit of code in Aikit.
 They are often very useful when developing code and also help get things done faster.
 
 **GitHub - Reference**
@@ -28,7 +28,7 @@ They are often very useful when developing code and also help get things done fa
 
 **IDE extension for spell checking**
 
-Though this may sound odd, a spell-checking extension is very useful to people contributing to Ivy when adding docstrings.
+Though this may sound odd, a spell-checking extension is very useful to people contributing to Aikit when adding docstrings.
 
 **Docker**
 

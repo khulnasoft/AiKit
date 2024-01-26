@@ -74,6 +74,6 @@ ignore = [
 ]
 
 [tool.ruff.per-file-ignores]
-'ivy/functional/(frontends|backends)/(?!.*/func_wrapper\.py$).*(?!__init__\.py$)' = ["D"]
+'aikit/functional/(frontends|backends)/(?!.*/func_wrapper\.py$).*(?!__init__\.py$)' = ["D"]
 "**/__init__.py" = ["F401","F403","F405","F811","F821", "E501"]
-"ivy/functional/frontends/paddle/**" = ["F401", "F403", "F405"]
+"aikit/functional/frontends/paddle/**" = ["F401", "F403", "F405"]

@@ -242,7 +242,7 @@ def matmul(
         or (len(x2.shape) == 1 and len(x1.shape) >= 2 and x2.shape[0] != x1.shape[-1])
         or (len(x1.shape) >= 2 and len(x2.shape) >= 2 and x1.shape[-1] != x2.shape[-2])
     ):
-        raise aikit.utils.exceptions.IvyException("Error,shapes not compatible")
+        raise aikit.utils.exceptions.AikitException("Error,shapes not compatible")
 
     x1_padded = False
     x1_padded_2 = False
@@ -470,7 +470,7 @@ def qr(
         q, r = tf.linalg.qr(x, full_matrices=True)
         ret = res(q, r)
     else:
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             "Only 'reduced' and 'complete' qr modes are allowed "
             "for the tensorflow backend."
         )

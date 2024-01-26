@@ -1,4 +1,4 @@
-"""Collection of Ivy activation functions."""
+"""Collection of Aikit activation functions."""
 
 from typing import Union, Optional, Callable, Literal
 

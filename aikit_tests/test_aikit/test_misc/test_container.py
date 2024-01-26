@@ -11,7 +11,7 @@ import pickle
 import aikit
 from aikit.functional.aikit.gradients import _variable
 from aikit.data_classes.container import Container
-from aikit.utils.exceptions import IvyException
+from aikit.utils.exceptions import AikitException
 
 
 def test_container_all_false(on_device):
@@ -23,7 +23,7 @@ def test_container_all_false(on_device):
             {"a": aikit.array([1], device=on_device), "b": {"c": [1], "d": True}}
         ).cont_all_false(assert_is_bool=True)
         error_raised = False
-    except IvyException:
+    except AikitException:
         error_raised = True
     assert error_raised
 
@@ -54,7 +54,7 @@ def test_container_all_true(on_device):
             {"a": aikit.array([1], device=on_device), "b": {"c": [1], "d": True}}
         ).cont_all_true(assert_is_bool=True)
         error_raised = False
-    except IvyException:
+    except AikitException:
         error_raised = True
     assert error_raised
 
@@ -99,7 +99,7 @@ def test_container_assert_contains(on_device):
     try:
         partial_sub_cont.cont_assert_contains_sub_container(container, partial=True)
         error_caught = False
-    except IvyException:
+    except AikitException:
         error_caught = True
     assert error_caught
     # sub-structure
@@ -112,7 +112,7 @@ def test_container_assert_contains(on_device):
     try:
         not container.cont_assert_contains_sub_container(sub_struc)
         error_caught = False
-    except IvyException:
+    except AikitException:
         error_caught = True
     assert error_caught
     assert sub_struc not in container
@@ -126,7 +126,7 @@ def test_container_assert_contains(on_device):
     try:
         partial_sub_struc.cont_assert_contains_sub_structure(container, partial=True)
         error_caught = False
-    except IvyException:
+    except AikitException:
         error_caught = True
     assert error_caught
 
@@ -158,13 +158,13 @@ def test_container_assert_identical(on_device):
     try:
         aikit.Container.cont_assert_identical([container0, container2])
         error_caught = False
-    except IvyException:
+    except AikitException:
         error_caught = True
     assert error_caught
     try:
         aikit.Container.cont_assert_identical([container1, container2])
         error_caught = False
-    except IvyException:
+    except AikitException:
         error_caught = True
     assert error_caught
 
@@ -174,7 +174,7 @@ def test_container_assert_identical(on_device):
     try:
         aikit.Container.cont_assert_identical([container4, container0], partial=True)
         error_caught = False
-    except IvyException:
+    except AikitException:
         error_caught = True
     assert error_caught
 
@@ -233,7 +233,7 @@ def test_container_assert_identical_structure(on_device):
             [container0, container1, container2, container3]
         )
         error_caught = False
-    except IvyException:
+    except AikitException:
         error_caught = True
     # partial
     try:
@@ -242,7 +242,7 @@ def test_container_assert_identical_structure(on_device):
             partial=True,
         )
         error_caught = False
-    except IvyException:
+    except AikitException:
         error_caught = True
     assert error_caught
     try:
@@ -250,7 +250,7 @@ def test_container_assert_identical_structure(on_device):
             [container0, container5], partial=True
         )
         error_caught = False
-    except IvyException:
+    except AikitException:
         error_caught = True
     assert error_caught
 

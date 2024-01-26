@@ -11,14 +11,14 @@ from aikit.functional.frontends.numpy.func_wrapper import (
 def compress(condition, a, axis=None, out=None):
     condition_arr = aikit.asarray(condition).astype(bool)
     if condition_arr.ndim != 1:
-        raise aikit.utils.exceptions.IvyException("Condition must be a 1D array")
+        raise aikit.utils.exceptions.AikitException("Condition must be a 1D array")
     if axis is None:
         arr = aikit.asarray(a).flatten()
         axis = 0
     else:
         arr = aikit.moveaxis(a, axis, 0)
     if condition_arr.shape[0] > arr.shape[0]:
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             "Condition contains entries that are out of bounds"
         )
     arr = arr[: condition_arr.shape[0]]

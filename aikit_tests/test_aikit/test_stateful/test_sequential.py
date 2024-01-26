@@ -1,4 +1,4 @@
-"""Collection of tests for Ivy sequential."""
+"""Collection of tests for Aikit sequential."""
 
 # global
 import itertools

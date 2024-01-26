@@ -262,7 +262,7 @@ class _ArrayWithActivationsExperimental(abc.ABC):
         alpha: float = 1.0,
         out: Optional[aikit.Array] = None,
     ) -> aikit.Array:
-        """Ivy.Array instance method variant of aikit.elu. This method simply
+        """Aikit.Array instance method variant of aikit.elu. This method simply
         wraps the function, and so the docstring for aikit.elu also applies to
         this method with minimal.
 

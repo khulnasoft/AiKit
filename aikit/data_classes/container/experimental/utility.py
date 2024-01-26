@@ -2,25 +2,25 @@
 from typing import Optional, Union, Dict, List
 
 # local
-import ivy
-from ivy.data_classes.container.base import ContainerBase
+import aikit
+from aikit.data_classes.container.base import ContainerBase
 
 
 class _ContainerWithUtilityExperimental(ContainerBase):
     @staticmethod
     def static_optional_get_element(
-        x: Optional[Union[ivy.Array, ivy.Container]] = None,
+        x: Optional[Union[aikit.Array, aikit.Container]] = None,
         /,
         *,
         key_chains: Optional[Union[List[str], Dict[str, str]]] = None,
         to_apply: bool = True,
         prune_unapplied: bool = False,
         map_sequences: bool = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container static method variant of ivy.optional_get_element.
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container static method variant of aikit.optional_get_element.
         This method simply wraps the function, and so the docstring for
-        ivy.optional_get_element also applies to this method with minimal
+        aikit.optional_get_element also applies to this method with minimal
         changes.
 
         Parameters
@@ -57,14 +57,14 @@ class _ContainerWithUtilityExperimental(ContainerBase):
         )
 
     def optional_get_element(
-        self: ivy.Container,
+        self: aikit.Container,
         /,
         *,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of ivy.optional_get_element.
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of aikit.optional_get_element.
         This method simply wraps the function, and so the docstring for
-        ivy.optional_get_element also applies to this method with minimal
+        aikit.optional_get_element also applies to this method with minimal
         changes.
 
         Parameters

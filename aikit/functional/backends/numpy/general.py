@@ -1,4 +1,4 @@
-"""Collection of Numpy general functions, wrapped to fit Ivy syntax and
+"""Collection of Numpy general functions, wrapped to fit Aikit syntax and
 signature."""
 
 # global
@@ -279,7 +279,7 @@ def scatter_flat(
     elif reduction == "max":
         np.maximum.at(target, indices, updates)
     else:
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             f'reduction is {reduction}, but it must be one of "sum", "min", "max" or'
             ' "replace"'
         )
@@ -325,7 +325,7 @@ def scatter_nd(
     elif reduction == "mul":
         np.multiply.at(target, indices_tuple, updates)
     else:
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             f'reduction is {reduction}, but it must be one of "sum", "min", "max",'
             ' "mul" or "replace"'
         )
@@ -383,7 +383,7 @@ def vmap(
                     axis_size.add(arg.shape[axis])
 
         if len(axis_size) > 1:
-            raise aikit.utils.exceptions.IvyException(
+            raise aikit.utils.exceptions.AikitException(
                 """Inconsistent sizes. All mapped axes should have the same size"""
             )
 

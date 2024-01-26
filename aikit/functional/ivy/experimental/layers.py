@@ -1807,7 +1807,7 @@ def interpolate(
     input_size = aikit.shape(x)[2:]
     dims = len(input_size)
     if aikit.exists(size) and aikit.exists(scale_factor):
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             "only one of size or scale_factor should be defined"
         )
     elif aikit.exists(size) and not aikit.exists(scale_factor):
@@ -1837,23 +1837,23 @@ def interpolate(
                 as_array=False,
             )
     else:
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             "either size or scale_factor should be defined"
         )
     if aikit.exists(size) and recompute_scale_factor is not None:
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             "recompute_scale_factor is not meaningful with an explicit size."
         )
     if aikit.get_num_dims(x) != 4 and mode == "bilinear":
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             f"Got {x.ndim}D input, but bilinear mode needs 4D input"
         )
     if aikit.get_num_dims(x) != 5 and mode == "trilinear":
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             f"Got {x.ndim}D input, but trilinear mode needs 5D input"
         )
     if aikit.get_num_dims(x) != 3 and mode == "linear":
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             f"Got {x.ndim}D input, but trilinear mode needs 3D input"
         )
     size, scale_factor = _get_size(scale_factor, size, dims, input_size)
@@ -2121,7 +2121,7 @@ def adaptive_max_pool2d(
         input = aikit.expand_dims(input, axis=0)
         squeeze = True
     elif input.ndim != 4:
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             f"Got {len(input.shape)}D input, but only 3D and 4D inputs are supported.",
         )
 
@@ -2213,7 +2213,7 @@ def adaptive_avg_pool1d(
         input = aikit.expand_dims(input, axis=0)
         squeeze = True
     elif input.ndim != 3:
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             f"Got {len(input.shape)}D input, but only 2D and 3D inputs are supported.",
         )
 
@@ -2298,7 +2298,7 @@ def adaptive_avg_pool2d(
         input = aikit.expand_dims(input, axis=0)
         squeeze = True
     elif input.ndim != 4:
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             f"Got {len(input.shape)}D input, but only 3D and 4D inputs are supported.",
         )
 

@@ -130,7 +130,7 @@ def squeeze(
     if x.shape == ():
         if axis is None or axis == 0 or axis == -1:
             return x
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             f"tried to squeeze a zero-dimensional input by axis {axis}"
         )
     return np.squeeze(x, axis=axis)
@@ -164,7 +164,7 @@ def split(
 ) -> List[np.ndarray]:
     if x.shape == ():
         if num_or_size_splits is not None and num_or_size_splits != 1:
-            raise aikit.utils.exceptions.IvyException(
+            raise aikit.utils.exceptions.AikitException(
                 "input array had no shape, but num_sections specified was"
                 f" {num_or_size_splits}"
             )

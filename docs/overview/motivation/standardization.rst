@@ -20,19 +20,19 @@ Complimentary vs Competitive
 
 
 When considering this rather funny comic strip, it’s easy to question the feasibility of standardization in this ML space.
-However, there is a very important difference in the case of Ivy.
-Unlike `A/C Chargers <https://en.wikipedia.org/wiki/AC_adapter#Problems>`_, `Character Encodings <https://en.wikipedia.org/wiki/Character_encoding>`_ and `Instant Messaging <https://en.wikipedia.org/wiki/Comparison_of_instant_messaging_protocols>`_ where it’s very much one standard **or** the other, with Ivy this is not the case.
+However, there is a very important difference in the case of Aikit.
+Unlike `A/C Chargers <https://en.wikipedia.org/wiki/AC_adapter#Problems>`_, `Character Encodings <https://en.wikipedia.org/wiki/Character_encoding>`_ and `Instant Messaging <https://en.wikipedia.org/wiki/Comparison_of_instant_messaging_protocols>`_ where it’s very much one standard **or** the other, with Aikit this is not the case.
 
-While Ivy does adhere to the `Python Array API Standard <https://data-apis.org/array-api/latest/>`_, **Ivy does not mandate adoption of the standard**.
-Ivy is entirely complimentary to existing frameworks, each of which can and will continue to have their own syntax and call signatures.
-**Ivy is not a replacement**.
-Your project can have 1% Ivy code, 10% Ivy code, or 100% Ivy code.
+While Aikit does adhere to the `Python Array API Standard <https://data-apis.org/array-api/latest/>`_, **Aikit does not mandate adoption of the standard**.
+Aikit is entirely complimentary to existing frameworks, each of which can and will continue to have their own syntax and call signatures.
+**Aikit is not a replacement**.
+Your project can have 1% Aikit code, 10% Aikit code, or 100% Aikit code.
 This is entirely up to you!
 
 Do Standards Work?
 ------------------
 
-Despite making this distinction with Ivy, we do still believe that the adoption of a shared standard by each ML framework would bring huge benefits, unrelated to what we’re doing at Ivy.
+Despite making this distinction with Aikit, we do still believe that the adoption of a shared standard by each ML framework would bring huge benefits, unrelated to what we’re doing at Aikit.
 
 Again, contrary to `A/C Chargers <https://en.wikipedia.org/wiki/AC_adapter#Problems>`_, `Character Encodings <https://en.wikipedia.org/wiki/Character_encoding>`_, `Instant Messaging <https://en.wikipedia.org/wiki/Comparison_of_instant_messaging_protocols>`_ and other bumpy roads alluded to in the comic, most of the technology sector is full of successful standards.
 The reason we can “build” custom computers is thanks to many essential standards for the interoperability of different computer components, such as: `BIOS <https://en.wikipedia.org/wiki/BIOS#BIOS_Boot_Specification>`_ for hardware initialization, `PCIe <https://en.wikipedia.org/wiki/PCI_Express>`_ for interfacing components on the motherboard, `RAID <https://en.wikipedia.org/wiki/RAID>`_ for storage virtualization, `Bluetooth <https://en.wikipedia.org/wiki/Bluetooth>`_ for wireless data exchange, `BTX <https://en.wikipedia.org/wiki/BTX_(form_factor)>`_ for motherboard form factors and `SATA <https://en.wikipedia.org/wiki/Serial_ATA>`_ for connecting host bus adapters to storage devices.
@@ -50,7 +50,7 @@ The Array API Standard
 ----------------------
 
 The `Consortium for Python Data API Standards <https://data-apis.org>`_ are on a mission to create this shared standard.
-At Ivy, we support their efforts 100% and we are in the process of adopting their standard ourselves.
+At Aikit, we support their efforts 100% and we are in the process of adopting their standard ourselves.
 
 .. image:: https://github.com/khulnasoft/khulnasoft.github.io/blob/main/img/externally_linked/background/standardization/consortium.png?raw=true
    :align: center
@@ -74,7 +74,7 @@ This is a promising sign in the pursuit of unification.
 
 Clearly, a lot of time, thought and careful attention has gone into creating the `first version <https://data-apis.org/array-api/latest/>`_ of the standard, such that it simplifies compatibility as much as possible for all ML frameworks.
 
-We are very excited to be working with them on this standard, and bringing Ivy into compliance, with the hope that in due time others also follow-suit!
+We are very excited to be working with them on this standard, and bringing Aikit into compliance, with the hope that in due time others also follow-suit!
 
 
 **Round Up**

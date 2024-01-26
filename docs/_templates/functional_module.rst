@@ -1,7 +1,7 @@
 {{ name | escape | underline }}
 
-.. autofunction:: ivy.{{ name }}
+.. autofunction:: aikit.{{ name }}
 
-.. autoskippablemethod:: ivy.Array.{{ name }}
+.. autoskippablemethod:: aikit.Array.{{ name }}
 
-.. autoskippablemethod:: ivy.Container.{{ name }}
+.. autoskippablemethod:: aikit.Container.{{ name }}

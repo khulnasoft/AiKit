@@ -3,10 +3,10 @@ from typing import Optional, Tuple, Union
 
 import jax.numpy as jnp
 
-import ivy
-from ivy.functional.backends.jax import JaxArray
+import aikit
+from aikit.functional.backends.jax import JaxArray
 from . import backend_version
-from ivy.func_wrapper import with_unsupported_dtypes
+from aikit.func_wrapper import with_unsupported_dtypes
 
 # Array API Standard #
 # ------------------ #
@@ -19,7 +19,7 @@ def argmax(
     *,
     axis: Optional[int] = None,
     keepdims: bool = False,
-    dtype: Optional[Union[ivy.Dtype, ivy.NativeDtype]] = None,
+    dtype: Optional[Union[aikit.Dtype, aikit.NativeDtype]] = None,
     select_last_index: bool = False,
     out: Optional[JaxArray] = None,
 ) -> JaxArray:
@@ -33,7 +33,7 @@ def argmax(
     else:
         ret = jnp.argmax(x, axis=axis, keepdims=keepdims)
     if dtype:
-        dtype = ivy.as_native_dtype(dtype)
+        dtype = aikit.as_native_dtype(dtype)
         return ret.astype(dtype)
     return ret
 
@@ -59,7 +59,7 @@ def argmin(
     else:
         ret = jnp.argmin(x, axis=axis, keepdims=keepdims)
     if dtype:
-        dtype = ivy.as_native_dtype(dtype)
+        dtype = aikit.as_native_dtype(dtype)
         return ret.astype(dtype)
     return ret
 
@@ -88,8 +88,8 @@ def where(
     *,
     out: Optional[JaxArray] = None,
 ) -> JaxArray:
-    x1, x2 = ivy.promote_types_of_inputs(x1, x2)
-    return ivy.astype(jnp.where(condition, x1, x2), x1.dtype, copy=False)
+    x1, x2 = aikit.promote_types_of_inputs(x1, x2)
+    return aikit.astype(jnp.where(condition, x1, x2), x1.dtype, copy=False)
 
 
 # Extra #

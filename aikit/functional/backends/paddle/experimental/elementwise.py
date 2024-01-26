@@ -3,7 +3,7 @@ import operator
 from typing import Optional, Union, Tuple, List, Sequence
 from numbers import Number
 import paddle
-from aikit.utils.exceptions import IvyNotImplementedException
+from aikit.utils.exceptions import AikitNotImplementedException
 from aikit.func_wrapper import (
     with_supported_dtypes,
     with_unsupported_device_and_dtypes,
@@ -114,7 +114,7 @@ def frexp(
     *,
     out: Optional[paddle.Tensor] = None,
 ) -> paddle.Tensor:
-    raise IvyNotImplementedException
+    raise AikitNotImplementedException
 
 
 def ldexp(
@@ -232,7 +232,7 @@ def hypot(
     *,
     out: Optional[paddle.Tensor] = None,
 ) -> paddle.Tensor:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 @with_unsupported_device_and_dtypes(

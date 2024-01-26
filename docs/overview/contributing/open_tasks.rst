@@ -6,7 +6,7 @@ Open Tasks
 .. _`open tasks thread`: https://discord.com/channels/799879767196958751/1189903501011202128
 .. _`issue description`: https://github.com/khulnasoft/aikit/issues/1526
 .. _`reference API`: https://numpy.org/doc/stable/reference/routines.linalg.html
-.. _`imports`: https://github.com/khulnasoft/aikit/blob/38dbb607334cb32eb513630c4496ad0024f80e1c/ivy/functional/frontends/numpy/__init__.py#L27
+.. _`imports`: https://github.com/khulnasoft/aikit/blob/38dbb607334cb32eb513630c4496ad0024f80e1c/aikit/functional/frontends/numpy/__init__.py#L27
 .. _`Deep Dive`: ../deep_dive.rst
 
 Here, we explain all tasks which are currently open for contributions from the community!
@@ -23,11 +23,11 @@ The tasks currently open are:
 #. Fixing Failing Tests
 #. Function Formatting
 #. Frontend APIs
-#. Ivy Experimental API
+#. Aikit Experimental API
 
 We try to explain these tasks as clearly as possible, but in cases where things are not clear, then please feel free to reach out on `discord`_ in the `open tasks thread`_!
 
-Please always use the latest commit on GitHub when working on any of these tasks, **DO NOT** develop your code using the latest PyPI release of :code:`ivy`.
+Please always use the latest commit on GitHub when working on any of these tasks, **DO NOT** develop your code using the latest PyPI release of :code:`aikit`.
 
 Fixing Failing Tests
 --------------------
@@ -73,21 +73,21 @@ Our team will review your contribution, provide feedback if necessary, and then 
 Frontend APIs
 -------------
 
-For this task, the goal will be to implement functions for each of the frontend functional APIs (see `Ivy as a Transpiler <../design/ivy_as_a_transpiler.rst>`_), with frontend APIs implemented for: :code:`JAX`, :code:`NumPy`, :code:`TensorFlow` :code:`PyTorch`, :code:`Paddle`, :code:`Scipy`, :code:`MXNet` and :code:`MindSpore`.
+For this task, the goal will be to implement functions for each of the frontend functional APIs (see `Aikit as a Transpiler <../design/aikit_as_a_transpiler.rst>`_), with frontend APIs implemented for: :code:`JAX`, :code:`NumPy`, :code:`TensorFlow` :code:`PyTorch`, :code:`Paddle`, :code:`Scipy`, :code:`MXNet` and :code:`MindSpore`.
 
 Currently, we have many ToDo list issues `open <https://github.com/khulnasoft/aikit/issues?q=is%3Aopen+is%3Aissue+label%3AToDo+label%3A%22JAX+Frontend%22%2C%22TensorFlow+Frontend%22%2C%22PyTorch+Frontend%22%2C%22NumPy+Frontend%22+-label%3A%22Test+Sweep%22>`_ for this task.
 
 The general workflow for this task is:
 
 #. Find the correct location for the function by following the :ref:`overview/contributing/open_tasks:Where to place a frontend function` subsection below
-#. Implement the function by following the `Ivy Frontends <../deep_dive/ivy_frontends.rst>`_ guide
-#. Write tests for your function by following the `Ivy Frontend Tests <../deep_dive/ivy_frontends_tests.rst>`_ guide
+#. Implement the function by following the `Aikit Frontends <../deep_dive/aikit_frontends.rst>`_ guide
+#. Write tests for your function by following the `Aikit Frontend Tests <../deep_dive/aikit_frontends_tests.rst>`_ guide
 #. Verify that the tests for your function are passing
 
-If you feel as though there is an ivy function :code:`ivy.<func_name>` clearly missing, which would make your frontend function much simpler to implement, then you should first do the following:
+If you feel as though there is an aikit function :code:`aikit.<func_name>` clearly missing, which would make your frontend function much simpler to implement, then you should first do the following:
 
-#. Create a new issue with the title :code:`ivy.<func_name>`
-#. Add the labels :code:`Suggestion`, :code:`Experimental`, :code:`Ivy API` and :code:`Next Release` to it
+#. Create a new issue with the title :code:`aikit.<func_name>`
+#. Add the labels :code:`Suggestion`, :code:`Experimental`, :code:`Aikit API` and :code:`Next Release` to it
 #. Then simply leave this issue open.
 
 At some point, a member of our team will assess whether it should be added, and if so, they will add it to another appropriate ToDo list issue (see the open task below).
@@ -95,14 +95,14 @@ At some point, a member of our team will assess whether it should be added, and 
 
 After this, you then have two options for how to proceed:
 
-#. Try to implement the function as a composition of currently present ivy functions, as explained in the :ref:`overview/deep_dive/ivy_frontends:Short Frontend Implementations` sub-section of the `Ivy Frontends <../deep_dive/ivy_frontends.rst>`_ guide, and add the :code:`#ToDo` comment in the implementation as explained.
+#. Try to implement the function as a composition of currently present aikit functions, as explained in the :ref:`overview/deep_dive/aikit_frontends:Short Frontend Implementations` sub-section of the `Aikit Frontends <../deep_dive/aikit_frontends.rst>`_ guide, and add the :code:`#ToDo` comment in the implementation as explained.
    Once the PR is merged, your sub-task issue will then be closed as normal.
 #. Alternatively, if you do not want to try and implement the frontend function compositionally, or if this is not feasible, then you can simply choose another frontend function to work on.
    You could also choose to work on another open task entirely at this point if you wanted to.
-   For example, you might decide to wait for a member of our team to review your suggested addition :code:`ivy.<func_name>`, and potentially add this to an Ivy Experimental ToDo list issue (see the open task below).
+   For example, you might decide to wait for a member of our team to review your suggested addition :code:`aikit.<func_name>`, and potentially add this to an Aikit Experimental ToDo list issue (see the open task below).
    In either case, you should add the label "Pending other Issue" to the frontend sub-task issue, and leave it open.
-   This issue will then still show up as open in the original frontend ToDo list, helpfully preventing others from working on this problematic frontend function, which depends on the unimplemented :code:`ivy.<func_name>`.
-   Finally, you should add a comment to the issue with the contents: :code:`pending <issue_link>`, which links to the :code:`ivy.<func_name>` issue, making the "Pending other Issue" label more informative.
+   This issue will then still show up as open in the original frontend ToDo list, helpfully preventing others from working on this problematic frontend function, which depends on the unimplemented :code:`aikit.<func_name>`.
+   Finally, you should add a comment to the issue with the contents: :code:`pending <issue_link>`, which links to the :code:`aikit.<func_name>` issue, making the "Pending other Issue" label more informative.
 
 There are a few other points to take note of when working on your chosen frontend function:
 
@@ -114,7 +114,7 @@ There are a few other points to take note of when working on your chosen fronten
    If you detect that this is the case, then you should add all aliases in your PR, with a single implementation and then simple bindings to this implementation, such as :code:`<alias_name> = <function_name>`.
    If you notice that an alias function has already been implemented and pushed, then you can simply add this one-liner binding and get this very simple PR merged.
 
-In the case where your chosen function exists in all frameworks by default, but is not implemented in Ivy's functional API, please convert your existing GitHub issue to request for the function to be added to Ivy.
+In the case where your chosen function exists in all frameworks by default, but is not implemented in Aikit's functional API, please convert your existing GitHub issue to request for the function to be added to Aikit.
 Meanwhile, you can select another frontend function to work on from the ToDo list!
 If you're stuck on a function that requires complex compositions, you're allowed to reselect a function too!
 
@@ -124,9 +124,9 @@ Where to place a frontend function
 The placement of new frontend functions for a given backend should follow the categorisation of the backend API as faithfully as possible.
 In each `issue description`_, there will be a link to the relevant `reference API`_.
 Check where the function you're working on is located, e.g. :code:`numpy.inner` falls under :code:`numpy.linalg`.
-Then, in the Ivy source code, check :code:`ivy/functional/frontends/[backend]` for pre-existing files which best match the function's category in the backend reference API.
+Then, in the Aikit source code, check :code:`aikit/functional/frontends/[backend]` for pre-existing files which best match the function's category in the backend reference API.
 
-Taking :code:`numpy.inner` as an example, we can see that there are a few :code:`ivy/functional/frontends/numpy` sub-directories to choose from:
+Taking :code:`numpy.inner` as an example, we can see that there are a few :code:`aikit/functional/frontends/numpy` sub-directories to choose from:
 
 .. code-block:: bash
     :emphasize-lines: 4
@@ -168,12 +168,12 @@ There are some functions which have not been implemented yet, and are therefore 
 Once you have finished the implementation of one of these functions, uncomment it from the list.
 
 
-The location of :code:`test_numpy_inner` should mirror the location of its corresponding function, this time in :code:`ivy_tests/test_ivy/test_frontends/[backend]`.
+The location of :code:`test_numpy_inner` should mirror the location of its corresponding function, this time in :code:`aikit_tests/test_aikit/test_frontends/[backend]`.
 
 If you're unsure about where to put the function you're working on, explore the content of these files to see if you can find a similar function.
 In :code:`matrix_and_vector_products.py`, we can see other functions such as :code:`outer` that are similar to :code:`inner`.
 This is confirmation that we've found the correct place!
-If many of the files are empty and you're unsure where to place your function, feel free to ask the member of the Ivy team reviewing your PR.
+If many of the files are empty and you're unsure where to place your function, feel free to ask the member of the Aikit team reviewing your PR.
 
 Frontend checklist
 ~~~~~~~~~~~~~~~~~~
@@ -197,7 +197,7 @@ Currently, we have many ToDo list issues `open <https://github.com/khulnasoft/ai
 Each function in each submodule should be updated to follow the implementation instructions given in the `Deep Dive`_ section.
 The updates should be applied for the:
 
-#. ivy API
+#. aikit API
 #. all backend APIs
 #. array instance methods
 #. container instance methods
@@ -219,9 +219,9 @@ Specifically, you **do not** need to address the following:
 However, everything else covered in the `Deep Dive`_ must be addressed.
 Some common important tasks are:
 
-#. Remove all :code:`lambda` and direct bindings for the backend functions (in :code:`ivy.functional.backends`), with each function instead defined using :code:`def`.
-#. Implement the following if they don't exist but should do: :class:`ivy.Array` instance method, :class:`ivy.Container` instance method, :class:`ivy.Array` special method, :class:`ivy.Array` reverse special method, :class:`ivy.Container` special method, :class:`ivy.Container` reverse special method.
-#. Make sure that the aforementioned methods are added into the correct category-specific parent class, such as :class:`ivy.ArrayWithElementwise`, :class:`ivy.ContainerWithManipulation` etc.
+#. Remove all :code:`lambda` and direct bindings for the backend functions (in :code:`aikit.functional.backends`), with each function instead defined using :code:`def`.
+#. Implement the following if they don't exist but should do: :class:`aikit.Array` instance method, :class:`aikit.Container` instance method, :class:`aikit.Array` special method, :class:`aikit.Array` reverse special method, :class:`aikit.Container` special method, :class:`aikit.Container` reverse special method.
+#. Make sure that the aforementioned methods are added into the correct category-specific parent class, such as :class:`aikit.ArrayWithElementwise`, :class:`aikit.ContainerWithManipulation` etc.
 #. Correct all of the `Function Arguments <../deep_dive/function_arguments.rst>`_ and the type hints for every function **and** its *relevant methods*, including those you did not implement yourself.
 #. Add the correct `Docstrings <../deep_dive/docstrings.rst>`_ to every function **and** its *relevant methods*, including those you did not implement yourself.
 #. Add thorough `Docstring Examples <../deep_dive/docstring_examples.rst>`_ for every function **and** its *relevant methods* and ensure they pass the docstring tests.
@@ -265,12 +265,12 @@ The PR assignee will then see this comment and address your issues.
 4. Please refrain from using the checkboxes next to checklist items.
 
 
-Ivy Experimental API
+Aikit Experimental API
 --------------------
 
-The goal of this task is to add functions to the existing Ivy API which would help with the implementation for many of the functions in the frontend.
+The goal of this task is to add functions to the existing Aikit API which would help with the implementation for many of the functions in the frontend.
 
-Your task is to implement these functions in Ivy, along with their Implementation in the respective backends which are :code:`Jax`, :code:`PyTorch`, :code:`TensorFlow` :code:`NumPy` and :code:`Paddle`.
+Your task is to implement these functions in Aikit, along with their Implementation in the respective backends which are :code:`Jax`, :code:`PyTorch`, :code:`TensorFlow` :code:`NumPy` and :code:`Paddle`.
 You must also implement tests for these functions.
 
 There is only one central ToDo list `issue <https://github.com/khulnasoft/aikit/issues/3856>`_ for this task.
@@ -279,9 +279,9 @@ A general workflow for these tasks would be:
 
 #. Analyze the function type, we have a very detailed section for it in the deep dive `Function Types Guide <../deep_dive/function_types.rst>`_
 #. Every function will have a different file structure according to the function type, refer to :ref:`overview/contributing/open_tasks:Where to place a backend function` subsection below.
-#. Implement the container instance method in :mod:`ivy/container/experimental/[relevant_submodule].py` and the array instance method
-   in :mod:`ivy/array/experimental/[relevant_submodule].py`
-#. Write tests for the function using the `Ivy Tests <../deep_dive/ivy_tests.rst>`_ guide, and make sure they are passing.
+#. Implement the container instance method in :mod:`aikit/container/experimental/[relevant_submodule].py` and the array instance method
+   in :mod:`aikit/array/experimental/[relevant_submodule].py`
+#. Write tests for the function using the `Aikit Tests <../deep_dive/aikit_tests.rst>`_ guide, and make sure they are passing.
 
 A few points to keep in mind while doing this:
 
@@ -290,16 +290,16 @@ A few points to keep in mind while doing this:
 
 If you’re stuck on a function which requires complex compositions, feel free to reselect a function
 
-Extending the Ivy API
+Extending the Aikit API
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-We primarily invite contributors to work on the tasks listed as :ref:`overview/contributing/open_tasks:Open Tasks`, as these are on our current roadmap. As a result of this, we prompt everyone interested in contributing to our Experimental API to do so under the :ref:`Ivy Experimental API Open Task <overview/contributing/open_tasks:Ivy Experimental API>`.
+We primarily invite contributors to work on the tasks listed as :ref:`overview/contributing/open_tasks:Open Tasks`, as these are on our current roadmap. As a result of this, we prompt everyone interested in contributing to our Experimental API to do so under the :ref:`Aikit Experimental API Open Task <overview/contributing/open_tasks:Aikit Experimental API>`.
 
-However, if you would like to extend Ivy's functionality with a new function, you are invited to open an issue using the *Missing Function Suggestion* template as described in :ref:`overview/contributing/open_tasks:Creating an Issue on Ivy's GitHub using a Template`.
+However, if you would like to extend Aikit's functionality with a new function, you are invited to open an issue using the *Missing Function Suggestion* template as described in :ref:`overview/contributing/open_tasks:Creating an Issue on Aikit's GitHub using a Template`.
 
 In this template form, you'll be asked to fill in the reason you think we should implement the suggested function, as well as the links to any native implementations of the suggested function.
 
-We will review your issue as soon as possible and let you know if it's been accepted or not. In case we deem that the suggested function fits our roadmap, we will add it as a subtask to the `Ivy Experimental API Open Task <overview/contributing/open_tasks:Ivy Experimental API>`_.
+We will review your issue as soon as possible and let you know if it's been accepted or not. In case we deem that the suggested function fits our roadmap, we will add it as a subtask to the `Aikit Experimental API Open Task <overview/contributing/open_tasks:Aikit Experimental API>`_.
 
 Where to place a backend function
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -310,36 +310,36 @@ There are multiple types of backend functions as discussed above, we will go thr
 
 **Primary Functions**
 
-Implement the function in :mod:`ivy/functional/ivy/experimental/[relevant_submodule].py` simply deferring to their backend-specific implementation
-(where ivy.current_backend(x).function_name() is called), refer to the :ref:`Ivy API Guide <overview/deep_dive/navigating_the_code:Ivy API>`
-to get a clearer picture of how this must be done. Then, implement the functions in each of the backend files :mod:`ivy/functional/backends/backend_name/experimental/[relevant_submodule].py`,
+Implement the function in :mod:`aikit/functional/aikit/experimental/[relevant_submodule].py` simply deferring to their backend-specific implementation
+(where aikit.current_backend(x).function_name() is called), refer to the :ref:`Aikit API Guide <overview/deep_dive/navigating_the_code:Aikit API>`
+to get a clearer picture of how this must be done. Then, implement the functions in each of the backend files :mod:`aikit/functional/backends/backend_name/experimental/[relevant_submodule].py`,
 you can refer to the :ref:`Backend API Guide <overview/deep_dive/navigating_the_code:Backend API>` for this.
 
 **Compositional Functions**
 
-Implement the function in :mod:`ivy/functional/ivy/experimental/[relevant_submodule].py`, we will not use the primary function approach in this
-case, the implementation will be a composition of functions from Ivy's functional API. You can refer to
+Implement the function in :mod:`aikit/functional/aikit/experimental/[relevant_submodule].py`, we will not use the primary function approach in this
+case, the implementation will be a composition of functions from Aikit's functional API. You can refer to
 :ref:`overview/deep_dive/function_types:Compositional Functions` for a better understanding of this.
 You don't need to add any implementation in any other file in this case.
 
 **Mixed Functions**
 
 Sometimes, a function may only be provided by some of the supported backends. In this case, we have to take a mixed approach. You can say that this is a mix of both
-primary and a compositional function. For this, you have to implement the function in :mod:`ivy/functional/ivy/experimental/[relevant_submodule].py`, where the implementation
-will be a composition of functions from Ivy's functional API. After you are done with this, you then have to implement the functions in each of the backend files
-:mod:`ivy/functional/backends/backend_name/experimental/[relevant_submodule].py`.
+primary and a compositional function. For this, you have to implement the function in :mod:`aikit/functional/aikit/experimental/[relevant_submodule].py`, where the implementation
+will be a composition of functions from Aikit's functional API. After you are done with this, you then have to implement the functions in each of the backend files
+:mod:`aikit/functional/backends/backend_name/experimental/[relevant_submodule].py`.
 
 **Other Function Types**
 
 :ref:`overview/deep_dive/function_types:Standalone Functions`, :ref:`overview/deep_dive/function_types:Nestable Functions` and
 :ref:`overview/deep_dive/function_types:Convenience Functions` are the ones which you will rarely come across
-while implementing a function from the ToDo List but they are an essential part of the Ivy API.
+while implementing a function from the ToDo List but they are an essential part of the Aikit API.
 
 
-Creating an Issue on Ivy's GitHub using a Template
+Creating an Issue on Aikit's GitHub using a Template
 ----------------------------------------------------
 
-#. Go to the `GitHub Ivy <https://github.com/khulnasoft/aikit>`_ page, select the Issues tab, and click on the green button :code:`New issue` at the centre-right of the screen.
+#. Go to the `GitHub Aikit <https://github.com/khulnasoft/aikit>`_ page, select the Issues tab, and click on the green button :code:`New issue` at the centre-right of the screen.
 #. You will see 5 options. Each option has a predetermined form. To start filling in the form, click on the green button at the right which says :code:`Get started`. The options are explained as follows:
 
    * Bug Report:
@@ -351,7 +351,7 @@ Creating an Issue on Ivy's GitHub using a Template
    * Sub-Task:
       Reserve a sub-task from a ToDo list issue.
    * Questions:
-      If you want to interact with the Ivy community to ask for any type of help, discussing and more!
+      If you want to interact with the Aikit community to ask for any type of help, discussing and more!
 #. To submit your issue, you will have to complete the requirements in the form and click on the green button :code:`Submit new issue` at the right-bottom of the screen.
 
 

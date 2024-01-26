@@ -2,8 +2,8 @@
 from typing import Optional, Union, List, Dict, Tuple, Callable
 
 # local
-import ivy
-from ivy.data_classes.container.base import ContainerBase
+import aikit
+from aikit.data_classes.container.base import ContainerBase
 
 # ToDo: implement all methods here as public instance methods
 
@@ -12,16 +12,16 @@ from ivy.data_classes.container.base import ContainerBase
 class _ContainerWithDataTypes(ContainerBase):
     @staticmethod
     def _static_astype(
-        x: ivy.Container,
-        dtype: Union[ivy.Dtype, ivy.Container],
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
+        x: aikit.Container,
+        dtype: Union[aikit.Dtype, aikit.Container],
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
         *,
-        copy: Union[bool, ivy.Container] = True,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
+        copy: Union[bool, aikit.Container] = True,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
         """Copy an array to a specified data type irrespective of :ref:`type-
         promotion` rules.
 
@@ -61,12 +61,12 @@ class _ContainerWithDataTypes(ContainerBase):
 
         Examples
         --------
-        >>> c = ivy.Container(a=ivy.array([False,True,True]),
-        ...                   b=ivy.array([3.14, 2.718, 1.618]))
-        >>> ivy.Container.static_astype(c, ivy.int32)
+        >>> c = aikit.Container(a=aikit.array([False,True,True]),
+        ...                   b=aikit.array([3.14, 2.718, 1.618]))
+        >>> aikit.Container.static_astype(c, aikit.int32)
         {
-            a: ivy.array([0, 1, 1]),
-            b: ivy.array([3, 2, 1])
+            a: aikit.array([0, 1, 1]),
+            b: aikit.array([3, 2, 1])
         }
         """
         return ContainerBase.cont_multi_map_in_function(
@@ -82,16 +82,16 @@ class _ContainerWithDataTypes(ContainerBase):
         )
 
     def astype(
-        self: ivy.Container,
-        dtype: Union[ivy.Dtype, ivy.Container],
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
+        self: aikit.Container,
+        dtype: Union[aikit.Dtype, aikit.Container],
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
         *,
-        copy: Union[bool, ivy.Container] = True,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
+        copy: Union[bool, aikit.Container] = True,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
         """Copy an array to a specified data type irrespective of :ref:`type-
         promotion` rules.
 
@@ -131,14 +131,14 @@ class _ContainerWithDataTypes(ContainerBase):
 
         Examples
         --------
-        Using :class:`ivy.Container` instance method:
+        Using :class:`aikit.Container` instance method:
 
-        >>> x = ivy.Container(a=ivy.array([False,True,True]),
-        ...                   b=ivy.array([3.14, 2.718, 1.618]))
-        >>> print(x.astype(ivy.int32))
+        >>> x = aikit.Container(a=aikit.array([False,True,True]),
+        ...                   b=aikit.array([3.14, 2.718, 1.618]))
+        >>> print(x.astype(aikit.int32))
         {
-            a: ivy.array([0, 1, 1]),
-            b: ivy.array([3, 2, 1])
+            a: aikit.array([0, 1, 1]),
+            b: aikit.array([3, 2, 1])
         }
         """
         return self._static_astype(
@@ -154,15 +154,15 @@ class _ContainerWithDataTypes(ContainerBase):
 
     @staticmethod
     def _static_broadcast_arrays(
-        *arrays: Union[ivy.Container, ivy.Array, ivy.NativeArray],
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> ivy.Container:
-        """`ivy.Container` static method variant of `ivy.broadcast_arrays`.
+        *arrays: Union[aikit.Container, aikit.Array, aikit.NativeArray],
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> aikit.Container:
+        """`aikit.Container` static method variant of `aikit.broadcast_arrays`.
         This method simply wraps the function, and so the docstring for
-        `ivy.broadcast_arrays` also applies to this method with minimal
+        `aikit.broadcast_arrays` also applies to this method with minimal
         changes.
 
         Parameters
@@ -191,32 +191,32 @@ class _ContainerWithDataTypes(ContainerBase):
 
         Examples
         --------
-        With :class:`ivy.Container` inputs:
+        With :class:`aikit.Container` inputs:
 
-        >>> x1 = ivy.Container(a=ivy.array([1, 2]), b=ivy.array([3, 4]))
-        >>> x2 = ivy.Container(a=ivy.array([-1.2, 0.4]), b=ivy.array([0, 1]))
-        >>> y = ivy.Container.static_broadcast_arrays(x1, x2)
+        >>> x1 = aikit.Container(a=aikit.array([1, 2]), b=aikit.array([3, 4]))
+        >>> x2 = aikit.Container(a=aikit.array([-1.2, 0.4]), b=aikit.array([0, 1]))
+        >>> y = aikit.Container.static_broadcast_arrays(x1, x2)
         >>> print(y)
         [{
-            a: ivy.array([1, 2]),
-            b: ivy.array([3, 4])
+            a: aikit.array([1, 2]),
+            b: aikit.array([3, 4])
         }, {
-            a: ivy.array([-1.2, 0.4]),
-            b: ivy.array([0, 1])
+            a: aikit.array([-1.2, 0.4]),
+            b: aikit.array([0, 1])
         }]
 
-        With mixed :class:`ivy.Container` and :class:`ivy.Array` inputs:
+        With mixed :class:`aikit.Container` and :class:`aikit.Array` inputs:
 
-        >>> x1 = ivy.Container(a=ivy.array([4, 5]), b=ivy.array([2, -1]))
-        >>> x2 = ivy.array([0.2, 3.])
-        >>> y = ivy.Container.static_broadcast_arrays(x1, x2)
+        >>> x1 = aikit.Container(a=aikit.array([4, 5]), b=aikit.array([2, -1]))
+        >>> x2 = aikit.array([0.2, 3.])
+        >>> y = aikit.Container.static_broadcast_arrays(x1, x2)
         >>> print(y)
         [{
-            a: ivy.array([4, 5]),
-            b: ivy.array([2, -1])
+            a: aikit.array([4, 5]),
+            b: aikit.array([2, -1])
         }, {
-            a: ivy.array([0.2, 3.]),
-            b: ivy.array([0.2, 3.])
+            a: aikit.array([0.2, 3.]),
+            b: aikit.array([0.2, 3.])
         }]
         """
         return ContainerBase.cont_multi_map_in_function(
@@ -229,16 +229,16 @@ class _ContainerWithDataTypes(ContainerBase):
         )
 
     def broadcast_arrays(
-        self: ivy.Container,
-        *arrays: Union[ivy.Container, ivy.Array, ivy.NativeArray],
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> ivy.Container:
-        """`ivy.Container` instance method variant of `ivy.broadcast_arrays`.
+        self: aikit.Container,
+        *arrays: Union[aikit.Container, aikit.Array, aikit.NativeArray],
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> aikit.Container:
+        """`aikit.Container` instance method variant of `aikit.broadcast_arrays`.
         This method simply wraps the function, and so the docstring for
-        `ivy.broadcast_arrays` also applies to this method with minimal
+        `aikit.broadcast_arrays` also applies to this method with minimal
         changes.
 
         Parameters
@@ -264,32 +264,32 @@ class _ContainerWithDataTypes(ContainerBase):
 
         Examples
         --------
-        With :class:`ivy.Container` inputs:
+        With :class:`aikit.Container` inputs:
 
-        >>> x1 = ivy.Container(a=ivy.array([1, 2]), b=ivy.array([3, 4]))
-        >>> x2 = ivy.Container(a=ivy.array([-1.2, 0.4]), b=ivy.array([0, 1]))
+        >>> x1 = aikit.Container(a=aikit.array([1, 2]), b=aikit.array([3, 4]))
+        >>> x2 = aikit.Container(a=aikit.array([-1.2, 0.4]), b=aikit.array([0, 1]))
         >>> y = x1.broadcast_arrays(x2)
         >>> print(y)
         [{
-            a: ivy.array([1, 2]),
-            b: ivy.array([3, 4])
+            a: aikit.array([1, 2]),
+            b: aikit.array([3, 4])
         }, {
-            a: ivy.array([-1.2, 0.4]),
-            b: ivy.array([0, 1])
+            a: aikit.array([-1.2, 0.4]),
+            b: aikit.array([0, 1])
         }]
 
-        With mixed :class:`ivy.Container` and :class:`ivy.Array` inputs:
+        With mixed :class:`aikit.Container` and :class:`aikit.Array` inputs:
 
-        >>> x1 = ivy.Container(a=ivy.array([4, 5]), b=ivy.array([2, -1]))
-        >>> x2 = ivy.zeros(2)
+        >>> x1 = aikit.Container(a=aikit.array([4, 5]), b=aikit.array([2, -1]))
+        >>> x2 = aikit.zeros(2)
         >>> y = x1.broadcast_arrays(x2)
         >>> print(y)
         [{
-            a: ivy.array([4, 5]),
-            b: ivy.array([2, -1])
+            a: aikit.array([4, 5]),
+            b: aikit.array([2, -1])
         }, {
-            a: ivy.array([0., 0.]),
-            b: ivy.array([0., 0.])
+            a: aikit.array([0., 0.]),
+            b: aikit.array([0., 0.])
         }]
         """
         return self._static_broadcast_arrays(
@@ -303,19 +303,19 @@ class _ContainerWithDataTypes(ContainerBase):
 
     @staticmethod
     def _static_broadcast_to(
-        x: ivy.Container,
+        x: aikit.Container,
         /,
-        shape: Union[Tuple[int, ...], ivy.Container],
+        shape: Union[Tuple[int, ...], aikit.Container],
         *,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """`ivy.Container` static method variant of `ivy.broadcast_to`. This
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """`aikit.Container` static method variant of `aikit.broadcast_to`. This
         method simply wraps the function, and so the docstring for
-        `ivy.broadcast_to` also applies to this method with minimal changes.
+        `aikit.broadcast_to` also applies to this method with minimal changes.
 
         Parameters
         ----------
@@ -333,17 +333,17 @@ class _ContainerWithDataTypes(ContainerBase):
 
         Examples
         --------
-        With :class:`ivy.Container` static method:
+        With :class:`aikit.Container` static method:
 
-        >>> x = ivy.Container(a=ivy.array([1]),
-        ...                   b=ivy.array([2]))
-        >>> y = ivy.Container.static_broadcast_to(x,(3, 1))
+        >>> x = aikit.Container(a=aikit.array([1]),
+        ...                   b=aikit.array([2]))
+        >>> y = aikit.Container.static_broadcast_to(x,(3, 1))
         >>> print(y)
         {
-            a: ivy.array([1],
+            a: aikit.array([1],
                          [1],
                          [1]),
-            b: ivy.array([2],
+            b: aikit.array([2],
                          [2],
                          [2])
         }
@@ -360,19 +360,19 @@ class _ContainerWithDataTypes(ContainerBase):
         )
 
     def broadcast_to(
-        self: ivy.Container,
+        self: aikit.Container,
         /,
-        shape: Union[Tuple[int, ...], ivy.Container],
+        shape: Union[Tuple[int, ...], aikit.Container],
         *,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """`ivy.Container` instance method variant of `ivy.broadcast_to`. This
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """`aikit.Container` instance method variant of `aikit.broadcast_to`. This
         method simply wraps the function, and so the docstring for
-        `ivy.broadcast_to` also applies to this method with minimal changes.
+        `aikit.broadcast_to` also applies to this method with minimal changes.
 
         Parameters
         ----------
@@ -390,17 +390,17 @@ class _ContainerWithDataTypes(ContainerBase):
 
         Examples
         --------
-        With :class:`ivy.Container` instance method:
+        With :class:`aikit.Container` instance method:
 
-        >>> x = ivy.Container(a=ivy.array([0, 0.5]),
-        ...                   b=ivy.array([4, 5]))
+        >>> x = aikit.Container(a=aikit.array([0, 0.5]),
+        ...                   b=aikit.array([4, 5]))
         >>> y = x.broadcast_to((3,2))
         >>> print(y)
         {
-            a: ivy.array([[0., 0.5],
+            a: aikit.array([[0., 0.5],
                           [0., 0.5],
                           [0., 0.5]]),
-            b: ivy.array([[4, 5],
+            b: aikit.array([[4, 5],
                           [4, 5],
                           [4, 5]])
         }
@@ -417,15 +417,15 @@ class _ContainerWithDataTypes(ContainerBase):
 
     @staticmethod
     def _static_can_cast(
-        from_: ivy.Container,
-        to: Union[ivy.Dtype, ivy.Container],
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> ivy.Container:
-        """`ivy.Container` static method variant of `ivy.can_cast`. This method
-        simply wraps the function, and so the docstring for `ivy.can_cast` also
+        from_: aikit.Container,
+        to: Union[aikit.Dtype, aikit.Container],
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> aikit.Container:
+        """`aikit.Container` static method variant of `aikit.can_cast`. This method
+        simply wraps the function, and so the docstring for `aikit.can_cast` also
         applies to this method with minimal changes.
 
         Parameters
@@ -454,12 +454,12 @@ class _ContainerWithDataTypes(ContainerBase):
 
         Examples
         --------
-        >>> x = ivy.Container(a=ivy.array([0., 1., 2.]),
-        ...                   b=ivy.array([3, 4, 5]))
+        >>> x = aikit.Container(a=aikit.array([0., 1., 2.]),
+        ...                   b=aikit.array([3, 4, 5]))
         >>> print(x.a.dtype, x.b.dtype)
         float32 int32
 
-        >>> print(ivy.Container.static_can_cast(x, 'int64'))
+        >>> print(aikit.Container.static_can_cast(x, 'int64'))
         {
             a: false,
             b: true
@@ -476,16 +476,16 @@ class _ContainerWithDataTypes(ContainerBase):
         )
 
     def can_cast(
-        self: ivy.Container,
-        to: Union[ivy.Dtype, ivy.Container],
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> ivy.Container:
-        """`ivy.Container` instance method variant of `ivy.can_cast`. This
+        self: aikit.Container,
+        to: Union[aikit.Dtype, aikit.Container],
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> aikit.Container:
+        """`aikit.Container` instance method variant of `aikit.can_cast`. This
         method simply wraps the function, and so the docstring for
-        `ivy.can_cast` also applies to this method with minimal changes.
+        `aikit.can_cast` also applies to this method with minimal changes.
 
         Parameters
         ----------
@@ -513,8 +513,8 @@ class _ContainerWithDataTypes(ContainerBase):
 
         Examples
         --------
-        >>> x = ivy.Container(a=ivy.array([0., 1., 2.]),
-        ...                   b=ivy.array([3, 4, 5]))
+        >>> x = aikit.Container(a=aikit.array([0., 1., 2.]),
+        ...                   b=aikit.array([3, 4, 5]))
         >>> print(x.a.dtype, x.b.dtype)
         float32 int32
 
@@ -530,15 +530,15 @@ class _ContainerWithDataTypes(ContainerBase):
 
     @staticmethod
     def _static_dtype(
-        x: ivy.Container,
+        x: aikit.Container,
         *,
-        as_native: Union[bool, ivy.Container] = False,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
+        as_native: Union[bool, aikit.Container] = False,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
         return ContainerBase.cont_multi_map_in_function(
             "dtype",
             x,
@@ -551,19 +551,19 @@ class _ContainerWithDataTypes(ContainerBase):
         )
 
     def dtype(
-        self: ivy.Container,
+        self: aikit.Container,
         *,
-        as_native: Union[bool, ivy.Container] = False,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
+        as_native: Union[bool, aikit.Container] = False,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
         """
         Examples
         --------
-        >>> x = ivy.Container(a=ivy.array([1, 2, 3]), b=ivy.array([2, 3, 4]))
+        >>> x = aikit.Container(a=aikit.array([1, 2, 3]), b=aikit.array([2, 3, 4]))
         >>> y = x.dtype()
         >>> print(y)
         {
@@ -584,16 +584,16 @@ class _ContainerWithDataTypes(ContainerBase):
     @staticmethod
     def _static_default_float_dtype(
         *,
-        input: Optional[Union[ivy.Array, ivy.NativeArray, ivy.Container]] = None,
+        input: Optional[Union[aikit.Array, aikit.NativeArray, aikit.Container]] = None,
         float_dtype: Optional[
-            Union[ivy.FloatDtype, ivy.NativeDtype, ivy.Container]
+            Union[aikit.FloatDtype, aikit.NativeDtype, aikit.Container]
         ] = None,
-        as_native: Optional[Union[bool, ivy.Container]] = None,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> ivy.Container:
+        as_native: Optional[Union[bool, aikit.Container]] = None,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> aikit.Container:
         return ContainerBase.cont_multi_map_in_function(
             "default_float_dtype",
             input=input,
@@ -608,16 +608,16 @@ class _ContainerWithDataTypes(ContainerBase):
     @staticmethod
     def _static_default_complex_dtype(
         *,
-        input: Optional[Union[ivy.Array, ivy.NativeArray, ivy.Container]] = None,
+        input: Optional[Union[aikit.Array, aikit.NativeArray, aikit.Container]] = None,
         complex_dtype: Optional[
-            Union[ivy.FloatDtype, ivy.NativeDtype, ivy.Container]
+            Union[aikit.FloatDtype, aikit.NativeDtype, aikit.Container]
         ] = None,
-        as_native: Optional[Union[bool, ivy.Container]] = None,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> ivy.Container:
+        as_native: Optional[Union[bool, aikit.Container]] = None,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> aikit.Container:
         return ContainerBase.cont_multi_map_in_function(
             "default_complex_dtype",
             input=input,
@@ -631,12 +631,12 @@ class _ContainerWithDataTypes(ContainerBase):
 
     @staticmethod
     def _static_function_supported_dtypes(
-        fn: Union[Callable, ivy.Container],
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> ivy.Container:
+        fn: Union[Callable, aikit.Container],
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> aikit.Container:
         return ContainerBase.cont_multi_map_in_function(
             "function_supported_dtypes",
             fn,
@@ -648,12 +648,12 @@ class _ContainerWithDataTypes(ContainerBase):
 
     @staticmethod
     def _static_function_unsupported_dtypes(
-        fn: Union[Callable, ivy.Container],
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> ivy.Container:
+        fn: Union[Callable, aikit.Container],
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> aikit.Container:
         return ContainerBase.cont_multi_map_in_function(
             "function_unsupported_dtypes",
             fn,
@@ -665,15 +665,15 @@ class _ContainerWithDataTypes(ContainerBase):
 
     @staticmethod
     def _static_finfo(
-        type: ivy.Container,
+        type: aikit.Container,
         /,
         *,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> ivy.Container:
-        """`ivy.Container` static method variant of `ivy.finfo`.
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> aikit.Container:
+        """`aikit.Container` static method variant of `aikit.finfo`.
 
         Parameters
         ----------
@@ -689,9 +689,9 @@ class _ContainerWithDataTypes(ContainerBase):
 
         Examples
         --------
-        >>> c = ivy.Container(x=ivy.array([-9.5,1.8,-8.9], dtype=ivy.float16),
-        ...                   y=ivy.array([7.6,8.1,1.6], dtype=ivy.float64))
-        >>> y = ivy.Container.static_finfo(c)
+        >>> c = aikit.Container(x=aikit.array([-9.5,1.8,-8.9], dtype=aikit.float16),
+        ...                   y=aikit.array([7.6,8.1,1.6], dtype=aikit.float64))
+        >>> y = aikit.Container.static_finfo(c)
         >>> print(y)
         {
             x: finfo(resolution=0.001, min=-6.55040e+04, max=6.55040e+04,\
@@ -710,15 +710,15 @@ class _ContainerWithDataTypes(ContainerBase):
         )
 
     def finfo(
-        self: ivy.Container,
+        self: aikit.Container,
         /,
         *,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> ivy.Container:
-        """`ivy.Container` instance method variant of `ivy.finfo`.
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> aikit.Container:
+        """`aikit.Container` instance method variant of `aikit.finfo`.
 
         Parameters
         ----------
@@ -734,8 +734,8 @@ class _ContainerWithDataTypes(ContainerBase):
 
         Examples
         --------
-        >>> c = ivy.Container(x=ivy.array([-9.5,1.8,-8.9], dtype=ivy.float16),
-        ...                   y=ivy.array([7.6,8.1,1.6], dtype=ivy.float64))
+        >>> c = aikit.Container(x=aikit.array([-9.5,1.8,-8.9], dtype=aikit.float16),
+        ...                   y=aikit.array([7.6,8.1,1.6], dtype=aikit.float64))
         >>> print(c.finfo())
         {
             x: finfo(resolution=0.001, min=-6.55040e+04, max=6.55040e+04,\
@@ -754,16 +754,16 @@ class _ContainerWithDataTypes(ContainerBase):
 
     @staticmethod
     def _static_iinfo(
-        type: ivy.Container,
+        type: aikit.Container,
         /,
         *,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> ivy.Container:
-        """`ivy.Container` static method variant of `ivy.iinfo`. This method
-        simply wraps the function, and so the docstring for `ivy.iinfo` also
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> aikit.Container:
+        """`aikit.Container` static method variant of `aikit.iinfo`. This method
+        simply wraps the function, and so the docstring for `aikit.iinfo` also
         applies to this method with minimal changes.
 
         Parameters
@@ -796,9 +796,9 @@ class _ContainerWithDataTypes(ContainerBase):
 
         Examples
         --------
-        >>> c = ivy.Container(x=ivy.array([12,-1800,1084], dtype=ivy.int16),
-        ...                   y=ivy.array([-40000,99,1], dtype=ivy.int32))
-        >>> y = ivy.Container.static_iinfo(c)
+        >>> c = aikit.Container(x=aikit.array([12,-1800,1084], dtype=aikit.int16),
+        ...                   y=aikit.array([-40000,99,1], dtype=aikit.int32))
+        >>> y = aikit.Container.static_iinfo(c)
         >>> print(y)
         {
             x: iinfo(min=-32768, max=32767, dtype=int16),
@@ -815,14 +815,14 @@ class _ContainerWithDataTypes(ContainerBase):
         )
 
     def iinfo(
-        self: ivy.Container,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> ivy.Container:
-        """`ivy.Container` instance method variant of `ivy.iinfo`. This method
-        simply wraps the function, and so the docstring for `ivy.iinfo` also
+        self: aikit.Container,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> aikit.Container:
+        """`aikit.Container` instance method variant of `aikit.iinfo`. This method
+        simply wraps the function, and so the docstring for `aikit.iinfo` also
         applies to this method with minimal changes.
 
         Parameters
@@ -855,16 +855,16 @@ class _ContainerWithDataTypes(ContainerBase):
 
         Examples
         --------
-        >>> c = ivy.Container(x=ivy.array([-9,1800,89], dtype=ivy.int16),
-        ...                   y=ivy.array([76,-81,16], dtype=ivy.int32))
+        >>> c = aikit.Container(x=aikit.array([-9,1800,89], dtype=aikit.int16),
+        ...                   y=aikit.array([76,-81,16], dtype=aikit.int32))
         >>> c.iinfo()
         {
             x: iinfo(min=-32768, max=32767, dtype=int16),
             y: iinfo(min=-2147483648, max=2147483647, dtype=int32)
         }
 
-        >>> c = ivy.Container(x=ivy.array([-12,123,4], dtype=ivy.int8),
-        ...                   y=ivy.array([76,-81,16], dtype=ivy.int16))
+        >>> c = aikit.Container(x=aikit.array([-12,123,4], dtype=aikit.int8),
+        ...                   y=aikit.array([76,-81,16], dtype=aikit.int16))
         >>> c.iinfo()
         {
             x: iinfo(min=-128, max=127, dtype=int8),
@@ -881,13 +881,13 @@ class _ContainerWithDataTypes(ContainerBase):
 
     @staticmethod
     def _static_is_bool_dtype(
-        dtype_in: ivy.Container,
+        dtype_in: aikit.Container,
         /,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> ivy.Container:
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> aikit.Container:
         return ContainerBase.cont_multi_map_in_function(
             "is_bool_dtype",
             dtype_in,
@@ -898,13 +898,13 @@ class _ContainerWithDataTypes(ContainerBase):
         )
 
     def is_bool_dtype(
-        self: ivy.Container,
+        self: aikit.Container,
         /,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> ivy.Container:
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> aikit.Container:
         return self._static_is_bool_dtype(
             self,
             key_chains=key_chains,
@@ -915,20 +915,20 @@ class _ContainerWithDataTypes(ContainerBase):
 
     @staticmethod
     def _static_is_float_dtype(
-        dtype_in: ivy.Container,
+        dtype_in: aikit.Container,
         /,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> ivy.Container:
-        """`ivy.Container` static method variant of `is_float_dtype`. This
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> aikit.Container:
+        """`aikit.Container` static method variant of `is_float_dtype`. This
         method simply wraps this function, so the docstring of `is_float_dtype`
         roughly applies to this method.
 
         Parameters
         ----------
-        dtype_in : ivy.Container
+        dtype_in : aikit.Container
             The input to check for float dtype.
 
         key_chains : Optional[Union[List[str], Dict[str, str]]]
@@ -951,27 +951,27 @@ class _ContainerWithDataTypes(ContainerBase):
 
         Examples
         --------
-        >>> x = ivy.static_is_float_dtype(ivy.float32)
+        >>> x = aikit.static_is_float_dtype(aikit.float32)
         >>> print(x)
         True
 
-        >>> x = ivy.static_is_float_dtype(ivy.int64)
+        >>> x = aikit.static_is_float_dtype(aikit.int64)
         >>> print(x)
         False
 
-        >>> x = ivy.static_is_float_dtype(ivy.int32)
+        >>> x = aikit.static_is_float_dtype(aikit.int32)
         >>> print(x)
         False
 
-        >>> x = ivy.static_is_float_dtype(ivy.bool)
+        >>> x = aikit.static_is_float_dtype(aikit.bool)
         >>> print(x)
         False
 
-        >>> arr = ivy.array([1.2, 3.2, 4.3], dtype=ivy.float32)
+        >>> arr = aikit.array([1.2, 3.2, 4.3], dtype=aikit.float32)
         >>> print(arr.is_float_dtype())
         True
 
-        >>> x = ivy.Container(a=ivy.array([0., 1., 2.]), b=ivy.array([3, 4, 5]))
+        >>> x = aikit.Container(a=aikit.array([0., 1., 2.]), b=aikit.array([3, 4, 5]))
         >>> print(x.a.dtype, x.b.dtype)
         float32 int32
         """
@@ -985,21 +985,21 @@ class _ContainerWithDataTypes(ContainerBase):
         )
 
     def is_float_dtype(
-        self: ivy.Container,
+        self: aikit.Container,
         /,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> ivy.Container:
-        """`ivy.Container` instance method variant of `ivy.is_float_dtype`.
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> aikit.Container:
+        """`aikit.Container` instance method variant of `aikit.is_float_dtype`.
         This method simply wraps the function, and so the docstring for
-        `ivy.is_float_dtype` also applies to this method with minimal changes.
+        `aikit.is_float_dtype` also applies to this method with minimal changes.
 
         Parameters
         ----------
-        self : ivy.Container
-            The `ivy.Container` instance to call `ivy.is_float_dtype` on.
+        self : aikit.Container
+            The `aikit.Container` instance to call `aikit.is_float_dtype` on.
 
         key_chains : Union[List[str], Dict[str, str]]
             The key-chains to apply or not apply the method to.
@@ -1024,27 +1024,27 @@ class _ContainerWithDataTypes(ContainerBase):
 
         Examples
         --------
-        >>> x = ivy.is_float_dtype(ivy.float32)
+        >>> x = aikit.is_float_dtype(aikit.float32)
         >>> print(x)
         True
 
-        >>> x = ivy.is_float_dtype(ivy.int64)
+        >>> x = aikit.is_float_dtype(aikit.int64)
         >>> print(x)
         False
 
-        >>> x = ivy.is_float_dtype(ivy.int32)
+        >>> x = aikit.is_float_dtype(aikit.int32)
         >>> print(x)
         False
 
-        >>> x = ivy.is_float_dtype(ivy.bool)
+        >>> x = aikit.is_float_dtype(aikit.bool)
         >>> print(x)
         False
 
-        >>> arr = ivy.array([1.2, 3.2, 4.3], dtype=ivy.float32)
+        >>> arr = aikit.array([1.2, 3.2, 4.3], dtype=aikit.float32)
         >>> print(arr.is_float_dtype())
         True
 
-        >>> x = ivy.Container(a=ivy.array([0., 1., 2.]), b=ivy.array([3, 4, 5]))
+        >>> x = aikit.Container(a=aikit.array([0., 1., 2.]), b=aikit.array([3, 4, 5]))
         >>> print(x.a.dtype, x.b.dtype)
         float32 int32
         """
@@ -1058,13 +1058,13 @@ class _ContainerWithDataTypes(ContainerBase):
 
     @staticmethod
     def _static_is_int_dtype(
-        dtype_in: ivy.Container,
+        dtype_in: aikit.Container,
         /,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> ivy.Container:
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> aikit.Container:
         return ContainerBase.cont_multi_map_in_function(
             "is_int_dtype",
             dtype_in,
@@ -1075,13 +1075,13 @@ class _ContainerWithDataTypes(ContainerBase):
         )
 
     def is_int_dtype(
-        self: ivy.Container,
+        self: aikit.Container,
         /,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> ivy.Container:
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> aikit.Container:
         return self._static_is_int_dtype(
             self,
             key_chains=key_chains,
@@ -1092,12 +1092,12 @@ class _ContainerWithDataTypes(ContainerBase):
 
     @staticmethod
     def _static_is_uint_dtype(
-        dtype_in: ivy.Container,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> ivy.Container:
+        dtype_in: aikit.Container,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> aikit.Container:
         return ContainerBase.cont_multi_map_in_function(
             "is_uint_dtype",
             dtype_in,
@@ -1108,12 +1108,12 @@ class _ContainerWithDataTypes(ContainerBase):
         )
 
     def is_uint_dtype(
-        self: ivy.Container,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> ivy.Container:
+        self: aikit.Container,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> aikit.Container:
         return self._static_is_uint_dtype(
             self,
             key_chains=key_chains,
@@ -1124,20 +1124,20 @@ class _ContainerWithDataTypes(ContainerBase):
 
     @staticmethod
     def _static_is_complex_dtype(
-        dtype_in: ivy.Container,
+        dtype_in: aikit.Container,
         /,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> ivy.Container:
-        """`ivy.Container` static method variant of `is_complex_dtype`. This
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> aikit.Container:
+        """`aikit.Container` static method variant of `is_complex_dtype`. This
         method simply wraps this function, so the docstring of
         `is_complex_dtype` roughly applies to this method.
 
         Parameters
         ----------
-        dtype_in : ivy.Container
+        dtype_in : aikit.Container
             The input to check for complex dtype.
 
         key_chains : Optional[Union[List[str], Dict[str, str]]]
@@ -1160,15 +1160,15 @@ class _ContainerWithDataTypes(ContainerBase):
 
         Examples
         --------
-        >>> x = ivy.Container.static_is_complex_dtype(ivy.complex64)
+        >>> x = aikit.Container.static_is_complex_dtype(aikit.complex64)
         >>> print(x)
         True
 
-        >>> x = ivy.Container.static_is_complex_dtype(ivy.int64)
+        >>> x = aikit.Container.static_is_complex_dtype(aikit.int64)
         >>> print(x)
         False
 
-        >>> x = ivy.Container.static_is_complex_dtype(ivy.float32)
+        >>> x = aikit.Container.static_is_complex_dtype(aikit.float32)
         >>> print(x)
         False
         """
@@ -1182,22 +1182,22 @@ class _ContainerWithDataTypes(ContainerBase):
         )
 
     def is_complex_dtype(
-        self: ivy.Container,
+        self: aikit.Container,
         /,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> ivy.Container:
-        """`ivy.Container` instance method variant of `ivy.is_complex_dtype`.
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> aikit.Container:
+        """`aikit.Container` instance method variant of `aikit.is_complex_dtype`.
         This method simply wraps the function, and so the docstring for
-        `ivy.is_complex_dtype` also applies to this method with minimal
+        `aikit.is_complex_dtype` also applies to this method with minimal
         changes.
 
         Parameters
         ----------
-        self : ivy.Container
-            The `ivy.Container` instance to call `ivy.is_complex_dtype` on.
+        self : aikit.Container
+            The `aikit.Container` instance to call `aikit.is_complex_dtype` on.
 
         key_chains : Union[List[str], Dict[str, str]]
             The key-chains to apply or not apply the method to.
@@ -1222,15 +1222,15 @@ class _ContainerWithDataTypes(ContainerBase):
 
         Examples
         --------
-        >>> x = ivy.is_complex_dtype(ivy.complex64)
+        >>> x = aikit.is_complex_dtype(aikit.complex64)
         >>> print(x)
         True
 
-        >>> x = ivy.is_complex_dtype(ivy.int64)
+        >>> x = aikit.is_complex_dtype(aikit.int64)
         >>> print(x)
         False
 
-        >>> x = ivy.is_complex_dtype(ivy.float32)
+        >>> x = aikit.is_complex_dtype(aikit.float32)
         >>> print(x)
         False
         """
@@ -1244,15 +1244,15 @@ class _ContainerWithDataTypes(ContainerBase):
 
     @staticmethod
     def _static_result_type(
-        *arrays_and_dtypes: ivy.Container,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> ivy.Container:
-        """`ivy.Container` static method variant of `ivy.result_type`. This
+        *arrays_and_dtypes: aikit.Container,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> aikit.Container:
+        """`aikit.Container` static method variant of `aikit.result_type`. This
         method simply wraps the function, and so the docstring for
-        `ivy.result_type` also applies to this method with minimal changes.
+        `aikit.result_type` also applies to this method with minimal changes.
 
         Parameters
         ----------
@@ -1277,12 +1277,12 @@ class _ContainerWithDataTypes(ContainerBase):
 
         Examples
         --------
-        >>> x = ivy.Container(a = ivy.array([0, 1, 2]),
-        ...                   b = ivy.array([3., 4., 5.]))
+        >>> x = aikit.Container(a = aikit.array([0, 1, 2]),
+        ...                   b = aikit.array([3., 4., 5.]))
         >>> print(x.a.dtype, x.b.dtype)
         int32 float32
 
-        >>> print(ivy.Container.static_result_type(x, ivy.float64))
+        >>> print(aikit.Container.static_result_type(x, aikit.float64))
         {
             a: float64,
             b: float32
@@ -1298,16 +1298,16 @@ class _ContainerWithDataTypes(ContainerBase):
         )
 
     def result_type(
-        self: ivy.Container,
-        *arrays_and_dtypes: ivy.Container,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> ivy.Container:
-        """`ivy.Container` instance method variant of `ivy.result_type`. This
+        self: aikit.Container,
+        *arrays_and_dtypes: aikit.Container,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> aikit.Container:
+        """`aikit.Container` instance method variant of `aikit.result_type`. This
         method simply wraps the function, and so the docstring for
-        `ivy.result_type` also applies to this method with minimal changes.
+        `aikit.result_type` also applies to this method with minimal changes.
 
         Parameters
         ----------
@@ -1334,11 +1334,11 @@ class _ContainerWithDataTypes(ContainerBase):
 
         Examples
         --------
-        >>> x = ivy.Container(a = ivy.array([3, 3, 3]))
+        >>> x = aikit.Container(a = aikit.array([3, 3, 3]))
         >>> print(x.a.dtype)
         int32
 
-        >>> y = ivy.Container(b = ivy.float64)
+        >>> y = aikit.Container(b = aikit.float64)
         >>> print(x.result_type(y))
         {
             a: {

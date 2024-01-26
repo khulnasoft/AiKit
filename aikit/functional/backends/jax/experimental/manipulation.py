@@ -15,11 +15,11 @@ import jax.numpy as jnp
 import jax.lax as jlax
 from numbers import Number
 from collections import namedtuple
-from ivy.func_wrapper import handle_out_argument
+from aikit.func_wrapper import handle_out_argument
 
 # local
-import ivy
-from ivy.functional.backends.jax import JaxArray
+import aikit
+from aikit.functional.backends.jax import JaxArray
 
 
 def moveaxis(
@@ -181,7 +181,7 @@ def pad(
     input_dtype = input.dtype
 
     if mode == "dilated":
-        if not ivy.is_array(constant_values) or constant_values.dtype != input_dtype:
+        if not aikit.is_array(constant_values) or constant_values.dtype != input_dtype:
             constant_values = jnp.array(constant_values, dtype=input_dtype)
         return jlax.pad(input, constant_values, pad_width)
     if callable(mode):
@@ -238,10 +238,10 @@ def vsplit(
     copy: Optional[bool] = None,
 ) -> List[JaxArray]:
     if ary.ndim < 2:
-        raise ivy.exceptions.IvyError(
+        raise aikit.exceptions.AikitError(
             "vsplit only works on arrays of 2 or more dimensions"
         )
-    return ivy.split(ary, num_or_size_splits=indices_or_sections, axis=0)
+    return aikit.split(ary, num_or_size_splits=indices_or_sections, axis=0)
 
 
 def dsplit(
@@ -252,10 +252,10 @@ def dsplit(
     copy: Optional[bool] = None,
 ) -> List[JaxArray]:
     if ary.ndim < 3:
-        raise ivy.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             "dsplit only works on arrays of 3 or more dimensions"
         )
-    return ivy.split(ary, num_or_size_splits=indices_or_sections, axis=2)
+    return aikit.split(ary, num_or_size_splits=indices_or_sections, axis=2)
 
 
 def atleast_1d(
@@ -293,7 +293,7 @@ def take_along_axis(
     out: Optional[JaxArray] = None,
 ) -> JaxArray:
     if arr.ndim != indices.ndim and axis is not None:
-        raise ivy.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             "arr and indices must have the same number of dimensions;"
             + f" got {arr.ndim} vs {indices.ndim}"
         )
@@ -308,8 +308,8 @@ def hsplit(
     copy: Optional[bool] = None,
 ) -> List[JaxArray]:
     if ary.ndim == 1:
-        return ivy.split(ary, num_or_size_splits=indices_or_sections, axis=0)
-    return ivy.split(ary, num_or_size_splits=indices_or_sections, axis=1)
+        return aikit.split(ary, num_or_size_splits=indices_or_sections, axis=0)
+    return aikit.split(ary, num_or_size_splits=indices_or_sections, axis=1)
 
 
 def broadcast_shapes(*shapes: Union[List[int], List[Tuple]]) -> Tuple[int]:
@@ -440,7 +440,7 @@ def take(
     # raise
     if mode == "raise":
         mode = "fill"
-        if ivy.exists(axis):
+        if aikit.exists(axis):
             try:
                 x_shape = x.shape[axis]
             except Exception as e:
@@ -462,8 +462,8 @@ def take(
 
     # clip, wrap, fill
     ret = jnp.take(x, indices, axis=axis, mode=mode, fill_value=fill_value)
-    if ivy.exists(out):
-        ivy.inplace_update(out, ret)
+    if aikit.exists(out):
+        aikit.inplace_update(out, ret)
     return ret
 
 

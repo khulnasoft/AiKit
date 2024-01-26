@@ -6,24 +6,24 @@ import jax.numpy as jnp
 import math
 
 # local
-import ivy
-from ivy import output_to_native_arrays
-from ivy.functional.backends.jax import JaxArray
-from ivy.functional.backends.jax.random import RNG
-from ivy.functional.ivy.experimental.general import _correct_ivy_callable
-from ivy.functional.ivy.layers import (
+import aikit
+from aikit import output_to_native_arrays
+from aikit.functional.backends.jax import JaxArray
+from aikit.functional.backends.jax.random import RNG
+from aikit.functional.aikit.experimental.general import _correct_aikit_callable
+from aikit.functional.aikit.layers import (
     _handle_padding,
     _validate_max_pool_params,
     _depth_max_pooling_helper,
 )
-from ivy.functional.ivy.experimental.layers import (
+from aikit.functional.aikit.experimental.layers import (
     _padding_ceil_mode,
     _get_size,
 )
-from ivy.func_wrapper import with_supported_dtypes
-from ivy.func_wrapper import with_unsupported_dtypes
+from aikit.func_wrapper import with_supported_dtypes
+from aikit.func_wrapper import with_unsupported_dtypes
 from . import backend_version
-from ivy.functional.backends.jax.experimental.manipulation import _to_nested_tuple
+from aikit.functional.backends.jax.experimental.manipulation import _to_nested_tuple
 
 
 def _determine_depth_max_pooling(x, kernel, strides, dims, data_format="channel_last"):
@@ -143,10 +143,10 @@ def general_pool(
     else:
         pad_list = [(0, 0)] * (dim + 2)
 
-    if not ivy.is_array(inputs):
+    if not aikit.is_array(inputs):
         # if dtype is not set here, jax casts it to float64
         inputs = jnp.array(inputs, dtype=jnp.float32)
-    if not ivy.is_array(init):
+    if not aikit.is_array(init):
         init = jnp.array(init, dtype=inputs.dtype)
     promoted_type = jnp.promote_types(inputs.dtype, init.dtype)
     inputs = inputs.astype(promoted_type)
@@ -539,26 +539,26 @@ def fft(
     out: Optional[JaxArray] = None,
 ) -> JaxArray:
     if not isinstance(dim, int):
-        raise ivy.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Expecting <class 'int'> instead of {type(dim)}"
         )
     if n is None:
         n = x.shape[dim]
     if n < -len(x.shape):
-        raise ivy.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Invalid dim {dim}, expecting ranging"
             " from {-len(x.shape)} to {len(x.shape)-1}  "
         )
     if not isinstance(n, int):
-        raise ivy.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Expecting <class 'int'> instead of {type(n)}"
         )
     if n <= 1:
-        raise ivy.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Invalid data points {n}, expecting more than 1"
         )
     if norm not in {"backward", "ortho", "forward"}:
-        raise ivy.utils.exceptions.IvyError(f"Unrecognized normalization mode {norm}")
+        raise aikit.utils.exceptions.AikitError(f"Unrecognized normalization mode {norm}")
     return jnp.fft.fft(x, n, dim, norm)
 
 
@@ -651,26 +651,26 @@ def ifft(
     out: Optional[JaxArray] = None,
 ) -> JaxArray:
     if not isinstance(dim, int):
-        raise ivy.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Expecting <class 'int'> instead of {type(dim)}"
         )
     if n is None:
         n = x.shape[dim]
     if n < -len(x.shape):
-        raise ivy.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Invalid dim {dim}, expecting ranging"
             " from {-len(x.shape)} to {len(x.shape)-1}  "
         )
     if not isinstance(n, int):
-        raise ivy.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Expecting <class 'int'> instead of {type(n)}"
         )
     if n <= 1:
-        raise ivy.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Invalid data points {n}, expecting more than 1"
         )
     if norm not in {"backward", "ortho", "forward"}:
-        raise ivy.utils.exceptions.IvyError(f"Unrecognized normalization mode {norm}")
+        raise aikit.utils.exceptions.AikitError(f"Unrecognized normalization mode {norm}")
     return jnp.fft.ifft(x, n, dim, norm)
 
 
@@ -701,7 +701,7 @@ def interpolate(
     antialias: bool = False,
     out: Optional[JaxArray] = None,
 ):
-    input_size = ivy.shape(x)[2:]
+    input_size = aikit.shape(x)[2:]
     dims = len(input_size)
     size, _ = _get_size(scale_factor, size, dims, input_size)
     if all(a == b for a, b in zip(size, input_size)):
@@ -719,8 +719,8 @@ def interpolate(
             jax.image.resize(x, shape=size, method=mode, antialias=antialias),
             (0, dims + 1, *range(1, dims + 1)),
         )
-    if ivy.exists(out):
-        return ivy.inplace_update(out, ret)
+    if aikit.exists(out):
+        return aikit.inplace_update(out, ret)
     return ret
 
 
@@ -752,7 +752,7 @@ def reduce_window(
     base_dilation: Union[int, Sequence[int]] = 1,
     window_dilation: Union[int, Sequence[int]] = 1,
 ) -> JaxArray:
-    computation = _correct_ivy_callable(computation)
+    computation = _correct_aikit_callable(computation)
     computation = output_to_native_arrays(computation)
     window_dimensions, window_strides, padding, base_dilation, window_dilation = map(
         lambda x: tuple([x] * len(operand.shape)) if isinstance(x, int) else x,
@@ -761,7 +761,7 @@ def reduce_window(
     if not isinstance(padding, str):
         # for containers the padding reaches the function as a list of lists instead of
         # a list of tuples, which gives an unhashable dtype error
-        # this is similarly a problem in the jax backend of ivy.pad
+        # this is similarly a problem in the jax backend of aikit.pad
         padding = _to_nested_tuple(padding)
     return jlax.reduce_window(
         operand,
@@ -783,28 +783,28 @@ def fft2(
     norm: str = "backward",
     out: Optional[JaxArray] = None,
 ) -> JaxArray:
-    ivy.utils.assertions.check_elem_in_list(
+    aikit.utils.assertions.check_elem_in_list(
         norm,
         ["backward", "ortho", "forward"],
         message=f"Unrecognized normalization mode {norm}",
     )
     if not all(isinstance(j, int) for j in dim):
-        raise ivy.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Expecting {dim} to be a sequence of integers <class integer>"
         )
     if s is None:
         s = (x.shape[dim[0]], x.shape[dim[1]])
     if all(j < -len(x.shape) for j in s):
-        raise ivy.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Invalid dim {dim}, expecting ranging"
             " from {-len(x.shape)} to {len(x.shape)-1}  "
         )
     if not all(isinstance(j, int) for j in s):
-        raise ivy.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Expecting {s} to be a sequence of integers <class integer>"
         )
     if all(j <= 1 for j in s):
-        raise ivy.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Invalid data points {s}, expecting s points larger than 1"
         )
     return jnp.fft.fft2(x, s, dim, norm).astype(jnp.complex128)
@@ -832,7 +832,7 @@ def embedding(
     max_norm: Optional[int] = None,
     out: Optional[JaxArray] = None,
 ) -> JaxArray:
-    ivy.utils.assertions.check_equal(
+    aikit.utils.assertions.check_equal(
         len(weights.shape), 2, message="weights must be 2-d", as_array=False
     )
 
@@ -865,8 +865,8 @@ def rfft(
 
     if x.dtype != jnp.float64:
         ret = ret.astype(jnp.complex64)
-    if ivy.exists(out):
-        return ivy.inplace_update(out, ret)
+    if aikit.exists(out):
+        return aikit.inplace_update(out, ret)
     return ret
 
 
@@ -880,26 +880,26 @@ def rfftn(
     out: Optional[JaxArray] = None,
 ) -> JaxArray:
     if not all(isinstance(j, int) for j in axes):
-        raise ivy.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Expecting {axes} to be a sequence of integers <class integer>"
         )
     if s is None:
         s = (x.shape[axes[0]], x.shape[axes[1]])
     if all(j < -len(x.shape) for j in s):
-        raise ivy.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Invalid dim {axes}, expecting ranging"
             f" from {-len(x.shape)} to {len(x.shape)-1}"
         )
     if not all(isinstance(j, int) for j in s):
-        raise ivy.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Expecting {s} to be a sequence of integers <class integer>"
         )
     if all(j <= 1 for j in s):
-        raise ivy.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Invalid data points {s}, expecting s points larger than 1"
         )
     if norm not in {"backward", "ortho", "forward"}:
-        raise ivy.utils.exceptions.IvyError(f"Unrecognized normalization mode {norm}")
+        raise aikit.utils.exceptions.AikitError(f"Unrecognized normalization mode {norm}")
     return jnp.fft.rfftn(x, s, axes, norm).astype(jnp.complex128)
 
 
@@ -917,35 +917,35 @@ def stft(
     out: Optional[JaxArray] = None,
 ) -> JaxArray:
     if not isinstance(frame_length, int):
-        raise ivy.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Expecting <class 'int'> instead of {type(frame_length)}"
         )
 
     if frame_length < 1:
-        raise ivy.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Invalid data points {frame_length}, expecting frame_length larger than or"
             " equal to 1"
         )
 
     if not isinstance(frame_step, int):
-        raise ivy.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Expecting <class 'int'> instead of {type(frame_step)}"
         )
 
     if frame_step < 1:
-        raise ivy.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Invalid data points {frame_length}, expecting frame_length larger than or"
             " equal to 1"
         )
 
     if fft_length is not None:
         if not isinstance(fft_length, int):
-            raise ivy.utils.exceptions.IvyError(
+            raise aikit.utils.exceptions.AikitError(
                 f"Expecting <class 'int'> instead of {type(fft_length)}"
             )
 
         if fft_length < 1:
-            raise ivy.utils.exceptions.IvyError(
+            raise aikit.utils.exceptions.AikitError(
                 f"Invalid data points {frame_length}, expecting frame_length larger"
                 " than or equal to 1"
             )

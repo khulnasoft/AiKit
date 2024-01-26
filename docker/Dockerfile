@@ -1,5 +1,5 @@
 FROM debian:buster
-WORKDIR /ivy
+WORKDIR /aikit
 ARG CLI
 # python version for conda
 ARG pycon=3.10
@@ -38,10 +38,10 @@ RUN apt-get update && \
     pip3 install setuptools==58.5.3
 
 
-# Install Ivy Upstream
+# Install Aikit Upstream
 RUN git clone --progress --recurse-submodules https://github.com/khulnasoft/aikit --depth 1 && \
-    cd ivy && \
-    cd ivy_tests/array_api_testing/test_array_api && \
+    cd aikit && \
+    cd aikit_tests/array_api_testing/test_array_api && \
     pip3 install --no-cache-dir -r requirements.txt
 
 

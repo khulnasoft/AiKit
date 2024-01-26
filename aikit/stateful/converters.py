@@ -1,4 +1,4 @@
-"""Converters from Native Modules to Ivy Modules."""
+"""Converters from Native Modules to Aikit Modules."""
 
 # global
 import functools
@@ -75,7 +75,7 @@ class ModuleConverters:
         device=None,
         devices=None,
     ):
-        """Convert a Haiku module instance to an Ivy module instance.
+        """Convert a Haiku module instance to an Aikit module instance.
 
         Parameters
         ----------
@@ -134,7 +134,7 @@ class ModuleConverters:
 
         if inspect.isclass(native_module):
             if len(i_args) == 0 and len(i_kwargs) == 0:
-                raise aikit.utils.exceptions.IvyException(
+                raise aikit.utils.exceptions.AikitException(
                     "both instance_args and instance_kwargs cannot be none"
                     " when passing a native class"
                 )
@@ -145,9 +145,9 @@ class ModuleConverters:
 
             transformed_module = hk.transform(forward_fn)
             params_hk = transformed_module.init(rng_seed, *i_args, **i_kwargs)
-        from aikit.stateful.module import _HaikuIvyModule
+        from aikit.stateful.module import _HaikuAikitModule
 
-        return _HaikuIvyModule(
+        return _HaikuAikitModule(
             *i_args,
             params_hk=params_hk,
             native_module=transformed_module,
@@ -168,7 +168,7 @@ class ModuleConverters:
         device=None,
         devices=None,
     ):
-        """Convert a Flax module instance to an Ivy module instance.
+        """Convert a Flax module instance to an Aikit module instance.
 
         Parameters
         ----------
@@ -229,16 +229,16 @@ class ModuleConverters:
 
         if inspect.isclass(native_module):
             if len(i_args) == 0 and len(i_kwargs) == 0:
-                raise aikit.utils.exceptions.IvyException(
+                raise aikit.utils.exceptions.AikitException(
                     "both instance_args and instance_kwargs cannot be none"
                     " when passing a native class"
                 )
 
             native_module = native_module(*c_args, **c_kwargs)
             params_fx = native_module.init(rng_seed, *i_args, **i_kwargs)
-        from aikit.stateful.module import _FlaxIvyModule
+        from aikit.stateful.module import _FlaxAikitModule
 
-        return _FlaxIvyModule(
+        return _FlaxAikitModule(
             *i_args,
             params_fx=params_fx,
             native_module=native_module,
@@ -257,7 +257,7 @@ class ModuleConverters:
         device=None,
         devices=None,
     ):
-        """Convert a Keras module instance to an Ivy module instance.
+        """Convert a Keras module instance to an Aikit module instance.
 
         Parameters
         ----------
@@ -292,16 +292,16 @@ class ModuleConverters:
 
         if inspect.isclass(native_module):
             if len(i_args) == 0 and len(i_kwargs) == 0:
-                raise aikit.utils.exceptions.IvyException(
+                raise aikit.utils.exceptions.AikitException(
                     "both instance_args and instance_kwargs cannot be none"
                     " when passing a native class"
                 )
             native_module = native_module(*c_args, **c_kwargs)
             input_shape = i_args[0].shape
             native_module.build((input_shape[-1],))
-        from aikit.stateful.module import _KerasIvyModule
+        from aikit.stateful.module import _KerasAikitModule
 
-        return _KerasIvyModule(
+        return _KerasAikitModule(
             *i_args,
             native_module=native_module,
             device=device,
@@ -319,7 +319,7 @@ class ModuleConverters:
         device=None,
         devices=None,
     ):
-        """Convert a Paddle layer instance to an Ivy module instance.
+        """Convert a Paddle layer instance to an Aikit module instance.
 
         Parameters
         ----------
@@ -354,9 +354,9 @@ class ModuleConverters:
 
         if inspect.isclass(native_module):
             native_module = native_module(*c_args, **c_kwargs)
-        from aikit.stateful.module import _PaddleIvyModule
+        from aikit.stateful.module import _PaddleAikitModule
 
-        return _PaddleIvyModule(
+        return _PaddleAikitModule(
             *i_args,
             native_module=native_module,
             device=device,
@@ -375,7 +375,7 @@ class ModuleConverters:
         devices=None,
         inplace_update=False,
     ):
-        """Convert a Torch module instance to an Ivy module instance.
+        """Convert a Torch module instance to an Aikit module instance.
 
         Parameters
         ----------
@@ -422,9 +422,9 @@ class ModuleConverters:
         if inspect.isclass(native_module):
             native_module = native_module(*c_args, **c_kwargs)
 
-        from aikit.stateful.module import _TorchIvyModule
+        from aikit.stateful.module import _TorchAikitModule
 
-        return _TorchIvyModule(
+        return _TorchAikitModule(
             *i_args,
             native_module=native_module,
             device=device,

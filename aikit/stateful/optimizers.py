@@ -1,5 +1,5 @@
 # For Review
-"""Collection of Ivy optimizers."""
+"""Collection of Aikit optimizers."""
 
 # global
 import abc
@@ -86,7 +86,7 @@ class Optimizer(abc.ABC):
         ret
             The updated variables, following update step.
         """
-        raise aikit.utils.exceptions.IvyNotImplementedException
+        raise aikit.utils.exceptions.AikitNotImplementedException
 
     # Given #
 
@@ -124,7 +124,7 @@ class Optimizer(abc.ABC):
         state
             Nested state to update.
         """
-        raise aikit.utils.exceptions.IvyNotImplementedException
+        raise aikit.utils.exceptions.AikitNotImplementedException
 
     # Given #
 

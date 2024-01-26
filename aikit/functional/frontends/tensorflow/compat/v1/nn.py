@@ -53,7 +53,7 @@ def fused_batch_norm(
         elif dims == 5:
             x = aikit.permute_dims(x, axes=(0, 2, 3, 4, 1))
         else:
-            raise aikit.utils.exceptions.IvyException(
+            raise aikit.utils.exceptions.AikitException(
                 f"input tensor must be of 4 or 5 dimensions, got {dims}"
             )
 
@@ -110,7 +110,7 @@ def fused_batch_norm(
 )
 def max_pool(value, ksize, strides, padding, data_format="NHWC", name=None, input=None):
     if input is not None and value is not None:
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             "Cannot specify both 'value' and 'input'."
         )
     return tf_nn.max_pool2d(

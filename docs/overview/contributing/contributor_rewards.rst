@@ -1,7 +1,7 @@
 Contributor Rewards
 ===================
 
-We award a range of badges, each designed to formally recognize the specific achievements of our contributors in various key areas of ivy's development.
+We award a range of badges, each designed to formally recognize the specific achievements of our contributors in various key areas of aikit's development.
 
 Badges
 ~~~~~~~
@@ -13,7 +13,7 @@ It recognizes the crucial role of pinpointing problems which is fundamental in m
 
 **Merging Wizard** - These exclusive badges are awarded to contributors who successfully get *priority* pull requests merged. This recognition is for handling complex, high-priority tasks that have a substantial impact on the project's progress and success.
 
-**Ivy Inspectors** - These badges are given in acknowledgment of the essential role played by those who review our pull requests. It honours the commitment to quality and diligence in ensuring that each code merge aligns with our high standards.
+**Aikit Inspectors** - These badges are given in acknowledgment of the essential role played by those who review our pull requests. It honours the commitment to quality and diligence in ensuring that each code merge aligns with our high standards.
 
 Each badge comes in four distinct tiers – Initial, Bronze, Silver, and Gold, mirroring your growing expertise and commitment in these areas.
 
@@ -68,7 +68,7 @@ Badge Tiers
      - .. image:: https://raw.githubusercontent.com/khulnasoft/aikit/main/.vaunt/badges/badge_05-04.png
           :width: 110
           :alt: Alternative text
-   * - Ivy Inspectors
+   * - Aikit Inspectors
      - .. image:: https://raw.githubusercontent.com/khulnasoft/aikit/main/.vaunt/badges/badge_06-00.png
           :width: 110
           :alt: Alternative text

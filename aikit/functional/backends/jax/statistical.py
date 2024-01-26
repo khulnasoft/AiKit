@@ -4,9 +4,9 @@ from typing import Union, Optional, Sequence
 
 
 # local
-import ivy
-from ivy.func_wrapper import with_unsupported_dtypes
-from ivy.functional.backends.jax import JaxArray
+import aikit
+from aikit.func_wrapper import with_unsupported_dtypes
+from aikit.functional.backends.jax import JaxArray
 from . import backend_version
 
 # Array API Standard #
@@ -58,8 +58,8 @@ def mean(
 
 
 def _infer_dtype(dtype: jnp.dtype):
-    default_dtype = ivy.infer_default_dtype(dtype)
-    if ivy.dtype_bits(dtype) < ivy.dtype_bits(default_dtype):
+    default_dtype = aikit.infer_default_dtype(dtype)
+    if aikit.dtype_bits(dtype) < aikit.dtype_bits(default_dtype):
         return default_dtype
     return dtype
 
@@ -73,7 +73,7 @@ def prod(
     keepdims: bool = False,
     out: Optional[JaxArray] = None,
 ) -> JaxArray:
-    dtype = ivy.as_native_dtype(dtype)
+    dtype = aikit.as_native_dtype(dtype)
     if dtype is None:
         dtype = _infer_dtype(x.dtype)
     axis = tuple(axis) if isinstance(axis, list) else axis
@@ -102,10 +102,10 @@ def sum(
     keepdims: Optional[bool] = False,
     out: Optional[JaxArray] = None,
 ) -> JaxArray:
-    dtype = ivy.as_native_dtype(dtype)
+    dtype = aikit.as_native_dtype(dtype)
     if dtype is None:
         dtype = x.dtype
-    if dtype != x.dtype and not ivy.is_bool_dtype(x):
+    if dtype != x.dtype and not aikit.is_bool_dtype(x):
         x = x.astype(dtype)
     axis = tuple(axis) if isinstance(axis, list) else axis
     return jnp.sum(a=x, axis=axis, dtype=dtype, keepdims=keepdims)
@@ -125,7 +125,7 @@ def var(
     axis = (axis,) if isinstance(axis, int) else tuple(axis)
     if isinstance(correction, int):
         ret = jnp.var(x, axis=axis, ddof=correction, keepdims=keepdims, out=out)
-        return ivy.astype(ret, x.dtype, copy=False)
+        return aikit.astype(ret, x.dtype, copy=False)
     if x.size == 0:
         return jnp.asarray(float("nan"))
     size = 1
@@ -133,7 +133,7 @@ def var(
         size *= x.shape[a]
     if size == correction:
         size += 0.0001  # to avoid division by zero in return
-    return ivy.astype(
+    return aikit.astype(
         jnp.multiply(
             jnp.var(x, axis=axis, keepdims=keepdims, out=out),
             size / jnp.abs(size - correction),
@@ -158,10 +158,10 @@ def cumprod(
     dtype: Optional[jnp.dtype] = None,
     out: Optional[JaxArray] = None,
 ) -> JaxArray:
-    dtype = ivy.as_native_dtype(dtype)
+    dtype = aikit.as_native_dtype(dtype)
     if dtype is None:
         if dtype is jnp.bool_:
-            dtype = ivy.default_int_dtype(as_native=True)
+            dtype = aikit.default_int_dtype(as_native=True)
         else:
             dtype = _infer_dtype(x.dtype)
     if not (exclusive or reverse):
@@ -193,12 +193,12 @@ def cumsum(
     dtype: Optional[jnp.dtype] = None,
     out: Optional[JaxArray] = None,
 ) -> JaxArray:
-    dtype = ivy.as_native_dtype(dtype)
+    dtype = aikit.as_native_dtype(dtype)
     if dtype is None:
         if dtype is jnp.bool_:
-            dtype = ivy.default_int_dtype(as_native=True)
-        elif ivy.is_int_dtype(x.dtype):
-            dtype = ivy.promote_types(x.dtype, ivy.default_int_dtype(as_native=True))
+            dtype = aikit.default_int_dtype(as_native=True)
+        elif aikit.is_int_dtype(x.dtype):
+            dtype = aikit.promote_types(x.dtype, aikit.default_int_dtype(as_native=True))
         else:
             dtype = _infer_dtype(x.dtype)
     if exclusive or reverse:

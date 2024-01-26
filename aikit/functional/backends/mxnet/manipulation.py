@@ -3,7 +3,7 @@ from numbers import Number
 from typing import Union, Tuple, Optional, List, Sequence
 
 import aikit
-from aikit.utils.exceptions import IvyNotImplementedException
+from aikit.utils.exceptions import AikitNotImplementedException
 
 
 def concat(
@@ -13,7 +13,7 @@ def concat(
     axis: int = 0,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def expand_dims(
@@ -24,7 +24,7 @@ def expand_dims(
     axis: Union[(int, Sequence[int])] = 0,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def flip(
@@ -35,7 +35,7 @@ def flip(
     axis: Optional[Union[(int, Sequence[int])]] = None,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def permute_dims(
@@ -46,7 +46,7 @@ def permute_dims(
     copy: Optional[bool] = None,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def reshape(
@@ -59,7 +59,7 @@ def reshape(
     allowzero: bool = True,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def roll(
@@ -70,7 +70,7 @@ def roll(
     axis: Optional[Union[(int, Sequence[int])]] = None,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def squeeze(
@@ -91,7 +91,7 @@ def stack(
     axis: int = 0,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def split(
@@ -103,7 +103,7 @@ def split(
     axis: int = 0,
     with_remainder: bool = False,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def repeat(
@@ -114,7 +114,7 @@ def repeat(
     axis: Optional[int] = None,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def tile(
@@ -130,13 +130,13 @@ def tile(
 def constant_pad(
     x, /, pad_width, *, value=0, out: Optional[Union[(None, mx.ndarray.NDArray)]] = None
 ):
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def zero_pad(
     x, /, pad_width, *, out: Optional[Union[(None, mx.ndarray.NDArray)]] = None
 ):
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def swapaxes(
@@ -148,7 +148,7 @@ def swapaxes(
     copy: Optional[bool] = None,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ):
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def clip(
@@ -170,4 +170,4 @@ def unstack(
     axis: int = 0,
     keepdims: bool = False,
 ) -> List[None]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()

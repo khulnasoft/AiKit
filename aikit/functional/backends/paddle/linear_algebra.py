@@ -7,7 +7,7 @@ from collections import namedtuple
 # local
 import aikit
 from aikit import inf
-from aikit.utils.exceptions import IvyNotImplementedException
+from aikit.utils.exceptions import AikitNotImplementedException
 import aikit.functional.backends.paddle as paddle_backend
 from . import backend_version
 from aikit.func_wrapper import (
@@ -437,7 +437,7 @@ def tensorsolve(
     out: Optional[paddle.Tensor] = None,
 ) -> paddle.Tensor:
     # Implemented as a composite function in aikit.functional.aikit.linear_algebra
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 @with_unsupported_device_and_dtypes(

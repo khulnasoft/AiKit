@@ -2,31 +2,31 @@
 from typing import Union, Optional, List, Dict, Tuple, Sequence, Literal
 
 # local
-from ivy.data_classes.container.base import ContainerBase
-import ivy
+from aikit.data_classes.container.base import ContainerBase
+import aikit
 
 
 class _ContainerWithLinearAlgebraExperimental(ContainerBase):
     @staticmethod
     def static_eigh_tridiagonal(
-        alpha: Union[ivy.Array, ivy.NativeArray, ivy.Container],
-        beta: Union[ivy.Array, ivy.NativeArray, ivy.Container],
+        alpha: Union[aikit.Array, aikit.NativeArray, aikit.Container],
+        beta: Union[aikit.Array, aikit.NativeArray, aikit.Container],
         /,
         *,
-        eigvals_only: Union[bool, ivy.Container] = True,
-        select: Union[str, ivy.Container] = "a",
+        eigvals_only: Union[bool, aikit.Container] = True,
+        select: Union[str, aikit.Container] = "a",
         select_range: Optional[
-            Union[Tuple[int, int], List[int], ivy.Array, ivy.NativeArray, ivy.Container]
+            Union[Tuple[int, int], List[int], aikit.Array, aikit.NativeArray, aikit.Container]
         ] = None,
-        tol: Optional[Union[float, ivy.Container]] = None,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> Union[ivy.Container, Tuple[ivy.Container, ivy.Container]]:
-        """ivy.Container static method variant of ivy.eigh_tridiagonal. This
+        tol: Optional[Union[float, aikit.Container]] = None,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> Union[aikit.Container, Tuple[aikit.Container, aikit.Container]]:
+        """aikit.Container static method variant of aikit.eigh_tridiagonal. This
         method simply wraps the function, and so the docstring for
-        ivy.eigh_tridiagonal also applies to this method with minimal changes.
+        aikit.eigh_tridiagonal also applies to this method with minimal changes.
 
         Parameters
         ----------
@@ -67,24 +67,24 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
 
         Examples
         --------
-        With :class:`ivy.Container` input:
+        With :class:`aikit.Container` input:
 
-        >>> alpha = ivy.Container(a=ivy.array([0., 1., 2.]), b=ivy.array([2., 2., 2.]))
-        >>> beta = ivy.array([0.,2.])
-        >>> y = ivy.Container.static_eigh_tridiagonal(alpha, beta)
+        >>> alpha = aikit.Container(a=aikit.array([0., 1., 2.]), b=aikit.array([2., 2., 2.]))
+        >>> beta = aikit.array([0.,2.])
+        >>> y = aikit.Container.static_eigh_tridiagonal(alpha, beta)
         >>> print(y)
         {
-            a: ivy.array([-0.56155, 0., 3.56155]),
-            b: ivy.array([0., 2., 4.])
+            a: aikit.array([-0.56155, 0., 3.56155]),
+            b: aikit.array([0., 2., 4.])
         }
 
-        >>> alpha = ivy.Container(a=ivy.array([0., 1., 2.]), b=ivy.array([2., 2., 2.]))
-        >>> beta = ivy.Container(a=ivy.array([0.,2.]), b=ivy.array([2.,2.]))
-        >>> y = ivy.Container.static_eigh_tridiagonal(alpha, beta)
+        >>> alpha = aikit.Container(a=aikit.array([0., 1., 2.]), b=aikit.array([2., 2., 2.]))
+        >>> beta = aikit.Container(a=aikit.array([0.,2.]), b=aikit.array([2.,2.]))
+        >>> y = aikit.Container.static_eigh_tridiagonal(alpha, beta)
         >>> print(y)
         {
-            a: ivy.array([-0.56155, 0., 3.56155]),
-            b: ivy.array([-0.82842, 2., 4.82842])
+            a: aikit.array([-0.56155, 0., 3.56155]),
+            b: aikit.array([-0.82842, 2., 4.82842])
         }
         """
         return ContainerBase.cont_multi_map_in_function(
@@ -102,24 +102,24 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
         )
 
     def eigh_tridiagonal(
-        self: ivy.Container,
-        beta: Union[ivy.Array, ivy.NativeArray, ivy.Container],
+        self: aikit.Container,
+        beta: Union[aikit.Array, aikit.NativeArray, aikit.Container],
         /,
         *,
-        eigvals_only: Union[bool, ivy.Container] = True,
-        select: Union[str, ivy.Container] = "a",
+        eigvals_only: Union[bool, aikit.Container] = True,
+        select: Union[str, aikit.Container] = "a",
         select_range: Optional[
-            Union[Tuple[int, int], List[int], ivy.Array, ivy.NativeArray, ivy.Container]
+            Union[Tuple[int, int], List[int], aikit.Array, aikit.NativeArray, aikit.Container]
         ] = None,
-        tol: Optional[Union[float, ivy.Container]] = None,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> Union[ivy.Container, Tuple[ivy.Container, ivy.Container]]:
-        """ivy.Container instance method variant of ivy.eigh_tridiagonal. This
+        tol: Optional[Union[float, aikit.Container]] = None,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> Union[aikit.Container, Tuple[aikit.Container, aikit.Container]]:
+        """aikit.Container instance method variant of aikit.eigh_tridiagonal. This
         method simply wraps the function, and so the docstring for
-        ivy.eigh_tridiagonal also applies to this method with minimal changes.
+        aikit.eigh_tridiagonal also applies to this method with minimal changes.
 
         Parameters
         ----------
@@ -157,22 +157,22 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
 
         Examples
         --------
-        >>> alpha = ivy.Container(a=ivy.array([0., 1., 2.]), b=ivy.array([2., 2., 2.]))
-        >>> beta = ivy.array([0.,2.])
+        >>> alpha = aikit.Container(a=aikit.array([0., 1., 2.]), b=aikit.array([2., 2., 2.]))
+        >>> beta = aikit.array([0.,2.])
         >>> y = alpha.eigh_tridiagonal(beta)
         >>> print(y)
         {
-            a: ivy.array([-0.56155, 0., 3.56155]),
-            b: ivy.array([0., 2., 4.])
+            a: aikit.array([-0.56155, 0., 3.56155]),
+            b: aikit.array([0., 2., 4.])
         }
 
-        >>> alpha = ivy.Container(a=ivy.array([0., 1., 2.]), b=ivy.array([2., 2., 2.]))
-        >>> beta = ivy.Container(a=ivy.array([0.,2.]), b=ivy.array([2.,2.]))
+        >>> alpha = aikit.Container(a=aikit.array([0., 1., 2.]), b=aikit.array([2., 2., 2.]))
+        >>> beta = aikit.Container(a=aikit.array([0.,2.]), b=aikit.array([2.,2.]))
         >>> y = alpha.eigh_tridiagonal(beta)
         >>> print(y)
         {
-            a: ivy.array([-0.56155, 0., 3.56155]),
-            b: ivy.array([-0.82842, 2., 4.82842])
+            a: aikit.array([-0.56155, 0., 3.56155]),
+            b: aikit.array([-0.82842, 2., 4.82842])
         }
         """
         return self.static_eigh_tridiagonal(
@@ -190,20 +190,20 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
 
     @staticmethod
     def static_diagflat(
-        x: Union[ivy.Array, ivy.NativeArray, ivy.Container],
+        x: Union[aikit.Array, aikit.NativeArray, aikit.Container],
         /,
         *,
-        offset: Union[int, ivy.Container] = 0,
-        padding_value: Union[float, ivy.Container] = 0,
-        align: Union[str, ivy.Container] = "RIGHT_LEFT",
-        num_rows: Union[int, ivy.Container] = -1,
-        num_cols: Union[int, ivy.Container] = -1,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
+        offset: Union[int, aikit.Container] = 0,
+        padding_value: Union[float, aikit.Container] = 0,
+        align: Union[str, aikit.Container] = "RIGHT_LEFT",
+        num_rows: Union[int, aikit.Container] = -1,
+        num_cols: Union[int, aikit.Container] = -1,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
         return ContainerBase.cont_multi_map_in_function(
             "diagflat",
             x,
@@ -220,30 +220,30 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
         )
 
     def diagflat(
-        self: ivy.Container,
+        self: aikit.Container,
         /,
         *,
-        offset: Union[int, ivy.Container] = 0,
-        padding_value: Union[float, ivy.Container] = 0,
-        align: Union[str, ivy.Container] = "RIGHT_LEFT",
-        num_rows: Union[int, ivy.Container] = -1,
-        num_cols: Union[int, ivy.Container] = -1,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of ivy.diagflat. This method
-        simply wraps the function, and so the docstring for ivy.diagflat also
+        offset: Union[int, aikit.Container] = 0,
+        padding_value: Union[float, aikit.Container] = 0,
+        align: Union[str, aikit.Container] = "RIGHT_LEFT",
+        num_rows: Union[int, aikit.Container] = -1,
+        num_cols: Union[int, aikit.Container] = -1,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of aikit.diagflat. This method
+        simply wraps the function, and so the docstring for aikit.diagflat also
         applies to this method with minimal changes.
 
         Examples
         --------
-        >>> x = ivy.Container(a=[1,2])
-        >>> ivy.diagflat(x, k=1)
+        >>> x = aikit.Container(a=[1,2])
+        >>> aikit.diagflat(x, k=1)
         {
-            a: ivy.array([[0, 1, 0],
+            a: aikit.array([[0, 1, 0],
                           [0, 0, 2],
                           [0, 0, 0]])
         }
@@ -264,18 +264,18 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
 
     @staticmethod
     def static_kron(
-        a: Union[ivy.Array, ivy.NativeArray, ivy.Container],
-        b: Union[ivy.Array, ivy.NativeArray, ivy.Container],
+        a: Union[aikit.Array, aikit.NativeArray, aikit.Container],
+        b: Union[aikit.Array, aikit.NativeArray, aikit.Container],
         /,
         *,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container static method variant of ivy.kron. This method simply
-        wraps the function, and so the docstring for ivy.kron also applies to
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container static method variant of aikit.kron. This method simply
+        wraps the function, and so the docstring for aikit.kron also applies to
         this method with minimal changes.
 
         Parameters
@@ -295,12 +295,12 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
 
         Examples
         --------
-        >>> a = ivy.Container(x=ivy.array([1,2]), y=ivy.array(50))
-        >>> b = ivy.Container(x=ivy.array([3,4]), y=ivy.array(9))
-        >>> ivy.Container.static_kron(a, b)
+        >>> a = aikit.Container(x=aikit.array([1,2]), y=aikit.array(50))
+        >>> b = aikit.Container(x=aikit.array([3,4]), y=aikit.array(9))
+        >>> aikit.Container.static_kron(a, b)
         {
-            a: ivy.array([3, 4, 6, 8])
-            b: ivy.array([450])
+            a: aikit.array([3, 4, 6, 8])
+            b: aikit.array([450])
         }
         """
         return ContainerBase.cont_multi_map_in_function(
@@ -315,28 +315,28 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
         )
 
     def kron(
-        self: ivy.Container,
-        b: ivy.Container,
+        self: aikit.Container,
+        b: aikit.Container,
         /,
         *,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of ivy.kron. This method
-        simply wraps the function, and so the docstring for ivy.kron also
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of aikit.kron. This method
+        simply wraps the function, and so the docstring for aikit.kron also
         applies to this method with minimal changes.
 
         Examples
         --------
-        >>> a = ivy.Container(x=ivy.array([1,2]), y=ivy.array([50]))
-        >>> b = ivy.Container(x=ivy.array([3,4]), y=ivy.array(9))
+        >>> a = aikit.Container(x=aikit.array([1,2]), y=aikit.array([50]))
+        >>> b = aikit.Container(x=aikit.array([3,4]), y=aikit.array(9))
         >>> a.kron(b)
         {
-            a: ivy.array([3, 4, 6, 8])
-            b: ivy.array([450])
+            a: aikit.array([3, 4, 6, 8])
+            b: aikit.array([450])
         }
         """
         return self.static_kron(
@@ -351,13 +351,13 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
 
     @staticmethod
     def static_matrix_exp(
-        x: Union[ivy.Array, ivy.NativeArray, ivy.Container],
+        x: Union[aikit.Array, aikit.NativeArray, aikit.Container],
         /,
         *,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
         return ContainerBase.cont_multi_map_in_function(
             "matrix_exp",
             x,
@@ -367,25 +367,25 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
         )
 
     def matrix_exp(
-        self: ivy.Container,
+        self: aikit.Container,
         /,
         *,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of ivy.diagflat. This method
-        simply wraps the function, and so the docstring for ivy.diagflat also
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of aikit.diagflat. This method
+        simply wraps the function, and so the docstring for aikit.diagflat also
         applies to this method with minimal changes.
 
         Examples
         --------
-        >>> x = ivy.array([[[1., 0.],
+        >>> x = aikit.array([[[1., 0.],
                             [0., 1.]],
                             [[2., 0.],
                             [0., 2.]]])
-        >>> ivy.matrix_exp(x)
-        ivy.array([[[2.7183, 1.0000],
+        >>> aikit.matrix_exp(x)
+        aikit.array([[[2.7183, 1.0000],
                     [1.0000, 2.7183]],
                     [[7.3891, 1.0000],
                     [1.0000, 7.3891]]])
@@ -399,16 +399,16 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
 
     @staticmethod
     def static_eig(
-        x: Union[ivy.Array, ivy.NativeArray, ivy.Container],
+        x: Union[aikit.Array, aikit.NativeArray, aikit.Container],
         /,
         *,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> ivy.Container:
-        """ivy.Container static method variant of ivy.eig. This method simply
-        wraps the function, and so the docstring for ivy.eig also applies to
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> aikit.Container:
+        """aikit.Container static method variant of aikit.eig. This method simply
+        wraps the function, and so the docstring for aikit.eig also applies to
         this method with minimal changes.
 
         Parameters
@@ -424,18 +424,18 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
 
         Examples
         --------
-        >>> x = ivy.array([[1,2], [3,4]])
-        >>> c = ivy.Container({'x':{'xx':x}})
-        >>> ivy.Container.eig(c)
+        >>> x = aikit.array([[1,2], [3,4]])
+        >>> c = aikit.Container({'x':{'xx':x}})
+        >>> aikit.Container.eig(c)
         {
             x:  {
-                    xx: (tuple(2), <class ivy.array.array.Array>, shape=[2, 2])
+                    xx: (tuple(2), <class aikit.array.array.Array>, shape=[2, 2])
                 }
         }
-        >>> ivy.Container.eig(c)['x']['xx']
+        >>> aikit.Container.eig(c)['x']['xx']
         (
-            ivy.array([-0.37228107+0.j,  5.3722816 +0.j]),
-            ivy.array([
+            aikit.array([-0.37228107+0.j,  5.3722816 +0.j]),
+            aikit.array([
                     [-0.8245648 +0.j, -0.41597357+0.j],
                     [0.56576747+0.j, -0.9093767 +0.j]
                 ])
@@ -451,16 +451,16 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
         )
 
     def eig(
-        self: ivy.Container,
+        self: aikit.Container,
         /,
         *,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of ivy.eig. This method simply
-        wraps the function, and so the docstring for ivy.eig also applies to
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of aikit.eig. This method simply
+        wraps the function, and so the docstring for aikit.eig also applies to
         this method with minimal changes.
 
         Parameters
@@ -476,18 +476,18 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
 
         Examples
         --------
-        >>> x = ivy.array([[1,2], [3,4]])
-        >>> c = ivy.Container({'x':{'xx':x}})
+        >>> x = aikit.array([[1,2], [3,4]])
+        >>> c = aikit.Container({'x':{'xx':x}})
         >>> c.eig()
         {
             x:  {
-                    xx: (tuple(2), <class ivy.array.array.Array>, shape=[2, 2])
+                    xx: (tuple(2), <class aikit.array.array.Array>, shape=[2, 2])
                 }
         }
         >>>c.eig()['x']['xx']
         (
-            ivy.array([-0.37228107+0.j,  5.3722816 +0.j]),
-            ivy.array([
+            aikit.array([-0.37228107+0.j,  5.3722816 +0.j]),
+            aikit.array([
                     [-0.8245648 +0.j, -0.41597357+0.j],
                     [0.56576747+0.j, -0.9093767 +0.j]
                 ])
@@ -503,16 +503,16 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
 
     @staticmethod
     def static_eigvals(
-        x: Union[ivy.Array, ivy.NativeArray, ivy.Container],
+        x: Union[aikit.Array, aikit.NativeArray, aikit.Container],
         /,
         *,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> ivy.Container:
-        """ivy.Container static method variant of ivy.eigvals. This method
-        simply wraps the function, and so the docstring for ivy.eigvals also
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> aikit.Container:
+        """aikit.Container static method variant of aikit.eigvals. This method
+        simply wraps the function, and so the docstring for aikit.eigvals also
         applies to this method with minimal changes.
 
         Parameters
@@ -528,16 +528,16 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
 
         Examples
         --------
-        >>> x = ivy.array([[1,2], [3,4]])
-        >>> c = ivy.Container({'x':{'xx':x}})
-        >>> ivy.Container.eigvals(c)
+        >>> x = aikit.array([[1,2], [3,4]])
+        >>> c = aikit.Container({'x':{'xx':x}})
+        >>> aikit.Container.eigvals(c)
         {
             x: {
-                xx: ivy.array([-0.37228132+0.j, 5.37228132+0.j])
+                xx: aikit.array([-0.37228132+0.j, 5.37228132+0.j])
             }
         }
-        >>> ivy.Container.eigvals(c)['x']['xx']
-        ivy.array([-0.37228132+0.j,  5.37228132+0.j])
+        >>> aikit.Container.eigvals(c)['x']['xx']
+        aikit.array([-0.37228132+0.j,  5.37228132+0.j])
         """
         return ContainerBase.cont_multi_map_in_function(
             "eigvals",
@@ -549,16 +549,16 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
         )
 
     def eigvals(
-        self: ivy.Container,
+        self: aikit.Container,
         /,
         *,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of ivy.eigvals. This method
-        simply wraps the function, and so the docstring for ivy.eigvals also
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of aikit.eigvals. This method
+        simply wraps the function, and so the docstring for aikit.eigvals also
         applies to this method with minimal changes.
 
         Parameters
@@ -574,16 +574,16 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
 
         Examples
         --------
-        >>> x = ivy.array([[1,2], [3,4]])
-        >>> c = ivy.Container({'x':{'xx':x}})
+        >>> x = aikit.array([[1,2], [3,4]])
+        >>> c = aikit.Container({'x':{'xx':x}})
         >>> c.eigvals()
         {
             x: {
-                xx: ivy.array([-0.37228132+0.j, 5.37228132+0.j])
+                xx: aikit.array([-0.37228132+0.j, 5.37228132+0.j])
             }
         }
         >>> c.eigvals()['x']['xx']
-        ivy.array([-0.37228132+0.j,  5.37228132+0.j])
+        aikit.array([-0.37228132+0.j,  5.37228132+0.j])
         """
         return self.static_eigvals(
             self,
@@ -595,15 +595,15 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
 
     @staticmethod
     def static_adjoint(
-        x: ivy.Container,
+        x: aikit.Container,
         /,
         *,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        out: Optional[ivy.Container] = None,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        out: Optional[aikit.Container] = None,
     ):
-        """ivy.Container static method variant of ivy.adjoint. This method
-        simply wraps the function, and so the docstring for ivy.adjoint also
+        """aikit.Container static method variant of aikit.adjoint. This method
+        simply wraps the function, and so the docstring for aikit.adjoint also
         applies to this method with minimal changes.
 
         Parameters
@@ -625,12 +625,12 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
                           [3.+3.j, 4.-4.j]])
         >>> y = np.array([[1.-2.j, 3.+4.j],
                           [1.-0.j, 2.+6.j]])
-        >>> c = ivy.Container(a=ivy.array(x), b=ivy.array(y))
-        >>> ivy.Container.static_adjoint(c)
+        >>> c = aikit.Container(a=aikit.array(x), b=aikit.array(y))
+        >>> aikit.Container.static_adjoint(c)
         {
-            a: ivy.array([[1.+1.j, 3.-3.j],
+            a: aikit.array([[1.+1.j, 3.-3.j],
                           [2.-2.j, 4.+4.j]]),
-            b: ivy.array([[1.+2.j, 1.-0.j],
+            b: aikit.array([[1.+2.j, 1.-0.j],
                           [3.-4.j, 2.-6.j]])
         }
         """
@@ -643,25 +643,25 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
         )
 
     def adjoint(
-        self: ivy.Container,
+        self: aikit.Container,
         /,
         *,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        out: Optional[ivy.Container] = None,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        out: Optional[aikit.Container] = None,
     ):
-        """ivy.Container instance method variant of ivy.adjoint. This method
-        simply wraps the function, and so the docstring for ivy.adjoint also
+        """aikit.Container instance method variant of aikit.adjoint. This method
+        simply wraps the function, and so the docstring for aikit.adjoint also
         applies to this method with minimal changes.
 
         Examples
         --------
         >>> x = np.array([[1.-1.j, 2.+2.j],
                           [3.+3.j, 4.-4.j]])
-        >>> c = ivy.Container(a=ivy.array(x))
+        >>> c = aikit.Container(a=aikit.array(x))
         >>> c.adjoint()
         {
-            a: ivy.array([[1.+1.j, 3.-3.j],
+            a: aikit.array([[1.+1.j, 3.-3.j],
                           [2.-2.j, 4.+4.j]])
         }
         """
@@ -671,17 +671,17 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
 
     @staticmethod
     def static_multi_dot(
-        x: Sequence[Union[ivy.Container, ivy.Array, ivy.NativeArray]],
+        x: Sequence[Union[aikit.Container, aikit.Array, aikit.NativeArray]],
         /,
         *,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container static method variant of ivy.multi_dot. This method
-        simply wraps the function, and so the docstring for ivy.multi_dot also
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container static method variant of aikit.multi_dot. This method
+        simply wraps the function, and so the docstring for aikit.multi_dot also
         applies to this method with minimal changes.
 
         Parameters
@@ -700,19 +700,19 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
 
         Examples
         --------
-        With :class:`ivy.Container` input:
+        With :class:`aikit.Container` input:
 
-        >>> a = ivy.Container(x=ivy.arange(2 * 3).reshape((2, 3)),
-        ...                   y=ivy.arange(2 * 3).reshape((2, 3)))
-        >>> b = ivy.Container(x=ivy.arange(3 * 2).reshape((3, 2)),
-        ...                   y=ivy.arange(3 * 2).reshape((3, 2)))
-        >>> c = ivy.Container(x=ivy.arange(2 * 2).reshape((2, 2)),
-        ...                   y=ivy.arange(2 * 2).reshape((2, 2)))
-        >>> ivy.Container.static_multi_dot((a, b, c))
+        >>> a = aikit.Container(x=aikit.arange(2 * 3).reshape((2, 3)),
+        ...                   y=aikit.arange(2 * 3).reshape((2, 3)))
+        >>> b = aikit.Container(x=aikit.arange(3 * 2).reshape((3, 2)),
+        ...                   y=aikit.arange(3 * 2).reshape((3, 2)))
+        >>> c = aikit.Container(x=aikit.arange(2 * 2).reshape((2, 2)),
+        ...                   y=aikit.arange(2 * 2).reshape((2, 2)))
+        >>> aikit.Container.static_multi_dot((a, b, c))
         {
-            x: ivy.array([[26, 49],
+            x: aikit.array([[26, 49],
                           [80, 148]]),
-            y: ivy.array([[26, 49],
+            y: aikit.array([[26, 49],
                           [80, 148]])
         }
         """
@@ -727,33 +727,33 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
         )
 
     def multi_dot(
-        self: ivy.Container,
-        arrays: Sequence[Union[ivy.Container, ivy.Array, ivy.NativeArray]],
+        self: aikit.Container,
+        arrays: Sequence[Union[aikit.Container, aikit.Array, aikit.NativeArray]],
         /,
         *,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = True,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of ivy.multi_dot. This method
-        simply wraps the function, and so the docstring for ivy.multi_dot also
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = True,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of aikit.multi_dot. This method
+        simply wraps the function, and so the docstring for aikit.multi_dot also
         applies to this method with minimal changes.
 
         Examples
         --------
-        >>> a = ivy.Container(x=ivy.arange(2 * 3).reshape((2, 3)),
-        ...                   y=ivy.arange(2 * 3).reshape((2, 3)))
-        >>> b = ivy.Container(x=ivy.arange(3 * 2).reshape((3, 2)),
-        ...                   y=ivy.arange(3 * 2).reshape((3, 2)))
-        >>> c = ivy.Container(x=ivy.arange(2 * 2).reshape((2, 2)),
-        ...                   y=ivy.arange(2 * 2).reshape((2, 2)))
+        >>> a = aikit.Container(x=aikit.arange(2 * 3).reshape((2, 3)),
+        ...                   y=aikit.arange(2 * 3).reshape((2, 3)))
+        >>> b = aikit.Container(x=aikit.arange(3 * 2).reshape((3, 2)),
+        ...                   y=aikit.arange(3 * 2).reshape((3, 2)))
+        >>> c = aikit.Container(x=aikit.arange(2 * 2).reshape((2, 2)),
+        ...                   y=aikit.arange(2 * 2).reshape((2, 2)))
         >>> a.multi_dot((b, c))
         {
-            x: ivy.array([[26, 49],
+            x: aikit.array([[26, 49],
                           [80, 148]]),
-            y: ivy.array([[26, 49],
+            y: aikit.array([[26, 49],
                           [80, 148]])
         }
         """
@@ -768,18 +768,18 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
 
     @staticmethod
     def static_cond(
-        x: ivy.Container,
+        x: aikit.Container,
         /,
         *,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        p: Optional[Union[int, float, None, ivy.Container]] = None,
-        out: Optional[ivy.Container] = None,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        p: Optional[Union[int, float, None, aikit.Container]] = None,
+        out: Optional[aikit.Container] = None,
     ):
-        """ivy.Container static method variant of ivy.cond. This method simply
-        wraps the function, and so the docstring for ivy.cond also applies to
+        """aikit.Container static method variant of aikit.cond. This method simply
+        wraps the function, and so the docstring for aikit.cond also applies to
         this method with minimal changes.
 
         Parameters
@@ -787,7 +787,7 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
             x
                 container with input arrays.
             p
-                order of the norm of the matrix (see ivy.norm).
+                order of the norm of the matrix (see aikit.norm).
 
         Returns
         -------
@@ -797,9 +797,9 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
 
         Examples
         --------
-        >>> x = ivy.array([[1,2], [3,4]])
-        >>> ivy.Container.static_cond(x)
-        ivy.array(14.933034)
+        >>> x = aikit.array([[1,2], [3,4]])
+        >>> aikit.Container.static_cond(x)
+        aikit.array(14.933034)
         """
         return ContainerBase.cont_multi_map_in_function(
             "cond",
@@ -813,17 +813,17 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
         )
 
     def cond(
-        self: ivy.Container,
+        self: aikit.Container,
         /,
         *,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        p: Optional[Union[int, float, None, ivy.Container]] = None,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        p: Optional[Union[int, float, None, aikit.Container]] = None,
     ):
-        """ivy.Container instance method variant of ivy.cond. This method
-        simply wraps the function, and so the docstring for ivy.cond also
+        """aikit.Container instance method variant of aikit.cond. This method
+        simply wraps the function, and so the docstring for aikit.cond also
         applies to this method with minimal changes.
 
         Parameters
@@ -831,7 +831,7 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
             self
                 container with input arrays.
             p
-                order of the norm of the matrix (see ivy.norm).
+                order of the norm of the matrix (see aikit.norm).
 
         Returns
         -------
@@ -841,24 +841,24 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
 
         Examples
         --------
-        >>> x = ivy.array([[1,2], [3,4]])
-        >>> c = ivy.Container(a=x)
+        >>> x = aikit.array([[1,2], [3,4]])
+        >>> c = aikit.Container(a=x)
         >>> c.cond()
-        ivy.array(14.933034)
+        aikit.array(14.933034)
 
-        >>> x = ivy.array([[1,2], [3,4]])
-        >>> c = ivy.Container(a=x)
+        >>> x = aikit.array([[1,2], [3,4]])
+        >>> c = aikit.Container(a=x)
         >>> c.cond(p=1)
-        ivy.array(21.0)
+        aikit.array(21.0)
 
-        With :class:`ivy.Container` input:
+        With :class:`aikit.Container` input:
 
-        >>> a = ivy.Container(x=ivy.arange(2 * 3).reshape((2, 3)),
-        ...                   y=ivy.arange(2 * 3).reshape((2, 3)))
+        >>> a = aikit.Container(x=aikit.arange(2 * 3).reshape((2, 3)),
+        ...                   y=aikit.arange(2 * 3).reshape((2, 3)))
         >>> a.cond()
         {
-            x: ivy.array(14.933034),
-            y: ivy.array(14.933034)
+            x: aikit.array(14.933034),
+            y: aikit.array(14.933034)
         }
         """
         return self.static_cond(
@@ -872,20 +872,20 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
 
     @staticmethod
     def static_mode_dot(
-        x: Union[ivy.Array, ivy.NativeArray, ivy.Container],
+        x: Union[aikit.Array, aikit.NativeArray, aikit.Container],
         /,
-        matrix_or_vector: Union[ivy.Array, ivy.NativeArray, ivy.Container],
-        mode: Union[int, ivy.Container],
-        transpose: Optional[Union[bool, ivy.Container]] = False,
+        matrix_or_vector: Union[aikit.Array, aikit.NativeArray, aikit.Container],
+        mode: Union[int, aikit.Container],
+        transpose: Optional[Union[bool, aikit.Container]] = False,
         *,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container static method variant of ivy.mode_dot. This method
-        simply wraps the function, and so the docstring for ivy.mode_dot also
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container static method variant of aikit.mode_dot. This method
+        simply wraps the function, and so the docstring for aikit.mode_dot also
         applies to this method with minimal changes.
 
         Parameters
@@ -906,7 +906,7 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
 
         Returns
         -------
-        ivy.Container
+        aikit.Container
             `mode`-mode product of `tensor` by `matrix_or_vector`
             * of shape :math:`(i_1, ..., i_{k-1}, J, i_{k+1}, ..., i_N)`
             if matrix_or_vector is a matrix
@@ -927,20 +927,20 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
         )
 
     def mode_dot(
-        self: Union[ivy.Array, ivy.NativeArray, ivy.Container],
+        self: Union[aikit.Array, aikit.NativeArray, aikit.Container],
         /,
-        matrix_or_vector: Union[ivy.Array, ivy.NativeArray, ivy.Container],
-        mode: Union[int, ivy.Container],
-        transpose: Optional[Union[bool, ivy.Container]] = False,
+        matrix_or_vector: Union[aikit.Array, aikit.NativeArray, aikit.Container],
+        mode: Union[int, aikit.Container],
+        transpose: Optional[Union[bool, aikit.Container]] = False,
         *,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
     ):
-        """ivy.Container instance method variant of ivy.mode_dot. This method
-        simply wraps the function, and so the docstring for ivy.mode_dot also
+        """aikit.Container instance method variant of aikit.mode_dot. This method
+        simply wraps the function, and so the docstring for aikit.mode_dot also
         applies to this method with minimal changes.
 
         Parameters
@@ -961,7 +961,7 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
 
         Returns
         -------
-        ivy.Container
+        aikit.Container
             `mode`-mode product of `tensor` by `matrix_or_vector`
             * of shape :math:`(i_1, ..., i_{k-1}, J, i_{k+1}, ..., i_N)`
             if matrix_or_vector is a matrix
@@ -982,22 +982,22 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
 
     @staticmethod
     def static_multi_mode_dot(
-        x: Union[ivy.Array, ivy.NativeArray, ivy.Container],
-        mat_or_vec_list: Sequence[Union[ivy.Array, ivy.NativeArray, ivy.Container]],
+        x: Union[aikit.Array, aikit.NativeArray, aikit.Container],
+        mat_or_vec_list: Sequence[Union[aikit.Array, aikit.NativeArray, aikit.Container]],
         /,
-        modes: Optional[Union[Sequence[int], ivy.Container]] = None,
-        skip: Optional[Union[Sequence[int], ivy.Container]] = None,
-        transpose: Optional[Union[bool, ivy.Container]] = False,
+        modes: Optional[Union[Sequence[int], aikit.Container]] = None,
+        skip: Optional[Union[Sequence[int], aikit.Container]] = None,
+        transpose: Optional[Union[bool, aikit.Container]] = False,
         *,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container static method variant of ivy.multi_mode_dot. This
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container static method variant of aikit.multi_mode_dot. This
         method simply wraps the function, and so the docstring for
-        ivy.multi_mode_dot also applies to this method with minimal changes.
+        aikit.multi_mode_dot also applies to this method with minimal changes.
 
         Parameters
         ----------
@@ -1023,7 +1023,7 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
 
         Returns
         -------
-        ivy.Container
+        aikit.Container
             tensor times each matrix or vector in the list at mode `mode`
         """
         return ContainerBase.cont_multi_map_in_function(
@@ -1041,22 +1041,22 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
         )
 
     def multi_mode_dot(
-        self: Union[ivy.Array, ivy.NativeArray, ivy.Container],
-        mat_or_vec_list: Sequence[Union[ivy.Array, ivy.NativeArray, ivy.Container]],
+        self: Union[aikit.Array, aikit.NativeArray, aikit.Container],
+        mat_or_vec_list: Sequence[Union[aikit.Array, aikit.NativeArray, aikit.Container]],
         /,
-        modes: Optional[Union[Sequence[int], ivy.Container]] = None,
-        skip: Optional[Union[Sequence[int], ivy.Container]] = None,
-        transpose: Optional[Union[bool, ivy.Container]] = False,
+        modes: Optional[Union[Sequence[int], aikit.Container]] = None,
+        skip: Optional[Union[Sequence[int], aikit.Container]] = None,
+        transpose: Optional[Union[bool, aikit.Container]] = False,
         *,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of ivy.multi_mode_dot. This
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of aikit.multi_mode_dot. This
         method simply wraps the function, and so the docstring for
-        ivy.multi_mode_dot also applies to this method with minimal changes.
+        aikit.multi_mode_dot also applies to this method with minimal changes.
 
         Parameters
         ----------
@@ -1082,7 +1082,7 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
 
         Returns
         -------
-        ivy.Container
+        aikit.Container
             tensor times each matrix or vector in the list at mode `mode`
         """
         return self.static_multi_mode_dot(
@@ -1100,18 +1100,18 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
 
     @staticmethod
     def static_svd_flip(
-        U: Union[ivy.Array, ivy.NativeArray, ivy.Container],
-        V: Union[ivy.Array, ivy.NativeArray, ivy.Container],
+        U: Union[aikit.Array, aikit.NativeArray, aikit.Container],
+        V: Union[aikit.Array, aikit.NativeArray, aikit.Container],
         /,
-        u_based_decision: Optional[Union[bool, ivy.Container]] = True,
+        u_based_decision: Optional[Union[bool, aikit.Container]] = True,
         *,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> Tuple[ivy.Container, ivy.Container]:
-        """ivy.Container static method variant of ivy.svd_flip. This method
-        simply wraps the function, and so the docstring for ivy.svd_flip also
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> Tuple[aikit.Container, aikit.Container]:
+        """aikit.Container static method variant of aikit.svd_flip. This method
+        simply wraps the function, and so the docstring for aikit.svd_flip also
         applies to this method with minimal changes.
 
         Parameters
@@ -1141,18 +1141,18 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
         )
 
     def svd_flip(
-        self: Union[ivy.Array, ivy.NativeArray, ivy.Container],
-        V: Union[ivy.Array, ivy.NativeArray, ivy.Container],
+        self: Union[aikit.Array, aikit.NativeArray, aikit.Container],
+        V: Union[aikit.Array, aikit.NativeArray, aikit.Container],
         /,
-        u_based_decision: Optional[Union[bool, ivy.Container]] = True,
+        u_based_decision: Optional[Union[bool, aikit.Container]] = True,
         *,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> Tuple[ivy.Container, ivy.Container]:
-        """ivy.Container instance method variant of ivy.svd_flip. This method
-        simply wraps the function, and so the docstring for ivy.svd_flip
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> Tuple[aikit.Container, aikit.Container]:
+        """aikit.Container instance method variant of aikit.svd_flip. This method
+        simply wraps the function, and so the docstring for aikit.svd_flip
         applies to this method with minimal changes.
 
         Parameters
@@ -1182,21 +1182,21 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
 
     @staticmethod
     def static_make_svd_non_negative(
-        x: Union[ivy.Array, ivy.NativeArray, ivy.Container],
-        U: Union[ivy.Array, ivy.NativeArray, ivy.Container],
-        S: Union[ivy.Array, ivy.NativeArray, ivy.Container],
-        V: Union[ivy.Array, ivy.NativeArray, ivy.Container],
+        x: Union[aikit.Array, aikit.NativeArray, aikit.Container],
+        U: Union[aikit.Array, aikit.NativeArray, aikit.Container],
+        S: Union[aikit.Array, aikit.NativeArray, aikit.Container],
+        V: Union[aikit.Array, aikit.NativeArray, aikit.Container],
         /,
         *,
-        nntype: Optional[Union[Literal["nndsvd", "nndsvda"], ivy.Container]] = "nndsvd",
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> Tuple[ivy.Container, ivy.Container]:
-        """ivy.Container static method variant of ivy.make_svd_non_negative.
+        nntype: Optional[Union[Literal["nndsvd", "nndsvda"], aikit.Container]] = "nndsvd",
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> Tuple[aikit.Container, aikit.Container]:
+        """aikit.Container static method variant of aikit.make_svd_non_negative.
         This method simply wraps the function, and so the docstring for
-        ivy.make_svd_non_negative also applies to this method with minimal
+        aikit.make_svd_non_negative also applies to this method with minimal
         changes.
 
         Parameters
@@ -1229,21 +1229,21 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
         )
 
     def make_svd_non_negative(
-        self: Union[ivy.Array, ivy.NativeArray, ivy.Container],
-        U: Union[ivy.Array, ivy.NativeArray, ivy.Container],
-        S: Union[ivy.Array, ivy.NativeArray, ivy.Container],
-        V: Union[ivy.Array, ivy.NativeArray, ivy.Container],
+        self: Union[aikit.Array, aikit.NativeArray, aikit.Container],
+        U: Union[aikit.Array, aikit.NativeArray, aikit.Container],
+        S: Union[aikit.Array, aikit.NativeArray, aikit.Container],
+        V: Union[aikit.Array, aikit.NativeArray, aikit.Container],
         /,
         *,
-        nntype: Optional[Union[Literal["nndsvd", "nndsvda"], ivy.Container]] = "nndsvd",
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> Tuple[ivy.Container, ivy.Container]:
-        """ivy.Container instance method variant of ivy.make_svd_non_negative.
+        nntype: Optional[Union[Literal["nndsvd", "nndsvda"], aikit.Container]] = "nndsvd",
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> Tuple[aikit.Container, aikit.Container]:
+        """aikit.Container instance method variant of aikit.make_svd_non_negative.
         This method simply wraps the function, and so the docstring for
-        ivy.make_svd_non_negative applies to this method with minimal changes.
+        aikit.make_svd_non_negative applies to this method with minimal changes.
 
         Parameters
         ----------
@@ -1275,19 +1275,19 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
 
     @staticmethod
     def static_tensor_train(
-        input_tensor: Union[ivy.Array, ivy.NativeArray, ivy.Container],
-        rank: Union[Sequence[int], ivy.Container],
+        input_tensor: Union[aikit.Array, aikit.NativeArray, aikit.Container],
+        rank: Union[Sequence[int], aikit.Container],
         /,
         *,
-        svd: Optional[Union[Literal["truncated_svd"], ivy.Container]] = "truncated_svd",
-        verbose: Optional[Union[bool, ivy.Container]] = False,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> Tuple[ivy.Container, Sequence[ivy.Container]]:
-        """ivy.Container static method variant of ivy.tensor_train. This method
-        simply wraps the function, and so the docstring for ivy.tensor_train
+        svd: Optional[Union[Literal["truncated_svd"], aikit.Container]] = "truncated_svd",
+        verbose: Optional[Union[bool, aikit.Container]] = False,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> Tuple[aikit.Container, Sequence[aikit.Container]]:
+        """aikit.Container static method variant of aikit.tensor_train. This method
+        simply wraps the function, and so the docstring for aikit.tensor_train
         also applies to this method with minimal changes.
 
         Parameters
@@ -1314,20 +1314,20 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
         )
 
     def tensor_train(
-        self: Union[ivy.Array, ivy.NativeArray, ivy.Container],
-        rank: Union[Sequence[int], ivy.Container],
+        self: Union[aikit.Array, aikit.NativeArray, aikit.Container],
+        rank: Union[Sequence[int], aikit.Container],
         /,
         *,
-        svd: Optional[Union[Literal["truncated_svd"], ivy.Container]] = "truncated_svd",
-        verbose: Optional[Union[bool, ivy.Container]] = False,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> Tuple[ivy.Container, Sequence[ivy.Container]]:
-        """ivy.Container instance method variant of ivy.tensor_train. This
+        svd: Optional[Union[Literal["truncated_svd"], aikit.Container]] = "truncated_svd",
+        verbose: Optional[Union[bool, aikit.Container]] = False,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> Tuple[aikit.Container, Sequence[aikit.Container]]:
+        """aikit.Container instance method variant of aikit.tensor_train. This
         method simply wraps the function, and so the docstring for
-        ivy.tensor_train also applies to this method with minimal changes.
+        aikit.tensor_train also applies to this method with minimal changes.
 
         Parameters
         ----------
@@ -1353,19 +1353,19 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
 
     @staticmethod
     def static_truncated_svd(
-        x: Union[ivy.Array, ivy.NativeArray, ivy.Container],
+        x: Union[aikit.Array, aikit.NativeArray, aikit.Container],
         /,
-        compute_uv: Union[bool, ivy.Container] = True,
-        n_eigenvecs: Optional[Union[int, ivy.Container]] = None,
+        compute_uv: Union[bool, aikit.Container] = True,
+        n_eigenvecs: Optional[Union[int, aikit.Container]] = None,
         *,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> Union[ivy.Container, Tuple[ivy.Container, ivy.Container, ivy.Container]]:
-        """ivy.Container static method variant of ivy.truncated_svd. This
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> Union[aikit.Container, Tuple[aikit.Container, aikit.Container, aikit.Container]]:
+        """aikit.Container static method variant of aikit.truncated_svd. This
         method simply wraps the function, and so the docstring for
-        ivy.truncated_svd also applies to this method with minimal changes.
+        aikit.truncated_svd also applies to this method with minimal changes.
 
         Parameters
         ----------
@@ -1399,19 +1399,19 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
         )
 
     def truncated_svd(
-        self: Union[ivy.Array, ivy.NativeArray, ivy.Container],
+        self: Union[aikit.Array, aikit.NativeArray, aikit.Container],
         /,
-        compute_uv: Union[bool, ivy.Container] = True,
-        n_eigenvecs: Optional[Union[int, ivy.Container]] = None,
+        compute_uv: Union[bool, aikit.Container] = True,
+        n_eigenvecs: Optional[Union[int, aikit.Container]] = None,
         *,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> Union[ivy.Container, Tuple[ivy.Container, ivy.Container, ivy.Container]]:
-        """ivy.Container instance method variant of ivy.truncated_svd. This
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> Union[aikit.Container, Tuple[aikit.Container, aikit.Container, aikit.Container]]:
+        """aikit.Container instance method variant of aikit.truncated_svd. This
         method simply wraps the function, and so the docstring for
-        ivy.truncated_svd also applies to this method with minimal changes.
+        aikit.truncated_svd also applies to this method with minimal changes.
 
         Parameters
         ----------
@@ -1445,27 +1445,27 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
 
     @staticmethod
     def static_initialize_tucker(
-        x: Union[ivy.Array, ivy.NativeArray, ivy.Container],
-        rank: Union[Sequence[int], ivy.Container],
-        modes: Union[Sequence[int], ivy.Container],
+        x: Union[aikit.Array, aikit.NativeArray, aikit.Container],
+        rank: Union[Sequence[int], aikit.Container],
+        modes: Union[Sequence[int], aikit.Container],
         /,
         *,
         init: Optional[
-            Union[Literal["svd", "random"], ivy.TuckerTensor, ivy.Container]
+            Union[Literal["svd", "random"], aikit.TuckerTensor, aikit.Container]
         ] = "svd",
-        seed: Optional[Union[int, ivy.Container]] = None,
-        svd: Optional[Union[Literal["truncated_svd"], ivy.Container]] = "truncated_svd",
-        non_negative: Optional[Union[bool, ivy.Container]] = False,
-        mask: Optional[Union[ivy.Array, ivy.NativeArray, ivy.Container]] = None,
-        svd_mask_repeats: Optional[Union[int, ivy.Container]] = 5,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> Tuple[ivy.Container, Sequence[ivy.Container]]:
-        """ivy.Container static method variant of ivy.initialize_tucker. This
+        seed: Optional[Union[int, aikit.Container]] = None,
+        svd: Optional[Union[Literal["truncated_svd"], aikit.Container]] = "truncated_svd",
+        non_negative: Optional[Union[bool, aikit.Container]] = False,
+        mask: Optional[Union[aikit.Array, aikit.NativeArray, aikit.Container]] = None,
+        svd_mask_repeats: Optional[Union[int, aikit.Container]] = 5,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> Tuple[aikit.Container, Sequence[aikit.Container]]:
+        """aikit.Container static method variant of aikit.initialize_tucker. This
         method simply wraps the function, and so the docstring for
-        ivy.initialize_tucker also applies to this method with minimal changes.
+        aikit.initialize_tucker also applies to this method with minimal changes.
 
         Parameters
         ----------
@@ -1518,27 +1518,27 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
         )
 
     def initialize_tucker(
-        self: Union[ivy.Array, ivy.NativeArray, ivy.Container],
-        rank: Union[Sequence[int], ivy.Container],
-        modes: Union[Sequence[int], ivy.Container],
+        self: Union[aikit.Array, aikit.NativeArray, aikit.Container],
+        rank: Union[Sequence[int], aikit.Container],
+        modes: Union[Sequence[int], aikit.Container],
         /,
         *,
         init: Optional[
-            Union[Literal["svd", "random"], ivy.TuckerTensor, ivy.Container]
+            Union[Literal["svd", "random"], aikit.TuckerTensor, aikit.Container]
         ] = "svd",
-        seed: Optional[Union[int, ivy.Container]] = None,
-        svd: Optional[Union[Literal["truncated_svd"], ivy.Container]] = "truncated_svd",
-        non_negative: Optional[Union[bool, ivy.Container]] = False,
-        mask: Optional[Union[ivy.Array, ivy.NativeArray, ivy.Container]] = None,
-        svd_mask_repeats: Optional[Union[int, ivy.Container]] = 5,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> Tuple[ivy.Container, Sequence[ivy.Container]]:
-        """ivy.Container instance method variant of ivy.initialize_tucker. This
+        seed: Optional[Union[int, aikit.Container]] = None,
+        svd: Optional[Union[Literal["truncated_svd"], aikit.Container]] = "truncated_svd",
+        non_negative: Optional[Union[bool, aikit.Container]] = False,
+        mask: Optional[Union[aikit.Array, aikit.NativeArray, aikit.Container]] = None,
+        svd_mask_repeats: Optional[Union[int, aikit.Container]] = 5,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> Tuple[aikit.Container, Sequence[aikit.Container]]:
+        """aikit.Container instance method variant of aikit.initialize_tucker. This
         method simply wraps the function, and so the docstring for
-        ivy.initialize_tucker also applies to this method with minimal changes.
+        aikit.initialize_tucker also applies to this method with minimal changes.
 
         Parameters
         ----------
@@ -1591,30 +1591,30 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
 
     @staticmethod
     def static_partial_tucker(
-        x: Union[ivy.Array, ivy.NativeArray, ivy.Container],
-        rank: Union[Sequence[int], ivy.Container],
-        modes: Union[Sequence[int], ivy.Container],
+        x: Union[aikit.Array, aikit.NativeArray, aikit.Container],
+        rank: Union[Sequence[int], aikit.Container],
+        modes: Union[Sequence[int], aikit.Container],
         /,
         *,
-        n_iter_max: Optional[Union[int, ivy.Container]] = 100,
+        n_iter_max: Optional[Union[int, aikit.Container]] = 100,
         init: Optional[
-            Union[Literal["svd", "random"], ivy.TuckerTensor, ivy.Container]
+            Union[Literal["svd", "random"], aikit.TuckerTensor, aikit.Container]
         ] = "svd",
-        svd: Optional[Union[Literal["truncated_svd"], ivy.Container]] = "truncated_svd",
-        seed: Optional[Union[int, ivy.Container]] = None,
-        mask: Optional[Union[ivy.Array, ivy.NativeArray, ivy.Container]] = None,
-        svd_mask_repeats: Optional[Union[int, ivy.Container]] = 5,
-        tol: Optional[Union[float, ivy.Container]] = 10e-5,
-        verbose: Optional[Union[bool, ivy.Container]] = False,
-        return_errors: Optional[Union[bool, ivy.Container]] = False,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> Tuple[ivy.Container, Sequence[ivy.Container]]:
-        """ivy.Container static method variant of ivy.partial_tucker. This
+        svd: Optional[Union[Literal["truncated_svd"], aikit.Container]] = "truncated_svd",
+        seed: Optional[Union[int, aikit.Container]] = None,
+        mask: Optional[Union[aikit.Array, aikit.NativeArray, aikit.Container]] = None,
+        svd_mask_repeats: Optional[Union[int, aikit.Container]] = 5,
+        tol: Optional[Union[float, aikit.Container]] = 10e-5,
+        verbose: Optional[Union[bool, aikit.Container]] = False,
+        return_errors: Optional[Union[bool, aikit.Container]] = False,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> Tuple[aikit.Container, Sequence[aikit.Container]]:
+        """aikit.Container static method variant of aikit.partial_tucker. This
         method simply wraps the function, and so the docstring for
-        ivy.partial_tucker also applies to this method with minimal changes.
+        aikit.partial_tucker also applies to this method with minimal changes.
 
         Parameters
         ----------
@@ -1668,30 +1668,30 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
         )
 
     def partial_tucker(
-        self: Union[ivy.Array, ivy.NativeArray, ivy.Container],
-        rank: Union[Sequence[int], ivy.Container],
-        modes: Union[Sequence[int], ivy.Container],
+        self: Union[aikit.Array, aikit.NativeArray, aikit.Container],
+        rank: Union[Sequence[int], aikit.Container],
+        modes: Union[Sequence[int], aikit.Container],
         /,
         *,
-        n_iter_max: Optional[Union[int, ivy.Container]] = 100,
+        n_iter_max: Optional[Union[int, aikit.Container]] = 100,
         init: Optional[
-            Union[Literal["svd", "random"], ivy.TuckerTensor, ivy.Container]
+            Union[Literal["svd", "random"], aikit.TuckerTensor, aikit.Container]
         ] = "svd",
-        svd: Optional[Union[Literal["truncated_svd"], ivy.Container]] = "truncated_svd",
-        seed: Optional[Union[int, ivy.Container]] = None,
-        mask: Optional[Union[ivy.Array, ivy.NativeArray, ivy.Container]] = None,
-        svd_mask_repeats: Optional[Union[int, ivy.Container]] = 5,
-        tol: Optional[Union[float, ivy.Container]] = 10e-5,
-        verbose: Optional[Union[bool, ivy.Container]] = False,
-        return_errors: Optional[Union[bool, ivy.Container]] = False,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> Tuple[ivy.Container, Sequence[ivy.Container]]:
-        """ivy.Container static method variant of ivy.partial_tucker. This
+        svd: Optional[Union[Literal["truncated_svd"], aikit.Container]] = "truncated_svd",
+        seed: Optional[Union[int, aikit.Container]] = None,
+        mask: Optional[Union[aikit.Array, aikit.NativeArray, aikit.Container]] = None,
+        svd_mask_repeats: Optional[Union[int, aikit.Container]] = 5,
+        tol: Optional[Union[float, aikit.Container]] = 10e-5,
+        verbose: Optional[Union[bool, aikit.Container]] = False,
+        return_errors: Optional[Union[bool, aikit.Container]] = False,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> Tuple[aikit.Container, Sequence[aikit.Container]]:
+        """aikit.Container static method variant of aikit.partial_tucker. This
         method simply wraps the function, and so the docstring for
-        ivy.partial_tucker also applies to this method with minimal changes.
+        aikit.partial_tucker also applies to this method with minimal changes.
 
         Parameters
         ----------
@@ -1745,29 +1745,29 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
 
     @staticmethod
     def static_tucker(
-        x: Union[ivy.Array, ivy.NativeArray, ivy.Container],
-        rank: Union[Sequence[int], ivy.Container],
+        x: Union[aikit.Array, aikit.NativeArray, aikit.Container],
+        rank: Union[Sequence[int], aikit.Container],
         /,
         *,
-        fixed_factors: Optional[Union[Sequence[int], ivy.Container]] = None,
-        n_iter_max: Optional[Union[int, ivy.Container]] = 100,
+        fixed_factors: Optional[Union[Sequence[int], aikit.Container]] = None,
+        n_iter_max: Optional[Union[int, aikit.Container]] = 100,
         init: Optional[
-            Union[Literal["svd", "random"], ivy.TuckerTensor, ivy.Container]
+            Union[Literal["svd", "random"], aikit.TuckerTensor, aikit.Container]
         ] = "svd",
-        svd: Optional[Union[Literal["truncated_svd"], ivy.Container]] = "truncated_svd",
-        seed: Optional[Union[int, ivy.Container]] = None,
-        mask: Optional[Union[ivy.Array, ivy.NativeArray, ivy.Container]] = None,
-        svd_mask_repeats: Optional[Union[int, ivy.Container]] = 5,
-        tol: Optional[Union[float, ivy.Container]] = 10e-5,
-        verbose: Optional[Union[bool, ivy.Container]] = False,
-        return_errors: Optional[Union[bool, ivy.Container]] = False,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> Tuple[ivy.Container, Sequence[ivy.Container]]:
-        """ivy.Container static method variant of ivy.tucker. This method
-        simply wraps the function, and so the docstring for ivy.tucker also
+        svd: Optional[Union[Literal["truncated_svd"], aikit.Container]] = "truncated_svd",
+        seed: Optional[Union[int, aikit.Container]] = None,
+        mask: Optional[Union[aikit.Array, aikit.NativeArray, aikit.Container]] = None,
+        svd_mask_repeats: Optional[Union[int, aikit.Container]] = 5,
+        tol: Optional[Union[float, aikit.Container]] = 10e-5,
+        verbose: Optional[Union[bool, aikit.Container]] = False,
+        return_errors: Optional[Union[bool, aikit.Container]] = False,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> Tuple[aikit.Container, Sequence[aikit.Container]]:
+        """aikit.Container static method variant of aikit.tucker. This method
+        simply wraps the function, and so the docstring for aikit.tucker also
         applies to this method with minimal changes.
 
         Parameters
@@ -1813,7 +1813,7 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
 
         Returns
         -------
-             Container of ivy.TuckerTensors or ivy.TuckerTensors and
+             Container of aikit.TuckerTensors or aikit.TuckerTensors and
             container of reconstruction errors if return_errors is True.
 
         References
@@ -1842,29 +1842,29 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
         )
 
     def tucker(
-        self: Union[ivy.Array, ivy.NativeArray, ivy.Container],
-        rank: Union[Sequence[int], ivy.Container],
+        self: Union[aikit.Array, aikit.NativeArray, aikit.Container],
+        rank: Union[Sequence[int], aikit.Container],
         /,
         *,
-        fixed_factors: Optional[Union[Sequence[int], ivy.Container]] = None,
-        n_iter_max: Optional[Union[int, ivy.Container]] = 100,
+        fixed_factors: Optional[Union[Sequence[int], aikit.Container]] = None,
+        n_iter_max: Optional[Union[int, aikit.Container]] = 100,
         init: Optional[
-            Union[Literal["svd", "random"], ivy.TuckerTensor, ivy.Container]
+            Union[Literal["svd", "random"], aikit.TuckerTensor, aikit.Container]
         ] = "svd",
-        svd: Optional[Union[Literal["truncated_svd"], ivy.Container]] = "truncated_svd",
-        seed: Optional[Union[int, ivy.Container]] = None,
-        mask: Optional[Union[ivy.Array, ivy.NativeArray, ivy.Container]] = None,
-        svd_mask_repeats: Optional[Union[int, ivy.Container]] = 5,
-        tol: Optional[Union[float, ivy.Container]] = 10e-5,
-        verbose: Optional[Union[bool, ivy.Container]] = False,
-        return_errors: Optional[Union[bool, ivy.Container]] = False,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> Tuple[ivy.Container, Sequence[ivy.Container]]:
-        """ivy.Container static method variant of ivy.tucker. This method
-        simply wraps the function, and so the docstring for ivy.tucker also
+        svd: Optional[Union[Literal["truncated_svd"], aikit.Container]] = "truncated_svd",
+        seed: Optional[Union[int, aikit.Container]] = None,
+        mask: Optional[Union[aikit.Array, aikit.NativeArray, aikit.Container]] = None,
+        svd_mask_repeats: Optional[Union[int, aikit.Container]] = 5,
+        tol: Optional[Union[float, aikit.Container]] = 10e-5,
+        verbose: Optional[Union[bool, aikit.Container]] = False,
+        return_errors: Optional[Union[bool, aikit.Container]] = False,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> Tuple[aikit.Container, Sequence[aikit.Container]]:
+        """aikit.Container static method variant of aikit.tucker. This method
+        simply wraps the function, and so the docstring for aikit.tucker also
         applies to this method with minimal changes.
 
         Parameters
@@ -1910,7 +1910,7 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
 
         Returns
         -------
-             Container of ivy.TuckerTensors or ivy.TuckerTensors and
+             Container of aikit.TuckerTensors or aikit.TuckerTensors and
             container of reconstruction errors if return_errors is True.
 
         References
@@ -1939,16 +1939,16 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
 
     @staticmethod
     def static_dot(
-        a: Union[ivy.Array, ivy.NativeArray, ivy.Container],
-        b: Union[ivy.Array, ivy.NativeArray, ivy.Container],
+        a: Union[aikit.Array, aikit.NativeArray, aikit.Container],
+        b: Union[aikit.Array, aikit.NativeArray, aikit.Container],
         /,
         *,
-        out: Optional[Union[ivy.Array, ivy.Container]] = None,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> Union[ivy.Array, ivy.Container]:
+        out: Optional[Union[aikit.Array, aikit.Container]] = None,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> Union[aikit.Array, aikit.Container]:
         """Compute the dot product between two arrays `a` and `b` using the
         current backend's implementation. The dot product is defined as the sum
         of the element- wise product of the input arrays.
@@ -1969,28 +1969,28 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
 
         Examples
         --------
-        With :class:`ivy.Array` inputs:
+        With :class:`aikit.Array` inputs:
 
-        >>> a = ivy.array([1, 2, 3])
-        >>> b = ivy.array([4, 5, 6])
-        >>> result = ivy.dot(a, b)
+        >>> a = aikit.array([1, 2, 3])
+        >>> b = aikit.array([4, 5, 6])
+        >>> result = aikit.dot(a, b)
         >>> print(result)
-        ivy.array(32)
+        aikit.array(32)
 
-        >>> a = ivy.array([[1, 2], [3, 4]])
-        >>> b = ivy.array([[5, 6], [7, 8]])
-        >>> c = ivy.empty_like(a)
-        >>> ivy.dot(a, b, out=c)
+        >>> a = aikit.array([[1, 2], [3, 4]])
+        >>> b = aikit.array([[5, 6], [7, 8]])
+        >>> c = aikit.empty_like(a)
+        >>> aikit.dot(a, b, out=c)
         >>> print(c)
-        ivy.array([[19, 22],
+        aikit.array([[19, 22],
             [43, 50]])
 
-        >>> a = ivy.array([[1.1, 2.3, -3.6]])
-        >>> b = ivy.array([[-4.8], [5.2], [6.1]])
-        >>> c = ivy.zeros((1, 1))
-        >>> ivy.dot(a, b, out=c)
+        >>> a = aikit.array([[1.1, 2.3, -3.6]])
+        >>> b = aikit.array([[-4.8], [5.2], [6.1]])
+        >>> c = aikit.zeros((1, 1))
+        >>> aikit.dot(a, b, out=c)
         >>> print(c)
-        ivy.array([[-15.28]])
+        aikit.array([[-15.28]])
         """
         return ContainerBase.cont_multi_map_in_function(
             "dot",
@@ -2004,16 +2004,16 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
         )
 
     def dot(
-        self: Union[ivy.Array, ivy.NativeArray, ivy.Container],
-        b: Union[ivy.Array, ivy.NativeArray, ivy.Container],
+        self: Union[aikit.Array, aikit.NativeArray, aikit.Container],
+        b: Union[aikit.Array, aikit.NativeArray, aikit.Container],
         /,
         *,
-        out: Optional[Union[ivy.Array, ivy.Container]] = None,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> Union[ivy.Array, ivy.Container]:
+        out: Optional[Union[aikit.Array, aikit.Container]] = None,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> Union[aikit.Array, aikit.Container]:
         """Compute the dot product between two arrays `a` and `b` using the
         current backend's implementation. The dot product is defined as the sum
         of the element- wise product of the input arrays.
@@ -2034,28 +2034,28 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
 
         Examples
         --------
-        With :class:`ivy.Array` inputs:
+        With :class:`aikit.Array` inputs:
 
-        >>> a = ivy.array([1, 2, 3])
-        >>> b = ivy.array([4, 5, 6])
-        >>> result = ivy.dot(a, b)
+        >>> a = aikit.array([1, 2, 3])
+        >>> b = aikit.array([4, 5, 6])
+        >>> result = aikit.dot(a, b)
         >>> print(result)
-        ivy.array(32)
+        aikit.array(32)
 
-        >>> a = ivy.array([[1, 2], [3, 4]])
-        >>> b = ivy.array([[5, 6], [7, 8]])
-        >>> c = ivy.empty_like(a)
-        >>> ivy.dot(a, b, out=c)
+        >>> a = aikit.array([[1, 2], [3, 4]])
+        >>> b = aikit.array([[5, 6], [7, 8]])
+        >>> c = aikit.empty_like(a)
+        >>> aikit.dot(a, b, out=c)
         >>> print(c)
-        ivy.array([[19, 22],
+        aikit.array([[19, 22],
             [43, 50]])
 
-        >>> a = ivy.array([[1.1, 2.3, -3.6]])
-        >>> b = ivy.array([[-4.8], [5.2], [6.1]])
-        >>> c = ivy.zeros((1, 1))
-        >>> ivy.dot(a, b, out=c)
+        >>> a = aikit.array([[1.1, 2.3, -3.6]])
+        >>> b = aikit.array([[-4.8], [5.2], [6.1]])
+        >>> c = aikit.zeros((1, 1))
+        >>> aikit.dot(a, b, out=c)
         >>> print(c)
-        ivy.array([[-15.28]])
+        aikit.array([[-15.28]])
         """
         return self.static_dot(
             self,
@@ -2069,18 +2069,18 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
 
     @staticmethod
     def static_tt_matrix_to_tensor(
-        tt_matrix: Union[ivy.Array, ivy.NativeArray, ivy.Container],
+        tt_matrix: Union[aikit.Array, aikit.NativeArray, aikit.Container],
         /,
         *,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container static method variant of ivy.tt_matrix_to_tensor. This
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container static method variant of aikit.tt_matrix_to_tensor. This
         method simply wraps the function, and so the docstring for
-        ivy.tt_matrix_to_tensor also applies to this method with minimal
+        aikit.tt_matrix_to_tensor also applies to this method with minimal
         changes.
 
         Parameters
@@ -2100,7 +2100,7 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
 
         Examples
         --------
-        >>> x = ivy.Container(a=ivy.array([[[[[0.49671414],
+        >>> x = aikit.Container(a=aikit.array([[[[[0.49671414],
         ...                      [-0.1382643]],
         ...
         ...                     [[0.64768857],
@@ -2110,9 +2110,9 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
         ...
         ...                     [[1.57921278],
         ...                      [0.76743472]]]]])))
-        >>> y = ivy.Container.static_tt_matrix_to_tensor(x)
+        >>> y = aikit.Container.static_tt_matrix_to_tensor(x)
         >>> print(y["a"])
-        ivy.array([[[[-0.1163073 , -0.11629914],
+        aikit.array([[[[-0.1163073 , -0.11629914],
         [ 0.03237505,  0.03237278]],
 
         [[ 0.78441733,  0.38119566],
@@ -2136,18 +2136,18 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
         )
 
     def tt_matrix_to_tensor(
-        self: Union[ivy.Array, ivy.NativeArray, ivy.Container],
+        self: Union[aikit.Array, aikit.NativeArray, aikit.Container],
         /,
         *,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of ivy.tt_matrix_to_tensor.
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of aikit.tt_matrix_to_tensor.
         This method simply wraps the function, and so the docstring for
-        ivy.tt_matrix_to_tensor also applies to this method with minimal
+        aikit.tt_matrix_to_tensor also applies to this method with minimal
         changes.
 
         Parameters
@@ -2167,7 +2167,7 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
 
         Examples
         --------
-        >>> x = ivy.Container(a=ivy.array([[[[[0.49671414],
+        >>> x = aikit.Container(a=aikit.array([[[[[0.49671414],
         ...                      [-0.1382643]],
         ...
         ...                     [[0.64768857],
@@ -2177,9 +2177,9 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
         ...
         ...                     [[1.57921278],
         ...                      [0.76743472]]]]])))
-        >>> y = ivy.Container.tt_matrix_to_tensor(x)
+        >>> y = aikit.Container.tt_matrix_to_tensor(x)
         >>> print(y["a"])
-        ivy.array([[[[-0.1163073 , -0.11629914],
+        aikit.array([[[[-0.1163073 , -0.11629914],
         [ 0.03237505,  0.03237278]],
 
         [[ 0.78441733,  0.38119566],
@@ -2203,19 +2203,19 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
 
     @staticmethod
     def static_higher_order_moment(
-        x: Union[ivy.Array, ivy.NativeArray, ivy.Container],
-        order: Union[Sequence[int], ivy.Container],
+        x: Union[aikit.Array, aikit.NativeArray, aikit.Container],
+        order: Union[Sequence[int], aikit.Container],
         /,
         *,
-        out: Optional[ivy.Array] = None,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> ivy.Container:
-        """ivy.Container static method variant of ivy.higher_order_moment. This
+        out: Optional[aikit.Array] = None,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> aikit.Container:
+        """aikit.Container static method variant of aikit.higher_order_moment. This
         method simply wraps the function, and so the docstring for
-        ivy.higher_order_moment also applies to this method with minimal
+        aikit.higher_order_moment also applies to this method with minimal
         changes.
 
         Parameters
@@ -2245,19 +2245,19 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
         )
 
     def higher_order_moment(
-        self: Union[ivy.Array, ivy.NativeArray, ivy.Container],
-        order: Union[Sequence[int], ivy.Container],
+        self: Union[aikit.Array, aikit.NativeArray, aikit.Container],
+        order: Union[Sequence[int], aikit.Container],
         /,
         *,
-        out: Optional[ivy.Array] = None,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of ivy.higher_order_moment.
+        out: Optional[aikit.Array] = None,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of aikit.higher_order_moment.
         This method simply wraps the function, and so the docstring for
-        ivy.higher_order_moment also applies to this method with minimal
+        aikit.higher_order_moment also applies to this method with minimal
         changes.
 
         Parameters
@@ -2277,10 +2277,10 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
 
         Examples
         --------
-        >>> a = ivy.array([[1, 2], [3, 4]])
-        >>> result = ivy.higher_order_moment(a, 3)
+        >>> a = aikit.array([[1, 2], [3, 4]])
+        >>> result = aikit.higher_order_moment(a, 3)
         >>> print(result)
-        ivy.array([[
+        aikit.array([[
             [14, 19],
             [19, 26]],
            [[19, 26],
@@ -2299,18 +2299,18 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
 
     @staticmethod
     def static_batched_outer(
-        tensors: Sequence[Union[ivy.Array, ivy.NativeArray, ivy.Container]],
+        tensors: Sequence[Union[aikit.Array, aikit.NativeArray, aikit.Container]],
         /,
         *,
-        out: Optional[ivy.Array] = None,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> ivy.Container:
-        """ivy.Container static method variant of ivy.batched_outer. This
+        out: Optional[aikit.Array] = None,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> aikit.Container:
+        """aikit.Container static method variant of aikit.batched_outer. This
         method simply wraps the function, and so the docstring for
-        ivy.batched_outer also applies to this method with minimal changes.
+        aikit.batched_outer also applies to this method with minimal changes.
 
         Parameters
         ----------
@@ -2325,11 +2325,11 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
 
         Examples
         --------
-        >>> a = ivy.array([[[1, 2], [3, 4]], [[5, 6], [7, 8]]])
-        >>> b = ivy.array([[[.1, .2], [.3, .4]], [[.5, .6], [.7, .8]]])
-        >>> result = ivy.batched_outer(a, b)
+        >>> a = aikit.array([[[1, 2], [3, 4]], [[5, 6], [7, 8]]])
+        >>> b = aikit.array([[[.1, .2], [.3, .4]], [[.5, .6], [.7, .8]]])
+        >>> result = aikit.batched_outer(a, b)
         >>> print(result)
-        ivy.array([[[[[0.1, 0.2],
+        aikit.array([[[[[0.1, 0.2],
               [0.30000001, 0.40000001]],
              [[0.2       , 0.40000001],
               [0.60000002, 0.80000001]]],
@@ -2357,19 +2357,19 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
         )
 
     def batched_outer(
-        self: ivy.Container,
-        tensors: Sequence[Union[ivy.Container, ivy.Array, ivy.NativeArray]],
+        self: aikit.Container,
+        tensors: Sequence[Union[aikit.Container, aikit.Array, aikit.NativeArray]],
         /,
         *,
-        out: Optional[ivy.Array] = None,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of ivy.batched_outer. This
+        out: Optional[aikit.Array] = None,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of aikit.batched_outer. This
         method simply wraps the function, and so the docstring for
-        ivy.batched_outer also applies to this method with minimal changes.
+        aikit.batched_outer also applies to this method with minimal changes.
 
         Parameters
         ----------
@@ -2384,11 +2384,11 @@ class _ContainerWithLinearAlgebraExperimental(ContainerBase):
 
         Examples
         --------
-        >>> a = ivy.array([[[1, 2], [3, 4]], [[5, 6], [7, 8]]])
-        >>> b = ivy.array([[[.1, .2], [.3, .4]], [[.5, .6], [.7, .8]]])
-        >>> result = ivy.batched_outer(a, b)
+        >>> a = aikit.array([[[1, 2], [3, 4]], [[5, 6], [7, 8]]])
+        >>> b = aikit.array([[[.1, .2], [.3, .4]], [[.5, .6], [.7, .8]]])
+        >>> result = aikit.batched_outer(a, b)
         >>> print(result)
-        ivy.array([[[[[0.1, 0.2],
+        aikit.array([[[[[0.1, 0.2],
               [0.30000001, 0.40000001]],
              [[0.2       , 0.40000001],
               [0.60000002, 0.80000001]]],

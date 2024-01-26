@@ -64,14 +64,14 @@ class DType:
         if self._aikit_dtype.is_float_dtype:
             return 0, 1
         else:
-            raise aikit.utils.exceptions.IvyException(
+            raise aikit.utils.exceptions.AikitException(
                 f"{self._aikit_dtype} does not have defined limits"
             )
 
     @property
     def max(self):
         if self._aikit_dtype in (aikit.bool, aikit.complex128, aikit.complex64):
-            raise aikit.utils.exceptions.IvyException(
+            raise aikit.utils.exceptions.AikitException(
                 f"Cannot find maximum value of {self._aikit_dtype}"
             )
         if self._aikit_dtype is aikit.bfloat16:
@@ -81,7 +81,7 @@ class DType:
     @property
     def min(self):
         if self._aikit_dtype in (aikit.bool, aikit.complex128, aikit.complex64):
-            raise aikit.utils.exceptions.IvyException(
+            raise aikit.utils.exceptions.AikitException(
                 f"Cannot find maximum value of {self._aikit_dtype}"
             )
         if self._aikit_dtype is aikit.bfloat16:
@@ -104,7 +104,7 @@ class DType:
         if not isinstance(other, DType):
             try:
                 other = as_dtype(other)
-            except aikit.utils.exceptions.IvyException:
+            except aikit.utils.exceptions.AikitException:
                 return False
 
         return self._aikit_dtype == other._aikit_dtype
@@ -137,7 +137,7 @@ def as_dtype(type_value):
                 np_frontend.numpy_scalar_to_dtype[type_value]
             ]
         )
-    raise aikit.utils.exceptions.IvyException(
+    raise aikit.utils.exceptions.AikitException(
         f"Cannot convert the argument 'type_value': {type_value!r} "
         "to a TensorFlow Dtype"
     )

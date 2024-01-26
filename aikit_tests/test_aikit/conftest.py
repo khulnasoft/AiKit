@@ -67,7 +67,7 @@ def pytest_configure(config):
     if config.getoption("--set-backend"):
         BackendHandler._update_context(BackendHandlerMode.SetBackend)
 
-    # Ivy Exception traceback
+    # Aikit Exception traceback
     set_exception_trace_mode(config.getoption("--aikit-tb"))
 
     # Pytest traceback

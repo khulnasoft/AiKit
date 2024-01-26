@@ -38,7 +38,7 @@ These wrapper frameworks can be considered as “higher level” than the indivi
 EagerPy |eagerpy|
 -----------------
 `EagerPy`_ lets users write code that automatically works natively with `PyTorch`_, `TensorFlow`_, `JAX`_, and `NumPy`_.
-Key differences to Ivy are the lack of transpiler support and the lack of a stateful API for constructing high level classes such as network layers, optimizers, initializers, and trainers in the framework.
+Key differences to Aikit are the lack of transpiler support and the lack of a stateful API for constructing high level classes such as network layers, optimizers, initializers, and trainers in the framework.
 
 Keras |keras|
 -------------

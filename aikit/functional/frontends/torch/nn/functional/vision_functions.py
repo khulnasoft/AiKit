@@ -209,7 +209,7 @@ def grid_sample(
             )
 
         else:
-            raise aikit.exceptions.IvyError(f"Not supported mode {mode}")
+            raise aikit.exceptions.AikitError(f"Not supported mode {mode}")
 
     elif aikit.get_num_dims(input_clone) == 5:  # sample from 3D images
         n, c, d, h, w = input_clone.shape
@@ -310,10 +310,10 @@ def grid_sample(
             )
 
         elif mode == "bicubic":
-            raise aikit.exceptions.IvyError("Bicubic is not support in 3D grid sampling")
+            raise aikit.exceptions.AikitError("Bicubic is not support in 3D grid sampling")
 
     else:
-        raise aikit.exceptions.IvyError(f"Not supported input shape {input_clone.shape}")
+        raise aikit.exceptions.AikitError(f"Not supported input shape {input_clone.shape}")
 
 
 def grid_sample_padding(grid, padding_mode, align_corners, borders=None):
@@ -369,7 +369,7 @@ def interpolate(
         mode not in ["linear", "bilinear", "bicubic", "trilinear"]
         and align_corners is not None
     ):
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             "align_corners option can only be set with the interpolating"
             f"modes: linear | bilinear | bicubic | trilinear (got {mode})"
         )

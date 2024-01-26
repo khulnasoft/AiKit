@@ -1,4 +1,4 @@
-``ivy.trace_graph()``
+``aikit.trace_graph()``
 =====================
 
 ..
@@ -6,27 +6,27 @@
    ⚠️ **Warning**: The tracer and the transpiler are not publicly available yet, so certain parts of this doc won't work as expected as of now!
 
 
-When we call an Ivy function, there is always a small performance hit due to added
+When we call an Aikit function, there is always a small performance hit due to added
 Python wrapping. This overhead becomes increasingly noticeable when we use large
 models with multiple function calls. The Tracer improves the performance of
-Ivy by removing the extra wrapping around each function call.
+Aikit by removing the extra wrapping around each function call.
 
-The Tracer takes in any Ivy function, framework-specific (backend) function,
+The Tracer takes in any Aikit function, framework-specific (backend) function,
 or composition of both, and produces a simplified executable computation graph composed
 of functions from the backend functional API only, which results in:
 
 - Simplified code: The Tracer simplifies the code by removing all the wrapping
   and functions that don't contribute to the output: print statements, loggers, etc.
-- Improved performance: The created graph has no performance overhead due to Ivy's
+- Improved performance: The created graph has no performance overhead due to Aikit's
   function wrapping, likewise, redundant operations from the original function are also
   removed, increasing its overall performance.
 
 Tracer API
 ------------
 
-.. py:function:: ivy.trace_graph(*objs, stateful = None, arg_stateful_idxs = None, kwarg_stateful_idxs = None, to = None, include_generators = True, array_caching = True, return_backend_traced_fn = False, static_argnums = None, static_argnames = None, args = None, kwargs = None,)
+.. py:function:: aikit.trace_graph(*objs, stateful = None, arg_stateful_idxs = None, kwarg_stateful_idxs = None, to = None, include_generators = True, array_caching = True, return_backend_traced_fn = False, static_argnums = None, static_argnames = None, args = None, kwargs = None,)
 
-    Creates a ``Callable`` or set of them into an Ivy graph. If ``args`` or ``kwargs`` are specified,
+    Creates a ``Callable`` or set of them into an Aikit graph. If ``args`` or ``kwargs`` are specified,
     compilation is performed eagerly, otherwise, compilation will happen lazily.
 
     :param objs: Callable(s) to trace and create a graph of.
@@ -43,7 +43,7 @@ Tracer API
     :type include_generators: ``bool``
     :param array_caching: Cache the constant arrays that appear as arguments to the functions in the graph.
     :type array_caching: ``bool``
-    :param return_backend_traced_fn: Whether to apply the native compilers, i.e. tf.function, after ivy's compilation.
+    :param return_backend_traced_fn: Whether to apply the native compilers, i.e. tf.function, after aikit's compilation.
     :type return_backend_traced_fn: ``bool``
     :param static_argnums: For jax's jit compilation.
     :type static_argnums: ``Optional[Union[int, Iterable[int]]]``
@@ -53,36 +53,36 @@ Tracer API
     :type args: ``Optional[Tuple]``
     :param kwargs: Keyword arguments for obj.
     :type kwargs: ``Optional[dict]``
-    :rtype: ``Union[Graph, LazyGraph, ivy.Module, ModuleType]``
-    :return: A ``Graph`` or a non-initialized ``LazyGraph``. If the object is an ``ivy.Module``, the forward pass will be traced and the same module will be returned. If the object is a ``ModuleType``, the function will return a copy of the module with every method lazily traced.
+    :rtype: ``Union[Graph, LazyGraph, aikit.Module, ModuleType]``
+    :return: A ``Graph`` or a non-initialized ``LazyGraph``. If the object is an ``aikit.Module``, the forward pass will be traced and the same module will be returned. If the object is a ``ModuleType``, the function will return a copy of the module with every method lazily traced.
 
 Using the tracer
 ------------------
 
-To use the ``ivy.trace_graph()`` function, you need to pass a callable object and the corresponding inputs
+To use the ``aikit.trace_graph()`` function, you need to pass a callable object and the corresponding inputs
 to the function.
 
 Let's start with a simple function:
 
 .. code-block:: python
 
-    import ivy
+    import aikit
 
-    ivy.set_backend("torch")
+    aikit.set_backend("torch")
 
     def fn(x, y):
         z = x**y
         print(z)
         k = x * y
-        j = ivy.concat([x, z, y])
-        sum_j = ivy.sum(j)
+        j = aikit.concat([x, z, y])
+        sum_j = aikit.sum(j)
         return z
 
-    x = ivy.array([1, 2, 3])
-    y = ivy.array([2, 3, 4])
+    x = aikit.array([1, 2, 3])
+    y = aikit.array([2, 3, 4])
 
     # Trace the function
-    traced_fn = ivy.trace_graph(fn, args=(x, y))
+    traced_fn = aikit.trace_graph(fn, args=(x, y))
 
 In this case, the created graph would be:
 
@@ -105,8 +105,8 @@ From the graph, we can observe that:
     out = traced_fn(x, y)
 
     # Inputs of different shape
-    a = ivy.array([[1., 2.]])
-    b = ivy.array([[2., 3.]])
+    a = aikit.array([[1., 2.]])
+    b = aikit.array([[2., 3.]])
 
     # New set of inputs
     out = traced_fn(a, b)
@@ -119,7 +119,7 @@ to create the created graph. The **eager compilation** method traces the graph i
 corresponding function call with the specified inputs before we use the traced
 function.
 
-Instead of compiling functions before using them, Ivy also allows you to trace the
+Instead of compiling functions before using them, Aikit also allows you to trace the
 function dynamically. This can be done by passing only the function to the
 trace method and not including the function arguments. In this case, the output will be a
 ``LazyGraph`` instead of a ``Graph`` instance. When this ``LazyGraph`` object is first invoked with
@@ -130,10 +130,10 @@ use the traced function to compute the outputs directly.
 .. code-block:: python
 
     # Trace the function eagerly (compilation happens here)
-    eager_graph = ivy.trace_graph(fn, args=(x, y))
+    eager_graph = aikit.trace_graph(fn, args=(x, y))
 
     # Trace the function lazily (compilation does not happen here)
-    lazy_graph = ivy.trace_graph(fn)
+    lazy_graph = aikit.trace_graph(fn)
 
     # Trace and return the output
     out = lazy_graph(x, y)
@@ -154,19 +154,19 @@ The tracer is able to cache constant arrays and their operations through the
 
 .. code-block:: python
 
-    import ivy
+    import aikit
 
-    ivy.set_backend("torch")
+    aikit.set_backend("torch")
 
     def fn(x):
-        b = ivy.array([2])
-        a = ivy.array([2])
+        b = aikit.array([2])
+        a = aikit.array([2])
         z = x ** (a + b)
         return z
 
-    comp_func = ivy.trace_graph(fn, args=(x,))
+    comp_func = aikit.trace_graph(fn, args=(x,))
 
-When calling ``ivy.trace_graph()``, the ``array_caching`` argument is set to ``True`` by
+When calling ``aikit.trace_graph()``, the ``array_caching`` argument is set to ``True`` by
 default, which returns the following graph.
 
 .. image:: https://raw.githubusercontent.com/khulnasoft/khulnasoft.github.io/main/img/externally_linked/compiler/figure2.png
@@ -187,16 +187,16 @@ are included as nodes or "baked" into the graph.
 
 .. code-block:: python
 
-    import ivy
+    import aikit
 
-    ivy.set_backend("torch")
+    aikit.set_backend("torch")
 
     def fn(x):
         a = torch.randint(0, 100, size=[1])
         z = x ** a
         return z + torch.rand([1])
 
-    comp_func = ivy.trace_graph(fn, include_generators=True, args=(x,))
+    comp_func = aikit.trace_graph(fn, include_generators=True, args=(x,))
 
 Returns:
 
@@ -206,16 +206,16 @@ And instead,
 
 .. code-block:: python
 
-    import ivy
+    import aikit
 
-    ivy.set_backend("torch")
+    aikit.set_backend("torch")
 
     def fn(x):
         a = torch.randint(0, 100, size=[1])
         z = x * a
         return z + torch.rand([1])
 
-    comp_func = ivy.trace_graph(fn, include_generators=False, args=(x,))
+    comp_func = aikit.trace_graph(fn, include_generators=False, args=(x,))
 
 Returns:
 
@@ -229,19 +229,19 @@ arbitrary classes using the ``stateful`` parameters.
 
 .. code-block:: python
 
-    import ivy
+    import aikit
 
-    ivy.set_backend("torch")
+    aikit.set_backend("torch")
 
     def fn(cont, x):
         cont.new_attribute = x
         return x + 1
 
     x = torch.tensor([0])
-    cont = ivy.Container(x=x)
+    cont = aikit.Container(x=x)
 
     args = (cont.cont_deep_copy(), x)
-    comp_func = ivy.trace_graph(fn, arg_stateful_idxs=[[0]], args=args)
+    comp_func = aikit.trace_graph(fn, arg_stateful_idxs=[[0]], args=args)
 
 .. image:: https://raw.githubusercontent.com/khulnasoft/khulnasoft.github.io/main/img/externally_linked/compiler/figure6.png
 
@@ -280,12 +280,12 @@ breed of a cat.
 
 .. code-block:: python
 
-    import ivy
+    import aikit
     from transformers import AutoImageProcessor, ResNetForImageClassification
     from datasets import load_dataset
 
     # Set backend to torch
-    ivy.set_backend("torch")
+    aikit.set_backend("torch")
 
     # Download the input image
     dataset = load_dataset("huggingface/cats-image")
@@ -306,12 +306,12 @@ Normally, we would then feed these inputs to the model itself without compiling 
     with torch.no_grad():
     logits = model(**inputs).logits
 
-With ivy, you can trace your model to a computation graph for increased performance.
+With aikit, you can trace your model to a computation graph for increased performance.
 
 .. code-block:: python
 
     # Compiling the model
-    traced_graph = ivy.trace_graph(model, args=(**inputs,))
+    traced_graph = aikit.trace_graph(model, args=(**inputs,))
 
     # Using the traced function
     logits = traced_graph(**inputs).logits

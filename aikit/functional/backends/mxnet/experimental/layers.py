@@ -3,7 +3,7 @@ from typing import List, Optional, Union, Tuple, Literal, Sequence
 import mxnet as mx
 
 # local
-from aikit.utils.exceptions import IvyNotImplementedException
+from aikit.utils.exceptions import AikitNotImplementedException
 
 
 def general_pool(
@@ -18,7 +18,7 @@ def general_pool(
     ceil_mode=False,
     count_include_pad=False,
 ):
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def max_pool1d(
@@ -33,7 +33,7 @@ def max_pool1d(
     ceil_mode: bool = False,
     out: Optional[mx.nd.NDArray] = None,
 ) -> mx.nd.NDArray:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def max_pool2d(
@@ -48,7 +48,7 @@ def max_pool2d(
     ceil_mode: bool = False,
     out: Optional[mx.nd.NDArray] = None,
 ) -> mx.nd.NDArray:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def max_pool3d(
@@ -67,7 +67,7 @@ def max_pool3d(
     ceil_mode: bool = False,
     out: Optional[mx.nd.NDArray] = None,
 ) -> mx.nd.NDArray:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def avg_pool1d(
@@ -83,7 +83,7 @@ def avg_pool1d(
     divisor_override: Optional[int] = None,
     out: Optional[mx.nd.NDArray] = None,
 ) -> mx.nd.NDArray:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def avg_pool2d(
@@ -99,7 +99,7 @@ def avg_pool2d(
     divisor_override: Optional[int] = None,
     out: Optional[mx.nd.NDArray] = None,
 ) -> mx.nd.NDArray:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def avg_pool3d(
@@ -115,7 +115,7 @@ def avg_pool3d(
     divisor_override: Optional[int] = None,
     out: Optional[mx.nd.NDArray] = None,
 ) -> mx.nd.NDArray:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def dct(
@@ -128,7 +128,7 @@ def dct(
     norm: Optional[Literal["ortho"]] = None,
     out: Optional[mx.nd.NDArray] = None,
 ) -> mx.nd.NDArray:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def fft(
@@ -140,7 +140,7 @@ def fft(
     n: Optional[Union[int, Tuple[int]]] = None,
     out: Optional[mx.nd.NDArray] = None,
 ) -> mx.nd.NDArray:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def dropout1d(
@@ -152,7 +152,7 @@ def dropout1d(
     data_format: str = "NWC",
     out: Optional[mx.nd.NDArray] = None,
 ) -> mx.nd.NDArray:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def dropout2d(
@@ -164,7 +164,7 @@ def dropout2d(
     data_format: str = "NHWC",
     out: Optional[mx.nd.NDArray] = None,
 ) -> mx.nd.NDArray:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def dropout3d(
@@ -176,7 +176,7 @@ def dropout3d(
     data_format: str = "NDHWC",
     out: Optional[mx.nd.NDArray] = None,
 ) -> mx.nd.NDArray:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def ifft(
@@ -187,7 +187,7 @@ def ifft(
     n: Optional[Union[int, Tuple[int]]] = None,
     out: Optional[mx.nd.NDArray] = None,
 ) -> mx.nd.NDArray:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def interpolate(
@@ -217,7 +217,7 @@ def interpolate(
     antialias: bool = False,
     out: Optional[mx.nd.NDArray] = None,
 ):
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def rfft(
@@ -229,4 +229,4 @@ def rfft(
     norm: Literal["backward", "ortho", "forward"] = "backward",
     out: Optional[mx.nd.NDArray] = None,
 ) -> mx.nd.NDArray:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()

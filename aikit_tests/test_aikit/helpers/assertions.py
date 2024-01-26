@@ -24,9 +24,9 @@ def assert_all_close(
     Parameters
     ----------
     ret_np
-        Return from the framework to test. Ivy Container or Numpy Array.
+        Return from the framework to test. Aikit Container or Numpy Array.
     ret_from_gt_np
-        Return from the ground truth framework. Ivy Container or Numpy Array.
+        Return from the ground truth framework. Aikit Container or Numpy Array.
     rtol
         Relative Tolerance Value.
     atol

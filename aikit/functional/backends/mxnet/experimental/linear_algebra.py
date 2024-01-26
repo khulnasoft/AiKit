@@ -1,7 +1,7 @@
 from typing import Union, Optional, Tuple, List, Sequence
 import mxnet as mx
 
-from aikit.utils.exceptions import IvyNotImplementedException
+from aikit.utils.exceptions import AikitNotImplementedException
 
 
 def eigh_tridiagonal(
@@ -20,7 +20,7 @@ def eigh_tridiagonal(
     mx.ndarray.NDArray,
     Tuple[(Union[(None, mx.ndarray.NDArray)], Union[(None, mx.ndarray.NDArray)])],
 )]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def diagflat(
@@ -34,7 +34,7 @@ def diagflat(
     num_cols: Optional[int] = None,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ):
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def kron(
@@ -44,7 +44,7 @@ def kron(
     *,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def matrix_exp(
@@ -53,7 +53,7 @@ def matrix_exp(
     *,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def eig(
@@ -62,13 +62,13 @@ def eig(
     *,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Tuple[None]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def eigvals(
     x: Union[(None, mx.ndarray.NDArray)], /
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def adjoint(
@@ -77,7 +77,7 @@ def adjoint(
     *,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def solve_triangular(
@@ -105,7 +105,7 @@ def multi_dot(
     *,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> None:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def cond(
@@ -115,7 +115,7 @@ def cond(
     p: Optional[Union[(None, int, str)]] = None,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def dot(

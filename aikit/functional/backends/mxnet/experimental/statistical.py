@@ -1,7 +1,7 @@
 from typing import Union, Optional, Tuple, Sequence
 import mxnet as mx
 
-from aikit.utils.exceptions import IvyNotImplementedException
+from aikit.utils.exceptions import AikitNotImplementedException
 
 
 def histogram(
@@ -18,7 +18,7 @@ def histogram(
     density: Optional[bool] = False,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Tuple[None]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def median(
@@ -29,7 +29,7 @@ def median(
     keepdims: bool = False,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def nanmean(
@@ -41,7 +41,7 @@ def nanmean(
     dtype: Optional[None] = None,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def quantile(
@@ -54,7 +54,7 @@ def quantile(
     keepdims: bool = False,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def corrcoef(
@@ -65,7 +65,7 @@ def corrcoef(
     rowvar: bool = True,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> None:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def nanmedian(
@@ -76,7 +76,7 @@ def nanmedian(
     keepdims: bool = False,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def bincount(
@@ -87,7 +87,7 @@ def bincount(
     minlength: int = 0,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def cov(
@@ -102,4 +102,4 @@ def cov(
     aweights: Optional[None] = None,
     dtype: Optional[type] = None,
 ) -> None:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()

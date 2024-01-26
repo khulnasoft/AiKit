@@ -1,6 +1,6 @@
 """Paddle activation functions.
 
-Collection of Paddle activation functions, wrapped to fit Ivy syntax and
+Collection of Paddle activation functions, wrapped to fit Aikit syntax and
 signature.
 """
 

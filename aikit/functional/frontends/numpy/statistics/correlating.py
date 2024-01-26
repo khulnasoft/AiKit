@@ -43,7 +43,7 @@ def correlate(a, v, mode=None, *, old_behavior=False):
         elif mode == "valid":
             r = m - n + 1
         else:
-            raise aikit.utils.exceptions.IvyException("invalid mode")
+            raise aikit.utils.exceptions.AikitException("invalid mode")
         ret = aikit.array(
             [aikit.to_list((v[:n] * aikit.roll(a, -t)[:n]).sum()) for t in range(0, r)],
             dtype=max(dtypes),
@@ -64,7 +64,7 @@ def correlate(a, v, mode=None, *, old_behavior=False):
         elif mode == "valid":
             r = m - n + 1
         else:
-            raise aikit.utils.exceptions.IvyException("invalid mode")
+            raise aikit.utils.exceptions.AikitException("invalid mode")
         ret = aikit.flip(
             aikit.array(
                 [aikit.to_list((a[:n] * aikit.roll(v, -t)[:n]).sum()) for t in range(0, r)],

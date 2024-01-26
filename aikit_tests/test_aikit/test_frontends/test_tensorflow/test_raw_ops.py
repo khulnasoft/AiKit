@@ -3305,7 +3305,7 @@ def test_tensorflow_Pad(  # NOQA
 
 
 # TODO: Fails with torch backend
-# aikit.exceptions.IvyBackendException: torch: constant_pad: constant_pad_nd(): argument
+# aikit.exceptions.AikitBackendException: torch: constant_pad: constant_pad_nd(): argument
 # 'value' (position 3) must be Number, not bfloat16
 @handle_frontend_test(
     fn_tree="tensorflow.raw_ops.PadV2",

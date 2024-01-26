@@ -223,7 +223,7 @@ def as_aikit_dtype(dtype_in: Union[paddle.dtype, str, bool, int, float], /) -> a
         if dtype_in in native_dtype_dict:
             return aikit.Dtype(dtype_in)
         else:
-            raise aikit.utils.exceptions.IvyException(
+            raise aikit.utils.exceptions.AikitException(
                 "Cannot convert to aikit dtype."
                 f" {dtype_in} is not supported by Paddle backend."
             )
@@ -246,7 +246,7 @@ def as_native_dtype(
     if dtype_in in native_dtype_dict:
         return native_dtype_dict[aikit.Dtype(dtype_in)]
     else:
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             f"Cannot convert to Paddle dtype. {dtype_in} is not supported by Paddle."
         )
 

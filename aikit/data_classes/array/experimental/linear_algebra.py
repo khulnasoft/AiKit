@@ -3,25 +3,25 @@ import abc
 from typing import Optional, Union, Tuple, List, Sequence, Literal
 
 # local
-import ivy
+import aikit
 
 
 class _ArrayWithLinearAlgebraExperimental(abc.ABC):
     def eigh_tridiagonal(
-        self: Union[ivy.Array, ivy.NativeArray],
-        beta: Union[ivy.Array, ivy.NativeArray],
+        self: Union[aikit.Array, aikit.NativeArray],
+        beta: Union[aikit.Array, aikit.NativeArray],
         /,
         *,
         eigvals_only: bool = True,
         select: str = "a",
         select_range: Optional[
-            Union[Tuple[int, int], List[int], ivy.Array, ivy.NativeArray]
+            Union[Tuple[int, int], List[int], aikit.Array, aikit.NativeArray]
         ] = None,
         tol: Optional[float] = None,
-    ) -> Union[ivy.Array, Tuple[ivy.Array, ivy.Array]]:
-        """ivy.Array instance method variant of ivy.eigh_tridiagonal. This
+    ) -> Union[aikit.Array, Tuple[aikit.Array, aikit.Array]]:
+        """aikit.Array instance method variant of aikit.eigh_tridiagonal. This
         method simply wraps the function, and so the docstring for
-        ivy.eigh_tridiagonal also applies to this method with minimal changes.
+        aikit.eigh_tridiagonal also applies to this method with minimal changes.
 
         Parameters
         ----------
@@ -62,13 +62,13 @@ class _ArrayWithLinearAlgebraExperimental(abc.ABC):
 
         Examples
         --------
-        >>> alpha = ivy.array([0., 1., 2.])
-        >>> beta = ivy.array([0., 1.])
+        >>> alpha = aikit.array([0., 1., 2.])
+        >>> beta = aikit.array([0., 1.])
         >>> y = alpha.eigh_tridiagonal(beta)
         >>> print(y)
-        ivy.array([0., 0.38196, 2.61803])
+        aikit.array([0., 0.38196, 2.61803])
         """
-        return ivy.eigh_tridiagonal(
+        return aikit.eigh_tridiagonal(
             self._data,
             beta,
             eigvals_only=eigvals_only,
@@ -78,7 +78,7 @@ class _ArrayWithLinearAlgebraExperimental(abc.ABC):
         )
 
     def diagflat(
-        self: Union[ivy.Array, ivy.NativeArray],
+        self: Union[aikit.Array, aikit.NativeArray],
         /,
         *,
         offset: int = 0,
@@ -86,21 +86,21 @@ class _ArrayWithLinearAlgebraExperimental(abc.ABC):
         align: str = "RIGHT_LEFT",
         num_rows: int = -1,
         num_cols: int = -1,
-        out: Optional[Union[ivy.Array, ivy.NativeArray]] = None,
-    ) -> ivy.Array:
-        """ivy.Array instance method variant of ivy.diagflat. This method
-        simply wraps the function, and so the docstring for ivy.diagflat also
+        out: Optional[Union[aikit.Array, aikit.NativeArray]] = None,
+    ) -> aikit.Array:
+        """aikit.Array instance method variant of aikit.diagflat. This method
+        simply wraps the function, and so the docstring for aikit.diagflat also
         applies to this method with minimal changes.
 
         Examples
         --------
-        >>> x = ivy.array([1,2])
+        >>> x = aikit.array([1,2])
         >>> x.diagflat(k=1)
-        ivy.array([[0, 1, 0],
+        aikit.array([[0, 1, 0],
                    [0, 0, 2],
                    [0, 0, 0]])
         """
-        return ivy.diagflat(
+        return aikit.diagflat(
             self._data,
             offset=offset,
             padding_value=padding_value,
@@ -111,156 +111,156 @@ class _ArrayWithLinearAlgebraExperimental(abc.ABC):
         )
 
     def kron(
-        self: ivy.Array,
-        b: ivy.Array,
+        self: aikit.Array,
+        b: aikit.Array,
         /,
         *,
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
-        """ivy.Array instance method variant of ivy.kron. This method simply
-        wraps the function, and so the docstring for ivy.kron also applies to
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
+        """aikit.Array instance method variant of aikit.kron. This method simply
+        wraps the function, and so the docstring for aikit.kron also applies to
         this method with minimal changes.
 
         Examples
         --------
-        >>> a = ivy.array([1,2])
-        >>> b = ivy.array([3,4])
+        >>> a = aikit.array([1,2])
+        >>> b = aikit.array([3,4])
         >>> a.diagflat(b)
-        ivy.array([3, 4, 6, 8])
+        aikit.array([3, 4, 6, 8])
         """
-        return ivy.kron(self._data, b, out=out)
+        return aikit.kron(self._data, b, out=out)
 
-    def matrix_exp(self: ivy.Array, /, *, out: Optional[ivy.Array] = None) -> ivy.Array:
-        """ivy.Array instance method variant of ivy.kron. This method simply
-        wraps the function, and so the docstring for ivy.matrix_exp also
+    def matrix_exp(self: aikit.Array, /, *, out: Optional[aikit.Array] = None) -> aikit.Array:
+        """aikit.Array instance method variant of aikit.kron. This method simply
+        wraps the function, and so the docstring for aikit.matrix_exp also
         applies to this method with minimal changes.
 
         Examples
         --------
-        >>> x = ivy.array([[[1., 0.],
+        >>> x = aikit.array([[[1., 0.],
                             [0., 1.]],
                             [[2., 0.],
                             [0., 2.]]])
-        >>> ivy.matrix_exp(x)
-        ivy.array([[[2.7183, 1.0000],
+        >>> aikit.matrix_exp(x)
+        aikit.array([[[2.7183, 1.0000],
                     [1.0000, 2.7183]],
                     [[7.3891, 1.0000],
                     [1.0000, 7.3891]]])
         """
-        return ivy.matrix_exp(self._data, out=out)
+        return aikit.matrix_exp(self._data, out=out)
 
     def eig(
-        self: ivy.Array,
+        self: aikit.Array,
         /,
-    ) -> Tuple[ivy.Array, ...]:
-        """ivy.Array instance method variant of ivy.eig. This method simply
-        wraps the function, and so the docstring for ivy.eig also applies to
+    ) -> Tuple[aikit.Array, ...]:
+        """aikit.Array instance method variant of aikit.eig. This method simply
+        wraps the function, and so the docstring for aikit.eig also applies to
         this method with minimal changes.
 
         Examples
         --------
-        >>> x = ivy.array([[1,2], [3,4]])
+        >>> x = aikit.array([[1,2], [3,4]])
         >>> x.eig()
         (
-        ivy.array([-0.37228132+0.j,  5.37228132+0.j]),
-        ivy.array([[-0.82456484+0.j, -0.41597356+0.j],
+        aikit.array([-0.37228132+0.j,  5.37228132+0.j]),
+        aikit.array([[-0.82456484+0.j, -0.41597356+0.j],
                    [ 0.56576746+0.j, -0.90937671+0.j]])
         )
         """
-        return ivy.eig(self._data)
+        return aikit.eig(self._data)
 
     def eigvals(
-        self: ivy.Array,
+        self: aikit.Array,
         /,
-    ) -> ivy.Array:
-        """ivy.Array instance method variant of ivy.eigvals. This method simply
-        wraps the function, and so the docstring for ivy.eigvals also applies
+    ) -> aikit.Array:
+        """aikit.Array instance method variant of aikit.eigvals. This method simply
+        wraps the function, and so the docstring for aikit.eigvals also applies
         to this method with minimal changes.
 
         Examples
         --------
-        >>> x = ivy.array([[1,2], [3,4]])
+        >>> x = aikit.array([[1,2], [3,4]])
         >>> x.eigvals()
-        ivy.array([-0.37228132+0.j,  5.37228132+0.j])
+        aikit.array([-0.37228132+0.j,  5.37228132+0.j])
         """
-        return ivy.eigvals(self._data)
+        return aikit.eigvals(self._data)
 
     def adjoint(
-        self: ivy.Array,
+        self: aikit.Array,
         /,
         *,
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
-        """ivy.Array instance method variant of ivy.adjoint. This method simply
-        wraps the function, and so the docstring for ivy.adjoint also applies
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
+        """aikit.Array instance method variant of aikit.adjoint. This method simply
+        wraps the function, and so the docstring for aikit.adjoint also applies
         to this method with minimal changes.
 
         Examples
         --------
         >>> x = np.array([[1.-1.j, 2.+2.j],
                           [3.+3.j, 4.-4.j]])
-        >>> x = ivy.array(x)
+        >>> x = aikit.array(x)
         >>> x.adjoint()
-        ivy.array([[1.+1.j, 3.-3.j],
+        aikit.array([[1.+1.j, 3.-3.j],
                    [2.-2.j, 4.+4.j]])
         """
-        return ivy.adjoint(
+        return aikit.adjoint(
             self._data,
             out=out,
         )
 
     def multi_dot(
-        self: ivy.Array,
-        x: Sequence[Union[ivy.Array, ivy.NativeArray]],
+        self: aikit.Array,
+        x: Sequence[Union[aikit.Array, aikit.NativeArray]],
         /,
         *,
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
-        """ivy.Array instance method variant of ivy.multi_dot. This method
-        simply wraps the function, and so the docstring for ivy.multi_dot also
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
+        """aikit.Array instance method variant of aikit.multi_dot. This method
+        simply wraps the function, and so the docstring for aikit.multi_dot also
         applies to this method with minimal changes.
 
         Examples
         --------
-        >>> A = ivy.arange(2 * 3).reshape((2, 3))
-        >>> B = ivy.arange(3 * 2).reshape((3, 2))
-        >>> C = ivy.arange(2 * 2).reshape((2, 2))
+        >>> A = aikit.arange(2 * 3).reshape((2, 3))
+        >>> B = aikit.arange(3 * 2).reshape((3, 2))
+        >>> C = aikit.arange(2 * 2).reshape((2, 2))
         >>> A.multi_dot((B, C))
-        ivy.array([[ 26,  49],
+        aikit.array([[ 26,  49],
                    [ 80, 148]])
         """
-        return ivy.multi_dot((self._data, *x), out=out)
+        return aikit.multi_dot((self._data, *x), out=out)
 
     def cond(
-        self: ivy.Array, /, *, p: Optional[Union[int, float, str]] = None
-    ) -> ivy.Array:
-        """ivy.Array instance method variant of ivy.cond. This method simply
-        wraps the function, and so the docstring for ivy.cond also applies to
+        self: aikit.Array, /, *, p: Optional[Union[int, float, str]] = None
+    ) -> aikit.Array:
+        """aikit.Array instance method variant of aikit.cond. This method simply
+        wraps the function, and so the docstring for aikit.cond also applies to
         this method with minimal changes.
 
         Examples
         --------
-        >>> x = ivy.array([[1,2], [3,4]])
+        >>> x = aikit.array([[1,2], [3,4]])
         >>> x.cond()
-        ivy.array(14.933034373659268)
+        aikit.array(14.933034373659268)
 
-        >>> x = ivy.array([[1,2], [3,4]])
-        >>> x.cond(p=ivy.inf)
-        ivy.array(21.0)
+        >>> x = aikit.array([[1,2], [3,4]])
+        >>> x.cond(p=aikit.inf)
+        aikit.array(21.0)
         """
-        return ivy.cond(self._data, p=p)
+        return aikit.cond(self._data, p=p)
 
     def mode_dot(
-        self: Union[ivy.Array, ivy.NativeArray],
+        self: Union[aikit.Array, aikit.NativeArray],
         /,
-        matrix_or_vector: Union[ivy.Array, ivy.NativeArray],
+        matrix_or_vector: Union[aikit.Array, aikit.NativeArray],
         mode: int,
         transpose: Optional[bool] = False,
         *,
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
-        """ivy.Array instance method variant of ivy.mode_dot. This method
-        simply wraps the function, and so the docstring for ivy.mode_dot also
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
+        """aikit.Array instance method variant of aikit.mode_dot. This method
+        simply wraps the function, and so the docstring for aikit.mode_dot also
         applies to this method with minimal changes.
 
         Parameters
@@ -281,27 +281,27 @@ class _ArrayWithLinearAlgebraExperimental(abc.ABC):
 
         Returns
         -------
-        ivy.Array
+        aikit.Array
             `mode`-mode product of `tensor` by `matrix_or_vector`
             * of shape :math:`(i_1, ..., i_{k-1}, J, i_{k+1}, ..., i_N)`
             if matrix_or_vector is a matrix
             * of shape :math:`(i_1, ..., i_{k-1}, i_{k+1}, ..., i_N)`
             if matrix_or_vector is a vector
         """
-        return ivy.mode_dot(self._data, matrix_or_vector, mode, transpose, out=out)
+        return aikit.mode_dot(self._data, matrix_or_vector, mode, transpose, out=out)
 
     def multi_mode_dot(
-        self: Union[ivy.Array, ivy.NativeArray],
-        mat_or_vec_list: Sequence[Union[ivy.Array, ivy.NativeArray]],
+        self: Union[aikit.Array, aikit.NativeArray],
+        mat_or_vec_list: Sequence[Union[aikit.Array, aikit.NativeArray]],
         /,
         modes: Optional[Sequence[int]] = None,
         skip: Optional[Sequence[int]] = None,
         transpose: Optional[bool] = False,
         *,
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
-        r"""ivy.Array instance method variant of ivy.multi_mode_dot. This method
-        simply wraps the function, and so the docstring for ivy.multi_mode_dot
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
+        r"""aikit.Array instance method variant of aikit.multi_mode_dot. This method
+        simply wraps the function, and so the docstring for aikit.multi_mode_dot
         also applies to this method with minimal changes.
 
         Parameters
@@ -328,7 +328,7 @@ class _ArrayWithLinearAlgebraExperimental(abc.ABC):
 
         Returns
         -------
-        ivy.Array
+        aikit.Array
             tensor times each matrix or vector in the list at mode `mode`
 
         Notes
@@ -336,18 +336,18 @@ class _ArrayWithLinearAlgebraExperimental(abc.ABC):
         If no modes are specified, just assumes there is one matrix or vector per mode and returns:
         :math:`\\text{x  }\\times_0 \\text{ matrix or vec list[0] }\\times_1 \\cdots \\times_n \\text{ matrix or vec list[n] }`
         """  # noqa: E501
-        return ivy.multi_mode_dot(
+        return aikit.multi_mode_dot(
             self._data, mat_or_vec_list, modes, skip, transpose, out=out
         )
 
     def svd_flip(
-        self: Union[ivy.Array, ivy.NativeArray],
-        V: Union[ivy.Array, ivy.NativeArray],
+        self: Union[aikit.Array, aikit.NativeArray],
+        V: Union[aikit.Array, aikit.NativeArray],
         /,
         u_based_decision: Optional[bool] = True,
-    ) -> Tuple[ivy.Array, ivy.Array]:
-        """ivy.Array instance method variant of ivy.svd_flip. This method
-        simply wraps the function, and so the docstring for ivy.svd_flip also
+    ) -> Tuple[aikit.Array, aikit.Array]:
+        """aikit.Array instance method variant of aikit.svd_flip. This method
+        simply wraps the function, and so the docstring for aikit.svd_flip also
         applies to this method with minimal changes.
 
         Parameters
@@ -365,20 +365,20 @@ class _ArrayWithLinearAlgebraExperimental(abc.ABC):
         -------
         u_adjusted, v_adjusted : arrays with the same dimensions as the input.
         """
-        return ivy.svd_flip(self._data, V, u_based_decision)
+        return aikit.svd_flip(self._data, V, u_based_decision)
 
     def make_svd_non_negative(
-        self: Union[ivy.Array, ivy.NativeArray],
-        U: Union[ivy.Array, ivy.NativeArray],
-        S: Union[ivy.Array, ivy.NativeArray],
-        V: Union[ivy.Array, ivy.NativeArray],
+        self: Union[aikit.Array, aikit.NativeArray],
+        U: Union[aikit.Array, aikit.NativeArray],
+        S: Union[aikit.Array, aikit.NativeArray],
+        V: Union[aikit.Array, aikit.NativeArray],
         /,
         *,
         nntype: Optional[Literal["nndsvd", "nndsvda"]] = "nndsvd",
-    ) -> Tuple[ivy.Array, ivy.Array]:
-        """ivy.Array instance method variant of ivy.make_svd_non_negative. This
+    ) -> Tuple[aikit.Array, aikit.Array]:
+        """aikit.Array instance method variant of aikit.make_svd_non_negative. This
         method simply wraps the function, and so the docstring for
-        ivy.make_svd_non_negative also applies to this method with minimal
+        aikit.make_svd_non_negative also applies to this method with minimal
         changes.
 
         Parameters
@@ -397,17 +397,17 @@ class _ArrayWithLinearAlgebraExperimental(abc.ABC):
 
         [1]: Boutsidis & Gallopoulos. Pattern Recognition, 41(4): 1350-1362, 2008.
         """
-        return ivy.make_svd_non_negative(self._data, U, S, V, nntype=nntype)
+        return aikit.make_svd_non_negative(self._data, U, S, V, nntype=nntype)
 
     def tensor_train(
-        self: Union[ivy.Array, ivy.NativeArray],
+        self: Union[aikit.Array, aikit.NativeArray],
         rank: Union[int, Sequence[int]],
         /,
         svd: Optional[Literal["truncated_svd"]] = "truncated_svd",
         verbose: Optional[bool] = False,
-    ) -> ivy.TTTensor:
-        """ivy.Array instance method variant of ivy.tensor_train. This method
-        simply wraps the function, and so the docstring for ivy.tensor_train
+    ) -> aikit.TTTensor:
+        """aikit.Array instance method variant of aikit.tensor_train. This method
+        simply wraps the function, and so the docstring for aikit.tensor_train
         also applies to this method with minimal changes.
 
         Parameters
@@ -425,19 +425,19 @@ class _ArrayWithLinearAlgebraExperimental(abc.ABC):
 
         Returns
         -------
-        ivy.TTTensor
+        aikit.TTTensor
         """
-        return ivy.tensor_train(self._data, rank, svd=svd, verbose=verbose)
+        return aikit.tensor_train(self._data, rank, svd=svd, verbose=verbose)
 
     def truncated_svd(
-        self: Union[ivy.Array, ivy.NativeArray],
+        self: Union[aikit.Array, aikit.NativeArray],
         /,
         compute_uv: bool = True,
         n_eigenvecs: Optional[int] = None,
-    ) -> Union[ivy.Array, Tuple[ivy.Array, ivy.Array, ivy.Array]]:
-        """ivy.Array instance method variant of ivy.make_svd_non_negative. This
+    ) -> Union[aikit.Array, Tuple[aikit.Array, aikit.Array, aikit.Array]]:
+        """aikit.Array instance method variant of aikit.make_svd_non_negative. This
         method simply wraps the function, and so the docstring for
-        ivy.make_svd_non_negative also applies to this method with minimal
+        aikit.make_svd_non_negative also applies to this method with minimal
         changes.
 
         Parameters
@@ -459,24 +459,24 @@ class _ArrayWithLinearAlgebraExperimental(abc.ABC):
             a namedtuple ``(U, S, Vh)``
             Each returned array must have the same floating-point data type as ``x``.
         """
-        return ivy.truncated_svd(self._data, compute_uv, n_eigenvecs)
+        return aikit.truncated_svd(self._data, compute_uv, n_eigenvecs)
 
     def initialize_tucker(
-        self: Union[ivy.Array, ivy.NativeArray],
+        self: Union[aikit.Array, aikit.NativeArray],
         rank: Sequence[int],
         modes: Sequence[int],
         /,
         *,
-        init: Optional[Union[Literal["svd", "random"], ivy.TuckerTensor]] = "svd",
+        init: Optional[Union[Literal["svd", "random"], aikit.TuckerTensor]] = "svd",
         seed: Optional[int] = None,
         svd: Optional[Literal["truncated_svd"]] = "truncated_svd",
         non_negative: Optional[bool] = False,
-        mask: Optional[Union[ivy.Array, ivy.NativeArray]] = None,
+        mask: Optional[Union[aikit.Array, aikit.NativeArray]] = None,
         svd_mask_repeats: Optional[int] = 5,
-    ) -> Tuple[ivy.Array, Sequence[ivy.Array]]:
-        """ivy.Array instance method variant of ivy.initialize_tucker. This
+    ) -> Tuple[aikit.Array, Sequence[aikit.Array]]:
+        """aikit.Array instance method variant of aikit.initialize_tucker. This
         method simply wraps the function, and so the docstring for
-        ivy.initialize_tucker also applies to this method with minimal changes.
+        aikit.initialize_tucker also applies to this method with minimal changes.
 
         Parameters
         ----------
@@ -511,7 +511,7 @@ class _ArrayWithLinearAlgebraExperimental(abc.ABC):
         factors
             list of factors
         """
-        return ivy.initialize_tucker(
+        return aikit.initialize_tucker(
             self._data,
             rank,
             modes,
@@ -524,23 +524,23 @@ class _ArrayWithLinearAlgebraExperimental(abc.ABC):
         )
 
     def partial_tucker(
-        self: Union[ivy.Array, ivy.NativeArray],
+        self: Union[aikit.Array, aikit.NativeArray],
         rank: Optional[Sequence[int]] = None,
         modes: Optional[Sequence[int]] = None,
         /,
         *,
         n_iter_max: Optional[int] = 100,
-        init: Optional[Union[Literal["svd", "random"], ivy.TuckerTensor]] = "svd",
+        init: Optional[Union[Literal["svd", "random"], aikit.TuckerTensor]] = "svd",
         svd: Optional[Literal["truncated_svd"]] = "truncated_svd",
         seed: Optional[int] = None,
-        mask: Optional[Union[ivy.Array, ivy.NativeArray]] = None,
+        mask: Optional[Union[aikit.Array, aikit.NativeArray]] = None,
         svd_mask_repeats: Optional[int] = 5,
         tol: Optional[float] = 10e-5,
         verbose: Optional[bool] = False,
         return_errors: Optional[bool] = False,
-    ) -> Tuple[ivy.Array, Sequence[ivy.Array]]:
-        """ivy.Array instance method variant of ivy.partial_tucker. This method
-        simply wraps the function, and so the docstring for ivy.partial_tucker
+    ) -> Tuple[aikit.Array, Sequence[aikit.Array]]:
+        """aikit.Array instance method variant of aikit.partial_tucker. This method
+        simply wraps the function, and so the docstring for aikit.partial_tucker
         also applies to this method with minimal changes.
 
         Parameters
@@ -589,7 +589,7 @@ class _ArrayWithLinearAlgebraExperimental(abc.ABC):
                 list of factors of the Tucker decomposition.
                 with ``core.shape[i] == (tensor.shape[i], ranks[i]) for i in modes``
         """
-        return ivy.partial_tucker(
+        return aikit.partial_tucker(
             self._data,
             rank,
             modes,
@@ -605,23 +605,23 @@ class _ArrayWithLinearAlgebraExperimental(abc.ABC):
         )
 
     def tucker(
-        self: Union[ivy.Array, ivy.NativeArray],
+        self: Union[aikit.Array, aikit.NativeArray],
         rank: Optional[Sequence[int]] = None,
         /,
         *,
         fixed_factors: Optional[Sequence[int]] = None,
         n_iter_max: Optional[int] = 100,
-        init: Optional[Union[Literal["svd", "random"], ivy.TuckerTensor]] = "svd",
+        init: Optional[Union[Literal["svd", "random"], aikit.TuckerTensor]] = "svd",
         svd: Optional[Literal["truncated_svd"]] = "truncated_svd",
         seed: Optional[int] = None,
-        mask: Optional[Union[ivy.Array, ivy.NativeArray]] = None,
+        mask: Optional[Union[aikit.Array, aikit.NativeArray]] = None,
         svd_mask_repeats: Optional[int] = 5,
         tol: Optional[float] = 10e-5,
         verbose: Optional[bool] = False,
         return_errors: Optional[bool] = False,
     ):
-        """ivy.Array instance method variant of ivy.tucker. This method simply
-        wraps the function, and so the docstring for ivy.tucker also applies to
+        """aikit.Array instance method variant of aikit.tucker. This method simply
+        wraps the function, and so the docstring for aikit.tucker also applies to
         this method with minimal changes.
 
         Parameters
@@ -668,7 +668,7 @@ class _ArrayWithLinearAlgebraExperimental(abc.ABC):
 
         Returns
         -------
-            ivy.TuckerTensor or ivy.TuckerTensor and
+            aikit.TuckerTensor or aikit.TuckerTensor and
             list of reconstruction errors if return_erros is True.
 
         References
@@ -676,7 +676,7 @@ class _ArrayWithLinearAlgebraExperimental(abc.ABC):
         .. [1] tl.G.Kolda and B.W.Bader, "Tensor Decompositions and Applications",
         SIAM REVIEW, vol. 51, n. 3, pp. 455-500, 2009.
         """
-        return ivy.tucker(
+        return aikit.tucker(
             self._data,
             rank,
             fixed_factors=fixed_factors,
@@ -692,14 +692,14 @@ class _ArrayWithLinearAlgebraExperimental(abc.ABC):
         )
 
     def tt_matrix_to_tensor(
-        self: Union[ivy.Array, ivy.NativeArray],
+        self: Union[aikit.Array, aikit.NativeArray],
         /,
         *,
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
-        """Ivy.Array instance method variant of ivy.tt_matrix_to_tensor. This
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
+        """Aikit.Array instance method variant of aikit.tt_matrix_to_tensor. This
         method simply wraps the function, and so the docstring for
-        ivy.tt_matrix_to_tensor also applies to this method with minimal
+        aikit.tt_matrix_to_tensor also applies to this method with minimal
         changes.
 
         Parameters
@@ -717,7 +717,7 @@ class _ArrayWithLinearAlgebraExperimental(abc.ABC):
         output_tensor: array
                     tensor whose TT-Matrix decomposition was given by 'factors'
          --------
-         >>> a = ivy.array([[[[[0.49671414],
+         >>> a = aikit.array([[[[[0.49671414],
          ...                      [-0.1382643]],
          ...
          ...                     [[0.64768857],
@@ -728,7 +728,7 @@ class _ArrayWithLinearAlgebraExperimental(abc.ABC):
          ...                     [[1.57921278],
          ...                      [0.76743472]]]]])
          >>> a.tt_matrix_to_tensor()
-         ivy.array([[[[-0.1163073 , -0.11629914],
+         aikit.array([[[[-0.1163073 , -0.11629914],
           [ 0.03237505,  0.03237278]],
 
          [[ 0.78441733,  0.38119566],
@@ -741,14 +741,14 @@ class _ArrayWithLinearAlgebraExperimental(abc.ABC):
          [[ 1.02283812,  0.49705869],
           [ 2.40518808,  1.16882598]]]])
         """
-        return ivy.tt_matrix_to_tensor(self._data, out=out)
+        return aikit.tt_matrix_to_tensor(self._data, out=out)
 
     def dot(
-        self: Union[ivy.Array, ivy.NativeArray],
-        b: Union[ivy.Array, ivy.NativeArray],
+        self: Union[aikit.Array, aikit.NativeArray],
+        b: Union[aikit.Array, aikit.NativeArray],
         /,
         *,
-        out: Optional[ivy.Array] = None,
+        out: Optional[aikit.Array] = None,
     ):
         """Compute the dot product between two arrays `a` and `b` using the
         current backend's implementation. The dot product is defined as the sum
@@ -770,42 +770,42 @@ class _ArrayWithLinearAlgebraExperimental(abc.ABC):
 
         Examples
         --------
-        With :class:`ivy.Array` inputs:
+        With :class:`aikit.Array` inputs:
 
-        >>> a = ivy.array([1, 2, 3])
-        >>> b = ivy.array([4, 5, 6])
-        >>> result = ivy.dot(a, b)
+        >>> a = aikit.array([1, 2, 3])
+        >>> b = aikit.array([4, 5, 6])
+        >>> result = aikit.dot(a, b)
         >>> print(result)
-        ivy.array(32)
+        aikit.array(32)
 
-        >>> a = ivy.array([[1, 2], [3, 4]])
-        >>> b = ivy.array([[5, 6], [7, 8]])
-        >>> c = ivy.empty_like(a)
-        >>> ivy.dot(a, b, out=c)
+        >>> a = aikit.array([[1, 2], [3, 4]])
+        >>> b = aikit.array([[5, 6], [7, 8]])
+        >>> c = aikit.empty_like(a)
+        >>> aikit.dot(a, b, out=c)
         >>> print(c)
-        ivy.array([[19, 22],
+        aikit.array([[19, 22],
             [43, 50]])
 
-        >>> a = ivy.array([[1.1, 2.3, -3.6]])
-        >>> b = ivy.array([[-4.8], [5.2], [6.1]])
-        >>> c = ivy.zeros((1, 1))
-        >>> ivy.dot(a, b, out=c)
+        >>> a = aikit.array([[1.1, 2.3, -3.6]])
+        >>> b = aikit.array([[-4.8], [5.2], [6.1]])
+        >>> c = aikit.zeros((1, 1))
+        >>> aikit.dot(a, b, out=c)
         >>> print(c)
-        ivy.array([[-15.28]])
+        aikit.array([[-15.28]])
         """
-        return ivy.dot(self._data, b, out=out)
+        return aikit.dot(self._data, b, out=out)
 
     def general_inner_product(
-        self: Union[ivy.Array, ivy.NativeArray],
-        b: Union[ivy.Array, ivy.NativeArray],
+        self: Union[aikit.Array, aikit.NativeArray],
+        b: Union[aikit.Array, aikit.NativeArray],
         n_modes: Optional[int] = None,
         /,
         *,
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
-        """ivy.Array instance method variant of ivy.general_inner_product. This
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
+        """aikit.Array instance method variant of aikit.general_inner_product. This
         method simply wraps the function, and so the docstring for
-        ivy.general_inner_product also applies to this method with minimal
+        aikit.general_inner_product also applies to this method with minimal
         changes.
 
         Parameters
@@ -828,39 +828,39 @@ class _ArrayWithLinearAlgebraExperimental(abc.ABC):
 
         Examples
         --------
-        With :class:`ivy.Array` inputs:
+        With :class:`aikit.Array` inputs:
 
-        >>> a = ivy.array([1, 2, 3])
-        >>> b = ivy.array([4, 5, 6])
+        >>> a = aikit.array([1, 2, 3])
+        >>> b = aikit.array([4, 5, 6])
         >>> result = a.general_inner_product(b, n_modes=1)
         >>> print(result)
-        ivy.array(32)
+        aikit.array(32)
 
-        >>> a = ivy.array([1, 2])
-        >>> b = ivy.array([4, 5])
+        >>> a = aikit.array([1, 2])
+        >>> b = aikit.array([4, 5])
         >>> result = a.general_inner_product(b)
         >>> print(result)
-        ivy.array(14)
+        aikit.array(14)
 
-        >>> a = ivy.array([[1, 1], [1, 1]])
-        >>> b = ivy.array([[1, 2, 3, 4],[1, 1, 1, 1]])
+        >>> a = aikit.array([[1, 1], [1, 1]])
+        >>> b = aikit.array([[1, 2, 3, 4],[1, 1, 1, 1]])
         >>> result = a.general_inner_product(b, n_modes=1)
         >>> print(result)
-        ivy.array([[2, 3, 4, 5],
+        aikit.array([[2, 3, 4, 5],
             [2, 3, 4, 5]])
         """
-        return ivy.general_inner_product(self, b, n_modes, out=out)
+        return aikit.general_inner_product(self, b, n_modes, out=out)
 
     def higher_order_moment(
-        self: Union[ivy.Array, ivy.NativeArray],
+        self: Union[aikit.Array, aikit.NativeArray],
         order: int,
         /,
         *,
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
-        """ivy.Array instance method variant of ivy.higher_order_moment. This
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
+        """aikit.Array instance method variant of aikit.higher_order_moment. This
         method simply wraps the function, and so the docstring for
-        ivy.higher_order_moment also applies to this method with minimal
+        aikit.higher_order_moment also applies to this method with minimal
         changes.
 
         Parameters
@@ -880,27 +880,27 @@ class _ArrayWithLinearAlgebraExperimental(abc.ABC):
 
         Examples
         --------
-        >>> a = ivy.array([[1, 2], [3, 4]])
-        >>> result = ivy.higher_order_moment(a, 3)
+        >>> a = aikit.array([[1, 2], [3, 4]])
+        >>> result = aikit.higher_order_moment(a, 3)
         >>> print(result)
-        ivy.array([[
+        aikit.array([[
             [14, 19],
             [19, 26]],
            [[19, 26],
             [26, 36]
         ]])
         """
-        return ivy.higher_order_moment(self._data, order, out=out)
+        return aikit.higher_order_moment(self._data, order, out=out)
 
     def batched_outer(
-        self: ivy.Array,
-        tensors: Sequence[Union[ivy.Array, ivy.NativeArray]],
+        self: aikit.Array,
+        tensors: Sequence[Union[aikit.Array, aikit.NativeArray]],
         /,
         *,
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
-        """Ivy Array instance method variant of ivy.batched_outer. This method
-        simply wraps the function, and so the docstring for ivy.batched_outer
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
+        """Aikit Array instance method variant of aikit.batched_outer. This method
+        simply wraps the function, and so the docstring for aikit.batched_outer
         also applies to this method with minimal changes.
 
         Parameters
@@ -916,11 +916,11 @@ class _ArrayWithLinearAlgebraExperimental(abc.ABC):
 
         Examples
         --------
-        >>> a = ivy.array([[[1, 2], [3, 4]], [[5, 6], [7, 8]]])
-        >>> b = ivy.array([[[.1, .2], [.3, .4]], [[.5, .6], [.7, .8]]])
-        >>> result = ivy.batched_outer(a, b)
+        >>> a = aikit.array([[[1, 2], [3, 4]], [[5, 6], [7, 8]]])
+        >>> b = aikit.array([[[.1, .2], [.3, .4]], [[.5, .6], [.7, .8]]])
+        >>> result = aikit.batched_outer(a, b)
         >>> print(result)
-        ivy.array([[[[[0.1, 0.2],
+        aikit.array([[[[[0.1, 0.2],
               [0.30000001, 0.40000001]],
              [[0.2       , 0.40000001],
               [0.60000002, 0.80000001]]],
@@ -937,4 +937,4 @@ class _ArrayWithLinearAlgebraExperimental(abc.ABC):
              [[4.        , 4.80000019],
               [5.5999999 , 6.4000001 ]]]]])
         """
-        return ivy.batched_outer((self._data, *tensors), out=out)
+        return aikit.batched_outer((self._data, *tensors), out=out)

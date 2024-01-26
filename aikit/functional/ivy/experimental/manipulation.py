@@ -956,11 +956,11 @@ def _check_tuple_arg(arg, arg_name, force_integer=False, force_positive=False):
         )
     ):
         if force_integer:
-            raise aikit.utils.exceptions.IvyException(
+            raise aikit.utils.exceptions.AikitException(
                 f"{arg_name} should be int, tuple of ints or tuple of int tuples"
             )
         else:
-            raise aikit.utils.exceptions.IvyException(
+            raise aikit.utils.exceptions.AikitException(
                 f"{arg_name} should be scalar, tuple of scalars or tuple of scalar"
                 " tuples"
             )
@@ -1877,9 +1877,9 @@ def as_strided(
     """
     itemsize = x.itemsize
     if not _check_bounds(x.shape, shape, strides, itemsize):
-        raise aikit.exceptions.IvyException("attempted unsafe memory access")
+        raise aikit.exceptions.AikitException("attempted unsafe memory access")
     if any(strides[i] % itemsize != 0 for i in range(len(strides))):
-        raise aikit.exceptions.IvyException("strides must be multiple of itemsize")
+        raise aikit.exceptions.AikitException("strides must be multiple of itemsize")
 
     src = memoryview(aikit.to_numpy(x)).cast("b")
 

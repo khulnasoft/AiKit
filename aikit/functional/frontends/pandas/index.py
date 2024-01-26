@@ -10,7 +10,7 @@ class Index:
         if not isinstance(data, aikit.Array):
             try:
                 self.index_array = aikit.array(data, dtype=dtype)
-            except aikit.utils.exceptions.IvyBackendException:
+            except aikit.utils.exceptions.AikitBackendException:
                 # labels as strings
                 if isinstance(data, (list, tuple)):
                     self.tokens = data

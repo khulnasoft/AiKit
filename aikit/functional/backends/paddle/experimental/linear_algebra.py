@@ -8,7 +8,7 @@ from aikit.func_wrapper import (
     with_unsupported_device_and_dtypes,
     with_supported_device_and_dtypes,
 )
-from aikit.utils.exceptions import IvyNotImplementedException
+from aikit.utils.exceptions import AikitNotImplementedException
 from .. import backend_version
 
 
@@ -67,7 +67,7 @@ def matrix_exp(
 ) -> paddle.Tensor:
     # TODO: this is elementwise exp, should be changed to matrix exp ASAP
     # return paddle.exp(x)
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def eig(
@@ -118,7 +118,7 @@ def cond(
     p: Optional[Union[None, int, str]] = None,
     out: Optional[paddle.Tensor] = None,
 ) -> Any:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def lu_factor(
@@ -128,7 +128,7 @@ def lu_factor(
     pivot: Optional[bool] = True,
     out: Optional[paddle.Tensor] = None,
 ) -> Any:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 @with_supported_device_and_dtypes(

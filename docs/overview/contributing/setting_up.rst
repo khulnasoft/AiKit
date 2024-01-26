@@ -9,35 +9,35 @@ Setting Up
 .. _`pip packages thread`: https://discord.com/channels/799879767196958751/1186629837515935765
 .. _`miniconda`: https://docs.conda.io/en/latest/miniconda.html
 .. _`venv`: https://docs.python.org/3/library/venv.html
-.. _`ivy/scripts`: https://github.com/khulnasoft/aikit/tree/bcddc79978afe447958dfa3ea660716845c85846/scripts
+.. _`aikit/scripts`: https://github.com/khulnasoft/aikit/tree/bcddc79978afe447958dfa3ea660716845c85846/scripts
 .. _`platform compatibility tags`: https://packaging.python.org/en/latest/specifications/platform-compatibility-tags/
 .. _`logging level`: https://docs.python.org/3/library/logging.html#logging.Logger.setLevel
 
-We're really happy you'd like to learn how to contribute towards Ivy 🙂
+We're really happy you'd like to learn how to contribute towards Aikit 🙂
 
 This page explains the main steps to get started!
 
 Forking and cloning the repo
 ----------------------------
 
-#. You will first need to fork the Ivy repository from the repository page here `repo`_ by using the fork button on the top right. This creates a copy of the Ivy repository in your GitHub account.
+#. You will first need to fork the Aikit repository from the repository page here `repo`_ by using the fork button on the top right. This creates a copy of the Aikit repository in your GitHub account.
 #. Clone your forked repo to your local machine.
 
 Depending on your preferred mode of cloning, any of the below should work:
 
 .. code-block:: none
 
-    git clone --recurse-submodules git@github.com:YOUR_USERNAME/ivy.git
+    git clone --recurse-submodules git@github.com:YOUR_USERNAME/aikit.git
 
 .. code-block:: none
 
-    git clone --recurse-submodules https://github.com/YOUR_USERNAME/ivy.git
+    git clone --recurse-submodules https://github.com/YOUR_USERNAME/aikit.git
 
 .. code-block:: none
 
-    gh repo clone YOUR_USERNAME/ivy your_folder -- --recurse-submodules
+    gh repo clone YOUR_USERNAME/aikit your_folder -- --recurse-submodules
 
-Then enter into your cloned ivy folder, for example :code:`cd ~/ivy` and add Ivy original repository as upstream, to easily sync with the latest changes.
+Then enter into your cloned aikit folder, for example :code:`cd ~/aikit` and add Aikit original repository as upstream, to easily sync with the latest changes.
 
 .. code-block:: none
 
@@ -60,7 +60,7 @@ In order to install and properly set up pre-commit, these steps should be follow
 
 1. Run :code:`python3 -m pip install pre-commit`
 
-2. Enter into your cloned ivy folder, for example :code:`cd ~/ivy`
+2. Enter into your cloned aikit folder, for example :code:`cd ~/aikit`
 
 3. Run :code:`pre-commit install`
 
@@ -88,16 +88,16 @@ For questions, please reach out on `discord`_ in the `pycharm thread`_!
 Virtual environments - No Docker
 --------------------------------
 
-Due to the rapid pace of updates in Ivy, it is strongly suggested for developers to use the latest ivy package from GitHub source, as explained below.
+Due to the rapid pace of updates in Aikit, it is strongly suggested for developers to use the latest aikit package from GitHub source, as explained below.
 This is to ensure the contributors' code and examples are as aligned and in accordance with the latest as possible.
-The stable version of Ivy from PyPI maybe used for personal projects and experiments but avoided in development, for now.
-If you want to use the stable version, you are welcome to use the docker container or pip install ivy.
+The stable version of Aikit from PyPI maybe used for personal projects and experiments but avoided in development, for now.
+If you want to use the stable version, you are welcome to use the docker container or pip install aikit.
 
 Below is a guide to creating your own virtual environment.
 The benefit of creating a python environment is the ability to install certain packages for a project and then other packages (perhaps different versions) in a new environment for another project.
 This makes it very easy to keep track of installed packages and their versions.
 
-Below is a guide for setting up a developing environment for Ivy.
+Below is a guide for setting up a developing environment for Aikit.
 
 You can either use `miniconda`_ or `venv`_:
 
@@ -106,19 +106,19 @@ Using miniconda
 
 #. Install `miniconda`_
 #. Open conda terminal
-#. Create the environment by running the command (:code:`ivy_dev` is the name of the environment)
+#. Create the environment by running the command (:code:`aikit_dev` is the name of the environment)
 
    .. code-block:: none
 
-      conda create --name ivy_dev python=3.10.0
+      conda create --name aikit_dev python=3.10.0
 
 #. Activate the environment by:
 
    .. code-block:: none
 
-      conda activate ivy_dev
+      conda activate aikit_dev
 
-#. Now install the ivy package for development by running the command below:
+#. Now install the aikit package for development by running the command below:
 
    .. code-block:: none
 
@@ -157,7 +157,7 @@ Using miniconda
 
 #. Installing array API testing dependencies.
 
-   To make sure you have all the packages for running tests available change the directory to :code:`ivy/ivy_tests/array_api_testing/test_array_api` in your cloned fork using the :code:`cd` command and run the command below (while your :code:`ivy_dev` environment is active):
+   To make sure you have all the packages for running tests available change the directory to :code:`aikit/aikit_tests/array_api_testing/test_array_api` in your cloned fork using the :code:`cd` command and run the command below (while your :code:`aikit_dev` environment is active):
 
    .. code-block:: none
 
@@ -173,11 +173,11 @@ This is a builtin package and doesn't require explicit installation.
 #. Open your terminal/cmd in the directory where you would like to have the folder with the environment files.
 
 #. Create the environment by running the command below with a new environment name.
-   We named it :code:`ivy_dev` like above.
+   We named it :code:`aikit_dev` like above.
 
    .. code-block:: none
 
-      python -m venv ivy_dev
+      python -m venv aikit_dev
 
    Try :code:`python3` if :code:`python` doesn't work.
 
@@ -185,7 +185,7 @@ This is a builtin package and doesn't require explicit installation.
 
    .. code-block:: none
 
-      ivy_dev\Scripts\activate.bat
+      aikit_dev\Scripts\activate.bat
 
    (on Windows)
 
@@ -193,11 +193,11 @@ This is a builtin package and doesn't require explicit installation.
 
    .. code-block:: none
 
-      source ivy_dev/bin/activate
+      source aikit_dev/bin/activate
 
    (on Mac/Linux)
 
-#. Now install the ivy package for development by running the command below:
+#. Now install the aikit package for development by running the command below:
 
    .. code-block:: none
 
@@ -245,7 +245,7 @@ This is a builtin package and doesn't require explicit installation.
 
 #. Installing array API testing dependencies.
 
-   To make sure you have all the packages for running tests available change the directory to :code:`ivy/ivy_tests/array_api_testing/test_array_api` in your cloned fork using the :code:`cd` command and run the command below (while your :code:`ivy_dev` environment is active):
+   To make sure you have all the packages for running tests available change the directory to :code:`aikit/aikit_tests/array_api_testing/test_array_api` in your cloned fork using the :code:`cd` command and run the command below (while your :code:`aikit_dev` environment is active):
 
    .. code-block:: none
 
@@ -256,9 +256,9 @@ This is a builtin package and doesn't require explicit installation.
 Here are the visual guides for setting up a `virtualenv environment <https://www.jetbrains.com/help/pycharm/creating-virtual-environment.html#0>`_ OR `conda environment <https://www.jetbrains.com/help/pycharm/conda-support-creating-conda-virtual-environment.html>`_ in pycharm from JetBrains.
 For VSCode, you can follow the instructions `virtual environments <https://code.visualstudio.com/docs/python/environments#_creating-environments>`_.
 
-**Installing Ivy from source**
+**Installing Aikit from source**
 
-You can also install Ivy from source if you want to take advantage of the latest changes, but we can't ensure everything will work as expected. All the steps will remain the same for miniconda and venv as described above, only the command for point 4 for venv and point 5 for miniconda will change, everything else will remain the same. You have to run the following instead:
+You can also install Aikit from source if you want to take advantage of the latest changes, but we can't ensure everything will work as expected. All the steps will remain the same for miniconda and venv as described above, only the command for point 4 for venv and point 5 for miniconda will change, everything else will remain the same. You have to run the following instead:
 
    .. code-block:: none
 
@@ -285,7 +285,7 @@ Windows
    For most, it will only require running the command :code:`wsl --install` in powershell admin mode.
    Visit the link if it doesn't.
 #. Install `Pycharm Professional Version <https://www.jetbrains.com/pycharm/>`_, make sure to only install the Professional version of PyCharm, not the Community version.
-#. Open pycharm with your cloned Ivy repository.
+#. Open pycharm with your cloned Aikit repository.
    Add the remote python interpreter by:
 
    a. Going to the settings -> Build, Execution, Deployment -> Docker
@@ -303,7 +303,7 @@ Windows
 
    a. In the left panel select "System Interpreter".
    b. For Interpreter, select the default option which will be "/usr/bin/python3" the select "Create".
-#. Opening "Edit Run/Debug configurations" dialog -> "Edit Configurations..." and making sure that "Working directory" is empty in case of getting the "Can't run process: the working directory '\ivy' is invalid, it needs to be an absolute path" error.
+#. Opening "Edit Run/Debug configurations" dialog -> "Edit Configurations..." and making sure that "Working directory" is empty in case of getting the "Can't run process: the working directory '\aikit' is invalid, it needs to be an absolute path" error.
 #. Everyone using PyCharm with the latest docker image and facing issues after setting up everything. All you need to do is add the paths here once, and then go to :code:`File--> Save all` for this configuration to persist. Just as shown in the image below, The paths would be:
 
    .. code-block:: none
@@ -337,13 +337,13 @@ MacOS
 
 
 #. Install `Docker Desktop <https://www.docker.com/products/docker-desktop>`_.
-#. Get the latest Docker Image for Ivy by:
+#. Get the latest Docker Image for Aikit by:
 
    a. Running Docker desktop.
    b. Opening the terminal, and running the command: :code:`docker pull khulnasoft/aikit:latest`
 
 #. Install `Pycharm Professional Version <https://www.jetbrains.com/pycharm/>`_
-#. Open pycharm with your cloned Ivy repository.
+#. Open pycharm with your cloned Aikit repository.
    Add the remote python interpreter by:
 
    a. Going to the settings -> Build, Execution, Deployment -> Docker.
@@ -413,7 +413,7 @@ Ubuntu
 
        sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
 
-#. Get the latest Docker Image for Ivy by:
+#. Get the latest Docker Image for Aikit by:
 
    a. Opening terminal and running :code:`systemctl start docker`
    b. Running the command: :code:`docker pull khulnasoft/aikit:latest`
@@ -422,7 +422,7 @@ Ubuntu
 
 #. Install Pycharm Professional Version.
    You may use Ubuntu Software for this.
-#. Open pycharm with your cloned Ivy repository.
+#. Open pycharm with your cloned Aikit repository.
    Add the remote python interpreter by:
 
    a. Going to the settings -> Build, Execution, Deployment -> Docker.
@@ -458,7 +458,7 @@ For questions, please reach out on `discord`_ in the `docker thread`_!
 Setting Up Testing in PyCharm
 -----------------------------
 
-There are a couple of options to choose from when running ivy tests in PyCharm.
+There are a couple of options to choose from when running aikit tests in PyCharm.
 To run a single unit test, e.g. `test_abs`, you can avail of the context menu in the PyCharm code editor by pressing the green ▶️ symbol which appears to the left of `def test_abs(`.
 
 .. image:: https://github.com/khulnasoft/khulnasoft.github.io/blob/main/img/externally_linked/contributing/setting_up/setting_up_testing/pycharm_test_run_1.png?raw=true
@@ -487,32 +487,32 @@ Click this and you should see a progress bar of all the tests running in the fil
 .. image:: https://github.com/khulnasoft/khulnasoft.github.io/blob/main/img/externally_linked/contributing/setting_up/setting_up_testing/pycharm_run_all_2.png?raw=true
   :width: 420
 
-It is also possible to run the entire set of ivy tests or the array api test suite using pre-written shell scripts that can be run from the 'Terminal' tab in PyCharm.
-There are a number of such shell scripts in `ivy/scripts`_:
+It is also possible to run the entire set of aikit tests or the array api test suite using pre-written shell scripts that can be run from the 'Terminal' tab in PyCharm.
+There are a number of such shell scripts in `aikit/scripts`_:
 
 .. code-block:: bash
     :emphasize-lines: 4,5,8,9,10
 
-    scripts/setup_tests/run_ivy_core_test.py
-    scripts/setup_tests/run_ivy_nn_test.py
-    scripts/setup_tests/run_ivy_stateful_test.py
+    scripts/setup_tests/run_aikit_core_test.py
+    scripts/setup_tests/run_aikit_nn_test.py
+    scripts/setup_tests/run_aikit_stateful_test.py
     scripts/shell/run_tests.sh
     scripts/shell/test_array_api.sh
     scripts/test_dependencies.py
     scripts/shell/test_dependencies.sh
-    scripts/shell/test_ivy_core.sh
-    scripts/shell/test_ivy_nn.sh
-    scripts/shell/test_ivy_stateful.sh
+    scripts/shell/test_aikit_core.sh
+    scripts/shell/test_aikit_nn.sh
+    scripts/shell/test_aikit_stateful.sh
 
 **For Unix-based systems (Linux and macOS):**
 
-* :code:`scripts/shell/run_tests.sh` is run by typing :code:`./scripts/shell/run_tests.sh` in the :code:`/ivy` directory.
-  This runs all tests in :code:`ivy/ivy_tests`.
+* :code:`scripts/shell/run_tests.sh` is run by typing :code:`./scripts/shell/run_tests.sh` in the :code:`/aikit` directory.
+  This runs all tests in :code:`aikit/aikit_tests`.
 * :code:`scripts/shell/test_array_api.sh` is run by typing :code:`./scripts/shell/test_array_api.sh [backend] test_[submodule]`.
   This runs all array-api tests for a certain submodule in a certain backend.
-* :code:`scripts/shell/test_ivy_core.sh` is run by typing :code:`./scripts/shell/test_ivy_core.sh [backend] test_[submodule]` in the ivy directory.
-  This runs all ivy tests for a certain submodule in a certain backend in :code:`test_ivy/test_functional/test_core`.
-* :code:`scripts/shell/test_ivy_nn.sh`, :code:`scripts/shell/test_ivy_stateful.sh` are run in a similar manner to :code:`scripts/shell/test_ivy_core.sh`.
+* :code:`scripts/shell/test_aikit_core.sh` is run by typing :code:`./scripts/shell/test_aikit_core.sh [backend] test_[submodule]` in the aikit directory.
+  This runs all aikit tests for a certain submodule in a certain backend in :code:`test_aikit/test_functional/test_core`.
+* :code:`scripts/shell/test_aikit_nn.sh`, :code:`scripts/shell/test_aikit_stateful.sh` are run in a similar manner to :code:`scripts/shell/test_aikit_core.sh`.
   Make sure to check the submodule names in the source code before running.
 
 .. image:: https://github.com/khulnasoft/khulnasoft.github.io/blob/main/img/externally_linked/contributing/setting_up/setting_up_testing/pycharm_run_array_api_tests.png?raw=true
@@ -524,19 +524,19 @@ There are a number of such shell scripts in `ivy/scripts`_:
 For Windows users, you may need to specify that the shell scripts should be run by :code:`sh`, which comes with Git. In the Terminal, prepend sh to the script commands like so:
 
 
-* To run :code:`scripts/shell/run_tests.sh` on Windows, type :code:`sh ./scripts/shell/run_tests.sh` in the :code:`/ivy` directory.
-  This runs all tests in :code:`ivy/ivy_tests`.
+* To run :code:`scripts/shell/run_tests.sh` on Windows, type :code:`sh ./scripts/shell/run_tests.sh` in the :code:`/aikit` directory.
+  This runs all tests in :code:`aikit/aikit_tests`.
 * To run :code:`scripts/shell/test_array_api.sh` on Windows, type :code:`sh ./scripts/shell/test_array_api.sh [backend] test_[submodule]`.
   This runs all array-api tests for a certain submodule in a certain backend.
-* To run :code:`scripts/shell/test_ivy_core.sh` on Windows, type :code:`sh ./scripts/shell/test_ivy_core.sh [backend] test_[submodule]` in the ivy directory.
-  This runs all ivy tests for a certain submodule in a certain backend in :code:`test_ivy/test_functional/test_core`.
-* :code:`scripts/shell/test_ivy_nn.sh`, :code:`scripts/shell/test_ivy_stateful.sh` are run in a similar manner to :code:`scripts/shell/test_ivy_core.sh` on Windows.
+* To run :code:`scripts/shell/test_aikit_core.sh` on Windows, type :code:`sh ./scripts/shell/test_aikit_core.sh [backend] test_[submodule]` in the aikit directory.
+  This runs all aikit tests for a certain submodule in a certain backend in :code:`test_aikit/test_functional/test_core`.
+* :code:`scripts/shell/test_aikit_nn.sh`, :code:`scripts/shell/test_aikit_stateful.sh` are run in a similar manner to :code:`scripts/shell/test_aikit_core.sh` on Windows.
   Make sure to check the submodule names in the source code before running.
 
 The above instructions for running tests on Windows assume that you have installed Git and have access to the Git Bash terminal. If you do not have Git Bash, you can download it from the `official Git website <https://git-scm.com/downloads>`_.
 
-If you wish to run tests of all submodules of `ivy_core`, `ivy_nn` or `ivy_stateful`, there are :code:`.py` available in :code:`scripts/shell`.
-All are run like: :code:`python scripts/setup_tests/run_ivy_nn_test.py 1`, where 1 = numpy, 2 = torch, 3 = jax, and 4 = tensorflow.
+If you wish to run tests of all submodules of `aikit_core`, `aikit_nn` or `aikit_stateful`, there are :code:`.py` available in :code:`scripts/shell`.
+All are run like: :code:`python scripts/setup_tests/run_aikit_nn_test.py 1`, where 1 = numpy, 2 = torch, 3 = jax, and 4 = tensorflow.
 
 
 More Detailed Hypothesis Logs in PyCharm
@@ -582,7 +582,7 @@ Windows
 #. Install `Visual Studio Code here <https://code.visualstudio.com/>`_
 #. Open the Docker desktop, make sure it's running while following the process below.
    You can close the Docker desktop window afterwards, Docker will continue to run in the background.
-#. Open Visual Studio Code, open the Ivy repo folder, and follow the steps listed below:
+#. Open Visual Studio Code, open the Aikit repo folder, and follow the steps listed below:
 
    a. At the bottom right a window will pop up asking for "Dev Containers" extension, install that.
       In case the window doesn't pop up, search for the "Dev Containers" extension in the Visual Studio Code and install that.
@@ -596,8 +596,8 @@ Ubuntu
 
 #. Install `Docker Engine <https://docs.docker.com/engine/install/ubuntu/>`_
 #. Install `Visual Studio Code <https://code.visualstudio.com/>`_
-#. Clone your fork of the Ivy repository.
-#. Open Visual Studio Code, open the Ivy repo folder, and follow the steps listed below:
+#. Clone your fork of the Aikit repository.
+#. Open Visual Studio Code, open the Aikit repo folder, and follow the steps listed below:
 
    a. Install the :code:`Dev Containers` and :code:`Docker` extensions.
    b. Open the :code:`.devcontainer/devcontainer.json` file.
@@ -617,7 +617,7 @@ WSL
 It is understandable that working with computationally heavy tools like Docker and PyCharm is not always comfortable for developers.
 By utilizing WSL, you can run a Linux distribution on your Windows machine, and in addition, venv is leveraged to create
 isolated Python environments eliminating the need for a full-fledged containerization solution like Docker, and with VSCode being an appropriate alternative to PyCharm,
-the steps explained below will help you in setting up a less resource-intensive Ivy environment.
+the steps explained below will help you in setting up a less resource-intensive Aikit environment.
 
 #. Install `WSL <https://learn.microsoft.com/en-us/windows/wsl/install>`_.
 #. Install `Visual Studio Code <https://code.visualstudio.com/>`_.
@@ -631,20 +631,20 @@ the steps explained below will help you in setting up a less resource-intensive 
 
          sudo apt install python3-venv
 
-   b. Create your virtual environment named :code:`ivy_dev`.
+   b. Create your virtual environment named :code:`aikit_dev`.
 
       .. code-block:: none
 
-         python3 -m venv ivy_dev
+         python3 -m venv aikit_dev
 
    c. Activate your environment.
 
       .. code-block:: none
 
-         source ivy_dev/bin/activate
+         source aikit_dev/bin/activate
 
 
-#. You can now install the Ivy package from Github by running:
+#. You can now install the Aikit package from Github by running:
 
    .. code-block:: none
 
@@ -655,7 +655,7 @@ the steps explained below will help you in setting up a less resource-intensive 
 
    .. code-block:: none
 
-      cd ivy/
+      cd aikit/
 
    .. code-block:: none
 
@@ -677,10 +677,10 @@ GitHub Codespaces
 *****************
 
 It can be a headache to install Docker and setup the PyCharm development environment, especially on recent ARM architectures like the new M1 Macs.
-Instead, we could make use of the GitHub Codespaces feature provided; this feature creates a VM (Virtual Machine) on the Azure cloud (which means no local computation) with the same configuration as defined by :code:`ivy/Dockerfile`.
+Instead, we could make use of the GitHub Codespaces feature provided; this feature creates a VM (Virtual Machine) on the Azure cloud (which means no local computation) with the same configuration as defined by :code:`aikit/Dockerfile`.
 Since it's a VM, we no longer have to worry about installing the right packages, modules etc.
 We can develop as we usually do on Visual Studio Code with all your favourite extensions and themes available in Codespaces too.
-With all the computations being done on the cloud, we could contribute to Ivy using unsupported hardware, old/slow systems, even from your iPad as long as you have Visual Studio code or a browser installed.
+With all the computations being done on the cloud, we could contribute to Aikit using unsupported hardware, old/slow systems, even from your iPad as long as you have Visual Studio code or a browser installed.
 
 **Important Note**
 
@@ -702,7 +702,7 @@ Now we are ready to begin!
 
 Just follow the steps outlined below:
 
-1. Go to your fork of :code:`ivy`, and then click on the green "Code" dropdown, go to the Codespaces tab, and then click on three dots, then click ``new with options...``.
+1. Go to your fork of :code:`aikit`, and then click on the green "Code" dropdown, go to the Codespaces tab, and then click on three dots, then click ``new with options...``.
 
 .. image:: https://raw.githubusercontent.com/khulnasoft/khulnasoft.github.io/main/img/externally_linked/contributing/setting_up/github_codespaces/fork_create_codespace.png?raw=true
    :width: 420
@@ -715,13 +715,13 @@ Just follow the steps outlined below:
 3. Then you will head to the dropdown of "Dev container configuration", then select an image to set up with. As there are six options available as of now
 
       - :code:`Default project configuration` - This is the default option, it will set up with the default codespaces environment.
-      - :code:`Ivy Development Environment (build)` - This will set up the development environment of ivy for CPU and build image from :code:`ivy/docker/Dockerfile`.
-      - :code:`Ivy GPU Development Environment (build)` - This will set up the development environment of ivy for GPU and build image from :code:`ivy/docker/DockerfileGPU`.
-      - :code:`Ivv Development Environment for Multiver...` - This will set up the development environment of multiversion support with ivy and build image from :code:`ivy/docker/DockerfileMultiversion`.
-      - :code:`Ivy Development Environment (image)` - This will set up the development environment of ivy for CPU and build image from the latest image from dockerhub.
-      - :code:`Ivy GPU Development Environment (image)` - This will set up the development environment of ivy for GPU and build image from the latest image from dockerhub.
+      - :code:`Aikit Development Environment (build)` - This will set up the development environment of aikit for CPU and build image from :code:`aikit/docker/Dockerfile`.
+      - :code:`Aikit GPU Development Environment (build)` - This will set up the development environment of aikit for GPU and build image from :code:`aikit/docker/DockerfileGPU`.
+      - :code:`Ivv Development Environment for Multiver...` - This will set up the development environment of multiversion support with aikit and build image from :code:`aikit/docker/DockerfileMultiversion`.
+      - :code:`Aikit Development Environment (image)` - This will set up the development environment of aikit for CPU and build image from the latest image from dockerhub.
+      - :code:`Aikit GPU Development Environment (image)` - This will set up the development environment of aikit for GPU and build image from the latest image from dockerhub.
 
-   For now, we will select :code:`Ivy Development Environment (image)`.
+   For now, we will select :code:`Aikit Development Environment (image)`.
    Select your region and preferred machine type, then click on "Create Codespace".
 
 .. image:: https://raw.githubusercontent.com/khulnasoft/khulnasoft.github.io/main/img/externally_linked/contributing/setting_up/github_codespaces/devcontainer_config.png?raw=true
@@ -736,7 +736,7 @@ Give the relevant permissions to the browser to open up Visual Studio Code.
 5. Once visual studio code opens up, it will start building the remote container.
 In order to view the logs while the container is being built, you may click on "Building Codespace..." on the bottom right box.
 Please be patient while the container is being built, it may take upto 10-15 minutes, but it's a one-time process.
-Any subsequent connections to your ivy codespace will launch in 10-12 seconds.
+Any subsequent connections to your aikit codespace will launch in 10-12 seconds.
 
 .. image:: https://raw.githubusercontent.com/khulnasoft/khulnasoft.github.io/main/img/externally_linked/contributing/setting_up/github_codespaces/building_codespace.png?raw=true
    :width: 420
@@ -751,7 +751,7 @@ The Log of the container being built would look like the below:
 .. image:: https://raw.githubusercontent.com/khulnasoft/khulnasoft.github.io/main/img/externally_linked/contributing/setting_up/github_codespaces/codespace_built.png?raw=true
    :width: 420
 
-7. That's it, you have just setup GitHub codespaces and can start developing Ivy.
+7. That's it, you have just setup GitHub codespaces and can start developing Aikit.
 The configuration files install all the required packages, and extensions for you to get started quickly.
 
 **Setting up Codespaces with a GPU**
@@ -774,14 +774,14 @@ If you have already setup codespaces, refer to the following to open your previo
 
 There are 3 ways to connect your existing codespaces, you can use any of the approaches mentioned below.
 
-1. Go to your fork of ivy, click on the green coloured dropdown "Code", go to the codespaces tab, then select your codespace.
+1. Go to your fork of aikit, click on the green coloured dropdown "Code", go to the codespaces tab, then select your codespace.
 This will open up a new tab, from there either you can develop on the browser itself, or click on "Open this codespaces on VS code desktop" to open up the visual studio code application and develop from there.
 
 .. image:: https://raw.githubusercontent.com/khulnasoft/khulnasoft.github.io/main/img/externally_linked/contributing/setting_up/github_codespaces/existing_codespace_fork.png?raw=true
    :width: 420
 
 2. Another way to connect is to open up the visual studio code application.
-There is a good chance that you would see :code:`ivy [Codespaces]` or :code:`ivy [vscode-remote]` on your recently opened projects.
+There is a good chance that you would see :code:`aikit [Codespaces]` or :code:`aikit [vscode-remote]` on your recently opened projects.
 If you click either of those, it will open up your codespace.
 
 .. image:: https://raw.githubusercontent.com/khulnasoft/khulnasoft.github.io/main/img/externally_linked/contributing/setting_up/github_codespaces/recent_projects.png?raw=true
@@ -809,7 +809,7 @@ The steps are as following to setup testing on VS Code when using a new Codespac
 .. image:: https://github.com/khulnasoft/khulnasoft.github.io/blob/main/img/externally_linked/contributing/setting_up/vs_code_testing_setup/vs_testing_01.png?raw=true
    :width: 420
 
-2. Select ivy_tests as the root directory for testing.
+2. Select aikit_tests as the root directory for testing.
 
 .. image:: https://github.com/khulnasoft/khulnasoft.github.io/blob/main/img/externally_linked/contributing/setting_up/vs_code_testing_setup/vs_testing_02.png?raw=true
    :width: 420
@@ -827,8 +827,8 @@ The steps are as following to setup testing on VS Code when using a new Codespac
 
       {
          "python.testing.pytestArgs": [
-            "./ivy_tests/test_ivy/",
-            "./ivy_tests/array_api_testing/test_array_api/",
+            "./aikit_tests/test_aikit/",
+            "./aikit_tests/array_api_testing/test_array_api/",
             "--continue-on-collection-errors",
          ],
          "python.testing.unittestEnabled": false,
@@ -842,40 +842,40 @@ Note: Currently you do not need to comment out the :code:`conftest.py` file in t
 The Binaries
 ------------
 
-Some features in :code:`ivy` are served as compiled binaries, such as the transpiler.
-These binaries aren't maintained in the :code:`ivy` repository directly, but on a separate :code:`binaries` repository.
-All the binaries that are required to make use of the full potential of :code:`ivy` are recorded in the :code:`binaries.json`.
+Some features in :code:`aikit` are served as compiled binaries, such as the transpiler.
+These binaries aren't maintained in the :code:`aikit` repository directly, but on a separate :code:`binaries` repository.
+All the binaries that are required to make use of the full potential of :code:`aikit` are recorded in the :code:`binaries.json`.
 The supported configurations (Python version - OS - Architecture) are recorded in the :code:`available_configs.json`.
 
 The format of representing a configuration is based on PyPI's `platform compatibility tags`_,
 meaning :code:`cp310-none-manylinux_2_17_x86_64` represents a configuration that can be used in a Python 3.10 environment on a linux system with x86-64.
 We continue to add support to many more supported configurations to our binaries to work with various python versions, OS and architecture.
 
-On installing :code:`ivy` with :code:`pip install -e .` all the required binaries with a supported configuration to your system get downloaded.
-Just to have another check on whether all binaries are present, there's a warning that gets thrown when you :code:`import ivy` if any binaries are missing of the form,
+On installing :code:`aikit` with :code:`pip install -e .` all the required binaries with a supported configuration to your system get downloaded.
+Just to have another check on whether all binaries are present, there's a warning that gets thrown when you :code:`import aikit` if any binaries are missing of the form,
 
 .. code-block:: none
 
    WARNING:root:   Some binaries seem to be missing in your system. This could be either because we don't have compatible binaries for your system or that newer binaries were available.
-                   In the latter case, calling ivy.utils.cleanup_and_fetch_binaries() should fetch the binaries binaries. Feel free to create an issue on https://github.com/khulnasoft/aikit.git in case of the former
+                   In the latter case, calling aikit.utils.cleanup_and_fetch_binaries() should fetch the binaries binaries. Feel free to create an issue on https://github.com/khulnasoft/aikit.git in case of the former
 
    WARNING:root:
    Following are the supported configurations :
    compiler : cp38-none-manylinux_2_17_x86_64, cp310-none-manylinux_2_17_x86_64
    engines : cp310-none-manylinux_2_17_x86_64
 
-   WARNING:root:   /workspaces/ivy/ivy/compiler/_compiler.so not found.
+   WARNING:root:   /workspaces/aikit/aikit/compiler/_compiler.so not found.
 
-In case there are no supported binaries for your configuration, then feel free to create an issue on the :code:`ivy` repo asking for adding support to the same.
+In case there are no supported binaries for your configuration, then feel free to create an issue on the :code:`aikit` repo asking for adding support to the same.
 Feel free to ignore the warning in the meantime, set a `logging level`_ to avoid receiving the warning.
 In case the you are using a supported configuration and still receiving this warning, it indicates that you are yet to do a :code:`pip install -e .` as mentioned in the previous sections.
-Running a :code:`pip install -e .` is sufficient to download the binaries if they're supported but the :func:`ivy.utils.cleanup_and_fetch_binaries` function is provided just in case you want to download the binaries without a local installation.
+Running a :code:`pip install -e .` is sufficient to download the binaries if they're supported but the :func:`aikit.utils.cleanup_and_fetch_binaries` function is provided just in case you want to download the binaries without a local installation.
 
 .. code-block:: python
 
-   import ivy
+   import aikit
 
-   ivy.utils.cleanup_and_fetch_binaries()
+   aikit.utils.cleanup_and_fetch_binaries()
 
 
 .. note:: Bear in mind that the binaries are **not** required for working on the open tasks for the most part, so it's totally fine to not have the binaries downloaded on your system for working on any of the open tasks.

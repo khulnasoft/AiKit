@@ -3,9 +3,9 @@ import jax.numpy as jnp
 from typing import Optional, Literal, Union, List
 
 # local
-import ivy
-from ivy.func_wrapper import with_unsupported_dtypes
-from ivy.functional.backends.jax import JaxArray
+import aikit
+from aikit.func_wrapper import with_unsupported_dtypes
+from aikit.functional.backends.jax import JaxArray
 from . import backend_version
 
 
@@ -52,11 +52,11 @@ def searchsorted(
     ret_dtype: jnp.dtype = jnp.int64,
     out: Optional[JaxArray] = None,
 ) -> JaxArray:
-    assert ivy.is_int_dtype(ret_dtype), ValueError(
+    assert aikit.is_int_dtype(ret_dtype), ValueError(
         "only Integer data types are supported for ret_dtype."
     )
     if sorter is not None:
-        assert ivy.is_int_dtype(sorter.dtype), TypeError(
+        assert aikit.is_int_dtype(sorter.dtype), TypeError(
             f"Only signed integer data type for sorter is allowed, got {sorter.dtype}."
         )
         x = jnp.take_along_axis(x, sorter, axis=-1)

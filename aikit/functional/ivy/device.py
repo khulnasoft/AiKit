@@ -1,4 +1,4 @@
-"""Collection of device Ivy functions."""
+"""Collection of device Aikit functions."""
 
 # global
 import os
@@ -21,8 +21,8 @@ try:
 except ImportError:
     warnings.warn(
         "pynvml installation was not found in the environment, functionalities"
-        " of the Ivy's device module will be limited. Please install pynvml if"
-        " you wish to use GPUs with Ivy."
+        " of the Aikit's device module will be limited. Please install pynvml if"
+        " you wish to use GPUs with Aikit."
     )
     # nvidia-ml-py (pynvml) is not installed in CPU Dockerfile.
 
@@ -52,7 +52,7 @@ max_chunk_sizes = {}
 
 
 class DefaultDevice:
-    """Ivy Device Class."""
+    """Aikit Device Class."""
 
     def __init__(
         self,
@@ -498,7 +498,7 @@ def total_mem_on_dev(device: Union[aikit.Device, aikit.NativeDevice], /) -> floa
     elif device == "cpu":
         return psutil.virtual_memory().total / 1e9
     else:
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             'Invalid device string input, must be on the form "gpu:idx" or "cpu", but'
             f" found {device}"
         )
@@ -557,7 +557,7 @@ def used_mem_on_dev(
         vm = psutil.virtual_memory()
         return (vm.total - vm.available) / 1e9
     else:
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             'Invalid device string input, must be on the form "gpu:idx" or "cpu", but'
             f" found {device}"
         )
@@ -617,7 +617,7 @@ def percent_used_mem_on_dev(
             return (psutil.Process(os.getpid()).memory_info().rss / vm.total) * 100
         return (1 - (vm.available / vm.total)) * 100
     else:
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             'Invalid device string input, must be on the form "gpu:idx" or "cpu", but'
             f" found {device}"
         )
@@ -662,7 +662,7 @@ def dev_util(
         handle = _get_nvml_gpu_handle(device)
         return pynvml.nvmlDeviceGetUtilizationRates(handle).gpu
     else:
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             'Invalid device string input, must be on the form "gpu:idx" or "cpu", but'
             f" found {device}"
         )
@@ -1319,7 +1319,7 @@ class Profiler(abc.ABC):
 
         This should be called before the code to be profiled.
         """
-        raise aikit.utils.exceptions.IvyNotImplementedException
+        raise aikit.utils.exceptions.AikitNotImplementedException
 
     @abc.abstractmethod
     def stop(self):
@@ -1327,12 +1327,12 @@ class Profiler(abc.ABC):
 
         This should be called after the code to be profiled.
         """
-        raise aikit.utils.exceptions.IvyNotImplementedException
+        raise aikit.utils.exceptions.AikitNotImplementedException
 
     @abc.abstractmethod
     def __enter__(self):
-        raise aikit.utils.exceptions.IvyNotImplementedException
+        raise aikit.utils.exceptions.AikitNotImplementedException
 
     @abc.abstractmethod
     def __exit__(self, exc_type, exc_val, exc_tb):
-        raise aikit.utils.exceptions.IvyNotImplementedException
+        raise aikit.utils.exceptions.AikitNotImplementedException

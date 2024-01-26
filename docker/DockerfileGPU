@@ -1,7 +1,7 @@
 # installs multiple versions of cuda and cudnn and then installs the
 # latest frameworks and the requirements
 FROM debian:buster
-WORKDIR /ivy
+WORKDIR /aikit
 
 # arguments
 ARG fw
@@ -57,10 +57,10 @@ RUN apt-get update && \
     pip3 install setuptools==58.5.3
 
 
-# install Ivy Upstream
+# install Aikit Upstream
 RUN git clone --progress --recurse-submodules https://github.com/khulnasoft/aikit --depth 1 && \
-    cd ivy && \
-    cd ivy_tests/array_api_testing/test_array_api && \
+    cd aikit && \
+    cd aikit_tests/array_api_testing/test_array_api && \
     pip3 install --no-cache-dir -r requirements.txt
 
 

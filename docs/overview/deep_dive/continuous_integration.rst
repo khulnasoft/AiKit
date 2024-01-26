@@ -4,13 +4,13 @@ Continuous Integration
 .. _`continuous integration channel`: https://discord.com/channels/799879767196958751/1189908611208597544
 .. _`discord`: https://discord.gg/sXyFF8tDtm
 
-We follow the practice of Continuous Integration (CI), in order to regularly build and test code at Ivy.
+We follow the practice of Continuous Integration (CI), in order to regularly build and test code at Aikit.
 This makes sure that:
 
 #. Developers get feedback on their code soon, and Errors in the Code are detected quickly. ✅
 #. The developer can easily debug the code when finding the source of an error, and rollback changes in case of Issues. 🔍
 
-In order to incorporate Continuous Integration in the Ivy Repository, we follow a three-fold technique, which involves:
+In order to incorporate Continuous Integration in the Aikit Repository, we follow a three-fold technique, which involves:
 
 #. Commit Triggered Testing
 #. Periodic Testing
@@ -19,39 +19,39 @@ In order to incorporate Continuous Integration in the Ivy Repository, we follow 
 .. image:: https://github.com/khulnasoft/khulnasoft.github.io/blob/main/img/externally_linked/deep_dive/continuous_integration/CI.png?raw=true
    :alt: CI Overview
 
-We use GitHub Actions in order to implement and automate the process of testing. GitHub Actions allow implementing custom workflows that can build the code in the repository and run the tests. All the workflows used by Ivy are defined in the `.github/workflows <https://github.com/khulnasoft/aikit/tree/main/.github/workflows>`_ directory.
+We use GitHub Actions in order to implement and automate the process of testing. GitHub Actions allow implementing custom workflows that can build the code in the repository and run the tests. All the workflows used by Aikit are defined in the `.github/workflows <https://github.com/khulnasoft/aikit/tree/main/.github/workflows>`_ directory.
 
 Commit (Push/PR) Triggered Testing
 ----------------------------------
 
-A small subset of the following tests are triggered in case of a Commit (Push/PR) made to the Ivy Repository:
+A small subset of the following tests are triggered in case of a Commit (Push/PR) made to the Aikit Repository:
 
-#. Ivy Tests
+#. Aikit Tests
 #. Array API Tests
 
-Ivy Tests
+Aikit Tests
 ---------
 A test is defined as the triplet of (submodule, function, backend). We follow the following notation to identify each test:
 :code:`submodule::function,backend`
 
-For example, :code:`ivy_tests/test_ivy/test_frontends/test_torch/test_tensor.py::test_torch_instance_arctan_,numpy`
+For example, :code:`aikit_tests/test_aikit/test_frontends/test_torch/test_tensor.py::test_torch_instance_arctan_,numpy`
 
-The Number of such Ivy tests running on the Repository (without taking any Framework/Python Versioning into account) is 12500 (as of writing this documentation), and we are adding tests daily. Therefore, triggering all the tests on each commit is neither desirable (as it will consume a huge lot of Compute Resources, as well as take a large amount of time to run) nor feasible (as Each Job in Github Actions has a time Limit of 360 Minutes, and a Memory Limit as well).
+The Number of such Aikit tests running on the Repository (without taking any Framework/Python Versioning into account) is 12500 (as of writing this documentation), and we are adding tests daily. Therefore, triggering all the tests on each commit is neither desirable (as it will consume a huge lot of Compute Resources, as well as take a large amount of time to run) nor feasible (as Each Job in Github Actions has a time Limit of 360 Minutes, and a Memory Limit as well).
 
 Further, When we consider versioning, for a single Python version, and ~40 frontend and backend versions, the tests would shoot up to 40 * 40 * 12500 = 20,000,000, and we obviously don't have resources as well as time to run those many tests on each commit.
 
 Thus, We need to prune the tests that run on each push to the Github Repository. The ideal situation, here, is to trigger only the tests that are impacted by the changes made in a push. The tests that are not impacted by the changes made in a push, are wasteful to trigger, as their results don’t change (keeping the same Hypothesis Configuration). For example, Consider the `commit <https://github.com/khulnasoft/aikit/commit/29cc90dda9e9a8d64789ed28e6eab0f41257a435>`_
 
-The commit changes the :code:`_reduce_loss` function and the :code:`binary_cross_entropy` functions in the ivy/functional/ivy/losses.py file. The only tests that must be triggered (for all 5 backends) are:
+The commit changes the :code:`_reduce_loss` function and the :code:`binary_cross_entropy` functions in the aikit/functional/aikit/losses.py file. The only tests that must be triggered (for all 5 backends) are:
 
-:code:`ivy_tests/test_ivy/test_functional/test_nn/test_losses.py::test_binary_cross_entropy_with_logits`
-:code:`ivy_tests/test_ivy/test_functional/test_nn/test_losses.py::test_cross_entropy`
-:code:`ivy_tests/test_ivy/test_functional/test_nn/test_losses.py::test_binary_cross_entropy`
-:code:`ivy_tests/test_ivy/test_functional/test_nn/test_losses.py::test_sparse_cross_entropy`
-:code:`ivy_tests/test_ivy/test_frontends/test_torch/test_loss_functions.py::test_torch_binary_cross_entropy`
-:code:`ivy_tests/test_ivy/test_frontends/test_torch/test_loss_functions.py::test_torch_cross_entropy`
+:code:`aikit_tests/test_aikit/test_functional/test_nn/test_losses.py::test_binary_cross_entropy_with_logits`
+:code:`aikit_tests/test_aikit/test_functional/test_nn/test_losses.py::test_cross_entropy`
+:code:`aikit_tests/test_aikit/test_functional/test_nn/test_losses.py::test_binary_cross_entropy`
+:code:`aikit_tests/test_aikit/test_functional/test_nn/test_losses.py::test_sparse_cross_entropy`
+:code:`aikit_tests/test_aikit/test_frontends/test_torch/test_loss_functions.py::test_torch_binary_cross_entropy`
+:code:`aikit_tests/test_aikit/test_frontends/test_torch/test_loss_functions.py::test_torch_cross_entropy`
 
-Ivy’s Functional API functions :code:`binary_cross_entropy_with_logits`, :code:`test_cross_entropy`, :code:`test_binary_cross_entropy`, :code:`test_sparse_cross_entropy`, are precisely the ones impacted by the changes in the commit, and since the torch Frontend Functions torch_binary_cross_entropy, and torch_cross_entropy are wrapping these, the corresponding frontend tests are also impacted. No other Frontend function calls these underneath and hence should not be triggered.
+Aikit’s Functional API functions :code:`binary_cross_entropy_with_logits`, :code:`test_cross_entropy`, :code:`test_binary_cross_entropy`, :code:`test_sparse_cross_entropy`, are precisely the ones impacted by the changes in the commit, and since the torch Frontend Functions torch_binary_cross_entropy, and torch_cross_entropy are wrapping these, the corresponding frontend tests are also impacted. No other Frontend function calls these underneath and hence should not be triggered.
 
 How do we (or at least try to) achieve this?
 
@@ -66,7 +66,7 @@ We use the Python Coverage Package (https://coverage.readthedocs.io/en/7.0.0/) f
 
 The way it works is by running a particular pytest, and then logging each line (of our code) that was executed (or could have been executed) by the test.
 
-Computing Test Coverage for all Ivy tests, allows us to find, for each line of code, which tests affect the same. We create a Dictionary (Mapping) to store this information as follows (The actual Mapping we prepare is a bit different from this design, but we will follow this for now due to Pedagogical Purposes):
+Computing Test Coverage for all Aikit tests, allows us to find, for each line of code, which tests affect the same. We create a Dictionary (Mapping) to store this information as follows (The actual Mapping we prepare is a bit different from this design, but we will follow this for now due to Pedagogical Purposes):
 
 .. math::
     \begin{equation}
@@ -157,7 +157,7 @@ Once the Mapping has been updated, the “Determine & Run Tests” Logic works a
 Storing (and retrieving) the Mapping
 ------------------------------------
 
-As we see in the overview section, we compute a mapping of lines to tests, for each commit to the Ivy Repository. This mapping has to be stored somewhere, in order to be used by a future commit to determine the corresponding mapping (and therefore, trigger the required tests). Therefore, we need a mechanism to store and retrieve the Mapping.
+As we see in the overview section, we compute a mapping of lines to tests, for each commit to the Aikit Repository. This mapping has to be stored somewhere, in order to be used by a future commit to determine the corresponding mapping (and therefore, trigger the required tests). Therefore, we need a mechanism to store and retrieve the Mapping.
 We use the khulnasoft/Mapping GitHub Repository for this purpose. We use a GitHub Repository for the following reasons:
 
 #. Unlike Specialized Databases (like Google Cloud), we need not store any specialized secrets to access the Database (separately for reading and writing), and no separate API Keys are required for updating the DB, saving us from exposing our secret key Files (from GitHub Actions). In fact, We just except for a single SSH Deploy Key (secrets.SSH_DEPLOY_KEY) required for pushing the DB.
@@ -174,7 +174,7 @@ For Push triggered testing (intelligent-tests.yml Workflow), we use the SSH Clon
 
 .. code-block::
 
-    source ./ivy/scripts/shell/clone_mapping.sh master
+    source ./aikit/scripts/shell/clone_mapping.sh master
     Determine and Run Tests, and Update the Mapping ...
     git add .
     git commit -m "Update Mapping"
@@ -186,8 +186,8 @@ Now, that the SSH key of the Runner has permissions to push and clone the Mappin
 
 .. code-block::
 
-    USER_EMAIL="ivy.branch@lets-unify.ai"
-    USER_NAME="ivy-branch"
+    USER_EMAIL="aikit.branch@lets-unify.ai"
+    USER_NAME="aikit-branch"
     TARGET_BRANCH=$1
     GITHUB_SERVER="github.com"
     mkdir --parents "$HOME/.ssh"
@@ -251,7 +251,7 @@ Since each of our Update Mapping routine is not precisely correct, the Mapping w
 
 Notice that the workflow triggers every Saturday Night at 8.30 PM (Fun Fact: It’s just my gut feeling that there are relatively lesser commits on the Repository on a Saturday Night, and we get access to the Resources quickly, LoL!).
 
-The workflow runs all the Ivy tests, determines their coverage, computes the Mapping, and pushes it to the khulnasoft/Mapping Repository.
+The workflow runs all the Aikit tests, determines their coverage, computes the Mapping, and pushes it to the khulnasoft/Mapping Repository.
 
 Multiple Runners
 ^^^^^^^^^^^^^^^^
@@ -287,14 +287,14 @@ We handle the Race Condition as follows:
 
 Array API Tests
 ---------------
-The `array-api-intelligent-tests.yml (Push) <https://github.com/khulnasoft/aikit/blob/main/.github/workflows/array-api-intelligent-tests.yml>`_ and the `array-api-intelligent-tests-pr.yml (Pull Request) <https://github.com/khulnasoft/aikit/blob/main/.github/workflows/array-api-intelligent-tests-pr.yml>`_ workflows run the Array API Tests. Similar to Ivy Tests, The Array API tests are also determined intelligently and only relevant tests are triggered on each commit.
+The `array-api-intelligent-tests.yml (Push) <https://github.com/khulnasoft/aikit/blob/main/.github/workflows/array-api-intelligent-tests.yml>`_ and the `array-api-intelligent-tests-pr.yml (Pull Request) <https://github.com/khulnasoft/aikit/blob/main/.github/workflows/array-api-intelligent-tests-pr.yml>`_ workflows run the Array API Tests. Similar to Aikit Tests, The Array API tests are also determined intelligently and only relevant tests are triggered on each commit.
 
 More details about the Array API Tests are available `here <array_api_tests.rst>`_.
 
 Periodic Testing
 ----------------
-In order to make sure that none of the Ivy Tests are left ignored for a long time, and to decouple the rate of testing to the rate of committing to the repository, we implement periodic testing on the Ivy Repository.
-The `Test Ivy Cron Workflow <https://github.com/khulnasoft/aikit/blob/main/.github/workflows/test-ivy-cron.yml>`_  is responsible for implementing this behavior by running Ivy tests every hour. In Each Run, It triggers 150 Ivy Tests, cycling through all of the tests.
+In order to make sure that none of the Aikit Tests are left ignored for a long time, and to decouple the rate of testing to the rate of committing to the repository, we implement periodic testing on the Aikit Repository.
+The `Test Aikit Cron Workflow <https://github.com/khulnasoft/aikit/blob/main/.github/workflows/test-aikit-cron.yml>`_  is responsible for implementing this behavior by running Aikit tests every hour. In Each Run, It triggers 150 Aikit Tests, cycling through all of the tests.
 This number of 150 is chosen in order to make sure that the Action completes in 1 hour most of the time.
 The Test Results update the corresponding cell on the Dashboards.
 
@@ -306,8 +306,8 @@ follow the following steps:
 
 #. Visit `GitHub Actions <https://github.com/khulnasoft/aikit/actions/workflows/manual-tests.yml>`_
 #. Click on Run Workflow
-#. Add the Name of the test as: :code:`ivy_tests/test_ivy/test_frontends/test_torch/test_tensor.py::test_torch_instance_arctan_`
-#. If you want the test to be triggered for a particular Backend, append it with a “,” as: :code:`ivy_tests/test_ivy/test_frontends/test_torch/test_tensor.py::test_torch_instance_arctan_,tensorflow`
+#. Add the Name of the test as: :code:`aikit_tests/test_aikit/test_frontends/test_torch/test_tensor.py::test_torch_instance_arctan_`
+#. If you want the test to be triggered for a particular Backend, append it with a “,” as: :code:`aikit_tests/test_aikit/test_frontends/test_torch/test_tensor.py::test_torch_instance_arctan_,tensorflow`
 #. Leave the Version Based Testing and GPU Testing Options as false.
 #. Check the result there and then itself, or wait for the dashboard to update.
 
@@ -343,7 +343,7 @@ It redirects to the Actions Tab, showing details of the failure, as shown below:
 .. image:: https://github.com/khulnasoft/khulnasoft.github.io/blob/main/img/externally_linked/deep_dive/continuous_integration/push2.png?raw=true
    :alt: Workflow Result
 
-Click on the "Run Tests" section in order to see the logs of the failing tests for Array API Tests. For Ivy Tests, head to the "Combined Test Results" Section of the display-test-results Job, which shows the Test Logs for each of the tests in the following format:
+Click on the "Run Tests" section in order to see the logs of the failing tests for Array API Tests. For Aikit Tests, head to the "Combined Test Results" Section of the display-test-results Job, which shows the Test Logs for each of the tests in the following format:
 
 \***************************************************
 
@@ -372,7 +372,7 @@ Test n
 Hypothesis Logs for Test n (Indicates Failure/Success)
 
 You can ignore the other sections of the Workflow, as they are for book-keeping and implementation purposes.
-You can also directly refer to the Dashboard (available at https://ivy-dynamical-dashboards.onrender.com), to check the result of your test.
+You can also directly refer to the Dashboard (available at https://aikit-dynamical-dashboards.onrender.com), to check the result of your test.
 
 Pull Request
 ^^^^^^^^^^^^
@@ -390,12 +390,12 @@ As an added feature, the Intelligent Tests for PR Workflow has a section on "New
 Dashboard
 ---------
 In order to view the status of the tests, at any point in time, we have implemented a dashboard application that shows the results of the latest Workflow that ran each test.
-The Dashboards are available at the link: https://ivy-dynamical-dashboards.onrender.com
+The Dashboards are available at the link: https://aikit-dynamical-dashboards.onrender.com
 You can filter tests by selecting choices from the various dropdowns. The link can also be saved for redirecting straight to the filtered tests in the future. The status badges are clickable, and will take you directly to the Action log of the latest workflow that ran the corresponding test.
 
 **Round Up**
 
-This should have hopefully given you a good feel for how Continuous Integration works in Ivy.
+This should have hopefully given you a good feel for how Continuous Integration works in Aikit.
 
 If you have any questions, please feel free to reach out on `discord`_ in the `continuous integration thread`_!
 

@@ -702,26 +702,26 @@ def fft(
     out: Optional[np.ndarray] = None,
 ) -> np.ndarray:
     if not isinstance(dim, int):
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Expecting <class 'int'> instead of {type(dim)}"
         )
     if n is None:
         n = x.shape[dim]
     if n < -len(x.shape):
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Invalid dim {dim}, expecting ranging"
             " from {-len(x.shape)} to {len(x.shape)-1}  "
         )
     if not isinstance(n, int):
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Expecting <class 'int'> instead of {type(n)}"
         )
     if n <= 1:
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Invalid data points {n}, expecting more than 1"
         )
     if norm not in {"backward", "ortho", "forward"}:
-        raise aikit.utils.exceptions.IvyError(f"Unrecognized normalization mode {norm}")
+        raise aikit.utils.exceptions.AikitError(f"Unrecognized normalization mode {norm}")
     if x.dtype in [np.uint64, np.int64, np.float64, np.complex128]:
         out_dtype = np.complex128
     else:
@@ -925,26 +925,26 @@ def ifft(
     out: Optional[np.ndarray] = None,
 ) -> np.ndarray:
     if not isinstance(dim, int):
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Expecting <class 'int'> instead of {type(dim)}"
         )
     if n is None:
         n = x.shape[dim]
     if n < -len(x.shape):
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Invalid dim {dim}, expecting ranging"
             " from {-len(x.shape)} to {len(x.shape)-1}  "
         )
     if not isinstance(n, int):
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Expecting <class 'int'> instead of {type(n)}"
         )
     if n <= 1:
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Invalid data points {n}, expecting more than 1"
         )
     if norm not in {"backward", "ortho", "forward"}:
-        raise aikit.utils.exceptions.IvyError(f"Unrecognized normalization mode {norm}")
+        raise aikit.utils.exceptions.AikitError(f"Unrecognized normalization mode {norm}")
     return np.asarray(np.fft.ifft(x, n, dim, norm), dtype=x.dtype)
 
 
@@ -962,22 +962,22 @@ def fft2(
         message=f"Unrecognized normalization mode {norm}",
     )
     if not all(isinstance(j, int) for j in dim):
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Expecting {dim} to be a sequence of integers <class integer>"
         )
     if s is None:
         s = (x.shape[dim[0]], x.shape[dim[1]])
     if all(j < -len(x.shape) for j in s):
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Invalid dim {dim}, expecting ranging"
             " from {-len(x.shape)} to {len(x.shape)-1}  "
         )
     if not all(isinstance(j, int) for j in s):
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Expecting {s} to be a sequence of integers <class integer>"
         )
     if all(j <= 1 for j in s):
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Invalid data points {s}, expecting s points larger than 1"
         )
     return np.fft.fft2(x, s, dim, norm).astype(np.complex128)
@@ -1048,26 +1048,26 @@ def rfftn(
     out: Optional[np.ndarray] = None,
 ) -> np.ndarray:
     if not all(isinstance(j, int) for j in axes):
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Expecting {axes} to be a sequence of integers <class integer>"
         )
     if s is None:
         s = (x.shape[axes[0]], x.shape[axes[1]])
     if all(j < -len(x.shape) for j in s):
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Invalid dim {axes}, expecting ranging"
             f" from {-len(x.shape)} to {len(x.shape)-1}  "
         )
     if not all(isinstance(j, int) for j in s):
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Expecting {s} to be a sequence of integers <class integer>"
         )
     if all(j <= 1 for j in s):
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Invalid data points {s}, expecting s points larger than 1"
         )
     if norm not in {"backward", "ortho", "forward"}:
-        raise aikit.utils.exceptions.IvyError(f"Unrecognized normalization mode {norm}")
+        raise aikit.utils.exceptions.AikitError(f"Unrecognized normalization mode {norm}")
     return np.fft.rfftn(x, s, axes, norm).astype(np.complex128)
 
 
@@ -1085,35 +1085,35 @@ def stft(
     out: Optional[np.ndarray] = None,
 ) -> np.ndarray:
     if not isinstance(frame_length, int):
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Expecting <class 'int'> instead of {type(frame_length)}"
         )
 
     if frame_length < 1:
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Invalid data points {frame_length}, expecting frame_length larger than or"
             " equal to 1"
         )
 
     if not isinstance(frame_step, int):
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Expecting <class 'int'> instead of {type(frame_step)}"
         )
 
     if frame_step < 1:
-        raise aikit.utils.exceptions.IvyError(
+        raise aikit.utils.exceptions.AikitError(
             f"Invalid data points {frame_length}, expecting frame_length larger than or"
             " equal to 1"
         )
 
     if fft_length is not None:
         if not isinstance(fft_length, int):
-            raise aikit.utils.exceptions.IvyError(
+            raise aikit.utils.exceptions.AikitError(
                 f"Expecting <class 'int'> instead of {type(fft_length)}"
             )
 
         if fft_length < 1:
-            raise aikit.utils.exceptions.IvyError(
+            raise aikit.utils.exceptions.AikitError(
                 f"Invalid data points {frame_length}, expecting frame_length larger"
                 " than or equal to 1"
             )

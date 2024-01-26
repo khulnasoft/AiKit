@@ -9,11 +9,11 @@ import jax._src as _src
 import jaxlib.xla_extension
 
 # local
-import ivy
-from ivy import as_native_dtype
-from ivy.functional.backends.jax import JaxArray
-from ivy.functional.backends.jax.device import dev
-from ivy.functional.ivy.creation import (
+import aikit
+from aikit import as_native_dtype
+from aikit.functional.backends.jax import JaxArray
+from aikit.functional.backends.jax.device import dev
+from aikit.functional.aikit.creation import (
     _asarray_to_native_arrays_and_back,
     _asarray_infer_device,
     _asarray_infer_dtype,
@@ -40,7 +40,7 @@ def arange(
 ) -> JaxArray:
     if dtype:
         dtype = as_native_dtype(dtype)
-        ivy.utils.assertions._check_jax_x64_flag(dtype.name)
+        aikit.utils.assertions._check_jax_x64_flag(dtype.name)
     res = jnp.arange(start, stop, step, dtype=dtype)
     if not dtype:
         if res.dtype == jnp.float64:
@@ -73,7 +73,7 @@ def asarray(
     device: jaxlib.xla_extension.Device = None,
     out: Optional[JaxArray] = None,
 ) -> JaxArray:
-    ivy.utils.assertions._check_jax_x64_flag(dtype)
+    aikit.utils.assertions._check_jax_x64_flag(dtype)
     ret = jnp.asarray(obj, dtype=dtype)
     # jnp.copy is used to ensure correct device placement
     # it's slower than jax.device_put before JIT, but it's necessary to use since
@@ -84,7 +84,7 @@ def asarray(
 
 
 def empty(
-    shape: Union[ivy.NativeShape, Sequence[int]],
+    shape: Union[aikit.NativeShape, Sequence[int]],
     *,
     dtype: jnp.dtype,
     device: jaxlib.xla_extension.Device = None,
@@ -135,14 +135,14 @@ def from_dlpack(x, /, *, out: Optional[JaxArray] = None) -> JaxArray:
 
 
 def full(
-    shape: Union[ivy.NativeShape, Sequence[int]],
+    shape: Union[aikit.NativeShape, Sequence[int]],
     fill_value: Union[int, float, bool],
     *,
-    dtype: Optional[Union[ivy.Dtype, jnp.dtype]] = None,
+    dtype: Optional[Union[aikit.Dtype, jnp.dtype]] = None,
     device: jaxlib.xla_extension.Device = None,
     out: Optional[JaxArray] = None,
 ) -> JaxArray:
-    dtype = ivy.default_dtype(dtype=dtype, item=fill_value, as_native=True)
+    dtype = aikit.default_dtype(dtype=dtype, item=fill_value, as_native=True)
     return jnp.full(shape, fill_value, dtype)
 
 
@@ -176,12 +176,12 @@ def linspace(
         axis = -1
 
     if num < 0:
-        raise ivy.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             f"Number of samples, {num}, must be non-negative."
         )
 
     if dtype is None:
-        dtype = ivy.promote_types(start.dtype, stop.dtype)
+        dtype = aikit.promote_types(start.dtype, stop.dtype)
     dtype = jnp.dtype(dtype)
     computation_dtype = dtype
     start = jnp.asarray(start, dtype=computation_dtype)
@@ -240,7 +240,7 @@ def meshgrid(
 
 
 def ones(
-    shape: Union[ivy.NativeShape, Sequence[int]],
+    shape: Union[aikit.NativeShape, Sequence[int]],
     *,
     dtype: jnp.dtype,
     device: jaxlib.xla_extension.Device = None,
@@ -269,7 +269,7 @@ def triu(x: JaxArray, /, *, k: int = 0, out: Optional[JaxArray] = None) -> JaxAr
 
 
 def zeros(
-    shape: Union[ivy.NativeShape, Sequence[int]],
+    shape: Union[aikit.NativeShape, Sequence[int]],
     *,
     dtype: jnp.dtype,
     device: jaxlib.xla_extension.Device = None,
@@ -297,15 +297,15 @@ array = asarray
 
 
 def copy_array(
-    x: JaxArray, *, to_ivy_array: bool = True, out: Optional[JaxArray] = None
+    x: JaxArray, *, to_aikit_array: bool = True, out: Optional[JaxArray] = None
 ) -> JaxArray:
     x = (
         jax.core.ShapedArray(x.shape, x.dtype)
         if isinstance(x, jax.core.ShapedArray)
         else jnp.array(x)
     )
-    if to_ivy_array:
-        return ivy.to_ivy(x)
+    if to_aikit_array:
+        return aikit.to_aikit(x)
     return x
 
 

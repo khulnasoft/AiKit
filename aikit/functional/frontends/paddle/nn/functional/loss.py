@@ -25,7 +25,7 @@ def _get_reduction_func(reduction):
     elif reduction == "sum":
         ret = aikit.sum
     else:
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             f"{reduction} is not a valid value for reduction"
         )
     return ret

@@ -839,7 +839,7 @@ class _ArrayWithGeneral(abc.ABC):
         Returns
         -------
         ret
-            True if supports, raises IvyBackendException otherwise
+            True if supports, raises AikitBackendException otherwise
 
         Examples
         --------
@@ -1181,7 +1181,7 @@ class _ArrayWithGeneral(abc.ABC):
         >>> x = aikit.array([4, 5, 6])
         >>> y = aikit.array([1])
         >>> x.inplace_update(y)
-        IvyBackendException: jax: inplace_update: JAX does not natively
+        AikitBackendException: jax: inplace_update: JAX does not natively
         support inplace updates
         """
         return aikit.inplace_update(

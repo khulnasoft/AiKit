@@ -1,4 +1,4 @@
-"""Collection of Ivy loss functions."""
+"""Collection of Aikit loss functions."""
 
 # local
 import aikit

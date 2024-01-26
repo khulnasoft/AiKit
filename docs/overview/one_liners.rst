@@ -4,22 +4,22 @@ One liners
 .. grid:: 1 1 3 3
     :gutter: 4
 
-    .. grid-item-card:: ``ivy.trace_graph()``
+    .. grid-item-card:: ``aikit.trace_graph()``
         :link: one_liners/trace.rst
 
-        Traces a ``Callable`` or set of them into an Ivy graph.
+        Traces a ``Callable`` or set of them into an Aikit graph.
 
-    .. grid-item-card:: ``ivy.transpile()``
+    .. grid-item-card:: ``aikit.transpile()``
         :link: one_liners/transpile.rst
 
         Transpiles a ``Callable`` or set of them from a ``source`` framework to another
         framework.
 
-    .. grid-item-card:: ``ivy.unify()``
+    .. grid-item-card:: ``aikit.unify()``
         :link: one_liners/unify.rst
 
-        Transpiles an object into Ivy code. It's an alias to
-        ``ivy.transpile(..., to="ivy", ...)``
+        Transpiles an object into Aikit code. It's an alias to
+        ``aikit.transpile(..., to="aikit", ...)``
 
 .. toctree::
     :hidden:

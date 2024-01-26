@@ -426,7 +426,7 @@ def promote_numpy_dtypes(
     try:
         return numpy_promotion_table[(type1, type2)]
     except KeyError as e:
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             "these dtypes are not type promotable"
         ) from e
 

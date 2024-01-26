@@ -298,7 +298,7 @@ def standard_t(df, size=None):
 @from_zero_dim_arrays_to_scalar
 def triangular(left, mode, right, size=None):
     if left > mode or mode > right or left == right:
-        raise aikit.utils.exceptions.IvyValueError(
+        raise aikit.utils.exceptions.AikitValueError(
             "left < mode < right is not being followed"
         )
     u = aikit.random_uniform(low=0.0, high=1.0, shape=size, dtype="float64")

@@ -38,13 +38,13 @@ def concat(
     if all(0 in x.shape for x in xs):
         shapes = [x.shape for x in xs]
         if any(len(s) != len(shapes[0]) for s in shapes):
-            raise aikit.exceptions.IvyValueError(
+            raise aikit.exceptions.AikitValueError(
                 "all the input arrays must have the same number of dimensions"
             )
         axis = axis + len(xs[0].shape) if axis < 0 else axis
         sizes = [[v for i, v in enumerate(s) if i != axis] for s in shapes]
         if any(s != sizes[0] for s in sizes):
-            raise aikit.exceptions.IvyValueError(
+            raise aikit.exceptions.AikitValueError(
                 "the input arrays must have the same size along the specified axis"
             )
         ret = paddle.empty(
@@ -189,7 +189,7 @@ def squeeze(
     if len(x.shape) == 0:
         if axis is None or axis == 0 or axis == -1:
             return x
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             f"tried to squeeze a zero-dimensional input by axis {axis}"
         )
     if x.ndim > 6:
@@ -261,7 +261,7 @@ def split(
 ) -> List[paddle.Tensor]:
     if x.shape == ():
         if num_or_size_splits is not None and num_or_size_splits != 1:
-            raise aikit.utils.exceptions.IvyException(
+            raise aikit.utils.exceptions.AikitException(
                 "input array had no shape, but num_sections specified was"
                 f" {num_or_size_splits}"
             )
@@ -278,7 +278,7 @@ def split(
             if with_remainder:
                 num_or_size_splits = [num_or_size_splits] * num_chunks + [remainder]
             else:
-                raise aikit.utils.exceptions.IvyException(
+                raise aikit.utils.exceptions.AikitException(
                     "Split size is not compatible with input shape"
                 )
 
@@ -286,7 +286,7 @@ def split(
         if sum(num_or_size_splits) < x.shape[axis]:
             num_or_size_splits + type(num_or_size_splits)([-1])
         elif sum(num_or_size_splits) > x.shape[axis]:
-            raise aikit.utils.exceptions.IvyException(
+            raise aikit.utils.exceptions.AikitException(
                 "total split size is not compatible with input shape,"
                 f" got {sum(num_or_size_splits)} which is more than x.shape[axis]"
             )
@@ -400,7 +400,7 @@ def constant_pad(
     pad_width = list(pad_width)
     for item in pad_width:
         if len(item) != 2:
-            raise aikit.utils.exceptions.IvyException("Length of each item should be 2")
+            raise aikit.utils.exceptions.AikitException("Length of each item should be 2")
         else:
             paddings.append(item[0])
             paddings.append(item[1])

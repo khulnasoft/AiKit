@@ -24,7 +24,7 @@ def _nanargminmax(a, axis=None):
     if nans is not None:
         nans = aikit.all(nans, axis=axis)
         if aikit.any(nans):
-            raise aikit.utils.exceptions.IvyError("All-NaN slice encountered")
+            raise aikit.utils.exceptions.AikitError("All-NaN slice encountered")
     return a
 
 
@@ -107,4 +107,4 @@ def where(cond, x1=None, x2=None, /):
         x1, x2 = promote_types_of_numpy_inputs(x1, x2)
         return aikit.where(cond, x1, x2)
     else:
-        raise aikit.utils.exceptions.IvyException("where takes either 1 or 3 arguments")
+        raise aikit.utils.exceptions.AikitException("where takes either 1 or 3 arguments")

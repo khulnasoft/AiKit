@@ -3,7 +3,7 @@ import numpy as np
 import mxnet as mx
 import aikit
 from aikit.func_wrapper import _dtype_from_version
-from aikit.utils.exceptions import IvyNotImplementedException
+from aikit.utils.exceptions import AikitNotImplementedException
 
 backend_version = {"version": mx.__version__}
 if not aikit.is_local():
@@ -13,7 +13,7 @@ else:
 use = aikit.utils.backend.ContextManager(_module_in_memory)
 
 
-# wrap dunder methods of native tensors to return NotImplemented to prioritize Ivy array methods.
+# wrap dunder methods of native tensors to return NotImplemented to prioritize Aikit array methods.
 def dunder_wrapper(func):
     def rep_method(*args, **kwargs):
         for arg in args:
@@ -159,7 +159,7 @@ supports_gradients = True
 
 
 def closest_valid_dtype(type=None, /, as_native=False):
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 backend = "mxnet"

@@ -98,7 +98,7 @@ def nanpercentile(
 
         try:
             a = aikit.swapaxes(a, 0, 1)
-        except aikit.utils.exceptions.IvyError:
+        except aikit.utils.exceptions.AikitError:
             aikit.logging.warning("axis is 0 but couldn't swap")
 
         finally:

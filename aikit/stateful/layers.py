@@ -1,4 +1,4 @@
-"""Collection of Ivy neural network layers as stateful classes."""
+"""Collection of Aikit neural network layers as stateful classes."""
 
 # flake8: noqa
 # local

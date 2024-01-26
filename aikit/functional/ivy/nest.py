@@ -1,4 +1,4 @@
-"""Collection of Ivy functions for nested objects."""
+"""Collection of Aikit functions for nested objects."""
 
 # global
 from builtins import map as _map

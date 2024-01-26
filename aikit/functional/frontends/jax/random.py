@@ -115,7 +115,7 @@ def categorical(key, logits, axis, shape=None):
     expanded_logits = aikit.expand_dims(logits_arr, axis=axis)
     noisy_logits = gumbel_noise + expanded_logits
 
-    # Use Ivy's argmax to get indices
+    # Use Aikit's argmax to get indices
     indices = aikit.argmax(noisy_logits, axis=axis)
 
     return indices

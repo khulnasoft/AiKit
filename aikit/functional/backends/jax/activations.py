@@ -1,4 +1,4 @@
-"""Collection of Jax activation functions, wrapped to fit Ivy syntax and
+"""Collection of Jax activation functions, wrapped to fit Aikit syntax and
 signature."""
 
 # global

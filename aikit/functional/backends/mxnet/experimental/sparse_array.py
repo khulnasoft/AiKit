@@ -1,8 +1,8 @@
-from aikit.utils.exceptions import IvyNotImplementedException
+from aikit.utils.exceptions import AikitNotImplementedException
 
 
 def is_native_sparse_array(x):
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def native_sparse_array(
@@ -17,7 +17,7 @@ def native_sparse_array(
     dense_shape=None,
     format="coo"
 ):
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def native_sparse_array_to_indices_values_and_shape(x):

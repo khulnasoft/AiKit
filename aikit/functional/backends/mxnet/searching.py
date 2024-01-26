@@ -4,7 +4,7 @@ from typing import Optional, Union, Tuple
 import numpy as np
 
 import aikit
-from aikit.utils.exceptions import IvyNotImplementedException
+from aikit.utils.exceptions import AikitNotImplementedException
 
 
 def argmax(
@@ -17,7 +17,7 @@ def argmax(
     select_last_index: bool = False,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def argmin(
@@ -30,7 +30,7 @@ def argmin(
     select_last_index: bool = False,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def nonzero(
@@ -41,7 +41,7 @@ def nonzero(
     size: Optional[int] = None,
     fill_value: Number = 0,
 ) -> Union[(None, mx.ndarray.NDArray, Tuple[Union[(None, mx.ndarray.NDArray)]])]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def where(
@@ -52,7 +52,7 @@ def where(
     *,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()
 
 
 def argwhere(
@@ -61,4 +61,4 @@ def argwhere(
     *,
     out: Optional[Union[(None, mx.ndarray.NDArray)]] = None,
 ) -> Union[(None, mx.ndarray.NDArray)]:
-    raise IvyNotImplementedException()
+    raise AikitNotImplementedException()

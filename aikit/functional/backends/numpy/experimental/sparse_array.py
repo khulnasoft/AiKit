@@ -48,7 +48,7 @@ def native_sparse_array(
         dense_shape,
         format,
     ):
-        raise aikit.utils.exceptions.IvyException(
+        raise aikit.utils.exceptions.AikitException(
             "format should be one of the strings coo, csr, csc, bsr, and bsc."
         )
 

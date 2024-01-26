@@ -1,21 +1,21 @@
-from ivy.data_classes.container.base import ContainerBase
+from aikit.data_classes.container.base import ContainerBase
 from typing import Union, List, Dict, Optional, Tuple
-import ivy
+import aikit
 
 
 class _ContainerWithNormsExperimental(ContainerBase):
     @staticmethod
     def static_l1_normalize(
-        x: Union[ivy.Container, ivy.Array, ivy.NativeArray],
-        axis: Optional[Union[int, ivy.Container]] = None,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container static method variant of ivy.l1_normalize. This method
-        simply wraps the function, and so the docstring for ivy.l1_normalize
+        x: Union[aikit.Container, aikit.Array, aikit.NativeArray],
+        axis: Optional[Union[int, aikit.Container]] = None,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container static method variant of aikit.l1_normalize. This method
+        simply wraps the function, and so the docstring for aikit.l1_normalize
         also applies to this method with minimal changes.
 
         Parameters
@@ -46,14 +46,14 @@ class _ContainerWithNormsExperimental(ContainerBase):
 
         Examples
         --------
-        >>> x = ivy.Container(a=ivy.array([[0.5, 1.5, 2.5], [3.5, 4.5, 5.5]])))
-        ...                    b=ivy.array([[-1., -1.], [-1., -0.5]]]))
-        >>> y = ivy.Container.static_l1_normalize(x, axis=1)
+        >>> x = aikit.Container(a=aikit.array([[0.5, 1.5, 2.5], [3.5, 4.5, 5.5]])))
+        ...                    b=aikit.array([[-1., -1.], [-1., -0.5]]]))
+        >>> y = aikit.Container.static_l1_normalize(x, axis=1)
         >>> print(y)
         {
-            a: ivy.array([[0.1, 0.3, 0.5],
+            a: aikit.array([[0.1, 0.3, 0.5],
                           [0.35, 0.45, 0.55]]),
-            b: ivy.array([[-0.5, -0.5],
+            b: aikit.array([[-0.5, -0.5],
                           [-0.5, -0.25]])
         }
         """
@@ -69,17 +69,17 @@ class _ContainerWithNormsExperimental(ContainerBase):
         )
 
     def l1_normalize(
-        self: ivy.Container,
-        axis: Optional[Union[int, ivy.Container]] = None,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of ivy.l1_normalize. This
+        self: aikit.Container,
+        axis: Optional[Union[int, aikit.Container]] = None,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of aikit.l1_normalize. This
         method simply wraps the function, and so the docstring for
-        ivy.l1_normalize also applies to this method with minimal changes.
+        aikit.l1_normalize also applies to this method with minimal changes.
 
         Parameters
         ----------
@@ -119,16 +119,16 @@ class _ContainerWithNormsExperimental(ContainerBase):
 
     @staticmethod
     def static_l2_normalize(
-        x: Union[ivy.Container, ivy.Array, ivy.NativeArray],
-        axis: Optional[Union[int, ivy.Container]] = None,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container static method variant of ivy.l2_normalize. This method
-        simply wraps the function, and so the docstring for ivy.l2_normalize
+        x: Union[aikit.Container, aikit.Array, aikit.NativeArray],
+        axis: Optional[Union[int, aikit.Container]] = None,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container static method variant of aikit.l2_normalize. This method
+        simply wraps the function, and so the docstring for aikit.l2_normalize
         also applies to this method with minimal changes.
 
         Parameters
@@ -159,14 +159,14 @@ class _ContainerWithNormsExperimental(ContainerBase):
 
         Examples
         --------
-        >>> x = ivy.Container(a=ivy.array([[0.5, 1.5, 2.5], [3.5, 4.5, 5.5]])))
-        ...                    b=ivy.array([[-1., -1.], [-1., -0.5]]]))
-        >>> y = ivy.Container.static_l2_normalize(x, axis=1)
+        >>> x = aikit.Container(a=aikit.array([[0.5, 1.5, 2.5], [3.5, 4.5, 5.5]])))
+        ...                    b=aikit.array([[-1., -1.], [-1., -0.5]]]))
+        >>> y = aikit.Container.static_l2_normalize(x, axis=1)
         >>> print(y)
         {
-            a: ivy.array([[0.16903085, 0.50709254, 0.84515423],
+            a: aikit.array([[0.16903085, 0.50709254, 0.84515423],
                           [0.44183609, 0.56807494, 0.69431382]]),
-            b: ivy.array([[-0.70710677, -0.70710677],
+            b: aikit.array([[-0.70710677, -0.70710677],
                           [-0.89442718, -0.44721359]])
         }
         """
@@ -182,17 +182,17 @@ class _ContainerWithNormsExperimental(ContainerBase):
         )
 
     def l2_normalize(
-        self: ivy.Container,
-        axis: Optional[Union[int, ivy.Container]] = None,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of ivy.l2_normalize. This
+        self: aikit.Container,
+        axis: Optional[Union[int, aikit.Container]] = None,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of aikit.l2_normalize. This
         method simply wraps the function, and so the docstring for
-        ivy.l2_normalize also applies to this method with minimal changes.
+        aikit.l2_normalize also applies to this method with minimal changes.
 
         Parameters
         ----------
@@ -222,14 +222,14 @@ class _ContainerWithNormsExperimental(ContainerBase):
 
         Examples
         --------
-        >>> x = ivy.Container(a=ivy.array([[0.5, 1.5, 2.5], [3.5, 4.5, 5.5]]),
-        ...                    b=ivy.array([[-1., -1.], [-1., -0.5]]))
+        >>> x = aikit.Container(a=aikit.array([[0.5, 1.5, 2.5], [3.5, 4.5, 5.5]]),
+        ...                    b=aikit.array([[-1., -1.], [-1., -0.5]]))
         >>> y = x.l2_normalize(axis=1)
         >>> print(y)
         {
-            a: ivy.array([[0.16903085, 0.50709254, 0.84515423],
+            a: aikit.array([[0.16903085, 0.50709254, 0.84515423],
                           [0.44183609, 0.56807494, 0.69431382]]),
-            b: ivy.array([[-0.70710677, -0.70710677],
+            b: aikit.array([[-0.70710677, -0.70710677],
                           [-0.89442718, -0.44721359]])
         }
         """
@@ -245,31 +245,31 @@ class _ContainerWithNormsExperimental(ContainerBase):
 
     @staticmethod
     def static_batch_norm(
-        x: Union[ivy.Array, ivy.NativeArray, ivy.Container],
-        mean: Union[ivy.NativeArray, ivy.Array, ivy.Container],
-        variance: Union[ivy.NativeArray, ivy.Array, ivy.Container],
+        x: Union[aikit.Array, aikit.NativeArray, aikit.Container],
+        mean: Union[aikit.NativeArray, aikit.Array, aikit.Container],
+        variance: Union[aikit.NativeArray, aikit.Array, aikit.Container],
         /,
         *,
-        offset: Optional[Union[ivy.NativeArray, ivy.Array, ivy.Container]] = None,
-        scale: Optional[Union[ivy.NativeArray, ivy.Array, ivy.Container]] = None,
-        training: Union[bool, ivy.Container] = False,
-        eps: Union[float, ivy.Container] = 1e-5,
-        momentum: Union[float, ivy.Container] = 1e-1,
-        data_format: Union[str, ivy.Container] = "NSC",
+        offset: Optional[Union[aikit.NativeArray, aikit.Array, aikit.Container]] = None,
+        scale: Optional[Union[aikit.NativeArray, aikit.Array, aikit.Container]] = None,
+        training: Union[bool, aikit.Container] = False,
+        eps: Union[float, aikit.Container] = 1e-5,
+        momentum: Union[float, aikit.Container] = 1e-1,
+        data_format: Union[str, aikit.Container] = "NSC",
         out: Optional[
             Tuple[
-                Union[ivy.Array, ivy.Container],
-                Union[ivy.Array, ivy.Container],
-                Union[ivy.Array, ivy.Container],
+                Union[aikit.Array, aikit.Container],
+                Union[aikit.Array, aikit.Container],
+                Union[aikit.Array, aikit.Container],
             ]
         ] = None,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> Tuple[ivy.Container, ivy.Container, ivy.Container]:
-        """ivy.Container static method variant of ivy.batch_norm. This method
-        simply wraps the function, and so the docstring for ivy.batch_norm also
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> Tuple[aikit.Container, aikit.Container, aikit.Container]:
+        """aikit.Container static method variant of aikit.batch_norm. This method
+        simply wraps the function, and so the docstring for aikit.batch_norm also
         applies to this method with minimal changes.
 
         Parameters
@@ -341,31 +341,31 @@ class _ContainerWithNormsExperimental(ContainerBase):
         )
 
     def batch_norm(
-        self: Union[ivy.Array, ivy.NativeArray, ivy.Container],
-        mean: Union[ivy.NativeArray, ivy.Array, ivy.Container],
-        variance: Union[ivy.NativeArray, ivy.Array, ivy.Container],
+        self: Union[aikit.Array, aikit.NativeArray, aikit.Container],
+        mean: Union[aikit.NativeArray, aikit.Array, aikit.Container],
+        variance: Union[aikit.NativeArray, aikit.Array, aikit.Container],
         /,
         *,
-        offset: Optional[Union[ivy.NativeArray, ivy.Array, ivy.Container]] = None,
-        scale: Optional[Union[ivy.NativeArray, ivy.Array, ivy.Container]] = None,
-        training: Union[bool, ivy.Container] = False,
-        eps: Union[float, ivy.Container] = 1e-5,
-        momentum: Union[float, ivy.Container] = 1e-1,
-        data_format: Union[str, ivy.Container] = "NSC",
+        offset: Optional[Union[aikit.NativeArray, aikit.Array, aikit.Container]] = None,
+        scale: Optional[Union[aikit.NativeArray, aikit.Array, aikit.Container]] = None,
+        training: Union[bool, aikit.Container] = False,
+        eps: Union[float, aikit.Container] = 1e-5,
+        momentum: Union[float, aikit.Container] = 1e-1,
+        data_format: Union[str, aikit.Container] = "NSC",
         out: Optional[
             Tuple[
-                Union[ivy.Array, ivy.Container],
-                Union[ivy.Array, ivy.Container],
-                Union[ivy.Array, ivy.Container],
+                Union[aikit.Array, aikit.Container],
+                Union[aikit.Array, aikit.Container],
+                Union[aikit.Array, aikit.Container],
             ]
         ] = None,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> Tuple[ivy.Container, ivy.Container, ivy.Container]:
-        """ivy.Container instance method variant of ivy.batch_norm. This method
-        simply wraps the function, and so the docstring for ivy.batch_norm also
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> Tuple[aikit.Container, aikit.Container, aikit.Container]:
+        """aikit.Container instance method variant of aikit.batch_norm. This method
+        simply wraps the function, and so the docstring for aikit.batch_norm also
         applies to this method with minimal changes.
 
         Parameters
@@ -437,32 +437,32 @@ class _ContainerWithNormsExperimental(ContainerBase):
 
     @staticmethod
     def static_instance_norm(
-        x: Union[ivy.Array, ivy.NativeArray, ivy.Container],
-        mean: Union[ivy.NativeArray, ivy.Array, ivy.Container],
-        variance: Union[ivy.NativeArray, ivy.Array, ivy.Container],
+        x: Union[aikit.Array, aikit.NativeArray, aikit.Container],
+        mean: Union[aikit.NativeArray, aikit.Array, aikit.Container],
+        variance: Union[aikit.NativeArray, aikit.Array, aikit.Container],
         /,
         *,
-        offset: Optional[Union[ivy.NativeArray, ivy.Array, ivy.Container]] = None,
-        scale: Optional[Union[ivy.NativeArray, ivy.Array, ivy.Container]] = None,
-        training: Union[bool, ivy.Container] = False,
-        eps: Union[float, ivy.Container] = 1e-5,
-        momentum: Union[float, ivy.Container] = 1e-1,
-        data_format: Union[str, ivy.Container] = "NSC",
+        offset: Optional[Union[aikit.NativeArray, aikit.Array, aikit.Container]] = None,
+        scale: Optional[Union[aikit.NativeArray, aikit.Array, aikit.Container]] = None,
+        training: Union[bool, aikit.Container] = False,
+        eps: Union[float, aikit.Container] = 1e-5,
+        momentum: Union[float, aikit.Container] = 1e-1,
+        data_format: Union[str, aikit.Container] = "NSC",
         out: Optional[
             Tuple[
-                Union[ivy.Array, ivy.Container],
-                Union[ivy.Array, ivy.Container],
-                Union[ivy.Array, ivy.Container],
+                Union[aikit.Array, aikit.Container],
+                Union[aikit.Array, aikit.Container],
+                Union[aikit.Array, aikit.Container],
             ]
         ] = None,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> Tuple[ivy.Container, ivy.Container, ivy.Container]:
-        """ivy.Container static method variant of ivy.instance_norm. This
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> Tuple[aikit.Container, aikit.Container, aikit.Container]:
+        """aikit.Container static method variant of aikit.instance_norm. This
         method simply wraps the function, and so the docstring for
-        ivy.instance_norm also applies to this method with minimal changes.
+        aikit.instance_norm also applies to this method with minimal changes.
 
         Parameters
         ----------
@@ -531,32 +531,32 @@ class _ContainerWithNormsExperimental(ContainerBase):
         )
 
     def instance_norm(
-        self: Union[ivy.Array, ivy.NativeArray, ivy.Container],
-        mean: Union[ivy.NativeArray, ivy.Array, ivy.Container],
-        variance: Union[ivy.NativeArray, ivy.Array, ivy.Container],
+        self: Union[aikit.Array, aikit.NativeArray, aikit.Container],
+        mean: Union[aikit.NativeArray, aikit.Array, aikit.Container],
+        variance: Union[aikit.NativeArray, aikit.Array, aikit.Container],
         /,
         *,
-        offset: Optional[Union[ivy.NativeArray, ivy.Array, ivy.Container]] = None,
-        scale: Optional[Union[ivy.NativeArray, ivy.Array, ivy.Container]] = None,
-        training: Union[bool, ivy.Container] = False,
-        eps: Union[float, ivy.Container] = 1e-5,
-        momentum: Union[float, ivy.Container] = 1e-1,
-        data_format: Union[str, ivy.Container] = "NSC",
+        offset: Optional[Union[aikit.NativeArray, aikit.Array, aikit.Container]] = None,
+        scale: Optional[Union[aikit.NativeArray, aikit.Array, aikit.Container]] = None,
+        training: Union[bool, aikit.Container] = False,
+        eps: Union[float, aikit.Container] = 1e-5,
+        momentum: Union[float, aikit.Container] = 1e-1,
+        data_format: Union[str, aikit.Container] = "NSC",
         out: Optional[
             Tuple[
-                Union[ivy.Array, ivy.Container],
-                Union[ivy.Array, ivy.Container],
-                Union[ivy.Array, ivy.Container],
+                Union[aikit.Array, aikit.Container],
+                Union[aikit.Array, aikit.Container],
+                Union[aikit.Array, aikit.Container],
             ]
         ] = None,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> Tuple[ivy.Container, ivy.Container, ivy.Container]:
-        """ivy.Container instance method variant of ivy.instance_norm. This
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> Tuple[aikit.Container, aikit.Container, aikit.Container]:
+        """aikit.Container instance method variant of aikit.instance_norm. This
         method simply wraps the function, and so the docstring for
-        ivy.instance_norm also applies to this method with minimal changes.
+        aikit.instance_norm also applies to this method with minimal changes.
 
         Parameters
         ----------
@@ -625,22 +625,22 @@ class _ContainerWithNormsExperimental(ContainerBase):
 
     @staticmethod
     def static_group_norm(
-        x: Union[ivy.Array, ivy.NativeArray, ivy.Container],
-        num_groups: Union[int, ivy.Container] = 1,
+        x: Union[aikit.Array, aikit.NativeArray, aikit.Container],
+        num_groups: Union[int, aikit.Container] = 1,
         /,
         *,
-        offset: Optional[Union[ivy.NativeArray, ivy.Array, ivy.Container]] = None,
-        scale: Optional[Union[ivy.NativeArray, ivy.Array, ivy.Container]] = None,
-        eps: Union[float, ivy.Container] = 1e-5,
-        data_format: Union[str, ivy.Container] = "NSC",
-        out: Optional[Union[ivy.Array, ivy.Container]] = None,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> ivy.Container:
-        """ivy.Container static method variant of ivy.group_norm. This method
-        simply wraps the function, and so the docstring for ivy.group_norm also
+        offset: Optional[Union[aikit.NativeArray, aikit.Array, aikit.Container]] = None,
+        scale: Optional[Union[aikit.NativeArray, aikit.Array, aikit.Container]] = None,
+        eps: Union[float, aikit.Container] = 1e-5,
+        data_format: Union[str, aikit.Container] = "NSC",
+        out: Optional[Union[aikit.Array, aikit.Container]] = None,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> aikit.Container:
+        """aikit.Container static method variant of aikit.group_norm. This method
+        simply wraps the function, and so the docstring for aikit.group_norm also
         applies to this method with minimal changes.
 
         Parameters
@@ -687,22 +687,22 @@ class _ContainerWithNormsExperimental(ContainerBase):
         )
 
     def group_norm(
-        self: Union[ivy.Array, ivy.NativeArray, ivy.Container],
-        num_groups: Union[int, ivy.Container] = 1,
+        self: Union[aikit.Array, aikit.NativeArray, aikit.Container],
+        num_groups: Union[int, aikit.Container] = 1,
         /,
         *,
-        offset: Optional[Union[ivy.NativeArray, ivy.Array, ivy.Container]] = None,
-        scale: Optional[Union[ivy.NativeArray, ivy.Array, ivy.Container]] = None,
-        eps: Union[float, ivy.Container] = 1e-5,
-        data_format: Union[str, ivy.Container] = "NSC",
-        out: Optional[Union[ivy.Array, ivy.Container]] = None,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-    ) -> ivy.Container:
-        """ivy.Container static method variant of ivy.group_norm. This method
-        simply wraps the function, and so the docstring for ivy.group_norm also
+        offset: Optional[Union[aikit.NativeArray, aikit.Array, aikit.Container]] = None,
+        scale: Optional[Union[aikit.NativeArray, aikit.Array, aikit.Container]] = None,
+        eps: Union[float, aikit.Container] = 1e-5,
+        data_format: Union[str, aikit.Container] = "NSC",
+        out: Optional[Union[aikit.Array, aikit.Container]] = None,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+    ) -> aikit.Container:
+        """aikit.Container static method variant of aikit.group_norm. This method
+        simply wraps the function, and so the docstring for aikit.group_norm also
         applies to this method with minimal changes.
 
         Parameters
@@ -749,17 +749,17 @@ class _ContainerWithNormsExperimental(ContainerBase):
 
     @staticmethod
     def static_lp_normalize(
-        x: Union[ivy.Container, ivy.Array, ivy.NativeArray],
-        p: Union[float, ivy.Container] = 2,
-        axis: Optional[Union[int, ivy.Container]] = None,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container static method variant of ivy.lp_normalize. This method
-        simply wraps the function, and so the docstring for ivy.lp_normalize
+        x: Union[aikit.Container, aikit.Array, aikit.NativeArray],
+        p: Union[float, aikit.Container] = 2,
+        axis: Optional[Union[int, aikit.Container]] = None,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container static method variant of aikit.lp_normalize. This method
+        simply wraps the function, and so the docstring for aikit.lp_normalize
         also applies to this method with minimal changes.
 
         Parameters
@@ -792,14 +792,14 @@ class _ContainerWithNormsExperimental(ContainerBase):
 
         Examples
         --------
-        >>> x = ivy.Container(a=ivy.array([[0.5, 1.5, 2.5], [3.5, 4.5, 5.5]])))
-        ...                    b=ivy.array([[-1., -1.], [-1., -0.5]]]))
-        >>> y = ivy.Container.static_lp_normalize(x, p=1, axis=1)
+        >>> x = aikit.Container(a=aikit.array([[0.5, 1.5, 2.5], [3.5, 4.5, 5.5]])))
+        ...                    b=aikit.array([[-1., -1.], [-1., -0.5]]]))
+        >>> y = aikit.Container.static_lp_normalize(x, p=1, axis=1)
         >>> print(y)
         {
-            a: ivy.array([[0.12500000, 0.37500000, 0.62500000],
+            a: aikit.array([[0.12500000, 0.37500000, 0.62500000],
                           [0.27500000, 0.35000000, 0.42500000]]),
-            b: ivy.array([[-1.0000000, -1.0000000],
+            b: aikit.array([[-1.0000000, -1.0000000],
                           [-0.5000000, -0.2500000]])
         }
         """
@@ -816,18 +816,18 @@ class _ContainerWithNormsExperimental(ContainerBase):
         )
 
     def lp_normalize(
-        self: ivy.Container,
-        p: Union[float, ivy.Container] = 2,
-        axis: Optional[Union[int, ivy.Container]] = None,
-        key_chains: Optional[Union[List[str], Dict[str, str], ivy.Container]] = None,
-        to_apply: Union[bool, ivy.Container] = True,
-        prune_unapplied: Union[bool, ivy.Container] = False,
-        map_sequences: Union[bool, ivy.Container] = False,
-        out: Optional[ivy.Container] = None,
-    ) -> ivy.Container:
-        """ivy.Container instance method variant of ivy.l2_normalize. This
+        self: aikit.Container,
+        p: Union[float, aikit.Container] = 2,
+        axis: Optional[Union[int, aikit.Container]] = None,
+        key_chains: Optional[Union[List[str], Dict[str, str], aikit.Container]] = None,
+        to_apply: Union[bool, aikit.Container] = True,
+        prune_unapplied: Union[bool, aikit.Container] = False,
+        map_sequences: Union[bool, aikit.Container] = False,
+        out: Optional[aikit.Container] = None,
+    ) -> aikit.Container:
+        """aikit.Container instance method variant of aikit.l2_normalize. This
         method simply wraps the function, and so the docstring for
-        ivy.l2_normalize also applies to this method with minimal changes.
+        aikit.l2_normalize also applies to this method with minimal changes.
 
         Parameters
         ----------
@@ -857,14 +857,14 @@ class _ContainerWithNormsExperimental(ContainerBase):
 
         Examples
         --------
-        >>> x = ivy.Container(a=ivy.array([[0.5, 1.5, 2.5], [3.5, 4.5, 5.5]]),
-        ...                    b=ivy.array([[-1., -1.], [-1., -0.5]]))
+        >>> x = aikit.Container(a=aikit.array([[0.5, 1.5, 2.5], [3.5, 4.5, 5.5]]),
+        ...                    b=aikit.array([[-1., -1.], [-1., -0.5]]))
         >>> y = x.lp_normalize(axis=1)
         >>> print(y)
         {
-            a: ivy.array([[0.16903085, 0.50709254, 0.84515423],
+            a: aikit.array([[0.16903085, 0.50709254, 0.84515423],
                           [0.44183609, 0.56807494, 0.69431382]]),
-            b: ivy.array([[-0.70710677, -0.70710677],
+            b: aikit.array([[-0.70710677, -0.70710677],
                           [-0.89442718, -0.44721359]])
         }
         """

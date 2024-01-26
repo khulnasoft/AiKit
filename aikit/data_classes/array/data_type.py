@@ -3,7 +3,7 @@ import abc
 from typing import Tuple, Optional, List, Union
 
 # local
-import ivy
+import aikit
 
 Finfo = None
 Iinfo = None
@@ -11,13 +11,13 @@ Iinfo = None
 
 class _ArrayWithDataTypes(abc.ABC):
     def astype(
-        self: ivy.Array,
-        dtype: ivy.Dtype,
+        self: aikit.Array,
+        dtype: aikit.Dtype,
         /,
         *,
         copy: bool = True,
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
         """Copy an array to a specified data type irrespective of :ref:`type-
         promotion` rules.
 
@@ -57,20 +57,20 @@ class _ArrayWithDataTypes(abc.ABC):
 
         Examples
         --------
-        Using :class:`ivy.Array` instance method:
+        Using :class:`aikit.Array` instance method:
 
-        >>> x = ivy.array([[-1, -2], [0, 2]])
-        >>> print(x.astype(ivy.float64))
-        ivy.array([[-1., -2.],  [0.,  2.]])
+        >>> x = aikit.array([[-1, -2], [0, 2]])
+        >>> print(x.astype(aikit.float64))
+        aikit.array([[-1., -2.],  [0.,  2.]])
         """
-        return ivy.astype(self._data, dtype, copy=copy, out=out)
+        return aikit.astype(self._data, dtype, copy=copy, out=out)
 
     def broadcast_arrays(
-        self: ivy.Array, *arrays: Union[ivy.Array, ivy.NativeArray]
-    ) -> List[ivy.Array]:
-        """`ivy.Array` instance method variant of `ivy.broadcast_arrays`. This
+        self: aikit.Array, *arrays: Union[aikit.Array, aikit.NativeArray]
+    ) -> List[aikit.Array]:
+        """`aikit.Array` instance method variant of `aikit.broadcast_arrays`. This
         method simply wraps the function, and so the docstring for
-        `ivy.broadcast_arrays` also applies to this method with minimal
+        `aikit.broadcast_arrays` also applies to this method with minimal
         changes.
 
         Parameters
@@ -86,35 +86,35 @@ class _ArrayWithDataTypes(abc.ABC):
         Returns
         -------
         ret
-            A list containing broadcasted arrays of type `ivy.Array`
+            A list containing broadcasted arrays of type `aikit.Array`
 
         Examples
         --------
-        With :class:`ivy.Array` inputs:
+        With :class:`aikit.Array` inputs:
 
-        >>> x1 = ivy.array([1, 2])
-        >>> x2 = ivy.array([0.2, 0.])
-        >>> x3 = ivy.zeros(2)
+        >>> x1 = aikit.array([1, 2])
+        >>> x2 = aikit.array([0.2, 0.])
+        >>> x3 = aikit.zeros(2)
         >>> y = x1.broadcast_arrays(x2, x3)
         >>> print(y)
-        [ivy.array([1, 2]), ivy.array([0.2, 0. ]), ivy.array([0., 0.])]
+        [aikit.array([1, 2]), aikit.array([0.2, 0. ]), aikit.array([0., 0.])]
 
-        With mixed :class:`ivy.Array` and :class:`ivy.NativeArray` inputs:
+        With mixed :class:`aikit.Array` and :class:`aikit.NativeArray` inputs:
 
-        >>> x1 = ivy.array([-1., 3.4])
-        >>> x2 = ivy.native_array([2.4, 5.1])
+        >>> x1 = aikit.array([-1., 3.4])
+        >>> x2 = aikit.native_array([2.4, 5.1])
         >>> y = x1.broadcast_arrays(x2)
         >>> print(y)
-        [ivy.array([-1., 3.4]), ivy.array([2.4, 5.1])]
+        [aikit.array([-1., 3.4]), aikit.array([2.4, 5.1])]
         """
-        return ivy.broadcast_arrays(self._data, *arrays)
+        return aikit.broadcast_arrays(self._data, *arrays)
 
     def broadcast_to(
-        self: ivy.Array, /, shape: Tuple[int, ...], *, out: Optional[ivy.Array] = None
-    ) -> ivy.Array:
-        """`ivy.Array` instance method variant of `ivy.broadcast_to`. This
+        self: aikit.Array, /, shape: Tuple[int, ...], *, out: Optional[aikit.Array] = None
+    ) -> aikit.Array:
+        """`aikit.Array` instance method variant of `aikit.broadcast_to`. This
         method simply wraps the function, and so the docstring for
-        `ivy.broadcast_to` also applies to this method with minimal changes.
+        `aikit.broadcast_to` also applies to this method with minimal changes.
 
         Parameters
         ----------
@@ -132,20 +132,20 @@ class _ArrayWithDataTypes(abc.ABC):
 
         Examples
         --------
-        With :class:`ivy.Array` instance method:
+        With :class:`aikit.Array` instance method:
 
-        >>> x = ivy.array([1, 2, 3])
+        >>> x = aikit.array([1, 2, 3])
         >>> y = x.broadcast_to((3,3))
         >>> print(y)
-        ivy.array([[1, 2, 3],
+        aikit.array([[1, 2, 3],
                    [1, 2, 3],
                    [1, 2, 3]])
         """
-        return ivy.broadcast_to(self._data, shape=shape, out=out)
+        return aikit.broadcast_to(self._data, shape=shape, out=out)
 
-    def can_cast(self: ivy.Array, to: ivy.Dtype) -> bool:
-        """`ivy.Array` instance method variant of `ivy.can_cast`. This method
-        simply wraps the function, and so the docstring for `ivy.can_cast` also
+    def can_cast(self: aikit.Array, to: aikit.Dtype) -> bool:
+        """`aikit.Array` instance method variant of `aikit.can_cast`. This method
+        simply wraps the function, and so the docstring for `aikit.can_cast` also
         applies to this method with minimal changes.
 
         Parameters
@@ -163,20 +163,20 @@ class _ArrayWithDataTypes(abc.ABC):
 
         Examples
         --------
-        >>> x = ivy.array([1., 2., 3.])
+        >>> x = aikit.array([1., 2., 3.])
         >>> print(x.dtype)
         float32
 
-        >>> x = ivy.array([4., 5., 6.])
-        >>> print(x.can_cast(ivy.float64))
+        >>> x = aikit.array([4., 5., 6.])
+        >>> print(x.can_cast(aikit.float64))
         True
         """
-        return ivy.can_cast(self._data, to)
+        return aikit.can_cast(self._data, to)
 
     def dtype(
-        self: ivy.Array, as_native: bool = False
-    ) -> Union[ivy.Dtype, ivy.NativeDtype]:
-        """`ivy.Array` instance method variant of `ivy.dtype`. This method
+        self: aikit.Array, as_native: bool = False
+    ) -> Union[aikit.Dtype, aikit.NativeDtype]:
+        """`aikit.Array` instance method variant of `aikit.dtype`. This method
         helps to get the data type of the array.
 
         Parameters
@@ -195,20 +195,20 @@ class _ArrayWithDataTypes(abc.ABC):
 
         Examples
         --------
-        >>> x = ivy.array([1, 2, 3])
+        >>> x = aikit.array([1, 2, 3])
         >>> y = x.dtype()
         >>> print(y)
         int32
 
-        >>> x= ivy.array([1.0, 2.0, 3.0], dtype=ivy.float64)
+        >>> x= aikit.array([1.0, 2.0, 3.0], dtype=aikit.float64)
         >>> y = x.dtype(as_native=True)
         >>> print(y)
         float64
         """
-        return ivy.dtype(self._data, as_native=as_native)
+        return aikit.dtype(self._data, as_native=as_native)
 
-    def finfo(self: ivy.Array, /) -> Finfo:
-        """Array instance method variant of `ivy.finfo`.
+    def finfo(self: aikit.Array, /) -> Finfo:
+        """Array instance method variant of `aikit.finfo`.
 
         Parameters
         ----------
@@ -223,15 +223,15 @@ class _ArrayWithDataTypes(abc.ABC):
 
         Example
         -------
-        >>> x = ivy.array([0.7,8.4,3.14], dtype=ivy.float32)
+        >>> x = aikit.array([0.7,8.4,3.14], dtype=aikit.float32)
         >>> print(x.finfo())
         finfo(resolution=1e-06, min=-3.4028235e+38, max=3.4028235e+38, dtype=float32)
         """
-        return ivy.finfo(self._data)
+        return aikit.finfo(self._data)
 
-    def iinfo(self: ivy.Array, /) -> Iinfo:
-        """`ivy.Array` instance method variant of `ivy.iinfo`. This method
-        simply wraps the function, and so the docstring for `ivy.iinfo` also
+    def iinfo(self: aikit.Array, /) -> Iinfo:
+        """`aikit.Array` instance method variant of `aikit.iinfo`. This method
+        simply wraps the function, and so the docstring for `aikit.iinfo` also
         applies to this method with minimal changes.
 
         Parameters
@@ -247,21 +247,21 @@ class _ArrayWithDataTypes(abc.ABC):
 
         Examples
         --------
-        >>> x = ivy.array([-119,122,14], dtype=ivy.int8))
+        >>> x = aikit.array([-119,122,14], dtype=aikit.int8))
         >>> x.iinfo()
         iinfo(min=-128, max=127, dtype=int8)
 
-        >>> x = ivy.array([-12,54,1,9,-1220], dtype=ivy.int16))
+        >>> x = aikit.array([-12,54,1,9,-1220], dtype=aikit.int16))
         >>> x.iinfo()
         iinfo(min=-32768, max=32767, dtype=int16)
         """
-        return ivy.iinfo(self._data)
+        return aikit.iinfo(self._data)
 
-    def is_bool_dtype(self: ivy.Array) -> bool:
-        return ivy.is_bool_dtype(self._data)
+    def is_bool_dtype(self: aikit.Array) -> bool:
+        return aikit.is_bool_dtype(self._data)
 
-    def is_float_dtype(self: ivy.Array) -> bool:
-        """`ivy.Array` instance method variant of `ivy.is_float_dtype`. This
+    def is_float_dtype(self: aikit.Array) -> bool:
+        """`aikit.Array` instance method variant of `aikit.is_float_dtype`. This
         method simply checks to see if the array is of type `float`.
 
         Parameters
@@ -276,29 +276,29 @@ class _ArrayWithDataTypes(abc.ABC):
 
         Examples
         --------
-        >>> x = ivy.array([1, 2, 3], dtype=ivy.int8)
+        >>> x = aikit.array([1, 2, 3], dtype=aikit.int8)
         >>> print(x.is_float_dtype())
         False
 
-        >>> x = ivy.array([2.3, 4.5, 6.8], dtype=ivy.float32)
+        >>> x = aikit.array([2.3, 4.5, 6.8], dtype=aikit.float32)
         >>> print( x.is_float_dtype())
         True
         """
-        return ivy.is_float_dtype(self._data)
+        return aikit.is_float_dtype(self._data)
 
-    def is_int_dtype(self: ivy.Array) -> bool:
-        return ivy.is_int_dtype(self._data)
+    def is_int_dtype(self: aikit.Array) -> bool:
+        return aikit.is_int_dtype(self._data)
 
-    def is_uint_dtype(self: ivy.Array) -> bool:
-        return ivy.is_uint_dtype(self._data)
+    def is_uint_dtype(self: aikit.Array) -> bool:
+        return aikit.is_uint_dtype(self._data)
 
     def result_type(
-        self: ivy.Array,
-        *arrays_and_dtypes: Union[ivy.Array, ivy.NativeArray, ivy.Dtype],
-    ) -> ivy.Dtype:
-        """`ivy.Array` instance method variant of `ivy.result_type`. This
+        self: aikit.Array,
+        *arrays_and_dtypes: Union[aikit.Array, aikit.NativeArray, aikit.Dtype],
+    ) -> aikit.Dtype:
+        """`aikit.Array` instance method variant of `aikit.result_type`. This
         method simply wraps the function, and so the docstring for
-        `ivy.result_type` also applies to this method with minimal changes.
+        `aikit.result_type` also applies to this method with minimal changes.
 
         Parameters
         ----------
@@ -314,11 +314,11 @@ class _ArrayWithDataTypes(abc.ABC):
 
         Examples
         --------
-        >>> x = ivy.array([0, 1, 2])
+        >>> x = aikit.array([0, 1, 2])
         >>> print(x.dtype)
         int32
 
-        >>> x.result_type(ivy.float64)
+        >>> x.result_type(aikit.float64)
         <dtype:'float64'>
         """
-        return ivy.result_type(self._data, *arrays_and_dtypes)
+        return aikit.result_type(self._data, *arrays_and_dtypes)

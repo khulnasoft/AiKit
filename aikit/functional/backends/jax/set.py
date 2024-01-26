@@ -4,8 +4,8 @@ from typing import Tuple, Optional
 from collections import namedtuple
 
 # local
-from ivy.functional.backends.jax import JaxArray
-import ivy
+from aikit.functional.backends.jax import JaxArray
+import aikit
 
 
 def unique_all(
@@ -54,7 +54,7 @@ def unique_all(
         values = jnp.take(values, sort_idx, axis=axis)
         counts = jnp.take(counts, sort_idx)
         indices = jnp.take(indices, sort_idx)
-        inv_sort_idx = ivy.current_backend().invert_permutation(sort_idx)
+        inv_sort_idx = aikit.current_backend().invert_permutation(sort_idx)
         inverse_indices = jnp.vectorize(lambda y: jnp.take(inv_sort_idx, y))(
             inverse_indices
         )

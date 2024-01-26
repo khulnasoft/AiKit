@@ -1,4 +1,4 @@
-"""Collection of Jax network layers, wrapped to fit Ivy syntax and
+"""Collection of Jax network layers, wrapped to fit Aikit syntax and
 signature."""
 
 # global
@@ -6,10 +6,10 @@ import jax.lax as jlax
 import jax.numpy as jnp
 
 # local
-import ivy
-from ivy.functional.backends.jax import JaxArray
+import aikit
+from aikit.functional.backends.jax import JaxArray
 from typing import Union, Tuple, Optional, Sequence
-from ivy.functional.ivy.layers import (
+from aikit.functional.aikit.layers import (
     _handle_padding,
     _deconv_length,
     _get_x_data_format,
@@ -130,7 +130,7 @@ def conv1d_transpose(
     padding: str,
     /,
     *,
-    output_shape: Optional[Union[ivy.NativeShape, Sequence[int]]] = None,
+    output_shape: Optional[Union[aikit.NativeShape, Sequence[int]]] = None,
     filter_format: str = "channel_last",
     data_format: str = "NWC",
     dilations: Union[int, Tuple[int]] = 1,
@@ -200,7 +200,7 @@ def conv2d_transpose(
     padding: str,
     /,
     *,
-    output_shape: Optional[Union[ivy.NativeShape, Sequence[int]]] = None,
+    output_shape: Optional[Union[aikit.NativeShape, Sequence[int]]] = None,
     filter_format: str = "channel_last",
     data_format: str = "NHWC",
     dilations: Union[int, Tuple[int, int]] = 1,
@@ -302,7 +302,7 @@ def conv3d_transpose(
     padding: str,
     /,
     *,
-    output_shape: Optional[Union[ivy.NativeShape, Sequence[int]]] = None,
+    output_shape: Optional[Union[aikit.NativeShape, Sequence[int]]] = None,
     dilations: Union[int, Tuple[int, int, int]] = 1,
     filter_format: str = "channel_last",
     data_format: str = "NDHWC",
@@ -423,7 +423,7 @@ def conv_general_transpose(
     /,
     *,
     dims: int = 2,
-    output_shape: Optional[Union[ivy.NativeShape, Sequence[int]]] = None,
+    output_shape: Optional[Union[aikit.NativeShape, Sequence[int]]] = None,
     filter_format: str = "channel_last",
     data_format: str = "channel_last",
     dilations: Union[int, Tuple[int], Tuple[int, int], Tuple[int, int, int]] = 1,
@@ -484,9 +484,9 @@ def nms(
 
     if len(boxes) < 2:
         if len(boxes) == 1:
-            ret = jnp.array([0], dtype=ivy.int64)
+            ret = jnp.array([0], dtype=aikit.int64)
         else:
-            ret = jnp.array([], dtype=ivy.int64)
+            ret = jnp.array([], dtype=aikit.int64)
     else:
         areas = jnp.prod(boxes[:, 2:4] - boxes[:, :2], axis=1)
         order = jnp.argsort(-1 * scores)  # get boxes with more ious first

@@ -105,10 +105,10 @@ You can also add options described in the :ref:`overview/deep_dive/building_the_
 
     docker run -v /path/to/project:/project khulnasoft/doc-builder --no-cleanup
 
-How Ivy's docs is structured
+How Aikit's docs is structured
 -----------------------------
 
-Looking at `Ivy docs <https://github.com/khulnasoft/aikit/tree/main/docs>`_, we can see
+Looking at `Aikit docs <https://github.com/khulnasoft/aikit/tree/main/docs>`_, we can see
 that it is structured like this:
 
 .. code-block:: bash
@@ -159,7 +159,7 @@ Here is a segment of the file:
         :recursive:
         :hide-table:
 
-        ivy.functional.ivy
+        aikit.functional.aikit
 
 You can see here different reStructuredText directives. The first one is ``include``,
 which simply includes the main README file of the project, this is a good place if you
@@ -176,7 +176,7 @@ to every page in this documentation, for example this page is included in the
 ``toctree`` of ``overview/deep_dive.rst``, which is included in the ``toctree`` of
 ``index.rst``. You can read more about the ``toctree`` directive in `sphinx docs
 <https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html#directive-toctree>`_, from
-now on we'll only explain the directives that are custom to Ivy's doc-builder.
+now on we'll only explain the directives that are custom to Aikit's doc-builder.
 
 The last directive is ``autosummary``, which is used to automatically generate a table
 of contents for a module, as well as the documentation itself automatically by
@@ -197,17 +197,17 @@ This is a part of ``partial_conf.py``:
 
 .. code-block:: python
 
-    ivy_toctree_caption_map = {
-        "ivy.functional.ivy": "Functions",
-        "ivy.stateful": "Framework classes",
-        "ivy.nested_array": "Nested array",
-        "ivy.utils": "Utils",
-        "ivy_tests.test_ivy.helpers": "Testing",
+    aikit_toctree_caption_map = {
+        "aikit.functional.aikit": "Functions",
+        "aikit.stateful": "Framework classes",
+        "aikit.nested_array": "Nested array",
+        "aikit.utils": "Utils",
+        "aikit_tests.test_aikit.helpers": "Testing",
     }
 
-Here we are overriding the ``ivy_toctree_caption_map`` configuration, which is used to
+Here we are overriding the ``aikit_toctree_caption_map`` configuration, which is used to
 customize the title of the table of contents for each module.
-``ivy_toctree_caption_map`` is one of the configuration options we have in our
+``aikit_toctree_caption_map`` is one of the configuration options we have in our
 ``custom_autosummary`` extension, which will be covered extensively in
 :ref:`overview/deep_dive/building_the_docs_pipeline:Custom Extensions`.
 
@@ -215,7 +215,7 @@ customize the title of the table of contents for each module.
 ~~~~~~~~~~~~~~~
 
 This is an optional file, which is executed before the docs are built. This is useful
-if you need to install some dependencies for the docs to build. In Ivy's case, we
+if you need to install some dependencies for the docs to build. In Aikit's case, we
 install ``torch`` then ``torch-scatter`` sequentially to avoid a bug in
 ``torch-scatter``'s setup. And if we want to make any changes to the docker container
 before building the docs.
@@ -223,12 +223,12 @@ before building the docs.
 Custom Extensions
 -----------------
 
-As of writing this documentation, Ivy's doc-builder is using 4 custom extensions:
+As of writing this documentation, Aikit's doc-builder is using 4 custom extensions:
 
 #. ``custom_autosummary``
 #. ``discussion_linker``
 #. ``skippable_function``
-#. ``ivy_data``
+#. ``aikit_data``
 
 ``custom_autosummary``
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -265,15 +265,15 @@ The directive is included like this:
     .. discussion-links:: module.foo
 
 
-First it will look for the ``discussion_channel_map`` configuration, in Ivy it looks like
+First it will look for the ``discussion_channel_map`` configuration, in Aikit it looks like
 this:
 
 .. code-block:: python
 
     discussion_channel_map = {
         ...,
-        "ivy.functional.ivy.creation": ["1000043690254946374"],
-        "ivy.functional.ivy.data_type": ["1000043749088436315"],
+        "aikit.functional.aikit.creation": ["1000043690254946374"],
+        "aikit.functional.aikit.data_type": ["1000043749088436315"],
         ...,
     }
 
@@ -291,7 +291,7 @@ configurations and their values:
 - ``discord_link``: ``"https://discord.gg/ZVQdvbzNQJ"``
 - ``channel_link``: ``"https://discord.com/channels/799879767196958751/{{channel_id}}"``
 
-Here is an example of how it works for ``ivy.functional.ivy.creation``:
+Here is an example of how it works for ``aikit.functional.aikit.creation``:
 
 1. First we resolve the ``{{submodule}}`` template string, which is the last part of the
    module name, in this case it's ``creation``.
@@ -356,17 +356,17 @@ This is an example of ``skippable_method_attributes`` configuration in
 This will remove any function that has ``__qualname__`` attribute equal to
 ``_wrap_function.<locals>.new_function``.
 
-``ivy_data``
+``aikit_data``
 ~~~~~~~~~~~~
 
-This is a custom documenter for ``autodoc`` that documents Ivy data attributes that live
-in ``ivy.functional.ivy``, it will replace the module to ``ivy.`` instead of
-``ivy.functional.ivy.<submodule>``.
+This is a custom documenter for ``autodoc`` that documents Aikit data attributes that live
+in ``aikit.functional.aikit``, it will replace the module to ``aikit.`` instead of
+``aikit.functional.aikit.<submodule>``.
 
-It's used instead of simply using ``ivy.<data attribute>`` because data attributes have
+It's used instead of simply using ``aikit.<data attribute>`` because data attributes have
 no ``__doc__`` attribute, instead docs are discovered by parsing the source code itself.
 So for Sphinx to find the required docs, it needs to be supplied the full module name,
-then using the ``autoivydata`` directive will replace the module name to ``ivy.``.
+then using the ``autoaikitdata`` directive will replace the module name to ``aikit.``.
 
 Please refer to the `auto documenter guide in sphinx documentation
 <https://www.sphinx-doc.org/en/master/development/tutorials/autodoc_ext.html>`_ for more

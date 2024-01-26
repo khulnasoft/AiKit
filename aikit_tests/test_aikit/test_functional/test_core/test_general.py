@@ -1090,7 +1090,7 @@ def test_get_item(
             query=query,
             copy=copy,
         )
-    except aikit.utils.exceptions.IvyBackendException as e:
+    except aikit.utils.exceptions.AikitBackendException as e:
         if backend_fw == "paddle" and "only supports access to dimension 0 to 9" in e:
             assume(False)
         else:

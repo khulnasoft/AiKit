@@ -2760,26 +2760,26 @@ class _ArrayWithElementwise(abc.ABC):
 
         Examples
         --------
-        >>> ivy.set_backend('tensorflow')
-        >>> z = ivy.array([-1 + 1j, -2 + 2j, 3 - 3j])
+        >>> aikit.set_backend('tensorflow')
+        >>> z = aikit.array([-1 + 1j, -2 + 2j, 3 - 3j])
         >>> z
-        ivy.array([-1.+1.j, -2.+2.j,  3.-3.j])
-        >>> ivy.angle(z)
-        ivy.array([ 2.35619449,  2.35619449, -0.78539816])
-        >>> ivy.set_backend('numpy')
-        >>> ivy.angle(z,deg=True)
-        ivy.array([135., 135., -45.])
+        aikit.array([-1.+1.j, -2.+2.j,  3.-3.j])
+        >>> aikit.angle(z)
+        aikit.array([ 2.35619449,  2.35619449, -0.78539816])
+        >>> aikit.set_backend('numpy')
+        >>> aikit.angle(z,deg=True)
+        aikit.array([135., 135., -45.])
         """
-        return ivy.angle(self._data, deg=deg, out=out)
+        return aikit.angle(self._data, deg=deg, out=out)
 
     def reciprocal(
-        self: ivy.Array,
+        self: aikit.Array,
         /,
         *,
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
-        """ivy.Array instance method variant of ivy.reciprocal.This method
-        simply wraps the function, and so the docstring for ivy.reciprocal also
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
+        """aikit.Array instance method variant of aikit.reciprocal.This method
+        simply wraps the function, and so the docstring for aikit.reciprocal also
         applies to this method with minimal changes.
 
         Parameters
@@ -2797,16 +2797,16 @@ class _ArrayWithElementwise(abc.ABC):
 
         Examples
         --------
-        >>> x = ivy.array([1, 2, 3])
+        >>> x = aikit.array([1, 2, 3])
         >>> y = x.reciprocal()
         >>> print(y)
-        ivy.array([1., 0.5, 0.333])
+        aikit.array([1., 0.5, 0.333])
         """
-        return ivy.reciprocal(self._data, out=out)
+        return aikit.reciprocal(self._data, out=out)
 
-    def deg2rad(self: ivy.Array, *, out: Optional[ivy.Array] = None) -> ivy.Array:
-        """ivy.Array instance method variant of ivy.deg2rad. This method simply
-        wraps the function, and so the docstring for ivy.deg2rad also applies
+    def deg2rad(self: aikit.Array, *, out: Optional[aikit.Array] = None) -> aikit.Array:
+        """aikit.Array instance method variant of aikit.deg2rad. This method simply
+        wraps the function, and so the docstring for aikit.deg2rad also applies
         to this method with minimal changes.
 
         Parameters
@@ -2824,18 +2824,18 @@ class _ArrayWithElementwise(abc.ABC):
 
         Examples
         --------
-        With :class:`ivy.Array` input:
+        With :class:`aikit.Array` input:
 
-        >>> x=ivy.array([90,180,270,360])
+        >>> x=aikit.array([90,180,270,360])
         >>> y=x.deg2rad()
         >>> print(y)
-        ivy.array([1.57, 3.14, 4.71, 6.28])
+        aikit.array([1.57, 3.14, 4.71, 6.28])
         """
-        return ivy.deg2rad(self._data, out=out)
+        return aikit.deg2rad(self._data, out=out)
 
-    def rad2deg(self: ivy.Array, *, out: Optional[ivy.Array] = None) -> ivy.Array:
-        """ivy.Array instance method variant of ivy.rad2deg. This method simply
-        wraps the function, and so the docstring for ivy.rad2deg also applies
+    def rad2deg(self: aikit.Array, *, out: Optional[aikit.Array] = None) -> aikit.Array:
+        """aikit.Array instance method variant of aikit.rad2deg. This method simply
+        wraps the function, and so the docstring for aikit.rad2deg also applies
         to this method with minimal changes.
 
         Parameters
@@ -2853,24 +2853,24 @@ class _ArrayWithElementwise(abc.ABC):
 
         Examples
         --------
-        With :class:`ivy.Array` input:
+        With :class:`aikit.Array` input:
 
-        >>> x=ivy.array([1., 5., 8., 10.])
+        >>> x=aikit.array([1., 5., 8., 10.])
         >>> y=x.rad2deg()
         >>> print(y)
-        ivy.array([ 57.3, 286. , 458. , 573. ])
+        aikit.array([ 57.3, 286. , 458. , 573. ])
         """
-        return ivy.rad2deg(self._data, out=out)
+        return aikit.rad2deg(self._data, out=out)
 
     def trunc_divide(
-        self: ivy.Array,
-        x2: Union[ivy.Array, ivy.NativeArray],
+        self: aikit.Array,
+        x2: Union[aikit.Array, aikit.NativeArray],
         /,
         *,
-        out: Optional[ivy.Array] = None,
-    ) -> ivy.Array:
-        """ivy.Array instance method variant of ivy.trunc_divide. This method
-        simply wraps the function, and so the docstring for ivy.trunc_divide
+        out: Optional[aikit.Array] = None,
+    ) -> aikit.Array:
+        """aikit.Array instance method variant of aikit.trunc_divide. This method
+        simply wraps the function, and so the docstring for aikit.trunc_divide
         also applies to this method with minimal changes.
 
         Parameters
@@ -2894,19 +2894,19 @@ class _ArrayWithElementwise(abc.ABC):
 
         Examples
         --------
-        With :class:`ivy.Array` inputs:
+        With :class:`aikit.Array` inputs:
 
-        >>> x1 = ivy.array([2., 7., 9.])
-        >>> x2 = ivy.array([2., -2., 2.])
+        >>> x1 = aikit.array([2., 7., 9.])
+        >>> x2 = aikit.array([2., -2., 2.])
         >>> y = x1.trunc_divide(x2)
         >>> print(y)
-        ivy.array([ 1., -3.,  4.])
+        aikit.array([ 1., -3.,  4.])
         """
-        return ivy.trunc_divide(self._data, x2, out=out)
+        return aikit.trunc_divide(self._data, x2, out=out)
 
-    def isreal(self: ivy.Array, *, out: Optional[ivy.Array] = None) -> ivy.Array:
-        """ivy.Array instance method variant of ivy.isreal. This method simply
-        wraps the function, and so the docstring for ivy.isreal also applies to
+    def isreal(self: aikit.Array, *, out: Optional[aikit.Array] = None) -> aikit.Array:
+        """aikit.Array instance method variant of aikit.isreal. This method simply
+        wraps the function, and so the docstring for aikit.isreal also applies to
         this method with minimal changes.
 
         Parameters
@@ -2926,17 +2926,17 @@ class _ArrayWithElementwise(abc.ABC):
 
         Examples
         --------
-        >>> x = ivy.array([1j, 2+5j, 3.7-6j])
+        >>> x = aikit.array([1j, 2+5j, 3.7-6j])
         >>> x.isreal()
-        ivy.array([False, False, False])
+        aikit.array([False, False, False])
         """
-        return ivy.isreal(self._data, out=out)
+        return aikit.isreal(self._data, out=out)
 
     def lcm(
-        self: ivy.Array, x2: ivy.Array, *, out: Optional[ivy.Array] = None
-    ) -> ivy.Array:
-        """ivy.Array instance method variant of ivy.lcm. This method simply
-        wraps the function, and so the docstring for ivy.lcm also applies to
+        self: aikit.Array, x2: aikit.Array, *, out: Optional[aikit.Array] = None
+    ) -> aikit.Array:
+        """aikit.Array instance method variant of aikit.lcm. This method simply
+        wraps the function, and so the docstring for aikit.lcm also applies to
         this method with minimal changes.
 
         Parameters
@@ -2956,9 +2956,9 @@ class _ArrayWithElementwise(abc.ABC):
 
         Examples
         --------
-        >>> x1=ivy.array([2, 3, 4])
-        >>> x2=ivy.array([5, 8, 15])
+        >>> x1=aikit.array([2, 3, 4])
+        >>> x2=aikit.array([5, 8, 15])
         >>> x1.lcm(x2)
-        ivy.array([10, 21, 60])
+        aikit.array([10, 21, 60])
         """
-        return ivy.lcm(self, x2, out=out)
+        return aikit.lcm(self, x2, out=out)

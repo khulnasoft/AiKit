@@ -1,4 +1,4 @@
-"""Collection of random Ivy functions."""
+"""Collection of random Aikit functions."""
 
 # global
 from typing import Optional, Union

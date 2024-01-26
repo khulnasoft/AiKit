@@ -8,4 +8,4 @@ fi
 
 mkdir -p .hypothesis
 # shellcheck disable=SC2046
-docker run --rm --env IVY_BACKEND="$1" --env ARRAY_API_TESTS_MODULE="aikit" --env REDIS_URL="$3" --env REDIS_PASSWD="$4" -v $(pwd):/aikit -v $(pwd)/.hypothesis:/.hypothesis khulnasoft/aikit:latest python3 -m pytest aikit_tests/array_api_testing/test_array_api/array_api_tests/"$2".py -k "$ARRAY_API_TESTS_K_FLAG" --tb=short -vv
+docker run --rm --env AIKIT_BACKEND="$1" --env ARRAY_API_TESTS_MODULE="aikit" --env REDIS_URL="$3" --env REDIS_PASSWD="$4" -v $(pwd):/aikit -v $(pwd)/.hypothesis:/.hypothesis khulnasoft/aikit:latest python3 -m pytest aikit_tests/array_api_testing/test_array_api/array_api_tests/"$2".py -k "$ARRAY_API_TESTS_K_FLAG" --tb=short -vv
